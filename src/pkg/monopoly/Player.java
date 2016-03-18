@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+
     private final String description;
+
     private int cashBalance = 0;
     private int netWorth = 0;
     private Space space;
@@ -15,7 +17,11 @@ public class Player {
 
     public Player(String description) {
         this.description = description;
-        transaction(1500, "Cash");
+        transaction(1500, 1500, TransactionType.CASH);
+    }
+
+    public enum TransactionType {
+        CASH, PURCHASE, MORTGAGE, UNMORTGAGE
     }
 
     public String getDescription() {
@@ -58,18 +64,18 @@ public class Player {
         return space;
     }
 
-    public void transaction(int amount, String transactionType) {
-        if (transactionType.equals("Cash")) {
-            cashBalance += amount;
-            netWorth += amount;
-        } else if (transactionType.equals("Purchase")) {
-            transaction(amount,"Cash");
-            netWorth -= (amount / 2);
-        } else if (transactionType.equals("Mortgage")) {
-            cashBalance += amount;
-        } else if (transactionType.equals("Un-mortgage")) {
-            transaction(amount,"Cash");
-            netWorth-= ((amount / 11) * 10);
+    public void transaction(int cashAmount, int netWorthAmount, TransactionType transactionType) {
+        if (transactionType.equals(TransactionType.CASH)) {
+            cashBalance += cashAmount;
+            netWorth += netWorthAmount;
+        } else if (transactionType.equals(TransactionType.PURCHASE)) {
+            transaction(cashAmount, cashAmount, TransactionType.CASH);
+            netWorth += netWorthAmount;
+        } else if (transactionType.equals(TransactionType.MORTGAGE)) {
+            cashBalance += cashAmount;
+        } else if (transactionType.equals(TransactionType.UNMORTGAGE)) {
+            transaction(cashAmount, cashAmount, TransactionType.CASH);
+            netWorth += netWorthAmount;
         }
     }
 
@@ -145,9 +151,10 @@ public class Player {
         resetRollCounter();
     }
 
-    private void goToJail()  {
+    private void goToJail() {
         Space goToJail = space.searchForSpaceByDescription("Go to Jail");
-        goToJail.landOn(this, new SourceOfMoveMultiplier(), new OwnershipMultiplier());}
+        goToJail.landOn(this, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
+    }
 
     private void doubleNotRolled(Dice dice) {
         if (isInJail()) {
@@ -164,7 +171,7 @@ public class Player {
     }
 
     public void postBail() {
-        transaction(-50, "Cash");
+        transaction(-50, -50, TransactionType.CASH);
         releasedFromJail();
     }
 

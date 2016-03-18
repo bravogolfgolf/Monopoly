@@ -22,10 +22,6 @@ abstract class Property extends Space {
         return price;
     }
 
-    public int getRent() {
-        return rentalBasis.get(0);
-    }
-
     public void setIsMortgaged(boolean status) {
         isMortgaged = status;
     }
@@ -44,7 +40,7 @@ abstract class Property extends Space {
 
     public void mortgagedBy(Player player) {
         if (mortgageConditionsAreMeet(player)) {
-            player.transaction(mortgageAmount(), "Mortgage");
+            player.transaction(mortgageAmount(), 0, Player.TransactionType.MORTGAGE);
             setIsMortgaged(true);
         }
     }
@@ -59,7 +55,7 @@ abstract class Property extends Space {
 
     public void unMortgageBy(Player player) {
         if (unMortgageConditionsAreMeet(player)) {
-            player.transaction(unMortgageAmount(), "Un-mortgage");
+            player.transaction(unMortgageAmount(), mortgageAmount(), Player.TransactionType.UNMORTGAGE);
             setIsMortgaged(false);
         }
     }
@@ -112,7 +108,7 @@ abstract class Property extends Space {
     }
 
     private void buyProperty(Player player) {
-        player.transaction(-price, "Purchase");
+        player.transaction(-price, mortgageAmount(), Player.TransactionType.PURCHASE);
         this.owner = player;
     }
 
@@ -184,7 +180,7 @@ abstract class Property extends Space {
     protected abstract int calculateRentOwed(Basis basis, OwnershipMultiplier ownershipMultiplier, SourceOfMoveMultiplier sourceOfMoveMultiplier);
 
     private void payRent(Player player, int rentOwed) {
-        player.transaction(-rentOwed, "Cash");
-        this.owner.transaction(rentOwed, "Cash");
+        player.transaction(-rentOwed, -rentOwed, Player.TransactionType.CASH);
+        this.owner.transaction(rentOwed, rentOwed, Player.TransactionType.CASH);
     }
 }

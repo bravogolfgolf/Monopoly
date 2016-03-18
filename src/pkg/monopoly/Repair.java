@@ -29,6 +29,6 @@ public class Repair extends Card {
             else
                 assessment += (numberOfImprovements * houseAssessmentAmount);
         }
-        player.transaction(-assessment, "Cash");
+        player.transaction(-assessment, -assessment, Player.TransactionType.CASH);
     }
 }

@@ -9,6 +9,6 @@ public class LuxuryTax extends Space {
     @Override
     public void landOn(Player player, SourceOfMoveMultiplier sourceOfMoveMultiplier, OwnershipMultiplier ownershipMultiplier) {
         final int LUXURY_TAX_AMOUNT = -75;
-        player.transaction(LUXURY_TAX_AMOUNT, "Cash");
+        player.transaction(LUXURY_TAX_AMOUNT, LUXURY_TAX_AMOUNT, Player.TransactionType.CASH);
     }
 }

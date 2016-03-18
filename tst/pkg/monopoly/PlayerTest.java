@@ -86,7 +86,7 @@ public class PlayerTest {
     public void testIncreaseCashBalance() {
         int expectedBalance = player1.getCashBalance() + 100;
         int expectedNetWorth = player1.getNetWorth() + 100;
-        player1.transaction(100, "Cash");
+        player1.transaction(100, 100, Player.TransactionType.CASH);
         assertEquals(expectedBalance, player1.getCashBalance());
         assertEquals(expectedNetWorth, player1.getNetWorth());
     }
@@ -96,23 +96,23 @@ public class PlayerTest {
         assertEquals(1500, player1.getCashBalance());
         assertEquals(1500, player1.getNetWorth());
 
-        player1.transaction(-1400, "Cash");
+        player1.transaction(-1400, -1400, Player.TransactionType.CASH);
         assertEquals(100, player1.getCashBalance());
         assertEquals(100, player1.getNetWorth());
 
-        player1.transaction(-100, "Purchase");
+        player1.transaction(-100, 50, Player.TransactionType.PURCHASE);
         assertEquals(0, player1.getCashBalance());
         assertEquals(50, player1.getNetWorth());
 
-        player1.transaction(50, "Mortgage");
+        player1.transaction(50, 0, Player.TransactionType.MORTGAGE);
         assertEquals(50, player1.getCashBalance());
         assertEquals(50, player1.getNetWorth());
 
-        player1.transaction(60, "Cash");
+        player1.transaction(60, 60, Player.TransactionType.CASH);
         assertEquals(110, player1.getCashBalance());
         assertEquals(110, player1.getNetWorth());
 
-        player1.transaction(-110, "Un-mortgage");
+        player1.transaction(-110, 100, Player.TransactionType.UNMORTGAGE);
         assertEquals(0, player1.getCashBalance());
         assertEquals(100, player1.getNetWorth());
     }

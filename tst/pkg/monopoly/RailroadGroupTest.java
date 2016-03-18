@@ -59,10 +59,10 @@ public class RailroadGroupTest {
 
     @Test
     public void testRent() {
-        assertEquals(RENT_OF_RAILROAD, reading.getRent());
-        assertEquals(RENT_OF_RAILROAD, pennsylvania.getRent());
-        assertEquals(RENT_OF_RAILROAD, bAndO.getRent());
-        assertEquals(RENT_OF_RAILROAD, shortLine.getRent());
+        assertEquals(RENT_OF_RAILROAD, reading.rentalBasis.get(0));
+        assertEquals(RENT_OF_RAILROAD, pennsylvania.rentalBasis.get(0));
+        assertEquals(RENT_OF_RAILROAD, bAndO.rentalBasis.get(0));
+        assertEquals(RENT_OF_RAILROAD, shortLine.rentalBasis.get(0));
     }
 
     @Test

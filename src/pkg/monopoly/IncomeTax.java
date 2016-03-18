@@ -14,6 +14,6 @@ public class IncomeTax extends Space {
         if (player.getNetWorth() <= 2000)
             tax = (int) (player.getNetWorth() * TEN_PERCENT);
         else tax = 200;
-        player.transaction(-tax, "Cash");
+        player.transaction(-tax, -tax, Player.TransactionType.CASH);
     }
 }

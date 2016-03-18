@@ -60,8 +60,8 @@ public class RealEstateGroupTest {
 
     @Test
     public void testRent() {
-        assertEquals(RENT_OF_MEDITERRANEAN, mediterraneanAve.getRent());
-        assertEquals(RENT_OF_BALTIC, balticAve.getRent());
+        assertEquals(RENT_OF_MEDITERRANEAN, mediterraneanAve.rentalBasis.get(0));
+        assertEquals(RENT_OF_BALTIC, balticAve.rentalBasis.get(0));
     }
 
     @Test
@@ -93,7 +93,7 @@ public class RealEstateGroupTest {
 
     @Ignore
     public void testLandOnUnownedPropertyWithOutEnoughMoney() {
-        player1.transaction(-1500,"Cash");
+        player1.transaction(-1500, -1500, Player.TransactionType.CASH);
         assertEquals(0,player1.getCashBalance());
         assertEquals(0,player1.getNetWorth());
         assertTrue(mediterraneanAve.getOwner().isBank());

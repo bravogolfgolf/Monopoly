@@ -28,7 +28,7 @@ public class IncomeTaxTest {
     @Test
     public void testLandOnIncomeTaxWithGreaterThan2000InNetWorth() {
         final int AFTER_TAX_BALANCE = 1900;
-        player.transaction(600, "Cash");
+        player.transaction(600, 600, Player.TransactionType.CASH);
         incomeTax.landOn(player, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
         assertEquals(AFTER_TAX_BALANCE, player.getCashBalance());
         assertEquals(AFTER_TAX_BALANCE, player.getNetWorth());

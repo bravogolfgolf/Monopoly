@@ -20,12 +20,12 @@ public class Transaction extends Card {
     @Override
     public void action(Player player)  {
         if (recipient.equals("Bank"))
-            player.transaction(amount, "Cash");
+            player.transaction(amount, amount, Player.TransactionType.CASH);
         if (recipient.equals("Players")) {
             List<Player> otherPlayers = player.getAllOtherPlayersInGame();
             int thisPlayersAmount = determineHowMuchThisPlayerCollectsOrPays(otherPlayers);
-            player.transaction(thisPlayersAmount, "Cash");
-            for (Player otherPlayer : otherPlayers) otherPlayer.transaction(-amount, "Cash");
+            player.transaction(thisPlayersAmount, thisPlayersAmount, Player.TransactionType.CASH);
+            for (Player otherPlayer : otherPlayers) otherPlayer.transaction(-amount, -amount, Player.TransactionType.CASH);
         }
     }
 
