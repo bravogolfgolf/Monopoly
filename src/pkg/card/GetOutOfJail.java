@@ -2,8 +2,8 @@ package pkg.card;
 
 import pkg.monopoly.Player;
 
-public class GetOutOfJail extends Card {
-    public GetOutOfJail( String cardText) {
+class GetOutOfJail extends Card {
+    public GetOutOfJail(String cardText) {
         setCardText(cardText);
     }
 
@@ -13,7 +13,7 @@ public class GetOutOfJail extends Card {
     }
 
     @Override
-    public void action(Player player)  {
+    public void action(Player player) {
         player.addCard(this);
     }
 }

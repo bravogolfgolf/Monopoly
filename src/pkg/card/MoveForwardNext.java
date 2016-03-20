@@ -5,10 +5,10 @@ import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
 import pkg.monopoly.Space;
 
-public class MoveForwardNext extends Card {
+class MoveForwardNext extends Card {
     private final String group;
 
-    public MoveForwardNext( String cardText, String group) {
+    public MoveForwardNext(String cardText, String group) {
         setCardText(cardText);
         this.group = group;
     }
@@ -19,13 +19,13 @@ public class MoveForwardNext extends Card {
     }
 
     @Override
-    public void action(Player player)  {
+    public void action(Player player) {
         Space startingSpace = player.getSpace();
         Space endingSpace = startingSpace.searchForNextSpaceInGroup(group);
         String destination = endingSpace.getDescription();
         int numberOfSpacesToDestination = startingSpace.getNumberOfSpacesTo(destination);
         SourceOfMoveMultiplier sourceOfMoveMultiplier = endingSpace.getSourceOfMoveMultiplier();
         OwnershipMultiplier ownershipMultiplier = endingSpace.getOwnershipMultiplier();
-        startingSpace.move(player,numberOfSpacesToDestination, sourceOfMoveMultiplier, ownershipMultiplier);
+        startingSpace.move(player, numberOfSpacesToDestination, sourceOfMoveMultiplier, ownershipMultiplier);
     }
 }

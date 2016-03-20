@@ -5,10 +5,10 @@ import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
 import pkg.monopoly.Space;
 
-public class MoveJail extends Card {
+class MoveJail extends Card {
     private final String destination;
 
-    public MoveJail( String cardText, String destination) {
+    public MoveJail(String cardText, String destination) {
         setCardText(cardText);
         this.destination = destination;
     }
@@ -22,5 +22,6 @@ public class MoveJail extends Card {
     public void action(Player player) {
         Space space = player.getSpace();
         Space goToJail = space.searchForSpaceByDescription(destination);
-        goToJail.landOn(player, new SourceOfMoveMultiplier(), new OwnershipMultiplier());}
+        goToJail.landOn(player, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
+    }
 }
