@@ -9,7 +9,7 @@ class MoveForwardSpecific extends Card {
     private final String destination;
 
     MoveForwardSpecific(String cardText, String destination) {
-        setCardText(cardText);
+        this.cardText = cardText;
         this.destination = destination;
     }
 

@@ -2,7 +2,7 @@ package pkg.monopoly;
 
 import org.junit.After;
 import org.junit.Test;
-import pkg.card.Card;
+import pkg.card.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -389,7 +389,7 @@ public class GameTest {
     @Test
     public void testCommunityChestAndChanceCardsCreated() throws IOException {
         gameSetup();
-        assertEquals(17, Card.getCommunityChestCards().size());
-        assertEquals(15, Card.getChanceCards().size());
+        assertEquals(17, Deck.getCommunityChestCards().size());
+        assertEquals(15, Deck.getChanceCards().size());
     }
 }

@@ -9,7 +9,7 @@ class Transaction extends Card {
     private String recipient = "";
 
     Transaction(String cardText, int amount, String recipient) {
-        setCardText(cardText);
+        this.cardText = cardText;
         this.amount = amount;
         this.recipient = recipient;
     }

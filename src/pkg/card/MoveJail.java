@@ -9,7 +9,7 @@ class MoveJail extends Card {
     private final String destination;
 
     MoveJail(String cardText, String destination) {
-        setCardText(cardText);
+        this.cardText = cardText;
         this.destination = destination;
     }
 

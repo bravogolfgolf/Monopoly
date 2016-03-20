@@ -12,7 +12,7 @@ class Repair extends Card {
     private int houseAssessmentAmount = 0;
 
     Repair(String cardText, int house, int hotel) {
-        setCardText(cardText);
+        this.cardText = cardText;
         houseAssessmentAmount = house;
         hotelAssessmentAmount = hotel;
     }

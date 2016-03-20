@@ -3,7 +3,7 @@ package pkg.monopoly;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.card.Card;
+import pkg.card.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -233,15 +233,15 @@ public class PlayerTest {
 
     @Test
     public void testAddGetOutOfJailCard() {
-        Card getOutOfJail = Card.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
+        Card getOutOfJail = CardFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
         player1.addCard(getOutOfJail);
         assertTrue(getOutOfJail.equals(player1.getCard()));
     }
 
     @Test
     public void testAddGetOutOfJailCards() {
-        Card getOutOfJail1 = Card.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
-        Card getOutOfJail2 = Card.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
+        Card getOutOfJail1 = CardFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
+        Card getOutOfJail2 = CardFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
         player1.addCard(getOutOfJail1);
         player1.addCard(getOutOfJail2);
         assertTrue(getOutOfJail1.equals(player1.getCard()));

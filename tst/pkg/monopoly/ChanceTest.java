@@ -3,7 +3,7 @@ package pkg.monopoly;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.card.Card;
+import pkg.card.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +31,10 @@ public class ChanceTest {
     @Test
     public void testLandOn()  {
         List<Card> cards = new ArrayList<>();
-        Card.clearCards();
-        Card card = Card.create("Instruction", "GetOutOfJail");
+        Deck.clearCards();
+        Card card = CardFactory.create("Instruction", "GetOutOfJail");
         cards.add(card);
-        Card.addChanceCards(cards);
+        Deck.addChanceCards(cards);
         int expectedEndingBalance = player.getCashBalance();
         chance.landOn(player, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
         assertEquals(expectedEndingBalance, player.getCashBalance());
@@ -44,10 +44,10 @@ public class ChanceTest {
     @Test
     public void testPassBy() {
         List<Card> cards = new ArrayList<>();
-        Card.clearCards();
-        Card card = Card.create("Instruction", "GetOutOfJail");
+        Deck.clearCards();
+        Card card = CardFactory.create("Instruction", "GetOutOfJail");
         cards.add(card);
-        Card.addChanceCards(cards);
+        Deck.addChanceCards(cards);
         int expectedEndingBalance = player.getCashBalance();
         chance.passBy(player);
         assertEquals(expectedEndingBalance, player.getCashBalance());

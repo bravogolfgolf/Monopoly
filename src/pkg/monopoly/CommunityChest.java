@@ -1,6 +1,6 @@
 package pkg.monopoly;
 
-import pkg.card.Card;
+import pkg.card.*;
 
 public class CommunityChest extends Space {
     public CommunityChest(String description) {
@@ -9,7 +9,7 @@ public class CommunityChest extends Space {
 
     @Override
     public void landOn(Player player, SourceOfMoveMultiplier sourceOfMoveMultiplier, OwnershipMultiplier ownershipMultiplier) {
-        Card card = Card.drawCard("Community Chest");
+        Card card = Deck.drawCard("Community Chest");
         card.action(player);
     }
 
