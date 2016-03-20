@@ -3,7 +3,7 @@ package pkg.card;
 import pkg.monopoly.Player;
 
 class GetOutOfJail extends Card {
-    public GetOutOfJail(String cardText) {
+    GetOutOfJail(String cardText) {
         setCardText(cardText);
     }
 

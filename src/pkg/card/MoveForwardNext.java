@@ -8,7 +8,7 @@ import pkg.monopoly.Space;
 class MoveForwardNext extends Card {
     private final String group;
 
-    public MoveForwardNext(String cardText, String group) {
+    MoveForwardNext(String cardText, String group) {
         setCardText(cardText);
         this.group = group;
     }

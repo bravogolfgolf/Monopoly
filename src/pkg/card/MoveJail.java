@@ -8,7 +8,7 @@ import pkg.monopoly.Space;
 class MoveJail extends Card {
     private final String destination;
 
-    public MoveJail(String cardText, String destination) {
+    MoveJail(String cardText, String destination) {
         setCardText(cardText);
         this.destination = destination;
     }

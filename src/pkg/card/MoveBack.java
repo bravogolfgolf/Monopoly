@@ -6,7 +6,7 @@ import pkg.monopoly.SourceOfMoveMultiplier;
 import pkg.monopoly.Space;
 
 class MoveBack extends Card {
-    public MoveBack(String cardText) {
+    MoveBack(String cardText) {
         setCardText(cardText);
     }
 

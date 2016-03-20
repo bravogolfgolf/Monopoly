@@ -8,7 +8,7 @@ import pkg.monopoly.Space;
 class MoveForwardSpecific extends Card {
     private final String destination;
 
-    public MoveForwardSpecific(String cardText, String destination) {
+    MoveForwardSpecific(String cardText, String destination) {
         setCardText(cardText);
         this.destination = destination;
     }
