@@ -1,8 +1,9 @@
-package pkg.monopoly;
+package pkg.card;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import pkg.monopoly.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,7 +111,7 @@ public class CardActionTest {
         Card moveForwardNext = Card.create("Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.", "MoveForwardNext", "Utility");
         createChanceCard(moveForwardNext);
 
-        electric.numberRolled = NUMBER_ROLLED;
+        electric.setNumberRolled(NUMBER_ROLLED);
 
         electric.setOwner(player1);
         assertTrue(player2.getSpace().equals(chance1));
@@ -248,13 +249,13 @@ public class CardActionTest {
     }
 
     private void createCommunityChestCard(Card card) {
-        List<Card> cards = new ArrayList<Card>();
+        List<Card> cards = new ArrayList<>();
         cards.add(card);
         Card.addCommunityChestCards(cards);
     }
 
     private void createChanceCard(Card card) {
-        List<Card> cards = new ArrayList<Card>();
+        List<Card> cards = new ArrayList<>();
         cards.add(card);
         Card.addChanceCards(cards);
     }

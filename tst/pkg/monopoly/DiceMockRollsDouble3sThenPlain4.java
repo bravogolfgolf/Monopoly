@@ -1,6 +1,6 @@
 package pkg.monopoly;
 
-public class DiceMockRollsDouble3sThenPlain4 extends Dice {
+class DiceMockRollsDouble3sThenPlain4 extends Dice {
 
     private int numberOfRollDie = -1;
 

@@ -1,6 +1,6 @@
 package pkg.monopoly;
 
-public class Dice {
+class Dice {
 
     private int twoDieRollValue;
     private boolean rolledDouble;

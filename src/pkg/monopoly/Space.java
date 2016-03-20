@@ -6,13 +6,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Space {
+public abstract class Space {
 
     private String description = "";
     private String group = "";
     private Space nextSpace;
-    protected int numberRolled;
-    private OwnershipMultiplier ownershipMultiplier;
+    private int numberRolled;
 
     public static Space create(String classType, String description, String group, int price, int rent, int house1Rent, int house2Rent, int house3Rent, int house4Rent, int hotelRent) {
         if (classType.equals("RealEstate"))
@@ -42,7 +41,7 @@ abstract class Space {
         throw new IllegalArgumentException("Incorrect value");
     }
 
-    public void setDescription(String description) {
+    void setDescription(String description) {
         this.description = description;
     }
 
@@ -50,11 +49,11 @@ abstract class Space {
         return description;
     }
 
-    public void setGroup(String group) {
+    void setGroup(String group) {
         this.group = group;
     }
 
-    public String getGroup() {
+    String getGroup() {
         return group;
     }
 
@@ -62,11 +61,11 @@ abstract class Space {
         return group.equals("Railroad");
     }
 
-    public boolean isUtility() {
+    boolean isUtility() {
         return group.equals("Utility");
     }
 
-    public void setNextSpace(Space space) {
+    void setNextSpace(Space space) {
         nextSpace = space;
     }
 
@@ -132,7 +131,7 @@ abstract class Space {
     }
 
     public static List<RealEstate> getAllRealEstateOf(Player player) {
-        List<RealEstate> realEstateHoldings = new ArrayList<RealEstate>();
+        List<RealEstate> realEstateHoldings = new ArrayList<>();
         Space startingSpace = player.getSpace();
         Space currentSpace = startingSpace;
         Space nextSpace = currentSpace.getNextSpace();
@@ -149,18 +148,25 @@ abstract class Space {
         return realEstateHoldings;
     }
 
-    public static List<Space> load(String filename) throws IOException {
+    static List<Space> load(String filename) throws IOException {
         List<String> content = Files.readAllLines(Paths.get(filename));
-        List<Space> spaces = new ArrayList<Space>();
+        List<Space> spaces = new ArrayList<>();
         for (String line : content) {
             String[] tokens = line.split(";");
-            if (tokens[0].equals("RealEstate"))
-                spaces.add(Space.create(tokens[0], tokens[1], tokens[2], Integer.parseInt(tokens[3]), Integer.parseInt(tokens[4]), Integer.parseInt(tokens[5]), Integer.parseInt(tokens[6]), Integer.parseInt(tokens[7]), Integer.parseInt(tokens[8]), Integer.parseInt(tokens[9])));
-            else if (tokens[0].equals("Railroad"))
-                spaces.add(Space.create(tokens[0], tokens[1], tokens[2], Integer.parseInt(tokens[3]), Integer.parseInt(tokens[4])));
-            else if (tokens[0].equals("Utility"))
-                spaces.add(Space.create(tokens[0], tokens[1], tokens[2], Integer.parseInt(tokens[3])));
-            else spaces.add(Space.create(tokens[0], tokens[1]));
+            switch (tokens[0]) {
+                case "RealEstate":
+                    spaces.add(Space.create(tokens[0], tokens[1], tokens[2], Integer.parseInt(tokens[3]), Integer.parseInt(tokens[4]), Integer.parseInt(tokens[5]), Integer.parseInt(tokens[6]), Integer.parseInt(tokens[7]), Integer.parseInt(tokens[8]), Integer.parseInt(tokens[9])));
+                    break;
+                case "Railroad":
+                    spaces.add(Space.create(tokens[0], tokens[1], tokens[2], Integer.parseInt(tokens[3]), Integer.parseInt(tokens[4])));
+                    break;
+                case "Utility":
+                    spaces.add(Space.create(tokens[0], tokens[1], tokens[2], Integer.parseInt(tokens[3])));
+                    break;
+                default:
+                    spaces.add(Space.create(tokens[0], tokens[1]));
+                    break;
+            }
         }
         return spaces;
     }
@@ -187,7 +193,7 @@ abstract class Space {
     public SourceOfMoveMultiplier getSourceOfMoveMultiplier() {
         if (this.isRailroad())
             return new SourceOfMoveMultiplier(2);
-        if(this.isUtility())
+        if (this.isUtility())
             return new SourceOfMoveMultiplier(10);
         return new SourceOfMoveMultiplier();
     }
@@ -195,8 +201,16 @@ abstract class Space {
     public OwnershipMultiplier getOwnershipMultiplier() {
         if (this.isRailroad())
             return new OwnershipMultiplier();
-        if(this.isUtility())
+        if (this.isUtility())
             return new OwnershipMultiplier(1);
         return new OwnershipMultiplier();
+    }
+
+    int getNumberRolled() {
+        return numberRolled;
+    }
+
+    public void setNumberRolled(int numberRolled) {
+        this.numberRolled = numberRolled;
     }
 }

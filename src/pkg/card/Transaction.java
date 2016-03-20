@@ -1,4 +1,6 @@
-package pkg.monopoly;
+package pkg.card;
+
+import pkg.monopoly.Player;
 
 import java.util.List;
 

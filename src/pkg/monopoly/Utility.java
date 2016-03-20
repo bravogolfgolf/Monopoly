@@ -8,6 +8,6 @@ public class Utility extends Property {
 
     @Override
     protected int calculateRentOwed(Basis basis, OwnershipMultiplier ownershipMultiplier, SourceOfMoveMultiplier sourceOfMoveMultiplier) {
-        return numberRolled * basis.value() * ownershipMultiplier.value() * sourceOfMoveMultiplier.value();
+        return getNumberRolled() * basis.value() * ownershipMultiplier.value() * sourceOfMoveMultiplier.value();
     }
 }

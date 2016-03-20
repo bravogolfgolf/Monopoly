@@ -1,5 +1,7 @@
 package pkg.monopoly;
 
+import pkg.card.Card;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +14,7 @@ public class Player {
     private Space space;
     private int rollCounter = 0;
     private boolean inJail = false;
-    private final List<Card> getOutOfJailCards = new ArrayList<Card>();
+    private final List<Card> getOutOfJailCards = new ArrayList<>();
     private Player nextPlayer;
 
     public Player(String description) {
@@ -32,12 +34,12 @@ public class Player {
         this.nextPlayer = player;
     }
 
-    public Player getNextPlayer() {
+    Player getNextPlayer() {
         return nextPlayer;
     }
 
     public List<Player> getAllOtherPlayersInGame() {
-        List<Player> otherPlayers = new ArrayList<Player>();
+        List<Player> otherPlayers = new ArrayList<>();
         Player currentPlayer = this;
         Player nextPlayer = currentPlayer.getNextPlayer();
         while (!nextPlayer.equals(this)) {
@@ -48,7 +50,7 @@ public class Player {
         return otherPlayers;
     }
 
-    public static Player newBank() {
+    static Player newBank() {
         return new BankPlayer();
     }
 
@@ -95,11 +97,11 @@ public class Player {
         return getOutOfJailCards.remove(0);
     }
 
-    public void setInJail(boolean inJail) {
+    void setInJail(boolean inJail) {
         this.inJail = inJail;
     }
 
-    public boolean isInJail() {
+    boolean isInJail() {
         return inJail;
     }
 
@@ -142,7 +144,7 @@ public class Player {
         rollCounter++;
     }
 
-    public int getNumberOfRolls() {
+    int getNumberOfRolls() {
         return rollCounter;
     }
 
@@ -170,12 +172,12 @@ public class Player {
         }
     }
 
-    public void postBail() {
+    void postBail() {
         transaction(-50, -50, TransactionType.CASH);
         releasedFromJail();
     }
 
-    public void resetRollCounter() {
+    void resetRollCounter() {
         rollCounter = 0;
     }
 

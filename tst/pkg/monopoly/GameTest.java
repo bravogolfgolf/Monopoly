@@ -2,6 +2,7 @@ package pkg.monopoly;
 
 import org.junit.After;
 import org.junit.Test;
+import pkg.card.Card;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -304,7 +305,7 @@ public class GameTest {
     }
 
     private List<Space> createExpected() {
-        List<Space> expected = new ArrayList<Space>();
+        List<Space> expected = new ArrayList<>();
         Space first = Space.create("FreeParking", "Description");
         Space second = Space.create("RealEstate", "Description", "Group", 78, 3, -1, -2, -3, -4, -5);
         first.setNextSpace(second);

@@ -5,40 +5,40 @@ import java.util.List;
 
 abstract class Property extends Space {
 
-    public Property(String description, String group, int price, int rent, int improvementOne, int improvementTwo, int improvementThree, int improvementFour, int improvementFive) {
+    Property(String description, String group, int price, int rent, int improvementOne, int improvementTwo, int improvementThree, int improvementFour, int improvementFive) {
         setDescription(description);
         setGroup(group);
         this.price = price;
-        this.rentalBasis = new RentalBasis(rent,improvementOne,improvementTwo,improvementThree,improvementFour,improvementFive);
+        this.rentalBasis = new RentalBasis(rent, improvementOne, improvementTwo, improvementThree, improvementFour, improvementFive);
     }
 
     private final int price;
-    protected RentalBasis rentalBasis;
+    final RentalBasis rentalBasis;
     private boolean isMortgaged;
     private Player owner = Player.newBank();
-    protected int numberOfImprovements;
+    private int numberOfImprovements;
 
-    public int getPrice() {
+    int getPrice() {
         return price;
     }
 
-    public void setIsMortgaged(boolean status) {
+    void setIsMortgaged(boolean status) {
         isMortgaged = status;
     }
 
-    public boolean isMortgaged() {
+    boolean isMortgaged() {
         return isMortgaged;
     }
 
-    public int mortgageAmount() {
+    int mortgageAmount() {
         return price / 2;
     }
 
-    public int unMortgageAmount() {
+    int unMortgageAmount() {
         return (int) -(mortgageAmount() * 1.10);
     }
 
-    public void mortgagedBy(Player player) {
+    void mortgagedBy(Player player) {
         if (mortgageConditionsAreMeet(player)) {
             player.transaction(mortgageAmount(), 0, Player.TransactionType.MORTGAGE);
             setIsMortgaged(true);
@@ -53,7 +53,7 @@ abstract class Property extends Space {
         return getOwner().equals(player);
     }
 
-    public void unMortgageBy(Player player) {
+    void unMortgageBy(Player player) {
         if (unMortgageConditionsAreMeet(player)) {
             player.transaction(unMortgageAmount(), mortgageAmount(), Player.TransactionType.UNMORTGAGE);
             setIsMortgaged(false);
@@ -68,7 +68,7 @@ abstract class Property extends Space {
         this.owner = owner;
     }
 
-    public Player getOwner() {
+    Player getOwner() {
         return owner;
     }
 
@@ -76,7 +76,7 @@ abstract class Property extends Space {
         numberOfImprovements++;
     }
 
-    public void removeImprovements() {
+    void removeImprovements() {
         numberOfImprovements--;
     }
 
@@ -136,8 +136,8 @@ abstract class Property extends Space {
         return new OwnershipMultiplier();
     }
 
-    public List<Space> getAllPropertiesInGroup() {
-        List<Space> properties = new ArrayList<Space>();
+    List<Space> getAllPropertiesInGroup() {
+        List<Space> properties = new ArrayList<>();
         properties.add(this);
         String group = this.getGroup();
         Space startingSpace = this;
@@ -152,7 +152,7 @@ abstract class Property extends Space {
         return properties;
     }
 
-    public int getCountOfPropertiesInGroupWithSameOwner(List<Space> properties) {
+    int getCountOfPropertiesInGroupWithSameOwner(List<Space> properties) {
         Player thisOwner = this.getOwner();
         int ownerCount = 0;
         for (Space space : properties) {
@@ -163,7 +163,7 @@ abstract class Property extends Space {
         return ownerCount;
     }
 
-    public boolean allPropertiesHaveSameOwner(List<Space> properties) {
+    boolean allPropertiesHaveSameOwner(List<Space> properties) {
         Player thisOwner = this.getOwner();
         for (int i = 1; i < properties.size(); i++) {
             Property next = (Property) properties.get(i);

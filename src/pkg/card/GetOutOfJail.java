@@ -1,4 +1,6 @@
-package pkg.monopoly;
+package pkg.card;
+
+import pkg.monopoly.Player;
 
 public class GetOutOfJail extends Card {
     public GetOutOfJail( String cardText) {

@@ -1,4 +1,9 @@
-package pkg.monopoly;
+package pkg.card;
+
+import pkg.monopoly.OwnershipMultiplier;
+import pkg.monopoly.Player;
+import pkg.monopoly.SourceOfMoveMultiplier;
+import pkg.monopoly.Space;
 
 public class MoveForwardNext extends Card {
     private final String group;
@@ -14,7 +19,7 @@ public class MoveForwardNext extends Card {
     }
 
     @Override
-    void action(Player player)  {
+    public void action(Player player)  {
         Space startingSpace = player.getSpace();
         Space endingSpace = startingSpace.searchForNextSpaceInGroup(group);
         String destination = endingSpace.getDescription();

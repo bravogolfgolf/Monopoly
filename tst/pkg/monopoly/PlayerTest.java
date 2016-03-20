@@ -3,6 +3,7 @@ package pkg.monopoly;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import pkg.card.Card;
 
 import java.io.IOException;
 import java.util.List;

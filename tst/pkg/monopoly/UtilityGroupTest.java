@@ -14,9 +14,9 @@ public class UtilityGroupTest {
 
     private static final int PRICE_OF_ELECTRIC = 150;
     private static final int PRICE_OF_WATER = 150;
-    public static final int MOCK_ROLL_VALUE = 5;
-    public static final int RENT_OWED_IF_ONE_UTILITY_OWNED = MOCK_ROLL_VALUE * 4;
-    public static final int RENT_OWED_IF_BOTH_UTILITIES_OWNED = MOCK_ROLL_VALUE * 10;
+    private static final int MOCK_ROLL_VALUE = 5;
+    private static final int RENT_OWED_IF_ONE_UTILITY_OWNED = MOCK_ROLL_VALUE * 4;
+    private static final int RENT_OWED_IF_BOTH_UTILITIES_OWNED = MOCK_ROLL_VALUE * 10;
     private Utility electric;
     private Utility water;
     private final Player player1 = new Player("Cat");
@@ -77,14 +77,14 @@ public class UtilityGroupTest {
         ownedUnMortgagedProperty(player2);
         int player1EndingBalance = player1BeginningBalance - RENT_OWED_IF_ONE_UTILITY_OWNED;
         int player2EndingBalance = player2BeginningBalance + RENT_OWED_IF_ONE_UTILITY_OWNED;
-        electric.numberRolled = MOCK_ROLL_VALUE;
+        electric.setNumberRolled(MOCK_ROLL_VALUE);
         electric.landOn(player1, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
         assertEquals(player2, electric.getOwner());
         assertTrue(water.getOwner().isBank());
         assertEquals(player1EndingBalance, player1.getCashBalance());
         assertEquals(player2EndingBalance, player2.getCashBalance());
 
-        water.numberRolled = MOCK_ROLL_VALUE;
+        water.setNumberRolled(MOCK_ROLL_VALUE);
         water.setOwner(player2);
         water.landOn(player1, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
         player1EndingBalance = player1EndingBalance - RENT_OWED_IF_BOTH_UTILITIES_OWNED;

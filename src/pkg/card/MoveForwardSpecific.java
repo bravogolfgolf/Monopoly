@@ -1,4 +1,9 @@
-package pkg.monopoly;
+package pkg.card;
+
+import pkg.monopoly.OwnershipMultiplier;
+import pkg.monopoly.Player;
+import pkg.monopoly.SourceOfMoveMultiplier;
+import pkg.monopoly.Space;
 
 public class MoveForwardSpecific extends Card {
     private final String destination;
