@@ -7,7 +7,7 @@ import pkg.monopoly.Space;
 
 class MoveBack extends Card {
     MoveBack(String cardText) {
-        setCardText(cardText);
+        this.cardText = cardText;
     }
 
     @Override

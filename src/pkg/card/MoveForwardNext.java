@@ -9,7 +9,7 @@ class MoveForwardNext extends Card {
     private final String group;
 
     MoveForwardNext(String cardText, String group) {
-        setCardText(cardText);
+        this.cardText = cardText;
         this.group = group;
     }
 

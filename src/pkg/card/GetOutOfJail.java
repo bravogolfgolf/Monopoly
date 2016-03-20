@@ -4,7 +4,7 @@ import pkg.monopoly.Player;
 
 class GetOutOfJail extends Card {
     GetOutOfJail(String cardText) {
-        setCardText(cardText);
+        this.cardText = cardText;
     }
 
     @Override

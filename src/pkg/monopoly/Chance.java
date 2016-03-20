@@ -1,6 +1,6 @@
 package pkg.monopoly;
 
-import pkg.card.Card;
+import pkg.card.*;
 
 public class Chance extends Space {
     public Chance(String description) {
@@ -9,7 +9,7 @@ public class Chance extends Space {
 
     @Override
     public void landOn(Player player, SourceOfMoveMultiplier sourceOfMoveMultiplier, OwnershipMultiplier ownershipMultiplier)  {
-        Card card = Card.drawCard("Chance");
+        Card card = Deck.drawCard("Chance");
         card.action(player);
     }
 }

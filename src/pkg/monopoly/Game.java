@@ -1,6 +1,6 @@
 package pkg.monopoly;
 
-import pkg.card.Card;
+import pkg.card.*;
 
 import java.io.IOException;
 import java.util.*;
@@ -14,8 +14,9 @@ public class Game {
             board.get(i).setNextSpace(board.get(i + 1));
         }
         board.get(board.size() - 1).setNextSpace(board.get(0));
-        Card.addCommunityChestCards(Card.load(String.format("Chest_%s.txt", localization)));
-        Card.addChanceCards(Card.load(String.format("Chance_%s.txt", localization)));
+
+        Deck.addCommunityChestCards(CardFactory.load(String.format("Chest_%s.txt", localization)));
+        Deck.addChanceCards(CardFactory.load(String.format("Chance_%s.txt", localization)));
     }
 
     class InvalidPlayerCount extends Exception {
@@ -58,7 +59,7 @@ public class Game {
             throw new InvalidPlayerCount(String.format("Number of Players: %d", getNumberOfPlayers()));
         randomizePlayerOrder();
         linkPlayers();
-        Card.randomizeCardOrder();
+        Deck.randomizeCardOrder();
         play(dice);
     }
 
