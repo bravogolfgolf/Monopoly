@@ -1,5 +1,7 @@
 package pkg.monopoly;
 
+import pkg.card.Card;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -16,9 +18,9 @@ public class Game {
         Card.addChanceCards(Card.load(String.format("Chance_%s.txt", localization)));
     }
 
-    public class InvalidPlayerCount extends Exception {
+    class InvalidPlayerCount extends Exception {
 
-        public InvalidPlayerCount(String message) {
+        InvalidPlayerCount(String message) {
             super(message);
         }
 
@@ -27,7 +29,7 @@ public class Game {
     private static final int MINIMUM_NUMBER_OF_PLAYERS = 2;
     private static final int MAXIMUM_NUMBER_OF_PLAYERS = 8;
     private List<Space> board;
-    private final List<Player> players = new ArrayList<Player>();
+    private final List<Player> players = new ArrayList<>();
     private final Dice dice = new Dice();
 
     public List<Space> getBoard() {
@@ -38,19 +40,19 @@ public class Game {
         players.add(player);
     }
 
-    public Player getPlayer(int index) {
+    Player getPlayer(int index) {
         return players.get(index);
     }
 
-    public int getNumberOfPlayers() {
+    int getNumberOfPlayers() {
         return players.size();
     }
 
-    public void randomizePlayerOrder() {
+    void randomizePlayerOrder() {
         Collections.shuffle(players);
     }
 
-    public void start() throws InvalidPlayerCount {
+    void start() throws InvalidPlayerCount {
         if (getNumberOfPlayers() < MINIMUM_NUMBER_OF_PLAYERS ||
                 getNumberOfPlayers() > MAXIMUM_NUMBER_OF_PLAYERS)
             throw new InvalidPlayerCount(String.format("Number of Players: %d", getNumberOfPlayers()));
@@ -67,7 +69,7 @@ public class Game {
         players.get(players.size() - 1).setNextPlayer(players.get(0));
     }
 
-    public void play(Dice dice) {
+    void play(Dice dice) {
         for (Player player : players) {
             Boolean managePropertiesAtEndOfTurn = true;
             try {

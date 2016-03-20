@@ -146,7 +146,7 @@ public class SpaceTest {
     @Test
     public void testReadOfSpaceDefinitionFile() throws IOException {
         final String filename = "Spaces_TEST.txt";
-        List<Space> expected = new ArrayList<Space>();
+        List<Space> expected = new ArrayList<>();
         List<Space> actual;
         expected.add(Space.create("FreeParking", "Description"));
         expected.add(Space.create("RealEstate", "Description", "Group", 78, 3, -1, -2, -3, -4, -5));

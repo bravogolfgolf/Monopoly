@@ -1,6 +1,8 @@
-package pkg.monopoly;
+package pkg.card;
 
 import org.junit.Test;
+import pkg.card.Card;
+import pkg.card.MoveForwardSpecific;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -69,7 +71,7 @@ public class CardTest {
             List<Card> CommunityChestCards = Card.getCommunityChestCards();
             assertEquals(0, CommunityChestCards.size());
 
-            List<Card> mimicOutputFromCardLoadMethod = new ArrayList<Card>();
+            List<Card> mimicOutputFromCardLoadMethod = new ArrayList<>();
             Card card1 = Card.create("Instruction1", "MoveForwardSpecific", "Go");
             Card card2 = Card.create("Instruction2", "Transaction", 100, "Bank");
 
@@ -133,7 +135,7 @@ public class CardTest {
             List<Card> ChanceCards = Card.getChanceCards();
             assertEquals(0, ChanceCards.size());
 
-            List<Card> mimicOutputFromCardLoadMethod = new ArrayList<Card>();
+            List<Card> mimicOutputFromCardLoadMethod = new ArrayList<>();
             Card card1 = Card.create("Instruction1", "MoveForwardSpecific", "Go");
             Card card2 = Card.create("Instruction2", "Transaction", 100, "Bank");
 
@@ -160,7 +162,7 @@ public class CardTest {
     @Test
     public void testReadOfCardDefinitionFile() throws IOException {
         final String filename = "Chest_TEST.txt";
-        List<Card> expected = new ArrayList<Card>();
+        List<Card> expected = new ArrayList<>();
         List<Card> actual;
         expected.add(Card.create("Instruction1", "MoveForwardSpecific", "Go"));
         expected.add(Card.create("Instruction2", "Transaction", 100, "Bank"));

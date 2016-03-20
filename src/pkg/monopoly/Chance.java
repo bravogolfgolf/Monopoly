@@ -1,5 +1,7 @@
 package pkg.monopoly;
 
+import pkg.card.Card;
+
 public class Chance extends Space {
     public Chance(String description) {
         setDescription(description);

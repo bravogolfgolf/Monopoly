@@ -1,13 +1,17 @@
-package pkg.monopoly;
+package pkg.card;
+
+import pkg.monopoly.Player;
+import pkg.monopoly.RealEstate;
+import pkg.monopoly.Space;
 
 import java.util.List;
 
-public class Repair extends Card {
-    public static final int HOTEL = 5;
+class Repair extends Card {
+    private static final int HOTEL = 5;
     private int hotelAssessmentAmount = 0;
     private int houseAssessmentAmount = 0;
 
-    public Repair( String cardText, int house, int hotel) {
+    Repair(String cardText, int house, int hotel) {
         setCardText(cardText);
         houseAssessmentAmount = house;
         hotelAssessmentAmount = hotel;
@@ -19,7 +23,7 @@ public class Repair extends Card {
     }
 
     @Override
-    void action(Player player)  {
+    public void action(Player player) {
         int assessment = 0;
         List<RealEstate> realEstateHoldings = Space.getAllRealEstateOf(player);
         for (RealEstate realEstate : realEstateHoldings) {

@@ -1,4 +1,6 @@
-package pkg.monopoly;
+package pkg.card;
+
+import pkg.monopoly.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,8 +12,8 @@ import java.util.List;
 public abstract class Card {
 
     private String cardText;
-    private static List<Card> communityChestCards = new ArrayList<Card>();
-    private static List<Card> chanceCards = new ArrayList<Card>();
+    private static List<Card> communityChestCards = new ArrayList<>();
+    private static List<Card> chanceCards = new ArrayList<>();
 
     public static Card create(String cardText, String classType, String space) {
         if (classType.equals("MoveForwardNext")) return new MoveForwardNext(cardText, space);
@@ -38,7 +40,7 @@ public abstract class Card {
 
     abstract boolean isGetOutOfJailCard();
 
-    public void setCardText(String cardText) {
+    void setCardText(String cardText) {
         this.cardText = cardText;
     }
 
@@ -68,7 +70,7 @@ public abstract class Card {
         chanceCards.clear();
     }
 
-    static Card drawCard(String deck) {
+    public static Card drawCard(String deck) {
         Card card = null;
         if (deck.equals("Community Chest")) {
             card = communityChestCards.remove(0);
@@ -88,28 +90,38 @@ public abstract class Card {
         return !card.isGetOutOfJailCard();
     }
 
-    abstract void action(Player player);
+    public abstract void action(Player player);
 
     public static List<Card> load(String filename) throws IOException {
         List<String> content = Files.readAllLines(Paths.get(filename));
-        List<Card> cards = new ArrayList<Card>();
+        List<Card> cards = new ArrayList<>();
         for (String line : content) {
             String[] tokens = line.split(";");
-            if (tokens[1].equals("GetOutOfJail"))
-                cards.add(Card.create(tokens[0], tokens[1]));
-            else if (tokens[1].equals("MoveForwardSpecific"))
-                cards.add(Card.create(tokens[0], tokens[1], tokens[2]));
-            else if (tokens[1].equals("MoveForwardNext"))
-                cards.add(Card.create(tokens[0], tokens[1], tokens[2]));
-            else if (tokens[1].equals("MoveBack"))
-                cards.add(Card.create(tokens[0], tokens[1]));
-            else if (tokens[1].equals("MoveJail"))
-                cards.add(Card.create(tokens[0], tokens[1], tokens[2]));
-            else if (tokens[1].equals("Repairs"))
-                cards.add(Card.create(tokens[0], tokens[1], Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
-            else if (tokens[1].equals("Transaction"))
-                cards.add(Card.create(tokens[0], tokens[1], Integer.parseInt(tokens[2]), tokens[3]));
-            else throw new IllegalArgumentException();
+            switch (tokens[1]) {
+                case "GetOutOfJail":
+                    cards.add(Card.create(tokens[0], tokens[1]));
+                    break;
+                case "MoveForwardSpecific":
+                    cards.add(Card.create(tokens[0], tokens[1], tokens[2]));
+                    break;
+                case "MoveForwardNext":
+                    cards.add(Card.create(tokens[0], tokens[1], tokens[2]));
+                    break;
+                case "MoveBack":
+                    cards.add(Card.create(tokens[0], tokens[1]));
+                    break;
+                case "MoveJail":
+                    cards.add(Card.create(tokens[0], tokens[1], tokens[2]));
+                    break;
+                case "Repairs":
+                    cards.add(Card.create(tokens[0], tokens[1], Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
+                    break;
+                case "Transaction":
+                    cards.add(Card.create(tokens[0], tokens[1], Integer.parseInt(tokens[2]), tokens[3]));
+                    break;
+                default:
+                    throw new IllegalArgumentException();
+            }
         }
         return cards;
     }

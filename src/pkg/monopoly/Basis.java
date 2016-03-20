@@ -1,15 +1,15 @@
 package pkg.monopoly;
 
-public class Basis {
+class Basis {
     private final boolean aDefault;
     private final int value;
 
-    public Basis(int value) {
+    Basis(int value) {
         this.value = value;
         this.aDefault = false;
     }
 
-    public Basis() {
+    Basis() {
         this.value = 1;
         this.aDefault = true;
     }
@@ -18,7 +18,7 @@ public class Basis {
         return value;
     }
 
-    public boolean isDefault() {
+    boolean isDefault() {
         return aDefault;
     }
 }

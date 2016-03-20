@@ -1,7 +1,12 @@
-package pkg.monopoly;
+package pkg.card;
 
-public class MoveBack extends Card {
-    public MoveBack( String cardText) {
+import pkg.monopoly.OwnershipMultiplier;
+import pkg.monopoly.Player;
+import pkg.monopoly.SourceOfMoveMultiplier;
+import pkg.monopoly.Space;
+
+class MoveBack extends Card {
+    MoveBack(String cardText) {
         setCardText(cardText);
     }
 
@@ -11,7 +16,7 @@ public class MoveBack extends Card {
     }
 
     @Override
-    void action(Player player)  {
+    public void action(Player player) {
         Space currentSpace = player.getSpace();
         Space nextSpace = currentSpace.getNextSpace();
         for (int i = 0; i < 36; i++) {

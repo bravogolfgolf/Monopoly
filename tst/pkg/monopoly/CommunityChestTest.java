@@ -3,6 +3,7 @@ package pkg.monopoly;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import pkg.card.Card;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class CommunityChestTest {
 
     @Test
     public void testLandOn()  {
-        List<Card> cards = new ArrayList<Card>();
+        List<Card> cards = new ArrayList<>();
         Card.clearCards();
         Card card = Card.create("Instruction", "GetOutOfJail");
         cards.add(card);
@@ -42,7 +43,7 @@ public class CommunityChestTest {
 
     @Test
     public void testPassBy() {
-        List<Card> cards = new ArrayList<Card>();
+        List<Card> cards = new ArrayList<>();
         Card.clearCards();
         Card card = Card.create("Instruction", "GetOutOfJail");
         cards.add(card);

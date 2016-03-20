@@ -1,5 +1,7 @@
 package pkg.monopoly;
 
+import pkg.card.Card;
+
 public class CommunityChest extends Space {
     public CommunityChest(String description) {
         setDescription(description);
