@@ -66,7 +66,7 @@ public class CardTest {
         Deck.addCommunityChestCards(communityChestCards);
 
         Card expectedTopCard = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
-        Card topCard = Deck.drawCard("Community Chest");
+        Card topCard = Deck.drawCard(DeckFactory.DeckType.CHEST);
         Card expectedBottomCard = Deck.getCommunityChestCards().get(BOTTOM_CARD);
 
         assertEquals(NUMBER_OF_CARDS_IN_DECK, Deck.getCommunityChestCards().size());
@@ -80,7 +80,7 @@ public class CardTest {
         Deck.addChanceCards(chanceCards);
 
         Card expectedTopCard = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
-        Card topCard = Deck.drawCard("Chance");
+        Card topCard = Deck.drawCard(DeckFactory.DeckType.CHANCE);
         Card expectedBottomCard = Deck.getChanceCards().get(BOTTOM_CARD);
 
         assertEquals(NUMBER_OF_CARDS_IN_DECK, Deck.getChanceCards().size());

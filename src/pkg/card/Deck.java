@@ -29,15 +29,15 @@ public class Deck {
         Collections.shuffle(chanceCards);
     }
 
-    public static Card drawCard(String deck) {
+    public static Card drawCard(DeckFactory.DeckType deckType) {
         Card card = null;
-        if (deck.equals("Community Chest")) {
+        if (deckType.equals(DeckFactory.DeckType.CHEST)) {
             card = communityChestCards.remove(0);
             if (isNotGetOutOfJail(card))
                 communityChestCards.add(card);
         }
 
-        if (deck.equals("Chance")) {
+        if (deckType.equals(DeckFactory.DeckType.CHANCE)) {
             card = chanceCards.remove(0);
             if (isNotGetOutOfJail(card))
                 chanceCards.add(card);
