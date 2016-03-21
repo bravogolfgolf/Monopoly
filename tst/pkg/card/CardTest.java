@@ -37,7 +37,7 @@ public class CardTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testLoadCardException() throws IOException {
-        CardFactory.load("Card_EXCEPTION.txt");
+        CardFactory.load("Card", "EXCEPTION");
     }
 
     @Test
@@ -96,7 +96,7 @@ public class CardTest {
     @Test
     public void testDrawCommunityChestCard() throws IOException {
 
-        List<Card> communityChestCards = CardFactory.load("Chest_TEST.txt");
+        List<Card> communityChestCards = CardFactory.load("Chest", "TEST");
         Deck.addCommunityChestCards(communityChestCards);
 
         Card expectedTopCard = CardFactory.create("Instruction1", "MoveForwardSpecific", "Go");
@@ -110,7 +110,7 @@ public class CardTest {
 
     @Test
     public void testDrawChanceCard() throws IOException {
-        List<Card> chanceCards = CardFactory.load("Chance_TEST.txt");
+        List<Card> chanceCards = CardFactory.load("Chance", "TEST");
         Deck.addChanceCards(chanceCards);
 
         Card expectedTopCard = CardFactory.create("Instruction1", "MoveForwardSpecific", "Go");
@@ -159,14 +159,13 @@ public class CardTest {
 
     @Test
     public void testReadOfCardDefinitionFile() throws IOException {
-        final String filename = "Chest_TEST.txt";
         List<Card> expected = new ArrayList<>();
         List<Card> actual;
         expected.add(CardFactory.create("Instruction1", "MoveForwardSpecific", "Go"));
         expected.add(CardFactory.create("Instruction2", "Transaction", 100, "Bank"));
         expected.add(CardFactory.create("Instruction2", "GetOutOfJail"));
         expected.add(CardFactory.create("Instruction2", "Repairs", 40, 115));
-        actual = CardFactory.load(filename);
+        actual = CardFactory.load("Chest", "TEST");
         assertEquals(expected.size(), actual.size());
         assertTrue(expected.equals(actual));
         for (int index = 0; index < expected.size(); index++) {

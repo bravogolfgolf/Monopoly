@@ -30,8 +30,9 @@ public class CardFactory {
         throw new IllegalArgumentException();
     }
 
-    public static List<Card> load(String filename) throws IOException {
-        List<String> content = Files.readAllLines(Paths.get(filename));
+    public static List<Card> load(String type, String localization) throws IOException {
+        String format = String.format("%s_%s.txt", type, localization);
+        List<String> content = Files.readAllLines(Paths.get(format));
         List<Card> cards = new ArrayList<>();
         for (String line : content) {
             String[] tokens = line.split(";");

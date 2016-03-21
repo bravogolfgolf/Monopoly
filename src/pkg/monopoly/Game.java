@@ -15,8 +15,8 @@ public class Game {
         }
         board.get(board.size() - 1).setNextSpace(board.get(0));
 
-        Deck.addCommunityChestCards(CardFactory.load(String.format("Chest_%s.txt", localization)));
-        Deck.addChanceCards(CardFactory.load(String.format("Chance_%s.txt", localization)));
+        Deck.addCommunityChestCards(CardFactory.load("Chest", localization));
+        Deck.addChanceCards(CardFactory.load("Chance", localization));
     }
 
     class InvalidPlayerCount extends Exception {
