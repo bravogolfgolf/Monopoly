@@ -81,7 +81,7 @@ public class CardActionTest {
     @Test
     public void testGetOutOfJailCardAction()  {
         Deck.clearCards();
-        Card getOutOfJail = CardFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
+        Card getOutOfJail = DeckFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
         createCommunityChestCard(getOutOfJail);
         assertTrue(player1.getSpace().equals(communityChest1));
         int endingBalance = player1.getCashBalance();
@@ -94,9 +94,9 @@ public class CardActionTest {
     @Test
     public void testMoveBackCardAction()  {
         Deck.clearCards();
-        Card moveBack = CardFactory.create("Go Back 3 Spaces", "MoveBack");
+        Card moveBack = DeckFactory.create("Go Back 3 Spaces", "MoveBack");
         createChanceCard(moveBack);
-        Card transaction = CardFactory.create("Bank error in your favor – Collect $200", "Transaction", 200, "Bank");
+        Card transaction = DeckFactory.create("Bank error in your favor – Collect $200", "Transaction", 200, "Bank");
         createCommunityChestCard(transaction);
         assertTrue(player2.getSpace().equals(chance1));
         int endingBalance = player2.getCashBalance() + BANK_ERROR_200;
@@ -108,7 +108,7 @@ public class CardActionTest {
     @Test
     public void testMoveForwardNextCardAction_Utility()  {
         Deck.clearCards();
-        Card moveForwardNext = CardFactory.create("Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.", "MoveForwardNext", "Utility");
+        Card moveForwardNext = DeckFactory.create("Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.", "MoveForwardNext", "Utility");
         createChanceCard(moveForwardNext);
 
         electric.setNumberRolled(NUMBER_ROLLED);
@@ -128,7 +128,7 @@ public class CardActionTest {
     @Test
     public void testMoveForwardNextCardAction_Railroad()  {
         Deck.clearCards();
-        Card moveForwardNext = CardFactory.create("Advance token to the nearest Railroad and pay owner twice the rental to which he is otherwise entitled. If Railroad is unowned, you may buy it from the Bank", "MoveForwardNext", "Railroad");
+        Card moveForwardNext = DeckFactory.create("Advance token to the nearest Railroad and pay owner twice the rental to which he is otherwise entitled. If Railroad is unowned, you may buy it from the Bank", "MoveForwardNext", "Railroad");
         createChanceCard(moveForwardNext);
         reading.setOwner(player1);
         penn.setOwner(player1);
@@ -150,7 +150,7 @@ public class CardActionTest {
     @Test
     public void testMoveForwardSpecificCardAction()  {
         Deck.clearCards();
-        Card moveForwardSpecific = CardFactory.create("Advance to Illinois Ave. - If you pass Go, collect $200", "MoveForwardSpecific", "Illinois Avenue");
+        Card moveForwardSpecific = DeckFactory.create("Advance to Illinois Ave. - If you pass Go, collect $200", "MoveForwardSpecific", "Illinois Avenue");
         createChanceCard(moveForwardSpecific);
         assertTrue(player2.getSpace().equals(chance1));
         int endingBalance = player2.getCashBalance() + PASS_GO;
@@ -168,7 +168,7 @@ public class CardActionTest {
     @Test(expected = GoToJail.GoToJailException.class)
     public void testMoveJail()  {
         Deck.clearCards();
-        Card goToJail = CardFactory.create("Go to Jail – Go directly to jail – Do not pass Go – Do not collect $200", "MoveJail", "Go to Jail");
+        Card goToJail = DeckFactory.create("Go to Jail – Go directly to jail – Do not pass Go – Do not collect $200", "MoveJail", "Go to Jail");
         createCommunityChestCard(goToJail);
         assertTrue(player1.getSpace().equals(communityChest1));
         goToJail.action(player1);
@@ -177,7 +177,7 @@ public class CardActionTest {
     @Test
     public void testRepairsCardAction()  {
         Deck.clearCards();
-        Card repairs = CardFactory.create("You are assessed for street repairs – $40 per house – $115 per hotel", "Repairs", 40, 115);
+        Card repairs = DeckFactory.create("You are assessed for street repairs – $40 per house – $115 per hotel", "Repairs", 40, 115);
         createCommunityChestCard(repairs);
 
         int endingBalance = player1.getCashBalance() - ((40 * 4) + 115);
@@ -209,7 +209,7 @@ public class CardActionTest {
     @Test
     public void testLandOnDrawsTransactionCardForBank()  {
         Deck.clearCards();
-        Card transaction = CardFactory.create("Bank error in your favor – Collect $200", "Transaction", 200, "Bank");
+        Card transaction = DeckFactory.create("Bank error in your favor – Collect $200", "Transaction", 200, "Bank");
         createCommunityChestCard(transaction);
         assertTrue(player1.getSpace().equals(communityChest1));
         int endingBalance = player1.getCashBalance() + BANK_ERROR_200;
@@ -233,7 +233,7 @@ public class CardActionTest {
         game.addPlayer(player3);
 
         Deck.clearCards();
-        Card transaction = CardFactory.create("Grand Opera Night – Collect $50 from every player for opening night seats", "Transaction", 50, "Players");
+        Card transaction = DeckFactory.create("Grand Opera Night – Collect $50 from every player for opening night seats", "Transaction", 50, "Players");
         createCommunityChestCard(transaction);
 
         assertTrue(player1.getSpace().equals(communityChest1));

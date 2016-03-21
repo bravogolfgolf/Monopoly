@@ -17,44 +17,44 @@ public class CardTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidCard1() {
-        CardFactory.create("Invalid", "Invalid");
+        DeckFactory.create("Invalid", "Invalid");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidCard2() {
-        CardFactory.create("Invalid", "Invalid", "Invalid");
+        DeckFactory.create("Invalid", "Invalid", "Invalid");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidCard3() {
-        CardFactory.create("Invalid", "Invalid", 1, "Invalid");
+        DeckFactory.create("Invalid", "Invalid", 1, "Invalid");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidCard4() {
-        CardFactory.create("Invalid", "Invalid", 1, 1);
+        DeckFactory.create("Invalid", "Invalid", 1, 1);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testLoadCardException() throws IOException {
-        CardFactory.load("Card", "EXCEPTION");
+        DeckFactory.load(DeckFactory.DeckType.CHEST, "EXCEPTION");
     }
 
     @Test
     public void testCardIsGetOutOfJailCard() {
-        Card card = CardFactory.create("Instruction", "GetOutOfJail");
+        Card card = DeckFactory.create("Instruction", "GetOutOfJail");
         assertTrue(card.isGetOutOfJailCard());
-        card = CardFactory.create("Text", "MoveBack");
+        card = DeckFactory.create("Text", "MoveBack");
         assertFalse(card.isGetOutOfJailCard());
-        card = CardFactory.create("Text", "MoveForwardNext", "Text");
+        card = DeckFactory.create("Text", "MoveForwardNext", "Text");
         assertFalse(card.isGetOutOfJailCard());
-        card = CardFactory.create("Text", "MoveForwardSpecific", "Text");
+        card = DeckFactory.create("Text", "MoveForwardSpecific", "Text");
         assertFalse(card.isGetOutOfJailCard());
-        card = CardFactory.create("Text", "MoveJail", "Text");
+        card = DeckFactory.create("Text", "MoveJail", "Text");
         assertFalse(card.isGetOutOfJailCard());
-        card = CardFactory.create("Text", "Repairs", 0, 0);
+        card = DeckFactory.create("Text", "Repairs", 0, 0);
         assertFalse(card.isGetOutOfJailCard());
-        card = CardFactory.create("Text", "Transaction", 0, "Text");
+        card = DeckFactory.create("Text", "Transaction", 0, "Text");
         assertFalse(card.isGetOutOfJailCard());
     }
 
@@ -70,8 +70,8 @@ public class CardTest {
             assertEquals(0, CommunityChestCards.size());
 
             List<Card> mimicOutputFromCardLoadMethod = new ArrayList<>();
-            Card card1 = CardFactory.create("Instruction1", "MoveForwardSpecific", "Go");
-            Card card2 = CardFactory.create("Instruction2", "Transaction", 100, "Bank");
+            Card card1 = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
+            Card card2 = DeckFactory.create("Instruction2", "Transaction", 100, "Bank");
 
             mimicOutputFromCardLoadMethod.add(card1);
             mimicOutputFromCardLoadMethod.add(card2);
@@ -96,10 +96,10 @@ public class CardTest {
     @Test
     public void testDrawCommunityChestCard() throws IOException {
 
-        List<Card> communityChestCards = CardFactory.load("Chest", "TEST");
+        List<Card> communityChestCards = DeckFactory.load(DeckFactory.DeckType.CHEST, "TEST");
         Deck.addCommunityChestCards(communityChestCards);
 
-        Card expectedTopCard = CardFactory.create("Instruction1", "MoveForwardSpecific", "Go");
+        Card expectedTopCard = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
         Card topCard = Deck.drawCard("Community Chest");
         Card expectedBottomCard = Deck.getCommunityChestCards().get(BOTTOM_CARD);
 
@@ -110,10 +110,10 @@ public class CardTest {
 
     @Test
     public void testDrawChanceCard() throws IOException {
-        List<Card> chanceCards = CardFactory.load("Chance", "TEST");
+        List<Card> chanceCards = DeckFactory.load(DeckFactory.DeckType.CHANCE, "TEST");
         Deck.addChanceCards(chanceCards);
 
-        Card expectedTopCard = CardFactory.create("Instruction1", "MoveForwardSpecific", "Go");
+        Card expectedTopCard = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
         Card topCard = Deck.drawCard("Chance");
         Card expectedBottomCard = Deck.getChanceCards().get(BOTTOM_CARD);
 
@@ -134,8 +134,8 @@ public class CardTest {
             assertEquals(0, ChanceCards.size());
 
             List<Card> mimicOutputFromCardLoadMethod = new ArrayList<>();
-            Card card1 = CardFactory.create("Instruction1", "MoveForwardSpecific", "Go");
-            Card card2 = CardFactory.create("Instruction2", "Transaction", 100, "Bank");
+            Card card1 = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
+            Card card2 = DeckFactory.create("Instruction2", "Transaction", 100, "Bank");
 
             mimicOutputFromCardLoadMethod.add(card1);
             mimicOutputFromCardLoadMethod.add(card2);
@@ -161,11 +161,11 @@ public class CardTest {
     public void testReadOfCardDefinitionFile() throws IOException {
         List<Card> expected = new ArrayList<>();
         List<Card> actual;
-        expected.add(CardFactory.create("Instruction1", "MoveForwardSpecific", "Go"));
-        expected.add(CardFactory.create("Instruction2", "Transaction", 100, "Bank"));
-        expected.add(CardFactory.create("Instruction2", "GetOutOfJail"));
-        expected.add(CardFactory.create("Instruction2", "Repairs", 40, 115));
-        actual = CardFactory.load("Chest", "TEST");
+        expected.add(DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go"));
+        expected.add(DeckFactory.create("Instruction2", "Transaction", 100, "Bank"));
+        expected.add(DeckFactory.create("Instruction2", "GetOutOfJail"));
+        expected.add(DeckFactory.create("Instruction2", "Repairs", 40, 115));
+        actual = DeckFactory.load(DeckFactory.DeckType.CHEST, "TEST");
         assertEquals(expected.size(), actual.size());
         assertTrue(expected.equals(actual));
         for (int index = 0; index < expected.size(); index++) {
@@ -175,8 +175,8 @@ public class CardTest {
 
     @Test
     public void testHashcode() {
-        MoveForwardSpecific move1 = (MoveForwardSpecific) CardFactory.create("Instruction1", "MoveForwardSpecific", "Go");
-        MoveForwardSpecific move2 = (MoveForwardSpecific) CardFactory.create("Instruction1", "MoveForwardSpecific", "Go");
+        MoveForwardSpecific move1 = (MoveForwardSpecific) DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
+        MoveForwardSpecific move2 = (MoveForwardSpecific) DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
         assertEquals(move1.hashCode(), move2.hashCode());
     }
 }

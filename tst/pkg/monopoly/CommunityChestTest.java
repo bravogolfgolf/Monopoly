@@ -32,7 +32,7 @@ public class CommunityChestTest {
     public void testLandOn()  {
         List<Card> cards = new ArrayList<>();
         Deck.clearCards();
-        Card card = CardFactory.create("Instruction", "GetOutOfJail");
+        Card card = DeckFactory.create("Instruction", "GetOutOfJail");
         cards.add(card);
         Deck.addCommunityChestCards(cards);
         int expectedEndingBalance = player.getCashBalance();
@@ -45,7 +45,7 @@ public class CommunityChestTest {
     public void testPassBy() {
         List<Card> cards = new ArrayList<>();
         Deck.clearCards();
-        Card card = CardFactory.create("Instruction", "GetOutOfJail");
+        Card card = DeckFactory.create("Instruction", "GetOutOfJail");
         cards.add(card);
         Deck.addCommunityChestCards(cards);
         int expectedEndingBalance = player.getCashBalance();

@@ -6,7 +6,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardFactory {
+public class DeckFactory {
+
+    public enum DeckType{
+        CHEST, CHANCE
+    }
+
     public static Card create(String cardText, String classType, String space) {
         if (classType.equals("MoveForwardNext")) return new MoveForwardNext(cardText, space);
         if (classType.equals("MoveForwardSpecific")) return new MoveForwardSpecific(cardText, space);
@@ -30,8 +35,8 @@ public class CardFactory {
         throw new IllegalArgumentException();
     }
 
-    public static List<Card> load(String type, String localization) throws IOException {
-        String format = String.format("%s_%s.txt", type, localization);
+    public static List<Card> load(DeckType deckType, String localization) throws IOException {
+        String format = String.format("%s_%s.txt", deckType, localization);
         List<String> content = Files.readAllLines(Paths.get(format));
         List<Card> cards = new ArrayList<>();
         for (String line : content) {
