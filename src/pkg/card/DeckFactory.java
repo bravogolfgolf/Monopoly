@@ -36,8 +36,8 @@ public class DeckFactory {
     }
 
     public static List<Card> load(DeckType deckType, String localization) throws IOException {
-        String format = String.format("%s_%s.txt", deckType, localization);
-        List<String> content = Files.readAllLines(Paths.get(format));
+        String fileName = String.format("%s_%s.txt", deckType, localization);
+        List<String> content = Files.readAllLines(Paths.get(fileName));
         List<Card> cards = new ArrayList<>();
         for (String line : content) {
             String[] tokens = line.split(";");

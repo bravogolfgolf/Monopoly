@@ -24,7 +24,7 @@ public class SpaceTest {
     @Before
     public void setup() {
         player = new Player("Cat");
-        space = Space.create("FreeParking", "SpaceDescription");
+        space = SpaceFactory.create("FreeParking", "SpaceDescription");
         diceMock = new DiceMock();
         start = new SpaceMockLandOnPassByCounter("Start");
         space1 = new SpaceMockLandOnPassByCounter("Space1");
@@ -51,22 +51,22 @@ public class SpaceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreateSpaceNonPropertyThrowsException() throws IllegalArgumentException {
-        Space.create("Invalid", "Invalid");
+        SpaceFactory.create("Invalid", "Invalid");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreateSpaceUtilityThrowsException() throws IllegalArgumentException {
-        Space.create("Invalid", "Invalid", "Invalid", -1);
+        SpaceFactory.create("Invalid", "Invalid", "Invalid", -1);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreateSpaceRailroadThrowsException() throws IllegalArgumentException {
-        Space.create("Invalid", "Invalid", "Invalid", -1, -1);
+        SpaceFactory.create("Invalid", "Invalid", "Invalid", -1, -1);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreateSpaceRealEstateThrowsException() throws IllegalArgumentException {
-        Space.create("Invalid", "Invalid", "Invalid", -1, -1, -1, -1, -1, -1, -1);
+        SpaceFactory.create("Invalid", "Invalid", "Invalid", -1, -1, -1, -1, -1, -1, -1);
     }
 
     @Test
@@ -77,17 +77,17 @@ public class SpaceTest {
 
     @Test
     public void testIsGroup() {
-        Space railroad = Space.create("Railroad", "Short Line", "Railroad", 200, 25);
-        Space utility = Space.create("Utility", "Water Works", "Utility", 150);
+        Space railroad = SpaceFactory.create("Railroad", "Short Line", "Railroad", 200, 25);
+        Space utility = SpaceFactory.create("Utility", "Water Works", "Utility", 150);
         assertTrue(railroad.isRailroad());
         assertTrue(utility.isUtility());
     }
 
     @Test
     public void getSourceOfMoveMultiplierBasedOnGroup() {
-        Space boardwalk = Space.create("RealEstate","Boardwalk","Blue",400,40,200,600,1400,1700,2000);
-        Space railroad = Space.create("Railroad", "Short Line", "Railroad", 200, 25);
-        Space utility = Space.create("Utility", "Water Works", "Utility", 150);
+        Space boardwalk = SpaceFactory.create("RealEstate","Boardwalk","Blue",400,40,200,600,1400,1700,2000);
+        Space railroad = SpaceFactory.create("Railroad", "Short Line", "Railroad", 200, 25);
+        Space utility = SpaceFactory.create("Utility", "Water Works", "Utility", 150);
         SourceOfMoveMultiplier som = new SourceOfMoveMultiplier();
         SourceOfMoveMultiplier som2 = new SourceOfMoveMultiplier(2);
         SourceOfMoveMultiplier som10 = new SourceOfMoveMultiplier(10);
@@ -146,12 +146,11 @@ public class SpaceTest {
 
     @Test
     public void testReadOfSpaceDefinitionFile() throws IOException {
-        final String filename = "Spaces_TEST.txt";
         List<Space> expected = new ArrayList<>();
         List<Space> actual;
-        expected.add(Space.create("FreeParking", "Description"));
-        expected.add(Space.create("RealEstate", "Description", "Group", 78, 3, -1, -2, -3, -4, -5));
-        actual = Space.load(filename);
+        expected.add(SpaceFactory.create("FreeParking", "Description"));
+        expected.add(SpaceFactory.create("RealEstate", "Description", "Group", 78, 3, -1, -2, -3, -4, -5));
+        actual = SpaceFactory.load("TEST");
         assertEquals(expected.size(), actual.size());
         assertTrue(expected.equals(actual));
         for (int index = 0; index < expected.size(); index++) {
@@ -161,10 +160,10 @@ public class SpaceTest {
 
     @Test
     public void testEqualsAndHashcode() {
-        Space space1 = Space.create("Railroad", "Description", "Group", -1, -1);
-        space1.setNextSpace(Space.create("FreeParking", "Description"));
-        Space space2 = Space.create("Railroad", "Description", "Group", -1, -1);
-        space2.setNextSpace(Space.create("FreeParking", "Description"));
+        Space space1 = SpaceFactory.create("Railroad", "Description", "Group", -1, -1);
+        space1.setNextSpace(SpaceFactory.create("FreeParking", "Description"));
+        Space space2 = SpaceFactory.create("Railroad", "Description", "Group", -1, -1);
+        space2.setNextSpace(SpaceFactory.create("FreeParking", "Description"));
         assertTrue(space1.equals(space2));
         assertTrue(space1.hashCode() == space2.hashCode());
     }

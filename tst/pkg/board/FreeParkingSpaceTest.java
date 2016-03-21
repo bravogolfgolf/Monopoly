@@ -3,8 +3,6 @@ package pkg.board;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.FreeParking;
-import pkg.board.Space;
 import pkg.monopoly.OwnershipMultiplier;
 import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
@@ -19,7 +17,7 @@ public class FreeParkingSpaceTest {
     @Before
     public void setUp() {
         player = new Player("Cat");
-        freeParking = (FreeParking) Space.create("FreeParking","FreeParking");
+        freeParking = (FreeParking) SpaceFactory.create("FreeParking","FreeParking");
     }
 
     @After

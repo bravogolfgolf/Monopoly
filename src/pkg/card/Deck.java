@@ -12,7 +12,7 @@ public class Deck {
         Deck.communityChestCards = communityChestCards;
     }
 
-    public static List<Card> getCommunityChestCards() {
+    static List<Card> getCommunityChestCards() {
         return communityChestCards;
     }
 
@@ -20,18 +20,13 @@ public class Deck {
         Deck.chanceCards = chanceCards;
     }
 
-    public static List<Card> getChanceCards() {
+    static List<Card> getChanceCards() {
         return chanceCards;
     }
 
     public static void randomizeCardOrder() {
         Collections.shuffle(communityChestCards);
         Collections.shuffle(chanceCards);
-    }
-
-    public static void clearCards() {
-        communityChestCards.clear();
-        chanceCards.clear();
     }
 
     public static Card drawCard(String deck) {

@@ -2,6 +2,7 @@ package pkg.monopoly;
 
 import pkg.board.GoToJail;
 import pkg.board.Space;
+import pkg.board.SpaceFactory;
 import pkg.card.Deck;
 import pkg.card.DeckFactory;
 
@@ -11,8 +12,7 @@ import java.util.*;
 public class Game {
 
     public Game(String localization) throws IOException {
-        String spacesFileName = String.format("Spaces_%s.txt", localization);
-        board = Space.load(spacesFileName);
+        board = SpaceFactory.load(localization);
         for (int i = 0; i < board.size() - 1; i++) {
             board.get(i).setNextSpace(board.get(i + 1));
         }

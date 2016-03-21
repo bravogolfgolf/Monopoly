@@ -2,8 +2,6 @@ package pkg.board;
 
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.Space;
-import pkg.board.Utility;
 import pkg.monopoly.*;
 
 import java.io.IOException;
@@ -38,7 +36,7 @@ public class UtilityGroupTest {
 
     @Test
     public void testCreation() {
-        Space property = Space.create("Utility", "Water Works", "Utility", -1);
+        Space property = SpaceFactory.create("Utility", "Water Works", "Utility", -1);
         assertEquals("Water Works", property.getDescription());
         assertEquals("Utility", property.getGroup());
     }

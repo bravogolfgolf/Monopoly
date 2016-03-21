@@ -3,8 +3,6 @@ package pkg.board;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.Go;
-import pkg.board.Space;
 import pkg.monopoly.OwnershipMultiplier;
 import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
@@ -20,7 +18,7 @@ public class GoTest {
     @Before
     public void setUp() {
         player = new Player("Cat");
-        go = (Go) Space.create("Go","Go");
+        go = (Go) SpaceFactory.create("Go","Go");
     }
 
     @After

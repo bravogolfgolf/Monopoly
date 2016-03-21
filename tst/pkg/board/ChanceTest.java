@@ -3,8 +3,6 @@ package pkg.board;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.Chance;
-import pkg.board.Space;
 import pkg.card.*;
 import pkg.monopoly.OwnershipMultiplier;
 import pkg.monopoly.Player;
@@ -24,7 +22,7 @@ public class ChanceTest {
     @Before
     public void setUp() {
         player = new Player("Cat");
-        chance = (Chance) Space.create("Chance", "Chance");
+        chance = (Chance) SpaceFactory.create("Chance", "Chance");
     }
 
     @After
@@ -36,7 +34,6 @@ public class ChanceTest {
     @Test
     public void testLandOn()  {
         List<Card> cards = new ArrayList<>();
-        Deck.clearCards();
         Card card = DeckFactory.create("Instruction", "GetOutOfJail");
         cards.add(card);
         Deck.addChanceCards(cards);
@@ -49,7 +46,6 @@ public class ChanceTest {
     @Test
     public void testPassBy() {
         List<Card> cards = new ArrayList<>();
-        Deck.clearCards();
         Card card = DeckFactory.create("Instruction", "GetOutOfJail");
         cards.add(card);
         Deck.addChanceCards(cards);

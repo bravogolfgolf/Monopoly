@@ -58,40 +58,6 @@ public class CardTest {
         assertFalse(card.isGetOutOfJailCard());
     }
 
-    @Test
-    public void testChestCardsAreNotAlwaysInSameOrder() throws IOException {
-
-        boolean oneTwo = false;
-        boolean twoOne = false;
-
-        for (int i = 0; i < 100; i++) {
-            Deck.clearCards();
-            List<Card> CommunityChestCards = Deck.getCommunityChestCards();
-            assertEquals(0, CommunityChestCards.size());
-
-            List<Card> mimicOutputFromCardLoadMethod = new ArrayList<>();
-            Card card1 = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
-            Card card2 = DeckFactory.create("Instruction2", "Transaction", 100, "Bank");
-
-            mimicOutputFromCardLoadMethod.add(card1);
-            mimicOutputFromCardLoadMethod.add(card2);
-
-            Deck.addCommunityChestCards(mimicOutputFromCardLoadMethod);
-            Deck.randomizeCardOrder();
-            CommunityChestCards = Deck.getCommunityChestCards();
-            assertEquals(2, CommunityChestCards.size());
-
-            if (CommunityChestCards.get(0).equals(card1) && CommunityChestCards.get(1).equals(card2))
-                oneTwo = true;
-
-            if (CommunityChestCards.get(0).equals(card2) && CommunityChestCards.get(1).equals(card1))
-                twoOne = true;
-
-            if (oneTwo && twoOne)
-                break;
-        }
-        assertTrue(oneTwo && twoOne);
-    }
 
     @Test
     public void testDrawCommunityChestCard() throws IOException {
@@ -122,40 +88,6 @@ public class CardTest {
         assertTrue(topCard.equals(expectedBottomCard));
     }
 
-    @Test
-    public void testChanceCardsAreNotAlwaysInSameOrder() throws IOException {
-
-        boolean oneTwo = false;
-        boolean twoOne = false;
-
-        for (int i = 0; i < 100; i++) {
-            Deck.clearCards();
-            List<Card> ChanceCards = Deck.getChanceCards();
-            assertEquals(0, ChanceCards.size());
-
-            List<Card> mimicOutputFromCardLoadMethod = new ArrayList<>();
-            Card card1 = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
-            Card card2 = DeckFactory.create("Instruction2", "Transaction", 100, "Bank");
-
-            mimicOutputFromCardLoadMethod.add(card1);
-            mimicOutputFromCardLoadMethod.add(card2);
-
-            Deck.addChanceCards(mimicOutputFromCardLoadMethod);
-            Deck.randomizeCardOrder();
-            ChanceCards = Deck.getChanceCards();
-            assertEquals(2, ChanceCards.size());
-
-            if (ChanceCards.get(0).equals(card1) && ChanceCards.get(1).equals(card2))
-                oneTwo = true;
-
-            if (ChanceCards.get(0).equals(card2) && ChanceCards.get(1).equals(card1))
-                twoOne = true;
-
-            if (oneTwo && twoOne)
-                break;
-        }
-        assertTrue(oneTwo && twoOne);
-    }
 
     @Test
     public void testReadOfCardDefinitionFile() throws IOException {

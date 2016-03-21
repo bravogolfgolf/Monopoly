@@ -2,8 +2,6 @@ package pkg.board;
 
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.Railroad;
-import pkg.board.Space;
 import pkg.monopoly.*;
 
 import java.io.IOException;
@@ -37,7 +35,7 @@ public class RailroadGroupTest {
 
     @Test
     public void testCreation() {
-        Space property = Space.create("Railroad", "Short Line", "Railroad", -1, -1);
+        Space property = SpaceFactory.create("Railroad", "Short Line", "Railroad", -1, -1);
         assertEquals("Short Line", property.getDescription());
         assertEquals("Railroad", property.getGroup());
     }

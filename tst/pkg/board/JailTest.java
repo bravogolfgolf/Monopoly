@@ -3,8 +3,6 @@ package pkg.board;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.Jail;
-import pkg.board.Space;
 import pkg.monopoly.OwnershipMultiplier;
 import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
@@ -19,7 +17,7 @@ public class JailTest {
     @Before
     public void setUp() {
         player = new Player("Cat");
-        jail = (Jail) Space.create("Jail","Other");
+        jail = (Jail) SpaceFactory.create("Jail","Other");
     }
 
     @After

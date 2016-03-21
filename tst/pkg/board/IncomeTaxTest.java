@@ -2,8 +2,6 @@ package pkg.board;
 
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.IncomeTax;
-import pkg.board.Space;
 import pkg.monopoly.OwnershipMultiplier;
 import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
@@ -17,7 +15,7 @@ public class IncomeTaxTest {
 
     @Before
     public void setUp() {
-        incomeTax = (IncomeTax) Space.create("IncomeTax","Income Tax");
+        incomeTax = (IncomeTax) SpaceFactory.create("IncomeTax","Income Tax");
         player = new Player("Cat");
     }
 

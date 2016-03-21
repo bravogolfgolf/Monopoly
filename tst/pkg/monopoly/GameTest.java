@@ -2,12 +2,7 @@ package pkg.monopoly;
 
 import org.junit.After;
 import org.junit.Test;
-import pkg.board.Space;
-import pkg.board.RealEstate;
-import pkg.board.Go;
-import pkg.board.FreeParking;
-import pkg.board.Jail;
-import pkg.board.Utility;
+import pkg.board.*;
 import pkg.card.Deck;
 
 import java.io.IOException;
@@ -312,8 +307,8 @@ public class GameTest {
 
     private List<Space> createExpected() {
         List<Space> expected = new ArrayList<>();
-        Space first = Space.create("FreeParking", "Description");
-        Space second = Space.create("RealEstate", "Description", "Group", 78, 3, -1, -2, -3, -4, -5);
+        Space first = SpaceFactory.create("FreeParking", "Description");
+        Space second = SpaceFactory.create("RealEstate", "Description", "Group", 78, 3, -1, -2, -3, -4, -5);
         first.setNextSpace(second);
         second.setNextSpace(first);
         expected.add(first);
@@ -390,12 +385,5 @@ public class GameTest {
         assertEquals(3, yellowGroupCount);
         assertEquals(3, greenGroupCount);
         assertEquals(2, blueGroupCount);
-    }
-
-    @Test
-    public void testCommunityChestAndChanceCardsCreated() throws IOException {
-        gameSetup();
-        assertEquals(17, Deck.getCommunityChestCards().size());
-        assertEquals(15, Deck.getChanceCards().size());
     }
 }
