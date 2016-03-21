@@ -1,4 +1,8 @@
-package pkg.monopoly;
+package pkg.board;
+
+import pkg.monopoly.Player;
+import pkg.monopoly.SourceOfMoveMultiplier;
+import pkg.monopoly.OwnershipMultiplier;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -53,7 +57,7 @@ public abstract class Space {
         this.group = group;
     }
 
-    String getGroup() {
+    public String getGroup() {
         return group;
     }
 
@@ -65,7 +69,7 @@ public abstract class Space {
         return group.equals("Utility");
     }
 
-    void setNextSpace(Space space) {
+    public void setNextSpace(Space space) {
         nextSpace = space;
     }
 
@@ -148,7 +152,7 @@ public abstract class Space {
         return realEstateHoldings;
     }
 
-    static List<Space> load(String filename) throws IOException {
+    public static List<Space> load(String filename) throws IOException {
         List<String> content = Files.readAllLines(Paths.get(filename));
         List<Space> spaces = new ArrayList<>();
         for (String line : content) {

@@ -1,8 +1,14 @@
-package pkg.monopoly;
+package pkg.board;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import pkg.board.Go;
+import pkg.board.GoToJail;
+import pkg.board.Jail;
+import pkg.monopoly.OwnershipMultiplier;
+import pkg.monopoly.Player;
+import pkg.monopoly.SourceOfMoveMultiplier;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

@@ -1,9 +1,15 @@
-package pkg.monopoly;
+package pkg.board;
+
+import pkg.monopoly.Player;
+import pkg.monopoly.Basis;
+import pkg.monopoly.SourceOfMoveMultiplier;
+import pkg.monopoly.OwnershipMultiplier;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Property extends Space {
+public abstract class Property extends Space {
 
     Property(String description, String group, int price, int rent, int improvementOne, int improvementTwo, int improvementThree, int improvementFour, int improvementFive) {
         setDescription(description);
@@ -68,7 +74,7 @@ abstract class Property extends Space {
         this.owner = owner;
     }
 
-    Player getOwner() {
+    public Player getOwner() {
         return owner;
     }
 

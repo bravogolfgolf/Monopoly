@@ -3,7 +3,13 @@ package pkg.monopoly;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.card.*;
+import pkg.board.Space;
+import pkg.board.SpaceMockLandOnPassByCounter;
+import pkg.board.Property;
+import pkg.board.RealEstate;
+import pkg.board.Jail;
+import pkg.card.Card;
+import pkg.card.DeckFactory;
 
 import java.io.IOException;
 import java.util.List;

@@ -3,7 +3,7 @@ package pkg.card;
 import pkg.monopoly.OwnershipMultiplier;
 import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
-import pkg.monopoly.Space;
+import pkg.board.Space;
 
 class MoveBack extends Card {
     MoveBack(String cardText) {

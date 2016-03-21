@@ -53,5 +53,4 @@ public class Deck {
     private static boolean isNotGetOutOfJail(Card card) {
         return !card.isGetOutOfJailCard();
     }
-
 }

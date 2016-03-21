@@ -1,4 +1,8 @@
-package pkg.monopoly;
+package pkg.board;
+
+import pkg.monopoly.OwnershipMultiplier;
+import pkg.monopoly.Player;
+import pkg.monopoly.SourceOfMoveMultiplier;
 
 public class IncomeTax extends Space {
 

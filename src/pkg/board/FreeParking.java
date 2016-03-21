@@ -1,6 +1,6 @@
-package pkg.monopoly;
+package pkg.board;
 
-class FreeParking extends Space {
+public class FreeParking extends Space {
 
     public FreeParking(String description) {
         setDescription(description);

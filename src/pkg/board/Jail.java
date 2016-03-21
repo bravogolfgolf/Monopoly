@@ -1,6 +1,6 @@
-package pkg.monopoly;
+package pkg.board;
 
-class Jail extends Space {
+public class Jail extends Space {
     public Jail(String description) {
         setDescription(description);
     }

@@ -3,7 +3,15 @@ package pkg.card;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.monopoly.*;
+import pkg.board.Space;
+import pkg.board.Railroad;
+import pkg.board.RealEstate;
+import pkg.board.Utility;
+import pkg.board.GoToJail;
+import pkg.board.CommunityChest;
+import pkg.board.Chance;
+import pkg.monopoly.Game;
+import pkg.monopoly.Player;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,7 +3,7 @@ package pkg.card;
 import pkg.monopoly.OwnershipMultiplier;
 import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
-import pkg.monopoly.Space;
+import pkg.board.Space;
 
 class MoveForwardSpecific extends Card {
     private final String destination;
@@ -24,5 +24,4 @@ class MoveForwardSpecific extends Card {
         int numberOfSpacesToDestination = originalSpace.getNumberOfSpacesTo(destination);
         originalSpace.move(player, numberOfSpacesToDestination, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
     }
-
 }

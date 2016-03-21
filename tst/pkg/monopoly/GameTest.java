@@ -2,7 +2,13 @@ package pkg.monopoly;
 
 import org.junit.After;
 import org.junit.Test;
-import pkg.card.*;
+import pkg.board.Space;
+import pkg.board.RealEstate;
+import pkg.board.Go;
+import pkg.board.FreeParking;
+import pkg.board.Jail;
+import pkg.board.Utility;
+import pkg.card.Deck;
 
 import java.io.IOException;
 import java.util.ArrayList;

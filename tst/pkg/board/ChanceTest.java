@@ -1,9 +1,14 @@
-package pkg.monopoly;
+package pkg.board;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import pkg.board.Chance;
+import pkg.board.Space;
 import pkg.card.*;
+import pkg.monopoly.OwnershipMultiplier;
+import pkg.monopoly.Player;
+import pkg.monopoly.SourceOfMoveMultiplier;
 
 import java.util.ArrayList;
 import java.util.List;

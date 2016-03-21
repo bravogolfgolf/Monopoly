@@ -1,4 +1,8 @@
-package pkg.monopoly;
+package pkg.board;
+
+import pkg.monopoly.Basis;
+import pkg.monopoly.OwnershipMultiplier;
+import pkg.monopoly.SourceOfMoveMultiplier;
 
 public class RealEstate extends Property {
 

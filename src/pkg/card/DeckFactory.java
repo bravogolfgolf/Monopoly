@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DeckFactory {
 
-    public enum DeckType{
+    public enum DeckType {
         CHEST, CHANCE
     }
 

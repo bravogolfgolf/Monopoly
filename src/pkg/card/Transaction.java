@@ -35,5 +35,4 @@ class Transaction extends Card {
     private int determineHowMuchThisPlayerCollectsOrPays(List<Player> otherPlayers) {
         return amount * otherPlayers.size();
     }
-
 }

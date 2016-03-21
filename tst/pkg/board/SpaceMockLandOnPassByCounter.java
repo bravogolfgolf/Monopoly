@@ -1,9 +1,13 @@
-package pkg.monopoly;
+package pkg.board;
+
+import pkg.monopoly.OwnershipMultiplier;
+import pkg.monopoly.Player;
+import pkg.monopoly.SourceOfMoveMultiplier;
 
 public class SpaceMockLandOnPassByCounter extends Space {
 
-    public int landOnCounter;
-    public int passByCounter;
+    int landOnCounter;
+    int passByCounter;
 
     public SpaceMockLandOnPassByCounter(String description) {
         setDescription(description);

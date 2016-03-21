@@ -1,6 +1,9 @@
 package pkg.monopoly;
 
-import pkg.card.*;
+import pkg.board.GoToJail;
+import pkg.board.Space;
+import pkg.card.Deck;
+import pkg.card.DeckFactory;
 
 import java.io.IOException;
 import java.util.*;

@@ -1,6 +1,11 @@
-package pkg.monopoly;
+package pkg.board;
 
 import org.junit.Test;
+import pkg.board.LuxuryTax;
+import pkg.board.Space;
+import pkg.monopoly.OwnershipMultiplier;
+import pkg.monopoly.Player;
+import pkg.monopoly.SourceOfMoveMultiplier;
 
 import static org.junit.Assert.assertEquals;
 

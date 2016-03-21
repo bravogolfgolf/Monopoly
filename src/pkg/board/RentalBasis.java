@@ -1,10 +1,10 @@
-package pkg.monopoly;
+package pkg.board;
 
-class RentalBasis {
+public class RentalBasis {
 
     private final int[] rentalBases = new int[6];
 
-    RentalBasis(int rent, int improvementOne, int improvementTwo, int improvementThree, int improvementFour, int improvementFive) {
+    public RentalBasis(int rent, int improvementOne, int improvementTwo, int improvementThree, int improvementFour, int improvementFive) {
         rentalBases[0] = rent;
         rentalBases[1] = improvementOne;
         rentalBases[2] = improvementTwo;

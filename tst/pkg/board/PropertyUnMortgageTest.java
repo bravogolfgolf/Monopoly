@@ -1,8 +1,11 @@
-package pkg.monopoly;
+package pkg.board;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import pkg.board.Property;
+import pkg.board.Railroad;
+import pkg.monopoly.Player;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

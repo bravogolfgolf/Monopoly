@@ -1,7 +1,10 @@
-package pkg.monopoly;
+package pkg.board;
 
 import org.junit.Before;
 import org.junit.Test;
+import pkg.board.Railroad;
+import pkg.board.Space;
+import pkg.monopoly.*;
 
 import java.io.IOException;
 import java.util.List;
