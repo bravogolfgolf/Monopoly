@@ -2,8 +2,14 @@ package pkg.monopoly;
 
 import org.junit.After;
 import org.junit.Test;
-import pkg.board.*;
-import pkg.card.Deck;
+import pkg.board.Space;
+import pkg.board.SpaceFactory;
+import pkg.board.Go;
+import pkg.board.Jail;
+import pkg.board.Utility;
+import pkg.board.FreeParking;
+import pkg.board.RealEstate;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -316,74 +322,4 @@ public class GameTest {
         return expected;
     }
 
-    @Test
-    public void testCreateActualBoard() throws IOException {
-        Game game = gameSetup();
-        int goCount = 0;
-        int communityChestCount = 0;
-        int chanceCount = 0;
-        int freeParkingCount = 0;
-        int jailCount = 0;
-        int goToJailCount = 0;
-        int incomeTaxCount = 0;
-        int luxuryTaxCount = 0;
-        int realEstateCount = 0;
-        int brownGroupCount = 0;
-        int lightBlueGroupCount = 0;
-        int purpleGroupCount = 0;
-        int orangeGroupCount = 0;
-        int redGroupCount = 0;
-        int yellowGroupCount = 0;
-        int greenGroupCount = 0;
-        int blueGroupCount = 0;
-        int railroadCount = 0;
-        int utilityCount = 0;
-        List<Space> board = game.getBoard();
-        assertTrue(board.size() == 40);
-        for (Space space : board) {
-            String classType = space.getClass().getSimpleName();
-            if (classType.equals("Go")) goCount++;
-            if (classType.equals("CommunityChest")) communityChestCount++;
-            if (classType.equals("Chance")) chanceCount++;
-            if (classType.equals("FreeParking")) freeParkingCount++;
-            if (classType.equals("Jail")) jailCount++;
-            if (classType.equals("GoToJail")) goToJailCount++;
-            if (classType.equals("IncomeTax")) incomeTaxCount++;
-            if (classType.equals("LuxuryTax")) luxuryTaxCount++;
-            if (classType.equals("Railroad")) railroadCount++;
-            if (classType.equals("Utility")) utilityCount++;
-            if (classType.equals("RealEstate")) {
-                realEstateCount++;
-                String group = space.getGroup();
-                if (group.equals("Brown")) brownGroupCount++;
-                if (group.equals("Light Blue")) lightBlueGroupCount++;
-                if (group.equals("Purple")) purpleGroupCount++;
-                if (group.equals("Orange")) orangeGroupCount++;
-                if (group.equals("Red")) redGroupCount++;
-                if (group.equals("Yellow")) yellowGroupCount++;
-                if (group.equals("Green")) greenGroupCount++;
-                if (group.equals("Blue")) blueGroupCount++;
-            }
-        }
-        assertEquals(1, goCount);
-        assertEquals(3, communityChestCount);
-        assertEquals(3, chanceCount);
-        assertEquals(1, freeParkingCount);
-        assertEquals(1, jailCount);
-        assertEquals(1, goToJailCount);
-        assertEquals(1, incomeTaxCount);
-        assertEquals(1, luxuryTaxCount);
-        assertEquals(4, railroadCount);
-        assertEquals(2, utilityCount);
-
-        assertEquals(22, realEstateCount);
-        assertEquals(2, brownGroupCount);
-        assertEquals(3, lightBlueGroupCount);
-        assertEquals(3, purpleGroupCount);
-        assertEquals(3, orangeGroupCount);
-        assertEquals(3, redGroupCount);
-        assertEquals(3, yellowGroupCount);
-        assertEquals(3, greenGroupCount);
-        assertEquals(2, blueGroupCount);
-    }
 }
