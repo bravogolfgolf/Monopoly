@@ -1,10 +1,10 @@
 package pkg.monopoly;
 
-class Basis {
+public class Basis {
     private final boolean aDefault;
     private final int value;
 
-    Basis(int value) {
+    public Basis(int value) {
         this.value = value;
         this.aDefault = false;
     }

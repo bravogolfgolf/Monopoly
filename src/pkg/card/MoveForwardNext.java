@@ -3,7 +3,7 @@ package pkg.card;
 import pkg.monopoly.OwnershipMultiplier;
 import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
-import pkg.monopoly.Space;
+import pkg.board.Space;
 
 class MoveForwardNext extends Card {
     private final String group;

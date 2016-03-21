@@ -3,7 +3,13 @@ package pkg.monopoly;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.card.*;
+import pkg.board.Space;
+import pkg.board.SpaceMockLandOnPassByCounter;
+import pkg.board.Property;
+import pkg.board.RealEstate;
+import pkg.board.Jail;
+import pkg.card.Card;
+import pkg.card.DeckFactory;
 
 import java.io.IOException;
 import java.util.List;
@@ -233,15 +239,15 @@ public class PlayerTest {
 
     @Test
     public void testAddGetOutOfJailCard() {
-        Card getOutOfJail = CardFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
+        Card getOutOfJail = DeckFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
         player1.addCard(getOutOfJail);
         assertTrue(getOutOfJail.equals(player1.getCard()));
     }
 
     @Test
     public void testAddGetOutOfJailCards() {
-        Card getOutOfJail1 = CardFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
-        Card getOutOfJail2 = CardFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
+        Card getOutOfJail1 = DeckFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
+        Card getOutOfJail2 = DeckFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
         player1.addCard(getOutOfJail1);
         player1.addCard(getOutOfJail2);
         assertTrue(getOutOfJail1.equals(player1.getCard()));

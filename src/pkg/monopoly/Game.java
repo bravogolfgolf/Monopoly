@@ -1,6 +1,10 @@
 package pkg.monopoly;
 
-import pkg.card.*;
+import pkg.board.GoToJail;
+import pkg.board.Space;
+import pkg.board.SpaceFactory;
+import pkg.card.Deck;
+import pkg.card.DeckFactory;
 
 import java.io.IOException;
 import java.util.*;
@@ -8,15 +12,14 @@ import java.util.*;
 public class Game {
 
     public Game(String localization) throws IOException {
-        String spacesFileName = String.format("Spaces_%s.txt", localization);
-        board = Space.load(spacesFileName);
+        board = SpaceFactory.load(localization);
         for (int i = 0; i < board.size() - 1; i++) {
             board.get(i).setNextSpace(board.get(i + 1));
         }
         board.get(board.size() - 1).setNextSpace(board.get(0));
 
-        Deck.addCommunityChestCards(CardFactory.load(String.format("Chest_%s.txt", localization)));
-        Deck.addChanceCards(CardFactory.load(String.format("Chance_%s.txt", localization)));
+        Deck.addCommunityChestCards(DeckFactory.load(DeckFactory.DeckType.CHEST, localization));
+        Deck.addChanceCards(DeckFactory.load(DeckFactory.DeckType.CHANCE, localization));
     }
 
     class InvalidPlayerCount extends Exception {

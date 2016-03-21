@@ -1,10 +1,10 @@
 package pkg.monopoly;
 
-public class PlayerMockManagePropertiesCounter extends Player {
+class PlayerMockManagePropertiesCounter extends Player {
 
-    public int manageProperties = 0;
+    int manageProperties = 0;
 
-    public PlayerMockManagePropertiesCounter() {
+    PlayerMockManagePropertiesCounter() {
         super("PlayerMockManagePropertiesCounter");
     }
 
@@ -12,5 +12,4 @@ public class PlayerMockManagePropertiesCounter extends Player {
     public void manageProperties() {
         manageProperties++;
     }
-
 }

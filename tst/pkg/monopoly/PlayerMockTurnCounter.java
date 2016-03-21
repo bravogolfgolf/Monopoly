@@ -1,10 +1,10 @@
 package pkg.monopoly;
 
-public class PlayerMockTurnCounter extends Player {
+class PlayerMockTurnCounter extends Player {
 
-    public int turnsTaken = 0;
+    int turnsTaken = 0;
 
-    public PlayerMockTurnCounter() {
+    PlayerMockTurnCounter() {
         super("PlayerMockTurnCounter");
     }
 
@@ -12,5 +12,4 @@ public class PlayerMockTurnCounter extends Player {
     public void takeATurn(Dice die) {
         turnsTaken++;
     }
-
 }

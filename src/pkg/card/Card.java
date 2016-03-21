@@ -1,6 +1,6 @@
 package pkg.card;
 
-import pkg.monopoly.*;
+import pkg.monopoly.Player;
 
 public abstract class Card {
 
@@ -24,5 +24,4 @@ public abstract class Card {
     public int hashCode() {
         return cardText.hashCode();
     }
-
 }

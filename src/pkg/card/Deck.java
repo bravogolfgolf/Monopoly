@@ -12,7 +12,7 @@ public class Deck {
         Deck.communityChestCards = communityChestCards;
     }
 
-    public static List<Card> getCommunityChestCards() {
+    static List<Card> getCommunityChestCards() {
         return communityChestCards;
     }
 
@@ -20,7 +20,7 @@ public class Deck {
         Deck.chanceCards = chanceCards;
     }
 
-    public static List<Card> getChanceCards() {
+    static List<Card> getChanceCards() {
         return chanceCards;
     }
 
@@ -29,20 +29,15 @@ public class Deck {
         Collections.shuffle(chanceCards);
     }
 
-    public static void clearCards() {
-        communityChestCards.clear();
-        chanceCards.clear();
-    }
-
-    public static Card drawCard(String deck) {
+    public static Card drawCard(DeckFactory.DeckType deckType) {
         Card card = null;
-        if (deck.equals("Community Chest")) {
+        if (deckType.equals(DeckFactory.DeckType.CHEST)) {
             card = communityChestCards.remove(0);
             if (isNotGetOutOfJail(card))
                 communityChestCards.add(card);
         }
 
-        if (deck.equals("Chance")) {
+        if (deckType.equals(DeckFactory.DeckType.CHANCE)) {
             card = chanceCards.remove(0);
             if (isNotGetOutOfJail(card))
                 chanceCards.add(card);
@@ -53,5 +48,4 @@ public class Deck {
     private static boolean isNotGetOutOfJail(Card card) {
         return !card.isGetOutOfJailCard();
     }
-
 }

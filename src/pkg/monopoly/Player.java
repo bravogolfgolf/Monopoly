@@ -1,5 +1,6 @@
 package pkg.monopoly;
 
+import pkg.board.Space;
 import pkg.card.Card;
 
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class Player {
         return otherPlayers;
     }
 
-    static Player newBank() {
+    public static Player newBank() {
         return new BankPlayer();
     }
 
