@@ -1,19 +1,12 @@
 package pkg.monopoly;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import pkg.board.Space;
-import pkg.board.SpaceFactory;
-import pkg.board.Go;
-import pkg.board.Jail;
-import pkg.board.Utility;
-import pkg.board.FreeParking;
-import pkg.board.RealEstate;
+import pkg.board.*;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -25,6 +18,14 @@ public class GameTest {
     private Go go;
     private Jail jail;
     private Utility electric;
+    private Game game;
+    private Board board;
+
+    @Before
+    public void setUp() throws Exception {
+        game = new Game();
+        board = new Board("US");
+    }
 
     @After
     public void tearDown() {
@@ -40,11 +41,10 @@ public class GameTest {
         }
     }
 
-    private Game gameSetup() throws IOException {
-        Game game = new Game("US");
-        go = (Go) game.getBoard().get(0);
-        jail = (Jail) game.getBoard().get(10);
-        electric = (Utility) game.getBoard().get(12);
+    private Game gameSetup() {
+        go = (Go) board.getSpace(0);
+        jail = (Jail) board.getSpace(10);
+        electric = (Utility) board.getSpace(12);
         return game;
     }
 
@@ -57,10 +57,10 @@ public class GameTest {
 
     @Test
     public void testGameWithTwoPlayers() throws Game.InvalidPlayerCount, IOException {
-        Game game = new Game("US");
+        Game game = new Game();
         for (int i = 0; i < 2; i++) {
             Player player = new Player("Cat");
-            player.setSpace(game.getBoard().get(0));
+            player.setSpace(board.getSpace(0));
             game.addPlayer(player);
         }
         game.start();
@@ -81,7 +81,7 @@ public class GameTest {
         boolean bootCat = false;
 
         for (int i = 0; i < 100; i++) {
-            Game gameTest = new Game("TEST");
+            Game gameTest = new Game();
             Player catPlayer = new Player("Cat");
             Player dogPlayer = new Player("Dog");
             gameTest.addPlayer(catPlayer);
@@ -229,8 +229,8 @@ public class GameTest {
         player1.setSpace(jail);
         player1.setInJail(true);
 
-        RealEstate virginiaAvenue = (RealEstate) game.getBoard().get(14);
-        RealEstate marvinGardens = (RealEstate) game.getBoard().get(29);
+        RealEstate virginiaAvenue = (RealEstate) board.getSpace(14);
+        RealEstate marvinGardens = (RealEstate) board.getSpace(29);
 
         game.play(dice);
 
@@ -254,7 +254,7 @@ public class GameTest {
         player.setInJail(true);
         player.postBail();
 
-        FreeParking freeParking = (FreeParking) game.getBoard().get(20);
+        FreeParking freeParking = (FreeParking) board.getSpace(20);
 
         game.play(dice);
         assertEquals(3, player.manageProperties);
@@ -286,7 +286,7 @@ public class GameTest {
         assertTrue(player.isInJail());
 
         DiceMockRollsDouble3sThenPlain4 newDice = new DiceMockRollsDouble3sThenPlain4();
-        RealEstate stJamesPlace = (RealEstate) game.getBoard().get(16);
+        RealEstate stJamesPlace = (RealEstate) board.getSpace(16);
         game.play(newDice);
 
         assertEquals(6, player.manageProperties);
@@ -294,32 +294,5 @@ public class GameTest {
         assertTrue(stJamesPlace.equals(player.getSpace()));
         assertFalse(player.isInJail());
     }
-
-    @Test
-    public void testCreateBoard() throws IOException {
-        Game gameTest = new Game("TEST");
-        List<Space> expected = createExpected();
-        List<Space> actual = gameTest.getBoard();
-        assertEquals(expected.size(), actual.size());
-        for (int i = 0; i < expected.size(); i++) {
-            assertEquals(expected.get(i).getClass(), actual.get(i).getClass());
-            assertEquals(expected.get(i).getDescription(), actual.get(i).getDescription());
-            assertEquals(expected.get(i).getNextSpace().getClass(),
-                    actual.get(i).getNextSpace().getClass());
-            assertEquals(expected.get(i).getNextSpace().getDescription(),
-                    actual.get(i).getNextSpace().getDescription());
-        }
-    }
-
-    private List<Space> createExpected() {
-        List<Space> expected = new ArrayList<>();
-        Space first = SpaceFactory.create("FreeParking", "Description");
-        Space second = SpaceFactory.create("RealEstate", "Description", "Group", 78, 3, -1, -2, -3, -4, -5);
-        first.setNextSpace(second);
-        second.setNextSpace(first);
-        expected.add(first);
-        expected.add(second);
-        return expected;
-    }
-
 }
+
