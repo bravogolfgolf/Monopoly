@@ -1,14 +1,42 @@
 package pkg.board;
 
 import org.junit.Test;
+import pkg.monopoly.Player;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class BoardTest {
 
+
+    @Test
+    public void testGetAllRealEstateOfPlayer() throws IOException {
+        Board board = new Board("US");
+        Player player = new Player("Cat");
+        RealEstate mediterranean = (RealEstate) board.getSpace(1);
+        RealEstate baltic = (RealEstate) board.getSpace(3);
+        CommunityChest communityChest = (CommunityChest) board.getSpace(2);
+        player.setSpace(communityChest);
+        mediterranean.setOwner(player);
+        baltic.setOwner(player);
+        List<RealEstate> realEstateHoldings = Board.getAllRealEstateOf(player);
+        assertEquals(2, realEstateHoldings.size());
+        assertTrue(baltic.equals(realEstateHoldings.get(0)));
+        assertTrue(mediterranean.equals(realEstateHoldings.get(1)));
+    }
+
+    @Test
+    public void testCreateBoard() throws IOException {
+        Board board = new Board("TEST");
+        assertEquals(2, board.size());
+        assertEquals("FreeParking", board.getSpace(0).getClass().getSimpleName());
+        assertEquals("Description", board.getSpace(0).getDescription());
+        assertEquals("RealEstate", board.getSpace(0).getNextSpace().getClass().getSimpleName());
+        assertEquals("Description", board.getSpace(0).getNextSpace().getDescription());
+    }
 
     @Test
     public void testCreateActualBoard() throws IOException {

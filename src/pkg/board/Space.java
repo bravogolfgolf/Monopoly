@@ -4,9 +4,6 @@ import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
 import pkg.monopoly.OwnershipMultiplier;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class Space {
 
     private String description = "";
@@ -101,24 +98,6 @@ public abstract class Space {
             result++;
         }
         return result;
-    }
-
-    public static List<RealEstate> getAllRealEstateOf(Player player) {
-        List<RealEstate> realEstateHoldings = new ArrayList<>();
-        Space startingSpace = player.getSpace();
-        Space currentSpace = startingSpace;
-        Space nextSpace = currentSpace.getNextSpace();
-        while (!nextSpace.equals(startingSpace)) {
-            if (nextSpace.getClass().getSimpleName().equals("RealEstate")) {
-                RealEstate realEstate = (RealEstate) nextSpace;
-                if (realEstate.getOwner().equals(player)) {
-                    realEstateHoldings.add(realEstate);
-                }
-            }
-            currentSpace = nextSpace;
-            nextSpace = currentSpace.getNextSpace();
-        }
-        return realEstateHoldings;
     }
 
     @Override

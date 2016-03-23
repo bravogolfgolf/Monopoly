@@ -25,17 +25,16 @@ public class RailroadGroupTest {
 
     @Before
     public void setUp() throws IOException {
-        Game game = new Game("US");
-        List<Space> board = game.getBoard();
-        reading = (Railroad) board.get(5);
-        pennsylvania = (Railroad) board.get(15);
-        bAndO = (Railroad) board.get(25);
-        shortLine = (Railroad) board.get(35);
+        Board board = new Board("US");
+        reading = (Railroad) board.getSpace(5);
+        pennsylvania = (Railroad) board.getSpace(15);
+        bAndO = (Railroad) board.getSpace(25);
+        shortLine = (Railroad) board.getSpace(35);
     }
 
     @Test
     public void testCreation() {
-        Space property = SpaceFactory.create("Railroad", "Short Line", "Railroad", -1, -1);
+        Railroad property = (Railroad) SpaceFactory.create("Railroad", "Short Line", "Railroad", PRICE_OF_RAILROAD, RENT_OF_RAILROAD);
         assertEquals("Short Line", property.getDescription());
         assertEquals("Railroad", property.getGroup());
     }
@@ -81,11 +80,7 @@ public class RailroadGroupTest {
         reading.landOn(player1, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
         assertEquals(player1, reading.getOwner());
         assertEquals(endingBalance, player1.getCashBalance());
-        assertEquals(exceptedNetWorth,player1.getNetWorth());
-
-
-
-
+        assertEquals(exceptedNetWorth, player1.getNetWorth());
     }
 
     @Test

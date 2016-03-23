@@ -85,15 +85,15 @@ public class SpaceTest {
 
     @Test
     public void getSourceOfMoveMultiplierBasedOnGroup() {
-        Space boardwalk = SpaceFactory.create("RealEstate","Boardwalk","Blue",400,40,200,600,1400,1700,2000);
+        Space boardwalk = SpaceFactory.create("RealEstate", "Boardwalk", "Blue", 400, 40, 200, 600, 1400, 1700, 2000);
         Space railroad = SpaceFactory.create("Railroad", "Short Line", "Railroad", 200, 25);
         Space utility = SpaceFactory.create("Utility", "Water Works", "Utility", 150);
         SourceOfMoveMultiplier som = new SourceOfMoveMultiplier();
         SourceOfMoveMultiplier som2 = new SourceOfMoveMultiplier(2);
         SourceOfMoveMultiplier som10 = new SourceOfMoveMultiplier(10);
-        assertEquals(som.value(),boardwalk.getSourceOfMoveMultiplier().value());
+        assertEquals(som.value(), boardwalk.getSourceOfMoveMultiplier().value());
         assertEquals(som2.value(), railroad.getSourceOfMoveMultiplier().value());
-        assertEquals(som10.value(),utility.getSourceOfMoveMultiplier().value());
+        assertEquals(som10.value(), utility.getSourceOfMoveMultiplier().value());
     }
 
     @Test
@@ -128,21 +128,6 @@ public class SpaceTest {
         assertEquals(0, space2.passByCounter);
     }
 
-    @Test
-    public void testGetAllRealEstateOfPlayer() throws IOException {
-        Game game = new Game("US");
-        List<Space> board = game.getBoard();
-        RealEstate mediterranean = (RealEstate) board.get(1);
-        RealEstate baltic = (RealEstate) board.get(3);
-        CommunityChest communityChest = (CommunityChest) board.get(2);
-        player.setSpace(communityChest);
-        mediterranean.setOwner(player);
-        baltic.setOwner(player);
-        List<RealEstate> realEstateHoldings = Space.getAllRealEstateOf(player);
-        assertEquals(2, realEstateHoldings.size());
-        assertTrue(baltic.equals(realEstateHoldings.get(0)));
-        assertTrue(mediterranean.equals(realEstateHoldings.get(1)));
-    }
 
     @Test
     public void testReadOfSpaceDefinitionFile() throws IOException {

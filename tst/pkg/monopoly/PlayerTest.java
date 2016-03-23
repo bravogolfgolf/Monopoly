@@ -3,16 +3,11 @@ package pkg.monopoly;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.Space;
-import pkg.board.SpaceMockLandOnPassByCounter;
-import pkg.board.Property;
-import pkg.board.RealEstate;
-import pkg.board.Jail;
+import pkg.board.*;
 import pkg.card.Card;
 import pkg.card.DeckFactory;
 
 import java.io.IOException;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -24,7 +19,7 @@ public class PlayerTest {
     private static final int PASS_GO = 200;
     private static final int PRICE_OF_CONNECTICUT_AVENUE = 120;
     private Game game;
-    private List<Space> board;
+    private Board board;
     private Player player1;
     private Player player2;
     private DiceMock diceMock;
@@ -34,8 +29,8 @@ public class PlayerTest {
 
     @Before
     public void setup() throws IOException {
-        game = new Game("US");
-        board = game.getBoard();
+        game = new Game();
+        board = new Board("US");
         player1 = new Player("Cat");
         player2 = new Player("Dog");
         diceMock = new DiceMock();
@@ -128,8 +123,8 @@ public class PlayerTest {
     public void testPlayerRollsDoublesThenNot()  {
         Dice diceMock = new DiceMockRollsDouble3sThenPlain4();
         playerInitialization();
-        Property property1 = (Property) board.get(6);
-        Jail property2 = (Jail) board.get(10);
+        Property property1 = (Property) board.getSpace(6);
+        Jail property2 = (Jail) board.getSpace(10);
 
         assertFalse(player1.getSpace().getDescription().equals(property2.getDescription()));
         assertTrue(property1.getOwner().isBank());
@@ -146,11 +141,11 @@ public class PlayerTest {
         Dice diceMock = new DiceMockRollsDoubleTwiceThenNot();
         playerInitialization();
 
-        Property vermontAve = (Property) board.get(8);
+        Property vermontAve = (Property) board.getSpace(8);
         assertTrue(vermontAve.getOwner().isBank());
-        Property tennesseeAve = (Property) board.get(18);
+        Property tennesseeAve = (Property) board.getSpace(18);
         assertTrue(tennesseeAve.getOwner().isBank());
-        Property atlanticAve = (Property) board.get(26);
+        Property atlanticAve = (Property) board.getSpace(26);
         assertTrue(atlanticAve.getOwner().isBank());
 
         player1.takeATurn(diceMock);
@@ -162,7 +157,7 @@ public class PlayerTest {
     }
 
     private void playerInitialization() {
-        player1.setSpace(board.get(0));
+        player1.setSpace(board.getSpace(0));
         player1.resetRollCounter();
     }
 
@@ -171,10 +166,10 @@ public class PlayerTest {
         int beginningBalance = player1.getCashBalance();
         int beginningNetWorth = player1.getNetWorth();
         Dice diceMock = new DiceMockRollsDoubleThreeTimesInARow();
-        player1.setSpace(board.get(35));
+        player1.setSpace(board.getSpace(35));
         player1.resetRollCounter();
 
-        RealEstate boardwalk = (RealEstate) board.get(39);
+        RealEstate boardwalk = (RealEstate) board.getSpace(39);
         assertTrue(boardwalk.getOwner().isBank());
         int endingBalance = beginningBalance - PRICE_OF_BOARDWALK;
         int endingNetWorth = beginningNetWorth - PRICE_OF_BOARDWALK + (PRICE_OF_BOARDWALK / 2);
@@ -182,12 +177,12 @@ public class PlayerTest {
         endingBalance = endingBalance + PASS_GO;
         endingNetWorth = endingNetWorth + PASS_GO;
 
-        Property connecticut = (Property) board.get(9);
+        Property connecticut = (Property) board.getSpace(9);
         assertTrue(connecticut.getOwner().isBank());
         endingBalance = endingBalance - PRICE_OF_CONNECTICUT_AVENUE;
         endingNetWorth = endingNetWorth - PRICE_OF_CONNECTICUT_AVENUE + (PRICE_OF_CONNECTICUT_AVENUE / 2);
 
-        Jail jail = (Jail) board.get(10);
+        Jail jail = (Jail) board.getSpace(10);
         assertTrue(jail.getDescription().equals("Just Visiting/Jail"));
 
         game.addPlayer(player1);
@@ -204,10 +199,10 @@ public class PlayerTest {
     public void testPlayerRollsDoublesAndLandsOnGoesToJail() {
         int beginningBalance = player1.getCashBalance();
         Dice diceMock = new DiceMockRollsDoubleThreeTimesInARow();
-        player1.setSpace(board.get(26));
+        player1.setSpace(board.getSpace(26));
         player1.resetRollCounter();
 
-        Jail jail = (Jail) board.get(10);
+        Jail jail = (Jail) board.getSpace(10);
         assertTrue(jail.getDescription().equals("Just Visiting/Jail"));
 
         game.addPlayer(player1);
@@ -226,7 +221,7 @@ public class PlayerTest {
 
     @Test
     public void testPostBail() {
-        Jail jail = (Jail) board.get(10);
+        Jail jail = (Jail) board.getSpace(10);
         player1.setSpace(jail);
         player1.setInJail(true);
         assertEquals(1500, player1.getCashBalance());

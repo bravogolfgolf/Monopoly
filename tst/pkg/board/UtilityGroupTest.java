@@ -28,10 +28,9 @@ public class UtilityGroupTest {
 
     @Before
     public void setUp() throws IOException {
-        Game game = new Game("US");
-        List<Space> board = game.getBoard();
-        electric = (Utility) board.get(12);
-        water = (Utility) board.get(28);
+        Board board = new Board("US");
+        electric = (Utility) board.getSpace(12);
+        water = (Utility) board.getSpace(28);
     }
 
     @Test

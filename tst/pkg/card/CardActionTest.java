@@ -3,13 +3,7 @@ package pkg.card;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.Space;
-import pkg.board.Railroad;
-import pkg.board.RealEstate;
-import pkg.board.Utility;
-import pkg.board.GoToJail;
-import pkg.board.CommunityChest;
-import pkg.board.Chance;
+import pkg.board.*;
 import pkg.monopoly.Game;
 import pkg.monopoly.Player;
 
@@ -28,7 +22,7 @@ public class CardActionTest {
     private static final int TEN_TIMES_NUMBER_ROLLED = NUMBER_ROLLED * 10;
     private static final int TWO_TIMES_NORMAL_RENT = 400;
     private Game game;
-    private List<Space> board;
+    private Board board;
     private CommunityChest communityChest1;
     private CommunityChest communityChest2;
     private Player player1;
@@ -46,24 +40,24 @@ public class CardActionTest {
 
     @Before
     public void setUp() throws Exception {
-        game = new Game("US");
-        board = game.getBoard();
-        communityChest1 = (CommunityChest) board.get(2);
-        communityChest2 = (CommunityChest) board.get(33);
-        chance1 = (Chance) board.get(36);
+        game = new Game();
+        board = new Board("US");
+        communityChest1 = (CommunityChest) board.getSpace(2);
+        communityChest2 = (CommunityChest) board.getSpace(33);
+        chance1 = (Chance) board.getSpace(36);
         player1 = new Player("Cat");
         player1.setSpace(communityChest1);
         player2 = new Player("Dog");
         player2.setSpace(chance1);
-        mediterranean = (RealEstate) board.get(1);
-        baltic = (RealEstate) board.get(3);
-        illinoisAve = (RealEstate) board.get(24);
-        electric = (Utility) game.getBoard().get(12);
-        chance2 = (Chance) game.getBoard().get(22);
-        reading = (Railroad) game.getBoard().get(5);
-        penn = (Railroad) game.getBoard().get(15);
-        bAndO = (Railroad) game.getBoard().get(25);
-        shortLine = (Railroad) game.getBoard().get(35);
+        mediterranean = (RealEstate) board.getSpace(1);
+        baltic = (RealEstate) board.getSpace(3);
+        illinoisAve = (RealEstate) board.getSpace(24);
+        electric = (Utility) board.getSpace(12);
+        chance2 = (Chance) board.getSpace(22);
+        reading = (Railroad) board.getSpace(5);
+        penn = (Railroad) board.getSpace(15);
+        bAndO = (Railroad) board.getSpace(25);
+        shortLine = (Railroad) board.getSpace(35);
     }
 
     @After

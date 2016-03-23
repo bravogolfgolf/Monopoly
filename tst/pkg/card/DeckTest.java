@@ -38,7 +38,6 @@ public class DeckTest {
             mimicOutputFromCardLoadMethod.add(card2);
 
             Deck.addCommunityChestCards(mimicOutputFromCardLoadMethod);
-            Deck.randomizeCardOrder();
             CommunityChestCards = Deck.getCommunityChestCards();
             assertEquals(2, CommunityChestCards.size());
 
@@ -73,7 +72,6 @@ public class DeckTest {
             mimicOutputFromCardLoadMethod.add(card2);
 
             Deck.addChanceCards(mimicOutputFromCardLoadMethod);
-            Deck.randomizeCardOrder();
             ChanceCards = Deck.getChanceCards();
             assertEquals(2, ChanceCards.size());
 
