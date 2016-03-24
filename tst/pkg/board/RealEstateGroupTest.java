@@ -39,9 +39,9 @@ public class RealEstateGroupTest {
 
     @Test
     public void testCreation() {
-        Space property = SpaceFactory.create("RealEstate", "Park Place", "Blue", -1, -1, 1, 2, 3, 4, 5);
-        assertEquals("Park Place", property.getDescription());
-        assertEquals("Blue", property.getGroup());
+        RealEstate realEstate = new RealEstate("Boardwalk", "Blue", 400, 40, 200, 600, 1400, 1700, 2000);
+        assertEquals("Boardwalk", realEstate.getDescription());
+        assertEquals("Blue", realEstate.getGroup());
     }
 
     @Test
@@ -94,8 +94,8 @@ public class RealEstateGroupTest {
     @Ignore
     public void testLandOnUnownedPropertyWithOutEnoughMoney() {
         player1.transaction(-1500, -1500, Player.TransactionType.CASH);
-        assertEquals(0,player1.getCashBalance());
-        assertEquals(0,player1.getNetWorth());
+        assertEquals(0, player1.getCashBalance());
+        assertEquals(0, player1.getNetWorth());
         assertTrue(mediterraneanAve.getOwner().isBank());
         mediterraneanAve.landOn(player1, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
         assertTrue(mediterraneanAve.getOwner().isBank());
@@ -129,7 +129,7 @@ public class RealEstateGroupTest {
         ownedUnMortgagedProperty(player2, balticAve);
 
         mediterraneanAve.addImprovements();
-        assertEquals(1,mediterraneanAve.getImprovements());
+        assertEquals(1, mediterraneanAve.getImprovements());
 
         int player1EndingBalance = player1BeginningBalance - MEDITERRANEAN_1_HOUSE_RENT;
         int player2EndingBalance = player2BeginningBalance + MEDITERRANEAN_1_HOUSE_RENT;

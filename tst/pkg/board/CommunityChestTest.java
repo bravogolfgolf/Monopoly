@@ -22,7 +22,7 @@ public class CommunityChestTest {
     @Before
     public void setUp() {
         player = new Player("Cat");
-        communityChest = (CommunityChest) SpaceFactory.create("CommunityChest", "Community Chest");
+        communityChest = new CommunityChest("Community Chest");
     }
 
     @After
@@ -32,7 +32,7 @@ public class CommunityChestTest {
     }
 
     @Test
-    public void testLandOn()  {
+    public void testLandOn() {
         List<Card> cards = new ArrayList<>();
         Card card = DeckFactory.create("Instruction", "GetOutOfJail");
         cards.add(card);

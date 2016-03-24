@@ -15,7 +15,7 @@ public class IncomeTaxTest {
 
     @Before
     public void setUp() {
-        incomeTax = (IncomeTax) SpaceFactory.create("IncomeTax","Income Tax");
+        incomeTax = new IncomeTax("Income Tax");
         player = new Player("Cat");
     }
 

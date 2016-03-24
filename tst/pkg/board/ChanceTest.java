@@ -22,7 +22,7 @@ public class ChanceTest {
     @Before
     public void setUp() {
         player = new Player("Cat");
-        chance = (Chance) SpaceFactory.create("Chance", "Chance");
+        chance = new Chance("Chance");
     }
 
     @After

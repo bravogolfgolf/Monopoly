@@ -17,7 +17,7 @@ public class JailTest {
     @Before
     public void setUp() {
         player = new Player("Cat");
-        jail = (Jail) SpaceFactory.create("Jail","Other");
+        jail = new Jail("Jail");
     }
 
     @After

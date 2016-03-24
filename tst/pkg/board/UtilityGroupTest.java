@@ -35,7 +35,7 @@ public class UtilityGroupTest {
 
     @Test
     public void testCreation() {
-        Space property = SpaceFactory.create("Utility", "Water Works", "Utility", -1);
+        Utility property = new Utility("Water Works","Utility",150);
         assertEquals("Water Works", property.getDescription());
         assertEquals("Utility", property.getGroup());
     }

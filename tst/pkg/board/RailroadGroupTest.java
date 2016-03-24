@@ -34,9 +34,9 @@ public class RailroadGroupTest {
 
     @Test
     public void testCreation() {
-        Railroad property = (Railroad) SpaceFactory.create("Railroad", "Short Line", "Railroad", PRICE_OF_RAILROAD, RENT_OF_RAILROAD);
-        assertEquals("Short Line", property.getDescription());
-        assertEquals("Railroad", property.getGroup());
+        Railroad railroad = new Railroad("Short Line", "Railroad", 200, 25);
+        assertEquals("Short Line", railroad.getDescription());
+        assertEquals("Railroad", railroad.getGroup());
     }
 
     @Test

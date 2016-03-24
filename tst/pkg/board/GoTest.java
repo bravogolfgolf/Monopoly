@@ -18,7 +18,7 @@ public class GoTest {
     @Before
     public void setUp() {
         player = new Player("Cat");
-        go = (Go) SpaceFactory.create("Go","Go");
+        go = new Go("Go");
     }
 
     @After

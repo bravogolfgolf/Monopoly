@@ -17,7 +17,7 @@ public class FreeParkingSpaceTest {
     @Before
     public void setUp() {
         player = new Player("Cat");
-        freeParking = (FreeParking) SpaceFactory.create("FreeParking","FreeParking");
+        freeParking = new FreeParking("Free Parking");
     }
 
     @After

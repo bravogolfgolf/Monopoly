@@ -15,16 +15,19 @@ import static org.junit.Assert.assertTrue;
 public class SpaceTest {
 
     private Player player;
-    private Space space;
+    private Space freeParking;
     private DiceMock diceMock;
     private SpaceMockLandOnPassByCounter start;
     private SpaceMockLandOnPassByCounter space1;
     private SpaceMockLandOnPassByCounter space2;
+    private Space railroad;
+    private Space utility;
+    private Space realEstate;
 
     @Before
     public void setup() {
         player = new Player("Cat");
-        space = SpaceFactory.create("FreeParking", "SpaceDescription");
+        freeParking = new FreeParking("Free Parking");
         diceMock = new DiceMock();
         start = new SpaceMockLandOnPassByCounter("Start");
         space1 = new SpaceMockLandOnPassByCounter("Space1");
@@ -32,41 +35,27 @@ public class SpaceTest {
         start.setNextSpace(space1);
         space1.setNextSpace(space2);
         space2.setNextSpace(start);
+        railroad = new Railroad("Short Line", "Railroad", 200, 25);
+        utility = new Utility("Water Works", "Utility", 150);
+        realEstate = new RealEstate("Boardwalk", "Blue", 400, 40, 200, 600, 1400, 1700, 2000);
     }
 
     @After
     public void tearDown() {
         player = null;
-        space = null;
+        freeParking = null;
         diceMock = null;
         start = null;
         space1 = null;
         space2 = null;
+        railroad = null;
+        utility = null;
+        realEstate = null;
     }
 
     @Test
     public void testCreateSpace() {
-        assertEquals("SpaceDescription", space.getDescription());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testCreateSpaceNonPropertyThrowsException() throws IllegalArgumentException {
-        SpaceFactory.create("Invalid", "Invalid");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testCreateSpaceUtilityThrowsException() throws IllegalArgumentException {
-        SpaceFactory.create("Invalid", "Invalid", "Invalid", -1);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testCreateSpaceRailroadThrowsException() throws IllegalArgumentException {
-        SpaceFactory.create("Invalid", "Invalid", "Invalid", -1, -1);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testCreateSpaceRealEstateThrowsException() throws IllegalArgumentException {
-        SpaceFactory.create("Invalid", "Invalid", "Invalid", -1, -1, -1, -1, -1, -1, -1);
+        assertEquals("Short Line", railroad.getDescription());
     }
 
     @Test
@@ -77,21 +66,16 @@ public class SpaceTest {
 
     @Test
     public void testIsGroup() {
-        Space railroad = SpaceFactory.create("Railroad", "Short Line", "Railroad", 200, 25);
-        Space utility = SpaceFactory.create("Utility", "Water Works", "Utility", 150);
         assertTrue(railroad.isRailroad());
         assertTrue(utility.isUtility());
     }
 
     @Test
     public void getSourceOfMoveMultiplierBasedOnGroup() {
-        Space boardwalk = SpaceFactory.create("RealEstate", "Boardwalk", "Blue", 400, 40, 200, 600, 1400, 1700, 2000);
-        Space railroad = SpaceFactory.create("Railroad", "Short Line", "Railroad", 200, 25);
-        Space utility = SpaceFactory.create("Utility", "Water Works", "Utility", 150);
         SourceOfMoveMultiplier som = new SourceOfMoveMultiplier();
         SourceOfMoveMultiplier som2 = new SourceOfMoveMultiplier(2);
         SourceOfMoveMultiplier som10 = new SourceOfMoveMultiplier(10);
-        assertEquals(som.value(), boardwalk.getSourceOfMoveMultiplier().value());
+        assertEquals(som.value(), realEstate.getSourceOfMoveMultiplier().value());
         assertEquals(som2.value(), railroad.getSourceOfMoveMultiplier().value());
         assertEquals(som10.value(), utility.getSourceOfMoveMultiplier().value());
     }
@@ -99,14 +83,14 @@ public class SpaceTest {
     @Test
     public void testLandOnSpaceWithNoChangeInCash() {
         int expectedEndingBalance = player.getCashBalance();
-        space.landOn(player, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
+        freeParking.landOn(player, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
         assertEquals(expectedEndingBalance, player.getCashBalance());
     }
 
     @Test
     public void testPassBySpaceWithNoChangeInCash() {
         int expectedEndingBalance = player.getCashBalance();
-        space.passBy(player);
+        freeParking.passBy(player);
         assertEquals(expectedEndingBalance, player.getCashBalance());
     }
 
@@ -128,28 +112,13 @@ public class SpaceTest {
         assertEquals(0, space2.passByCounter);
     }
 
-
-    @Test
-    public void testReadOfSpaceDefinitionFile() throws IOException {
-        List<Space> expected = new ArrayList<>();
-        List<Space> actual;
-        expected.add(SpaceFactory.create("FreeParking", "Description"));
-        expected.add(SpaceFactory.create("RealEstate", "Description", "Group", 78, 3, -1, -2, -3, -4, -5));
-        actual = SpaceFactory.load("TEST");
-        assertEquals(expected.size(), actual.size());
-        assertTrue(expected.equals(actual));
-        for (int index = 0; index < expected.size(); index++) {
-            assertTrue(expected.get(index).equals(actual.get(index)));
-        }
-    }
-
     @Test
     public void testEqualsAndHashcode() {
-        Space space1 = SpaceFactory.create("Railroad", "Description", "Group", -1, -1);
-        space1.setNextSpace(SpaceFactory.create("FreeParking", "Description"));
-        Space space2 = SpaceFactory.create("Railroad", "Description", "Group", -1, -1);
-        space2.setNextSpace(SpaceFactory.create("FreeParking", "Description"));
-        assertTrue(space1.equals(space2));
-        assertTrue(space1.hashCode() == space2.hashCode());
+        Space railroad1 = new Railroad("Short Line", "Railroad", 200, 25);
+        Space utility1 = new Utility("Water Works", "Utility", 150);
+        railroad1.setNextSpace(utility1);
+        railroad.setNextSpace(utility);
+        assertTrue(railroad.equals(railroad1));
+        assertTrue(railroad.hashCode() == railroad1.hashCode());
     }
 }

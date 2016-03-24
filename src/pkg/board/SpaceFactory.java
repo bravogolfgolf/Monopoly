@@ -7,23 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 class SpaceFactory {
-    public static Space create(String classType, String description, String group, int price, int rent, int house1Rent, int house2Rent, int house3Rent, int house4Rent, int hotelRent) {
+    static Space create(String classType, String description, String group, int price, int rent, int house1Rent, int house2Rent, int house3Rent, int house4Rent, int hotelRent) {
         if (classType.equals("RealEstate"))
             return new RealEstate(description, group, price, rent, house1Rent, house2Rent, house3Rent, house4Rent, hotelRent);
         throw new IllegalArgumentException("Incorrect value");
     }
 
-    public static Space create(String classType, String description, String group, int price, int rent) {
+    static Space create(String classType, String description, String group, int price, int rent) {
         if (classType.equals("Railroad")) return new Railroad(description, group, price, rent);
         throw new IllegalArgumentException("Incorrect value");
     }
 
-    public static Space create(String classType, String description, String group, int price) {
+    static Space create(String classType, String description, String group, int price) {
         if (classType.equals("Utility")) return new Utility(description, group, price);
         throw new IllegalArgumentException("Incorrect value");
     }
 
-    public static Space create(String classType, String description) {
+    static Space create(String classType, String description) {
         if (classType.equals("Go")) return new Go(description);
         if (classType.equals("FreeParking")) return new FreeParking(description);
         if (classType.equals("Jail")) return new Jail(description);
