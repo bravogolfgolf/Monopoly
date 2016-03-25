@@ -30,7 +30,7 @@ public class PlayerTest {
     @Before
     public void setup() throws IOException {
         game = new Game();
-        board = new Board("US");
+        board = new Board("US", new SpaceFactoryFake());
         player1 = new Player("Cat");
         player2 = new Player("Dog");
         diceMock = new DiceMock();
@@ -67,7 +67,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void testMovesAndDoesNoWrap()  {
+    public void testMovesAndDoesNoWrap() {
         player1.setSpace(start);
         player1.takeATurn(diceMock);
         Space endingLocation = space2;
@@ -76,7 +76,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void testMovesAndWraps()  {
+    public void testMovesAndWraps() {
         player1.setSpace(space1);
         player1.takeATurn(diceMock);
         Space endingLocation = start;
@@ -120,7 +120,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void testPlayerRollsDoublesThenNot()  {
+    public void testPlayerRollsDoublesThenNot() {
         Dice diceMock = new DiceMockRollsDouble3sThenPlain4();
         playerInitialization();
         Property property1 = (Property) board.getSpace(6);
@@ -137,7 +137,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void testPlayerRollsDoublesTwiceThenNot()  {
+    public void testPlayerRollsDoublesTwiceThenNot() {
         Dice diceMock = new DiceMockRollsDoubleTwiceThenNot();
         playerInitialization();
 

@@ -25,7 +25,7 @@ public class RailroadGroupTest {
 
     @Before
     public void setUp() throws IOException {
-        Board board = new Board("US");
+        Board board = new Board("US", new SpaceFactoryFake());
         reading = (Railroad) board.getSpace(5);
         pennsylvania = (Railroad) board.getSpace(15);
         bAndO = (Railroad) board.getSpace(25);

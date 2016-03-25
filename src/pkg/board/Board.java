@@ -11,9 +11,9 @@ public class Board implements Iterable {
 
     private final List<Space> board;
 
-    public Board(String localization) throws IOException {
+    public Board(String localization, SpaceFactory spaceFactory) throws IOException {
 
-        board = SpaceFactory.load(localization);
+        board = spaceFactory.load(localization);
         for (int i = 0; i < board.size() - 1; i++)
             board.get(i).setNextSpace(board.get(i + 1));
         board.get(board.size() - 1).setNextSpace(board.get(0));

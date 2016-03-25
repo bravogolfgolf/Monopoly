@@ -14,7 +14,7 @@ public class BoardTest {
 
     @Test
     public void testGetAllRealEstateOfPlayer() throws IOException {
-        Board board = new Board("US");
+        Board board = new Board("US", new SpaceFactoryFake());
         Player player = new Player("Cat");
         RealEstate mediterranean = (RealEstate) board.getSpace(1);
         RealEstate baltic = (RealEstate) board.getSpace(3);
@@ -30,12 +30,12 @@ public class BoardTest {
 
     @Test
     public void testCreateBoard() throws IOException {
-        Board board = new Board("TEST");
-        assertEquals(2, board.size());
-        assertEquals("FreeParking", board.getSpace(0).getClass().getSimpleName());
-        assertEquals("Description", board.getSpace(0).getDescription());
+        Board board = new Board("US", new SpaceFactoryFake());
+        assertEquals(40, board.size());
+        assertEquals("Go", board.getSpace(0).getClass().getSimpleName());
+        assertEquals("Go", board.getSpace(0).getDescription());
         assertEquals("RealEstate", board.getSpace(0).getNextSpace().getClass().getSimpleName());
-        assertEquals("Description", board.getSpace(0).getNextSpace().getDescription());
+        assertEquals("Mediterranean Avenue", board.getSpace(0).getNextSpace().getDescription());
     }
 
     @Test
@@ -59,7 +59,7 @@ public class BoardTest {
         int blueGroupCount = 0;
         int railroadCount = 0;
         int utilityCount = 0;
-        Board board = new Board("US");
+        Board board = new Board("US", new SpaceFactoryFake());
         assertTrue(board.size() == 40);
         for (Object obj : board) {
             Space space = (Space) obj;

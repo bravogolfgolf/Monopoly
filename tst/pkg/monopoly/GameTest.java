@@ -24,7 +24,7 @@ public class GameTest {
     @Before
     public void setUp() throws Exception {
         game = new Game();
-        board = new Board("US");
+        board = new Board("US", new SpaceFactoryFake());
     }
 
     @After

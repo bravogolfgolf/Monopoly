@@ -41,7 +41,7 @@ public class CardActionTest {
     @Before
     public void setUp() throws Exception {
         game = new Game();
-        board = new Board("US");
+        board = new Board("US", new SpaceFactoryFake());
         communityChest1 = (CommunityChest) board.getSpace(2);
         communityChest2 = (CommunityChest) board.getSpace(33);
         chance1 = (Chance) board.getSpace(36);
@@ -81,7 +81,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testGetOutOfJailCardAction()  {
+    public void testGetOutOfJailCardAction() {
         Card getOutOfJail = DeckFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
         createCommunityChestCard(getOutOfJail);
         assertTrue(player1.getSpace().equals(communityChest1));
@@ -93,7 +93,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testMoveBackCardAction()  {
+    public void testMoveBackCardAction() {
         Card moveBack = DeckFactory.create("Go Back 3 Spaces", "MoveBack");
         createChanceCard(moveBack);
         Card transaction = DeckFactory.create("Bank error in your favor – Collect $200", "Transaction", 200, "Bank");
@@ -106,7 +106,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testMoveForwardNextCardAction_Utility()  {
+    public void testMoveForwardNextCardAction_Utility() {
         Card moveForwardNext = DeckFactory.create("Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.", "MoveForwardNext", "Utility");
         createChanceCard(moveForwardNext);
 
@@ -125,7 +125,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testMoveForwardNextCardAction_Railroad()  {
+    public void testMoveForwardNextCardAction_Railroad() {
         Card moveForwardNext = DeckFactory.create("Advance token to the nearest Railroad and pay owner twice the rental to which he is otherwise entitled. If Railroad is unowned, you may buy it from the Bank", "MoveForwardNext", "Railroad");
         createChanceCard(moveForwardNext);
         reading.setOwner(player1);
@@ -146,7 +146,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testMoveForwardSpecificCardAction()  {
+    public void testMoveForwardSpecificCardAction() {
         Card moveForwardSpecific = DeckFactory.create("Advance to Illinois Ave. - If you pass Go, collect $200", "MoveForwardSpecific", "Illinois Avenue");
         createChanceCard(moveForwardSpecific);
         assertTrue(player2.getSpace().equals(chance1));
@@ -163,7 +163,7 @@ public class CardActionTest {
     }
 
     @Test(expected = GoToJail.GoToJailException.class)
-    public void testMoveJail()  {
+    public void testMoveJail() {
         Card goToJail = DeckFactory.create("Go to Jail – Go directly to jail – Do not pass Go – Do not collect $200", "MoveJail", "Go to Jail");
         createCommunityChestCard(goToJail);
         assertTrue(player1.getSpace().equals(communityChest1));
@@ -171,7 +171,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testRepairsCardAction()  {
+    public void testRepairsCardAction() {
         Card repairs = DeckFactory.create("You are assessed for street repairs – $40 per house – $115 per hotel", "Repairs", 40, 115);
         createCommunityChestCard(repairs);
 
@@ -202,7 +202,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testLandOnDrawsTransactionCardForBank()  {
+    public void testLandOnDrawsTransactionCardForBank() {
         Card transaction = DeckFactory.create("Bank error in your favor – Collect $200", "Transaction", 200, "Bank");
         createCommunityChestCard(transaction);
         assertTrue(player1.getSpace().equals(communityChest1));

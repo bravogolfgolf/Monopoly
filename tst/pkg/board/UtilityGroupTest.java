@@ -28,14 +28,14 @@ public class UtilityGroupTest {
 
     @Before
     public void setUp() throws IOException {
-        Board board = new Board("US");
+        Board board = new Board("US", new SpaceFactoryFake());
         electric = (Utility) board.getSpace(12);
         water = (Utility) board.getSpace(28);
     }
 
     @Test
     public void testCreation() {
-        Utility property = new Utility("Water Works","Utility",150);
+        Utility property = new Utility("Water Works", "Utility", 150);
         assertEquals("Water Works", property.getDescription());
         assertEquals("Utility", property.getGroup());
     }
@@ -69,7 +69,7 @@ public class UtilityGroupTest {
         electric.landOn(player1, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
         assertEquals(player1, electric.getOwner());
         assertEquals(endingBalance, player1.getCashBalance());
-        assertEquals(exceptedNetWorth,player1.getNetWorth());
+        assertEquals(exceptedNetWorth, player1.getNetWorth());
     }
 
     @Test

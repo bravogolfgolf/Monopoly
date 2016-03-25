@@ -32,7 +32,7 @@ public class RealEstateGroupTest {
 
     @Before
     public void setUp() throws IOException {
-        Board board = new Board("US");
+        Board board = new Board("US", new SpaceFactoryFake());
         mediterraneanAve = (RealEstate) board.getSpace(1);
         balticAve = (RealEstate) board.getSpace(3);
     }
