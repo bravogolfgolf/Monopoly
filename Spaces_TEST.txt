@@ -1,2 +1,4 @@
 FreeParking;Description
 RealEstate;Description;Group;78;3;-1;-2;-3;-4;-5
+Railroad;Description;Group;-1;-2
+Utility;Description;Group;-1

@@ -18,6 +18,8 @@ public class SpaceFactoryFileTest {
         List<Space> actual;
         expected.add(SpaceFactoryFile.create("FreeParking", "Description"));
         expected.add(SpaceFactoryFile.create("RealEstate", "Description", "Group", 78, 3, -1, -2, -3, -4, -5));
+        expected.add(SpaceFactoryFile.create("Railroad", "Description", "Group", -1, -2));
+        expected.add(SpaceFactoryFile.create("Utility", "Description", "Group", -1));
         actual = new SpaceFactoryFile().load("TEST");
         assertEquals(expected.size(), actual.size());
         assertTrue(expected.equals(actual));

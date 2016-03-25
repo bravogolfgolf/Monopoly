@@ -56,9 +56,13 @@ public class CardFactoryFileTest {
     public void testReadOfCardDefinitionFile() throws IOException {
         List<Card> expected = new ArrayList<>();
         Deck.create(cardFactoryFile, Deck.DeckType.CHEST,"TEST");
-        expected.add(CardFactoryFile.create("Instruction1", "MoveForwardSpecific", "Go"));
-        expected.add(CardFactoryFile.create("Instruction2", "Transaction", 100, "Bank"));
-        expected.add(CardFactoryFile.create("Instruction2", "Repairs", 40, 115));
+        expected.add(CardFactoryFile.create("Instruction", "MoveForwardSpecific", "Space"));
+        expected.add(CardFactoryFile.create("Instruction", "Transaction", 100, "Bank"));
+        expected.add(CardFactoryFile.create("Instruction", "Repairs", 40, 115));
+        expected.add(CardFactoryFile.create("Instruction", "GetOutOfJail"));
+        expected.add(CardFactoryFile.create("Instruction", "MoveForwardNext","Group"));
+        expected.add(CardFactoryFile.create("Instruction", "MoveBack"));
+        expected.add(CardFactoryFile.create("Instruction", "MoveJail", "Space"));
         List<Card> actual = Deck.getCommunityChestCards();
         assertEquals(expected.size(), actual.size());
         assertTrue(expected.equals(actual));
