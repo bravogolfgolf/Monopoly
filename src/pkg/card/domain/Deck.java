@@ -1,19 +1,33 @@
-package pkg.card;
+package pkg.card.domain;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-    private static List<Card> communityChestCards = new ArrayList<>();
+
+    public enum DeckType {
+        CHEST, CHANCE
+    }
+
     private static List<Card> chanceCards = new ArrayList<>();
+    private static List<Card> communityChestCards = new ArrayList<>();
+
+    public static void create(DeckFactory deckFactory, DeckType deckType, String localization) throws IOException {
+        List<Card> cards = deckFactory.load(deckType, localization);
+        if (deckType.equals(DeckType.CHEST))
+            communityChestCards = cards;
+        if (deckType.equals(DeckType.CHANCE))
+            chanceCards = cards;
+    }
 
     public static void addCommunityChestCards(List<Card> communityChestCards) {
         randomizeCardOrder(communityChestCards);
         Deck.communityChestCards = communityChestCards;
     }
 
-    static List<Card> getCommunityChestCards() {
+    public static List<Card> getCommunityChestCards() {
         return communityChestCards;
     }
 
@@ -30,15 +44,15 @@ public class Deck {
         Collections.shuffle(cards);
     }
 
-    public static Card drawCard(DeckFactory.DeckType deckType) {
+    public static Card drawCard(DeckType deckType) {
         Card card = null;
-        if (deckType.equals(DeckFactory.DeckType.CHEST)) {
+        if (deckType.equals(DeckType.CHEST)) {
             card = communityChestCards.remove(0);
             if (isNotGetOutOfJail(card))
                 communityChestCards.add(card);
         }
 
-        if (deckType.equals(DeckFactory.DeckType.CHANCE)) {
+        if (deckType.equals(DeckType.CHANCE)) {
             card = chanceCards.remove(0);
             if (isNotGetOutOfJail(card))
                 chanceCards.add(card);

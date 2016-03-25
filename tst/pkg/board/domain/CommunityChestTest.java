@@ -3,8 +3,9 @@ package pkg.board.domain;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.domain.CommunityChest;
-import pkg.card.*;
+import pkg.card.domain.Card;
+import pkg.card.domain.Deck;
+import pkg.card.domain.GetOutOfJail;
 import pkg.monopoly.OwnershipMultiplier;
 import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
@@ -19,26 +20,31 @@ public class CommunityChestTest {
 
     private Player player;
     private CommunityChest communityChest;
+    private List<Card> cards;
+    private GetOutOfJail card;
+    private int expectedEndingBalance;
 
     @Before
     public void setUp() {
         player = new Player("Cat");
         communityChest = new CommunityChest("Community Chest");
+        cards = new ArrayList<>();
+        card = new GetOutOfJail("Get out of Jail Free – This card may be kept until needed or sold");
+        cards.add(card);
+        Deck.addCommunityChestCards(cards);
+        expectedEndingBalance = player.getCashBalance();
     }
 
     @After
     public void teardown() {
         player = null;
         communityChest = null;
+        cards = null;
+        card = null;
     }
 
     @Test
     public void testLandOn() {
-        List<Card> cards = new ArrayList<>();
-        Card card = DeckFactory.create("Instruction", "GetOutOfJail");
-        cards.add(card);
-        Deck.addCommunityChestCards(cards);
-        int expectedEndingBalance = player.getCashBalance();
         communityChest.landOn(player, new SourceOfMoveMultiplier(), new OwnershipMultiplier());
         assertEquals(expectedEndingBalance, player.getCashBalance());
         assertTrue(player.getCard().equals(card));
@@ -46,11 +52,6 @@ public class CommunityChestTest {
 
     @Test
     public void testPassBy() {
-        List<Card> cards = new ArrayList<>();
-        Card card = DeckFactory.create("Instruction", "GetOutOfJail");
-        cards.add(card);
-        Deck.addCommunityChestCards(cards);
-        int expectedEndingBalance = player.getCashBalance();
         communityChest.passBy(player);
         assertEquals(expectedEndingBalance, player.getCashBalance());
     }

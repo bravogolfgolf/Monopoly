@@ -4,8 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pkg.board.domain.*;
-import pkg.card.Card;
-import pkg.card.DeckFactory;
+import pkg.card.domain.GetOutOfJail;
 
 import java.io.IOException;
 
@@ -234,15 +233,15 @@ public class PlayerTest {
 
     @Test
     public void testAddGetOutOfJailCard() {
-        Card getOutOfJail = DeckFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
+        GetOutOfJail getOutOfJail = new GetOutOfJail("Get out of Jail Free – This card may be kept until needed or sold");
         player1.addCard(getOutOfJail);
         assertTrue(getOutOfJail.equals(player1.getCard()));
     }
 
     @Test
     public void testAddGetOutOfJailCards() {
-        Card getOutOfJail1 = DeckFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
-        Card getOutOfJail2 = DeckFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
+        GetOutOfJail getOutOfJail1 = new GetOutOfJail("Get out of Jail Free – This card may be kept until needed or sold");
+        GetOutOfJail getOutOfJail2 = new GetOutOfJail("Get out of Jail Free – This card may be kept until needed or sold");
         player1.addCard(getOutOfJail1);
         player1.addCard(getOutOfJail2);
         assertTrue(getOutOfJail1.equals(player1.getCard()));

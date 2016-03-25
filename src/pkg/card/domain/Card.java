@@ -1,4 +1,4 @@
-package pkg.card;
+package pkg.card.domain;
 
 import pkg.monopoly.Player;
 
@@ -6,7 +6,7 @@ public abstract class Card {
 
     String cardText;
 
-    abstract boolean isGetOutOfJailCard();
+    public abstract boolean isGetOutOfJailCard();
 
     public abstract void action(Player player);
 

@@ -1,4 +1,6 @@
-package pkg.card;
+package pkg.card.infrastructure;
+
+import pkg.card.domain.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -6,36 +8,32 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeckFactory {
+class CardFactoryFile implements DeckFactory {
 
-    public enum DeckType {
-        CHEST, CHANCE
-    }
-
-    public static Card create(String cardText, String classType, String space) {
+    static Card create(String cardText, String classType, String space) {
         if (classType.equals("MoveForwardNext")) return new MoveForwardNext(cardText, space);
         if (classType.equals("MoveForwardSpecific")) return new MoveForwardSpecific(cardText, space);
         if (classType.equals("MoveJail")) return new MoveJail(cardText, space);
         throw new IllegalArgumentException();
     }
 
-    public static Card create(String cardText, String classType, int amount, String recipient) {
+    static Card create(String cardText, String classType, int amount, String recipient) {
         if (classType.equals("Transaction")) return new Transaction(cardText, amount, recipient);
         throw new IllegalArgumentException();
     }
 
-    public static Card create(String cardText, String classType, int house, int hotel) {
+    static Card create(String cardText, String classType, int house, int hotel) {
         if (classType.equals("Repairs")) return new Repair(cardText, house, hotel);
         throw new IllegalArgumentException();
     }
 
-    public static Card create(String cardText, String classType) {
+    static Card create(String cardText, String classType) {
         if (classType.equals("MoveBack")) return new MoveBack(cardText);
         if (classType.equals("GetOutOfJail")) return new GetOutOfJail(cardText);
         throw new IllegalArgumentException();
     }
 
-    public static List<Card> load(DeckType deckType, String localization) throws IOException {
+    public List<Card> load(Deck.DeckType deckType, String localization) throws IOException {
         String fileName = String.format("%s_%s.txt", deckType, localization);
         List<String> content = Files.readAllLines(Paths.get(fileName));
         List<Card> cards = new ArrayList<>();
@@ -43,25 +41,25 @@ public class DeckFactory {
             String[] tokens = line.split(";");
             switch (tokens[1]) {
                 case "GetOutOfJail":
-                    cards.add(create(tokens[0], tokens[1]));
+                    cards.add(CardFactoryFile.create(tokens[0], tokens[1]));
                     break;
                 case "MoveForwardSpecific":
-                    cards.add(create(tokens[0], tokens[1], tokens[2]));
+                    cards.add(CardFactoryFile.create(tokens[0], tokens[1], tokens[2]));
                     break;
                 case "MoveForwardNext":
-                    cards.add(create(tokens[0], tokens[1], tokens[2]));
+                    cards.add(CardFactoryFile.create(tokens[0], tokens[1], tokens[2]));
                     break;
                 case "MoveBack":
-                    cards.add(create(tokens[0], tokens[1]));
+                    cards.add(CardFactoryFile.create(tokens[0], tokens[1]));
                     break;
                 case "MoveJail":
-                    cards.add(create(tokens[0], tokens[1], tokens[2]));
+                    cards.add(CardFactoryFile.create(tokens[0], tokens[1], tokens[2]));
                     break;
                 case "Repairs":
-                    cards.add(create(tokens[0], tokens[1], Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
+                    cards.add(CardFactoryFile.create(tokens[0], tokens[1], Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
                     break;
                 case "Transaction":
-                    cards.add(create(tokens[0], tokens[1], Integer.parseInt(tokens[2]), tokens[3]));
+                    cards.add(CardFactoryFile.create(tokens[0], tokens[1], Integer.parseInt(tokens[2]), tokens[3]));
                     break;
                 default:
                     throw new IllegalArgumentException();

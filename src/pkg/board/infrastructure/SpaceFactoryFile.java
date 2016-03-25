@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-class Factory implements SpaceFactory {
+class SpaceFactoryFile implements SpaceFactory {
     static Space create(String classType, String description, String group, int price, int rent, int house1Rent, int house2Rent, int house3Rent, int house4Rent, int hotelRent) {
         if (classType.equals("RealEstate"))
             return new RealEstate(description, group, price, rent, house1Rent, house2Rent, house3Rent, house4Rent, hotelRent);
