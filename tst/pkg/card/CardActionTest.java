@@ -3,13 +3,7 @@ package pkg.card;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.Space;
-import pkg.board.Railroad;
-import pkg.board.RealEstate;
-import pkg.board.Utility;
-import pkg.board.GoToJail;
-import pkg.board.CommunityChest;
-import pkg.board.Chance;
+import pkg.board.domain.*;
 import pkg.monopoly.Game;
 import pkg.monopoly.Player;
 
@@ -28,7 +22,7 @@ public class CardActionTest {
     private static final int TEN_TIMES_NUMBER_ROLLED = NUMBER_ROLLED * 10;
     private static final int TWO_TIMES_NORMAL_RENT = 400;
     private Game game;
-    private List<Space> board;
+    private Board board;
     private CommunityChest communityChest1;
     private CommunityChest communityChest2;
     private Player player1;
@@ -46,24 +40,24 @@ public class CardActionTest {
 
     @Before
     public void setUp() throws Exception {
-        game = new Game("US");
-        board = game.getBoard();
-        communityChest1 = (CommunityChest) board.get(2);
-        communityChest2 = (CommunityChest) board.get(33);
-        chance1 = (Chance) board.get(36);
+        game = new Game();
+        board = new Board("US", new SpaceFactoryFake());
+        communityChest1 = (CommunityChest) board.getSpace(2);
+        communityChest2 = (CommunityChest) board.getSpace(33);
+        chance1 = (Chance) board.getSpace(36);
         player1 = new Player("Cat");
         player1.setSpace(communityChest1);
         player2 = new Player("Dog");
         player2.setSpace(chance1);
-        mediterranean = (RealEstate) board.get(1);
-        baltic = (RealEstate) board.get(3);
-        illinoisAve = (RealEstate) board.get(24);
-        electric = (Utility) game.getBoard().get(12);
-        chance2 = (Chance) game.getBoard().get(22);
-        reading = (Railroad) game.getBoard().get(5);
-        penn = (Railroad) game.getBoard().get(15);
-        bAndO = (Railroad) game.getBoard().get(25);
-        shortLine = (Railroad) game.getBoard().get(35);
+        mediterranean = (RealEstate) board.getSpace(1);
+        baltic = (RealEstate) board.getSpace(3);
+        illinoisAve = (RealEstate) board.getSpace(24);
+        electric = (Utility) board.getSpace(12);
+        chance2 = (Chance) board.getSpace(22);
+        reading = (Railroad) board.getSpace(5);
+        penn = (Railroad) board.getSpace(15);
+        bAndO = (Railroad) board.getSpace(25);
+        shortLine = (Railroad) board.getSpace(35);
     }
 
     @After
@@ -87,7 +81,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testGetOutOfJailCardAction()  {
+    public void testGetOutOfJailCardAction() {
         Card getOutOfJail = DeckFactory.create("Get out of Jail Free – This card may be kept until needed or sold", "GetOutOfJail");
         createCommunityChestCard(getOutOfJail);
         assertTrue(player1.getSpace().equals(communityChest1));
@@ -99,7 +93,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testMoveBackCardAction()  {
+    public void testMoveBackCardAction() {
         Card moveBack = DeckFactory.create("Go Back 3 Spaces", "MoveBack");
         createChanceCard(moveBack);
         Card transaction = DeckFactory.create("Bank error in your favor – Collect $200", "Transaction", 200, "Bank");
@@ -112,7 +106,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testMoveForwardNextCardAction_Utility()  {
+    public void testMoveForwardNextCardAction_Utility() {
         Card moveForwardNext = DeckFactory.create("Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.", "MoveForwardNext", "Utility");
         createChanceCard(moveForwardNext);
 
@@ -131,7 +125,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testMoveForwardNextCardAction_Railroad()  {
+    public void testMoveForwardNextCardAction_Railroad() {
         Card moveForwardNext = DeckFactory.create("Advance token to the nearest Railroad and pay owner twice the rental to which he is otherwise entitled. If Railroad is unowned, you may buy it from the Bank", "MoveForwardNext", "Railroad");
         createChanceCard(moveForwardNext);
         reading.setOwner(player1);
@@ -152,7 +146,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testMoveForwardSpecificCardAction()  {
+    public void testMoveForwardSpecificCardAction() {
         Card moveForwardSpecific = DeckFactory.create("Advance to Illinois Ave. - If you pass Go, collect $200", "MoveForwardSpecific", "Illinois Avenue");
         createChanceCard(moveForwardSpecific);
         assertTrue(player2.getSpace().equals(chance1));
@@ -169,7 +163,7 @@ public class CardActionTest {
     }
 
     @Test(expected = GoToJail.GoToJailException.class)
-    public void testMoveJail()  {
+    public void testMoveJail() {
         Card goToJail = DeckFactory.create("Go to Jail – Go directly to jail – Do not pass Go – Do not collect $200", "MoveJail", "Go to Jail");
         createCommunityChestCard(goToJail);
         assertTrue(player1.getSpace().equals(communityChest1));
@@ -177,7 +171,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testRepairsCardAction()  {
+    public void testRepairsCardAction() {
         Card repairs = DeckFactory.create("You are assessed for street repairs – $40 per house – $115 per hotel", "Repairs", 40, 115);
         createCommunityChestCard(repairs);
 
@@ -208,7 +202,7 @@ public class CardActionTest {
     }
 
     @Test
-    public void testLandOnDrawsTransactionCardForBank()  {
+    public void testLandOnDrawsTransactionCardForBank() {
         Card transaction = DeckFactory.create("Bank error in your favor – Collect $200", "Transaction", 200, "Bank");
         createCommunityChestCard(transaction);
         assertTrue(player1.getSpace().equals(communityChest1));

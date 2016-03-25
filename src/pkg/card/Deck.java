@@ -9,6 +9,7 @@ public class Deck {
     private static List<Card> chanceCards = new ArrayList<>();
 
     public static void addCommunityChestCards(List<Card> communityChestCards) {
+        randomizeCardOrder(communityChestCards);
         Deck.communityChestCards = communityChestCards;
     }
 
@@ -17,6 +18,7 @@ public class Deck {
     }
 
     public static void addChanceCards(List<Card> chanceCards) {
+        randomizeCardOrder(chanceCards);
         Deck.chanceCards = chanceCards;
     }
 
@@ -24,9 +26,8 @@ public class Deck {
         return chanceCards;
     }
 
-    public static void randomizeCardOrder() {
-        Collections.shuffle(communityChestCards);
-        Collections.shuffle(chanceCards);
+    private static void randomizeCardOrder(List<Card> cards) {
+        Collections.shuffle(cards);
     }
 
     public static Card drawCard(DeckFactory.DeckType deckType) {

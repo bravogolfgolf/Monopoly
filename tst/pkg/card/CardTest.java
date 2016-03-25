@@ -12,8 +12,8 @@ import static org.junit.Assert.assertTrue;
 
 public class CardTest {
 
-    private static final int NUMBER_OF_CARDS_IN_DECK = 4;
-    private static final int BOTTOM_CARD = 3;
+    private static final int NUMBER_OF_CARDS_IN_DECK = 3;
+    private static final int BOTTOM_CARD = 2;
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidCard1() {
@@ -61,17 +61,14 @@ public class CardTest {
 
     @Test
     public void testDrawCommunityChestCard() throws IOException {
-
         List<Card> communityChestCards = DeckFactory.load(DeckFactory.DeckType.CHEST, "TEST");
         Deck.addCommunityChestCards(communityChestCards);
 
-        Card expectedTopCard = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
         Card topCard = Deck.drawCard(DeckFactory.DeckType.CHEST);
-        Card expectedBottomCard = Deck.getCommunityChestCards().get(BOTTOM_CARD);
+        Card bottomCard = Deck.getCommunityChestCards().get(BOTTOM_CARD);
 
         assertEquals(NUMBER_OF_CARDS_IN_DECK, Deck.getCommunityChestCards().size());
-        assertTrue(expectedTopCard.equals(topCard));
-        assertTrue(topCard.equals(expectedBottomCard));
+        assertTrue(topCard.equals(bottomCard));
     }
 
     @Test
@@ -79,12 +76,10 @@ public class CardTest {
         List<Card> chanceCards = DeckFactory.load(DeckFactory.DeckType.CHANCE, "TEST");
         Deck.addChanceCards(chanceCards);
 
-        Card expectedTopCard = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
         Card topCard = Deck.drawCard(DeckFactory.DeckType.CHANCE);
         Card expectedBottomCard = Deck.getChanceCards().get(BOTTOM_CARD);
 
         assertEquals(NUMBER_OF_CARDS_IN_DECK, Deck.getChanceCards().size());
-        assertTrue(expectedTopCard.equals(topCard));
         assertTrue(topCard.equals(expectedBottomCard));
     }
 
@@ -95,7 +90,6 @@ public class CardTest {
         List<Card> actual;
         expected.add(DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go"));
         expected.add(DeckFactory.create("Instruction2", "Transaction", 100, "Bank"));
-        expected.add(DeckFactory.create("Instruction2", "GetOutOfJail"));
         expected.add(DeckFactory.create("Instruction2", "Repairs", 40, 115));
         actual = DeckFactory.load(DeckFactory.DeckType.CHEST, "TEST");
         assertEquals(expected.size(), actual.size());
