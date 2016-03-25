@@ -1,6 +1,6 @@
 package pkg.monopoly;
 
-import pkg.board.Space;
+import pkg.board.domain.Space;
 import pkg.card.Card;
 
 import java.util.ArrayList;

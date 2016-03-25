@@ -1,7 +1,7 @@
 package pkg.monopoly;
 
-import pkg.board.GoToJail;
-import pkg.board.Space;
+import pkg.board.domain.GoToJail;
+import pkg.board.domain.Space;
 
 import java.util.*;
 

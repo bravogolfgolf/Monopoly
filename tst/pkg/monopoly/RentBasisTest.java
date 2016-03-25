@@ -1,7 +1,7 @@
 package pkg.monopoly;
 
 import org.junit.Test;
-import pkg.board.RentalBasis;
+import pkg.board.domain.RentalBasis;
 
 import static org.junit.Assert.assertEquals;
 

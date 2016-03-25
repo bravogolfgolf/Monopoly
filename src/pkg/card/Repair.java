@@ -1,8 +1,8 @@
 package pkg.card;
 
-import pkg.board.Board;
+import pkg.board.domain.Board;
 import pkg.monopoly.Player;
-import pkg.board.RealEstate;
+import pkg.board.domain.RealEstate;
 
 import java.util.List;
 

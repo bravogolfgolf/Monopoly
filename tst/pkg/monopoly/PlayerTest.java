@@ -3,7 +3,7 @@ package pkg.monopoly;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.*;
+import pkg.board.domain.*;
 import pkg.card.Card;
 import pkg.card.DeckFactory;
 

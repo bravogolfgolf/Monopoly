@@ -3,7 +3,7 @@ package pkg.card;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.*;
+import pkg.board.domain.*;
 import pkg.monopoly.Game;
 import pkg.monopoly.Player;
 
