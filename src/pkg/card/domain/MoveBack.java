@@ -1,17 +1,17 @@
-package pkg.card;
+package pkg.card.domain;
 
 import pkg.monopoly.OwnershipMultiplier;
 import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
 import pkg.board.domain.Space;
 
-class MoveBack extends Card {
-    MoveBack(String cardText) {
+public class MoveBack extends Card {
+    public MoveBack(String cardText) {
         this.cardText = cardText;
     }
 
     @Override
-    boolean isGetOutOfJailCard() {
+    public boolean isGetOutOfJailCard() {
         return false;
     }
 

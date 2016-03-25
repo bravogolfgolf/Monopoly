@@ -1,20 +1,20 @@
-package pkg.card;
+package pkg.card.domain;
 
 import pkg.monopoly.OwnershipMultiplier;
 import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
 import pkg.board.domain.Space;
 
-class MoveForwardSpecific extends Card {
+public class MoveForwardSpecific extends Card {
     private final String destination;
 
-    MoveForwardSpecific(String cardText, String destination) {
+    public MoveForwardSpecific(String cardText, String destination) {
         this.cardText = cardText;
         this.destination = destination;
     }
 
     @Override
-    boolean isGetOutOfJailCard() {
+    public boolean isGetOutOfJailCard() {
         return false;
     }
 

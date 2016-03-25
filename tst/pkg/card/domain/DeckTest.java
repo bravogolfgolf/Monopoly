@@ -1,4 +1,4 @@
-package pkg.card;
+package pkg.card.domain;
 
 import org.junit.Test;
 
@@ -13,8 +13,8 @@ public class DeckTest {
 
     @Test
     public void testCommunityChestAndChanceCardsCreated() throws IOException {
-        Deck.addCommunityChestCards(DeckFactory.load(DeckFactory.DeckType.CHEST,"US"));
-        Deck.addChanceCards(DeckFactory.load(DeckFactory.DeckType.CHANCE,"US"));
+        Deck.create(new DeckFactoryFakeUS(), Deck.DeckType.CHEST,"US");
+        Deck.create(new DeckFactoryFakeUS(), Deck.DeckType.CHANCE,"US");
         assertEquals(17, Deck.getCommunityChestCards().size());
         assertEquals(15, Deck.getChanceCards().size());
     }
@@ -31,9 +31,8 @@ public class DeckTest {
             assertEquals(0, CommunityChestCards.size());
 
             List<Card> mimicOutputFromCardLoadMethod = new ArrayList<>();
-            Card card1 = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
-            Card card2 = DeckFactory.create("Instruction2", "Transaction", 100, "Bank");
-
+            Card card1 = new MoveForwardSpecific("", "");
+            Card card2 = new Transaction("",0,"");
             mimicOutputFromCardLoadMethod.add(card1);
             mimicOutputFromCardLoadMethod.add(card2);
 
@@ -65,9 +64,8 @@ public class DeckTest {
             assertEquals(0, ChanceCards.size());
 
             List<Card> mimicOutputFromCardLoadMethod = new ArrayList<>();
-            Card card1 = DeckFactory.create("Instruction1", "MoveForwardSpecific", "Go");
-            Card card2 = DeckFactory.create("Instruction2", "Transaction", 100, "Bank");
-
+            Card card1 = new MoveForwardSpecific("", "");
+            Card card2 = new Transaction("",0,"");
             mimicOutputFromCardLoadMethod.add(card1);
             mimicOutputFromCardLoadMethod.add(card2);
 
@@ -86,6 +84,4 @@ public class DeckTest {
         }
         assertTrue(oneTwo && twoOne);
     }
-
-
 }

@@ -1,14 +1,14 @@
-package pkg.card;
+package pkg.card.domain;
 
 import pkg.monopoly.Player;
 
-class GetOutOfJail extends Card {
-    GetOutOfJail(String cardText) {
+public class GetOutOfJail extends Card {
+    public GetOutOfJail(String cardText) {
         this.cardText = cardText;
     }
 
     @Override
-    boolean isGetOutOfJailCard() {
+    public boolean isGetOutOfJailCard() {
         return true;
     }
 

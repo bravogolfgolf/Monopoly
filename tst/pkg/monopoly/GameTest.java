@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pkg.board.domain.*;
+import pkg.card.domain.Deck;
+import pkg.card.domain.DeckFactoryFakeUS;
 
 
 import java.io.IOException;
@@ -25,6 +27,11 @@ public class GameTest {
     public void setUp() throws Exception {
         game = new Game();
         board = new Board("US", new SpaceFactoryFake());
+        go = (Go) board.getSpace(0);
+        jail = (Jail) board.getSpace(10);
+        electric = (Utility) board.getSpace(12);
+        Deck.create(new DeckFactoryFakeUS(), Deck.DeckType.CHEST,"US");
+        Deck.create(new DeckFactoryFakeUS(), Deck.DeckType.CHANCE,"US");
     }
 
     @After
@@ -41,25 +48,16 @@ public class GameTest {
         }
     }
 
-    private Game gameSetup() {
-        go = (Go) board.getSpace(0);
-        jail = (Jail) board.getSpace(10);
-        electric = (Utility) board.getSpace(12);
-        return game;
-    }
-
     @Test(expected = Game.InvalidPlayerCount.class)
     public void testGameThrowsExceptionWhenFewerThanTwoPlayers() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         addThisManyPlayers(1, game);
         game.start();
     }
 
     @Test
     public void testGameWithTwoPlayers() throws Game.InvalidPlayerCount, IOException {
-        Game game = new Game();
         for (int i = 0; i < 2; i++) {
-            Player player = new Player("Cat");
+            Player player = new Player(Integer.toString(i));
             player.setSpace(board.getSpace(0));
             game.addPlayer(player);
         }
@@ -69,7 +67,6 @@ public class GameTest {
 
     @Test(expected = Game.InvalidPlayerCount.class)
     public void testGameThrowsExceptionWhenMoreThanEightPlayers() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         addThisManyPlayers(9, game);
         game.start();
     }
@@ -103,7 +100,6 @@ public class GameTest {
 
     @Test
     public void testGameOfTwentyRoundsCountTurnsTaken() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         Dice dice = new Dice();
         for (int i = 0; i < 2; i++) {
             PlayerMockTurnCounter player = new PlayerMockTurnCounter();
@@ -120,7 +116,6 @@ public class GameTest {
 
     @Test
     public void testPlayersAlternateOrder() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         Dice dice = new Dice();
         PlayerMockAlternateOrder player1 = new PlayerMockAlternateOrder();
         PlayerMockAlternateOrder player2 = new PlayerMockAlternateOrder();
@@ -140,7 +135,6 @@ public class GameTest {
 
     @Test
     public void testGameOfTenRoundsCountManageProperties() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         DiceMock dice = new DiceMock();
         setUpPlayerMockManagePropertiesCounter(game, go);
         for (int i = 0; i < 10; i++)
@@ -165,7 +159,6 @@ public class GameTest {
 
     @Test
     public void testGameCountManagePropertiesWithDoublesRolled() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         DiceMockRollsDouble3sThenPlain4 dice = new DiceMockRollsDouble3sThenPlain4();
         setUpPlayerMockManagePropertiesCounter(game, go);
         game.play(dice);
@@ -174,7 +167,6 @@ public class GameTest {
 
     @Test
     public void testGameCountManagePropertiesWithDoublesRolledTwice() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         DiceMockRollsDoubleTwiceThenNot dice = new DiceMockRollsDoubleTwiceThenNot();
         setUpPlayerMockManagePropertiesCounter(game, go);
         game.play(dice);
@@ -183,7 +175,6 @@ public class GameTest {
 
     @Test
     public void testGameCountManagePropertiesWithDoublesRolledThreeTimes() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         DiceMockRollsDoubleThreeTimesInARow dice = new DiceMockRollsDoubleThreeTimesInARow();
         setUpPlayerMockManagePropertiesCounter(game, go);
         game.play(dice);
@@ -192,7 +183,6 @@ public class GameTest {
 
     @Test
     public void testInJailThreeRollsNoDoublesPays50() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         DiceMock dice = new DiceMock();
         PlayerMockManagePropertiesCounter player = new PlayerMockManagePropertiesCounter();
         player.setInJail(true);
@@ -220,7 +210,6 @@ public class GameTest {
 
     @Test
     public void testInJailRollsDoubleMovesNoNextTurn() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         DiceMockRollsDoubleThreeTimesInARow dice = new DiceMockRollsDoubleThreeTimesInARow();
         setUpPlayerMockManagePropertiesCounter(game, go);
 
@@ -246,7 +235,6 @@ public class GameTest {
 
     @Test
     public void testInJailPays50RollsDoubleMovesAndNextTurn() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         DiceMockRollsDouble3sThenPlain4 dice = new DiceMockRollsDouble3sThenPlain4();
         setUpPlayerMockManagePropertiesCounter(game, go);
         PlayerMockManagePropertiesCounter player = (PlayerMockManagePropertiesCounter) game.getPlayer(0);
@@ -264,7 +252,6 @@ public class GameTest {
 
     @Test
     public void testInJailRollsDoubleOnThirdRollMovesNoNextTurn() throws Game.InvalidPlayerCount, IOException {
-        Game game = gameSetup();
         DiceMock dice = new DiceMock();
         setUpPlayerMockManagePropertiesCounter(game, go);
         PlayerMockManagePropertiesCounter player = (PlayerMockManagePropertiesCounter) game.getPlayer(0);

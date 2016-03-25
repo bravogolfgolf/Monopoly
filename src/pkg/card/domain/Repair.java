@@ -1,4 +1,4 @@
-package pkg.card;
+package pkg.card.domain;
 
 import pkg.board.domain.Board;
 import pkg.monopoly.Player;
@@ -6,19 +6,19 @@ import pkg.board.domain.RealEstate;
 
 import java.util.List;
 
-class Repair extends Card {
+public class Repair extends Card {
     private static final int HOTEL = 5;
     private int hotelAssessmentAmount = 0;
     private int houseAssessmentAmount = 0;
 
-    Repair(String cardText, int house, int hotel) {
+    public Repair(String cardText, int house, int hotel) {
         this.cardText = cardText;
         houseAssessmentAmount = house;
         hotelAssessmentAmount = hotel;
     }
 
     @Override
-    boolean isGetOutOfJailCard() {
+    public boolean isGetOutOfJailCard() {
         return false;
     }
 

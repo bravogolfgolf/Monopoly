@@ -1,21 +1,21 @@
-package pkg.card;
+package pkg.card.domain;
 
 import pkg.monopoly.Player;
 
 import java.util.List;
 
-class Transaction extends Card {
+public class Transaction extends Card {
     private int amount = 0;
     private String recipient = "";
 
-    Transaction(String cardText, int amount, String recipient) {
+    public Transaction(String cardText, int amount, String recipient) {
         this.cardText = cardText;
         this.amount = amount;
         this.recipient = recipient;
     }
 
     @Override
-    boolean isGetOutOfJailCard() {
+    public boolean isGetOutOfJailCard() {
         return false;
     }
 
