@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Board implements Iterable {
+public class MonopolyBoard implements Iterable {
 
     private final List<Space> board;
 
-    public Board(String localization, SpaceFactory spaceFactory) throws IOException {
+    public MonopolyBoard(String localization, SpaceFactory spaceFactory) throws IOException {
 
         board = spaceFactory.load(localization);
         for (int i = 0; i < board.size() - 1; i++)

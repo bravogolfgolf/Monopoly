@@ -25,11 +25,11 @@ public class RailroadGroupTest {
 
     @Before
     public void setUp() throws IOException {
-        Board board = new Board("US", new SpaceFactoryFake());
-        reading = (Railroad) board.getSpace(5);
-        pennsylvania = (Railroad) board.getSpace(15);
-        bAndO = (Railroad) board.getSpace(25);
-        shortLine = (Railroad) board.getSpace(35);
+        MonopolyBoard monopolyBoard = new MonopolyBoard("US", new SpaceFactoryFake());
+        reading = (Railroad) monopolyBoard.getSpace(5);
+        pennsylvania = (Railroad) monopolyBoard.getSpace(15);
+        bAndO = (Railroad) monopolyBoard.getSpace(25);
+        shortLine = (Railroad) monopolyBoard.getSpace(35);
     }
 
     @Test

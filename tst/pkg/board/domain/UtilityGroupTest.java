@@ -28,9 +28,9 @@ public class UtilityGroupTest {
 
     @Before
     public void setUp() throws IOException {
-        Board board = new Board("US", new SpaceFactoryFake());
-        electric = (Utility) board.getSpace(12);
-        water = (Utility) board.getSpace(28);
+        MonopolyBoard monopolyBoard = new MonopolyBoard("US", new SpaceFactoryFake());
+        electric = (Utility) monopolyBoard.getSpace(12);
+        water = (Utility) monopolyBoard.getSpace(28);
     }
 
     @Test

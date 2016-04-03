@@ -32,9 +32,9 @@ public class RealEstateGroupTest {
 
     @Before
     public void setUp() throws IOException {
-        Board board = new Board("US", new SpaceFactoryFake());
-        mediterraneanAve = (RealEstate) board.getSpace(1);
-        balticAve = (RealEstate) board.getSpace(3);
+        MonopolyBoard monopolyBoard = new MonopolyBoard("US", new SpaceFactoryFake());
+        mediterraneanAve = (RealEstate) monopolyBoard.getSpace(1);
+        balticAve = (RealEstate) monopolyBoard.getSpace(3);
     }
 
     @Test

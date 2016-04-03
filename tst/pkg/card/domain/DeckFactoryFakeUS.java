@@ -46,7 +46,7 @@ public class DeckFactoryFakeUS implements DeckFactory {
             cards.add(new Transaction("Pay poor tax of $15", -15, "Bank"));
             cards.add(new MoveForwardSpecific("Take a trip to Reading Railroad", "Reading Railroad"));
             cards.add(new MoveForwardSpecific("Take a walk on the Boardwalk – Advance token to Boardwalk", "Boardwalk"));
-            cards.add(new Transaction("You have been elected Chairman of the Board – Pay each player $50", -50, "Players"));
+            cards.add(new Transaction("You have been elected Chairman of the MonopolyBoard – Pay each player $50", -50, "Players"));
             cards.add(new Transaction("YYour building loan matures – Collect $150", 150, "Bank"));
         }
         return cards;
