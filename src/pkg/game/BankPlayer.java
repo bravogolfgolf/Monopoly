@@ -1,8 +1,8 @@
-package pkg.monopoly;
+package pkg.game;
 
-public class BankPlayer extends Player {
+class BankPlayer extends Player {
 
-    public BankPlayer() {
+    BankPlayer() {
         super("Bank");
     }
 

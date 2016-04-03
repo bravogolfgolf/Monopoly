@@ -1,8 +1,8 @@
 package pkg.board.domain;
 
-import pkg.monopoly.Basis;
-import pkg.monopoly.OwnershipMultiplier;
-import pkg.monopoly.SourceOfMoveMultiplier;
+import pkg.game.Basis;
+import pkg.game.OwnershipMultiplier;
+import pkg.game.SourceOfMoveMultiplier;
 
 public class Utility extends Property {
 

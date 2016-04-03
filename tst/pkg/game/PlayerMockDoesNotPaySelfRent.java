@@ -1,4 +1,4 @@
-package pkg.monopoly;
+package pkg.game;
 
 public class PlayerMockDoesNotPaySelfRent extends Player {
     public int changeCashBalanceBy = 0;

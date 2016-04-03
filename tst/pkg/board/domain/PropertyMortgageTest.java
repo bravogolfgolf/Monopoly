@@ -3,9 +3,7 @@ package pkg.board.domain;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.domain.Property;
-import pkg.board.domain.Railroad;
-import pkg.monopoly.Player;
+import pkg.game.Player;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

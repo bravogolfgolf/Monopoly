@@ -1,6 +1,6 @@
 package pkg.card.domain;
 
-import pkg.monopoly.Player;
+import pkg.game.Player;
 
 public class GetOutOfJail extends Card {
     public GetOutOfJail(String cardText) {

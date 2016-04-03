@@ -2,7 +2,7 @@ package pkg.board.domain;
 
 import org.junit.Before;
 import org.junit.Test;
-import pkg.monopoly.*;
+import pkg.game.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,9 +28,9 @@ public class UtilityGroupTest {
 
     @Before
     public void setUp() throws IOException {
-        MonopolyBoard monopolyBoard = new MonopolyBoard("US", new SpaceFactoryFake());
-        electric = (Utility) monopolyBoard.getSpace(12);
-        water = (Utility) monopolyBoard.getSpace(28);
+        Board board = new MonopolyBoard("US", new SpaceFactoryFake());
+        electric = (Utility) board.getSpace(12);
+        water = (Utility) board.getSpace(28);
     }
 
     @Test

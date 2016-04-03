@@ -1,4 +1,4 @@
-package pkg.monopoly;
+package pkg.game;
 
 import org.junit.Test;
 import pkg.board.domain.RentalBasis;

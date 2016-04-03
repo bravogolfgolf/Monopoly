@@ -1,4 +1,4 @@
-package pkg.monopoly;
+package pkg.game;
 
 class PlayerMockTurnCounter extends Player {
 

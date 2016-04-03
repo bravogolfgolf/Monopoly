@@ -1,4 +1,4 @@
-package pkg.monopoly;
+package pkg.game;
 
 public class DiceMock extends Dice {
 

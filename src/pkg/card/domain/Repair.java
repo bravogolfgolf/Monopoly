@@ -1,7 +1,7 @@
 package pkg.card.domain;
 
-import pkg.board.domain.MonopolyBoard;
-import pkg.monopoly.Player;
+import pkg.game.Board;
+import pkg.game.Player;
 import pkg.board.domain.RealEstate;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class Repair extends Card {
     @Override
     public void action(Player player) {
         int assessment = 0;
-        List<RealEstate> realEstateHoldings = MonopolyBoard.getAllRealEstateOf(player);
+        List<RealEstate> realEstateHoldings = Board.getAllRealEstateOf(player);
         for (RealEstate realEstate : realEstateHoldings) {
             int numberOfImprovements = realEstate.getImprovements();
             if (numberOfImprovements == HOTEL)

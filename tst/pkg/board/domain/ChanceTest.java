@@ -6,9 +6,9 @@ import org.junit.Test;
 import pkg.card.domain.Card;
 import pkg.card.domain.Deck;
 import pkg.card.domain.GetOutOfJail;
-import pkg.monopoly.OwnershipMultiplier;
-import pkg.monopoly.Player;
-import pkg.monopoly.SourceOfMoveMultiplier;
+import pkg.game.OwnershipMultiplier;
+import pkg.game.Player;
+import pkg.game.SourceOfMoveMultiplier;
 
 import java.util.ArrayList;
 import java.util.List;

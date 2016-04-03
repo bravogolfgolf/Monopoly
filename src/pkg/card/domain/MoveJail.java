@@ -1,8 +1,8 @@
 package pkg.card.domain;
 
-import pkg.monopoly.OwnershipMultiplier;
-import pkg.monopoly.Player;
-import pkg.monopoly.SourceOfMoveMultiplier;
+import pkg.game.OwnershipMultiplier;
+import pkg.game.Player;
+import pkg.game.SourceOfMoveMultiplier;
 import pkg.board.domain.Space;
 
 public class MoveJail extends Card {

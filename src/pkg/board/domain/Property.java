@@ -1,9 +1,9 @@
 package pkg.board.domain;
 
-import pkg.monopoly.Player;
-import pkg.monopoly.Basis;
-import pkg.monopoly.SourceOfMoveMultiplier;
-import pkg.monopoly.OwnershipMultiplier;
+import pkg.game.Player;
+import pkg.game.Basis;
+import pkg.game.SourceOfMoveMultiplier;
+import pkg.game.OwnershipMultiplier;
 
 
 import java.util.ArrayList;

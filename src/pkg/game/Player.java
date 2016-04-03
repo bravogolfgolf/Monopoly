@@ -1,4 +1,4 @@
-package pkg.monopoly;
+package pkg.game;
 
 import pkg.board.domain.Space;
 import pkg.card.domain.Card;

@@ -1,7 +1,8 @@
 package pkg.board.domain;
 
 import org.junit.Test;
-import pkg.monopoly.Player;
+import pkg.game.Board;
+import pkg.game.Player;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,15 +15,15 @@ public class MonopolyBoardTest {
 
     @Test
     public void testGetAllRealEstateOfPlayer() throws IOException {
-        MonopolyBoard monopolyBoard = new MonopolyBoard("US", new SpaceFactoryFake());
+        Board board = new MonopolyBoard("US", new SpaceFactoryFake());
         Player player = new Player("Cat");
-        RealEstate mediterranean = (RealEstate) monopolyBoard.getSpace(1);
-        RealEstate baltic = (RealEstate) monopolyBoard.getSpace(3);
-        CommunityChest communityChest = (CommunityChest) monopolyBoard.getSpace(2);
+        RealEstate mediterranean = (RealEstate) board.getSpace(1);
+        RealEstate baltic = (RealEstate) board.getSpace(3);
+        CommunityChest communityChest = (CommunityChest) board.getSpace(2);
         player.setSpace(communityChest);
         mediterranean.setOwner(player);
         baltic.setOwner(player);
-        List<RealEstate> realEstateHoldings = MonopolyBoard.getAllRealEstateOf(player);
+        List<RealEstate> realEstateHoldings = Board.getAllRealEstateOf(player);
         assertEquals(2, realEstateHoldings.size());
         assertTrue(baltic.equals(realEstateHoldings.get(0)));
         assertTrue(mediterranean.equals(realEstateHoldings.get(1)));
@@ -30,12 +31,12 @@ public class MonopolyBoardTest {
 
     @Test
     public void testCreateBoard() throws IOException {
-        MonopolyBoard monopolyBoard = new MonopolyBoard("US", new SpaceFactoryFake());
-        assertEquals(40, monopolyBoard.size());
-        assertEquals("Go", monopolyBoard.getSpace(0).getClass().getSimpleName());
-        assertEquals("Go", monopolyBoard.getSpace(0).getDescription());
-        assertEquals("RealEstate", monopolyBoard.getSpace(0).getNextSpace().getClass().getSimpleName());
-        assertEquals("Mediterranean Avenue", monopolyBoard.getSpace(0).getNextSpace().getDescription());
+        Board board = new MonopolyBoard("US", new SpaceFactoryFake());
+        assertEquals(40, board.size());
+        assertEquals("Go", board.getSpace(0).getClass().getSimpleName());
+        assertEquals("Go", board.getSpace(0).getDescription());
+        assertEquals("RealEstate", board.getSpace(0).getNextSpace().getClass().getSimpleName());
+        assertEquals("Mediterranean Avenue", board.getSpace(0).getNextSpace().getDescription());
     }
 
     @Test
@@ -59,9 +60,9 @@ public class MonopolyBoardTest {
         int blueGroupCount = 0;
         int railroadCount = 0;
         int utilityCount = 0;
-        MonopolyBoard monopolyBoard = new MonopolyBoard("US", new SpaceFactoryFake());
-        assertTrue(monopolyBoard.size() == 40);
-        for (Object obj : monopolyBoard) {
+        Board board = new MonopolyBoard("US", new SpaceFactoryFake());
+        assertTrue(board.size() == 40);
+        for (Object obj : board) {
             Space space = (Space) obj;
             String classType = space.getClass().getSimpleName();
             if (classType.equals("Go")) goCount++;

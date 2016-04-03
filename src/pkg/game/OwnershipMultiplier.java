@@ -1,15 +1,15 @@
-package pkg.monopoly;
+package pkg.game;
 
-public class SourceOfMoveMultiplier {
+public class OwnershipMultiplier {
     private final boolean aDefault;
     private final int value;
 
-    public SourceOfMoveMultiplier(int value) {
+    public OwnershipMultiplier(int value) {
         this.value = value;
         this.aDefault = false;
     }
 
-    public SourceOfMoveMultiplier() {
+    public OwnershipMultiplier() {
         this.value = 1;
         this.aDefault = true;
     }

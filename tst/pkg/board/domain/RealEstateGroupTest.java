@@ -3,7 +3,7 @@ package pkg.board.domain;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import pkg.monopoly.*;
+import pkg.game.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -32,9 +32,9 @@ public class RealEstateGroupTest {
 
     @Before
     public void setUp() throws IOException {
-        MonopolyBoard monopolyBoard = new MonopolyBoard("US", new SpaceFactoryFake());
-        mediterraneanAve = (RealEstate) monopolyBoard.getSpace(1);
-        balticAve = (RealEstate) monopolyBoard.getSpace(3);
+        Board board = new MonopolyBoard("US", new SpaceFactoryFake());
+        mediterraneanAve = (RealEstate) board.getSpace(1);
+        balticAve = (RealEstate) board.getSpace(3);
     }
 
     @Test

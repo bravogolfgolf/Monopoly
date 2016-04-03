@@ -3,10 +3,9 @@ package pkg.board.domain;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pkg.board.domain.Go;
-import pkg.monopoly.OwnershipMultiplier;
-import pkg.monopoly.Player;
-import pkg.monopoly.SourceOfMoveMultiplier;
+import pkg.game.OwnershipMultiplier;
+import pkg.game.Player;
+import pkg.game.SourceOfMoveMultiplier;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package pkg.monopoly;
+package pkg.game;
 
 import org.junit.After;
 import org.junit.Before;
@@ -21,15 +21,15 @@ public class GameTest {
     private Jail jail;
     private Utility electric;
     private Game game;
-    private MonopolyBoard monopolyBoard;
+    private Board board;
 
     @Before
     public void setUp() throws Exception {
         game = new Game();
-        monopolyBoard = new MonopolyBoard("US", new SpaceFactoryFake());
-        go = (Go) monopolyBoard.getSpace(0);
-        jail = (Jail) monopolyBoard.getSpace(10);
-        electric = (Utility) monopolyBoard.getSpace(12);
+        board = new MonopolyBoard("US", new SpaceFactoryFake());
+        go = (Go) board.getSpace(0);
+        jail = (Jail) board.getSpace(10);
+        electric = (Utility) board.getSpace(12);
         Deck.create(new DeckFactoryFakeUS(), Deck.DeckType.CHEST,"US");
         Deck.create(new DeckFactoryFakeUS(), Deck.DeckType.CHANCE,"US");
     }
@@ -58,7 +58,7 @@ public class GameTest {
     public void testGameWithTwoPlayers() throws Game.InvalidPlayerCount, IOException {
         for (int i = 0; i < 2; i++) {
             Player player = new Player(Integer.toString(i));
-            player.setSpace(monopolyBoard.getSpace(0));
+            player.setSpace(board.getSpace(0));
             game.addPlayer(player);
         }
         game.start();
@@ -218,8 +218,8 @@ public class GameTest {
         player1.setSpace(jail);
         player1.setInJail(true);
 
-        RealEstate virginiaAvenue = (RealEstate) monopolyBoard.getSpace(14);
-        RealEstate marvinGardens = (RealEstate) monopolyBoard.getSpace(29);
+        RealEstate virginiaAvenue = (RealEstate) board.getSpace(14);
+        RealEstate marvinGardens = (RealEstate) board.getSpace(29);
 
         game.play(dice);
 
@@ -242,7 +242,7 @@ public class GameTest {
         player.setInJail(true);
         player.postBail();
 
-        FreeParking freeParking = (FreeParking) monopolyBoard.getSpace(20);
+        FreeParking freeParking = (FreeParking) board.getSpace(20);
 
         game.play(dice);
         assertEquals(3, player.manageProperties);
@@ -273,7 +273,7 @@ public class GameTest {
         assertTrue(player.isInJail());
 
         DiceMockRollsDouble3sThenPlain4 newDice = new DiceMockRollsDouble3sThenPlain4();
-        RealEstate stJamesPlace = (RealEstate) monopolyBoard.getSpace(16);
+        RealEstate stJamesPlace = (RealEstate) board.getSpace(16);
         game.play(newDice);
 
         assertEquals(6, player.manageProperties);

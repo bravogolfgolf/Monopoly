@@ -4,8 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pkg.board.domain.*;
-import pkg.monopoly.Game;
-import pkg.monopoly.Player;
+import pkg.game.Board;
+import pkg.game.Game;
+import pkg.game.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class CardActionTest {
     private static final int TEN_TIMES_NUMBER_ROLLED = NUMBER_ROLLED * 10;
     private static final int TWO_TIMES_NORMAL_RENT = 400;
     private Game game;
-    private MonopolyBoard monopolyBoard;
+    private Board board;
     private CommunityChest communityChest1;
     private CommunityChest communityChest2;
     private Player player1;
@@ -41,29 +42,29 @@ public class CardActionTest {
     @Before
     public void setUp() throws Exception {
         game = new Game();
-        monopolyBoard = new MonopolyBoard("US", new SpaceFactoryFake());
-        communityChest1 = (CommunityChest) monopolyBoard.getSpace(2);
-        communityChest2 = (CommunityChest) monopolyBoard.getSpace(33);
-        chance1 = (Chance) monopolyBoard.getSpace(36);
+        board = new MonopolyBoard("US", new SpaceFactoryFake());
+        communityChest1 = (CommunityChest) board.getSpace(2);
+        communityChest2 = (CommunityChest) board.getSpace(33);
+        chance1 = (Chance) board.getSpace(36);
         player1 = new Player("Cat");
         player1.setSpace(communityChest1);
         player2 = new Player("Dog");
         player2.setSpace(chance1);
-        mediterranean = (RealEstate) monopolyBoard.getSpace(1);
-        baltic = (RealEstate) monopolyBoard.getSpace(3);
-        illinoisAve = (RealEstate) monopolyBoard.getSpace(24);
-        electric = (Utility) monopolyBoard.getSpace(12);
-        chance2 = (Chance) monopolyBoard.getSpace(22);
-        reading = (Railroad) monopolyBoard.getSpace(5);
-        penn = (Railroad) monopolyBoard.getSpace(15);
-        bAndO = (Railroad) monopolyBoard.getSpace(25);
-        shortLine = (Railroad) monopolyBoard.getSpace(35);
+        mediterranean = (RealEstate) board.getSpace(1);
+        baltic = (RealEstate) board.getSpace(3);
+        illinoisAve = (RealEstate) board.getSpace(24);
+        electric = (Utility) board.getSpace(12);
+        chance2 = (Chance) board.getSpace(22);
+        reading = (Railroad) board.getSpace(5);
+        penn = (Railroad) board.getSpace(15);
+        bAndO = (Railroad) board.getSpace(25);
+        shortLine = (Railroad) board.getSpace(35);
     }
 
     @After
     public void teardown() {
         game = null;
-        monopolyBoard = null;
+        board = null;
         communityChest1 = null;
         communityChest2 = null;
         chance1 = null;

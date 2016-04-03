@@ -2,7 +2,7 @@ package pkg.board.domain;
 
 import org.junit.Before;
 import org.junit.Test;
-import pkg.monopoly.*;
+import pkg.game.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,11 +25,11 @@ public class RailroadGroupTest {
 
     @Before
     public void setUp() throws IOException {
-        MonopolyBoard monopolyBoard = new MonopolyBoard("US", new SpaceFactoryFake());
-        reading = (Railroad) monopolyBoard.getSpace(5);
-        pennsylvania = (Railroad) monopolyBoard.getSpace(15);
-        bAndO = (Railroad) monopolyBoard.getSpace(25);
-        shortLine = (Railroad) monopolyBoard.getSpace(35);
+        Board board = new MonopolyBoard("US", new SpaceFactoryFake());
+        reading = (Railroad) board.getSpace(5);
+        pennsylvania = (Railroad) board.getSpace(15);
+        bAndO = (Railroad) board.getSpace(25);
+        shortLine = (Railroad) board.getSpace(35);
     }
 
     @Test
