@@ -4,12 +4,19 @@ import pkg.monopoly.Player;
 import pkg.monopoly.SourceOfMoveMultiplier;
 import pkg.monopoly.OwnershipMultiplier;
 
+import java.util.UUID;
+
 public abstract class Space {
 
+    private final UUID SpaceId = UUID.randomUUID();
     private String description = "";
     private String group = "";
     private Space nextSpace;
     private int numberRolled;
+
+    UUID getSpaceId(){
+        return SpaceId;
+    }
 
     void setDescription(String description) {
         this.description = description;
