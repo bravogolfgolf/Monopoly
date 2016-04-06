@@ -1,6 +1,6 @@
 package usecase;
 
-class CreatePlayerPresenterSpy implements CreatePlayerPresenter {
+class CreatePlayerPresenterSpy implements Presenter {
     private CreatePlayerResponse intendedResponse;
 
     @Override

@@ -10,11 +10,11 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(HierarchicalContextRunner.class)
 public class CreatePlayerTest {
-    private CreatePlayerController controller;
+    private CreatePlayerRequest request;
     private CreatePlayerPresenterSpy presenter;
     private CreatePlayerGateway gateway;
-    private CreatePlayerRequest request;
-    private CreatePlayerInteractor interactor;
+    private Interactor interactor;
+    private Controller controller;
 
     @Before
     public void setUpInteractor() throws Exception {
@@ -61,23 +61,23 @@ public class CreatePlayerTest {
 
     private void createRequestsForNinePlayers() {
         request.token = "1";
-        interactor.createPlayer(request);
+        interactor.handle(request);
         request.token = "2";
-        interactor.createPlayer(request);
+        interactor.handle(request);
         request.token = "3";
-        interactor.createPlayer(request);
+        interactor.handle(request);
         request.token = "4";
-        interactor.createPlayer(request);
+        interactor.handle(request);
         request.token = "5";
-        interactor.createPlayer(request);
+        interactor.handle(request);
         request.token = "6";
-        interactor.createPlayer(request);
+        interactor.handle(request);
         request.token = "7";
-        interactor.createPlayer(request);
+        interactor.handle(request);
         request.token = "8";
-        interactor.createPlayer(request);
+        interactor.handle(request);
         request.token = "9";
-        interactor.createPlayer(request);
+        interactor.handle(request);
     }
 
     public class invalidRequestsToCreatePlayers {
@@ -89,7 +89,7 @@ public class CreatePlayerTest {
 
         @Test
         public void inValidRequest_ReturnsInvalidMessage() {
-            interactor.createPlayer(request);
+            interactor.handle(request);
             assertEquals("Invalid request.", presenter.getIntendedResponse().message);
             assertEquals(null, presenter.getIntendedResponse().token);
             assertEquals(0, gateway.numberOfPlayers());

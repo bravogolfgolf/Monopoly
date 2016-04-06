@@ -1,5 +1,5 @@
 package usecase;
 
-interface CreatePlayerPresenter {
+interface Presenter {
     void presentResponse(CreatePlayerResponse createPlayerResponse);
 }

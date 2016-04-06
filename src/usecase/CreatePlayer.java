@@ -2,19 +2,19 @@ package usecase;
 
 import entitiies.Player;
 
-class CreatePlayer implements CreatePlayerInteractor {
+class CreatePlayer implements Interactor {
 
     private static final int PLAYER_LIMIT = 8;
-    private final CreatePlayerPresenter presenter;
+    private final Presenter presenter;
     private final CreatePlayerGateway gateway;
 
-    CreatePlayer(CreatePlayerPresenter presenter, CreatePlayerGateway gateway) {
+    CreatePlayer(Presenter presenter, CreatePlayerGateway gateway) {
         this.presenter = presenter;
         this.gateway = gateway;
     }
 
     @Override
-    public void createPlayer(CreatePlayerRequest request) {
+    public void handle(CreatePlayerRequest request) {
         CreatePlayerResponse response = new CreatePlayerResponse();
 
         if (isValid(request)) {
