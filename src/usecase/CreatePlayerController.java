@@ -1,7 +1,7 @@
 package usecase;
 
 class CreatePlayerController {
-    private CreatePlayerInteractor interactor;
+    private final CreatePlayerInteractor interactor;
 
     CreatePlayerController(CreatePlayerInteractor interactor) {
         this.interactor = interactor;

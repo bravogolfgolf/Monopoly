@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class CreatePlayerTest {
     private CreatePlayerController controller;
     private CreatePlayerPresenterSpy presenter;
-    private PlayerGatewaySet gateway;
+    private CreatePlayerGateway gateway;
     private CreatePlayerRequest request;
     private CreatePlayerInteractor interactor;
 
@@ -48,6 +48,36 @@ public class CreatePlayerTest {
             assertEquals(null, presenter.getIntendedResponse().token);
             assertEquals(1, gateway.numberOfPlayers());
         }
+
+        @Test
+        public void creatingMoreThanEightPlayers_ReturnsNumberOfPlayersExceededMessage() {
+            createRequestsForNinePlayers();
+            String expectedMessage = "Exceeded eight player limit.";
+            assertEquals(expectedMessage,  presenter.getIntendedResponse().message);
+            assertEquals(null, presenter.getIntendedResponse().token);
+            assertEquals(8, gateway.numberOfPlayers());
+        }
+    }
+
+    private void createRequestsForNinePlayers() {
+        request.token = "1";
+        interactor.createPlayer(request);
+        request.token = "2";
+        interactor.createPlayer(request);
+        request.token = "3";
+        interactor.createPlayer(request);
+        request.token = "4";
+        interactor.createPlayer(request);
+        request.token = "5";
+        interactor.createPlayer(request);
+        request.token = "6";
+        interactor.createPlayer(request);
+        request.token = "7";
+        interactor.createPlayer(request);
+        request.token = "8";
+        interactor.createPlayer(request);
+        request.token = "9";
+        interactor.createPlayer(request);
     }
 
     public class invalidRequestsToCreatePlayers {

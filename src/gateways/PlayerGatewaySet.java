@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class PlayerGatewaySet implements CreatePlayerGateway {
 
-    private Set<Player> players = new HashSet<>();
+    private final Set<Player> players = new HashSet<>();
 
     @Override
     public boolean save(Player player) {
