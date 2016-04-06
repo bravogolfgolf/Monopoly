@@ -1,7 +1,0 @@
-Instruction;MoveForwardSpecific;Space
-Instruction;Transaction;100;Bank
-Instruction;Repairs;40;115
-Instruction;GetOutOfJail
-Instruction;MoveForwardNext;Group
-Instruction;MoveBack
-Instruction;MoveJail;Space
