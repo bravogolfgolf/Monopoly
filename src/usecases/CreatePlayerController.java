@@ -1,4 +1,4 @@
-package usecase;
+package usecases;
 
 class CreatePlayerController implements Controller {
     private final Interactor interactor;
@@ -7,7 +7,7 @@ class CreatePlayerController implements Controller {
         this.interactor = interactor;
     }
 
-    public void sendRequest(CreatePlayerRequest request) {
+    public void sendRequest(Request request) {
         interactor.handle(request);
     }
 }

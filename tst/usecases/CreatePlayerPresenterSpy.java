@@ -1,11 +1,11 @@
-package usecase;
+package usecases;
 
 class CreatePlayerPresenterSpy implements Presenter {
     private CreatePlayerResponse intendedResponse;
 
     @Override
-    public void presentResponse(CreatePlayerResponse createPlayerResponse) {
-        intendedResponse = createPlayerResponse;
+    public void present(Response OutputResponse) {
+        intendedResponse = (CreatePlayerResponse) OutputResponse;
     }
 
     CreatePlayerResponse getIntendedResponse() {

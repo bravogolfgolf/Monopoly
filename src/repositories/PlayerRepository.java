@@ -1,13 +1,13 @@
-package gateways;
+package repositories;
 
 import entitiies.Player;
-import usecase.CreatePlayerGateway;
+import usecases.CreatePlayerGateway;
 
 import java.util.HashSet;
 import java.util.Set;
 
 
-public class PlayerGatewaySet implements CreatePlayerGateway {
+public class PlayerRepository implements CreatePlayerGateway {
 
     private final Set<Player> players = new HashSet<>();
 
@@ -16,7 +16,7 @@ public class PlayerGatewaySet implements CreatePlayerGateway {
         return players.add(player);
     }
 
-    public int numberOfPlayers(){
+    public int count(){
         return players.size();
     }
 }

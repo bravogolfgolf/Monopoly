@@ -1,10 +1,10 @@
-package usecase;
+package usecases;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import gateways.PlayerGatewaySet;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import repositories.PlayerRepository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,7 +20,7 @@ public class CreatePlayerTest {
     public void setUpInteractor() throws Exception {
         request = new CreatePlayerRequest();
         presenter = new CreatePlayerPresenterSpy();
-        gateway = new PlayerGatewaySet();
+        gateway = new PlayerRepository();
         interactor = new CreatePlayer(presenter, gateway);
         controller = new CreatePlayerController(interactor);
     }
@@ -35,9 +35,8 @@ public class CreatePlayerTest {
         @Test
         public void validRequestToCreatePlayerWithUniqueTokenSucceeds() {
             controller.sendRequest(request);
-            assertEquals("Player created with token.", presenter.getIntendedResponse().message);
-            assertEquals("Cat", presenter.getIntendedResponse().token);
-            assertEquals(1, gateway.numberOfPlayers());
+            assertEquals("Player created with Cat token.", presenter.getIntendedResponse().message);
+            assertEquals(1, gateway.count());
         }
 
         @Test
@@ -45,8 +44,7 @@ public class CreatePlayerTest {
             controller.sendRequest(request);
             controller.sendRequest(request);
             assertEquals("Token already in use.", presenter.getIntendedResponse().message);
-            assertEquals(null, presenter.getIntendedResponse().token);
-            assertEquals(1, gateway.numberOfPlayers());
+            assertEquals(1, gateway.count());
         }
 
         @Test
@@ -54,8 +52,7 @@ public class CreatePlayerTest {
             createRequestsForNinePlayers();
             String expectedMessage = "Exceeded eight player limit.";
             assertEquals(expectedMessage,  presenter.getIntendedResponse().message);
-            assertEquals(null, presenter.getIntendedResponse().token);
-            assertEquals(8, gateway.numberOfPlayers());
+            assertEquals(8, gateway.count());
         }
     }
 
@@ -91,8 +88,7 @@ public class CreatePlayerTest {
         public void inValidRequest_ReturnsInvalidMessage() {
             interactor.handle(request);
             assertEquals("Invalid request.", presenter.getIntendedResponse().message);
-            assertEquals(null, presenter.getIntendedResponse().token);
-            assertEquals(0, gateway.numberOfPlayers());
+            assertEquals(0, gateway.count());
         }
     }
 }
