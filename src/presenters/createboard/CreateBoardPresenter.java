@@ -10,15 +10,17 @@ import java.io.IOException;
 public class CreateBoardPresenter implements Presenter {
     private CreateBoardResponse response;
     private BufferedWriter view;
+    private String outputToView;
 
-    public CreateBoardPresenter(BufferedWriter view) {
+    public void setView(BufferedWriter view) {
         this.view = view;
     }
 
     @Override
     public void present(Response OutputResponse) throws IOException {
         response = (CreateBoardResponse) OutputResponse;
-        String s = String.format("%s version of board created.", response.message);
-        view.write(s);
-        view.flush();}
+        outputToView = String.format("%s version of board created.", response.message);
+        view.write(outputToView);
+        view.flush();
+    }
 }

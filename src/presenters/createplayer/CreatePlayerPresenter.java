@@ -11,7 +11,7 @@ public class CreatePlayerPresenter implements Presenter {
     private CreatePlayerResponse response;
     private BufferedWriter view;
 
-    public CreatePlayerPresenter(BufferedWriter view) {
+    public void setView(BufferedWriter view) {
         this.view = view;
     }
 
