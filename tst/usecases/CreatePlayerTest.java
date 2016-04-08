@@ -1,15 +1,26 @@
 package usecases;
 
+import controllers.Controller;
+import controllers.createPlayer.CreatePlayerController;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import repositories.PlayerRepository;
+import usecases.createplayer.CreatePlayer;
+import usecases.createplayer.CreatePlayerGateway;
+import usecases.createplayer.CreatePlayerRequest;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(HierarchicalContextRunner.class)
 public class CreatePlayerTest {
+    private OutputStreamWriter outputStreamWriter = new OutputStreamWriter(System.out);
+    private BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
     private CreatePlayerRequest request;
     private CreatePlayerPresenterSpy presenter;
     private CreatePlayerGateway gateway;
@@ -19,7 +30,7 @@ public class CreatePlayerTest {
     @Before
     public void setUpInteractor() throws Exception {
         request = new CreatePlayerRequest();
-        presenter = new CreatePlayerPresenterSpy();
+        presenter = new CreatePlayerPresenterSpy(bufferedWriter);
         gateway = new PlayerRepository();
         interactor = new CreatePlayer(presenter, gateway);
         controller = new CreatePlayerController(interactor);
@@ -33,30 +44,30 @@ public class CreatePlayerTest {
         }
 
         @Test
-        public void validRequestToCreatePlayerWithUniqueTokenSucceeds() {
+        public void validRequestToCreatePlayerWithUniqueTokenSucceeds() throws IOException {
             controller.sendRequest(request);
-            assertEquals("Player created with Cat token.", presenter.getIntendedResponse().message);
+            assertEquals("Player created with Cat token.", presenter.getResponse().message);
             assertEquals(1, gateway.count());
         }
 
         @Test
-        public void validRequestToCreatePlayerWithNonUniqueTokenFails() {
+        public void validRequestToCreatePlayerWithNonUniqueTokenFails() throws IOException {
             controller.sendRequest(request);
             controller.sendRequest(request);
-            assertEquals("Token already in use.", presenter.getIntendedResponse().message);
+            assertEquals("Token already in use.", presenter.getResponse().message);
             assertEquals(1, gateway.count());
         }
 
         @Test
-        public void creatingMoreThanEightPlayers_ReturnsNumberOfPlayersExceededMessage() {
+        public void creatingMoreThanEightPlayers_ReturnsNumberOfPlayersExceededMessage() throws IOException {
             createRequestsForNinePlayers();
             String expectedMessage = "Exceeded eight player limit.";
-            assertEquals(expectedMessage,  presenter.getIntendedResponse().message);
+            assertEquals(expectedMessage, presenter.getResponse().message);
             assertEquals(8, gateway.count());
         }
     }
 
-    private void createRequestsForNinePlayers() {
+    private void createRequestsForNinePlayers() throws IOException {
         request.token = "1";
         interactor.handle(request);
         request.token = "2";
@@ -85,9 +96,9 @@ public class CreatePlayerTest {
         }
 
         @Test
-        public void inValidRequest_ReturnsInvalidMessage() {
+        public void inValidRequest_ReturnsInvalidMessage() throws IOException {
             interactor.handle(request);
-            assertEquals("Invalid request.", presenter.getIntendedResponse().message);
+            assertEquals("Invalid request.", presenter.getResponse().message);
             assertEquals(0, gateway.count());
         }
     }

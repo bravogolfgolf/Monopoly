@@ -1,7 +1,7 @@
 package entitiies;
 
 public class Board {
-    private String version;
+    private final String version;
 
     public Board(String version) {
         this.version = version;

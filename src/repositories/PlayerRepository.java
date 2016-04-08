@@ -1,7 +1,7 @@
 package repositories;
 
 import entitiies.Player;
-import usecases.CreatePlayerGateway;
+import usecases.createplayer.CreatePlayerGateway;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +16,7 @@ public class PlayerRepository implements CreatePlayerGateway {
         return players.add(player);
     }
 
-    public int count(){
+    public int count() {
         return players.size();
     }
 }

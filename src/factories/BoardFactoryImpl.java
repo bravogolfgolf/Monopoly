@@ -1,9 +1,9 @@
 package factories;
 
 import entitiies.Board;
-import usecases.Factory;
+import usecases.createboard.BoardFactory;
 
-public class BoardFactory implements Factory {
+public class BoardFactoryImpl implements BoardFactory {
     @Override
     public Board make(String version) {
         return new Board(version);

@@ -1,4 +1,4 @@
 package usecases;
 
-class Request {
+public class Request {
 }

@@ -1,4 +1,4 @@
 package usecases;
 
-class Response {
+public class Response {
 }

@@ -1,21 +1,26 @@
-package usecases;
+package usecases.createplayer;
 
 import entitiies.Player;
+import presenters.Presenter;
+import usecases.Interactor;
+import usecases.Request;
 
-class CreatePlayer implements Interactor {
+import java.io.IOException;
+
+public class CreatePlayer implements Interactor {
 
     private static final int PLAYER_LIMIT = 8;
     private final Presenter presenter;
     private final CreatePlayerGateway gateway;
     private final CreatePlayerResponse response = new CreatePlayerResponse();
 
-    CreatePlayer(Presenter presenter, CreatePlayerGateway gateway) {
+    public CreatePlayer(Presenter presenter, CreatePlayerGateway gateway) {
         this.presenter = presenter;
         this.gateway = gateway;
     }
 
     @Override
-    public void handle(Request inputRequest) {
+    public void handle(Request inputRequest) throws IOException {
         CreatePlayerRequest request = (CreatePlayerRequest) inputRequest;
 
         if (isValid(request)) {

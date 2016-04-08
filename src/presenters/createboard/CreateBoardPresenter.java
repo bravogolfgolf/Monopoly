@@ -1,28 +1,24 @@
-package usecases;
+package presenters.createboard;
 
 import presenters.Presenter;
+import usecases.Response;
 import usecases.createboard.CreateBoardResponse;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-class CreateBoardPresenterSpy implements Presenter {
+public class CreateBoardPresenter implements Presenter {
     private CreateBoardResponse response;
     private BufferedWriter view;
-    private String outputToView;
 
-    CreateBoardPresenterSpy(BufferedWriter view) {
+    public CreateBoardPresenter(BufferedWriter view) {
         this.view = view;
     }
 
     @Override
     public void present(Response OutputResponse) throws IOException {
         response = (CreateBoardResponse) OutputResponse;
-        outputToView = String.format("%s version of board created.", response.message);
-    }
-
-
-    String getResponse() {
-        return outputToView;
-    }
+        String s = String.format("%s version of board created.", response.message);
+        view.write(s);
+        view.flush();}
 }
