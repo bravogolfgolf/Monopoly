@@ -1,22 +1,22 @@
 package factories;
 
-import main.Monopoly;
+import main.monopoly;
 import org.junit.Test;
 
 public class FactoryExceptionTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testPresenterFactoryException() {
-        Monopoly.presenterFactory.make("");
+        monopoly.presenterFactory.make("");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInteractorFactoryException() {
-        Monopoly.interactorFactory.make("");
+        monopoly.interactorFactory.make("");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testControllerFactoryException() {
-        Monopoly.controllerFactory.make("");
+        monopoly.controllerFactory.make("");
     }
 }

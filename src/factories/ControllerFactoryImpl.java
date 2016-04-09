@@ -7,8 +7,8 @@ import controllers.createPlayer.CreatePlayerController;
 import interactors.createboard.CreateBoardInteractor;
 import interactors.createplayer.CreatePlayerInteractor;
 import main.ControllerFactory;
-import main.Monopoly;
 import main.PlayerGateway;
+import main.monopoly;
 import presenters.createboard.CreateBoardPresenter;
 import presenters.createplayer.CreatePlayerPresenter;
 import repositories.PlayerRepository;
@@ -21,7 +21,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
     public Controller make(String controller) {
         if (controller.equals("CreateBoardController")) {
             CreateBoardPresenter presenter = new CreateBoardPresenter();
-            CreateBoardInteractor interactor = new CreateBoardInteractor(presenter, Monopoly.boardGateway);
+            CreateBoardInteractor interactor = new CreateBoardInteractor(presenter, monopoly.boardGateway);
             return new CreateBoardController(view, interactor, presenter);
         }
         if (controller.equals("CreatePlayerController")) {
