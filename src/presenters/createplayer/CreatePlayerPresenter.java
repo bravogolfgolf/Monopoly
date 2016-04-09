@@ -1,25 +1,19 @@
 package presenters.createplayer;
 
+import interactors.Response;
+import interactors.createplayer.CreatePlayerResponse;
 import presenters.Presenter;
-import usecases.Response;
-import usecases.createplayer.CreatePlayerResponse;
-
-import java.io.BufferedWriter;
-import java.io.IOException;
 
 public class CreatePlayerPresenter implements Presenter {
-    private CreatePlayerResponse response;
-    private BufferedWriter view;
+    private String viewResponse;
 
-    public CreatePlayerPresenter(BufferedWriter view) {
-        this.view = view;
+    @Override
+    public void present(Response response) {
+        this.viewResponse = ((CreatePlayerResponse) response).message;
     }
 
     @Override
-    public void present(Response outputResponse) throws IOException {
-        response = (CreatePlayerResponse) outputResponse;
-        String s = String.format("%s", response.message);
-        view.write(s);
-        view.flush();
+    public String getResponse() {
+        return viewResponse;
     }
 }

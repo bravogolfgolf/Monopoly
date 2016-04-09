@@ -1,105 +1,87 @@
 package usecases;
 
 import controllers.Controller;
+import controllers.View;
 import controllers.createPlayer.CreatePlayerController;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import org.junit.Before;
+import interactors.Interactor;
+import interactors.createplayer.CreatePlayerInteractor;
+import main.PlayerGateway;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import presenters.Presenter;
+import presenters.createplayer.CreatePlayerPresenter;
 import repositories.PlayerRepository;
-import usecases.createplayer.CreatePlayer;
-import usecases.createplayer.CreatePlayerGateway;
-import usecases.createplayer.CreatePlayerRequest;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(HierarchicalContextRunner.class)
 public class CreatePlayerTest {
-    private OutputStreamWriter outputStreamWriter = new OutputStreamWriter(System.out);
-    private BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-    private CreatePlayerRequest request;
-    private CreatePlayerPresenterSpy presenter;
-    private CreatePlayerGateway gateway;
-    private Interactor interactor;
-    private Controller controller;
-
-    @Before
-    public void setUpInteractor() throws Exception {
-        request = new CreatePlayerRequest();
-        presenter = new CreatePlayerPresenterSpy(bufferedWriter);
-        gateway = new PlayerRepository();
-        interactor = new CreatePlayer(presenter, gateway);
-        controller = new CreatePlayerController(interactor);
-    }
+    private static final String NEW_LINE = System.lineSeparator();
+    private final View view = new ViewDummy();
+    private final Presenter presenter = new CreatePlayerPresenter();
+    private final PlayerGateway gateway = new PlayerRepository();
+    private final Interactor interactor = new CreatePlayerInteractor(presenter, gateway);
+    private final Controller controller = new CreatePlayerController(view, interactor, presenter);
 
     public class validRequestsToCreatePlayers {
 
-        @Before
-        public void setupValidRequest() {
-            request.token = "Cat";
-        }
-
         @Test
         public void validRequestToCreatePlayerWithUniqueTokenSucceeds() throws IOException {
-            controller.sendRequest(request);
-            assertEquals("Player created with Cat token.", presenter.getResponse().message);
+            controller.handle("Cat");
+            String expected = addNewLine("Player created with Cat token.");
+            String actual = presenter.getResponse();
+            assertEquals(expected, actual);
             assertEquals(1, gateway.count());
         }
 
         @Test
         public void validRequestToCreatePlayerWithNonUniqueTokenFails() throws IOException {
-            controller.sendRequest(request);
-            controller.sendRequest(request);
-            assertEquals("Token already in use.", presenter.getResponse().message);
+            controller.handle("Cat");
+            controller.handle("Cat");
+            String expected = addNewLine("Token already in use.");
+            String actual = presenter.getResponse();
+            assertEquals(expected, actual);
             assertEquals(1, gateway.count());
         }
 
         @Test
         public void creatingMoreThanEightPlayers_ReturnsNumberOfPlayersExceededMessage() throws IOException {
             createRequestsForNinePlayers();
-            String expectedMessage = "Exceeded eight player limit.";
-            assertEquals(expectedMessage, presenter.getResponse().message);
+            String expected = addNewLine("Exceeded eight player limit.");
+            String actual = presenter.getResponse();
+            assertEquals(expected, actual);
             assertEquals(8, gateway.count());
         }
     }
 
     private void createRequestsForNinePlayers() throws IOException {
-        request.token = "1";
-        interactor.handle(request);
-        request.token = "2";
-        interactor.handle(request);
-        request.token = "3";
-        interactor.handle(request);
-        request.token = "4";
-        interactor.handle(request);
-        request.token = "5";
-        interactor.handle(request);
-        request.token = "6";
-        interactor.handle(request);
-        request.token = "7";
-        interactor.handle(request);
-        request.token = "8";
-        interactor.handle(request);
-        request.token = "9";
-        interactor.handle(request);
+        controller.handle("1");
+        controller.handle("2");
+        controller.handle("3");
+        controller.handle("4");
+        controller.handle("5");
+        controller.handle("6");
+        controller.handle("7");
+        controller.handle("8");
+        controller.handle("9");
     }
 
     public class invalidRequestsToCreatePlayers {
 
-        @Before
-        public void setupInValidRequest() {
-            request.token = null;
-        }
-
         @Test
         public void inValidRequest_ReturnsInvalidMessage() throws IOException {
-            interactor.handle(request);
-            assertEquals("Invalid request.", presenter.getResponse().message);
+            controller.handle(null);
+            String expected = addNewLine("Invalid request.");
+            String actual = presenter.getResponse();
+            assertEquals(expected, actual);
             assertEquals(0, gateway.count());
         }
+    }
+
+    private String addNewLine(String string) {
+        return String.format(string + "%s", NEW_LINE);
     }
 }

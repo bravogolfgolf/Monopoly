@@ -1,7 +1,6 @@
 package entitiies;
 
 public class Player {
-
     private final String token;
 
     public Player(String token) {

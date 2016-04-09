@@ -1,9 +1,9 @@
 package presenters;
 
-import usecases.Response;
-
-import java.io.IOException;
+import interactors.Response;
 
 public interface Presenter {
-    void present(Response OutputResponse) throws IOException;
+    void present(Response response);
+
+    String getResponse();
 }

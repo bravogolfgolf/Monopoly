@@ -1,19 +1,27 @@
 package controllers.createPlayer;
 
 import controllers.Controller;
-import usecases.Interactor;
-import usecases.Request;
+import controllers.View;
+import interactors.Interactor;
+import interactors.createplayer.CreatePlayerRequest;
+import presenters.Presenter;
 
-import java.io.IOException;
 
 public class CreatePlayerController implements Controller {
+    private final View view;
     private final Interactor interactor;
+    private final Presenter presenter;
 
-    public CreatePlayerController(Interactor interactor) {
+    public CreatePlayerController(View view, Interactor interactor, Presenter presenter) {
+        this.view = view;
         this.interactor = interactor;
+        this.presenter = presenter;
     }
 
-    public void sendRequest(Request request) throws IOException {
+    @Override
+    public void handle(String text) {
+        CreatePlayerRequest request = new CreatePlayerRequest();
+        request.token = text;
         interactor.handle(request);
     }
 }

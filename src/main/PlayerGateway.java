@@ -1,8 +1,8 @@
-package usecases.createplayer;
+package main;
 
 import entitiies.Player;
 
-public interface CreatePlayerGateway {
+public interface PlayerGateway {
     boolean save(Player player);
 
     int count();

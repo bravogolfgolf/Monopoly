@@ -1,13 +1,13 @@
 package repositories;
 
 import entitiies.Player;
-import usecases.createplayer.CreatePlayerGateway;
+import main.PlayerGateway;
 
 import java.util.HashSet;
 import java.util.Set;
 
 
-public class PlayerRepository implements CreatePlayerGateway {
+public final class PlayerRepository implements PlayerGateway {
 
     private final Set<Player> players = new HashSet<>();
 

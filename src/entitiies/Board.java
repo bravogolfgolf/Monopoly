@@ -1,10 +1,12 @@
 package entitiies;
 
-public class Board {
-    private final String version;
+import main.BoardGateway;
 
-    public Board(String version) {
-        this.version = version;
+public final class Board extends BoardGateway {
+    private static String version;
+
+    public void setVersion(String version) {
+        Board.version = version;
     }
 
     public String getVersion() {
