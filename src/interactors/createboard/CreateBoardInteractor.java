@@ -7,7 +7,7 @@ import presenters.Presenter;
 
 import java.io.IOException;
 
-public class CreateBoard implements Interactor {
+public class CreateBoardInteractor implements Interactor {
     private static final String NEW_LINE = System.lineSeparator();
     private Presenter presenter;
 

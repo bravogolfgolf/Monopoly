@@ -8,7 +8,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-public class CreatePlayerPresenterSpy implements Presenter {
+public class CreatePlayerPresenter implements Presenter {
     private CreatePlayerResponse response;
     private OutputStreamWriter outputStreamWriter = new OutputStreamWriter(System.out);
     private BufferedWriter view = new BufferedWriter(outputStreamWriter);

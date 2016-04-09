@@ -7,7 +7,7 @@ import presenters.Presenter;
 
 import java.io.IOException;
 
-public class CreatePlayer implements Interactor {
+public class CreatePlayerInteractor implements Interactor {
     private static final String NEW_LINE = System.lineSeparator();
     private static final int PLAYER_LIMIT = 8;
     private Presenter presenter;

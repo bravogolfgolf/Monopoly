@@ -1,23 +1,18 @@
 package usecases;
 
 import controllers.Controller;
-import controllers.ControllerFactory;
 import controllers.createPlayer.CreatePlayerController;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import interactors.Interactor;
-import interactors.InteractorFactory;
-import interactors.createplayer.CreatePlayer;
 import interactors.createplayer.CreatePlayerGateway;
+import interactors.createplayer.CreatePlayerInteractor;
 import interactors.createplayer.CreatePlayerRequest;
-import main.ControllerFactoryImpl;
-import main.InteractorFactoryImpl;
-import main.PresenterFactoryImpl;
+import main.Monopoly;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import presenters.Presenter;
-import presenters.PresenterFactory;
-import presenters.createplayer.CreatePlayerPresenterSpy;
+import presenters.createplayer.CreatePlayerPresenter;
 import repositories.PlayerRepository;
 
 import java.io.IOException;
@@ -32,21 +27,18 @@ public class CreatePlayerTest {
     private CreatePlayerGateway repository;
     private Interactor interactor;
     private Controller controller;
-    private ControllerFactory controllerFactory = new ControllerFactoryImpl();
-    private InteractorFactory interactorFactory = new InteractorFactoryImpl();
-    private PresenterFactory presenterFactory = new PresenterFactoryImpl();
 
     @Before
     public void setUpInteractor() throws Exception {
         request = new CreatePlayerRequest();
-        presenter = presenterFactory.make("CreatePlayerPresenterSpy");
+        presenter = Monopoly.presenterFactory.make("CreatePlayerPresenter");
 
         repository = new PlayerRepository();
-        interactor = interactorFactory.make("CreatePlayer");
-        ((CreatePlayer) interactor).setPresenter(presenter);
-        ((CreatePlayer) interactor).setGateway(repository);
+        interactor = Monopoly.interactorFactory.make("CreatePlayerInteractor");
+        ((CreatePlayerInteractor) interactor).setPresenter(presenter);
+        ((CreatePlayerInteractor) interactor).setGateway(repository);
 
-        controller = controllerFactory.make("CreatePlayerController");
+        controller = Monopoly.controllerFactory.make("CreatePlayerController");
         ((CreatePlayerController) controller).setInteractor(interactor);
     }
 
@@ -61,7 +53,7 @@ public class CreatePlayerTest {
         public void validRequestToCreatePlayerWithUniqueTokenSucceeds() throws IOException {
             controller.sendRequest(request);
             String expected = addNewLine("Player created with Cat token.");
-            String actual = ((CreatePlayerPresenterSpy) presenter).getResponse().message;
+            String actual = ((CreatePlayerPresenter) presenter).getResponse().message;
             assertEquals(expected, actual);
             assertEquals(1, repository.count());
         }
@@ -71,7 +63,7 @@ public class CreatePlayerTest {
             controller.sendRequest(request);
             controller.sendRequest(request);
             String expected = addNewLine("Token already in use.");
-            String actual = ((CreatePlayerPresenterSpy) presenter).getResponse().message;
+            String actual = ((CreatePlayerPresenter) presenter).getResponse().message;
             assertEquals(expected, actual);
             assertEquals(1, repository.count());
         }
@@ -80,7 +72,7 @@ public class CreatePlayerTest {
         public void creatingMoreThanEightPlayers_ReturnsNumberOfPlayersExceededMessage() throws IOException {
             createRequestsForNinePlayers();
             String expected = addNewLine("Exceeded eight player limit.");
-            String actual = ((CreatePlayerPresenterSpy) presenter).getResponse().message;
+            String actual = ((CreatePlayerPresenter) presenter).getResponse().message;
             assertEquals(expected, actual);
             assertEquals(8, repository.count());
         }
@@ -118,7 +110,7 @@ public class CreatePlayerTest {
         public void inValidRequest_ReturnsInvalidMessage() throws IOException {
             interactor.handle(request);
             String expected = addNewLine("Invalid request.");
-            String actual = ((CreatePlayerPresenterSpy) presenter).getResponse().message;
+            String actual = ((CreatePlayerPresenter) presenter).getResponse().message;
             assertEquals(expected, actual);
             assertEquals(0, repository.count());
         }

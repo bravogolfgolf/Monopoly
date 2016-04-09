@@ -1,9 +1,9 @@
-package main;
+package factories;
 
 import controllers.Controller;
-import controllers.ControllerFactory;
 import controllers.createBoard.CreateBoardController;
 import controllers.createPlayer.CreatePlayerController;
+import main.ControllerFactory;
 
 public class ControllerFactoryImpl implements ControllerFactory {
 

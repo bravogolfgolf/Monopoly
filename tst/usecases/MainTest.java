@@ -6,9 +6,8 @@ import org.junit.Test;
 public class MainTest {
 
     @Test
-    public void testMain(){
-        String[] args = {"",""};
-        Monopoly.main(args);
+    public void testMain() {
+        Monopoly game = new Monopoly();
+        game.main(new String[0]);
     }
-
 }

@@ -1,19 +1,14 @@
 package usecases;
 
 import controllers.Controller;
-import controllers.ControllerFactory;
 import controllers.createBoard.CreateBoardController;
 import interactors.Interactor;
-import interactors.InteractorFactory;
-import interactors.createboard.CreateBoard;
+import interactors.createboard.CreateBoardInteractor;
 import interactors.createboard.CreateBoardRequest;
-import main.ControllerFactoryImpl;
-import main.InteractorFactoryImpl;
-import main.PresenterFactoryImpl;
+import main.Monopoly;
 import org.junit.Test;
 import presenters.Presenter;
-import presenters.PresenterFactory;
-import presenters.createboard.CreateBoardPresenterSpy;
+import presenters.createboard.CreateBoardPresenter;
 
 import java.io.IOException;
 
@@ -21,18 +16,15 @@ import static org.junit.Assert.assertEquals;
 
 public class CreateBoardTest {
     private static final String NEW_LINE = System.lineSeparator();
-    private ControllerFactory controllerFactory = new ControllerFactoryImpl();
-    private InteractorFactory interactorFactory = new InteractorFactoryImpl();
-    private PresenterFactory presenterFactory = new PresenterFactoryImpl();
 
     @Test
     public void createBoard() throws IOException {
-        Presenter presenter = presenterFactory.make("CreateBoardPresenterSpy");
+        Presenter presenter = Monopoly.presenterFactory.make("CreateBoardPresenter");
 
-        Interactor interactor = interactorFactory.make("CreateBoard");
-        ((CreateBoard) interactor).setPresenter(presenter);
+        Interactor interactor = Monopoly.interactorFactory.make("CreateBoardInteractor");
+        ((CreateBoardInteractor) interactor).setPresenter(presenter);
 
-        Controller controller = controllerFactory.make("CreateBoardController");
+        Controller controller = Monopoly.controllerFactory.make("CreateBoardController");
         ((CreateBoardController) controller).setInteractor(interactor);
 
         CreateBoardRequest request = new CreateBoardRequest();
@@ -41,7 +33,7 @@ public class CreateBoardTest {
         controller.sendRequest(request);
 
         String expected = addNewLine("USA version of board created.");
-        String actual = ((CreateBoardPresenterSpy) presenter).getResponse().message;
+        String actual = ((CreateBoardPresenter) presenter).getResponse().message;
         assertEquals(expected, actual);
     }
 
