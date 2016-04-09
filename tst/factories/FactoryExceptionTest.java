@@ -1,6 +1,5 @@
 package factories;
 
-import main.Monopoly;
 import org.junit.Test;
 
 public class FactoryExceptionTest {
