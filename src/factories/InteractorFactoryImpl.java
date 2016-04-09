@@ -4,6 +4,7 @@ import interactors.Interactor;
 import interactors.createboard.CreateBoardInteractor;
 import interactors.createplayer.CreatePlayerInteractor;
 import main.InteractorFactory;
+import main.Monopoly;
 import presenters.createboard.CreateBoardPresenter;
 import presenters.createplayer.CreatePlayerPresenter;
 

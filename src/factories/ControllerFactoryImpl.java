@@ -7,6 +7,7 @@ import controllers.createPlayer.CreatePlayerController;
 import interactors.createboard.CreateBoardInteractor;
 import interactors.createplayer.CreatePlayerInteractor;
 import main.ControllerFactory;
+import main.Monopoly;
 import main.PlayerGateway;
 import presenters.createboard.CreateBoardPresenter;
 import presenters.createplayer.CreatePlayerPresenter;
