@@ -1,6 +1,6 @@
-package usecases.createplayer;
+package interactors.createplayer;
 
-import usecases.Response;
+import interactors.Response;
 
 public class CreatePlayerResponse extends Response {
     public String message;

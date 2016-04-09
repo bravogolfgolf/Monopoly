@@ -1,8 +1,8 @@
 package presenters.createboard;
 
+import interactors.Response;
+import interactors.createboard.CreateBoardResponse;
 import presenters.Presenter;
-import usecases.Response;
-import usecases.createboard.CreateBoardResponse;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

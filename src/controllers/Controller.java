@@ -1,6 +1,6 @@
 package controllers;
 
-import usecases.Request;
+import interactors.Request;
 
 import java.io.IOException;
 

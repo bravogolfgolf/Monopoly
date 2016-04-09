@@ -1,9 +1,9 @@
 package main;
 
-import usecases.Interactor;
-import usecases.InteractorFactory;
-import usecases.createboard.CreateBoard;
-import usecases.createplayer.CreatePlayer;
+import interactors.Interactor;
+import interactors.InteractorFactory;
+import interactors.createboard.CreateBoard;
+import interactors.createplayer.CreatePlayer;
 
 public class InteractorFactoryImpl implements InteractorFactory {
     @Override

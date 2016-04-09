@@ -1,4 +1,4 @@
-package usecases.createplayer;
+package interactors.createplayer;
 
 import entitiies.Player;
 

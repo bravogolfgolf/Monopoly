@@ -1,8 +1,8 @@
 package presenters.createplayer;
 
+import interactors.Response;
+import interactors.createplayer.CreatePlayerResponse;
 import presenters.Presenter;
-import usecases.Response;
-import usecases.createplayer.CreatePlayerResponse;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

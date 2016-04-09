@@ -3,6 +3,10 @@ package usecases;
 import controllers.Controller;
 import controllers.ControllerFactory;
 import controllers.createBoard.CreateBoardController;
+import interactors.Interactor;
+import interactors.InteractorFactory;
+import interactors.createboard.CreateBoard;
+import interactors.createboard.CreateBoardRequest;
 import main.ControllerFactoryImpl;
 import main.InteractorFactoryImpl;
 import main.PresenterFactoryImpl;
@@ -11,14 +15,13 @@ import org.junit.Test;
 import presenters.Presenter;
 import presenters.PresenterFactory;
 import presenters.createboard.CreateBoardPresenterSpy;
-import usecases.createboard.CreateBoard;
-import usecases.createboard.CreateBoardRequest;
 
 import java.io.*;
 
 import static org.junit.Assert.assertEquals;
 
 public class CreateBoardTest {
+    private static final String NEW_LINE = System.lineSeparator();
     private BufferedWriter writer;
     private BufferedReader reader;
     private ControllerFactory controllerFactory = new ControllerFactoryImpl();
@@ -50,6 +53,12 @@ public class CreateBoardTest {
 
         controller.sendRequest(request);
 
-        assertEquals("USA version of board created.", ((CreateBoardPresenterSpy) presenter).getResponse().message);
+        String expected = addNewLine("USA version of board created.");
+        String actual = ((CreateBoardPresenterSpy) presenter).getResponse().message;
+        assertEquals(expected, actual);
+    }
+
+    private String addNewLine(String string) {
+        return String.format(string + "%s", NEW_LINE);
     }
 }

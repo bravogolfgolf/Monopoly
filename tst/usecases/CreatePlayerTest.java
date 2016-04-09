@@ -4,6 +4,11 @@ import controllers.Controller;
 import controllers.ControllerFactory;
 import controllers.createPlayer.CreatePlayerController;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
+import interactors.Interactor;
+import interactors.InteractorFactory;
+import interactors.createplayer.CreatePlayer;
+import interactors.createplayer.CreatePlayerGateway;
+import interactors.createplayer.CreatePlayerRequest;
 import main.ControllerFactoryImpl;
 import main.InteractorFactoryImpl;
 import main.PresenterFactoryImpl;
@@ -14,9 +19,6 @@ import presenters.Presenter;
 import presenters.PresenterFactory;
 import presenters.createplayer.CreatePlayerPresenterSpy;
 import repositories.PlayerRepository;
-import usecases.createplayer.CreatePlayer;
-import usecases.createplayer.CreatePlayerGateway;
-import usecases.createplayer.CreatePlayerRequest;
 
 import java.io.*;
 
@@ -24,6 +26,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(HierarchicalContextRunner.class)
 public class CreatePlayerTest {
+    private static final String NEW_LINE = System.lineSeparator();
     private OutputStreamWriter outputStreamWriter = new OutputStreamWriter(System.out);
     private BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
     private InputStreamReader inputStreamReader = new InputStreamReader(System.in);
@@ -62,7 +65,9 @@ public class CreatePlayerTest {
         @Test
         public void validRequestToCreatePlayerWithUniqueTokenSucceeds() throws IOException {
             controller.sendRequest(request);
-            assertEquals("Player created with Cat token.", ((CreatePlayerPresenterSpy) presenter).getResponse().message);
+            String expected = addNewLine("Player created with Cat token.");
+            String actual = ((CreatePlayerPresenterSpy) presenter).getResponse().message;
+            assertEquals(expected, actual);
             assertEquals(1, repository.count());
         }
 
@@ -70,15 +75,18 @@ public class CreatePlayerTest {
         public void validRequestToCreatePlayerWithNonUniqueTokenFails() throws IOException {
             controller.sendRequest(request);
             controller.sendRequest(request);
-            assertEquals("Token already in use.", ((CreatePlayerPresenterSpy) presenter).getResponse().message);
+            String expected = addNewLine("Token already in use.");
+            String actual = ((CreatePlayerPresenterSpy) presenter).getResponse().message;
+            assertEquals(expected, actual);
             assertEquals(1, repository.count());
         }
 
         @Test
         public void creatingMoreThanEightPlayers_ReturnsNumberOfPlayersExceededMessage() throws IOException {
             createRequestsForNinePlayers();
-            String expectedMessage = "Exceeded eight player limit.";
-            assertEquals(expectedMessage, ((CreatePlayerPresenterSpy) presenter).getResponse().message);
+            String expected = addNewLine("Exceeded eight player limit.");
+            String actual = ((CreatePlayerPresenterSpy) presenter).getResponse().message;
+            assertEquals(expected, actual);
             assertEquals(8, repository.count());
         }
     }
@@ -114,8 +122,14 @@ public class CreatePlayerTest {
         @Test
         public void inValidRequest_ReturnsInvalidMessage() throws IOException {
             interactor.handle(request);
-            assertEquals("Invalid request.", ((CreatePlayerPresenterSpy) presenter).getResponse().message);
+            String expected = addNewLine("Invalid request.");
+            String actual = ((CreatePlayerPresenterSpy) presenter).getResponse().message;
+            assertEquals(expected, actual);
             assertEquals(0, repository.count());
         }
+    }
+
+    private String addNewLine(String string) {
+        return String.format(string + "%s", NEW_LINE);
     }
 }

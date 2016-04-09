@@ -1,6 +1,6 @@
-package usecases.createboard;
+package interactors.createboard;
 
-import usecases.Request;
+import interactors.Request;
 
 public class CreateBoardRequest extends Request {
     public String version;

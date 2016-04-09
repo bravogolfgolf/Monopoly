@@ -1,6 +1,6 @@
-package usecases.createboard;
+package interactors.createboard;
 
-import usecases.Response;
+import interactors.Response;
 
 public class CreateBoardResponse extends Response {
     public String message;

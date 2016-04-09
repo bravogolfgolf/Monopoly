@@ -1,6 +1,6 @@
 package presenters;
 
-import usecases.Response;
+import interactors.Response;
 
 import java.io.IOException;
 

@@ -1,6 +1,6 @@
-package usecases.createplayer;
+package interactors.createplayer;
 
-import usecases.Request;
+import interactors.Request;
 
 public class CreatePlayerRequest extends Request {
     public String token;

@@ -1,7 +1,7 @@
 package repositories;
 
 import entitiies.Player;
-import usecases.createplayer.CreatePlayerGateway;
+import interactors.createplayer.CreatePlayerGateway;
 
 import java.util.HashSet;
 import java.util.Set;

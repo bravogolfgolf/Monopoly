@@ -1,17 +1,17 @@
-package usecases.createplayer;
+package interactors.createplayer;
 
 import entitiies.Player;
+import interactors.Interactor;
+import interactors.Request;
 import presenters.Presenter;
-import usecases.Interactor;
-import usecases.Request;
 
 import java.io.IOException;
 
 public class CreatePlayer implements Interactor {
-
+    private static final String NEW_LINE = System.lineSeparator();
     private static final int PLAYER_LIMIT = 8;
-    private  Presenter presenter;
-    private  CreatePlayerGateway gateway;
+    private Presenter presenter;
+    private CreatePlayerGateway gateway;
     private final CreatePlayerResponse response = new CreatePlayerResponse();
 
     public void setPresenter(Presenter presenter) {
@@ -32,19 +32,23 @@ public class CreatePlayer implements Interactor {
                 Player player = new Player(request.token);
 
                 if (gateway.save(player))
-                    response.message = formatResponseMessage(player);
+                    response.message = addNewLine(formatResponseMessage(player.getToken()));
 
-                else response.message = "Token already in use.";
+                else response.message = addNewLine("Token already in use.");
 
-            } else response.message = "Exceeded eight player limit.";
+            } else response.message = addNewLine("Exceeded eight player limit.");
 
-        } else response.message = "Invalid request.";
+        } else response.message = addNewLine("Invalid request.");
 
         presenter.present(response);
     }
 
-    private String formatResponseMessage(Player player) {
-        return String.format("Player created with %s token.", player.getToken());
+    private String formatResponseMessage(String token) {
+        return String.format("Player created with %s token.", token);
+    }
+
+    private String addNewLine(String string) {
+        return String.format(string + "%s", NEW_LINE);
     }
 
     private boolean isValid(CreatePlayerRequest request) {
