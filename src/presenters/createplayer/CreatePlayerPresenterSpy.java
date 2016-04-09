@@ -6,10 +6,12 @@ import presenters.Presenter;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class CreatePlayerPresenterSpy implements Presenter {
     private CreatePlayerResponse response;
-    private BufferedWriter view;
+    private OutputStreamWriter outputStreamWriter = new OutputStreamWriter(System.out);
+    private BufferedWriter view = new BufferedWriter(outputStreamWriter);
 
     public void setView(BufferedWriter view) {
         this.view = view;

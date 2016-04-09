@@ -6,10 +6,12 @@ import interactors.Request;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class CreateBoardController implements Controller {
     private Interactor interactor;
-    private BufferedReader view;
+    private InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+    private BufferedReader view = new BufferedReader(inputStreamReader);
 
     public void setView(BufferedReader view) {
         this.view = view;

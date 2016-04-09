@@ -6,10 +6,12 @@ import interactors.Request;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class CreatePlayerController implements Controller {
     private Interactor interactor;
-    private BufferedReader view;
+    private InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+    private BufferedReader view = new BufferedReader(inputStreamReader);
 
     public void sendRequest(Request request) throws IOException {
         interactor.handle(request);

@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class PlayerRepository implements CreatePlayerGateway {
+public final class PlayerRepository implements CreatePlayerGateway {
 
     private final Set<Player> players = new HashSet<>();
 

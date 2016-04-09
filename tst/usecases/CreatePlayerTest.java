@@ -20,17 +20,13 @@ import presenters.PresenterFactory;
 import presenters.createplayer.CreatePlayerPresenterSpy;
 import repositories.PlayerRepository;
 
-import java.io.*;
+import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(HierarchicalContextRunner.class)
 public class CreatePlayerTest {
     private static final String NEW_LINE = System.lineSeparator();
-    private OutputStreamWriter outputStreamWriter = new OutputStreamWriter(System.out);
-    private BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-    private InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-    private BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
     private CreatePlayerRequest request;
     private Presenter presenter;
     private CreatePlayerGateway repository;
@@ -44,14 +40,13 @@ public class CreatePlayerTest {
     public void setUpInteractor() throws Exception {
         request = new CreatePlayerRequest();
         presenter = presenterFactory.make("CreatePlayerPresenterSpy");
-        ((CreatePlayerPresenterSpy) presenter).setView(bufferedWriter);
+
         repository = new PlayerRepository();
         interactor = interactorFactory.make("CreatePlayer");
         ((CreatePlayer) interactor).setPresenter(presenter);
         ((CreatePlayer) interactor).setGateway(repository);
 
         controller = controllerFactory.make("CreatePlayerController");
-        ((CreatePlayerController) controller).setView(bufferedReader);
         ((CreatePlayerController) controller).setInteractor(interactor);
     }
 
