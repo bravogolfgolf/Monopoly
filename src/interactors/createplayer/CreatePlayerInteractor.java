@@ -3,28 +3,24 @@ package interactors.createplayer;
 import entitiies.Player;
 import interactors.Interactor;
 import interactors.Request;
+import main.PlayerGateway;
 import presenters.Presenter;
-
-import java.io.IOException;
 
 public class CreatePlayerInteractor implements Interactor {
     private static final String NEW_LINE = System.lineSeparator();
     private static final int PLAYER_LIMIT = 8;
-    private Presenter presenter;
-    private CreatePlayerGateway gateway;
-    private final CreatePlayerResponse response = new CreatePlayerResponse();
+    private final Presenter presenter;
+    private final PlayerGateway gateway;
 
-    public void setPresenter(Presenter presenter) {
+    public CreatePlayerInteractor(Presenter presenter, PlayerGateway gateway) {
         this.presenter = presenter;
-    }
-
-    public void setGateway(CreatePlayerGateway gateway) {
         this.gateway = gateway;
     }
 
     @Override
-    public void handle(Request inputRequest) throws IOException {
+    public void handle(Request inputRequest) {
         CreatePlayerRequest request = (CreatePlayerRequest) inputRequest;
+        CreatePlayerResponse response = new CreatePlayerResponse();
 
         if (isValid(request)) {
 

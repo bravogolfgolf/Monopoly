@@ -1,27 +1,27 @@
 package controllers.createPlayer;
 
 import controllers.Controller;
+import controllers.View;
 import interactors.Interactor;
-import interactors.Request;
+import interactors.createplayer.CreatePlayerRequest;
+import presenters.Presenter;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class CreatePlayerController implements Controller {
-    private Interactor interactor;
-    private InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-    private BufferedReader view = new BufferedReader(inputStreamReader);
+    private final View view;
+    private final Interactor interactor;
+    private final Presenter presenter;
 
-    public void sendRequest(Request request) throws IOException {
-        interactor.handle(request);
-    }
-
-    public void setView(BufferedReader view) {
+    public CreatePlayerController(View view, Interactor interactor, Presenter presenter) {
         this.view = view;
+        this.interactor = interactor;
+        this.presenter = presenter;
     }
 
-    public void setInteractor(Interactor interactor) {
-        this.interactor = interactor;
+    @Override
+    public void handle(String text) {
+        CreatePlayerRequest request = new CreatePlayerRequest();
+        request.token = text;
+        interactor.handle(request);
     }
 }

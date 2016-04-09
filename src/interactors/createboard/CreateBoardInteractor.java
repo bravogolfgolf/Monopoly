@@ -1,26 +1,26 @@
 package interactors.createboard;
 
-import entitiies.Board;
 import interactors.Interactor;
 import interactors.Request;
+import main.BoardGateway;
 import presenters.Presenter;
-
-import java.io.IOException;
 
 public class CreateBoardInteractor implements Interactor {
     private static final String NEW_LINE = System.lineSeparator();
-    private Presenter presenter;
+    private final Presenter presenter;
+    private final BoardGateway gateway;
 
-    public void setPresenter(Presenter presenter) {
+    public CreateBoardInteractor(Presenter presenter, BoardGateway gateway) {
         this.presenter = presenter;
+        this.gateway = gateway;
     }
 
     @Override
-    public void handle(Request inputRequest) throws IOException {
+    public void handle(Request inputRequest) {
         CreateBoardRequest request = (CreateBoardRequest) inputRequest;
         CreateBoardResponse response = new CreateBoardResponse();
-        Board.setVersion(request.version);
-        response.message = String.format("%s version of board created.%s", Board.getVersion(), NEW_LINE);
+        gateway.setVersion(request.version);
+        response.message = String.format("%s version of board created.%s", gateway.getVersion(), NEW_LINE);
         presenter.present(response);
     }
 }

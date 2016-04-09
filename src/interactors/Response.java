@@ -1,4 +1,4 @@
 package interactors;
 
-public class Response {
+public interface Response {
 }

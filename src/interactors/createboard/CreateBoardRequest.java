@@ -2,6 +2,6 @@ package interactors.createboard;
 
 import interactors.Request;
 
-public class CreateBoardRequest extends Request {
+public class CreateBoardRequest implements Request {
     public String version;
 }

@@ -1,29 +1,31 @@
 package controllers.createBoard;
 
 import controllers.Controller;
+import controllers.View;
 import interactors.Interactor;
-import interactors.Request;
+import interactors.createboard.CreateBoardRequest;
+import presenters.Presenter;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+
 
 public class CreateBoardController implements Controller {
-    private Interactor interactor;
-    private InputStreamReader inputStreamReader = new InputStreamReader(System.in);
-    private BufferedReader view = new BufferedReader(inputStreamReader);
+    private final View view;
+    private final Interactor interactor;
+    private final Presenter presenter;
 
-    public void setView(BufferedReader view) {
+    public CreateBoardController(View view, Interactor interactor, Presenter presenter) {
         this.view = view;
-    }
-
-    public void setInteractor(Interactor interactor) {
         this.interactor = interactor;
+        this.presenter = presenter;
     }
 
     @Override
-    public void sendRequest(Request request) throws IOException {
+    public void handle(String text) throws IOException {
+        CreateBoardRequest request = new CreateBoardRequest();
+        request.version = text;
         interactor.handle(request);
-
+        view.output(presenter.getResponse());
     }
+
 }

@@ -1,4 +1,4 @@
 package interactors;
 
-public class Request {
+public interface Request {
 }
