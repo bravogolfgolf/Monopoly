@@ -20,6 +20,6 @@ public class CreateBoardControllerTest {
         CreateBoardInteractorMock interactor = new CreateBoardInteractorMock(presenter, gateway);
         Controller controller = new CreateBoardController(view, interactor, presenter);
         controller.handle("");
-        assertTrue(interactor.VerifyInteractorWasCalledCorrectly);
+        assertTrue(interactor.VerifyHandleMethodCalled);
     }
 }

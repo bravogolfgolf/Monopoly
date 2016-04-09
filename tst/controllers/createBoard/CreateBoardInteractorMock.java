@@ -7,7 +7,7 @@ import presenters.Presenter;
 
 public class CreateBoardInteractorMock extends CreateBoardInteractor {
 
-    public boolean VerifyInteractorWasCalledCorrectly = false;
+    public boolean VerifyHandleMethodCalled = false;
 
     public CreateBoardInteractorMock(Presenter presenter, BoardGateway gateway) {
         super(presenter, gateway);
@@ -15,6 +15,6 @@ public class CreateBoardInteractorMock extends CreateBoardInteractor {
 
     @Override
     public void handle(Request inputRequest) {
-        VerifyInteractorWasCalledCorrectly = true;
+        VerifyHandleMethodCalled = true;
     }
 }

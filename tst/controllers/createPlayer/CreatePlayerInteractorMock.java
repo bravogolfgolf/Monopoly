@@ -7,7 +7,7 @@ import presenters.Presenter;
 
 public class CreatePlayerInteractorMock extends CreatePlayerInteractor {
 
-    public boolean VerifyInteractorWasCalledCorrectly = false;
+    public boolean VerifyHandleMethodCalled = false;
 
     public CreatePlayerInteractorMock(Presenter presenter, PlayerGateway gateway) {
         super(presenter, gateway);
@@ -15,7 +15,7 @@ public class CreatePlayerInteractorMock extends CreatePlayerInteractor {
 
     @Override
     public void handle(Request inputRequest) {
-        VerifyInteractorWasCalledCorrectly = true;
+        VerifyHandleMethodCalled = true;
     }
 
 }

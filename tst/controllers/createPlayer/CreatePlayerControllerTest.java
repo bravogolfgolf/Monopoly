@@ -20,6 +20,6 @@ public class CreatePlayerControllerTest {
         CreatePlayerInteractorMock interactor = new CreatePlayerInteractorMock(presenter, gateway);
         Controller controller = new CreatePlayerController(view, interactor, presenter);
         controller.handle("");
-        assertTrue(interactor.VerifyInteractorWasCalledCorrectly);
+        assertTrue(interactor.VerifyHandleMethodCalled);
     }
 }
