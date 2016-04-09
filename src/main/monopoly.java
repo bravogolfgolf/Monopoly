@@ -6,7 +6,7 @@ import factories.InteractorFactoryImpl;
 import factories.PresenterFactoryImpl;
 import repositories.PlayerRepository;
 
-public final class monopoly {
+public final class Monopoly {
 
     public static BoardGateway boardGateway = new Board();
     public static PlayerGateway playerGateway = new PlayerRepository();
