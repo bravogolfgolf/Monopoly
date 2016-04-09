@@ -1,16 +1,17 @@
 package main;
 
+import entitiies.Board;
 import factories.ControllerFactoryImpl;
 import factories.InteractorFactoryImpl;
 import factories.PresenterFactoryImpl;
+import repositories.PlayerRepository;
 
-public class Monopoly {
+public final class Monopoly {
 
-    public static PresenterFactory presenterFactory = new PresenterFactoryImpl();
-    public static InteractorFactory interactorFactory = new InteractorFactoryImpl();
+    public static BoardGateway boardGateway = new Board();
+    public static PlayerGateway playerGateway = new PlayerRepository();
     public static ControllerFactory controllerFactory = new ControllerFactoryImpl();
-
-    public static void main(String[] args) {
-    }
+    public static InteractorFactory interactorFactory = new InteractorFactoryImpl();
+    public static PresenterFactory presenterFactory = new PresenterFactoryImpl();
 
 }
