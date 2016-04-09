@@ -19,7 +19,7 @@ public class CreateBoard implements Interactor {
         CreateBoardRequest request = (CreateBoardRequest) inputRequest;
         CreateBoardResponse response = new CreateBoardResponse();
         Board.setVersion(request.version);
-        response.message = Board.getVersion();
+        response.message = String.format("%s version of board created.",Board.getVersion());
         presenter.present(response);
     }
 }

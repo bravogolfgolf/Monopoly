@@ -7,7 +7,7 @@ import usecases.createplayer.CreatePlayerResponse;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-public class CreatePlayerPresenter implements Presenter {
+public class CreatePlayerPresenterSpy implements Presenter {
     private CreatePlayerResponse response;
     private BufferedWriter view;
 
@@ -16,10 +16,13 @@ public class CreatePlayerPresenter implements Presenter {
     }
 
     @Override
-    public void present(Response outputResponse) throws IOException {
-        response = (CreatePlayerResponse) outputResponse;
-        String s = String.format("%s", response.message);
-        view.write(s);
+    public void present(Response response) throws IOException {
+        this.response = (CreatePlayerResponse) response;
+        view.write(this.response.message);
         view.flush();
+    }
+
+    public CreatePlayerResponse getResponse() {
+        return response;
     }
 }

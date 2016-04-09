@@ -1,12 +1,18 @@
 package usecases;
 
 import controllers.Controller;
+import controllers.ControllerFactory;
 import controllers.createPlayer.CreatePlayerController;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
+import main.ControllerFactoryImpl;
+import main.InteractorFactoryImpl;
+import main.PresenterFactoryImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import presenters.Presenter;
+import presenters.PresenterFactory;
+import presenters.createplayer.CreatePlayerPresenterSpy;
 import repositories.PlayerRepository;
 import usecases.createplayer.CreatePlayer;
 import usecases.createplayer.CreatePlayerGateway;
@@ -27,18 +33,21 @@ public class CreatePlayerTest {
     private CreatePlayerGateway repository;
     private Interactor interactor;
     private Controller controller;
+    private ControllerFactory controllerFactory = new ControllerFactoryImpl();
+    private InteractorFactory interactorFactory = new InteractorFactoryImpl();
+    private PresenterFactory presenterFactory = new PresenterFactoryImpl();
 
     @Before
     public void setUpInteractor() throws Exception {
         request = new CreatePlayerRequest();
-        presenter = new CreatePlayerPresenterSpy();
+        presenter = presenterFactory.make("CreatePlayerPresenterSpy");
         ((CreatePlayerPresenterSpy) presenter).setView(bufferedWriter);
         repository = new PlayerRepository();
-        interactor = new CreatePlayer();
+        interactor = interactorFactory.make("CreatePlayer");
         ((CreatePlayer) interactor).setPresenter(presenter);
         ((CreatePlayer) interactor).setGateway(repository);
 
-        controller = new CreatePlayerController();
+        controller = controllerFactory.make("CreatePlayerController");
         ((CreatePlayerController) controller).setView(bufferedReader);
         ((CreatePlayerController) controller).setInteractor(interactor);
     }
