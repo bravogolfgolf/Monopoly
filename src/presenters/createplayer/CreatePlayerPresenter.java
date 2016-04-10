@@ -5,15 +5,15 @@ import interactors.createplayer.CreatePlayerResponse;
 import presenters.Presenter;
 
 public class CreatePlayerPresenter implements Presenter {
-    private String viewResponse;
+    private String viewRequest;
 
     @Override
     public void present(Response response) {
-        this.viewResponse = ((CreatePlayerResponse) response).message;
+        this.viewRequest = ((CreatePlayerResponse) response).message;
     }
 
     @Override
-    public String getResponse() {
-        return viewResponse;
+    public String getViewRequest() {
+        return viewRequest;
     }
 }

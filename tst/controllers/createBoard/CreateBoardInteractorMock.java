@@ -1,8 +1,8 @@
 package controllers.createBoard;
 
+import interactors.BoardGateway;
 import interactors.Request;
 import interactors.createboard.CreateBoardInteractor;
-import main.BoardGateway;
 import presenters.Presenter;
 
 public class CreateBoardInteractorMock extends CreateBoardInteractor {

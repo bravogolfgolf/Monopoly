@@ -1,7 +1,6 @@
 package usecases;
 
 import controllers.Controller;
-import controllers.View;
 import controllers.createPlayer.CreatePlayerController;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import interactors.Interactor;
@@ -16,11 +15,12 @@ import repositories.PlayerRepository;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(HierarchicalContextRunner.class)
 public class CreatePlayerTest {
     private static final String NEW_LINE = System.lineSeparator();
-    private final View view = new ViewDummy();
+    private final ViewMock view = new ViewMock();
     private final Presenter presenter = new CreatePlayerPresenter();
     private final PlayerGateway gateway = new PlayerRepository();
     private final Interactor interactor = new CreatePlayerInteractor(presenter, gateway);
@@ -32,9 +32,10 @@ public class CreatePlayerTest {
         public void validRequestToCreatePlayerWithUniqueTokenSucceeds() throws IOException {
             controller.handle("Cat");
             String expected = addNewLine("Player created with Cat token.");
-            String actual = presenter.getResponse();
+            String actual = presenter.getViewRequest();
             assertEquals(expected, actual);
             assertEquals(1, gateway.count());
+            assertTrue(view.VerifyOutputMethodCalled);
         }
 
         @Test
@@ -42,18 +43,20 @@ public class CreatePlayerTest {
             controller.handle("Cat");
             controller.handle("Cat");
             String expected = addNewLine("Token already in use.");
-            String actual = presenter.getResponse();
+            String actual = presenter.getViewRequest();
             assertEquals(expected, actual);
             assertEquals(1, gateway.count());
+            assertTrue(view.VerifyOutputMethodCalled);
         }
 
         @Test
         public void creatingMoreThanEightPlayers_ReturnsNumberOfPlayersExceededMessage() throws IOException {
             createRequestsForNinePlayers();
             String expected = addNewLine("Exceeded eight player limit.");
-            String actual = presenter.getResponse();
+            String actual = presenter.getViewRequest();
             assertEquals(expected, actual);
             assertEquals(8, gateway.count());
+            assertTrue(view.VerifyOutputMethodCalled);
         }
     }
 
@@ -75,9 +78,10 @@ public class CreatePlayerTest {
         public void inValidRequest_ReturnsInvalidMessage() throws IOException {
             controller.handle(null);
             String expected = addNewLine("Invalid request.");
-            String actual = presenter.getResponse();
+            String actual = presenter.getViewRequest();
             assertEquals(expected, actual);
             assertEquals(0, gateway.count());
+            assertTrue(view.VerifyOutputMethodCalled);
         }
     }
 

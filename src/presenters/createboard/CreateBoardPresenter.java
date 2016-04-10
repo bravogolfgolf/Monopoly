@@ -5,15 +5,15 @@ import interactors.createboard.CreateBoardResponse;
 import presenters.Presenter;
 
 public class CreateBoardPresenter implements Presenter {
-    private String viewResponse;
+    private String viewRequest;
 
     @Override
     public void present(Response response) {
-        this.viewResponse = ((CreateBoardResponse) response).message;
+        this.viewRequest = ((CreateBoardResponse) response).message;
     }
 
     @Override
-    public String getResponse() {
-        return viewResponse;
+    public String getViewRequest() {
+        return viewRequest;
     }
 }

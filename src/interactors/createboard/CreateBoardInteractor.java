@@ -1,8 +1,8 @@
 package interactors.createboard;
 
+import interactors.BoardGateway;
 import interactors.Interactor;
 import interactors.Request;
-import main.BoardGateway;
 import presenters.Presenter;
 
 public class CreateBoardInteractor implements Interactor {

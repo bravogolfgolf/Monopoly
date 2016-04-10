@@ -6,6 +6,8 @@ import interactors.Interactor;
 import interactors.createplayer.CreatePlayerRequest;
 import presenters.Presenter;
 
+import java.io.IOException;
+
 
 public class CreatePlayerController implements Controller {
     private final View view;
@@ -19,9 +21,10 @@ public class CreatePlayerController implements Controller {
     }
 
     @Override
-    public void handle(String text) {
+    public void handle(String text) throws IOException {
         CreatePlayerRequest request = new CreatePlayerRequest();
         request.token = text;
         interactor.handle(request);
+        view.output(presenter.getViewRequest());
     }
 }

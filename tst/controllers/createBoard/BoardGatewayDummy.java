@@ -1,8 +1,8 @@
 package controllers.createBoard;
 
-import main.BoardGateway;
+import interactors.BoardGateway;
 
-public class BoardGatewayDummy extends BoardGateway {
+public class BoardGatewayDummy implements BoardGateway {
     @Override
     public void setVersion(String version) {
 

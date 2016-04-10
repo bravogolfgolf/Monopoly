@@ -2,7 +2,7 @@ package controllers.createBoard;
 
 import controllers.Controller;
 import controllers.View;
-import main.BoardGateway;
+import interactors.BoardGateway;
 import org.junit.Test;
 import presenters.Presenter;
 

@@ -1,8 +1,8 @@
 package entitiies;
 
-import main.BoardGateway;
+import interactors.BoardGateway;
 
-public final class Board extends BoardGateway {
+public final class Board implements BoardGateway {
     private static String version;
 
     public void setVersion(String version) {

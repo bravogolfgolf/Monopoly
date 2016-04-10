@@ -12,7 +12,7 @@ public class CreateBoardPresenterMock extends CreateBoardPresenter {
     }
 
     @Override
-    public String getResponse() {
+    public String getViewRequest() {
         return null;
     }
 }

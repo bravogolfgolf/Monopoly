@@ -1,8 +1,8 @@
 package interactors.createboard;
 
-import main.BoardGateway;
+import interactors.BoardGateway;
 
-public class BoardGatewayMock extends BoardGateway {
+public class BoardGatewayMock implements BoardGateway {
     public boolean VerifySetVersionMethodCalled = false;
     public boolean VerifyGetVersionMethodCalled = false;
 

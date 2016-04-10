@@ -12,7 +12,7 @@ public class CreatePlayerPresenterMock extends CreatePlayerPresenter {
     }
 
     @Override
-    public String getResponse() {
+    public String getViewRequest() {
         return null;
     }
 }
