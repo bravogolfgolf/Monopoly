@@ -21,7 +21,13 @@ public class CreatePlayerController implements Controller {
     }
 
     @Override
-    public void handle(String text) throws IOException {
+    public void execute() throws IOException {
+        handle(null);
+        String line = view.reader.readLine();
+        handle(line);
+    }
+
+    protected void handle(String text) throws IOException {
         CreatePlayerRequest request = new CreatePlayerRequest();
         request.token = text;
         interactor.handle(request);

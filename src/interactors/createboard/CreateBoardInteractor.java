@@ -4,9 +4,9 @@ import interactors.BoardGateway;
 import interactors.Interactor;
 import interactors.Request;
 import presenters.Presenter;
+import utilities.StringFormatter;
 
 public class CreateBoardInteractor implements Interactor {
-    private static final String NEW_LINE = System.lineSeparator();
     private final Presenter presenter;
     private final BoardGateway gateway;
 
@@ -17,10 +17,17 @@ public class CreateBoardInteractor implements Interactor {
 
     @Override
     public void handle(Request inputRequest) {
-        CreateBoardRequest request = (CreateBoardRequest) inputRequest;
         CreateBoardResponse response = new CreateBoardResponse();
-        gateway.setVersion(request.version);
-        response.message = String.format("%s version of board created.%s", gateway.getVersion(), NEW_LINE);
-        presenter.present(response);
+        CreateBoardRequest request = (CreateBoardRequest) inputRequest;
+
+        if (request.version == null) {
+            response.message = StringFormatter.addNewLine("Select version of board you would like to use.");
+            presenter.present(response);
+
+        } else {
+            gateway.setVersion(request.version);
+            response.message = StringFormatter.addNewLine(String.format("%s version of board created.", gateway.getVersion()));
+            presenter.present(response);
+        }
     }
 }

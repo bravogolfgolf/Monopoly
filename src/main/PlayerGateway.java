@@ -2,8 +2,11 @@ package main;
 
 import entitiies.Player;
 
-public interface PlayerGateway {
-    boolean save(Player player);
+public abstract class PlayerGateway {
 
-    int count();
+    public static final int PLAYER_LIMIT = 8;
+
+    public abstract boolean save(Player player);
+
+    public abstract int count();
 }

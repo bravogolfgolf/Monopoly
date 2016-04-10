@@ -1,21 +1,22 @@
 package main;
 
-import controllers.View;
+import controllers.Controller;
 import entitiies.Board;
 import factories.ControllerFactoryImpl;
-import factories.InteractorFactoryImpl;
-import factories.PresenterFactoryImpl;
-import interactors.BoardGateway;
 import repositories.PlayerRepository;
 import view.Console;
 
-public final class Monopoly {
+import java.io.IOException;
 
-    public static View console = new Console();
-    public static BoardGateway boardGateway = new Board();
-    public static PlayerGateway playerGateway = new PlayerRepository();
-    public static ControllerFactory controllerFactory = new ControllerFactoryImpl();
-    public static InteractorFactory interactorFactory = new InteractorFactoryImpl();
-    public static PresenterFactory presenterFactory = new PresenterFactoryImpl();
+final class Monopoly {
 
+    public static void main(String[] args) throws IOException {
+        Context.console = new Console();
+        Context.boardGateway = new Board();
+        Context.playerGateway = new PlayerRepository();
+        Context.controllerFactory = new ControllerFactoryImpl();
+
+        Controller controller = Context.controllerFactory.make("CreateBoardController");
+        controller.execute();
+    }
 }

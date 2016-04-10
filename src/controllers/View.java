@@ -1,8 +1,11 @@
 package controllers;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
-public interface View {
+public abstract class View {
+    public final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    void output(String text) throws IOException;
+    public abstract void output(String text) throws IOException;
 }

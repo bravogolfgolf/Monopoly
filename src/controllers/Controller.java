@@ -4,5 +4,6 @@ import java.io.IOException;
 
 public interface Controller {
 
-    void handle(String text) throws IOException;
+    void execute() throws IOException;
+
 }

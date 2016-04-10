@@ -1,22 +1,23 @@
 package factories;
 
 import controllers.Controller;
-import main.Monopoly;
+import main.Context;
 import org.junit.Test;
 
 public class ControllerFactoryTest {
 
-    private Controller controller;
 
     @Test(expected = IllegalArgumentException.class)
     public void testControllerFactoryException() {
-        Monopoly.controllerFactory.make("");
+        Context.controllerFactory = new ControllerFactoryImpl();
+        Context.controllerFactory.make("");
     }
 
     @Test
     public void testCreateControllers() {
-        controller = Monopoly.controllerFactory.make("CreateBoardController");
-        controller = Monopoly.controllerFactory.make("CreatePlayerController");
+        Context.controllerFactory = new ControllerFactoryImpl();
+        Controller controller = Context.controllerFactory.make("CreateBoardController");
+        controller = Context.controllerFactory.make("CreatePlayerController");
     }
 }
 

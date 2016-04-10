@@ -3,10 +3,10 @@ package entitiies;
 import interactors.BoardGateway;
 
 public final class Board implements BoardGateway {
-    private static String version;
+    private String version;
 
     public void setVersion(String version) {
-        Board.version = version;
+        this.version = version;
     }
 
     public String getVersion() {

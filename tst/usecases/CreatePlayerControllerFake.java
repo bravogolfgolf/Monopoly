@@ -1,0 +1,21 @@
+package usecases;
+
+import controllers.View;
+import controllers.createPlayer.CreatePlayerController;
+import interactors.Interactor;
+import presenters.Presenter;
+
+import java.io.IOException;
+
+public class CreatePlayerControllerFake extends CreatePlayerController {
+    public CreatePlayerControllerFake(View view, Interactor interactor, Presenter presenter) {
+        super(view, interactor, presenter);
+    }
+
+    @Override
+    public void execute() throws IOException {
+        super.handle(null);
+        String line = "Cat";
+        super.handle(line);
+    }
+}

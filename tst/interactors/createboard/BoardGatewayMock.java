@@ -3,17 +3,20 @@ package interactors.createboard;
 import interactors.BoardGateway;
 
 public class BoardGatewayMock implements BoardGateway {
+
+    private String version;
+
     public boolean VerifySetVersionMethodCalled = false;
     public boolean VerifyGetVersionMethodCalled = false;
 
-    @Override
+
     public void setVersion(String version) {
         VerifySetVersionMethodCalled = true;
+        this.version = version;
     }
 
-    @Override
     public String getVersion() {
         VerifyGetVersionMethodCalled = true;
-        return null;
+        return version;
     }
 }

@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public final class PlayerRepository implements PlayerGateway {
+public final class PlayerRepository extends PlayerGateway {
 
     private final Set<Player> players = new HashSet<>();
 
@@ -16,7 +16,9 @@ public final class PlayerRepository implements PlayerGateway {
         return players.add(player);
     }
 
+    @Override
     public int count() {
         return players.size();
     }
+
 }

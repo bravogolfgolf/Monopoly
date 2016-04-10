@@ -4,12 +4,16 @@ import controllers.View;
 
 import java.io.IOException;
 
-public class ViewMock implements View {
+public class ViewMock extends View {
 
-    public boolean VerifyOutputMethodCalled = false;
+    private final StringBuffer stringBuffer = new StringBuffer();
 
     @Override
     public void output(String text) throws IOException {
-        VerifyOutputMethodCalled = true;
+        stringBuffer.append(text);
+    }
+
+    public boolean VerifyOutputMethodCalled(String expected) {
+        return stringBuffer.toString().equals(expected);
     }
 }
