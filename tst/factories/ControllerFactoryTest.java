@@ -1,7 +1,7 @@
 package factories;
 
 import controllers.Controller;
-import main.Context;
+import main.Monopoly;
 import org.junit.Test;
 
 public class ControllerFactoryTest {
@@ -9,15 +9,15 @@ public class ControllerFactoryTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testControllerFactoryException() {
-        Context.controllerFactory = new ControllerFactoryImpl();
-        Context.controllerFactory.make("");
+        Monopoly.controllerFactory = new ControllerFactoryImpl();
+        Monopoly.controllerFactory.make("");
     }
 
     @Test
     public void testCreateControllers() {
-        Context.controllerFactory = new ControllerFactoryImpl();
-        Controller controller = Context.controllerFactory.make("CreateBoardController");
-        controller = Context.controllerFactory.make("CreatePlayerController");
+        Monopoly.controllerFactory = new ControllerFactoryImpl();
+        Controller controller = Monopoly.controllerFactory.make("CreateBoardController");
+        controller = Monopoly.controllerFactory.make("CreatePlayerController");
     }
 }
 

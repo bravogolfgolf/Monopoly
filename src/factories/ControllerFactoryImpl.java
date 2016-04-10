@@ -5,8 +5,8 @@ import controllers.createBoard.CreateBoardController;
 import controllers.createPlayer.CreatePlayerController;
 import interactors.createboard.CreateBoardInteractor;
 import interactors.createplayer.CreatePlayerInteractor;
-import main.Context;
 import main.ControllerFactory;
+import main.Monopoly;
 import main.PlayerGateway;
 import presenters.createboard.CreateBoardPresenter;
 import presenters.createplayer.CreatePlayerPresenter;
@@ -19,14 +19,14 @@ public class ControllerFactoryImpl implements ControllerFactory {
     public Controller make(String controller) {
         if (controller.equals("CreateBoardController")) {
             CreateBoardPresenter presenter = new CreateBoardPresenter();
-            CreateBoardInteractor interactor = new CreateBoardInteractor(presenter, Context.boardGateway);
-            return new CreateBoardController(Context.console, interactor, presenter);
+            CreateBoardInteractor interactor = new CreateBoardInteractor(presenter, Monopoly.boardGateway);
+            return new CreateBoardController(Monopoly.console, interactor, presenter);
         }
         if (controller.equals("CreatePlayerController")) {
             CreatePlayerPresenter presenter = new CreatePlayerPresenter();
             PlayerGateway gateway = new PlayerRepository();
             CreatePlayerInteractor interactor = new CreatePlayerInteractor(presenter, gateway);
-            return new CreatePlayerController(Context.console, interactor, presenter);
+            return new CreatePlayerController(Monopoly.console, interactor, presenter);
         }
         throw new IllegalArgumentException();
     }
