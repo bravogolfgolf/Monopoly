@@ -1,9 +1,9 @@
 package controllers.createBoard;
 
+import controllers.Presenter;
 import interactors.BoardGateway;
 import interactors.Request;
 import interactors.createboard.CreateBoardInteractor;
-import presenters.Presenter;
 
 public class CreateBoardInteractorMock extends CreateBoardInteractor {
 
@@ -14,7 +14,7 @@ public class CreateBoardInteractorMock extends CreateBoardInteractor {
     }
 
     @Override
-    public void handle(Request inputRequest) {
+    public void handle(Request request) {
         VerifyHandleMethodCalled = true;
     }
 }

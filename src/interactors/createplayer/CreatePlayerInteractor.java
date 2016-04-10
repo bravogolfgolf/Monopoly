@@ -1,11 +1,11 @@
 package interactors.createplayer;
 
-import entitiies.Player;
-import interactors.Interactor;
+import controllers.Interactor;
+import controllers.Presenter;
+import interactors.PlayerGateway;
 import interactors.Request;
-import main.PlayerGateway;
-import presenters.Presenter;
-import utilities.StringFormatter;
+
+import static utilities.StringFormatter.addNewLine;
 
 public class CreatePlayerInteractor implements Interactor {
     private final Presenter presenter;
@@ -17,23 +17,23 @@ public class CreatePlayerInteractor implements Interactor {
     }
 
     @Override
-    public void handle(Request inputRequest) {
-        CreatePlayerRequest request = (CreatePlayerRequest) inputRequest;
+    public void handle(Request request) {
         CreatePlayerResponse response = new CreatePlayerResponse();
+        CreatePlayerRequest createPlayerRequest = (CreatePlayerRequest) request;
 
-        if (isValid(request)) {
+        if (isValid(createPlayerRequest)) {
 
             if (gateway.count() < PlayerGateway.PLAYER_LIMIT) {
-                Player player = new Player(request.token);
 
-                if (gateway.save(player))
-                    response.message = StringFormatter.addNewLine(formatResponseMessage(player.getToken()));
+                if (gateway.create(createPlayerRequest.token))
 
-                else response.message = StringFormatter.addNewLine("Token already in use.");
+                    response.message = addNewLine(formatResponseMessage(createPlayerRequest.token));
 
-            } else response.message = StringFormatter.addNewLine("Exceeded eight player limit.");
+                else response.message = addNewLine("Token already in use.");
 
-        } else response.message = StringFormatter.addNewLine("Please select token for player.");
+            } else response.message = addNewLine("Exceeded eight player limit.");
+
+        } else response.message = addNewLine("Please select token for player.");
 
         presenter.present(response);
     }

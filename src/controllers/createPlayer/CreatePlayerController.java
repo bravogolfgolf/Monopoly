@@ -1,10 +1,10 @@
 package controllers.createPlayer;
 
-import controllers.Controller;
+import controllers.Interactor;
+import controllers.Presenter;
 import controllers.View;
-import interactors.Interactor;
 import interactors.createplayer.CreatePlayerRequest;
-import presenters.Presenter;
+import main.Controller;
 
 import java.io.IOException;
 

@@ -1,11 +1,11 @@
 package usecases;
 
-import controllers.Controller;
-import interactors.Interactor;
+import controllers.Interactor;
+import controllers.Presenter;
+import interactors.PlayerGateway;
 import interactors.createplayer.CreatePlayerInteractor;
-import main.PlayerGateway;
+import main.Controller;
 import org.junit.Test;
-import presenters.Presenter;
 import presenters.createplayer.CreatePlayerPresenter;
 import repositories.PlayerRepository;
 
@@ -13,9 +13,9 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static utilities.StringFormatter.addNewLine;
 
 public class CreatePlayerTest {
-    private static final String NEW_LINE = System.lineSeparator();
 
     @Test
     public void validRequestToCreatePlayerWithUniqueTokenSucceeds() throws IOException {
@@ -31,10 +31,6 @@ public class CreatePlayerTest {
 
         assertEquals(1, gateway.count());
         assertTrue(view.VerifyOutputMethodCalled(expected));
-    }
-
-    private String addNewLine(String string) {
-        return String.format(string + "%s", NEW_LINE);
     }
 }
 

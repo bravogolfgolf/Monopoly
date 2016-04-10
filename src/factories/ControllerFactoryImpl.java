@@ -1,16 +1,14 @@
 package factories;
 
-import controllers.Controller;
 import controllers.createBoard.CreateBoardController;
 import controllers.createPlayer.CreatePlayerController;
 import interactors.createboard.CreateBoardInteractor;
 import interactors.createplayer.CreatePlayerInteractor;
+import main.Controller;
 import main.ControllerFactory;
 import main.Monopoly;
-import main.PlayerGateway;
 import presenters.createboard.CreateBoardPresenter;
 import presenters.createplayer.CreatePlayerPresenter;
-import repositories.PlayerRepository;
 
 public class ControllerFactoryImpl implements ControllerFactory {
 
@@ -24,8 +22,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
         }
         if (controller.equals("CreatePlayerController")) {
             CreatePlayerPresenter presenter = new CreatePlayerPresenter();
-            PlayerGateway gateway = new PlayerRepository();
-            CreatePlayerInteractor interactor = new CreatePlayerInteractor(presenter, gateway);
+            CreatePlayerInteractor interactor = new CreatePlayerInteractor(presenter, Monopoly.playerGateway);
             return new CreatePlayerController(Monopoly.console, interactor, presenter);
         }
         throw new IllegalArgumentException();

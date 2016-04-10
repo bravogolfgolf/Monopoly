@@ -1,11 +1,11 @@
 package controllers.createPlayer;
 
-import entitiies.Player;
-import main.PlayerGateway;
+import interactors.PlayerGateway;
 
 public class PlayerGatewayDummy extends PlayerGateway {
+
     @Override
-    public boolean save(Player player) {
+    public boolean create(String token) {
         return false;
     }
 

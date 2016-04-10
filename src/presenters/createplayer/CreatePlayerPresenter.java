@@ -1,8 +1,8 @@
 package presenters.createplayer;
 
+import controllers.Presenter;
 import interactors.Response;
 import interactors.createplayer.CreatePlayerResponse;
-import presenters.Presenter;
 
 public class CreatePlayerPresenter implements Presenter {
     private String viewRequest;

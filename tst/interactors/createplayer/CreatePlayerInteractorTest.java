@@ -1,6 +1,6 @@
 package interactors.createplayer;
 
-import interactors.Interactor;
+import controllers.Interactor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +10,7 @@ import static utilities.StringFormatter.addNewLine;
 
 public class CreatePlayerInteractorTest {
 
-    private PlayerRepositoryMock gateway;
+    private PlayerRepositoryFake gateway;
     private CreatePlayerPresenterMock presenter;
     private Interactor interactor;
     private CreatePlayerRequest request;
@@ -18,7 +18,7 @@ public class CreatePlayerInteractorTest {
 
     @Before
     public void setup() {
-        gateway = new PlayerRepositoryMock();
+        gateway = new PlayerRepositoryFake();
         presenter = new CreatePlayerPresenterMock();
         interactor = new CreatePlayerInteractor(presenter, gateway);
         request = new CreatePlayerRequest();
@@ -32,7 +32,7 @@ public class CreatePlayerInteractorTest {
 
         interactor.handle(request);
 
-        assertTrue(gateway.VerifySaveMethodCalled);
+        assertTrue(gateway.VerifyCreateMethodCalled);
         assertTrue(gateway.VerifyCountMethodCalled);
         assertTrue(presenter.VerifyPresentMethodCalled);
         assertEquals(expected, presenter.getViewRequest());
@@ -52,12 +52,12 @@ public class CreatePlayerInteractorTest {
     public void creatingMoreThanEightPlayers_ReturnsNumberOfPlayersExceededMessage() {
         expected = addNewLine("Exceeded eight player limit.");
 
-        createRequestsForNinePlayers();
+        sendRequestsForNinePlayers();
 
         assertEquals(expected, presenter.getViewRequest());
     }
 
-    private void createRequestsForNinePlayers() {
+    private void sendRequestsForNinePlayers() {
         for (int i = 1; i < 10; i++) {
             request.token = String.format("%d", i);
             interactor.handle(request);

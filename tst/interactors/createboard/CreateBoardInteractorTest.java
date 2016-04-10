@@ -1,6 +1,6 @@
 package interactors.createboard;
 
-import interactors.Interactor;
+import controllers.Interactor;
 import org.junit.Before;
 import org.junit.Test;
 import utilities.StringFormatter;
@@ -17,7 +17,7 @@ public class CreateBoardInteractorTest {
     private String expected;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         presenter = new CreateBoardPresenterMock();
         gateway = new BoardGatewayMock();
         interactor = new CreateBoardInteractor(presenter, gateway);

@@ -1,12 +1,12 @@
 package usecases;
 
-import controllers.Controller;
+import controllers.Interactor;
+import controllers.Presenter;
 import entitiies.Board;
 import interactors.BoardGateway;
-import interactors.Interactor;
 import interactors.createboard.CreateBoardInteractor;
+import main.Controller;
 import org.junit.Test;
-import presenters.Presenter;
 import presenters.createboard.CreateBoardPresenter;
 import utilities.StringFormatter;
 

@@ -1,9 +1,9 @@
 package usecases;
 
+import controllers.Interactor;
+import controllers.Presenter;
 import controllers.View;
 import controllers.createPlayer.CreatePlayerController;
-import interactors.Interactor;
-import presenters.Presenter;
 
 import java.io.IOException;
 

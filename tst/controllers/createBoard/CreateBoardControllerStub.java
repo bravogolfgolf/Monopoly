@@ -1,8 +1,8 @@
 package controllers.createBoard;
 
+import controllers.Interactor;
+import controllers.Presenter;
 import controllers.View;
-import interactors.Interactor;
-import presenters.Presenter;
 
 import java.io.IOException;
 

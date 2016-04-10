@@ -1,12 +1,11 @@
-package main;
-
-import entitiies.Player;
+package interactors;
 
 public abstract class PlayerGateway {
 
     public static final int PLAYER_LIMIT = 8;
 
-    public abstract boolean save(Player player);
+    public abstract boolean create(String token);
 
     public abstract int count();
+
 }

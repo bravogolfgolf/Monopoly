@@ -1,9 +1,9 @@
 package interactors.createboard;
 
+import controllers.Interactor;
+import controllers.Presenter;
 import interactors.BoardGateway;
-import interactors.Interactor;
 import interactors.Request;
-import presenters.Presenter;
 import utilities.StringFormatter;
 
 public class CreateBoardInteractor implements Interactor {
@@ -16,16 +16,16 @@ public class CreateBoardInteractor implements Interactor {
     }
 
     @Override
-    public void handle(Request inputRequest) {
+    public void handle(Request request) {
         CreateBoardResponse response = new CreateBoardResponse();
-        CreateBoardRequest request = (CreateBoardRequest) inputRequest;
+        CreateBoardRequest createBoardRequest = (CreateBoardRequest) request;
 
-        if (request.version == null) {
+        if (createBoardRequest.version == null) {
             response.message = StringFormatter.addNewLine("Select version of board you would like to use.");
             presenter.present(response);
 
         } else {
-            gateway.setVersion(request.version);
+            gateway.setVersion(createBoardRequest.version);
             response.message = StringFormatter.addNewLine(String.format("%s version of board created.", gateway.getVersion()));
             presenter.present(response);
         }

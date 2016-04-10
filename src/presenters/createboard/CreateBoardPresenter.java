@@ -1,8 +1,8 @@
 package presenters.createboard;
 
+import controllers.Presenter;
 import interactors.Response;
 import interactors.createboard.CreateBoardResponse;
-import presenters.Presenter;
 
 public class CreateBoardPresenter implements Presenter {
     private String viewRequest;

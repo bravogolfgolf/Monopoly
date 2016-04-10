@@ -1,9 +1,9 @@
 package controllers.createPlayer;
 
+import controllers.Presenter;
+import interactors.PlayerGateway;
 import interactors.Request;
 import interactors.createplayer.CreatePlayerInteractor;
-import main.PlayerGateway;
-import presenters.Presenter;
 
 public class CreatePlayerInteractorMock extends CreatePlayerInteractor {
 
@@ -14,7 +14,7 @@ public class CreatePlayerInteractorMock extends CreatePlayerInteractor {
     }
 
     @Override
-    public void handle(Request inputRequest) {
+    public void handle(Request request) {
         VerifyHandleMethodCalled = true;
     }
 

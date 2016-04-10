@@ -1,19 +1,20 @@
 package interactors.createplayer;
 
 import entitiies.Player;
-import main.PlayerGateway;
+import interactors.PlayerGateway;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class PlayerRepositoryMock extends PlayerGateway {
+public class PlayerRepositoryFake extends PlayerGateway {
     private final Set<Player> players = new HashSet<>();
-    public boolean VerifySaveMethodCalled = false;
+    public boolean VerifyCreateMethodCalled = false;
     public boolean VerifyCountMethodCalled = false;
 
     @Override
-    public boolean save(Player player) {
-        VerifySaveMethodCalled = true;
+    public boolean create(String token) {
+        VerifyCreateMethodCalled = true;
+        Player player = new Player(token);
         return players.add(player);
     }
 
@@ -21,5 +22,4 @@ public class PlayerRepositoryMock extends PlayerGateway {
         VerifyCountMethodCalled = true;
         return players.size();
     }
-
 }

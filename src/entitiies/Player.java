@@ -7,10 +7,6 @@ public class Player {
         this.token = token;
     }
 
-    public String getToken() {
-        return token;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

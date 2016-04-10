@@ -1,10 +1,10 @@
 package controllers.createBoard;
 
-import controllers.Controller;
+import controllers.Presenter;
 import controllers.View;
 import interactors.BoardGateway;
+import main.Controller;
 import org.junit.Test;
-import presenters.Presenter;
 
 import java.io.IOException;
 

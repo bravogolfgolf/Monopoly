@@ -1,6 +1,6 @@
 package factories;
 
-import controllers.Controller;
+import main.Controller;
 import main.Monopoly;
 import org.junit.Test;
 
