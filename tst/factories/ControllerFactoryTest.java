@@ -1,23 +1,29 @@
 package game.factories;
 
 import game.Controller;
-import game.Monopoly;
+import org.junit.Before;
 import org.junit.Test;
+
+import static game.Monopoly.controllerFactory;
 
 public class ControllerFactoryTest {
 
+    private Controller controller;
+
+    @Before
+    public void setUp() throws Exception {
+        controllerFactory = new ControllerFactoryImpl();
+    }
 
     @Test(expected = IllegalArgumentException.class)
     public void testControllerFactoryException() {
-        Monopoly.controllerFactory = new ControllerFactoryImpl();
-        Monopoly.controllerFactory.make("");
+        controller = controllerFactory.make("");
     }
 
     @Test
-    public void testCreateControllers() {
-        Monopoly.controllerFactory = new ControllerFactoryImpl();
-        Controller controller = Monopoly.controllerFactory.make("CreateBoardController");
-        controller = Monopoly.controllerFactory.make("CreatePlayerController");
+    public void testMakeController() {
+        controller = controllerFactory.make("CreateBoardController");
+        controller = controllerFactory.make("CreatePlayerController");
     }
 }
 
