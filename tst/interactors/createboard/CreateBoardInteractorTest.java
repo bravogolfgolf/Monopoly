@@ -1,47 +1,40 @@
 package game.interactors.createboard;
 
 import game.controllers.Interactor;
-import game.utilities.StringFormatter;
+import game.interactors.PresenterEnMock;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class CreateBoardInteractorTest {
 
-    private CreateBoardPresenterMock presenter;
+    private PresenterEnMock presenter;
     private BoardGatewayMock gateway;
     private Interactor interactor;
     private CreateBoardRequest request;
-    private String expected;
 
     @Before
     public void setUp() {
-        presenter = new CreateBoardPresenterMock();
+        presenter = new PresenterEnMock();
         gateway = new BoardGatewayMock();
         interactor = new CreateBoardInteractor(presenter, gateway);
         request = new CreateBoardRequest();
     }
 
     @Test
-    public void testCreateBoardInteractor() {
-        expected = StringFormatter.addNewLine("TEST version of board created.");
-
+    public void testPresentBoardCreatedMessage() {
         request.version = "TEST";
         interactor.handle(request);
 
-        assertTrue(gateway.VerifyCreateMethodCalled);
-        assertTrue(presenter.VerifyPresentMethodCalled);
-        assertEquals(expected, presenter.getViewRequest());
+        assertTrue(gateway.verifyCreateMethodCalled);
+        assertTrue(presenter.verifyBoardCreateMessage);
     }
 
     @Test
-    public void testNullReturnsPrompt() {
-        expected = StringFormatter.addNewLine("Select version of board you would like to use.");
+    public void testPresentBoardPrompt() {
         request.version = null;
         interactor.handle(request);
-        assertTrue(presenter.VerifyPresentMethodCalled);
-        assertEquals(expected, presenter.getViewRequest());
+        assertTrue(presenter.verifyBoardPromptMessage);
     }
 }

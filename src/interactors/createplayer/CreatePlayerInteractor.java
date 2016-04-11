@@ -1,17 +1,15 @@
 package game.interactors.createplayer;
 
 import game.controllers.Interactor;
-import game.controllers.Presenter;
+import game.controllers.InteractorPresenter;
 import game.interactors.PlayerGateway;
 import game.interactors.Request;
 
-import static game.utilities.StringFormatter.addNewLine;
-
 public class CreatePlayerInteractor implements Interactor {
-    private final Presenter presenter;
+    private final InteractorPresenter presenter;
     private final PlayerGateway gateway;
 
-    public CreatePlayerInteractor(Presenter presenter, PlayerGateway gateway) {
+    public CreatePlayerInteractor(InteractorPresenter presenter, PlayerGateway gateway) {
         this.presenter = presenter;
         this.gateway = gateway;
     }
@@ -25,17 +23,20 @@ public class CreatePlayerInteractor implements Interactor {
 
             if (gateway.count() < PlayerGateway.PLAYER_LIMIT) {
 
-                if (gateway.create(createPlayerRequest.token))
+                if (gateway.create(createPlayerRequest.token)){
+                    response.message = createPlayerRequest.token;
+                    presenter.playerCreatedMessage(response);
+                }
 
-                    response.message = addNewLine(formatResponseMessage(createPlayerRequest.token));
+                else {
+                    response.message = createPlayerRequest.token;
+                    presenter.tokenInUseMessage(response);
+                }
 
-                else response.message = addNewLine("Token already in use.");
+            } else presenter.exceededPlayerLimitMessage();
 
-            } else response.message = addNewLine("Exceeded eight player limit.");
+        } else presenter.playerPromptMessage();
 
-        } else response.message = addNewLine("Please select token for player.");
-
-        presenter.present(response);
     }
 
     private boolean isValid(CreatePlayerRequest request) {

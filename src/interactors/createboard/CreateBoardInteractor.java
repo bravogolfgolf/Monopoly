@@ -1,16 +1,15 @@
 package game.interactors.createboard;
 
 import game.controllers.Interactor;
-import game.controllers.Presenter;
+import game.controllers.InteractorPresenter;
 import game.interactors.BoardGateway;
 import game.interactors.Request;
-import game.utilities.StringFormatter;
 
 public class CreateBoardInteractor implements Interactor {
-    private final Presenter presenter;
+    private final InteractorPresenter presenter;
     private final BoardGateway gateway;
 
-    public CreateBoardInteractor(Presenter presenter, BoardGateway gateway) {
+    public CreateBoardInteractor(InteractorPresenter presenter, BoardGateway gateway) {
         this.presenter = presenter;
         this.gateway = gateway;
     }
@@ -21,13 +20,12 @@ public class CreateBoardInteractor implements Interactor {
         CreateBoardRequest createBoardRequest = (CreateBoardRequest) request;
 
         if (createBoardRequest.version == null) {
-            response.message = StringFormatter.addNewLine("Select version of board you would like to use.");
-            presenter.present(response);
+            presenter.boardPromptMessage();
 
         } else {
             gateway.create(createBoardRequest.version);
-            response.message = StringFormatter.addNewLine(String.format("%s version of board created.", createBoardRequest.version));
-            presenter.present(response);
+            response.message = createBoardRequest.version;
+            presenter.boardCreatedMessage(response);
         }
     }
 }

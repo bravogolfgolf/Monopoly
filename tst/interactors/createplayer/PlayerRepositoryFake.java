@@ -8,18 +8,22 @@ import java.util.Set;
 
 public class PlayerRepositoryFake extends PlayerGateway {
     private final Set<Player> players = new HashSet<>();
-    public boolean VerifyCreateMethodCalled = false;
-    public boolean VerifyCountMethodCalled = false;
+    public boolean verifyCreate = false;
+    public boolean verifyCount = false;
+    private int createMethodCallCounter = 0;
+    public boolean verifyCountCalledEightTimes = false;
 
     @Override
     public boolean create(String token) {
-        VerifyCreateMethodCalled = true;
+        verifyCreate = true;
+        createMethodCallCounter++;
+        verifyCountCalledEightTimes = createMethodCallCounter == 8;
         Player player = new Player(token);
         return players.add(player);
     }
 
     public int count() {
-        VerifyCountMethodCalled = true;
+        verifyCount = true;
         return players.size();
     }
 }

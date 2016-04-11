@@ -2,10 +2,9 @@ package game.usecases;
 
 import game.Controller;
 import game.controllers.Interactor;
-import game.controllers.Presenter;
 import game.interactors.PlayerGateway;
 import game.interactors.createplayer.CreatePlayerInteractor;
-import game.presenters.createplayer.CreatePlayerPresenter;
+import game.presenters.createboard.PresenterEn;
 import game.repositories.PlayerRepository;
 import org.junit.Test;
 
@@ -20,7 +19,7 @@ public class CreatePlayerTest {
     @Test
     public void validRequestToCreatePlayerWithUniqueTokenSucceeds() throws IOException {
         ViewMock view = new ViewMock();
-        Presenter presenter = new CreatePlayerPresenter();
+        PresenterEn presenter = new PresenterEn();
         PlayerGateway gateway = new PlayerRepository();
         Interactor interactor = new CreatePlayerInteractor(presenter, gateway);
         Controller controller = new CreatePlayerControllerFake(view, interactor, presenter);
