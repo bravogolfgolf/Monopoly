@@ -8,6 +8,7 @@ import static game.Monopoly.controllerFactory;
 
 public class ControllerFactoryTest {
 
+    @SuppressWarnings("unused")
     private Controller controller;
 
     @Before

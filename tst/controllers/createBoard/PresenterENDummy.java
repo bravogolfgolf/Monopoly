@@ -1,6 +1,6 @@
 package game.controllers.createBoard;
 
-import game.presenters.createboard.PresenterEn;
+import game.presenters.PresenterEn;
 
 public class PresenterEnDummy extends PresenterEn {
 }

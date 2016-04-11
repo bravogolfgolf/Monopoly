@@ -2,7 +2,7 @@ package game.interactors;
 
 import game.interactors.createboard.CreateBoardResponse;
 import game.interactors.createplayer.CreatePlayerResponse;
-import game.presenters.createboard.PresenterEn;
+import game.presenters.PresenterEn;
 
 public class PresenterEnMock extends PresenterEn {
 

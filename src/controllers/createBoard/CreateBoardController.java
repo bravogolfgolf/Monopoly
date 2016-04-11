@@ -2,7 +2,7 @@ package game.controllers.createBoard;
 
 import game.Controller;
 import game.controllers.Interactor;
-import game.controllers.InteractorPresenter;
+import game.controllers.Presenter;
 import game.controllers.View;
 import game.interactors.createboard.CreateBoardRequest;
 
@@ -12,9 +12,9 @@ import java.io.IOException;
 public class CreateBoardController implements Controller {
     private final View view;
     private final Interactor interactor;
-    private final InteractorPresenter presenter;
+    private final Presenter presenter;
 
-    public CreateBoardController(View view, Interactor interactor, InteractorPresenter presenter) {
+    public CreateBoardController(View view, Interactor interactor, Presenter presenter) {
         this.view = view;
         this.interactor = interactor;
         this.presenter = presenter;

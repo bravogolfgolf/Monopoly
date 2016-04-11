@@ -1,6 +1,6 @@
 package game.interactors.createboard;
 
-public interface CreateBoardInteractorPresenter {
+public interface CreateBoardPresenter {
     void boardPromptMessage();
     void boardCreatedMessage(CreateBoardResponse response);
 }

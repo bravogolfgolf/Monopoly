@@ -2,7 +2,7 @@ package game.preseters.createboard;
 
 import game.interactors.createboard.CreateBoardResponse;
 import game.interactors.createplayer.CreatePlayerResponse;
-import game.presenters.createboard.PresenterEn;
+import game.presenters.PresenterEn;
 import org.junit.Before;
 import org.junit.Test;
 

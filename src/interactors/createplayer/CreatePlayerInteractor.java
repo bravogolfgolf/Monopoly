@@ -1,15 +1,15 @@
 package game.interactors.createplayer;
 
 import game.controllers.Interactor;
-import game.controllers.InteractorPresenter;
+import game.controllers.Presenter;
 import game.interactors.PlayerGateway;
 import game.interactors.Request;
 
 public class CreatePlayerInteractor implements Interactor {
-    private final InteractorPresenter presenter;
+    private final Presenter presenter;
     private final PlayerGateway gateway;
 
-    public CreatePlayerInteractor(InteractorPresenter presenter, PlayerGateway gateway) {
+    public CreatePlayerInteractor(Presenter presenter, PlayerGateway gateway) {
         this.presenter = presenter;
         this.gateway = gateway;
     }
@@ -41,9 +41,5 @@ public class CreatePlayerInteractor implements Interactor {
 
     private boolean isValid(CreatePlayerRequest request) {
         return request.token != null;
-    }
-
-    private String formatResponseMessage(String token) {
-        return String.format("Player created with %s token.", token);
     }
 }

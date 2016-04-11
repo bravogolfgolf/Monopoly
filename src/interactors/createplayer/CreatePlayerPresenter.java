@@ -1,6 +1,6 @@
 package game.interactors.createplayer;
 
-public interface CreatePlayerInteractorPresenter {
+public interface CreatePlayerPresenter {
     void playerCreatedMessage(CreatePlayerResponse response);
 
     void tokenInUseMessage(CreatePlayerResponse response);

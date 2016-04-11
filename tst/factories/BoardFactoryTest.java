@@ -7,6 +7,7 @@ import org.junit.Test;
 public class BoardFactoryTest {
 
     private BoardFactory boardFactory;
+    @SuppressWarnings("unused")
     private String board;
 
     @Before

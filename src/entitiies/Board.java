@@ -4,6 +4,7 @@ import game.interactors.BoardGateway;
 
 public final class Board implements BoardGateway {
     private final BoardFactory boardFactory;
+    @SuppressWarnings("unused")
     private String version;
 
     public Board(BoardFactory boardFactory) {

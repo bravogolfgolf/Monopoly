@@ -2,12 +2,12 @@ package game.usecases;
 
 import game.Controller;
 import game.controllers.Interactor;
-import game.controllers.InteractorPresenter;
+import game.controllers.Presenter;
 import game.entitiies.Board;
 import game.factories.BoardFactoryImpl;
 import game.interactors.BoardGateway;
 import game.interactors.createboard.CreateBoardInteractor;
-import game.presenters.createboard.PresenterEn;
+import game.presenters.PresenterEn;
 import game.utilities.StringFormatter;
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ public class CreateBoardTest {
     @Test
     public void testCreateBoard() throws IOException {
         ViewMock view = new ViewMock();
-        InteractorPresenter presenter = new PresenterEn();
+        Presenter presenter = new PresenterEn();
         BoardGateway gateway = new Board(new BoardFactoryImpl());
         Interactor interactor = new CreateBoardInteractor(presenter, gateway);
         Controller controller = new CreateBoardControllerFake(view, interactor, presenter);

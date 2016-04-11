@@ -4,7 +4,7 @@ import game.Controller;
 import game.controllers.Interactor;
 import game.interactors.PlayerGateway;
 import game.interactors.createplayer.CreatePlayerInteractor;
-import game.presenters.createboard.PresenterEn;
+import game.presenters.PresenterEn;
 import game.repositories.PlayerRepository;
 import org.junit.Test;
 

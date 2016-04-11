@@ -1,15 +1,15 @@
 package game.interactors.createboard;
 
 import game.controllers.Interactor;
-import game.controllers.InteractorPresenter;
+import game.controllers.Presenter;
 import game.interactors.BoardGateway;
 import game.interactors.Request;
 
 public class CreateBoardInteractor implements Interactor {
-    private final InteractorPresenter presenter;
+    private final Presenter presenter;
     private final BoardGateway gateway;
 
-    public CreateBoardInteractor(InteractorPresenter presenter, BoardGateway gateway) {
+    public CreateBoardInteractor(Presenter presenter, BoardGateway gateway) {
         this.presenter = presenter;
         this.gateway = gateway;
     }
