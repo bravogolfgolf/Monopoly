@@ -25,8 +25,8 @@ public class CreateBoardInteractor implements Interactor {
             presenter.present(response);
 
         } else {
-            gateway.setVersion(createBoardRequest.version);
-            response.message = StringFormatter.addNewLine(String.format("%s version of board created.", gateway.getVersion()));
+            gateway.create(createBoardRequest.version);
+            response.message = StringFormatter.addNewLine(String.format("%s version of board created.", createBoardRequest.version));
             presenter.present(response);
         }
     }

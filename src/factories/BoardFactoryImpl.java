@@ -1,13 +1,12 @@
 package game.factories;
 
-import game.entitiies.Board;
-import game.interactors.BoardFactory;
+import game.entitiies.BoardFactory;
 
 public class BoardFactoryImpl implements BoardFactory {
     @Override
-    public Board make(String version) {
+    public String make(String version) {
         if (version.equals("USA")) {
-            return new Board();
+            return version;
         }
         throw new IllegalArgumentException();
     }

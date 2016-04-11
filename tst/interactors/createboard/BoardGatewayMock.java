@@ -6,17 +6,12 @@ public class BoardGatewayMock implements BoardGateway {
 
     private String version;
 
-    public boolean VerifySetVersionMethodCalled = false;
-    public boolean VerifyGetVersionMethodCalled = false;
+    public boolean VerifyCreateMethodCalled = false;
 
-
-    public void setVersion(String version) {
-        VerifySetVersionMethodCalled = true;
+    @Override
+    public void create(String version) {
+        VerifyCreateMethodCalled = true;
         this.version = version;
     }
 
-    public String getVersion() {
-        VerifyGetVersionMethodCalled = true;
-        return version;
-    }
 }

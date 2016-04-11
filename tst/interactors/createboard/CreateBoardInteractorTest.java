@@ -31,8 +31,7 @@ public class CreateBoardInteractorTest {
         request.version = "TEST";
         interactor.handle(request);
 
-        assertTrue(gateway.VerifySetVersionMethodCalled);
-        assertTrue(gateway.VerifyGetVersionMethodCalled);
+        assertTrue(gateway.VerifyCreateMethodCalled);
         assertTrue(presenter.VerifyPresentMethodCalled);
         assertEquals(expected, presenter.getViewRequest());
     }

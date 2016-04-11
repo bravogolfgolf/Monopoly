@@ -1,7 +1,6 @@
 package game.interactors;
 
 public interface BoardGateway {
-    void setVersion(String version);
+    void create(String version);
 
-    String getVersion();
 }

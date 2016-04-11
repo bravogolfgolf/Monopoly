@@ -1,14 +1,13 @@
 package game.factories;
 
-import game.entitiies.Board;
+import game.entitiies.BoardFactory;
 import org.junit.Before;
 import org.junit.Test;
 
-import static game.Monopoly.boardFactory;
-
 public class BoardFactoryTest {
 
-    private Board board;
+    private BoardFactory boardFactory;
+    private String board;
 
     @Before
     public void setUp() throws Exception {
