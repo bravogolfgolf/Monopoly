@@ -1,14 +1,14 @@
-package usecases;
+package game.usecases;
 
-import controllers.Interactor;
-import controllers.Presenter;
-import entitiies.Board;
-import interactors.BoardGateway;
-import interactors.createboard.CreateBoardInteractor;
-import main.Controller;
+import game.Controller;
+import game.controllers.Interactor;
+import game.controllers.Presenter;
+import game.entitiies.Board;
+import game.interactors.BoardGateway;
+import game.interactors.createboard.CreateBoardInteractor;
+import game.presenters.createboard.CreateBoardPresenter;
+import game.utilities.StringFormatter;
 import org.junit.Test;
-import presenters.createboard.CreateBoardPresenter;
-import utilities.StringFormatter;
 
 import java.io.IOException;
 

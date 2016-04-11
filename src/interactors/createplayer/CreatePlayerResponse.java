@@ -1,6 +1,6 @@
-package interactors.createplayer;
+package game.interactors.createplayer;
 
-import interactors.Response;
+import game.interactors.Response;
 
 public class CreatePlayerResponse implements Response {
     public String message;

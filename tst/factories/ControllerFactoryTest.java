@@ -1,7 +1,7 @@
-package factories;
+package game.factories;
 
-import main.Controller;
-import main.Monopoly;
+import game.Controller;
+import game.Monopoly;
 import org.junit.Test;
 
 public class ControllerFactoryTest {

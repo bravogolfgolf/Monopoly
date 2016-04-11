@@ -1,6 +1,6 @@
-package controllers;
+package game.controllers;
 
-import interactors.Response;
+import game.interactors.Response;
 
 public interface Presenter {
     void present(Response response);

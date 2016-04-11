@@ -1,6 +1,6 @@
-package controllers.createPlayer;
+package game.controllers.createPlayer;
 
-import presenters.createplayer.CreatePlayerPresenter;
+import game.presenters.createplayer.CreatePlayerPresenter;
 
 public class CreatePlayerPresenterDummy extends CreatePlayerPresenter {
 }

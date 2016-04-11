@@ -1,11 +1,11 @@
-package interactors.createplayer;
+package game.interactors.createplayer;
 
-import controllers.Interactor;
-import controllers.Presenter;
-import interactors.PlayerGateway;
-import interactors.Request;
+import game.controllers.Interactor;
+import game.controllers.Presenter;
+import game.interactors.PlayerGateway;
+import game.interactors.Request;
 
-import static utilities.StringFormatter.addNewLine;
+import static game.utilities.StringFormatter.addNewLine;
 
 public class CreatePlayerInteractor implements Interactor {
     private final Presenter presenter;

@@ -1,7 +1,7 @@
-package interactors.createplayer;
+package game.interactors.createplayer;
 
-import interactors.Response;
-import presenters.createplayer.CreatePlayerPresenter;
+import game.interactors.Response;
+import game.presenters.createplayer.CreatePlayerPresenter;
 
 public class CreatePlayerPresenterMock extends CreatePlayerPresenter {
 

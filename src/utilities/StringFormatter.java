@@ -1,4 +1,4 @@
-package utilities;
+package game.utilities;
 
 public abstract class StringFormatter {
 

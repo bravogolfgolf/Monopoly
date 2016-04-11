@@ -1,7 +1,7 @@
-package interactors.createplayer;
+package game.interactors.createplayer;
 
-import entitiies.Player;
-import interactors.PlayerGateway;
+import game.entitiies.Player;
+import game.interactors.PlayerGateway;
 
 import java.util.HashSet;
 import java.util.Set;

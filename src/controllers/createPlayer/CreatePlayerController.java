@@ -1,10 +1,10 @@
-package controllers.createPlayer;
+package game.controllers.createPlayer;
 
-import controllers.Interactor;
-import controllers.Presenter;
-import controllers.View;
-import interactors.createplayer.CreatePlayerRequest;
-import main.Controller;
+import game.Controller;
+import game.controllers.Interactor;
+import game.controllers.Presenter;
+import game.controllers.View;
+import game.interactors.createplayer.CreatePlayerRequest;
 
 import java.io.IOException;
 

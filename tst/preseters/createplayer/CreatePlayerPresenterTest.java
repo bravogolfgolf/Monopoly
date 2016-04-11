@@ -1,8 +1,8 @@
-package preseters.createplayer;
+package game.preseters.createplayer;
 
-import interactors.createplayer.CreatePlayerResponse;
+import game.interactors.createplayer.CreatePlayerResponse;
+import game.presenters.createplayer.CreatePlayerPresenter;
 import org.junit.Test;
-import presenters.createplayer.CreatePlayerPresenter;
 
 import static org.junit.Assert.assertTrue;
 

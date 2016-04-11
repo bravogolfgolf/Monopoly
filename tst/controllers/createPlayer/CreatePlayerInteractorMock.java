@@ -1,9 +1,9 @@
-package controllers.createPlayer;
+package game.controllers.createPlayer;
 
-import controllers.Presenter;
-import interactors.PlayerGateway;
-import interactors.Request;
-import interactors.createplayer.CreatePlayerInteractor;
+import game.controllers.Presenter;
+import game.interactors.PlayerGateway;
+import game.interactors.Request;
+import game.interactors.createplayer.CreatePlayerInteractor;
 
 public class CreatePlayerInteractorMock extends CreatePlayerInteractor {
 

@@ -1,6 +1,6 @@
-package interactors.createplayer;
+package game.interactors.createplayer;
 
-import interactors.Request;
+import game.interactors.Request;
 
 public class CreatePlayerRequest implements Request {
     public String token;

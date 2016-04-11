@@ -1,6 +1,6 @@
-package interactors.createboard;
+package game.interactors.createboard;
 
-import interactors.Response;
+import game.interactors.Response;
 
 public class CreateBoardResponse implements Response {
     public String message;

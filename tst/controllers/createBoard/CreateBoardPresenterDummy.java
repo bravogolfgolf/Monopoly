@@ -1,6 +1,6 @@
-package controllers.createBoard;
+package game.controllers.createBoard;
 
-import presenters.createboard.CreateBoardPresenter;
+import game.presenters.createboard.CreateBoardPresenter;
 
 public class CreateBoardPresenterDummy extends CreateBoardPresenter {
 }

@@ -1,6 +1,6 @@
-package usecases;
+package game.usecases;
 
-import controllers.View;
+import game.controllers.View;
 
 import java.io.IOException;
 

@@ -1,6 +1,6 @@
-package controllers.createBoard;
+package game.controllers.createBoard;
 
-import interactors.BoardGateway;
+import game.interactors.BoardGateway;
 
 public class BoardGatewayDummy implements BoardGateway {
     @Override

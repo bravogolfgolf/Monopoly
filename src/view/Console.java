@@ -1,6 +1,6 @@
-package view;
+package game.view;
 
-import controllers.View;
+import game.controllers.View;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

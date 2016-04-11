@@ -1,7 +1,7 @@
-package interactors.createboard;
+package game.interactors.createboard;
 
-import interactors.Response;
-import presenters.createboard.CreateBoardPresenter;
+import game.interactors.Response;
+import game.presenters.createboard.CreateBoardPresenter;
 
 public class CreateBoardPresenterMock extends CreateBoardPresenter {
 

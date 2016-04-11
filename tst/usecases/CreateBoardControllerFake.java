@@ -1,9 +1,9 @@
-package usecases;
+package game.usecases;
 
-import controllers.Interactor;
-import controllers.Presenter;
-import controllers.View;
-import controllers.createBoard.CreateBoardController;
+import game.controllers.Interactor;
+import game.controllers.Presenter;
+import game.controllers.View;
+import game.controllers.createBoard.CreateBoardController;
 
 import java.io.IOException;
 

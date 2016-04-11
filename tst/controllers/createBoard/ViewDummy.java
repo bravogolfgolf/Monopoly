@@ -1,6 +1,6 @@
-package controllers.createBoard;
+package game.controllers.createBoard;
 
-import controllers.View;
+import game.controllers.View;
 
 import java.io.IOException;
 

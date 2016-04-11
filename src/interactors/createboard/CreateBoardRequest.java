@@ -1,6 +1,6 @@
-package interactors.createboard;
+package game.interactors.createboard;
 
-import interactors.Request;
+import game.interactors.Request;
 
 public class CreateBoardRequest implements Request {
     public String version;

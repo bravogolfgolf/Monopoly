@@ -1,9 +1,8 @@
-package controllers.createPlayer;
+package game.controllers.createPlayer;
 
-import controllers.View;
+import game.controllers.View;
 
 import java.io.IOException;
-
 
 public class ViewDummy extends View {
 

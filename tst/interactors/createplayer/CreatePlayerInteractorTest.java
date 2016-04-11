@@ -1,12 +1,12 @@
-package interactors.createplayer;
+package game.interactors.createplayer;
 
-import controllers.Interactor;
+import game.controllers.Interactor;
 import org.junit.Before;
 import org.junit.Test;
 
+import static game.utilities.StringFormatter.addNewLine;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static utilities.StringFormatter.addNewLine;
 
 public class CreatePlayerInteractorTest {
 

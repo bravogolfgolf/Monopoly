@@ -1,11 +1,10 @@
-package repositories;
+package game.repositories;
 
-import entitiies.Player;
-import interactors.PlayerGateway;
+import game.entitiies.Player;
+import game.interactors.PlayerGateway;
 
 import java.util.HashSet;
 import java.util.Set;
-
 
 public final class PlayerRepository extends PlayerGateway {
 

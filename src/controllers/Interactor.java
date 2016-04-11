@@ -1,6 +1,6 @@
-package controllers;
+package game.controllers;
 
-import interactors.Request;
+import game.interactors.Request;
 
 public interface Interactor {
     void handle(Request request);

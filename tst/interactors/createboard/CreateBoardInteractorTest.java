@@ -1,9 +1,9 @@
-package interactors.createboard;
+package game.interactors.createboard;
 
-import controllers.Interactor;
+import game.controllers.Interactor;
+import game.utilities.StringFormatter;
 import org.junit.Before;
 import org.junit.Test;
-import utilities.StringFormatter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -34,7 +34,7 @@ public class CreateBoardInteractorTest {
         assertTrue(gateway.VerifySetVersionMethodCalled);
         assertTrue(gateway.VerifyGetVersionMethodCalled);
         assertTrue(presenter.VerifyPresentMethodCalled);
-        assertEquals(expected,presenter.getViewRequest());
+        assertEquals(expected, presenter.getViewRequest());
     }
 
     @Test
@@ -43,6 +43,6 @@ public class CreateBoardInteractorTest {
         request.version = null;
         interactor.handle(request);
         assertTrue(presenter.VerifyPresentMethodCalled);
-        assertEquals(expected,presenter.getViewRequest());
+        assertEquals(expected, presenter.getViewRequest());
     }
 }

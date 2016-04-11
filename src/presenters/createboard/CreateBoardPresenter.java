@@ -1,8 +1,8 @@
-package presenters.createboard;
+package game.presenters.createboard;
 
-import controllers.Presenter;
-import interactors.Response;
-import interactors.createboard.CreateBoardResponse;
+import game.controllers.Presenter;
+import game.interactors.Response;
+import game.interactors.createboard.CreateBoardResponse;
 
 public class CreateBoardPresenter implements Presenter {
     private String viewRequest;

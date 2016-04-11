@@ -1,4 +1,4 @@
-package repositories;
+package game.repositories;
 
 import org.junit.Test;
 

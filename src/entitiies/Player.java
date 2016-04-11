@@ -1,4 +1,4 @@
-package entitiies;
+package game.entitiies;
 
 public class Player {
     private final String token;

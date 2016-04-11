@@ -1,8 +1,8 @@
-package preseters.createboard;
+package game.preseters.createboard;
 
-import interactors.createboard.CreateBoardResponse;
+import game.interactors.createboard.CreateBoardResponse;
+import game.presenters.createboard.CreateBoardPresenter;
 import org.junit.Test;
-import presenters.createboard.CreateBoardPresenter;
 
 import static org.junit.Assert.assertTrue;
 

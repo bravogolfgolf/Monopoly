@@ -1,10 +1,10 @@
-package controllers.createBoard;
+package game.controllers.createBoard;
 
-import controllers.Interactor;
-import controllers.Presenter;
-import controllers.View;
-import interactors.createboard.CreateBoardRequest;
-import main.Controller;
+import game.Controller;
+import game.controllers.Interactor;
+import game.controllers.Presenter;
+import game.controllers.View;
+import game.interactors.createboard.CreateBoardRequest;
 
 import java.io.IOException;
 

@@ -1,19 +1,19 @@
-package usecases;
+package game.usecases;
 
-import controllers.Interactor;
-import controllers.Presenter;
-import interactors.PlayerGateway;
-import interactors.createplayer.CreatePlayerInteractor;
-import main.Controller;
+import game.Controller;
+import game.controllers.Interactor;
+import game.controllers.Presenter;
+import game.interactors.PlayerGateway;
+import game.interactors.createplayer.CreatePlayerInteractor;
+import game.presenters.createplayer.CreatePlayerPresenter;
+import game.repositories.PlayerRepository;
 import org.junit.Test;
-import presenters.createplayer.CreatePlayerPresenter;
-import repositories.PlayerRepository;
 
 import java.io.IOException;
 
+import static game.utilities.StringFormatter.addNewLine;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static utilities.StringFormatter.addNewLine;
 
 public class CreatePlayerTest {
 

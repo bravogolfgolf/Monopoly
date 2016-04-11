@@ -1,9 +1,9 @@
-package controllers.createBoard;
+package game.controllers.createBoard;
 
-import controllers.Presenter;
-import interactors.BoardGateway;
-import interactors.Request;
-import interactors.createboard.CreateBoardInteractor;
+import game.controllers.Presenter;
+import game.interactors.BoardGateway;
+import game.interactors.Request;
+import game.interactors.createboard.CreateBoardInteractor;
 
 public class CreateBoardInteractorMock extends CreateBoardInteractor {
 

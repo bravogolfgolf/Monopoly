@@ -1,6 +1,6 @@
-package controllers.createPlayer;
+package game.controllers.createPlayer;
 
-import interactors.PlayerGateway;
+import game.interactors.PlayerGateway;
 
 public class PlayerGatewayDummy extends PlayerGateway {
 

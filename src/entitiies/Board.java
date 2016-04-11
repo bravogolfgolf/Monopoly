@@ -1,6 +1,6 @@
-package entitiies;
+package game.entitiies;
 
-import interactors.BoardGateway;
+import game.interactors.BoardGateway;
 
 public final class Board implements BoardGateway {
     private String version;

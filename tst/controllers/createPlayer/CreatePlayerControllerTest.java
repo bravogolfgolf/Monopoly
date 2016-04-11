@@ -1,9 +1,9 @@
-package controllers.createPlayer;
+package game.controllers.createPlayer;
 
-import controllers.Presenter;
-import controllers.View;
-import interactors.PlayerGateway;
-import main.Controller;
+import game.Controller;
+import game.controllers.Presenter;
+import game.controllers.View;
+import game.interactors.PlayerGateway;
 import org.junit.Test;
 
 import java.io.IOException;

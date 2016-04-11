@@ -1,12 +1,12 @@
-package main;
+package game;
 
-import controllers.View;
-import entitiies.Board;
-import factories.ControllerFactoryImpl;
-import interactors.BoardGateway;
-import interactors.PlayerGateway;
-import repositories.PlayerRepository;
-import view.Console;
+import game.controllers.View;
+import game.entitiies.Board;
+import game.factories.ControllerFactoryImpl;
+import game.interactors.BoardGateway;
+import game.interactors.PlayerGateway;
+import game.repositories.PlayerRepository;
+import game.view.Console;
 
 import java.io.IOException;
 

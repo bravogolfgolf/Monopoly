@@ -1,8 +1,8 @@
-package controllers.createBoard;
+package game.controllers.createBoard;
 
-import controllers.Interactor;
-import controllers.Presenter;
-import controllers.View;
+import game.controllers.Interactor;
+import game.controllers.Presenter;
+import game.controllers.View;
 
 import java.io.IOException;
 

@@ -1,6 +1,6 @@
-package interactors.createboard;
+package game.interactors.createboard;
 
-import interactors.BoardGateway;
+import game.interactors.BoardGateway;
 
 public class BoardGatewayMock implements BoardGateway {
 
