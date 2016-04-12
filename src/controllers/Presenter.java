@@ -3,10 +3,14 @@ package game.controllers;
 import game.interactors.createboard.CreateBoardPresenter;
 import game.interactors.createplayer.CreatePlayerPresenter;
 
+import java.util.Arrays;
+
 public abstract class Presenter implements CreatePlayerPresenter, CreateBoardPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
+    protected String template;
+    protected String[] variables;
 
     public String getFormattedMessage() {
         String result = messageBuffer.toString();
@@ -14,20 +18,27 @@ public abstract class Presenter implements CreatePlayerPresenter, CreateBoardPre
         return result;
     }
 
-    protected String arrayToCommaDelimitedString(CharSequence[] array) {
+    private String arrayToCommaDelimitedString(CharSequence[] array) {
         return String.join(", ", array);
     }
 
-    protected String formatMessage(String template, String variable) {
-        String result = String.format(template, variable);
-        return addNewLine(result);
+    private String formatMessage(String template, String variable) {
+        return String.format(template, variable);
     }
 
-    private static String addNewLine(String string){
+    private String addNewLine(String string) {
         return String.format(string + "%s", NEW_LINE);
     }
 
+    protected void addToBuffer(String template, String[] variables) {
+        Arrays.sort(variables);
+        String variable = arrayToCommaDelimitedString(variables);
+        String formattedMessage = formatMessage(template, variable);
+        addToBuffer(formattedMessage);
+    }
+
     protected void addToBuffer(String message) {
-        messageBuffer.append(message);
+        String newLine = addNewLine(message);
+        messageBuffer.append(newLine);
     }
 }
