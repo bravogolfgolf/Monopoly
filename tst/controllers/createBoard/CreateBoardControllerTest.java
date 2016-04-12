@@ -2,7 +2,9 @@ package game.controllers.createBoard;
 
 import game.Controller;
 import game.controllers.Presenter;
+import game.controllers.PresenterEnDummy;
 import game.controllers.View;
+import game.controllers.ViewDummy;
 import game.interactors.BoardGateway;
 import org.junit.Test;
 

@@ -8,4 +8,9 @@ public class BoardGatewayDummy implements BoardGateway {
 
     }
 
+    @Override
+    public String[] getAvailableBoards() {
+        return new String[0];
+    }
+
 }

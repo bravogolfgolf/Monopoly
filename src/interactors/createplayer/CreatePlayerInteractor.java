@@ -24,12 +24,12 @@ public class CreatePlayerInteractor implements Interactor {
             if (gateway.count() < PlayerGateway.PLAYER_LIMIT) {
 
                 if (gateway.create(createPlayerRequest.token)){
-                    response.message = createPlayerRequest.token;
+                    response.tokens = new String[]{createPlayerRequest.token};
                     presenter.playerCreatedMessage(response);
                 }
 
                 else {
-                    response.message = createPlayerRequest.token;
+                    response.tokens = new String[]{createPlayerRequest.token};
                     presenter.tokenInUseMessage(response);
                 }
 

@@ -7,40 +7,58 @@ import game.interactors.createplayer.CreatePlayerResponse;
 import static game.utilities.StringFormatter.addNewLine;
 
 public class PresenterEn extends Presenter {
-    private String viewRequest;
+    private String message;
+    private StringBuffer messageBuffer = new StringBuffer();
 
-    @Override
-    public String getViewRequest() {
-        return viewRequest;
+    public String getMessage() {
+        String result = messageBuffer.toString();
+        messageBuffer = new StringBuffer();
+        return result;
+    }
+
+    private void addToBuffer(String message) {
+        messageBuffer.append(message);
     }
 
     @Override
     public void boardCreatedMessage(CreateBoardResponse response) {
-        viewRequest = addNewLine(String.format("%s version of board created.", response.message));
+        message = addNewLine(String.format("%s versions of board created.", response.versions[0]));
+        addToBuffer(message);
+    }
+
+    @Override
+    public void availableBoardsMessage(CreateBoardResponse response) {
+        message = addNewLine(String.format("Available boards: %s", response.versions[0]));
+        addToBuffer(message);
     }
 
     @Override
     public void boardPromptMessage() {
-        viewRequest = addNewLine("Select version of board you would like to use.");
+        message = addNewLine("Select versions of board you would like to use.");
+        addToBuffer(message);
     }
 
     @Override
     public void exceededPlayerLimitMessage() {
-        viewRequest = addNewLine("Exceeded eight player limit.");
+        message = addNewLine("Exceeded eight player limit.");
+        addToBuffer(message);
     }
 
     @Override
     public void playerCreatedMessage(CreatePlayerResponse response) {
-        viewRequest = addNewLine(String.format("Player created with %s token.", response.message));
+        message = addNewLine(String.format("Player created with %s tokens.", response.tokens[0]));
+        addToBuffer(message);
     }
 
     @Override
     public void playerPromptMessage() {
-        viewRequest = addNewLine("Please select token for player.");
+        message = addNewLine("Please select tokens for player.");
+        addToBuffer(message);
     }
 
     @Override
     public void tokenInUseMessage(CreatePlayerResponse response) {
-        viewRequest = addNewLine(String.format("%s token already in use.", response.message));
+        message = addNewLine(String.format("%s tokens already in use.", response.tokens[0]));
+        addToBuffer(message);
     }
 }
