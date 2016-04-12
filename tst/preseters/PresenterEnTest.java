@@ -18,12 +18,12 @@ public class PresenterEnTest {
 
     @Before
     public void setUp() {
-        createBoardResponse.versions = new String[]{"USA"};
         createPlayerResponse.tokens = new String[]{"Cat"};
     }
 
     @Test
     public void boardCreatedMessage() {
+        createBoardResponse.versions = new String[]{"USA"};
         presenter.boardCreatedMessage(createBoardResponse);
         expected = addNewLine("USA versions of board created.");
         assertEquals(expected, presenter.getFormattedMessage());
@@ -31,8 +31,9 @@ public class PresenterEnTest {
 
     @Test
     public void availableBoardsMessage() {
+        createBoardResponse.versions = new String[]{"USA","FRA"};
         presenter.availableBoardsMessage(createBoardResponse);
-        expected = addNewLine("Available boards: USA");
+        expected = addNewLine("Available boards: FRA, USA");
         assertEquals(expected, presenter.getFormattedMessage());
     }
 

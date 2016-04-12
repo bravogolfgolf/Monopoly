@@ -4,11 +4,13 @@ import game.controllers.Presenter;
 import game.interactors.createboard.CreateBoardResponse;
 import game.interactors.createplayer.CreatePlayerResponse;
 
+import java.util.Arrays;
+
 import static game.utilities.StringFormatter.addNewLine;
 
 public class PresenterEn extends Presenter {
     private String template;
-    private CharSequence[] array;
+    private CharSequence[] charSequences;
     private String variable;
     private String formattedMessage;
     private StringBuffer messageBuffer = new StringBuffer();
@@ -20,7 +22,7 @@ public class PresenterEn extends Presenter {
     }
 
     private String arrayToCommaDelimitedString(CharSequence[] array) {
-        return String.join(",", array);
+        return String.join(", ", array);
     }
 
     private String formatMessage(String template, String variable) {
@@ -35,8 +37,8 @@ public class PresenterEn extends Presenter {
     @Override
     public void boardCreatedMessage(CreateBoardResponse response) {
         template = "%s versions of board created.";
-        array = response.versions;
-        variable = arrayToCommaDelimitedString(array);
+        charSequences = response.versions;
+        variable = arrayToCommaDelimitedString(charSequences);
         formattedMessage = formatMessage(template, variable);
         addToBuffer(formattedMessage);
     }
@@ -44,8 +46,9 @@ public class PresenterEn extends Presenter {
     @Override
     public void availableBoardsMessage(CreateBoardResponse response) {
         template = "Available boards: %s";
-        array = response.versions;
-        variable = arrayToCommaDelimitedString(array);
+        Arrays.sort(response.versions);
+        charSequences = response.versions;
+        variable = arrayToCommaDelimitedString(charSequences);
         formattedMessage = formatMessage(template, variable);
         addToBuffer(formattedMessage);
     }
@@ -67,8 +70,8 @@ public class PresenterEn extends Presenter {
     @Override
     public void playerCreatedMessage(CreatePlayerResponse response) {
         template = "Player created with %s tokens.";
-        array = response.tokens;
-        variable = arrayToCommaDelimitedString(array);
+        charSequences = response.tokens;
+        variable = arrayToCommaDelimitedString(charSequences);
         formattedMessage = formatMessage(template, variable);
         addToBuffer(formattedMessage);
     }
@@ -83,8 +86,8 @@ public class PresenterEn extends Presenter {
     @Override
     public void tokenInUseMessage(CreatePlayerResponse response) {
         template = "%s tokens already in use.";
-        array = response.tokens;
-        variable = arrayToCommaDelimitedString(array);
+        charSequences = response.tokens;
+        variable = arrayToCommaDelimitedString(charSequences);
         formattedMessage = formatMessage(template, variable);
         addToBuffer(formattedMessage);
     }

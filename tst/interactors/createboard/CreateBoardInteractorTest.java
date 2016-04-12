@@ -35,8 +35,9 @@ public class CreateBoardInteractorTest {
     public void testBoardPromptMessageAndAvailableBoardsMessage() {
         request.version = null;
         interactor.handle(request);
+
         assertTrue(presenter.verifyBoardPromptMessage);
-        assertTrue(gateway.getAvailableBoardsCalled);
+        assertTrue(gateway.verifyAvailableBoardsCalled);
         assertTrue(presenter.verifyAvailableBoardsMessage);
     }
 }

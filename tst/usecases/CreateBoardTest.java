@@ -25,7 +25,7 @@ public class CreateBoardTest {
         Interactor interactor = new CreateBoardInteractor(presenter, gateway);
         Controller controller = new CreateBoardControllerFake(view, interactor, presenter);
         String expected = addNewLine("Select versions of board you would like to use.") +
-                addNewLine("Available boards: USA") +
+                addNewLine("Available boards: FRA, USA") +
                 addNewLine("USA versions of board created.");
 
         controller.execute();

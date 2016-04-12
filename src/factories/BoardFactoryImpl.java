@@ -14,6 +14,6 @@ public class BoardFactoryImpl implements BoardFactory {
 
     @Override
     public String[] getAvailableBoards() {
-        return new String[]{"USA"};
+        return new String[]{"USA", "FRA"};
     }
 }

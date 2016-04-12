@@ -5,7 +5,7 @@ import game.interactors.BoardGateway;
 public class BoardGatewayMock implements BoardGateway {
 
     public boolean verifyCreateMethodCalled = false;
-    public boolean getAvailableBoardsCalled = false;
+    public boolean verifyAvailableBoardsCalled = false;
 
     @Override
     public void create(String version) {
@@ -14,7 +14,7 @@ public class BoardGatewayMock implements BoardGateway {
 
     @Override
     public String[] getAvailableBoards() {
-        getAvailableBoardsCalled = true;
+        verifyAvailableBoardsCalled = true;
         return new String[0];
     }
 
