@@ -19,21 +19,28 @@ public class CreateBoardInteractor implements Interactor {
         CreateBoardResponse response = new CreateBoardResponse();
         CreateBoardRequest createBoardRequest = (CreateBoardRequest) request;
 
-        if (createBoardRequest.version == null) {
-            presenter.boardPromptMessage();
-            response.versions = gateway.getAvailableBoards();
-            presenter.availableBoardsMessage(response);
+        if (isNullRequest(createBoardRequest)) boardPromptAndAvailableBoardsMessages(response);
+        else if (requestedBoardIsNotAvailable(createBoardRequest)) boardPromptAndAvailableBoardsMessages(response);
+        else boardCreatedMessage(response, createBoardRequest);
+    }
 
-        } else {
-            if (gateway.isAvailable(createBoardRequest.version)) {
-                gateway.create(createBoardRequest.version);
-                response.versions = new String[]{createBoardRequest.version};
-                presenter.boardCreatedMessage(response);
-            } else {
-                presenter.boardPromptMessage();
-                response.versions = gateway.getAvailableBoards();
-                presenter.availableBoardsMessage(response);
-            }
-        }
+    private boolean isNullRequest(CreateBoardRequest createBoardRequest) {
+        return createBoardRequest.version == null;
+    }
+
+    private boolean requestedBoardIsNotAvailable(CreateBoardRequest createBoardRequest) {
+        return !gateway.isAvailable(createBoardRequest.version);
+    }
+
+    private void boardPromptAndAvailableBoardsMessages(CreateBoardResponse response) {
+        presenter.boardPromptMessage();
+        response.versions = gateway.getAvailableBoards();
+        presenter.availableBoardsMessage(response);
+    }
+
+    private void boardCreatedMessage(CreateBoardResponse response, CreateBoardRequest createBoardRequest) {
+        gateway.create(createBoardRequest.version);
+        response.versions = new String[]{createBoardRequest.version};
+        presenter.boardCreatedMessage(response);
     }
 }
