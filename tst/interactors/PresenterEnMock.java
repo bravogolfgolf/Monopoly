@@ -45,11 +45,6 @@ public class PresenterEnMock extends PresenterEn {
     }
 
     @Override
-    public String getFormattedMessage() {
-        return null;
-    }
-
-    @Override
     public void boardPromptMessage() {
         verifyBoardPromptMessage = true;
     }

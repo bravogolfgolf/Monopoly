@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static game.utilities.StringFormatter.addNewLine;
 import static org.junit.Assert.assertTrue;
 
 public class CreateBoardTest {
@@ -24,9 +23,9 @@ public class CreateBoardTest {
         BoardGateway gateway = new Board(new BoardFactoryImpl());
         Interactor interactor = new CreateBoardInteractor(presenter, gateway);
         Controller controller = new CreateBoardControllerFake(view, interactor, presenter);
-        String expected = addNewLine("Select versions of board you would like to use.") +
-                addNewLine("Available boards: FRA, USA") +
-                addNewLine("USA versions of board created.");
+        String expected = "Select versions of board you would like to use.\n" +
+                "Available boards: FRA, USA\n" +
+                "USA versions of board created.\n";
 
         controller.execute();
 

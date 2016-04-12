@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static game.utilities.StringFormatter.addNewLine;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -23,8 +22,7 @@ public class CreatePlayerTest {
         PlayerGateway gateway = new PlayerRepository();
         Interactor interactor = new CreatePlayerInteractor(presenter, gateway);
         Controller controller = new CreatePlayerControllerFake(view, interactor, presenter);
-        String expected = addNewLine("Please select tokens for player.") +
-                addNewLine("Player created with Cat tokens.");
+        String expected = "Please select tokens for player.\nPlayer created with Cat tokens.\n";
 
         controller.execute();
 

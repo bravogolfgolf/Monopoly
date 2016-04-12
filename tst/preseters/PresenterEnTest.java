@@ -6,7 +6,6 @@ import game.presenters.PresenterEn;
 import org.junit.Before;
 import org.junit.Test;
 
-import static game.utilities.StringFormatter.addNewLine;
 import static org.junit.Assert.assertEquals;
 
 public class PresenterEnTest {
@@ -25,7 +24,7 @@ public class PresenterEnTest {
     public void boardCreatedMessage() {
         createBoardResponse.versions = new String[]{"USA"};
         presenter.boardCreatedMessage(createBoardResponse);
-        expected = addNewLine("USA versions of board created.");
+        expected = "USA versions of board created.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
@@ -33,42 +32,42 @@ public class PresenterEnTest {
     public void availableBoardsMessage() {
         createBoardResponse.versions = new String[]{"USA","FRA"};
         presenter.availableBoardsMessage(createBoardResponse);
-        expected = addNewLine("Available boards: FRA, USA");
+        expected = "Available boards: FRA, USA\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void boardPromptMessage() {
         presenter.boardPromptMessage();
-        expected = addNewLine("Select versions of board you would like to use.");
+        expected = "Select versions of board you would like to use.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void exceededPlayerLimitMessage() {
         presenter.exceededPlayerLimitMessage();
-        expected = addNewLine("Exceeded eight player limit.");
+        expected = "Exceeded eight player limit.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void playerCreatedMessage() {
         presenter.playerCreatedMessage(createPlayerResponse);
-        expected = addNewLine("Player created with Cat tokens.");
+        expected = "Player created with Cat tokens.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void playerPromptMessage() {
         presenter.playerPromptMessage();
-        expected = addNewLine("Please select tokens for player.");
+        expected = "Please select tokens for player.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void tokenInUseMessage() {
         presenter.tokenInUseMessage(createPlayerResponse);
-        expected = addNewLine("Cat tokens already in use.");
+        expected = "Cat tokens already in use.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 }

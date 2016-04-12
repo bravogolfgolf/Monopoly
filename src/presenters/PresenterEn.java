@@ -6,33 +6,12 @@ import game.interactors.createplayer.CreatePlayerResponse;
 
 import java.util.Arrays;
 
-import static game.utilities.StringFormatter.addNewLine;
-
 public class PresenterEn extends Presenter {
     private String template;
     private CharSequence[] charSequences;
     private String variable;
     private String formattedMessage;
-    private StringBuffer messageBuffer = new StringBuffer();
 
-    public String getFormattedMessage() {
-        String result = messageBuffer.toString();
-        messageBuffer = new StringBuffer();
-        return result;
-    }
-
-    private String arrayToCommaDelimitedString(CharSequence[] array) {
-        return String.join(", ", array);
-    }
-
-    private String formatMessage(String template, String variable) {
-        String result = String.format(template, variable);
-        return addNewLine(result);
-    }
-
-    private void addToBuffer(String message) {
-        messageBuffer.append(message);
-    }
 
     @Override
     public void boardCreatedMessage(CreateBoardResponse response) {
