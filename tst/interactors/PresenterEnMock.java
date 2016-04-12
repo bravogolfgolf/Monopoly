@@ -45,7 +45,7 @@ public class PresenterEnMock extends PresenterEn {
     }
 
     @Override
-    public String getMessage() {
+    public String getFormattedMessage() {
         return null;
     }
 

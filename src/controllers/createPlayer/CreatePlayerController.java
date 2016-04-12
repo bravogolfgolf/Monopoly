@@ -31,6 +31,6 @@ public class CreatePlayerController implements Controller {
         CreatePlayerRequest request = new CreatePlayerRequest();
         request.token = text;
         interactor.handle(request);
-        view.output(presenter.getMessage());
+        view.output(presenter.getFormattedMessage());
     }
 }

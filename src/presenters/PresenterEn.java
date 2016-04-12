@@ -7,13 +7,25 @@ import game.interactors.createplayer.CreatePlayerResponse;
 import static game.utilities.StringFormatter.addNewLine;
 
 public class PresenterEn extends Presenter {
-    private String message;
+    private String template;
+    private CharSequence[] array;
+    private String variable;
+    private String formattedMessage;
     private StringBuffer messageBuffer = new StringBuffer();
 
-    public String getMessage() {
+    public String getFormattedMessage() {
         String result = messageBuffer.toString();
         messageBuffer = new StringBuffer();
         return result;
+    }
+
+    private String arrayToCommaDelimitedString(CharSequence[] array) {
+        return String.join(",", array);
+    }
+
+    private String formatMessage(String template, String variable) {
+        String result = String.format(template, variable);
+        return addNewLine(result);
     }
 
     private void addToBuffer(String message) {
@@ -22,43 +34,58 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void boardCreatedMessage(CreateBoardResponse response) {
-        message = addNewLine(String.format("%s versions of board created.", response.versions[0]));
-        addToBuffer(message);
+        template = "%s versions of board created.";
+        array = response.versions;
+        variable = arrayToCommaDelimitedString(array);
+        formattedMessage = formatMessage(template, variable);
+        addToBuffer(formattedMessage);
     }
 
     @Override
     public void availableBoardsMessage(CreateBoardResponse response) {
-        message = addNewLine(String.format("Available boards: %s", response.versions[0]));
-        addToBuffer(message);
+        template = "Available boards: %s";
+        array = response.versions;
+        variable = arrayToCommaDelimitedString(array);
+        formattedMessage = formatMessage(template, variable);
+        addToBuffer(formattedMessage);
     }
 
     @Override
     public void boardPromptMessage() {
-        message = addNewLine("Select versions of board you would like to use.");
-        addToBuffer(message);
+        template = "Select versions of board you would like to use.";
+        formattedMessage = formatMessage(template, null);
+        addToBuffer(formattedMessage);
     }
 
     @Override
     public void exceededPlayerLimitMessage() {
-        message = addNewLine("Exceeded eight player limit.");
-        addToBuffer(message);
+        template = "Exceeded eight player limit.";
+        formattedMessage = formatMessage(template, null);
+        addToBuffer(formattedMessage);
     }
 
     @Override
     public void playerCreatedMessage(CreatePlayerResponse response) {
-        message = addNewLine(String.format("Player created with %s tokens.", response.tokens[0]));
-        addToBuffer(message);
+        template = "Player created with %s tokens.";
+        array = response.tokens;
+        variable = arrayToCommaDelimitedString(array);
+        formattedMessage = formatMessage(template, variable);
+        addToBuffer(formattedMessage);
     }
 
     @Override
     public void playerPromptMessage() {
-        message = addNewLine("Please select tokens for player.");
-        addToBuffer(message);
+        template = "Please select tokens for player.";
+        formattedMessage = formatMessage(template, null);
+        addToBuffer(formattedMessage);
     }
 
     @Override
     public void tokenInUseMessage(CreatePlayerResponse response) {
-        message = addNewLine(String.format("%s tokens already in use.", response.tokens[0]));
-        addToBuffer(message);
+        template = "%s tokens already in use.";
+        array = response.tokens;
+        variable = arrayToCommaDelimitedString(array);
+        formattedMessage = formatMessage(template, variable);
+        addToBuffer(formattedMessage);
     }
 }

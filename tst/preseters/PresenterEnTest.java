@@ -26,48 +26,48 @@ public class PresenterEnTest {
     public void boardCreatedMessage() {
         presenter.boardCreatedMessage(createBoardResponse);
         expected = addNewLine("USA versions of board created.");
-        assertEquals(expected, presenter.getMessage());
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void availableBoardsMessage() {
         presenter.availableBoardsMessage(createBoardResponse);
         expected = addNewLine("Available boards: USA");
-        assertEquals(expected, presenter.getMessage());
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void boardPromptMessage() {
         presenter.boardPromptMessage();
         expected = addNewLine("Select versions of board you would like to use.");
-        assertEquals(expected, presenter.getMessage());
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void exceededPlayerLimitMessage() {
         presenter.exceededPlayerLimitMessage();
         expected = addNewLine("Exceeded eight player limit.");
-        assertEquals(expected, presenter.getMessage());
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void playerCreatedMessage() {
         presenter.playerCreatedMessage(createPlayerResponse);
         expected = addNewLine("Player created with Cat tokens.");
-        assertEquals(expected, presenter.getMessage());
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void playerPromptMessage() {
         presenter.playerPromptMessage();
         expected = addNewLine("Please select tokens for player.");
-        assertEquals(expected, presenter.getMessage());
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void tokenInUseMessage() {
         presenter.tokenInUseMessage(createPlayerResponse);
         expected = addNewLine("Cat tokens already in use.");
-        assertEquals(expected, presenter.getMessage());
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 }
