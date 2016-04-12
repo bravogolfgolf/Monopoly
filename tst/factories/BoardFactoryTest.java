@@ -27,4 +27,9 @@ public class BoardFactoryTest {
     public void testGetAvailableBoards() {
         boardFactory.getAvailableBoards();
     }
+
+    @Test
+    public void testIsAvailable(){
+        boardFactory.isAvailable("USA");
+    }
 }

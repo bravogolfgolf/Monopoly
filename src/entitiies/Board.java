@@ -21,6 +21,11 @@ public final class Board implements BoardGateway {
         return boardFactory.getAvailableBoards();
     }
 
+    @Override
+    public boolean isAvailable(String version) {
+        return boardFactory.isAvailable(version);
+    }
+
     private void setVersion(String version) {
         this.version = version;
     }

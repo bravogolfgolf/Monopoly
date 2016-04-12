@@ -2,6 +2,8 @@ package game.factories;
 
 import game.entitiies.BoardFactory;
 
+import java.util.Arrays;
+
 public class BoardFactoryImpl implements BoardFactory {
 
     @Override
@@ -15,5 +17,10 @@ public class BoardFactoryImpl implements BoardFactory {
     @Override
     public String[] getAvailableBoards() {
         return new String[]{"USA", "FRA"};
+    }
+
+    @Override
+    public boolean isAvailable(String version) {
+        return Arrays.asList(getAvailableBoards()).contains(version);
     }
 }

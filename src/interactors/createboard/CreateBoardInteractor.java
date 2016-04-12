@@ -25,9 +25,15 @@ public class CreateBoardInteractor implements Interactor {
             presenter.availableBoardsMessage(response);
 
         } else {
-            gateway.create(createBoardRequest.version);
-            response.versions = new String[]{createBoardRequest.version};
-            presenter.boardCreatedMessage(response);
+            if (gateway.isAvailable(createBoardRequest.version)) {
+                gateway.create(createBoardRequest.version);
+                response.versions = new String[]{createBoardRequest.version};
+                presenter.boardCreatedMessage(response);
+            } else {
+                presenter.boardPromptMessage();
+                response.versions = gateway.getAvailableBoards();
+                presenter.availableBoardsMessage(response);
+            }
         }
     }
 }

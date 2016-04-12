@@ -17,14 +17,15 @@ public class CreateBoardInteractorTest {
     @Before
     public void setUp() {
         presenter = new PresenterEnMock();
-        gateway = new BoardGatewayMock();
-        interactor = new CreateBoardInteractor(presenter, gateway);
         request = new CreateBoardRequest();
     }
 
     @Test
     public void testBoardCreatedMessage() {
-        request.version = "TEST";
+        gateway = new BoardGatewayValidRequestStub();
+        interactor = new CreateBoardInteractor(presenter, gateway);
+
+        request.version = "USA";
         interactor.handle(request);
 
         assertTrue(gateway.verifyCreateMethodCalled);
@@ -32,12 +33,28 @@ public class CreateBoardInteractorTest {
     }
 
     @Test
-    public void testBoardPromptMessageAndAvailableBoardsMessage() {
+    public void testBoardPromptMessageAndAvailableBoardsMessageWithInvalidInput() {
+        gateway = new BoardGatewayInValidRequestStub();
+        interactor = new CreateBoardInteractor(presenter, gateway);
+
+        request.version = "TEST";
+        interactor.handle(request);
+
+        assertTrue(gateway.verifyIsAvailableCalled);
+        assertTrue(presenter.verifyBoardPromptMessage);
+        assertTrue(presenter.verifyAvailableBoardsMessage);
+    }
+
+    @Test
+    public void testBoardPromptMessageAndAvailableBoardsMessageWithNullInput() {
+        gateway = new BoardGatewayInValidRequestStub();
+        interactor = new CreateBoardInteractor(presenter, gateway);
+
         request.version = null;
         interactor.handle(request);
 
-        assertTrue(presenter.verifyBoardPromptMessage);
         assertTrue(gateway.verifyAvailableBoardsCalled);
+        assertTrue(presenter.verifyBoardPromptMessage);
         assertTrue(presenter.verifyAvailableBoardsMessage);
     }
 }
