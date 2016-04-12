@@ -1,4 +1,4 @@
-package game.controllers.createBoard;
+package game.controllers;
 
 import game.presenters.PresenterEn;
 

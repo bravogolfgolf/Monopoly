@@ -31,7 +31,7 @@ public class CreateBoardController implements Controller {
         CreateBoardRequest request = new CreateBoardRequest();
         request.version = text;
         interactor.handle(request);
-        view.output(presenter.getViewRequest());
+        view.output(presenter.getMessage());
     }
 
 }

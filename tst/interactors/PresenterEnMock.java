@@ -12,6 +12,7 @@ public class PresenterEnMock extends PresenterEn {
     public boolean verifyTokenInUseMessage = false;
     public boolean verifyExceededPlayerLimitMessage = false;
     public boolean verifyPlayerPromptMessage = false;
+    public boolean verifyAvailableBoardsMessage = false;
 
     @Override
     public void playerPromptMessage() {
@@ -21,6 +22,11 @@ public class PresenterEnMock extends PresenterEn {
     @Override
     public void boardCreatedMessage(CreateBoardResponse response) {
         verifyBoardCreateMessage = true;
+    }
+
+    @Override
+    public void availableBoardsMessage(CreateBoardResponse response) {
+        verifyAvailableBoardsMessage = true;
     }
 
     @Override
@@ -39,7 +45,7 @@ public class PresenterEnMock extends PresenterEn {
     }
 
     @Override
-    public String getViewRequest() {
+    public String getMessage() {
         return null;
     }
 

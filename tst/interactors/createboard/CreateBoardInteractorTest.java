@@ -23,7 +23,7 @@ public class CreateBoardInteractorTest {
     }
 
     @Test
-    public void testPresentBoardCreatedMessage() {
+    public void testBoardCreatedMessage() {
         request.version = "TEST";
         interactor.handle(request);
 
@@ -32,9 +32,11 @@ public class CreateBoardInteractorTest {
     }
 
     @Test
-    public void testPresentBoardPrompt() {
+    public void testBoardPromptMessageAndAvailableBoardsMessage() {
         request.version = null;
         interactor.handle(request);
         assertTrue(presenter.verifyBoardPromptMessage);
+        assertTrue(gateway.getAvailableBoardsCalled);
+        assertTrue(presenter.verifyAvailableBoardsMessage);
     }
 }

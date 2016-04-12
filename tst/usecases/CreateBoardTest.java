@@ -8,11 +8,11 @@ import game.factories.BoardFactoryImpl;
 import game.interactors.BoardGateway;
 import game.interactors.createboard.CreateBoardInteractor;
 import game.presenters.PresenterEn;
-import game.utilities.StringFormatter;
 import org.junit.Test;
 
 import java.io.IOException;
 
+import static game.utilities.StringFormatter.addNewLine;
 import static org.junit.Assert.assertTrue;
 
 public class CreateBoardTest {
@@ -24,11 +24,12 @@ public class CreateBoardTest {
         BoardGateway gateway = new Board(new BoardFactoryImpl());
         Interactor interactor = new CreateBoardInteractor(presenter, gateway);
         Controller controller = new CreateBoardControllerFake(view, interactor, presenter);
-        String expected = StringFormatter.addNewLine("Select version of board you would like to use.") +
-                StringFormatter.addNewLine("USA version of board created.");
+        String expected = addNewLine("Select versions of board you would like to use.") +
+                addNewLine("Available boards: USA") +
+                addNewLine("USA versions of board created.");
 
         controller.execute();
-        
+
         assertTrue(view.VerifyOutputMethodCalled(expected));
     }
 }

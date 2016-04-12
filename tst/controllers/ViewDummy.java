@@ -1,6 +1,4 @@
-package game.controllers.createPlayer;
-
-import game.controllers.View;
+package game.controllers;
 
 import java.io.IOException;
 

@@ -1,6 +1,5 @@
 package game.factories;
 
-import game.Controller;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,23 +7,21 @@ import static game.Monopoly.controllerFactory;
 
 public class ControllerFactoryTest {
 
-    @SuppressWarnings("unused")
-    private Controller controller;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         controllerFactory = new ControllerFactoryImpl();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testControllerFactoryException() {
-        controller = controllerFactory.make("");
+        controllerFactory.make("");
     }
 
     @Test
     public void testMakeController() {
-        controller = controllerFactory.make("CreateBoardController");
-        controller = controllerFactory.make("CreatePlayerController");
+        controllerFactory.make("CreateBoardController");
+        controllerFactory.make("CreatePlayerController");
     }
 }
 

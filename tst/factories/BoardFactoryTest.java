@@ -7,21 +7,24 @@ import org.junit.Test;
 public class BoardFactoryTest {
 
     private BoardFactory boardFactory;
-    @SuppressWarnings("unused")
-    private String board;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         boardFactory = new BoardFactoryImpl();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testBoardFactoryException() {
-        board = boardFactory.make("");
+        boardFactory.make("");
     }
 
     @Test
     public void testMakeBoard() {
-        board = boardFactory.make("USA");
+        boardFactory.make("USA");
+    }
+
+    @Test
+    public void testGetAvailableBoards() {
+        boardFactory.getAvailableBoards();
     }
 }
