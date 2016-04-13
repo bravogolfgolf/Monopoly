@@ -8,9 +8,8 @@ public class BoardFactoryImpl implements BoardFactory {
 
     @Override
     public String make(String version) {
-        if (version.equals("USA")) {
-            return version;
-        }
+        if (version.equals("USA")) return version;
+        if (version.equals("FRA")) return version;
         throw new IllegalArgumentException();
     }
 
