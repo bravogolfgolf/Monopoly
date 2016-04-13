@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 public class PlayerRepositoryTest {
-    private final CreatePlayerRepository repository = new CreatePlayerRepository();
+    private final PlayerRepository repository = new PlayerRepository();
 
     @Test
     public void testCreatePlayer() {

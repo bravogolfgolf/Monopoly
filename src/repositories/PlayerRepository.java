@@ -6,7 +6,7 @@ import game.interactors.createplayer.CreatePlayerGateway;
 import java.util.HashSet;
 import java.util.Set;
 
-public final class CreatePlayerRepository extends CreatePlayerGateway {
+public final class PlayerRepository extends CreatePlayerGateway {
 
     private final Set<Player> players = new HashSet<>();
 

@@ -5,7 +5,7 @@ import game.controllers.createPlayer.CreatePlayerControllerInteractor;
 import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.createplayer.CreatePlayerInteractor;
 import game.presenters.PresenterEn;
-import game.repositories.CreatePlayerRepository;
+import game.repositories.PlayerRepository;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class CreatePlayerTest {
     public void validRequestToCreatePlayerWithUniqueTokenSucceeds() throws IOException {
         ConsoleMock view = new ConsoleMock();
         PresenterEn presenter = new PresenterEn();
-        CreatePlayerGateway repository = new CreatePlayerRepository();
+        CreatePlayerGateway repository = new PlayerRepository();
         CreatePlayerControllerInteractor interactor = new CreatePlayerInteractor(presenter, repository);
         Controller controller = new CreatePlayerControllerStub(view, interactor, presenter);
         String expected = "Please select tokens for player.\nPlayer created with Cat tokens.\n";

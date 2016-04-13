@@ -13,7 +13,7 @@ import game.interactors.createboard.CreateBoardInteractor;
 import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.createplayer.CreatePlayerInteractor;
 import game.presenters.PresenterEn;
-import game.repositories.CreatePlayerRepository;
+import game.repositories.PlayerRepository;
 
 import static game.Monopoly.console;
 
@@ -30,7 +30,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
             return new CreateBoardController(console, interactor, presenter);
         }
         if (controller.equals("CreatePlayerController")) {
-            CreatePlayerGateway repository = new CreatePlayerRepository();
+            CreatePlayerGateway repository = new PlayerRepository();
             CreatePlayerControllerInteractor interactor = new CreatePlayerInteractor(presenter, repository);
             return new CreatePlayerController(console, interactor, presenter);
         }
