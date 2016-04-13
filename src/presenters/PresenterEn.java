@@ -9,7 +9,7 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void boardCreatedMessage(CreateBoardResponse response) {
-        template = "%s versions of board created.";
+        template = "%s version of board created.";
         variables = response.versions;
         addToBuffer(template, variables);
     }

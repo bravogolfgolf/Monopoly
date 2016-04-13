@@ -24,7 +24,7 @@ public class PresenterEnTest {
     public void boardCreatedMessage() {
         createBoardResponse.versions = new String[]{"USA"};
         presenter.boardCreatedMessage(createBoardResponse);
-        expected = "USA versions of board created.\n";
+        expected = "USA version of board created.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
