@@ -1,14 +1,11 @@
 package game;
 
-import game.controllers.View;
 import game.factories.ControllerFactoryImpl;
-import game.view.Console;
 
-import java.io.*;
+import java.io.IOException;
 
 public final class Monopoly {
 
-    public static View console;
     public static ControllerFactory controllerFactory;
 
     public static void main(String[] args) throws IOException {
@@ -17,9 +14,6 @@ public final class Monopoly {
     }
 
     private void start() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-        console = new Console(reader, writer);
         controllerFactory = new ControllerFactoryImpl();
 
         Controller controller = controllerFactory.make("CreateBoardController");

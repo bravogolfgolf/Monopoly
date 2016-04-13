@@ -3,6 +3,7 @@ package game.factories;
 import game.Controller;
 import game.ControllerFactory;
 import game.controllers.Presenter;
+import game.controllers.View;
 import game.controllers.createBoard.CreateBoardController;
 import game.controllers.createBoard.CreateBoardControllerInteractor;
 import game.controllers.createPlayer.CreatePlayerController;
@@ -14,11 +15,17 @@ import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.createplayer.CreatePlayerInteractor;
 import game.presenters.PresenterEn;
 import game.repositories.PlayerRepository;
+import game.view.Console;
 
-import static game.Monopoly.console;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class ControllerFactoryImpl implements ControllerFactory {
-
+    private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+    private final View console = new Console(reader, writer);
     private final Presenter presenter = new PresenterEn();
 
 
