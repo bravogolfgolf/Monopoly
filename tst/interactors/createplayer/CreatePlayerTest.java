@@ -1,6 +1,6 @@
 package game.interactors.createplayer;
 
-import game.controllers.createPlayer.CreatePlayerControllerInteractor;
+import game.controllers.createPlayer.CreatePlayerInteractor;
 import game.interactors.PresenterEnMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,18 +8,18 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class CreatePlayerInteractorTest {
+public class CreatePlayerTest {
 
     private CreatePlayerRepositoryMock repository;
     private PresenterEnMock presenter;
-    private CreatePlayerControllerInteractor interactor;
+    private CreatePlayerInteractor interactor;
     private CreatePlayerRequest request;
 
     @Before
     public void setup() {
         repository = new CreatePlayerRepositoryMock();
         presenter = new PresenterEnMock();
-        interactor = new CreatePlayerInteractor(presenter, repository);
+        interactor = new CreatePlayer(presenter, repository);
         request = new CreatePlayerRequest();
         request.token = "Cat";
     }

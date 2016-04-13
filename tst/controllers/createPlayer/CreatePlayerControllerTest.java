@@ -19,7 +19,7 @@ public class CreatePlayerControllerTest {
         View view = new ConsoleDummy();
         Presenter presenter = new PresenterEnDummy();
         CreatePlayerGateway repository = new CreatePlayerGatewayDummy();
-        CreatePlayerInteractorMock interactor = new CreatePlayerInteractorMock(presenter, repository);
+        CreatePlayerMock interactor = new CreatePlayerMock(presenter, repository);
         Controller controller = new CreatePlayerControllerStub(view, interactor, presenter);
         controller.execute();
         assertTrue(interactor.VerifyHandleMethodCalled);

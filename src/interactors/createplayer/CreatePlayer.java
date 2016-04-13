@@ -1,14 +1,14 @@
 package game.interactors.createplayer;
 
 import game.controllers.Presenter;
-import game.controllers.createPlayer.CreatePlayerControllerInteractor;
+import game.controllers.createPlayer.CreatePlayerInteractor;
 
-public class CreatePlayerInteractor implements CreatePlayerControllerInteractor {
+public class CreatePlayer implements CreatePlayerInteractor {
     private final Presenter presenter;
     private final CreatePlayerGateway repository;
     private final CreatePlayerResponse response = new CreatePlayerResponse();
 
-    public CreatePlayerInteractor(Presenter presenter, CreatePlayerGateway repository) {
+    public CreatePlayer(Presenter presenter, CreatePlayerGateway repository) {
         this.presenter = presenter;
         this.repository = repository;
     }

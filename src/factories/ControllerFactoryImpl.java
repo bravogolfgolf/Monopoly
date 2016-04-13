@@ -7,12 +7,12 @@ import game.controllers.View;
 import game.controllers.createBoard.CreateBoardController;
 import game.controllers.createBoard.CreateBoardInteractor;
 import game.controllers.createPlayer.CreatePlayerController;
-import game.controllers.createPlayer.CreatePlayerControllerInteractor;
+import game.controllers.createPlayer.CreatePlayerInteractor;
 import game.entitiies.Board;
 import game.interactors.createboard.CreateBoard;
 import game.interactors.createboard.CreateBoardGateway;
+import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerGateway;
-import game.interactors.createplayer.CreatePlayerInteractor;
 import game.presenters.PresenterEn;
 import game.repositories.PlayerRepository;
 import game.view.Console;
@@ -38,7 +38,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
         }
         if (controller.equals("CreatePlayerController")) {
             CreatePlayerGateway repository = new PlayerRepository();
-            CreatePlayerControllerInteractor interactor = new CreatePlayerInteractor(presenter, repository);
+            CreatePlayerInteractor interactor = new CreatePlayer(presenter, repository);
             return new CreatePlayerController(console, interactor, presenter);
         }
         throw new IllegalArgumentException();

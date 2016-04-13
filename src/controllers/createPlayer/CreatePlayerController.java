@@ -10,10 +10,10 @@ import java.io.IOException;
 
 public class CreatePlayerController implements Controller {
     private final View view;
-    private final CreatePlayerControllerInteractor interactor;
+    private final CreatePlayerInteractor interactor;
     private final Presenter presenter;
 
-    public CreatePlayerController(View view, CreatePlayerControllerInteractor interactor, Presenter presenter) {
+    public CreatePlayerController(View view, CreatePlayerInteractor interactor, Presenter presenter) {
         this.view = view;
         this.interactor = interactor;
         this.presenter = presenter;

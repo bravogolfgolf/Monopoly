@@ -1,9 +1,9 @@
 package game.usecases;
 
 import game.Controller;
-import game.controllers.createPlayer.CreatePlayerControllerInteractor;
+import game.controllers.createPlayer.CreatePlayerInteractor;
+import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerGateway;
-import game.interactors.createplayer.CreatePlayerInteractor;
 import game.presenters.PresenterEn;
 import game.repositories.PlayerRepository;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class CreatePlayerTest {
         ConsoleMock view = new ConsoleMock();
         PresenterEn presenter = new PresenterEn();
         CreatePlayerGateway repository = new PlayerRepository();
-        CreatePlayerControllerInteractor interactor = new CreatePlayerInteractor(presenter, repository);
+        CreatePlayerInteractor interactor = new CreatePlayer(presenter, repository);
         Controller controller = new CreatePlayerControllerStub(view, interactor, presenter);
         String expected = "Please select tokens for player.\nPlayer created with Cat tokens.\n";
 

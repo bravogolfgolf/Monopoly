@@ -6,7 +6,7 @@ import game.controllers.View;
 import java.io.IOException;
 
 class CreatePlayerControllerStub extends CreatePlayerController {
-    CreatePlayerControllerStub(View view, CreatePlayerControllerInteractor interactor, Presenter presenter) {
+    CreatePlayerControllerStub(View view, CreatePlayerInteractor interactor, Presenter presenter) {
         super(view, interactor, presenter);
     }
 
