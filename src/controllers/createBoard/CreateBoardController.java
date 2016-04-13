@@ -21,7 +21,7 @@ public class CreateBoardController implements Controller {
 
     @Override
     public void execute() throws IOException {
-        handle(null);
+        interactor.boardPromptAndAvailableBoardsMessages();
         String line = view.input();
         handle(line);
     }

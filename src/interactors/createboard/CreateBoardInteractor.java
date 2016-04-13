@@ -16,8 +16,8 @@ public class CreateBoardInteractor implements CreateBoardControllerInteractor {
     @Override
     public void handle(CreateBoardRequest request) {
 
-        if (isNullRequest(request)) boardPromptAndAvailableBoardsMessages(response);
-        else if (requestedBoardIsNotAvailable(request)) boardPromptAndAvailableBoardsMessages(response);
+        if (isNullRequest(request)) boardPromptAndAvailableBoardsMessages();
+        else if (requestedBoardIsNotAvailable(request)) boardPromptAndAvailableBoardsMessages();
         else boardCreatedMessage(response, request);
     }
 
@@ -29,7 +29,7 @@ public class CreateBoardInteractor implements CreateBoardControllerInteractor {
         return !board.isAvailable(createBoardRequest.version);
     }
 
-    private void boardPromptAndAvailableBoardsMessages(CreateBoardResponse response) {
+    public void boardPromptAndAvailableBoardsMessages() {
         presenter.boardPromptMessage();
         response.versions = board.getAvailableBoards();
         presenter.availableBoardsMessage(response);
