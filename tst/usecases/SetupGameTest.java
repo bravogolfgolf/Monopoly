@@ -4,9 +4,10 @@ import game.Controller;
 import game.controllers.Presenter;
 import game.controllers.setupgame.SetupGameInteractor;
 import game.entitiies.Board;
-import game.factories.BoardFactoryImpl;
+import game.factories.SetupGameBoardGateway;
+import game.factories.SetupGameFactoryImpl;
 import game.interactors.setupgame.SetupGame;
-import game.interactors.setupgame.SetupGameGateway;
+import game.interactors.setupgame.SetupGameFactory;
 import game.presenters.PresenterEn;
 import org.junit.Test;
 
@@ -20,8 +21,9 @@ public class SetupGameTest {
     public void testCreateBoard() throws IOException {
         ConsoleMock view = new ConsoleMock();
         Presenter presenter = new PresenterEn();
-        SetupGameGateway board = new Board(new BoardFactoryImpl());
-        SetupGameInteractor interactor = new SetupGame(presenter, board);
+        SetupGameBoardGateway board = new Board();
+        SetupGameFactory factory = new SetupGameFactoryImpl(board);
+        SetupGameInteractor interactor = new SetupGame(presenter, factory);
         Controller controller = new SetupGameControllerStub(view, interactor, presenter);
         String expected = "Select version of game you would like to play.\n" +
                 "Available versions: FRA, USA\n" +

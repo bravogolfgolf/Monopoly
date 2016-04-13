@@ -2,17 +2,17 @@ package game.factories;
 
 import game.Controller;
 import game.ControllerFactory;
+import game.Monopoly;
 import game.controllers.Presenter;
 import game.controllers.View;
 import game.controllers.createPlayer.CreatePlayerController;
 import game.controllers.createPlayer.CreatePlayerInteractor;
 import game.controllers.setupgame.SetupGameController;
 import game.controllers.setupgame.SetupGameInteractor;
-import game.entitiies.Board;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.setupgame.SetupGame;
-import game.interactors.setupgame.SetupGameGateway;
+import game.interactors.setupgame.SetupGameFactory;
 import game.presenters.PresenterEn;
 import game.repositories.PlayerRepository;
 import game.view.Console;
@@ -23,8 +23,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class ControllerFactoryImpl implements ControllerFactory {
-    private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    private BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+    private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
     private final View console = new Console(reader, writer);
     private final Presenter presenter = new PresenterEn();
 
@@ -32,8 +32,9 @@ public class ControllerFactoryImpl implements ControllerFactory {
     @Override
     public Controller make(String controller) {
         if (controller.equals("SetupGameController")) {
-            SetupGameGateway board = new Board(new BoardFactoryImpl());
-            SetupGameInteractor interactor = new SetupGame(presenter, board);
+            SetupGameBoardGateway board = (SetupGameBoardGateway) Monopoly.board;
+            SetupGameFactory factory = new SetupGameFactoryImpl(board);
+            SetupGameInteractor interactor = new SetupGame(presenter, factory);
             return new SetupGameController(console, interactor, presenter);
         }
         if (controller.equals("CreatePlayerController")) {

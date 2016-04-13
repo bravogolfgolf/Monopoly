@@ -1,7 +1,7 @@
 package game.interactors.setupgame;
 
-public interface SetupGameGateway {
-    void create(String version);
+public interface SetupGameFactory {
+    void make(String version);
 
     String[] getAvailableBoards();
 

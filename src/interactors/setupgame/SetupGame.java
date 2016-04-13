@@ -5,12 +5,12 @@ import game.controllers.setupgame.SetupGameInteractor;
 
 public class SetupGame implements SetupGameInteractor {
     private final Presenter presenter;
-    private final SetupGameGateway board;
+    private final SetupGameFactory factory;
     private final SetupGameResponse response = new SetupGameResponse();
 
-    public SetupGame(Presenter presenter, SetupGameGateway board) {
+    public SetupGame(Presenter presenter, SetupGameFactory factory) {
         this.presenter = presenter;
-        this.board = board;
+        this.factory = factory;
     }
 
     @Override
@@ -27,18 +27,18 @@ public class SetupGame implements SetupGameInteractor {
     }
 
     private boolean requestedVersionIsAvailable(SetupGameRequest setupGameRequest) {
-        return board.isAvailable(setupGameRequest.version);
+        return factory.isAvailable(setupGameRequest.version);
     }
 
     private void versionCreatedMessage(SetupGameResponse response, SetupGameRequest setupGameRequest) {
-        board.create(setupGameRequest.version);
+        factory.make(setupGameRequest.version);
         response.versions = new String[]{setupGameRequest.version};
         presenter.boardCreatedMessage(response);
     }
 
     public void setupGamePrompt() {
         presenter.boardPromptMessage();
-        response.versions = board.getAvailableBoards();
+        response.versions = factory.getAvailableBoards();
         presenter.availableBoardsMessage(response);
     }
 }

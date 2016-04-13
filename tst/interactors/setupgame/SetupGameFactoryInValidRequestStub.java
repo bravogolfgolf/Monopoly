@@ -1,9 +1,9 @@
 package game.interactors.setupgame;
 
-class SetupGameGatewayInValidRequestStub extends SetupGameGatewayMock {
+class SetupGameFactoryInValidRequestStub extends SetupGameFactoryMock {
     @Override
-    public void create(String version) {
-        super.create("");
+    public void make(String version) {
+
         throw new IllegalArgumentException();
     }
 

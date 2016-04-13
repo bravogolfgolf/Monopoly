@@ -3,25 +3,25 @@ package game.factories;
 import org.junit.Before;
 import org.junit.Test;
 
-import static game.Monopoly.controllerFactory;
+import static game.Monopoly.factory;
 
 public class ControllerFactoryTest {
 
 
     @Before
     public void setUp() {
-        controllerFactory = new ControllerFactoryImpl();
+        factory = new ControllerFactoryImpl();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testControllerFactoryException() {
-        controllerFactory.make("");
+        factory.make("");
     }
 
     @Test
     public void testMakeController() {
-        controllerFactory.make("SetupGameController");
-        controllerFactory.make("CreatePlayerController");
+        factory.make("SetupGameController");
+        factory.make("CreatePlayerController");
     }
 }
 

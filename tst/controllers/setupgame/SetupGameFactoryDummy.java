@@ -1,10 +1,10 @@
 package game.controllers.setupgame;
 
-import game.interactors.setupgame.SetupGameGateway;
+import game.interactors.setupgame.SetupGameFactory;
 
-class SetupGameGatewayDummy implements SetupGameGateway {
+class SetupGameFactoryDummy implements SetupGameFactory {
     @Override
-    public void create(String version) {
+    public void make(String version) {
     }
 
     @Override
@@ -16,5 +16,4 @@ class SetupGameGatewayDummy implements SetupGameGateway {
     public boolean isAvailable(String version) {
         return false;
     }
-
 }

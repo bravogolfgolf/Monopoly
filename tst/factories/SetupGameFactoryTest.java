@@ -1,35 +1,37 @@
 package game.factories;
 
-import game.entitiies.BoardFactory;
+import game.entitiies.Board;
+import game.interactors.setupgame.SetupGameFactory;
 import org.junit.Before;
 import org.junit.Test;
 
-public class BoardFactoryTest {
+public class SetupGameFactoryTest {
 
-    private BoardFactory boardFactory;
+    private SetupGameFactory factory;
 
     @Before
     public void setUp() {
-        boardFactory = new BoardFactoryImpl();
+        SetupGameBoardGateway board = new Board();
+        factory = new SetupGameFactoryImpl(board);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testBoardFactoryException() {
-        boardFactory.make("");
+        factory.make("");
     }
 
     @Test
     public void testMakeBoard() {
-        boardFactory.make("USA");
+        factory.make("USA");
     }
 
     @Test
     public void testGetAvailableBoards() {
-        boardFactory.getAvailableBoards();
+        factory.getAvailableBoards();
     }
 
     @Test
     public void testIsAvailable(){
-        boardFactory.isAvailable("USA");
+        factory.isAvailable("USA");
     }
 }

@@ -5,7 +5,7 @@ import game.controllers.ConsoleDummy;
 import game.controllers.Presenter;
 import game.controllers.PresenterEnDummy;
 import game.controllers.View;
-import game.interactors.setupgame.SetupGameGateway;
+import game.interactors.setupgame.SetupGameFactory;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -18,8 +18,8 @@ public class SetupGameControllerTest {
     public void testCreateBoardController() throws IOException {
         View view = new ConsoleDummy();
         Presenter presenter = new PresenterEnDummy();
-        SetupGameGateway board = new SetupGameGatewayDummy();
-        SetupGameMock interactor = new SetupGameMock(presenter, board);
+        SetupGameFactory factory = new SetupGameFactoryDummy();
+        SetupGameMock interactor = new SetupGameMock(presenter, factory);
         Controller controller = new SetupGameControllerStub(view, interactor, presenter);
         controller.execute();
         assertTrue(interactor.VerifyHandleMethodCalled);

@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 public class SetupGameTest {
 
     private PresenterEnMock presenter;
-    private SetupGameGatewayMock board;
+    private SetupGameFactoryMock factory;
     private SetupGameInteractor interactor;
     private SetupGameRequest request;
 
@@ -22,38 +22,38 @@ public class SetupGameTest {
 
     @Test
     public void testBoardCreatedMessage() {
-        board = new SetupGameGatewayValidRequestStub();
-        interactor = new SetupGame(presenter, board);
+        factory = new SetupGameFactoryValidRequestStub();
+        interactor = new SetupGame(presenter, factory);
 
         request.version = "USA";
         interactor.handle(request);
 
-        assertTrue(board.verifyCreateMethodCalled);
+        assertTrue(factory.verifyCreateMethodCalled);
         assertTrue(presenter.verifyBoardCreateMessage);
     }
 
     @Test
     public void testBoardPromptMessageAndAvailableBoardsMessageWithInvalidInput() {
-        board = new SetupGameGatewayInValidRequestStub();
-        interactor = new SetupGame(presenter, board);
+        factory = new SetupGameFactoryInValidRequestStub();
+        interactor = new SetupGame(presenter, factory);
 
         request.version = "TEST";
         interactor.handle(request);
 
-        assertTrue(board.verifyIsAvailableCalled);
+        assertTrue(factory.verifyIsAvailableCalled);
         assertTrue(presenter.verifyBoardPromptMessage);
         assertTrue(presenter.verifyAvailableBoardsMessage);
     }
 
     @Test
     public void testBoardPromptMessageAndAvailableBoardsMessageWithNullInput() {
-        board = new SetupGameGatewayInValidRequestStub();
-        interactor = new SetupGame(presenter, board);
+        factory = new SetupGameFactoryInValidRequestStub();
+        interactor = new SetupGame(presenter, factory);
 
         request.version = null;
         interactor.handle(request);
 
-        assertTrue(board.verifyAvailableBoardsCalled);
+        assertTrue(factory.verifyAvailableBoardsCalled);
         assertTrue(presenter.verifyBoardPromptMessage);
         assertTrue(presenter.verifyAvailableBoardsMessage);
     }

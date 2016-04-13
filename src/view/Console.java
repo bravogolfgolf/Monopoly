@@ -8,8 +8,8 @@ import java.io.IOException;
 
 public class Console extends View {
 
-    private BufferedReader reader;
-    private BufferedWriter writer;
+    private final BufferedReader reader;
+    private final BufferedWriter writer;
 
     public Console(BufferedReader reader, BufferedWriter writer) {
         this.reader = reader;

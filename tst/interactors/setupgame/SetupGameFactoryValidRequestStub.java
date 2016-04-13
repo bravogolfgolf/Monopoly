@@ -1,16 +1,14 @@
 package game.interactors.setupgame;
 
-class SetupGameGatewayValidRequestStub extends SetupGameGatewayMock {
-
+class SetupGameFactoryValidRequestStub extends SetupGameFactoryMock {
     @Override
-    public void create(String version) {
-        super.create("USA");
+    public void make(String version) {
+        super.make(version);
     }
 
     @Override
     public String[] getAvailableBoards() {
-        super.getAvailableBoards();
-        return new String[]{"USA"};
+        return super.getAvailableBoards();
     }
 
     @Override
@@ -18,5 +16,4 @@ class SetupGameGatewayValidRequestStub extends SetupGameGatewayMock {
         super.isAvailable(version);
         return true;
     }
-
 }

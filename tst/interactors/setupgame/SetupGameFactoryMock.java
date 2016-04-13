@@ -1,13 +1,13 @@
 package game.interactors.setupgame;
 
-class SetupGameGatewayMock implements SetupGameGateway {
+class SetupGameFactoryMock implements SetupGameFactory {
 
     boolean verifyCreateMethodCalled = false;
     boolean verifyAvailableBoardsCalled = false;
     boolean verifyIsAvailableCalled = false;
 
     @Override
-    public void create(String version) {
+    public void make(String version) {
         verifyCreateMethodCalled = true;
     }
 
