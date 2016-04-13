@@ -1,7 +1,5 @@
 package game.interactors.createplayer;
 
-import game.interactors.Request;
-
-public class CreatePlayerRequest implements Request {
+public class CreatePlayerRequest {
     public String token;
 }

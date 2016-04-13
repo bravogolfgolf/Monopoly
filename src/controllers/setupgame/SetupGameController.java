@@ -1,19 +1,19 @@
-package game.controllers.createPlayer;
+package game.controllers.setupgame;
 
 import game.Controller;
 import game.controllers.Presenter;
 import game.controllers.View;
-import game.interactors.createplayer.CreatePlayerRequest;
+import game.interactors.setupgame.SetupGameRequest;
 
 import java.io.IOException;
 
 
-public class CreatePlayerController implements Controller {
+public class SetupGameController implements Controller {
     private final View view;
-    private final CreatePlayerInteractor interactor;
+    private final SetupGameInteractor interactor;
     private final Presenter presenter;
 
-    public CreatePlayerController(View view, CreatePlayerInteractor interactor, Presenter presenter) {
+    public SetupGameController(View view, SetupGameInteractor interactor, Presenter presenter) {
         this.view = view;
         this.interactor = interactor;
         this.presenter = presenter;
@@ -21,15 +21,21 @@ public class CreatePlayerController implements Controller {
 
     @Override
     public void execute() throws IOException {
-        handle(null);
+        interactor.setupGamePrompt();
+        updateView();
         String line = view.input();
         handle(line);
     }
 
     protected void handle(String text) throws IOException {
-        CreatePlayerRequest request = new CreatePlayerRequest();
-        request.token = text;
+        SetupGameRequest request = new SetupGameRequest();
+        request.version = text;
         interactor.handle(request);
+        updateView();
+    }
+
+    private void updateView() throws IOException {
         view.output(presenter.getFormattedMessage());
     }
+
 }

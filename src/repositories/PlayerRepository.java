@@ -1,12 +1,12 @@
 package game.repositories;
 
 import game.entitiies.Player;
-import game.interactors.PlayerGateway;
+import game.interactors.createplayer.CreatePlayerGateway;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public final class PlayerRepository extends PlayerGateway {
+public final class PlayerRepository extends CreatePlayerGateway {
 
     private final Set<Player> players = new HashSet<>();
 

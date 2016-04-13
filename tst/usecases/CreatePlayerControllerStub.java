@@ -1,7 +1,9 @@
-package game.controllers.createPlayer;
+package game.usecases;
 
 import game.controllers.Presenter;
 import game.controllers.View;
+import game.controllers.createPlayer.CreatePlayerController;
+import game.controllers.createPlayer.CreatePlayerInteractor;
 
 import java.io.IOException;
 
@@ -13,5 +15,7 @@ class CreatePlayerControllerStub extends CreatePlayerController {
     @Override
     public void execute() throws IOException {
         super.handle(null);
+        String line = "Cat";
+        super.handle(line);
     }
 }

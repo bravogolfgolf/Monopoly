@@ -1,12 +1,12 @@
-package game.controllers.createPlayer;
+package game.controllers.setupgame;
 
 import game.controllers.Presenter;
 import game.controllers.View;
 
 import java.io.IOException;
 
-class CreatePlayerControllerStub extends CreatePlayerController {
-    CreatePlayerControllerStub(View view, CreatePlayerInteractor interactor, Presenter presenter) {
+class SetupGameControllerStub extends SetupGameController {
+    SetupGameControllerStub(View view, SetupGameInteractor interactor, Presenter presenter) {
         super(view, interactor, presenter);
     }
 

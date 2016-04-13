@@ -2,26 +2,44 @@ package game.factories;
 
 import game.Controller;
 import game.ControllerFactory;
-import game.controllers.createBoard.CreateBoardController;
+import game.Monopoly;
+import game.controllers.Presenter;
+import game.controllers.View;
 import game.controllers.createPlayer.CreatePlayerController;
-import game.interactors.createboard.CreateBoardInteractor;
-import game.interactors.createplayer.CreatePlayerInteractor;
+import game.controllers.createPlayer.CreatePlayerInteractor;
+import game.controllers.setupgame.SetupGameController;
+import game.controllers.setupgame.SetupGameInteractor;
+import game.interactors.createplayer.CreatePlayer;
+import game.interactors.createplayer.CreatePlayerGateway;
+import game.interactors.setupgame.SetupGame;
+import game.interactors.setupgame.SetupGameFactory;
 import game.presenters.PresenterEn;
+import game.repositories.PlayerRepository;
+import game.view.Console;
 
-import static game.Monopoly.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class ControllerFactoryImpl implements ControllerFactory {
+    private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+    private final View console = new Console(reader, writer);
+    private final Presenter presenter = new PresenterEn();
 
-    private final PresenterEn presenter = new PresenterEn();
 
     @Override
     public Controller make(String controller) {
-        if (controller.equals("CreateBoardController")) {
-            CreateBoardInteractor interactor = new CreateBoardInteractor(presenter, boardGateway);
-            return new CreateBoardController(console, interactor, presenter);
+        if (controller.equals("SetupGameController")) {
+            SetupGameBoardGateway board = (SetupGameBoardGateway) Monopoly.board;
+            SetupGameFactory factory = new SetupGameFactoryImpl(board);
+            SetupGameInteractor interactor = new SetupGame(presenter, factory);
+            return new SetupGameController(console, interactor, presenter);
         }
         if (controller.equals("CreatePlayerController")) {
-            CreatePlayerInteractor interactor = new CreatePlayerInteractor(presenter, playerGateway);
+            CreatePlayerGateway repository = new PlayerRepository();
+            CreatePlayerInteractor interactor = new CreatePlayer(presenter, repository);
             return new CreatePlayerController(console, interactor, presenter);
         }
         throw new IllegalArgumentException();

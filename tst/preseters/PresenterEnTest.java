@@ -1,73 +1,73 @@
 package game.preseters;
 
-import game.interactors.createboard.CreateBoardResponse;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.setupgame.SetupGameResponse;
 import game.presenters.PresenterEn;
 import org.junit.Before;
 import org.junit.Test;
 
-import static game.utilities.StringFormatter.addNewLine;
 import static org.junit.Assert.assertEquals;
 
 public class PresenterEnTest {
 
     private final PresenterEn presenter = new PresenterEn();
-    private final CreateBoardResponse createBoardResponse = new CreateBoardResponse();
+    private final SetupGameResponse setupGameResponse = new SetupGameResponse();
     private final CreatePlayerResponse createPlayerResponse = new CreatePlayerResponse();
     private String expected;
 
     @Before
     public void setUp() {
-        createBoardResponse.versions = new String[]{"USA"};
         createPlayerResponse.tokens = new String[]{"Cat"};
     }
 
     @Test
     public void boardCreatedMessage() {
-        presenter.boardCreatedMessage(createBoardResponse);
-        expected = addNewLine("USA versions of board created.");
-        assertEquals(expected, presenter.getMessage());
+        setupGameResponse.versions = new String[]{"USA"};
+        presenter.boardCreatedMessage(setupGameResponse);
+        expected = "USA version of game created.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void availableBoardsMessage() {
-        presenter.availableBoardsMessage(createBoardResponse);
-        expected = addNewLine("Available boards: USA");
-        assertEquals(expected, presenter.getMessage());
+        setupGameResponse.versions = new String[]{"USA","FRA"};
+        presenter.availableBoardsMessage(setupGameResponse);
+        expected = "Available versions: FRA, USA\n";
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void boardPromptMessage() {
         presenter.boardPromptMessage();
-        expected = addNewLine("Select versions of board you would like to use.");
-        assertEquals(expected, presenter.getMessage());
+        expected = "Select version of game you would like to play.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void exceededPlayerLimitMessage() {
         presenter.exceededPlayerLimitMessage();
-        expected = addNewLine("Exceeded eight player limit.");
-        assertEquals(expected, presenter.getMessage());
+        expected = "Exceeded eight player limit.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void playerCreatedMessage() {
         presenter.playerCreatedMessage(createPlayerResponse);
-        expected = addNewLine("Player created with Cat tokens.");
-        assertEquals(expected, presenter.getMessage());
+        expected = "Player created with Cat token.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void playerPromptMessage() {
         presenter.playerPromptMessage();
-        expected = addNewLine("Please select tokens for player.");
-        assertEquals(expected, presenter.getMessage());
+        expected = "Please select token for player.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void tokenInUseMessage() {
         presenter.tokenInUseMessage(createPlayerResponse);
-        expected = addNewLine("Cat tokens already in use.");
-        assertEquals(expected, presenter.getMessage());
+        expected = "Cat token already in use.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 }

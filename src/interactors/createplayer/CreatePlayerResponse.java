@@ -1,7 +1,5 @@
 package game.interactors.createplayer;
 
-import game.interactors.Response;
-
-public class CreatePlayerResponse implements Response {
+public class CreatePlayerResponse {
     public String[] tokens;
 }

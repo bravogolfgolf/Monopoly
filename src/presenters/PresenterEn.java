@@ -1,64 +1,55 @@
 package game.presenters;
 
 import game.controllers.Presenter;
-import game.interactors.createboard.CreateBoardResponse;
 import game.interactors.createplayer.CreatePlayerResponse;
-
-import static game.utilities.StringFormatter.addNewLine;
+import game.interactors.setupgame.SetupGameResponse;
 
 public class PresenterEn extends Presenter {
-    private String message;
-    private StringBuffer messageBuffer = new StringBuffer();
 
-    public String getMessage() {
-        String result = messageBuffer.toString();
-        messageBuffer = new StringBuffer();
-        return result;
-    }
 
-    private void addToBuffer(String message) {
-        messageBuffer.append(message);
+    @Override
+    public void boardCreatedMessage(SetupGameResponse response) {
+        template = "%s version of game created.";
+        variables = response.versions;
+        addToBuffer(template, variables);
     }
 
     @Override
-    public void boardCreatedMessage(CreateBoardResponse response) {
-        message = addNewLine(String.format("%s versions of board created.", response.versions[0]));
-        addToBuffer(message);
-    }
-
-    @Override
-    public void availableBoardsMessage(CreateBoardResponse response) {
-        message = addNewLine(String.format("Available boards: %s", response.versions[0]));
-        addToBuffer(message);
+    public void availableBoardsMessage(SetupGameResponse response) {
+        template = "Available versions: %s";
+        variables = response.versions;
+        addToBuffer(template, variables);
     }
 
     @Override
     public void boardPromptMessage() {
-        message = addNewLine("Select versions of board you would like to use.");
-        addToBuffer(message);
+        template = "Select version of game you would like to play.";
+        addToBuffer(template);
     }
 
     @Override
     public void exceededPlayerLimitMessage() {
-        message = addNewLine("Exceeded eight player limit.");
-        addToBuffer(message);
+        template = "Exceeded eight player limit.";
+        addToBuffer(template);
     }
 
     @Override
     public void playerCreatedMessage(CreatePlayerResponse response) {
-        message = addNewLine(String.format("Player created with %s tokens.", response.tokens[0]));
-        addToBuffer(message);
+        template = "Player created with %s token.";
+        variables = response.tokens;
+        addToBuffer(template, variables);
     }
 
     @Override
     public void playerPromptMessage() {
-        message = addNewLine("Please select tokens for player.");
-        addToBuffer(message);
+        template = "Please select token for player.";
+        addToBuffer(template);
     }
 
     @Override
     public void tokenInUseMessage(CreatePlayerResponse response) {
-        message = addNewLine(String.format("%s tokens already in use.", response.tokens[0]));
-        addToBuffer(message);
+        template = "%s token already in use.";
+        variables = response.tokens;
+        addToBuffer(template, variables);
     }
 }
