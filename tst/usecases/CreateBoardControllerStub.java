@@ -7,8 +7,8 @@ import game.controllers.createBoard.CreateBoardControllerInteractor;
 
 import java.io.IOException;
 
-class CreateBoardControllerFake extends CreateBoardController {
-    CreateBoardControllerFake(View view, CreateBoardControllerInteractor interactor, Presenter presenter) {
+class CreateBoardControllerStub extends CreateBoardController {
+    CreateBoardControllerStub(View view, CreateBoardControllerInteractor interactor, Presenter presenter) {
         super(view, interactor, presenter);
     }
 

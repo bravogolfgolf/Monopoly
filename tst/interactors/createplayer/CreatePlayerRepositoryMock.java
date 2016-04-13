@@ -5,7 +5,7 @@ import game.entitiies.Player;
 import java.util.HashSet;
 import java.util.Set;
 
-class CreatePlayerRepositoryFake extends CreatePlayerGateway {
+class CreatePlayerRepositoryMock extends CreatePlayerGateway {
     private final Set<Player> players = new HashSet<>();
     boolean verifyCreate = false;
     boolean verifyCount = false;

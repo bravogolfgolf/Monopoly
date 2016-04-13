@@ -22,7 +22,7 @@ public class CreateBoardTest {
         Presenter presenter = new PresenterEn();
         CreateBoardGateway board = new Board(new BoardFactoryImpl());
         CreateBoardControllerInteractor interactor = new CreateBoardInteractor(presenter, board);
-        Controller controller = new CreateBoardControllerFake(view, interactor, presenter);
+        Controller controller = new CreateBoardControllerStub(view, interactor, presenter);
         String expected = "Select versions of board you would like to use.\n" +
                 "Available boards: FRA, USA\n" +
                 "USA versions of board created.\n";

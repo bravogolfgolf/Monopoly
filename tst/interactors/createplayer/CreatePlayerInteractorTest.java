@@ -10,14 +10,14 @@ import static org.junit.Assert.assertTrue;
 
 public class CreatePlayerInteractorTest {
 
-    private CreatePlayerRepositoryFake repository;
+    private CreatePlayerRepositoryMock repository;
     private PresenterEnMock presenter;
     private CreatePlayerControllerInteractor interactor;
     private CreatePlayerRequest request;
 
     @Before
     public void setup() {
-        repository = new CreatePlayerRepositoryFake();
+        repository = new CreatePlayerRepositoryMock();
         presenter = new PresenterEnMock();
         interactor = new CreatePlayerInteractor(presenter, repository);
         request = new CreatePlayerRequest();
