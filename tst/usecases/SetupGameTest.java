@@ -23,9 +23,9 @@ public class SetupGameTest {
         SetupGameGateway board = new Board(new BoardFactoryImpl());
         SetupGameInteractor interactor = new SetupGame(presenter, board);
         Controller controller = new SetupGameControllerStub(view, interactor, presenter);
-        String expected = "Select versions of board you would like to use.\n" +
-                "Available boards: FRA, USA\n" +
-                "USA version of board created.\n";
+        String expected = "Select version of game you would like to play.\n" +
+                "Available versions: FRA, USA\n" +
+                "USA version of game created.\n";
 
         controller.execute();
 

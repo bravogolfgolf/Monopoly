@@ -24,7 +24,7 @@ public class PresenterEnTest {
     public void boardCreatedMessage() {
         setupGameResponse.versions = new String[]{"USA"};
         presenter.boardCreatedMessage(setupGameResponse);
-        expected = "USA version of board created.\n";
+        expected = "USA version of game created.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
@@ -32,14 +32,14 @@ public class PresenterEnTest {
     public void availableBoardsMessage() {
         setupGameResponse.versions = new String[]{"USA","FRA"};
         presenter.availableBoardsMessage(setupGameResponse);
-        expected = "Available boards: FRA, USA\n";
+        expected = "Available versions: FRA, USA\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void boardPromptMessage() {
         presenter.boardPromptMessage();
-        expected = "Select versions of board you would like to use.\n";
+        expected = "Select version of game you would like to play.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
@@ -53,21 +53,21 @@ public class PresenterEnTest {
     @Test
     public void playerCreatedMessage() {
         presenter.playerCreatedMessage(createPlayerResponse);
-        expected = "Player created with Cat tokens.\n";
+        expected = "Player created with Cat token.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void playerPromptMessage() {
         presenter.playerPromptMessage();
-        expected = "Please select tokens for player.\n";
+        expected = "Please select token for player.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void tokenInUseMessage() {
         presenter.tokenInUseMessage(createPlayerResponse);
-        expected = "Cat tokens already in use.\n";
+        expected = "Cat token already in use.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 }

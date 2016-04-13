@@ -9,21 +9,21 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void boardCreatedMessage(SetupGameResponse response) {
-        template = "%s version of board created.";
+        template = "%s version of game created.";
         variables = response.versions;
         addToBuffer(template, variables);
     }
 
     @Override
     public void availableBoardsMessage(SetupGameResponse response) {
-        template = "Available boards: %s";
+        template = "Available versions: %s";
         variables = response.versions;
         addToBuffer(template, variables);
     }
 
     @Override
     public void boardPromptMessage() {
-        template = "Select versions of board you would like to use.";
+        template = "Select version of game you would like to play.";
         addToBuffer(template);
     }
 
@@ -35,20 +35,20 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void playerCreatedMessage(CreatePlayerResponse response) {
-        template = "Player created with %s tokens.";
+        template = "Player created with %s token.";
         variables = response.tokens;
         addToBuffer(template, variables);
     }
 
     @Override
     public void playerPromptMessage() {
-        template = "Please select tokens for player.";
+        template = "Please select token for player.";
         addToBuffer(template);
     }
 
     @Override
     public void tokenInUseMessage(CreatePlayerResponse response) {
-        template = "%s tokens already in use.";
+        template = "%s token already in use.";
         variables = response.tokens;
         addToBuffer(template, variables);
     }

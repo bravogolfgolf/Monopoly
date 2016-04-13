@@ -22,7 +22,7 @@ public class CreatePlayerTest {
         CreatePlayerGateway repository = new PlayerRepository();
         CreatePlayerInteractor interactor = new CreatePlayer(presenter, repository);
         Controller controller = new CreatePlayerControllerStub(view, interactor, presenter);
-        String expected = "Please select tokens for player.\nPlayer created with Cat tokens.\n";
+        String expected = "Please select token for player.\nPlayer created with Cat token.\n";
 
         controller.execute();
 
