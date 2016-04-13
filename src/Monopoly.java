@@ -4,7 +4,7 @@ import game.controllers.View;
 import game.factories.ControllerFactoryImpl;
 import game.view.Console;
 
-import java.io.IOException;
+import java.io.*;
 
 public final class Monopoly {
 
@@ -17,7 +17,9 @@ public final class Monopoly {
     }
 
     private void start() throws IOException {
-        console = new Console();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+        console = new Console(reader, writer);
         controllerFactory = new ControllerFactoryImpl();
 
         Controller controller = controllerFactory.make("CreateBoardController");

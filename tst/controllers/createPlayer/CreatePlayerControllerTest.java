@@ -1,10 +1,10 @@
 package game.controllers.createPlayer;
 
 import game.Controller;
+import game.controllers.ConsoleDummy;
 import game.controllers.Presenter;
 import game.controllers.PresenterEnDummy;
 import game.controllers.View;
-import game.controllers.ViewDummy;
 import game.interactors.createplayer.CreatePlayerGateway;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ public class CreatePlayerControllerTest {
 
     @Test
     public void testCreatePlayerController() throws IOException {
-        View view = new ViewDummy();
+        View view = new ConsoleDummy();
         Presenter presenter = new PresenterEnDummy();
         CreatePlayerGateway repository = new CreatePlayerGatewayDummy();
         CreatePlayerInteractorMock interactor = new CreatePlayerInteractorMock(presenter, repository);

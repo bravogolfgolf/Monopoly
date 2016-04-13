@@ -4,16 +4,21 @@ import game.controllers.View;
 
 import java.io.IOException;
 
-public class ViewMock extends View {
+class ConsoleMock extends View {
 
     private final StringBuffer stringBuffer = new StringBuffer();
+
+    @Override
+    public String input() throws IOException {
+        return null;
+    }
 
     @Override
     public void output(String text) throws IOException {
         stringBuffer.append(text);
     }
 
-    public boolean VerifyOutputMethodCalled(String expected) {
+    boolean VerifyOutputMethodCalled(String expected) {
         return stringBuffer.toString().equals(expected);
     }
 }

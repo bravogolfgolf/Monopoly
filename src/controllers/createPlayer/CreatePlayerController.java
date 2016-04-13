@@ -22,7 +22,7 @@ public class CreatePlayerController implements Controller {
     @Override
     public void execute() throws IOException {
         handle(null);
-        String line = view.reader.readLine();
+        String line = view.input();
         handle(line);
     }
 

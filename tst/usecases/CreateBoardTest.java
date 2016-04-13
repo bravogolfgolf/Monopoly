@@ -18,7 +18,7 @@ public class CreateBoardTest {
 
     @Test
     public void testCreateBoard() throws IOException {
-        ViewMock view = new ViewMock();
+        ConsoleMock view = new ConsoleMock();
         Presenter presenter = new PresenterEn();
         CreateBoardGateway board = new Board(new BoardFactoryImpl());
         CreateBoardControllerInteractor interactor = new CreateBoardInteractor(presenter, board);

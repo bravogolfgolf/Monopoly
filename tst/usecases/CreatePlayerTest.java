@@ -17,7 +17,7 @@ public class CreatePlayerTest {
 
     @Test
     public void validRequestToCreatePlayerWithUniqueTokenSucceeds() throws IOException {
-        ViewMock view = new ViewMock();
+        ConsoleMock view = new ConsoleMock();
         PresenterEn presenter = new PresenterEn();
         CreatePlayerGateway repository = new CreatePlayerRepository();
         CreatePlayerControllerInteractor interactor = new CreatePlayerInteractor(presenter, repository);
