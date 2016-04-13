@@ -16,7 +16,7 @@ public class CreatePlayerInteractor implements CreatePlayerControllerInteractor 
     @Override
     public void handle(CreatePlayerRequest request) {
 
-        if (isValid(request)) {
+        if (isNull(request)) {
 
             if (repository.count() < CreatePlayerGateway.PLAYER_LIMIT) {
 
@@ -36,7 +36,7 @@ public class CreatePlayerInteractor implements CreatePlayerControllerInteractor 
 
     }
 
-    private boolean isValid(CreatePlayerRequest request) {
+    private boolean isNull(CreatePlayerRequest request) {
         return request.token != null;
     }
 }

@@ -16,28 +16,29 @@ public class CreateBoardInteractor implements CreateBoardControllerInteractor {
     @Override
     public void handle(CreateBoardRequest request) {
 
-        if (isNullRequest(request)) boardPromptAndAvailableBoardsMessages();
-        else if (requestedBoardIsNotAvailable(request)) boardPromptAndAvailableBoardsMessages();
-        else boardCreatedMessage(response, request);
+        if (isNull(request)) {
+            if (requestedBoardIsAvailable(request)) boardCreatedMessage(response, request);
+            else boardPromptAndAvailableBoardsMessages();
+        } else boardPromptAndAvailableBoardsMessages();
     }
 
-    private boolean isNullRequest(CreateBoardRequest createBoardRequest) {
-        return createBoardRequest.version == null;
+    private boolean isNull(CreateBoardRequest createBoardRequest) {
+        return createBoardRequest.version != null;
     }
 
-    private boolean requestedBoardIsNotAvailable(CreateBoardRequest createBoardRequest) {
-        return !board.isAvailable(createBoardRequest.version);
-    }
-
-    public void boardPromptAndAvailableBoardsMessages() {
-        presenter.boardPromptMessage();
-        response.versions = board.getAvailableBoards();
-        presenter.availableBoardsMessage(response);
+    private boolean requestedBoardIsAvailable(CreateBoardRequest createBoardRequest) {
+        return board.isAvailable(createBoardRequest.version);
     }
 
     private void boardCreatedMessage(CreateBoardResponse response, CreateBoardRequest createBoardRequest) {
         board.create(createBoardRequest.version);
         response.versions = new String[]{createBoardRequest.version};
         presenter.boardCreatedMessage(response);
+    }
+
+    public void boardPromptAndAvailableBoardsMessages() {
+        presenter.boardPromptMessage();
+        response.versions = board.getAvailableBoards();
+        presenter.availableBoardsMessage(response);
     }
 }
