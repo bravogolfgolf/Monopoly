@@ -21,7 +21,7 @@ public class SetupGameController implements Controller {
 
     @Override
     public void execute() throws IOException {
-        interactor.boardPromptAndAvailableBoardsMessages();
+        interactor.setupGamePrompt();
         updateView();
         String line = view.input();
         handle(line);

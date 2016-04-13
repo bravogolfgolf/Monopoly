@@ -17,26 +17,26 @@ public class SetupGame implements SetupGameInteractor {
     public void handle(SetupGameRequest request) {
 
         if (isNull(request)) {
-            if (requestedBoardIsAvailable(request)) boardCreatedMessage(response, request);
-            else boardPromptAndAvailableBoardsMessages();
-        } else boardPromptAndAvailableBoardsMessages();
+            if (requestedVersionIsAvailable(request)) versionCreatedMessage(response, request);
+            else setupGamePrompt();
+        } else setupGamePrompt();
     }
 
     private boolean isNull(SetupGameRequest setupGameRequest) {
         return setupGameRequest.version != null;
     }
 
-    private boolean requestedBoardIsAvailable(SetupGameRequest setupGameRequest) {
+    private boolean requestedVersionIsAvailable(SetupGameRequest setupGameRequest) {
         return board.isAvailable(setupGameRequest.version);
     }
 
-    private void boardCreatedMessage(SetupGameResponse response, SetupGameRequest setupGameRequest) {
+    private void versionCreatedMessage(SetupGameResponse response, SetupGameRequest setupGameRequest) {
         board.create(setupGameRequest.version);
         response.versions = new String[]{setupGameRequest.version};
         presenter.boardCreatedMessage(response);
     }
 
-    public void boardPromptAndAvailableBoardsMessages() {
+    public void setupGamePrompt() {
         presenter.boardPromptMessage();
         response.versions = board.getAvailableBoards();
         presenter.availableBoardsMessage(response);
