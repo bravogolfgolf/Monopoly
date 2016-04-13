@@ -22,6 +22,7 @@ public class CreateBoardController implements Controller {
     @Override
     public void execute() throws IOException {
         interactor.boardPromptAndAvailableBoardsMessages();
+        updateView();
         String line = view.input();
         handle(line);
     }
@@ -30,6 +31,10 @@ public class CreateBoardController implements Controller {
         CreateBoardRequest request = new CreateBoardRequest();
         request.version = text;
         interactor.handle(request);
+        updateView();
+    }
+
+    private void updateView() throws IOException {
         view.output(presenter.getFormattedMessage());
     }
 
