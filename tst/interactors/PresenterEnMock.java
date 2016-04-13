@@ -1,7 +1,7 @@
 package game.interactors;
 
-import game.interactors.createboard.CreateBoardResponse;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.setupgame.SetupGameResponse;
 import game.presenters.PresenterEn;
 
 public class PresenterEnMock extends PresenterEn {
@@ -20,12 +20,12 @@ public class PresenterEnMock extends PresenterEn {
     }
 
     @Override
-    public void boardCreatedMessage(CreateBoardResponse response) {
+    public void boardCreatedMessage(SetupGameResponse response) {
         verifyBoardCreateMessage = true;
     }
 
     @Override
-    public void availableBoardsMessage(CreateBoardResponse response) {
+    public void availableBoardsMessage(SetupGameResponse response) {
         verifyAvailableBoardsMessage = true;
     }
 

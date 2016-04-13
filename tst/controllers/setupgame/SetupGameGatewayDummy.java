@@ -1,8 +1,8 @@
-package game.controllers.createBoard;
+package game.controllers.setupgame;
 
-import game.interactors.createboard.CreateBoardGateway;
+import game.interactors.setupgame.SetupGameGateway;
 
-class CreateBoardGatewayDummy implements CreateBoardGateway {
+class SetupGameGatewayDummy implements SetupGameGateway {
     @Override
     public void create(String version) {
     }

@@ -20,7 +20,7 @@ public class ControllerFactoryTest {
 
     @Test
     public void testMakeController() {
-        controllerFactory.make("CreateBoardController");
+        controllerFactory.make("SetupGameController");
         controllerFactory.make("CreatePlayerController");
     }
 }

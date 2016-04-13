@@ -1,19 +1,19 @@
-package game.controllers.createBoard;
+package game.controllers.setupgame;
 
 import game.Controller;
 import game.controllers.Presenter;
 import game.controllers.View;
-import game.interactors.createboard.CreateBoardRequest;
+import game.interactors.setupgame.SetupGameRequest;
 
 import java.io.IOException;
 
 
-public class CreateBoardController implements Controller {
+public class SetupGameController implements Controller {
     private final View view;
-    private final CreateBoardInteractor interactor;
+    private final SetupGameInteractor interactor;
     private final Presenter presenter;
 
-    public CreateBoardController(View view, CreateBoardInteractor interactor, Presenter presenter) {
+    public SetupGameController(View view, SetupGameInteractor interactor, Presenter presenter) {
         this.view = view;
         this.interactor = interactor;
         this.presenter = presenter;
@@ -28,7 +28,7 @@ public class CreateBoardController implements Controller {
     }
 
     protected void handle(String text) throws IOException {
-        CreateBoardRequest request = new CreateBoardRequest();
+        SetupGameRequest request = new SetupGameRequest();
         request.version = text;
         interactor.handle(request);
         updateView();

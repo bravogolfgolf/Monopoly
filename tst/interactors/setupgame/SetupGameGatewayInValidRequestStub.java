@@ -1,10 +1,10 @@
-package game.interactors.createboard;
+package game.interactors.setupgame;
 
-class CreateBoardGatewayValidRequestStub extends CreateBoardGatewayMock {
-
+class SetupGameGatewayInValidRequestStub extends SetupGameGatewayMock {
     @Override
     public void create(String version) {
-        super.create("USA");
+        super.create("");
+        throw new IllegalArgumentException();
     }
 
     @Override
@@ -16,7 +16,6 @@ class CreateBoardGatewayValidRequestStub extends CreateBoardGatewayMock {
     @Override
     public boolean isAvailable(String version) {
         super.isAvailable(version);
-        return true;
+        return false;
     }
-
 }

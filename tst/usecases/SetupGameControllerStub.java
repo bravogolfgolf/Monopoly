@@ -2,13 +2,13 @@ package game.usecases;
 
 import game.controllers.Presenter;
 import game.controllers.View;
-import game.controllers.createBoard.CreateBoardController;
-import game.controllers.createBoard.CreateBoardInteractor;
+import game.controllers.setupgame.SetupGameController;
+import game.controllers.setupgame.SetupGameInteractor;
 
 import java.io.IOException;
 
-class CreateBoardControllerStub extends CreateBoardController {
-    CreateBoardControllerStub(View view, CreateBoardInteractor interactor, Presenter presenter) {
+class SetupGameControllerStub extends SetupGameController {
+    SetupGameControllerStub(View view, SetupGameInteractor interactor, Presenter presenter) {
         super(view, interactor, presenter);
     }
 

@@ -1,21 +1,21 @@
 package game.presenters;
 
 import game.controllers.Presenter;
-import game.interactors.createboard.CreateBoardResponse;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.setupgame.SetupGameResponse;
 
 public class PresenterEn extends Presenter {
 
 
     @Override
-    public void boardCreatedMessage(CreateBoardResponse response) {
+    public void boardCreatedMessage(SetupGameResponse response) {
         template = "%s version of board created.";
         variables = response.versions;
         addToBuffer(template, variables);
     }
 
     @Override
-    public void availableBoardsMessage(CreateBoardResponse response) {
+    public void availableBoardsMessage(SetupGameResponse response) {
         template = "Available boards: %s";
         variables = response.versions;
         addToBuffer(template, variables);

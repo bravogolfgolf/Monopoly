@@ -1,11 +1,11 @@
 package game.controllers;
 
-import game.interactors.createboard.CreateBoardPresenter;
 import game.interactors.createplayer.CreatePlayerPresenter;
+import game.interactors.setupgame.SetupGamePresenter;
 
 import java.util.Arrays;
 
-public abstract class Presenter implements CreatePlayerPresenter, CreateBoardPresenter {
+public abstract class Presenter implements CreatePlayerPresenter, SetupGamePresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();

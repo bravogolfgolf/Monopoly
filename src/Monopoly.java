@@ -16,7 +16,7 @@ public final class Monopoly {
     private void start() throws IOException {
         controllerFactory = new ControllerFactoryImpl();
 
-        Controller controller = controllerFactory.make("CreateBoardController");
+        Controller controller = controllerFactory.make("SetupGameController");
         controller.execute();
     }
 }

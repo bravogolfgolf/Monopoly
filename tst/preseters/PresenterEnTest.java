@@ -1,7 +1,7 @@
 package game.preseters;
 
-import game.interactors.createboard.CreateBoardResponse;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.setupgame.SetupGameResponse;
 import game.presenters.PresenterEn;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class PresenterEnTest {
 
     private final PresenterEn presenter = new PresenterEn();
-    private final CreateBoardResponse createBoardResponse = new CreateBoardResponse();
+    private final SetupGameResponse setupGameResponse = new SetupGameResponse();
     private final CreatePlayerResponse createPlayerResponse = new CreatePlayerResponse();
     private String expected;
 
@@ -22,16 +22,16 @@ public class PresenterEnTest {
 
     @Test
     public void boardCreatedMessage() {
-        createBoardResponse.versions = new String[]{"USA"};
-        presenter.boardCreatedMessage(createBoardResponse);
+        setupGameResponse.versions = new String[]{"USA"};
+        presenter.boardCreatedMessage(setupGameResponse);
         expected = "USA version of board created.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void availableBoardsMessage() {
-        createBoardResponse.versions = new String[]{"USA","FRA"};
-        presenter.availableBoardsMessage(createBoardResponse);
+        setupGameResponse.versions = new String[]{"USA","FRA"};
+        presenter.availableBoardsMessage(setupGameResponse);
         expected = "Available boards: FRA, USA\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }

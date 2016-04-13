@@ -1,6 +1,6 @@
-package game.interactors.createboard;
+package game.interactors.setupgame;
 
-class CreateBoardGatewayMock implements CreateBoardGateway {
+class SetupGameGatewayMock implements SetupGameGateway {
 
     boolean verifyCreateMethodCalled = false;
     boolean verifyAvailableBoardsCalled = false;

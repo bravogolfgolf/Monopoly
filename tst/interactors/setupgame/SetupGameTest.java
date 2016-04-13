@@ -1,29 +1,29 @@
-package game.interactors.createboard;
+package game.interactors.setupgame;
 
-import game.controllers.createBoard.CreateBoardInteractor;
+import game.controllers.setupgame.SetupGameInteractor;
 import game.interactors.PresenterEnMock;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class CreateBoardTest {
+public class SetupGameTest {
 
     private PresenterEnMock presenter;
-    private CreateBoardGatewayMock board;
-    private CreateBoardInteractor interactor;
-    private CreateBoardRequest request;
+    private SetupGameGatewayMock board;
+    private SetupGameInteractor interactor;
+    private SetupGameRequest request;
 
     @Before
     public void setUp() {
         presenter = new PresenterEnMock();
-        request = new CreateBoardRequest();
+        request = new SetupGameRequest();
     }
 
     @Test
     public void testBoardCreatedMessage() {
-        board = new CreateBoardGatewayValidRequestStub();
-        interactor = new CreateBoard(presenter, board);
+        board = new SetupGameGatewayValidRequestStub();
+        interactor = new SetupGame(presenter, board);
 
         request.version = "USA";
         interactor.handle(request);
@@ -34,8 +34,8 @@ public class CreateBoardTest {
 
     @Test
     public void testBoardPromptMessageAndAvailableBoardsMessageWithInvalidInput() {
-        board = new CreateBoardGatewayInValidRequestStub();
-        interactor = new CreateBoard(presenter, board);
+        board = new SetupGameGatewayInValidRequestStub();
+        interactor = new SetupGame(presenter, board);
 
         request.version = "TEST";
         interactor.handle(request);
@@ -47,8 +47,8 @@ public class CreateBoardTest {
 
     @Test
     public void testBoardPromptMessageAndAvailableBoardsMessageWithNullInput() {
-        board = new CreateBoardGatewayInValidRequestStub();
-        interactor = new CreateBoard(presenter, board);
+        board = new SetupGameGatewayInValidRequestStub();
+        interactor = new SetupGame(presenter, board);
 
         request.version = null;
         interactor.handle(request);
