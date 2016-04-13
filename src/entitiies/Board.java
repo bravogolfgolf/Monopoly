@@ -1,8 +1,8 @@
 package game.entitiies;
 
-import game.interactors.BoardGateway;
+import game.interactors.createboard.CreateBoardGateway;
 
-public final class Board implements BoardGateway {
+public final class Board implements CreateBoardGateway {
     private final BoardFactory boardFactory;
     @SuppressWarnings("unused")
     private String version;

@@ -1,27 +1,24 @@
 package game.interactors.createboard;
 
-import game.controllers.Interactor;
 import game.controllers.Presenter;
-import game.interactors.BoardGateway;
-import game.interactors.Request;
+import game.controllers.createBoard.CreateBoardControllerInteractor;
 
-public class CreateBoardInteractor implements Interactor {
+public class CreateBoardInteractor implements CreateBoardControllerInteractor {
     private final Presenter presenter;
-    private final BoardGateway gateway;
+    private final CreateBoardGateway board;
+    private final CreateBoardResponse response = new CreateBoardResponse();
 
-    public CreateBoardInteractor(Presenter presenter, BoardGateway gateway) {
+    public CreateBoardInteractor(Presenter presenter, CreateBoardGateway board) {
         this.presenter = presenter;
-        this.gateway = gateway;
+        this.board = board;
     }
 
     @Override
-    public void handle(Request request) {
-        CreateBoardResponse response = new CreateBoardResponse();
-        CreateBoardRequest createBoardRequest = (CreateBoardRequest) request;
+    public void handle(CreateBoardRequest request) {
 
-        if (isNullRequest(createBoardRequest)) boardPromptAndAvailableBoardsMessages(response);
-        else if (requestedBoardIsNotAvailable(createBoardRequest)) boardPromptAndAvailableBoardsMessages(response);
-        else boardCreatedMessage(response, createBoardRequest);
+        if (isNullRequest(request)) boardPromptAndAvailableBoardsMessages(response);
+        else if (requestedBoardIsNotAvailable(request)) boardPromptAndAvailableBoardsMessages(response);
+        else boardCreatedMessage(response, request);
     }
 
     private boolean isNullRequest(CreateBoardRequest createBoardRequest) {
@@ -29,17 +26,17 @@ public class CreateBoardInteractor implements Interactor {
     }
 
     private boolean requestedBoardIsNotAvailable(CreateBoardRequest createBoardRequest) {
-        return !gateway.isAvailable(createBoardRequest.version);
+        return !board.isAvailable(createBoardRequest.version);
     }
 
     private void boardPromptAndAvailableBoardsMessages(CreateBoardResponse response) {
         presenter.boardPromptMessage();
-        response.versions = gateway.getAvailableBoards();
+        response.versions = board.getAvailableBoards();
         presenter.availableBoardsMessage(response);
     }
 
     private void boardCreatedMessage(CreateBoardResponse response, CreateBoardRequest createBoardRequest) {
-        gateway.create(createBoardRequest.version);
+        board.create(createBoardRequest.version);
         response.versions = new String[]{createBoardRequest.version};
         presenter.boardCreatedMessage(response);
     }

@@ -5,7 +5,7 @@ import game.controllers.Presenter;
 import game.controllers.PresenterEnDummy;
 import game.controllers.View;
 import game.controllers.ViewDummy;
-import game.interactors.PlayerGateway;
+import game.interactors.createplayer.CreatePlayerGateway;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -18,8 +18,8 @@ public class CreatePlayerControllerTest {
     public void testCreatePlayerController() throws IOException {
         View view = new ViewDummy();
         Presenter presenter = new PresenterEnDummy();
-        PlayerGateway gateway = new PlayerGatewayDummy();
-        CreatePlayerInteractorMock interactor = new CreatePlayerInteractorMock(presenter, gateway);
+        CreatePlayerGateway repository = new CreatePlayerGatewayDummy();
+        CreatePlayerInteractorMock interactor = new CreatePlayerInteractorMock(presenter, repository);
         Controller controller = new CreatePlayerControllerStub(view, interactor, presenter);
         controller.execute();
         assertTrue(interactor.VerifyHandleMethodCalled);

@@ -1,6 +1,6 @@
 package game.interactors.createboard;
 
-import game.controllers.Interactor;
+import game.controllers.createBoard.CreateBoardControllerInteractor;
 import game.interactors.PresenterEnMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,8 +10,8 @@ import static org.junit.Assert.assertTrue;
 public class CreateBoardInteractorTest {
 
     private PresenterEnMock presenter;
-    private BoardGatewayMock gateway;
-    private Interactor interactor;
+    private CreateBoardGatewayMock board;
+    private CreateBoardControllerInteractor interactor;
     private CreateBoardRequest request;
 
     @Before
@@ -22,38 +22,38 @@ public class CreateBoardInteractorTest {
 
     @Test
     public void testBoardCreatedMessage() {
-        gateway = new BoardGatewayValidRequestStub();
-        interactor = new CreateBoardInteractor(presenter, gateway);
+        board = new CreateBoardGatewayValidRequestStub();
+        interactor = new CreateBoardInteractor(presenter, board);
 
         request.version = "USA";
         interactor.handle(request);
 
-        assertTrue(gateway.verifyCreateMethodCalled);
+        assertTrue(board.verifyCreateMethodCalled);
         assertTrue(presenter.verifyBoardCreateMessage);
     }
 
     @Test
     public void testBoardPromptMessageAndAvailableBoardsMessageWithInvalidInput() {
-        gateway = new BoardGatewayInValidRequestStub();
-        interactor = new CreateBoardInteractor(presenter, gateway);
+        board = new CreateBoardGatewayInValidRequestStub();
+        interactor = new CreateBoardInteractor(presenter, board);
 
         request.version = "TEST";
         interactor.handle(request);
 
-        assertTrue(gateway.verifyIsAvailableCalled);
+        assertTrue(board.verifyIsAvailableCalled);
         assertTrue(presenter.verifyBoardPromptMessage);
         assertTrue(presenter.verifyAvailableBoardsMessage);
     }
 
     @Test
     public void testBoardPromptMessageAndAvailableBoardsMessageWithNullInput() {
-        gateway = new BoardGatewayInValidRequestStub();
-        interactor = new CreateBoardInteractor(presenter, gateway);
+        board = new CreateBoardGatewayInValidRequestStub();
+        interactor = new CreateBoardInteractor(presenter, board);
 
         request.version = null;
         interactor.handle(request);
 
-        assertTrue(gateway.verifyAvailableBoardsCalled);
+        assertTrue(board.verifyAvailableBoardsCalled);
         assertTrue(presenter.verifyBoardPromptMessage);
         assertTrue(presenter.verifyAvailableBoardsMessage);
     }

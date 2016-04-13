@@ -1,35 +1,32 @@
 package game.interactors.createplayer;
 
-import game.controllers.Interactor;
 import game.controllers.Presenter;
-import game.interactors.PlayerGateway;
-import game.interactors.Request;
+import game.controllers.createPlayer.CreatePlayerControllerInteractor;
 
-public class CreatePlayerInteractor implements Interactor {
+public class CreatePlayerInteractor implements CreatePlayerControllerInteractor {
     private final Presenter presenter;
-    private final PlayerGateway gateway;
+    private final CreatePlayerGateway repository;
+    private final CreatePlayerResponse response = new CreatePlayerResponse();
 
-    public CreatePlayerInteractor(Presenter presenter, PlayerGateway gateway) {
+    public CreatePlayerInteractor(Presenter presenter, CreatePlayerGateway repository) {
         this.presenter = presenter;
-        this.gateway = gateway;
+        this.repository = repository;
     }
 
     @Override
-    public void handle(Request request) {
-        CreatePlayerResponse response = new CreatePlayerResponse();
-        CreatePlayerRequest createPlayerRequest = (CreatePlayerRequest) request;
+    public void handle(CreatePlayerRequest request) {
 
-        if (isValid(createPlayerRequest)) {
+        if (isValid(request)) {
 
-            if (gateway.count() < PlayerGateway.PLAYER_LIMIT) {
+            if (repository.count() < CreatePlayerGateway.PLAYER_LIMIT) {
 
-                if (gateway.create(createPlayerRequest.token)){
-                    response.tokens = new String[]{createPlayerRequest.token};
+                if (repository.create(request.token)){
+                    response.tokens = new String[]{request.token};
                     presenter.playerCreatedMessage(response);
                 }
 
                 else {
-                    response.tokens = new String[]{createPlayerRequest.token};
+                    response.tokens = new String[]{request.token};
                     presenter.tokenInUseMessage(response);
                 }
 

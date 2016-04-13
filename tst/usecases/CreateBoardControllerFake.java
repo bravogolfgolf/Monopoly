@@ -1,14 +1,14 @@
 package game.usecases;
 
-import game.controllers.Interactor;
 import game.controllers.Presenter;
 import game.controllers.View;
 import game.controllers.createBoard.CreateBoardController;
+import game.controllers.createBoard.CreateBoardControllerInteractor;
 
 import java.io.IOException;
 
-public class CreateBoardControllerFake extends CreateBoardController {
-    public CreateBoardControllerFake(View view, Interactor interactor, Presenter presenter) {
+class CreateBoardControllerFake extends CreateBoardController {
+    CreateBoardControllerFake(View view, CreateBoardControllerInteractor interactor, Presenter presenter) {
         super(view, interactor, presenter);
     }
 

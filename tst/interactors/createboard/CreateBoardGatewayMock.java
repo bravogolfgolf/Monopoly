@@ -1,12 +1,10 @@
 package game.interactors.createboard;
 
-import game.interactors.BoardGateway;
+class CreateBoardGatewayMock implements CreateBoardGateway {
 
-public class BoardGatewayMock implements BoardGateway {
-
-    public boolean verifyCreateMethodCalled = false;
-    public boolean verifyAvailableBoardsCalled = false;
-    public boolean verifyIsAvailableCalled = false;
+    boolean verifyCreateMethodCalled = false;
+    boolean verifyAvailableBoardsCalled = false;
+    boolean verifyIsAvailableCalled = false;
 
     @Override
     public void create(String version) {

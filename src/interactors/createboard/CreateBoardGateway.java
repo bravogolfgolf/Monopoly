@@ -1,6 +1,6 @@
-package game.interactors;
+package game.interactors.createboard;
 
-public interface BoardGateway {
+public interface CreateBoardGateway {
     void create(String version);
 
     String[] getAvailableBoards();

@@ -1,7 +1,6 @@
 package game.controllers.createPlayer;
 
 import game.Controller;
-import game.controllers.Interactor;
 import game.controllers.Presenter;
 import game.controllers.View;
 import game.interactors.createplayer.CreatePlayerRequest;
@@ -11,10 +10,10 @@ import java.io.IOException;
 
 public class CreatePlayerController implements Controller {
     private final View view;
-    private final Interactor interactor;
+    private final CreatePlayerControllerInteractor interactor;
     private final Presenter presenter;
 
-    public CreatePlayerController(View view, Interactor interactor, Presenter presenter) {
+    public CreatePlayerController(View view, CreatePlayerControllerInteractor interactor, Presenter presenter) {
         this.view = view;
         this.interactor = interactor;
         this.presenter = presenter;

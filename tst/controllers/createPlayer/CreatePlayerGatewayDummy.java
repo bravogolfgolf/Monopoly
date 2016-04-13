@@ -1,8 +1,8 @@
 package game.controllers.createPlayer;
 
-import game.interactors.PlayerGateway;
+import game.interactors.createplayer.CreatePlayerGateway;
 
-public class PlayerGatewayDummy extends PlayerGateway {
+class CreatePlayerGatewayDummy extends CreatePlayerGateway {
 
     @Override
     public boolean create(String token) {

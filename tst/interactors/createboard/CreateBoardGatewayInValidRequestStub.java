@@ -1,6 +1,6 @@
 package game.interactors.createboard;
 
-public class BoardGatewayInValidRequestStub extends BoardGatewayMock {
+class CreateBoardGatewayInValidRequestStub extends CreateBoardGatewayMock {
     @Override
     public void create(String version) {
         super.create("");

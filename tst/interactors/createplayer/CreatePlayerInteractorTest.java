@@ -1,6 +1,6 @@
 package game.interactors.createplayer;
 
-import game.controllers.Interactor;
+import game.controllers.createPlayer.CreatePlayerControllerInteractor;
 import game.interactors.PresenterEnMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,16 +10,16 @@ import static org.junit.Assert.assertTrue;
 
 public class CreatePlayerInteractorTest {
 
-    private PlayerRepositoryFake gateway;
+    private CreatePlayerRepositoryFake repository;
     private PresenterEnMock presenter;
-    private Interactor interactor;
+    private CreatePlayerControllerInteractor interactor;
     private CreatePlayerRequest request;
 
     @Before
     public void setup() {
-        gateway = new PlayerRepositoryFake();
+        repository = new CreatePlayerRepositoryFake();
         presenter = new PresenterEnMock();
-        interactor = new CreatePlayerInteractor(presenter, gateway);
+        interactor = new CreatePlayerInteractor(presenter, repository);
         request = new CreatePlayerRequest();
         request.token = "Cat";
     }
@@ -28,8 +28,8 @@ public class CreatePlayerInteractorTest {
     public void testPlayerCreated() {
         interactor.handle(request);
 
-        assertTrue(gateway.verifyCreate);
-        assertTrue(gateway.verifyCount);
+        assertTrue(repository.verifyCreate);
+        assertTrue(repository.verifyCount);
         assertTrue(presenter.verifyPlayerCreatedMessage);
     }
 
@@ -38,8 +38,8 @@ public class CreatePlayerInteractorTest {
         interactor.handle(request);
         interactor.handle(request);
 
-        assertTrue(gateway.verifyCreate);
-        assertTrue(gateway.verifyCount);
+        assertTrue(repository.verifyCreate);
+        assertTrue(repository.verifyCount);
         assertTrue(presenter.verifyTokenInUseMessage);
     }
 
@@ -47,8 +47,8 @@ public class CreatePlayerInteractorTest {
     public void testExceededPlayerLimit() {
         sendRequestsForNinePlayers();
 
-        assertTrue(gateway.verifyCreate);
-        assertTrue(gateway.verifyCountCalledEightTimes);
+        assertTrue(repository.verifyCreate);
+        assertTrue(repository.verifyCountCalledEightTimes);
         assertTrue(presenter.verifyExceededPlayerLimitMessage);
     }
 
@@ -64,8 +64,8 @@ public class CreatePlayerInteractorTest {
         request.token = null;
         interactor.handle(request);
 
-        assertFalse(gateway.verifyCreate);
-        assertFalse(gateway.verifyCount);
+        assertFalse(repository.verifyCreate);
+        assertFalse(repository.verifyCount);
         assertTrue(presenter.verifyPlayerPromptMessage);
     }
 
