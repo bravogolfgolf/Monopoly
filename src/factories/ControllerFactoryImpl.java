@@ -5,12 +5,12 @@ import game.ControllerFactory;
 import game.controllers.Presenter;
 import game.controllers.View;
 import game.controllers.createBoard.CreateBoardController;
-import game.controllers.createBoard.CreateBoardControllerInteractor;
+import game.controllers.createBoard.CreateBoardInteractor;
 import game.controllers.createPlayer.CreatePlayerController;
 import game.controllers.createPlayer.CreatePlayerControllerInteractor;
 import game.entitiies.Board;
+import game.interactors.createboard.CreateBoard;
 import game.interactors.createboard.CreateBoardGateway;
-import game.interactors.createboard.CreateBoardInteractor;
 import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.createplayer.CreatePlayerInteractor;
 import game.presenters.PresenterEn;
@@ -33,7 +33,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
     public Controller make(String controller) {
         if (controller.equals("CreateBoardController")) {
             CreateBoardGateway board = new Board(new BoardFactoryImpl());
-            CreateBoardControllerInteractor interactor = new CreateBoardInteractor(presenter, board);
+            CreateBoardInteractor interactor = new CreateBoard(presenter, board);
             return new CreateBoardController(console, interactor, presenter);
         }
         if (controller.equals("CreatePlayerController")) {

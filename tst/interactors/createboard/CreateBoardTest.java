@@ -1,17 +1,17 @@
 package game.interactors.createboard;
 
-import game.controllers.createBoard.CreateBoardControllerInteractor;
+import game.controllers.createBoard.CreateBoardInteractor;
 import game.interactors.PresenterEnMock;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class CreateBoardInteractorTest {
+public class CreateBoardTest {
 
     private PresenterEnMock presenter;
     private CreateBoardGatewayMock board;
-    private CreateBoardControllerInteractor interactor;
+    private CreateBoardInteractor interactor;
     private CreateBoardRequest request;
 
     @Before
@@ -23,7 +23,7 @@ public class CreateBoardInteractorTest {
     @Test
     public void testBoardCreatedMessage() {
         board = new CreateBoardGatewayValidRequestStub();
-        interactor = new CreateBoardInteractor(presenter, board);
+        interactor = new CreateBoard(presenter, board);
 
         request.version = "USA";
         interactor.handle(request);
@@ -35,7 +35,7 @@ public class CreateBoardInteractorTest {
     @Test
     public void testBoardPromptMessageAndAvailableBoardsMessageWithInvalidInput() {
         board = new CreateBoardGatewayInValidRequestStub();
-        interactor = new CreateBoardInteractor(presenter, board);
+        interactor = new CreateBoard(presenter, board);
 
         request.version = "TEST";
         interactor.handle(request);
@@ -48,7 +48,7 @@ public class CreateBoardInteractorTest {
     @Test
     public void testBoardPromptMessageAndAvailableBoardsMessageWithNullInput() {
         board = new CreateBoardGatewayInValidRequestStub();
-        interactor = new CreateBoardInteractor(presenter, board);
+        interactor = new CreateBoard(presenter, board);
 
         request.version = null;
         interactor.handle(request);

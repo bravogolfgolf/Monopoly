@@ -19,7 +19,7 @@ public class CreateBoardControllerTest {
         View view = new ConsoleDummy();
         Presenter presenter = new PresenterEnDummy();
         CreateBoardGateway board = new CreateBoardGatewayDummy();
-        CreateBoardInteractorMock interactor = new CreateBoardInteractorMock(presenter, board);
+        CreateBoardMock interactor = new CreateBoardMock(presenter, board);
         Controller controller = new CreateBoardControllerStub(view, interactor, presenter);
         controller.execute();
         assertTrue(interactor.VerifyHandleMethodCalled);

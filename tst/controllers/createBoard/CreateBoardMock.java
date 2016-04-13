@@ -1,15 +1,15 @@
 package game.controllers.createBoard;
 
 import game.controllers.Presenter;
+import game.interactors.createboard.CreateBoard;
 import game.interactors.createboard.CreateBoardGateway;
-import game.interactors.createboard.CreateBoardInteractor;
 import game.interactors.createboard.CreateBoardRequest;
 
-class CreateBoardInteractorMock extends CreateBoardInteractor {
+class CreateBoardMock extends CreateBoard {
 
     boolean VerifyHandleMethodCalled = false;
 
-    CreateBoardInteractorMock(Presenter presenter, CreateBoardGateway board) {
+    CreateBoardMock(Presenter presenter, CreateBoardGateway board) {
         super(presenter, board);
     }
 

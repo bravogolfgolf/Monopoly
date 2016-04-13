@@ -1,14 +1,14 @@
 package game.interactors.createboard;
 
 import game.controllers.Presenter;
-import game.controllers.createBoard.CreateBoardControllerInteractor;
+import game.controllers.createBoard.CreateBoardInteractor;
 
-public class CreateBoardInteractor implements CreateBoardControllerInteractor {
+public class CreateBoard implements CreateBoardInteractor {
     private final Presenter presenter;
     private final CreateBoardGateway board;
     private final CreateBoardResponse response = new CreateBoardResponse();
 
-    public CreateBoardInteractor(Presenter presenter, CreateBoardGateway board) {
+    public CreateBoard(Presenter presenter, CreateBoardGateway board) {
         this.presenter = presenter;
         this.board = board;
     }

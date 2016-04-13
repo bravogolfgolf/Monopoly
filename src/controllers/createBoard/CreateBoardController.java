@@ -10,10 +10,10 @@ import java.io.IOException;
 
 public class CreateBoardController implements Controller {
     private final View view;
-    private final CreateBoardControllerInteractor interactor;
+    private final CreateBoardInteractor interactor;
     private final Presenter presenter;
 
-    public CreateBoardController(View view, CreateBoardControllerInteractor interactor, Presenter presenter) {
+    public CreateBoardController(View view, CreateBoardInteractor interactor, Presenter presenter) {
         this.view = view;
         this.interactor = interactor;
         this.presenter = presenter;
