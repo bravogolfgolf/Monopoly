@@ -9,6 +9,7 @@ import game.factories.SetupGameBoardGateway;
 import game.factories.SetupGameFactoryImpl;
 import game.interactors.setupgame.SetupGameFactory;
 import game.presenters.PresenterEn;
+import game.repositories.PlayerRepositoryImpl;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -22,7 +23,8 @@ public class SetupGameControllerTest {
         View view = new ConsoleDummy();
         Presenter presenter = new PresenterEn();
         SetupGameBoardGateway board = new Board();
-        SetupGameFactory factory = new SetupGameFactoryImpl(board);
+        PlayerRepositoryImpl player = new PlayerRepositoryImplDummy();
+        SetupGameFactory factory = new SetupGameFactoryImpl(board, player);
         SetupGameMock interactor = new SetupGameMock(presenter, factory);
         Controller controller = new SetupGameControllerStub(view, interactor, presenter);
         controller.execute();

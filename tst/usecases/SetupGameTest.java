@@ -6,9 +6,11 @@ import game.controllers.setupgame.SetupGameInteractor;
 import game.entitiies.Board;
 import game.factories.SetupGameBoardGateway;
 import game.factories.SetupGameFactoryImpl;
+import game.factories.SetupGamePlayerGateway;
 import game.interactors.setupgame.SetupGame;
 import game.interactors.setupgame.SetupGameFactory;
 import game.presenters.PresenterEn;
+import game.repositories.PlayerRepositoryImpl;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -22,7 +24,8 @@ public class SetupGameTest {
         ConsoleMock view = new ConsoleMock();
         Presenter presenter = new PresenterEn();
         SetupGameBoardGateway board = new Board();
-        SetupGameFactory factory = new SetupGameFactoryImpl(board);
+        SetupGamePlayerGateway player = new PlayerRepositoryImpl();
+        SetupGameFactory factory = new SetupGameFactoryImpl(board, player);
         SetupGameInteractor interactor = new SetupGame(presenter, factory);
         Controller controller = new SetupGameControllerStub(view, interactor, presenter);
         String expected = "Select version of game you would like to play.\n" +
