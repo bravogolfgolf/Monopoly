@@ -38,8 +38,14 @@ public class SetupGame implements SetupGameInteractor {
         presenter.versionCreatedMessage(response);
     }
 
+    @Override
     public void setupGamePrompt() {
         presenter.setupGamePromptMessage();
+        availableVersionsMessage();
+    }
+
+    @Override
+    public void availableVersionsMessage() {
         response.versions = factory.getAvailableVersions();
         presenter.availableVersionsMessage(response);
     }

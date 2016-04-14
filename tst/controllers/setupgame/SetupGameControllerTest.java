@@ -3,9 +3,12 @@ package game.controllers.setupgame;
 import game.Controller;
 import game.controllers.ConsoleDummy;
 import game.controllers.Presenter;
-import game.controllers.PresenterEnDummy;
 import game.controllers.View;
+import game.entitiies.Board;
+import game.factories.SetupGameBoardGateway;
+import game.factories.SetupGameFactoryImpl;
 import game.interactors.setupgame.SetupGameFactory;
+import game.presenters.PresenterEn;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -17,11 +20,12 @@ public class SetupGameControllerTest {
     @Test
     public void testCreateBoardController() throws IOException {
         View view = new ConsoleDummy();
-        Presenter presenter = new PresenterEnDummy();
-        SetupGameFactory factory = new SetupGameFactoryDummy();
+        Presenter presenter = new PresenterEn();
+        SetupGameBoardGateway board = new Board();
+        SetupGameFactory factory = new SetupGameFactoryImpl(board);
         SetupGameMock interactor = new SetupGameMock(presenter, factory);
         Controller controller = new SetupGameControllerStub(view, interactor, presenter);
         controller.execute();
-        assertTrue(interactor.VerifyHandleMethodCalled);
+        assertTrue("FRA".equals(interactor.VerifyRequestValue));
     }
 }

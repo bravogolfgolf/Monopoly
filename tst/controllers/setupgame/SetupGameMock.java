@@ -7,14 +7,25 @@ import game.interactors.setupgame.SetupGameRequest;
 
 class SetupGameMock extends SetupGame {
 
-    boolean VerifyHandleMethodCalled = false;
+    String VerifyRequestValue = "";
 
     SetupGameMock(Presenter presenter, SetupGameFactory factory) {
         super(presenter, factory);
     }
 
     @Override
+    public void availableVersionsMessage() {
+        super.availableVersionsMessage();
+    }
+
+    @Override
+    public void setupGamePrompt() {
+        super.setupGamePrompt();
+    }
+
+    @Override
     public void handle(SetupGameRequest request) {
-        VerifyHandleMethodCalled = true;
+        VerifyRequestValue = request.version;
+        super.handle(request);
     }
 }

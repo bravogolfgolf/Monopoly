@@ -22,7 +22,7 @@ public class CreatePlayerController implements Controller {
     @Override
     public void execute() throws IOException {
         handle(null);
-        String line = view.input();
+        String line = view.read();
         handle(line);
     }
 
@@ -30,6 +30,6 @@ public class CreatePlayerController implements Controller {
         CreatePlayerRequest request = new CreatePlayerRequest();
         request.token = text;
         interactor.handle(request);
-        view.output(presenter.getFormattedMessage());
+        view.write(presenter.getFormattedMessage());
     }
 }

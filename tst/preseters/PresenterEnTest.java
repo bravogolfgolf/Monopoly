@@ -3,7 +3,6 @@ package game.preseters;
 import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.setupgame.SetupGameResponse;
 import game.presenters.PresenterEn;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -14,10 +13,6 @@ public class PresenterEnTest {
     private final SetupGameResponse setupGameResponse = new SetupGameResponse();
     private final CreatePlayerResponse createPlayerResponse = new CreatePlayerResponse();
     private String expected;
-
-    @Before
-    public void setUp() {
-    }
 
     @Test
     public void testVersionCreatedMessage() {
@@ -31,7 +26,7 @@ public class PresenterEnTest {
     public void testAvailableVersionsMessage() {
         setupGameResponse.versions = new String[]{"USA","FRA"};
         presenter.availableVersionsMessage(setupGameResponse);
-        expected = "Available versions: FRA, USA\n";
+        expected = "Available versions: (1)FRA, (2)USA\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
@@ -68,7 +63,7 @@ public class PresenterEnTest {
     public void testAvailableTokensMessage() {
         createPlayerResponse.tokens = new String[]{"Wheelbarrow","Battleship","Scottish Terrier","Top Hat","Cat","Thimble","Boot","Automobile"};
         presenter.availableTokensMessage(createPlayerResponse);
-        expected = "Available tokens: Automobile, Battleship, Boot, Cat, Scottish Terrier, Thimble, Top Hat, Wheelbarrow\n";
+        expected = "Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 

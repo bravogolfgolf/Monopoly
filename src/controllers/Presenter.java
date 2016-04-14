@@ -18,6 +18,36 @@ public abstract class Presenter implements CreatePlayerPresenter, SetupGamePrese
         return result;
     }
 
+    protected void addMenuToBuffer(String template, String[] variables) {
+        sortArray(variables);
+        String[] menuItems = createMenuArray(variables);
+        addMessageToBuffer(template, menuItems);
+    }
+
+    protected void addMessageToBuffer(String template, String[] variables) {
+        sortArray(variables);
+        String variable = arrayToCommaDelimitedString(variables);
+        String formattedMessage = formatMessage(template, variable);
+        addMessageToBuffer(formattedMessage);
+    }
+
+    protected void addMessageToBuffer(String message) {
+        String newLine = addNewLine(message);
+        messageBuffer.append(newLine);
+    }
+
+    private void sortArray(String[] variables) {
+        Arrays.sort(variables);
+    }
+
+    private String[] createMenuArray(String[] variables) {
+        String[] menuItems = new String[variables.length];
+        for (int i = 1; i <= variables.length; i++) {
+            menuItems[i - 1] = String.format("(%d)%s", i, variables[i - 1]);
+        }
+        return menuItems;
+    }
+
     private String arrayToCommaDelimitedString(CharSequence[] array) {
         return String.join(", ", array);
     }
@@ -28,17 +58,5 @@ public abstract class Presenter implements CreatePlayerPresenter, SetupGamePrese
 
     private String addNewLine(String string) {
         return String.format(string + "%s", NEW_LINE);
-    }
-
-    protected void addToBuffer(String template, String[] variables) {
-        Arrays.sort(variables);
-        String variable = arrayToCommaDelimitedString(variables);
-        String formattedMessage = formatMessage(template, variable);
-        addToBuffer(formattedMessage);
-    }
-
-    protected void addToBuffer(String message) {
-        String newLine = addNewLine(message);
-        messageBuffer.append(newLine);
     }
 }

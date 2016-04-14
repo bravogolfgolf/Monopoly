@@ -26,7 +26,7 @@ public class SetupGameTest {
         SetupGameInteractor interactor = new SetupGame(presenter, factory);
         Controller controller = new SetupGameControllerStub(view, interactor, presenter);
         String expected = "Select version of game you would like to play.\n" +
-                "Available versions: FRA, USA\n" +
+                "Available versions: (1)FRA, (2)USA\n" +
                 "USA version of game created.\n";
 
         controller.execute();

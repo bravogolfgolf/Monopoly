@@ -9,12 +9,12 @@ class ConsoleMock extends View {
     private final StringBuffer stringBuffer = new StringBuffer();
 
     @Override
-    public String input() throws IOException {
+    public String read() throws IOException {
         return null;
     }
 
     @Override
-    public void output(String text) throws IOException {
+    public void write(String text) throws IOException {
         stringBuffer.append(text);
     }
 
