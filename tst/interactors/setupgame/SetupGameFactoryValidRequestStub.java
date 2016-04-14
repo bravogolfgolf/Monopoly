@@ -7,8 +7,8 @@ class SetupGameFactoryValidRequestStub extends SetupGameFactoryMock {
     }
 
     @Override
-    public String[] getAvailableBoards() {
-        return super.getAvailableBoards();
+    public String[] getAvailableVersions() {
+        return super.getAvailableVersions();
     }
 
     @Override

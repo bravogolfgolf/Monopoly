@@ -3,7 +3,7 @@ package game.entitiies;
 import game.BoardGateway;
 import game.factories.SetupGameBoardGateway;
 
-public final class Board implements BoardGateway, SetupGameBoardGateway {
+public class Board implements BoardGateway, SetupGameBoardGateway {
     @SuppressWarnings("unused")
     private String version;
 

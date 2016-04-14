@@ -7,6 +7,7 @@ public class SetupGame implements SetupGameInteractor {
     private final Presenter presenter;
     private final SetupGameFactory factory;
     private final SetupGameResponse response = new SetupGameResponse();
+    private SetupGameRequest request;
 
     public SetupGame(Presenter presenter, SetupGameFactory factory) {
         this.presenter = presenter;
@@ -15,30 +16,30 @@ public class SetupGame implements SetupGameInteractor {
 
     @Override
     public void handle(SetupGameRequest request) {
-
-        if (isNull(request)) {
-            if (requestedVersionIsAvailable(request)) versionCreatedMessage(response, request);
+        this.request = request;
+            if (requestedVersionIsAvailable()) versionCreatedMessage();
             else setupGamePrompt();
-        } else setupGamePrompt();
     }
 
-    private boolean isNull(SetupGameRequest setupGameRequest) {
-        return setupGameRequest.version != null;
+    private boolean requestedVersionIsAvailable() {
+        return factory.isAvailable(request.version);
     }
 
-    private boolean requestedVersionIsAvailable(SetupGameRequest setupGameRequest) {
-        return factory.isAvailable(setupGameRequest.version);
+    private void versionCreatedMessage() {
+        factory.make(request.version);
+        response.versions = new String[]{request.version};
+        presenter.versionCreatedMessage(response);
     }
 
-    private void versionCreatedMessage(SetupGameResponse response, SetupGameRequest setupGameRequest) {
-        factory.make(setupGameRequest.version);
-        response.versions = new String[]{setupGameRequest.version};
-        presenter.boardCreatedMessage(response);
-    }
-
+    @Override
     public void setupGamePrompt() {
-        presenter.boardPromptMessage();
-        response.versions = factory.getAvailableBoards();
-        presenter.availableBoardsMessage(response);
+        presenter.setupGamePromptMessage();
+        availableVersionsMessage();
+    }
+
+    @Override
+    public void availableVersionsMessage() {
+        response.versions = factory.getAvailableVersions();
+        presenter.availableVersionsMessage(response);
     }
 }

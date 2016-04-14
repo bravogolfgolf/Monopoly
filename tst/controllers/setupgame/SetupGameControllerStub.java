@@ -12,6 +12,6 @@ class SetupGameControllerStub extends SetupGameController {
 
     @Override
     public void execute() throws IOException {
-        super.handle(null);
+        super.parse("1");
     }
 }

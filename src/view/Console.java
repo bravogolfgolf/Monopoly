@@ -17,12 +17,12 @@ public class Console extends View {
     }
 
     @Override
-    public String input() throws IOException {
+    public String read() throws IOException {
         return reader.readLine();
     }
 
     @Override
-    public void output(String text) throws IOException {
+    public void write(String text) throws IOException {
         writer.write(text);
         writer.flush();
     }

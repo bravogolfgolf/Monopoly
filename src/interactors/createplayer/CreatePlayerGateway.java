@@ -1,11 +1,7 @@
 package game.interactors.createplayer;
 
-public abstract class CreatePlayerGateway {
+public interface CreatePlayerGateway {
+    boolean create(String token);
 
-    static final int PLAYER_LIMIT = 8;
-
-    public abstract boolean create(String token);
-
-    public abstract int count();
-
+    boolean playerLimitExceeded();
 }

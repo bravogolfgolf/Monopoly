@@ -20,12 +20,12 @@ public class PresenterEnMock extends PresenterEn {
     }
 
     @Override
-    public void boardCreatedMessage(SetupGameResponse response) {
+    public void versionCreatedMessage(SetupGameResponse response) {
         verifyBoardCreateMessage = true;
     }
 
     @Override
-    public void availableBoardsMessage(SetupGameResponse response) {
+    public void availableVersionsMessage(SetupGameResponse response) {
         verifyAvailableBoardsMessage = true;
     }
 
@@ -45,7 +45,7 @@ public class PresenterEnMock extends PresenterEn {
     }
 
     @Override
-    public void boardPromptMessage() {
+    public void setupGamePromptMessage() {
         verifyBoardPromptMessage = true;
     }
 }

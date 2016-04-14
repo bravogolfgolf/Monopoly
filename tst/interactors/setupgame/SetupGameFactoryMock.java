@@ -12,7 +12,7 @@ class SetupGameFactoryMock implements SetupGameFactory {
     }
 
     @Override
-    public String[] getAvailableBoards() {
+    public String[] getAvailableVersions() {
         verifyAvailableBoardsCalled = true;
         return new String[0];
     }

@@ -3,7 +3,7 @@ package game.controllers;
 import java.io.IOException;
 
 public abstract class View {
-    public abstract String input() throws IOException;
+    public abstract String read() throws IOException;
 
-    public abstract void output(String text) throws IOException;
+    public abstract void write(String text) throws IOException;
 }
