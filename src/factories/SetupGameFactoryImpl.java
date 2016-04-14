@@ -1,13 +1,12 @@
 package game.factories;
 
-import game.entitiies.Board;
 import game.interactors.setupgame.SetupGameFactory;
 
 import java.util.Arrays;
 
 public class SetupGameFactoryImpl implements SetupGameFactory {
 
-    private SetupGameBoardGateway board = new Board();
+    private final SetupGameBoardGateway board;
 
     public SetupGameFactoryImpl(SetupGameBoardGateway board) {
         this.board = board;
