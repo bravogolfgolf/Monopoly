@@ -16,22 +16,7 @@ public class SetupGameFactoryTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testBoardFactoryException() {
+    public void testMakeException() {
         factory.make("");
-    }
-
-    @Test
-    public void testMakeBoard() {
-        factory.make("USA");
-    }
-
-    @Test
-    public void testGetAvailableBoards() {
-        factory.getAvailableVersions();
-    }
-
-    @Test
-    public void testIsAvailable(){
-        factory.isAvailable("USA");
     }
 }

@@ -52,4 +52,10 @@ public class PresenterEn extends Presenter {
         variables = response.tokens;
         addToBuffer(template, variables);
     }
+
+    public void availableTokensMessage(CreatePlayerResponse response) {
+        template = "Available tokens: %s";
+        variables = response.tokens;
+        addToBuffer(template, variables);
+    }
 }
