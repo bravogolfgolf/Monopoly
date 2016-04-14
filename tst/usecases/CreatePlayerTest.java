@@ -1,11 +1,12 @@
 package game.usecases;
 
 import game.Controller;
+import game.PlayerRepository;
 import game.controllers.createPlayer.CreatePlayerInteractor;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerGateway;
 import game.presenters.PresenterEn;
-import game.repositories.PlayerRepository;
+import game.repositories.PlayerRepositoryImpl;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -19,14 +20,14 @@ public class CreatePlayerTest {
     public void validRequestToCreatePlayerWithUniqueTokenSucceeds() throws IOException {
         ConsoleMock view = new ConsoleMock();
         PresenterEn presenter = new PresenterEn();
-        CreatePlayerGateway repository = new PlayerRepository();
+        CreatePlayerGateway repository = new PlayerRepositoryImpl();
         CreatePlayerInteractor interactor = new CreatePlayer(presenter, repository);
         Controller controller = new CreatePlayerControllerStub(view, interactor, presenter);
         String expected = "Please select token for player.\nPlayer created with Cat token.\n";
 
         controller.execute();
 
-        assertEquals(1, repository.count());
+        assertEquals(1, ((PlayerRepository) repository).count());
         assertTrue(view.VerifyOutputMethodCalled(expected));
     }
 }

@@ -18,7 +18,7 @@ public class CreatePlayer implements CreatePlayerInteractor {
 
         if (isNull(request)) {
 
-            if (repository.count() < CreatePlayerGateway.PLAYER_LIMIT) {
+            if (repository.playerLimitExceeded()) {
 
                 if (repository.create(request.token)){
                     response.tokens = new String[]{request.token};

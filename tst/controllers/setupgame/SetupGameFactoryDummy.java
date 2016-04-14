@@ -8,7 +8,7 @@ class SetupGameFactoryDummy implements SetupGameFactory {
     }
 
     @Override
-    public String[] getAvailableBoards() {
+    public String[] getAvailableVersions() {
         return new String[0];
     }
 

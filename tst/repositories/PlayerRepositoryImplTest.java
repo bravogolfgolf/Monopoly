@@ -4,8 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class PlayerRepositoryTest {
-    private final PlayerRepository repository = new PlayerRepository();
+public class PlayerRepositoryImplTest {
+    private final PlayerRepositoryImpl repository = new PlayerRepositoryImpl();
 
     @Test
     public void testCreatePlayer() {

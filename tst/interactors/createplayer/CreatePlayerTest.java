@@ -5,7 +5,6 @@ import game.interactors.PresenterEnMock;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class CreatePlayerTest {
@@ -28,8 +27,8 @@ public class CreatePlayerTest {
     public void testPlayerCreated() {
         interactor.handle(request);
 
-        assertTrue(repository.verifyCreate);
-        assertTrue(repository.verifyCount);
+        assertTrue(repository.verifyPlayerLimitExceededCalled);
+        assertTrue(repository.verifyCreateCalled);
         assertTrue(presenter.verifyPlayerCreatedMessage);
     }
 
@@ -38,21 +37,22 @@ public class CreatePlayerTest {
         interactor.handle(request);
         interactor.handle(request);
 
-        assertTrue(repository.verifyCreate);
-        assertTrue(repository.verifyCount);
+        assertTrue(repository.verifyPlayerLimitExceededCalled);
+        assertTrue(repository.verifyCreateCalled);
         assertTrue(presenter.verifyTokenInUseMessage);
     }
 
     @Test
     public void testExceededPlayerLimit() {
-        sendRequestsForNinePlayers();
+        sendNineRequests();
 
-        assertTrue(repository.verifyCreate);
-        assertTrue(repository.verifyCountCalledEightTimes);
+        assertTrue(repository.verifyPlayerLimitExceededCalled);
+        assertTrue(repository.verifyCreateCalled);
+        assertTrue(repository.verifyCreateCalledEightTimes);
         assertTrue(presenter.verifyExceededPlayerLimitMessage);
     }
 
-    private void sendRequestsForNinePlayers() {
+    private void sendNineRequests() {
         for (int i = 1; i < 10; i++) {
             request.token = String.format("%d", i);
             interactor.handle(request);
@@ -64,8 +64,6 @@ public class CreatePlayerTest {
         request.token = null;
         interactor.handle(request);
 
-        assertFalse(repository.verifyCreate);
-        assertFalse(repository.verifyCount);
         assertTrue(presenter.verifyPlayerPromptMessage);
     }
 

@@ -8,21 +8,21 @@ public class PresenterEn extends Presenter {
 
 
     @Override
-    public void boardCreatedMessage(SetupGameResponse response) {
+    public void versionCreatedMessage(SetupGameResponse response) {
         template = "%s version of game created.";
         variables = response.versions;
         addToBuffer(template, variables);
     }
 
     @Override
-    public void availableBoardsMessage(SetupGameResponse response) {
+    public void availableVersionsMessage(SetupGameResponse response) {
         template = "Available versions: %s";
         variables = response.versions;
         addToBuffer(template, variables);
     }
 
     @Override
-    public void boardPromptMessage() {
+    public void setupGamePromptMessage() {
         template = "Select version of game you would like to play.";
         addToBuffer(template);
     }

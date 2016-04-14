@@ -25,17 +25,17 @@ public class PresenterEnDummy extends Presenter {
     }
 
     @Override
-    public void boardPromptMessage() {
+    public void setupGamePromptMessage() {
 
     }
 
     @Override
-    public void boardCreatedMessage(SetupGameResponse response) {
+    public void versionCreatedMessage(SetupGameResponse response) {
 
     }
 
     @Override
-    public void availableBoardsMessage(SetupGameResponse response) {
+    public void availableVersionsMessage(SetupGameResponse response) {
 
     }
 }

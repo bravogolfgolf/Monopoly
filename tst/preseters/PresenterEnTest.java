@@ -23,7 +23,7 @@ public class PresenterEnTest {
     @Test
     public void boardCreatedMessage() {
         setupGameResponse.versions = new String[]{"USA"};
-        presenter.boardCreatedMessage(setupGameResponse);
+        presenter.versionCreatedMessage(setupGameResponse);
         expected = "USA version of game created.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
@@ -31,14 +31,14 @@ public class PresenterEnTest {
     @Test
     public void availableBoardsMessage() {
         setupGameResponse.versions = new String[]{"USA","FRA"};
-        presenter.availableBoardsMessage(setupGameResponse);
+        presenter.availableVersionsMessage(setupGameResponse);
         expected = "Available versions: FRA, USA\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void boardPromptMessage() {
-        presenter.boardPromptMessage();
+        presenter.setupGamePromptMessage();
         expected = "Select version of game you would like to play.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }

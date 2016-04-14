@@ -1,9 +1,9 @@
 package game.interactors.setupgame;
 
 public interface SetupGamePresenter {
-    void boardPromptMessage();
+    void setupGamePromptMessage();
 
-    void boardCreatedMessage(SetupGameResponse response);
+    void versionCreatedMessage(SetupGameResponse response);
 
-    void availableBoardsMessage(SetupGameResponse response);
+    void availableVersionsMessage(SetupGameResponse response);
 }

@@ -8,8 +8,8 @@ class SetupGameFactoryInValidRequestStub extends SetupGameFactoryMock {
     }
 
     @Override
-    public String[] getAvailableBoards() {
-        super.getAvailableBoards();
+    public String[] getAvailableVersions() {
+        super.getAvailableVersions();
         return new String[]{"USA"};
     }
 

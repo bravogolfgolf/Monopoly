@@ -27,7 +27,7 @@ public class SetupGameFactoryTest {
 
     @Test
     public void testGetAvailableBoards() {
-        factory.getAvailableBoards();
+        factory.getAvailableVersions();
     }
 
     @Test

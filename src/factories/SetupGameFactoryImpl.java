@@ -27,12 +27,12 @@ public class SetupGameFactoryImpl implements SetupGameFactory {
     }
 
     @Override
-    public String[] getAvailableBoards() {
+    public String[] getAvailableVersions() {
         return new String[]{"USA", "FRA"};
     }
 
     @Override
     public boolean isAvailable(String version) {
-        return Arrays.asList(getAvailableBoards()).contains(version);
+        return Arrays.asList(getAvailableVersions()).contains(version);
     }
 }

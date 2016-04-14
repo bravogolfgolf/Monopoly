@@ -14,7 +14,7 @@ import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.setupgame.SetupGame;
 import game.interactors.setupgame.SetupGameFactory;
 import game.presenters.PresenterEn;
-import game.repositories.PlayerRepository;
+import game.repositories.PlayerRepositoryImpl;
 import game.view.Console;
 
 import java.io.BufferedReader;
@@ -38,7 +38,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
             return new SetupGameController(console, interactor, presenter);
         }
         if (controller.equals("CreatePlayerController")) {
-            CreatePlayerGateway repository = new PlayerRepository();
+            CreatePlayerGateway repository = new PlayerRepositoryImpl();
             CreatePlayerInteractor interactor = new CreatePlayer(presenter, repository);
             return new CreatePlayerController(console, interactor, presenter);
         }
