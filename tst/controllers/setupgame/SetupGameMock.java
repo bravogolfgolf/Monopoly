@@ -23,6 +23,7 @@ class SetupGameMock extends SetupGame {
     @Override
     public void availableVersionsMessage() {
         verifyAvailableVersionsMessageCalled = true;
+        super.availableVersionsMessage();
     }
 
     @Override
