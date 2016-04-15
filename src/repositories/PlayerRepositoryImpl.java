@@ -5,6 +5,7 @@ import game.entitiies.Token;
 import game.factories.SetupGamePlayerGateway;
 import game.interactors.createplayer.CreatePlayerGateway;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,18 +17,36 @@ public class PlayerRepositoryImpl implements CreatePlayerGateway, SetupGamePlaye
     private List<Token> tokens;
 
     @Override
-    public boolean create(String token) {
+    public void setTokens(List<Token> tokens) {
+        this.tokens = tokens;
+    }
+
+    @Override
+    public boolean create(String request) {
+        int index = getIndexFromAvailableTokens(request);
+        Token token = removeTokenAtIndexFromAvailableTokens(index);
         Player player = new Player(token);
         return players.add(player);
     }
 
-    int count() {
-        return players.size();
+    private int getIndexFromAvailableTokens(String request) {
+        int index = -1;
+        for (Token token : tokens)
+            if (token.getDescription().equals(request)) index = tokens.indexOf(token);
+        return index;
+    }
+
+    private Token removeTokenAtIndexFromAvailableTokens(int index) {
+        return tokens.remove(index);
     }
 
     @Override
     public boolean playerLimitExceeded() {
         return count() < PLAYER_LIMIT;
+    }
+
+    int count() {
+        return players.size();
     }
 
     @Override
@@ -40,8 +59,8 @@ public class PlayerRepositoryImpl implements CreatePlayerGateway, SetupGamePlaye
     }
 
     @Override
-    public void setTokens(List<Token> tokens) {
-        this.tokens = tokens;
+    public boolean isAvailable(String token) {
+        return Arrays.asList(getAvailableTokens()).contains(token);
     }
 
 }

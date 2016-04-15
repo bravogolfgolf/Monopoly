@@ -19,7 +19,7 @@ public class CreatePlayer implements CreatePlayerInteractor {
 
         if (isNull(request))
             if (player.playerLimitExceeded())
-                if (player.create(request.token)) playerCreatedMessage();
+                if (player.isAvailable(request.token)) playerCreatedMessage();
                 else tokenInUseMessage();
             else exceededPlayerLimitMessage();
         else createPlayerPrompt();
@@ -30,6 +30,7 @@ public class CreatePlayer implements CreatePlayerInteractor {
     }
 
     protected void playerCreatedMessage() {
+        player.create(request.token);
         response.tokens = new String[]{request.token};
         presenter.playerCreatedMessage(response);
     }

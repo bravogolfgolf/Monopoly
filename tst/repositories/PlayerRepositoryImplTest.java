@@ -6,6 +6,7 @@ import game.interactors.setupgame.SetupGameFactory;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class PlayerRepositoryImplTest {
@@ -20,11 +21,9 @@ public class PlayerRepositoryImplTest {
 
     @Test
     public void testCreatePlayer() {
-        assertTrue(repositoryIsEmpty());
         player.create("Cat");
         assertTrue(repositoryHasOnePlayer());
-        player.create("Cat");
-        assertTrue(duplicatePlayerNotCreated());
+        assertFalse(player.isAvailable("Cat"));
     }
 
     @Test
@@ -33,15 +32,7 @@ public class PlayerRepositoryImplTest {
         assertTrue(tokens.length == 8);
     }
 
-    private boolean repositoryIsEmpty() {
-        return player.count() == 0;
-    }
-
     private boolean repositoryHasOnePlayer() {
-        return player.count() == 1;
-    }
-
-    private boolean duplicatePlayerNotCreated() {
         return player.count() == 1;
     }
 }

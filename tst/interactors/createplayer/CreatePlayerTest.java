@@ -2,7 +2,10 @@ package game.interactors.createplayer;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.createPlayer.CreatePlayerInteractor;
+import game.entitiies.Board;
+import game.factories.SetupGameFactoryImpl;
 import game.interactors.PresenterEnMock;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -11,43 +14,49 @@ import static org.junit.Assert.assertTrue;
 @RunWith(HierarchicalContextRunner.class)
 public class CreatePlayerTest {
 
+    private final Board board = new BoardDummy();
     private final PresenterEnMock presenter = new PresenterEnMock();
+    private final CreatePlayerRepositoryFake player = new CreatePlayerRepositoryFake();
+    private final CreatePlayerInteractor interactor = new CreatePlayer(presenter, player);
+    private final SetupGameFactoryImpl factory = new SetupGameFactoryImpl(board, player);
     private final CreatePlayerRequest request = new CreatePlayerRequest();
 
+    @Before
+    public void setUp() {
+        factory.make("USA");
+    }
 
     public class testExceedPlayerLimit {
 
-        private final CreatePlayerRepositoryFake player = new CreatePlayerRepositoryFake();
-        private final CreatePlayerInteractor interactor = new CreatePlayer(presenter, player);
-
         @Test
         public void testExceededPlayerLimit() {
-            sendNineRequests();
+            nineRequests();
 
             assertTrue(player.verifyPlayerLimitExceededCalled);
             assertTrue(player.verifyCreateCalled);
             assertTrue(player.verifyCreateCalledEightTimes);
             assertTrue(presenter.verifyExceededPlayerLimitMessage);
         }
-        private void sendNineRequests() {
-            for (int i = 1; i < 10; i++) {
-                request.token = String.format("%d", i);
+
+        private void nineRequests() {
+            String[] tokens = player.getAvailableTokens();
+            for (String token : tokens) {
+                request.token = token;
                 interactor.handle(request);
             }
+            interactor.handle(request);
         }
     }
 
     public class testCreatePlayer {
 
-        private final CreatePlayerRepositoryMock player = new CreatePlayerRepositoryMock();
-        private final CreatePlayerInteractor interactor = new CreatePlayer(presenter, player);
-
         @Test
         public void testPlayerCreated() {
-            request.token = "Valid";
+            request.token = "Cat";
             interactor.handle(request);
 
             assertTrue(player.verifyPlayerLimitExceededCalled);
+            assertTrue(player.verifyIsAvailableCalled);
             assertTrue(player.verifyCreateCalled);
             assertTrue(presenter.verifyPlayerCreatedMessage);
         }
@@ -67,7 +76,7 @@ public class CreatePlayerTest {
             interactor.handle(request);
 
             assertTrue(player.verifyPlayerLimitExceededCalled);
-            assertTrue(player.verifyCreateCalled);
+            assertTrue(player.verifyIsAvailableCalled);
             assertTrue(presenter.verifyTokenInUseMessage);
             assertTrue(presenter.verifyCreatePlayerPromptMessage);
             assertTrue(player.verifyGetAvailableTokensCalled);
