@@ -9,46 +9,27 @@ import static org.junit.Assert.assertTrue;
 
 public class CreatePlayerTest {
 
-    private CreatePlayerRepositoryMock repository;
+    private CreatePlayerRepositoryMock player;
     private PresenterEnMock presenter;
     private CreatePlayerInteractor interactor;
     private CreatePlayerRequest request;
 
     @Before
     public void setup() {
-        repository = new CreatePlayerRepositoryMock();
+        player = new CreatePlayerRepositoryMock();
         presenter = new PresenterEnMock();
-        interactor = new CreatePlayer(presenter, repository);
+        interactor = new CreatePlayer(presenter, player);
         request = new CreatePlayerRequest();
         request.token = "Cat";
-    }
-
-    @Test
-    public void testPlayerCreated() {
-        interactor.handle(request);
-
-        assertTrue(repository.verifyPlayerLimitExceededCalled);
-        assertTrue(repository.verifyCreateCalled);
-        assertTrue(presenter.verifyPlayerCreatedMessage);
-    }
-
-    @Test
-    public void testTokenInUse() {
-        interactor.handle(request);
-        interactor.handle(request);
-
-        assertTrue(repository.verifyPlayerLimitExceededCalled);
-        assertTrue(repository.verifyCreateCalled);
-        assertTrue(presenter.verifyTokenInUseMessage);
     }
 
     @Test
     public void testExceededPlayerLimit() {
         sendNineRequests();
 
-        assertTrue(repository.verifyPlayerLimitExceededCalled);
-        assertTrue(repository.verifyCreateCalled);
-        assertTrue(repository.verifyCreateCalledEightTimes);
+        assertTrue(player.verifyPlayerLimitExceededCalled);
+        assertTrue(player.verifyCreateCalled);
+        assertTrue(player.verifyCreateCalledEightTimes);
         assertTrue(presenter.verifyExceededPlayerLimitMessage);
     }
 
@@ -60,11 +41,34 @@ public class CreatePlayerTest {
     }
 
     @Test
+    public void testPlayerCreated() {
+        interactor.handle(request);
+
+        assertTrue(player.verifyPlayerLimitExceededCalled);
+        assertTrue(player.verifyCreateCalled);
+        assertTrue(presenter.verifyPlayerCreatedMessage);
+    }
+
+    @Test
     public void testPlayerPrompt() {
         request.token = null;
         interactor.handle(request);
 
-        assertTrue(presenter.verifyPlayerPromptMessage);
+        assertTrue(presenter.verifyCreatePlayerPromptMessage);
+        assertTrue(presenter.verifyAvailableTokensMessage);
+    }
+
+    @Test
+    public void testTokenInUse() {
+        interactor.handle(request);
+        interactor.handle(request);
+
+        assertTrue(player.verifyPlayerLimitExceededCalled);
+        assertTrue(player.verifyCreateCalled);
+        assertTrue(presenter.verifyTokenInUseMessage);
+        assertTrue(presenter.verifyPlayerCreatedMessage);
+        assertTrue(player.verifyGetAvailableTokensCalled);
+        assertTrue(presenter.verifyAvailableTokensMessage);
     }
 
 }

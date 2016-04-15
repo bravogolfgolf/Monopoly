@@ -30,7 +30,7 @@ public class SetupGameController implements Controller {
         parse(line);
     }
 
-    protected void handle(String text) throws IOException {
+    private void handle(String text) throws IOException {
         SetupGameRequest request = new SetupGameRequest();
         request.version = text;
         interactor.handle(request);

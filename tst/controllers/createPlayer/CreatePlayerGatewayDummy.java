@@ -13,4 +13,9 @@ class CreatePlayerGatewayDummy implements CreatePlayerGateway {
     public boolean playerLimitExceeded() {
         return false;
     }
+
+    @Override
+    public String[] getAvailableTokens() {
+        return new String[0];
+    }
 }

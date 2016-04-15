@@ -14,16 +14,6 @@ class SetupGameMock extends SetupGame {
     }
 
     @Override
-    public void availableVersionsMessage() {
-        super.availableVersionsMessage();
-    }
-
-    @Override
-    public void setupGamePrompt() {
-        super.setupGamePrompt();
-    }
-
-    @Override
     public void handle(SetupGameRequest request) {
         VerifyRequestValue = request.version;
         super.handle(request);

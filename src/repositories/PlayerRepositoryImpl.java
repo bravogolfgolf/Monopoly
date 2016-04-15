@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class PlayerRepositoryImpl implements CreatePlayerGateway, SetupGamePlayerGateway {
 
-    public static final int PLAYER_LIMIT = 8;
+    private static final int PLAYER_LIMIT = 8;
     private final Set<Player> players = new HashSet<>();
 
     @Override
@@ -20,13 +20,18 @@ public class PlayerRepositoryImpl implements CreatePlayerGateway, SetupGamePlaye
         return players.add(player);
     }
 
-    public int count() {
+    int count() {
         return players.size();
     }
 
     @Override
     public boolean playerLimitExceeded() {
         return count() < PLAYER_LIMIT;
+    }
+
+    @Override
+    public String[] getAvailableTokens() {
+        return new String[0];
     }
 
     @Override

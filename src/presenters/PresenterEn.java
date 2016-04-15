@@ -41,7 +41,7 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
-    public void playerPromptMessage() {
+    public void createPlayerPromptMessage() {
         template = "Please select token for player.";
         addMessageToBuffer(template);
     }
@@ -53,6 +53,7 @@ public class PresenterEn extends Presenter {
         addMessageToBuffer(template, variables);
     }
 
+    @Override
     public void availableTokensMessage(CreatePlayerResponse response) {
         template = "Available tokens: %s";
         variables = response.tokens;

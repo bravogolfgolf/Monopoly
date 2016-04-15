@@ -26,7 +26,7 @@ public class CreatePlayerController implements Controller {
         handle(line);
     }
 
-    protected void handle(String text) throws IOException {
+    void handle(String text) throws IOException {
         CreatePlayerRequest request = new CreatePlayerRequest();
         request.token = text;
         interactor.handle(request);

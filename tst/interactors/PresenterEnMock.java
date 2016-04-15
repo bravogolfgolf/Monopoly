@@ -6,27 +6,33 @@ import game.presenters.PresenterEn;
 
 public class PresenterEnMock extends PresenterEn {
 
-    public boolean verifyPlayerCreatedMessage = false;
-    public boolean verifyBoardCreateMessage = false;
-    public boolean verifyBoardPromptMessage = false;
+    public boolean verifyVersionCreatedMessage = false;
+    public boolean verifySetupGamePromptMessage = false;
     public boolean verifyTokenInUseMessage = false;
     public boolean verifyExceededPlayerLimitMessage = false;
-    public boolean verifyPlayerPromptMessage = false;
-    public boolean verifyAvailableBoardsMessage = false;
-
-    @Override
-    public void playerPromptMessage() {
-        verifyPlayerPromptMessage = true;
-    }
+    public boolean verifyCreatePlayerPromptMessage = false;
+    public boolean verifyAvailableVersionsMessage = false;
+    public boolean verifyPlayerCreatedMessage = false;
+    public boolean verifyAvailableTokensMessage = false;
 
     @Override
     public void versionCreatedMessage(SetupGameResponse response) {
-        verifyBoardCreateMessage = true;
+        verifyVersionCreatedMessage = true;
+    }
+
+    @Override
+    public void setupGamePromptMessage() {
+        verifySetupGamePromptMessage = true;
     }
 
     @Override
     public void availableVersionsMessage(SetupGameResponse response) {
-        verifyAvailableBoardsMessage = true;
+        verifyAvailableVersionsMessage = true;
+    }
+
+    @Override
+    public void exceededPlayerLimitMessage() {
+        verifyExceededPlayerLimitMessage = true;
     }
 
     @Override
@@ -40,12 +46,12 @@ public class PresenterEnMock extends PresenterEn {
     }
 
     @Override
-    public void exceededPlayerLimitMessage() {
-        verifyExceededPlayerLimitMessage = true;
+    public void createPlayerPromptMessage() {
+        verifyCreatePlayerPromptMessage = true;
     }
 
     @Override
-    public void setupGamePromptMessage() {
-        verifyBoardPromptMessage = true;
+    public void availableTokensMessage(CreatePlayerResponse response) {
+        verifyAvailableTokensMessage = true;
     }
 }

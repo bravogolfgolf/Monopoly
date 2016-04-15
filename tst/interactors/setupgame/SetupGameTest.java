@@ -29,7 +29,7 @@ public class SetupGameTest {
         interactor.handle(request);
 
         assertTrue(factory.verifyCreateMethodCalled);
-        assertTrue(presenter.verifyBoardCreateMessage);
+        assertTrue(presenter.verifyVersionCreatedMessage);
     }
 
     @Test
@@ -41,8 +41,8 @@ public class SetupGameTest {
         interactor.handle(request);
 
         assertTrue(factory.verifyIsAvailableCalled);
-        assertTrue(presenter.verifyBoardPromptMessage);
-        assertTrue(presenter.verifyAvailableBoardsMessage);
+        assertTrue(presenter.verifySetupGamePromptMessage);
+        assertTrue(presenter.verifyAvailableVersionsMessage);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class SetupGameTest {
         interactor.handle(request);
 
         assertTrue(factory.verifyAvailableBoardsCalled);
-        assertTrue(presenter.verifyBoardPromptMessage);
-        assertTrue(presenter.verifyAvailableBoardsMessage);
+        assertTrue(presenter.verifySetupGamePromptMessage);
+        assertTrue(presenter.verifyAvailableVersionsMessage);
     }
 }

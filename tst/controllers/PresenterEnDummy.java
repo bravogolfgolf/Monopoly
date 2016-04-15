@@ -20,7 +20,12 @@ public class PresenterEnDummy extends Presenter {
     }
 
     @Override
-    public void playerPromptMessage() {
+    public void createPlayerPromptMessage() {
+
+    }
+
+    @Override
+    public void availableTokensMessage(CreatePlayerResponse response) {
 
     }
 
