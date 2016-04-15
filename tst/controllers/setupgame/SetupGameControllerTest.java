@@ -18,16 +18,25 @@ import static org.junit.Assert.assertTrue;
 
 public class SetupGameControllerTest {
 
+    private final View view = new ConsoleDummy();
+    private final Presenter presenter = new PresenterEn();
+    private final SetupGameBoardGateway board = new Board();
+    private final PlayerRepositoryImpl player = new PlayerRepositoryImplDummy();
+    private final SetupGameFactory factory = new SetupGameFactoryImpl(board, player);
+    private final SetupGameMock interactor = new SetupGameMock(presenter, factory);
+
     @Test
-    public void testCreateBoardController() throws IOException {
-        View view = new ConsoleDummy();
-        Presenter presenter = new PresenterEn();
-        SetupGameBoardGateway board = new Board();
-        PlayerRepositoryImpl player = new PlayerRepositoryImplDummy();
-        SetupGameFactory factory = new SetupGameFactoryImpl(board, player);
-        SetupGameMock interactor = new SetupGameMock(presenter, factory);
-        Controller controller = new SetupGameControllerStub(view, interactor, presenter);
+    public void testSetupGameControllerValidInput() throws IOException {
+        Controller controller = new SetupGameControllerValidInputStub(view, interactor, presenter);
         controller.execute();
-        assertTrue("FRA".equals(interactor.VerifyRequestValue));
+        assertTrue(interactor.verifyAvailableVersionsMessageCalled);
+        assertTrue(interactor.verifyHandleCalled);
+    }
+
+    @Test
+    public void testSetupGameControllerInValidInput() throws IOException {
+        Controller controller = new SetupGameControllerInValidInputStub(view, interactor, presenter);
+        controller.execute();
+        assertTrue(interactor.verifySetupGamePromptCalled);
     }
 }

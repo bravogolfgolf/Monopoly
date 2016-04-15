@@ -5,8 +5,8 @@ import game.controllers.View;
 
 import java.io.IOException;
 
-class SetupGameControllerStub extends SetupGameController {
-    SetupGameControllerStub(View view, SetupGameInteractor interactor, Presenter presenter) {
+class SetupGameControllerValidInputStub extends SetupGameController {
+    SetupGameControllerValidInputStub(View view, SetupGameInteractor interactor, Presenter presenter) {
         super(view, interactor, presenter);
     }
 

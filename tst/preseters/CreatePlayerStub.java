@@ -10,7 +10,6 @@ class CreatePlayerStub extends CreatePlayer {
     private final CreatePlayerPresenter presenter;
     private final CreatePlayerResponse response = new CreatePlayerResponse();
 
-
     CreatePlayerStub(CreatePlayerPresenter presenter, CreatePlayerGateway player) {
         super(presenter, player);
         this.presenter = presenter;

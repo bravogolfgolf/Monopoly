@@ -2,27 +2,23 @@ package game.interactors.createplayer;
 
 import game.repositories.PlayerRepositoryImpl;
 
-class CreatePlayerRepositoryMock extends PlayerRepositoryImpl {
-
-    boolean verifyCreateCalled = false;
+class CreatePlayerRepositoryFake extends PlayerRepositoryImpl {
     boolean verifyPlayerLimitExceededCalled = false;
-    boolean verifyGetAvailableTokensCalled = false;
+    boolean verifyCreateCalled = false;
+    boolean verifyCreateCalledEightTimes = false;
+    private int createCalledCounter = 0;
 
     @Override
     public boolean create(String token) {
+        createCalledCounter++;
+        verifyCreateCalledEightTimes = (createCalledCounter == 8);
         verifyCreateCalled = true;
-        return !token.equals("InValid");
+        return super.create(token);
     }
 
     @Override
     public boolean playerLimitExceeded() {
         verifyPlayerLimitExceededCalled = true;
         return super.playerLimitExceeded();
-    }
-
-    @Override
-    public String[] getAvailableTokens() {
-        verifyGetAvailableTokensCalled = true;
-        return new String[0];
     }
 }

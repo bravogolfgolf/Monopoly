@@ -1,21 +1,6 @@
 package game.controllers.createPlayer;
 
-import game.interactors.createplayer.CreatePlayerGateway;
+import game.repositories.PlayerRepositoryImpl;
 
-class CreatePlayerGatewayDummy implements CreatePlayerGateway {
-
-    @Override
-    public boolean create(String token) {
-        return false;
-    }
-
-    @Override
-    public boolean playerLimitExceeded() {
-        return false;
-    }
-
-    @Override
-    public String[] getAvailableTokens() {
-        return new String[0];
-    }
+class CreatePlayerGatewayDummy extends PlayerRepositoryImpl {
 }

@@ -22,6 +22,6 @@ public class CreatePlayerControllerTest {
         CreatePlayerMock interactor = new CreatePlayerMock(presenter, repository);
         Controller controller = new CreatePlayerControllerStub(view, interactor, presenter);
         controller.execute();
-        assertTrue(interactor.VerifyHandleMethodCalled);
+        assertTrue(interactor.verifyHandleCalled);
     }
 }

@@ -7,7 +7,7 @@ import game.interactors.createplayer.CreatePlayerRequest;
 
 class CreatePlayerMock extends CreatePlayer {
 
-    boolean VerifyHandleMethodCalled = false;
+    boolean verifyHandleCalled = false;
 
     CreatePlayerMock(Presenter presenter, CreatePlayerGateway repository) {
         super(presenter, repository);
@@ -15,7 +15,7 @@ class CreatePlayerMock extends CreatePlayer {
 
     @Override
     public void handle(CreatePlayerRequest request) {
-        VerifyHandleMethodCalled = true;
+        verifyHandleCalled = true;
     }
 
 }

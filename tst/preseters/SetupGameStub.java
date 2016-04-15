@@ -1,6 +1,9 @@
 package game.preseters;
 
-import game.interactors.setupgame.*;
+import game.interactors.setupgame.SetupGame;
+import game.interactors.setupgame.SetupGameFactory;
+import game.interactors.setupgame.SetupGamePresenter;
+import game.interactors.setupgame.SetupGameResponse;
 
 class SetupGameStub extends SetupGame {
 
@@ -10,10 +13,6 @@ class SetupGameStub extends SetupGame {
     SetupGameStub(SetupGamePresenter presenter, SetupGameFactory factory) {
         super(presenter, factory);
         this.presenter = presenter;
-    }
-
-    @Override
-    public void handle(SetupGameRequest request) {
     }
 
     @Override

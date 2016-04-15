@@ -13,6 +13,7 @@ public class PlayerRepositoryImpl implements CreatePlayerGateway, SetupGamePlaye
 
     private static final int PLAYER_LIMIT = 8;
     private final Set<Player> players = new HashSet<>();
+    private List<Token> tokens;
 
     @Override
     public boolean create(String token) {
@@ -31,12 +32,16 @@ public class PlayerRepositoryImpl implements CreatePlayerGateway, SetupGamePlaye
 
     @Override
     public String[] getAvailableTokens() {
-        return new String[0];
+        String[] result = new String[tokens.size()];
+        for (int i = 0; i < tokens.size(); i++) {
+            result[i] = tokens.get(i).getDescription();
+        }
+        return result;
     }
 
     @Override
     public void setTokens(List<Token> tokens) {
-
+        this.tokens = tokens;
     }
 
 }
