@@ -1,7 +1,6 @@
 package game.usecases;
 
 import game.Controller;
-import game.PlayerRepository;
 import game.controllers.createPlayer.CreatePlayerInteractor;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerGateway;
@@ -27,7 +26,7 @@ public class CreatePlayerTest {
 
         controller.execute();
 
-        assertEquals(1, ((PlayerRepository) repository).count());
+        assertEquals(1, ((PlayerRepositoryImpl) repository).count());
         assertTrue(view.VerifyOutputMethodCalled(expected));
     }
 }
