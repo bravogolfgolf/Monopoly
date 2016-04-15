@@ -18,5 +18,8 @@ public final class Monopoly {
 
         Controller controller = factory.make("SetupGameController");
         controller.execute();
+
+        controller = factory.make("CreatePlayerController");
+        controller.execute();
     }
 }

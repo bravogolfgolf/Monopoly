@@ -17,12 +17,10 @@ public class CreatePlayer implements CreatePlayerInteractor {
     public void handle(CreatePlayerRequest request) {
         this.request = request;
 
-        if (isNull(request))
-            if (player.playerLimitExceeded())
-                if (player.isAvailable(request.token)) playerCreatedMessage();
-                else tokenInUseMessage();
-            else exceededPlayerLimitMessage();
-        else createPlayerPrompt();
+        if (player.playerLimitExceeded())
+            if (player.isAvailable(request.token)) playerCreatedMessage();
+            else tokenInUseMessage();
+        else exceededPlayerLimitMessage();
     }
 
     protected void exceededPlayerLimitMessage() {
@@ -51,9 +49,5 @@ public class CreatePlayer implements CreatePlayerInteractor {
     public void availableTokensMessage() {
         response.tokens = player.getAvailableTokens();
         presenter.availableTokensMessage(response);
-    }
-
-    private boolean isNull(CreatePlayerRequest request) {
-        return request.token != null;
     }
 }

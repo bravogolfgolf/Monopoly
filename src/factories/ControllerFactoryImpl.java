@@ -38,8 +38,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
             return new SetupGameController(console, interactor, presenter);
         }
         if (controller.equals("CreatePlayerController")) {
-            CreatePlayerGateway repository = new PlayerRepositoryImpl();
-            CreatePlayerInteractor interactor = new CreatePlayer(presenter, repository);
+            CreatePlayerInteractor interactor = new CreatePlayer(presenter, ((CreatePlayerGateway) player));
             return new CreatePlayerController(console, interactor, presenter);
         }
         throw new IllegalArgumentException();
