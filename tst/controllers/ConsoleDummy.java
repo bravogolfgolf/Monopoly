@@ -2,7 +2,7 @@ package game.controllers;
 
 import java.io.IOException;
 
-public class ConsoleDummy extends View {
+public class ConsoleDummy implements View {
     @Override
     public String read() throws IOException {
         return null;

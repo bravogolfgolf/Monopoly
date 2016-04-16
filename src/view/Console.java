@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-public class Console extends View {
+public class Console implements View {
 
     private final BufferedReader reader;
     private final BufferedWriter writer;
