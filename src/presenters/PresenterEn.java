@@ -1,10 +1,9 @@
 package game.presenters;
 
-import game.controllers.Presenter;
 import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.setupgame.SetupGameResponse;
 
-public class PresenterEn extends Presenter {
+public class PresenterEn extends PresenterImpl {
 
 
     @Override

@@ -1,8 +1,8 @@
 package game.controllers.setupgame;
 
-import game.controllers.Presenter;
 import game.interactors.setupgame.SetupGame;
 import game.interactors.setupgame.SetupGameFactory;
+import game.interactors.setupgame.SetupGamePresenter;
 import game.interactors.setupgame.SetupGameRequest;
 
 class SetupGameMock extends SetupGame {
@@ -11,7 +11,7 @@ class SetupGameMock extends SetupGame {
     boolean verifyAvailableVersionsMessageCalled = false;
     boolean verifySetupGamePromptCalled = false;
 
-    SetupGameMock(Presenter presenter, SetupGameFactory factory) {
+    SetupGameMock(SetupGamePresenter presenter, SetupGameFactory factory) {
         super(presenter, factory);
     }
 

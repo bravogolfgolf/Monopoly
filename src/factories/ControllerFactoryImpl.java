@@ -2,7 +2,6 @@ package game.factories;
 
 import game.Controller;
 import game.ControllerFactory;
-import game.controllers.Presenter;
 import game.controllers.View;
 import game.controllers.createPlayer.CreatePlayerController;
 import game.controllers.createPlayer.CreatePlayerInteractor;
@@ -14,6 +13,7 @@ import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.setupgame.SetupGame;
 import game.interactors.setupgame.SetupGameFactory;
 import game.presenters.PresenterEn;
+import game.presenters.PresenterImpl;
 import game.repositories.PlayerRepositoryImpl;
 import game.view.Console;
 
@@ -26,7 +26,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
     private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
     private final View console = new Console(reader, writer);
-    private final Presenter presenter = new PresenterEn();
+    private final PresenterImpl presenter = new PresenterEn();
     private final Board board = new Board();
     private final SetupGamePlayerGateway player = new PlayerRepositoryImpl();
 

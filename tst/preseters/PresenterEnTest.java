@@ -1,12 +1,12 @@
 package game.preseters;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import game.controllers.Presenter;
 import game.factories.SetupGameBoardGateway;
 import game.factories.SetupGamePlayerGateway;
 import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.setupgame.SetupGameFactory;
 import game.presenters.PresenterEn;
+import game.presenters.PresenterImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(HierarchicalContextRunner.class)
 public class PresenterEnTest {
 
-    private final Presenter presenter = new PresenterEn();
+    private final PresenterImpl presenter = new PresenterEn();
     private String expected;
 
     public class setupGame {

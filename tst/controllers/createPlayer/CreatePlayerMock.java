@@ -1,8 +1,8 @@
 package game.controllers.createPlayer;
 
-import game.controllers.Presenter;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerGateway;
+import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerRequest;
 
 class CreatePlayerMock extends CreatePlayer {
@@ -11,7 +11,7 @@ class CreatePlayerMock extends CreatePlayer {
     boolean verifyAvailableTokensMessage = false;
     boolean verifyCreatePlayerPrompt;
 
-    CreatePlayerMock(Presenter presenter, CreatePlayerGateway repository) {
+    CreatePlayerMock(CreatePlayerPresenter presenter, CreatePlayerGateway repository) {
         super(presenter, repository);
     }
 

@@ -2,11 +2,11 @@ package game.controllers.createPlayer;
 
 import game.Controller;
 import game.controllers.ConsoleDummy;
-import game.controllers.Presenter;
 import game.controllers.PresenterEnDummy;
 import game.controllers.View;
 import game.entitiies.Token;
 import game.interactors.createplayer.CreatePlayerGateway;
+import game.presenters.PresenterImpl;
 import game.repositories.PlayerRepositoryImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 
 public class CreatePlayerControllerTest {
     private final View view = new ConsoleDummy();
-    private final Presenter presenter = new PresenterEnDummy();
+    private final PresenterImpl presenter = new PresenterEnDummy();
     private final CreatePlayerGateway player = new PlayerRepositoryImpl();
 
     @Before
