@@ -1,38 +1,35 @@
 package game.repositories;
 
-import game.entitiies.Board;
-import game.factories.SetupGameFactoryImpl;
-import game.interactors.setupgame.SetupGameFactory;
+import game.entitiies.Token;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertFalse;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.Assert.assertTrue;
 
 public class PlayerRepositoryImplTest {
-    private final Board board = new BoardDummy();
-    private final PlayerRepositoryImpl player = new PlayerRepositoryImpl();
-    private final SetupGameFactory factory = new SetupGameFactoryImpl(board, player);
+
+    private PlayerRepositoryImpl playerRepository;
 
     @Before
     public void setUp() {
-        factory.make("USA");
+        List<Token> tokens = new ArrayList<>(Collections.singletonList(new Token("Cat")));
+        playerRepository = new PlayerRepositoryImpl(tokens);
     }
 
     @Test
     public void testCreatePlayer() {
-        player.create("Cat");
-        assertTrue(repositoryHasOnePlayer());
-        assertFalse(player.isAvailable("Cat"));
+        playerRepository.create("Cat");
+        assertTrue(playerRepository.count() == 1);
+        assertTrue(!playerRepository.isAvailable("Cat"));
     }
 
     @Test
     public void testGetTokens() {
-        String[] tokens = player.getAvailableTokens();
-        assertTrue(tokens.length == 8);
-    }
-
-    private boolean repositoryHasOnePlayer() {
-        return player.count() == 1;
+        String[] tokens = playerRepository.getAvailableTokens();
+        assertTrue(tokens.length == 1);
     }
 }

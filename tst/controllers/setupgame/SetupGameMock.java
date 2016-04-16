@@ -1,19 +1,12 @@
 package game.controllers.setupgame;
 
-import game.interactors.setupgame.SetupGame;
-import game.interactors.setupgame.SetupGameFactory;
-import game.interactors.setupgame.SetupGamePresenter;
 import game.interactors.setupgame.SetupGameRequest;
 
-class SetupGameMock extends SetupGame {
+class SetupGameMock implements SetupGameInteractor {
 
     boolean verifyHandleCalled = false;
     boolean verifyAvailableVersionsMessageCalled = false;
     boolean verifySetupGamePromptCalled = false;
-
-    SetupGameMock(SetupGamePresenter presenter, SetupGameFactory factory) {
-        super(presenter, factory);
-    }
 
     @Override
     public void setupGamePrompt() {
@@ -23,7 +16,6 @@ class SetupGameMock extends SetupGame {
     @Override
     public void availableVersionsMessage() {
         verifyAvailableVersionsMessageCalled = true;
-        super.availableVersionsMessage();
     }
 
     @Override

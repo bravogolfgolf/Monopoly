@@ -39,6 +39,5 @@ public class SetupGameTest {
 
         assertTrue(presenter.verifyAvailableVersionsMessage);
         assertTrue(factory.verifyGetAvailableVersionsCalled);
-
     }
 }

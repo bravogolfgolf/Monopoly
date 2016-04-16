@@ -2,7 +2,6 @@ package game.repositories;
 
 import game.entitiies.Player;
 import game.entitiies.Token;
-import game.factories.SetupGamePlayerGateway;
 import game.interactors.createplayer.CreatePlayerGateway;
 
 import java.util.Arrays;
@@ -10,14 +9,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class PlayerRepositoryImpl implements CreatePlayerGateway, SetupGamePlayerGateway {
+public class PlayerRepositoryImpl implements CreatePlayerGateway {
 
     private static final int PLAYER_LIMIT = 8;
     private final Set<Player> players = new HashSet<>();
-    private List<Token> tokens;
+    private final List<Token> tokens;
 
-    @Override
-    public void setTokens(List<Token> tokens) {
+    public PlayerRepositoryImpl(List<Token> tokens) {
         this.tokens = tokens;
     }
 
@@ -50,17 +48,18 @@ public class PlayerRepositoryImpl implements CreatePlayerGateway, SetupGamePlaye
     }
 
     @Override
+    public boolean isAvailable(String token) {
+        return Arrays.asList(getAvailableTokens()).contains(token);
+    }
+
+    @Override
     public String[] getAvailableTokens() {
         String[] result = new String[tokens.size()];
         for (int i = 0; i < tokens.size(); i++) {
             result[i] = tokens.get(i).getDescription();
         }
+        Arrays.sort(result);
         return result;
-    }
-
-    @Override
-    public boolean isAvailable(String token) {
-        return Arrays.asList(getAvailableTokens()).contains(token);
     }
 
 }

@@ -1,14 +1,22 @@
 package game.interactors.createplayer;
 
+import game.entitiies.Token;
 import game.repositories.PlayerRepositoryImpl;
 
+import java.util.List;
+
 class CreatePlayerRepositoryFake extends PlayerRepositoryImpl {
+
     private int createCalledCounter = 0;
     boolean verifyPlayerLimitExceededCalled = false;
     boolean verifyCreateCalled = false;
     boolean verifyCreateCalledEightTimes = false;
     boolean verifyGetAvailableTokensCalled = false;
     boolean verifyIsAvailableCalled = false;
+
+    CreatePlayerRepositoryFake(List<Token> tokens) {
+        super(tokens);
+    }
 
     @Override
     public boolean create(String request) {

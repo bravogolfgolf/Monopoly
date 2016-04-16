@@ -3,6 +3,7 @@ package game.interactors.createplayer;
 import game.controllers.createPlayer.CreatePlayerInteractor;
 
 public class CreatePlayer implements CreatePlayerInteractor {
+
     private final CreatePlayerPresenter presenter;
     private final CreatePlayerGateway player;
     private final CreatePlayerResponse response = new CreatePlayerResponse();
@@ -23,17 +24,17 @@ public class CreatePlayer implements CreatePlayerInteractor {
         else exceededPlayerLimitMessage();
     }
 
-    protected void exceededPlayerLimitMessage() {
+    private void exceededPlayerLimitMessage() {
         presenter.exceededPlayerLimitMessage();
     }
 
-    protected void playerCreatedMessage() {
+    private void playerCreatedMessage() {
         player.create(request.token);
         response.tokens = new String[]{request.token};
         presenter.playerCreatedMessage(response);
     }
 
-    protected void tokenInUseMessage() {
+    private void tokenInUseMessage() {
         response.tokens = new String[]{request.token};
         presenter.tokenInUseMessage(response);
         createPlayerPrompt();

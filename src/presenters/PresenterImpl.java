@@ -6,13 +6,12 @@ import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.setupgame.SetupGamePresenter;
 import game.interactors.setupgame.SetupGameResponse;
 
-import java.util.Arrays;
-
 public class PresenterImpl implements Presenter, CreatePlayerPresenter, SetupGamePresenter {
+
     private static final String NEW_LINE = System.lineSeparator();
+    private StringBuffer messageBuffer = new StringBuffer();
     String template;
     String[] variables;
-    private StringBuffer messageBuffer = new StringBuffer();
 
     public String getFormattedMessage() {
         String result = messageBuffer.toString();
@@ -21,13 +20,11 @@ public class PresenterImpl implements Presenter, CreatePlayerPresenter, SetupGam
     }
 
     void addMenuToBuffer(String template, String[] variables) {
-        sortArray(variables);
         String[] menuItems = createMenuArray(variables);
         addMessageToBuffer(template, menuItems);
     }
 
     void addMessageToBuffer(String template, String[] variables) {
-        sortArray(variables);
         String variable = arrayToCommaDelimitedString(variables);
         String formattedMessage = formatMessage(template, variable);
         addMessageToBuffer(formattedMessage);
@@ -36,10 +33,6 @@ public class PresenterImpl implements Presenter, CreatePlayerPresenter, SetupGam
     void addMessageToBuffer(String message) {
         String newLine = addNewLine(message);
         messageBuffer.append(newLine);
-    }
-
-    private void sortArray(String[] variables) {
-        Arrays.sort(variables);
     }
 
     private String[] createMenuArray(String[] variables) {

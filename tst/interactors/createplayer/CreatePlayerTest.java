@@ -3,10 +3,10 @@ package game.interactors.createplayer;
 import game.controllers.createPlayer.CreatePlayerInteractor;
 import game.entitiies.Token;
 import game.interactors.PresenterEnMock;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
@@ -14,20 +14,11 @@ import static org.junit.Assert.assertTrue;
 
 public class CreatePlayerTest {
 
+    private final List<Token> tokens = new ArrayList<>(Arrays.asList(new Token("Wheelbarrow"), new Token("Battleship"), new Token("Scottish Terrier"), new Token("Top Hat"), new Token("Cat"), new Token("Thimble"), new Token("Boot"), new Token("Automobile")));
+    private final CreatePlayerRepositoryFake player = new CreatePlayerRepositoryFake(tokens);
     private final PresenterEnMock presenter = new PresenterEnMock();
-    private final CreatePlayerRepositoryFake player = new CreatePlayerRepositoryFake();
     private final CreatePlayerInteractor interactor = new CreatePlayer(presenter, player);
     private final CreatePlayerRequest request = new CreatePlayerRequest();
-
-    @Before
-    public void setUp() {
-        List<Token> tokens = new ArrayList<>();
-        String[] tokenDescriptions = new String[]{"Wheelbarrow", "Battleship", "Scottish Terrier", "Top Hat", "Cat", "Thimble", "Boot", "Automobile"};
-        for (String token : tokenDescriptions) {
-            tokens.add(new Token(token));
-        }
-        player.setTokens(tokens);
-    }
 
     @Test
     public void testExceededPlayerLimit() {

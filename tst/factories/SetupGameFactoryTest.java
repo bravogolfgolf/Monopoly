@@ -3,13 +3,9 @@ package game.factories;
 import game.interactors.setupgame.SetupGameFactory;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
-
 public class SetupGameFactoryTest {
 
-    private final BoardMock board = new BoardMock();
-    private final PlayerRepositoryImplMock player = new PlayerRepositoryImplMock();
-    private final SetupGameFactory factory = new SetupGameFactoryImpl(board, player);
+    private final SetupGameFactory factory = new SetupGameFactoryImpl();
 
     @Test(expected = IllegalArgumentException.class)
     public void testMakeException() {
@@ -21,8 +17,6 @@ public class SetupGameFactoryTest {
         String[] versions = factory.getAvailableVersions();
         for (String version : versions) {
             factory.make(version);
-            assertTrue(board.verifySetVersionCalled);
-            assertTrue(player.verifySetTokensCalled);
         }
 
     }

@@ -5,7 +5,6 @@ import game.interactors.setupgame.SetupGameResponse;
 
 public class PresenterEn extends PresenterImpl {
 
-
     @Override
     public void versionCreatedMessage(SetupGameResponse response) {
         template = "%s version of game created.";

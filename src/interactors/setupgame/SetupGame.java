@@ -3,6 +3,7 @@ package game.interactors.setupgame;
 import game.controllers.setupgame.SetupGameInteractor;
 
 public class SetupGame implements SetupGameInteractor {
+
     private final SetupGamePresenter presenter;
     private final SetupGameFactory factory;
     private final SetupGameResponse response = new SetupGameResponse();
@@ -16,15 +17,15 @@ public class SetupGame implements SetupGameInteractor {
     @Override
     public void handle(SetupGameRequest request) {
         this.request = request;
-            if (requestedVersionIsAvailable()) versionCreatedMessage();
-            else setupGamePrompt();
+        if (requestedVersionIsAvailable()) versionCreatedMessage();
+        else setupGamePrompt();
     }
 
     private boolean requestedVersionIsAvailable() {
         return factory.isAvailable(request.version);
     }
 
-    protected void versionCreatedMessage() {
+    private void versionCreatedMessage() {
         factory.make(request.version);
         response.versions = new String[]{request.version};
         presenter.versionCreatedMessage(response);

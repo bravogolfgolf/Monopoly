@@ -1,10 +1,11 @@
 package game.interactors;
 
+import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.setupgame.SetupGamePresenter;
 import game.interactors.setupgame.SetupGameResponse;
-import game.presenters.PresenterEn;
 
-public class PresenterEnMock extends PresenterEn {
+public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresenter {
 
     public boolean verifyVersionCreatedMessage = false;
     public boolean verifySetupGamePromptMessage = false;
