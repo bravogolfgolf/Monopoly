@@ -1,42 +1,54 @@
 package game.interactors.createplayer;
 
-import game.controllers.Presenter;
 import game.controllers.createPlayer.CreatePlayerInteractor;
 
 public class CreatePlayer implements CreatePlayerInteractor {
-    private final Presenter presenter;
-    private final CreatePlayerGateway repository;
-    private final CreatePlayerResponse response = new CreatePlayerResponse();
 
-    public CreatePlayer(Presenter presenter, CreatePlayerGateway repository) {
+    private final CreatePlayerPresenter presenter;
+    private final CreatePlayerGateway player;
+    private final CreatePlayerResponse response = new CreatePlayerResponse();
+    private CreatePlayerRequest request;
+
+    public CreatePlayer(CreatePlayerPresenter presenter, CreatePlayerGateway player) {
         this.presenter = presenter;
-        this.repository = repository;
+        this.player = player;
     }
 
     @Override
     public void handle(CreatePlayerRequest request) {
+        this.request = request;
 
-        if (isNull(request)) {
-
-            if (repository.playerLimitExceeded()) {
-
-                if (repository.create(request.token)){
-                    response.tokens = new String[]{request.token};
-                    presenter.playerCreatedMessage(response);
-                }
-
-                else {
-                    response.tokens = new String[]{request.token};
-                    presenter.tokenInUseMessage(response);
-                }
-
-            } else presenter.exceededPlayerLimitMessage();
-
-        } else presenter.playerPromptMessage();
-
+        if (player.playerLimitExceeded())
+            if (player.isAvailable(request.token)) playerCreatedMessage();
+            else tokenInUseMessage();
+        else exceededPlayerLimitMessage();
     }
 
-    private boolean isNull(CreatePlayerRequest request) {
-        return request.token != null;
+    private void exceededPlayerLimitMessage() {
+        presenter.exceededPlayerLimitMessage();
+    }
+
+    private void playerCreatedMessage() {
+        player.create(request.token);
+        response.tokens = new String[]{request.token};
+        presenter.playerCreatedMessage(response);
+    }
+
+    private void tokenInUseMessage() {
+        response.tokens = new String[]{request.token};
+        presenter.tokenInUseMessage(response);
+        createPlayerPrompt();
+    }
+
+    @Override
+    public void createPlayerPrompt() {
+        presenter.createPlayerPromptMessage();
+        availableTokensMessage();
+    }
+
+    @Override
+    public void availableTokensMessage() {
+        response.tokens = player.getAvailableTokens();
+        presenter.availableTokensMessage(response);
     }
 }

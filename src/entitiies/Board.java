@@ -1,13 +1,10 @@
 package game.entitiies;
 
-import game.BoardGateway;
-import game.factories.SetupGameBoardGateway;
+public class Board {
 
-public class Board implements BoardGateway, SetupGameBoardGateway {
-    @SuppressWarnings("unused")
-    private String version;
+    private final String version;
 
-    public void setVersion(String version) {
+    public Board(String version) {
         this.version = version;
     }
 }

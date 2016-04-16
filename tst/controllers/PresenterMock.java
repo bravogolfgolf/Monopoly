@@ -1,9 +1,20 @@
 package game.controllers;
 
+import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.setupgame.SetupGamePresenter;
 import game.interactors.setupgame.SetupGameResponse;
 
-public class PresenterEnDummy extends Presenter {
+public class PresenterMock implements Presenter, SetupGamePresenter, CreatePlayerPresenter {
+
+    public boolean verifyGetFormattedMessage = false;
+
+    @Override
+    public String getFormattedMessage() {
+        verifyGetFormattedMessage = true;
+        return "";
+    }
+
     @Override
     public void playerCreatedMessage(CreatePlayerResponse response) {
 
@@ -20,7 +31,12 @@ public class PresenterEnDummy extends Presenter {
     }
 
     @Override
-    public void playerPromptMessage() {
+    public void createPlayerPromptMessage() {
+
+    }
+
+    @Override
+    public void availableTokensMessage(CreatePlayerResponse response) {
 
     }
 

@@ -1,9 +1,9 @@
 package game.interactors.setupgame;
 
-class SetupGameFactoryMock implements SetupGameFactory {
+class SetupGameFactoryFake implements SetupGameFactory {
 
     boolean verifyCreateMethodCalled = false;
-    boolean verifyAvailableBoardsCalled = false;
+    boolean verifyGetAvailableVersionsCalled = false;
     boolean verifyIsAvailableCalled = false;
 
     @Override
@@ -13,13 +13,13 @@ class SetupGameFactoryMock implements SetupGameFactory {
 
     @Override
     public String[] getAvailableVersions() {
-        verifyAvailableBoardsCalled = true;
+        verifyGetAvailableVersionsCalled = true;
         return new String[0];
     }
 
     @Override
     public boolean isAvailable(String version) {
         verifyIsAvailableCalled = true;
-        return false;
+        return (version.equals("Valid"));
     }
 }

@@ -1,21 +1,25 @@
 package game.controllers.createPlayer;
 
-import game.controllers.Presenter;
-import game.interactors.createplayer.CreatePlayer;
-import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.createplayer.CreatePlayerRequest;
 
-class CreatePlayerMock extends CreatePlayer {
+class CreatePlayerMock implements CreatePlayerInteractor {
 
-    boolean VerifyHandleMethodCalled = false;
+    boolean verifyHandleCalled = false;
+    boolean verifyAvailableTokensMessage = false;
+    boolean verifyCreatePlayerPrompt;
 
-    CreatePlayerMock(Presenter presenter, CreatePlayerGateway repository) {
-        super(presenter, repository);
+    @Override
+    public void createPlayerPrompt() {
+        verifyCreatePlayerPrompt = true;
+    }
+
+    @Override
+    public void availableTokensMessage() {
+        verifyAvailableTokensMessage = true;
     }
 
     @Override
     public void handle(CreatePlayerRequest request) {
-        VerifyHandleMethodCalled = true;
+        verifyHandleCalled = true;
     }
-
 }

@@ -2,59 +2,42 @@ package game.interactors.setupgame;
 
 import game.controllers.setupgame.SetupGameInteractor;
 import game.interactors.PresenterEnMock;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
 public class SetupGameTest {
 
-    private PresenterEnMock presenter;
-    private SetupGameFactoryMock factory;
-    private SetupGameInteractor interactor;
-    private SetupGameRequest request;
-
-    @Before
-    public void setUp() {
-        presenter = new PresenterEnMock();
-        request = new SetupGameRequest();
-    }
+    private final PresenterEnMock presenter = new PresenterEnMock();
+    private final SetupGameFactoryFake factory = new SetupGameFactoryFake();
+    private final SetupGameInteractor interactor = new SetupGame(presenter, factory);
+    private final SetupGameRequest request = new SetupGameRequest();
 
     @Test
-    public void testBoardCreatedMessage() {
-        factory = new SetupGameFactoryValidRequestStub();
-        interactor = new SetupGame(presenter, factory);
-
-        request.version = "USA";
-        interactor.handle(request);
-
-        assertTrue(factory.verifyCreateMethodCalled);
-        assertTrue(presenter.verifyBoardCreateMessage);
-    }
-
-    @Test
-    public void testBoardPromptMessageAndAvailableBoardsMessageWithInvalidInput() {
-        factory = new SetupGameFactoryInValidRequestStub();
-        interactor = new SetupGame(presenter, factory);
-
-        request.version = "TEST";
+    public void testValidRequest() {
+        request.version = "Valid";
         interactor.handle(request);
 
         assertTrue(factory.verifyIsAvailableCalled);
-        assertTrue(presenter.verifyBoardPromptMessage);
-        assertTrue(presenter.verifyAvailableBoardsMessage);
+        assertTrue(factory.verifyCreateMethodCalled);
+        assertTrue(presenter.verifyVersionCreatedMessage);
     }
 
     @Test
-    public void testBoardPromptMessageAndAvailableBoardsMessageWithNullInput() {
-        factory = new SetupGameFactoryInValidRequestStub();
-        interactor = new SetupGame(presenter, factory);
-
-        request.version = null;
+    public void testInvalidRequest() {
+        request.version = "Invalid";
         interactor.handle(request);
 
-        assertTrue(factory.verifyAvailableBoardsCalled);
-        assertTrue(presenter.verifyBoardPromptMessage);
-        assertTrue(presenter.verifyAvailableBoardsMessage);
+        assertTrue(factory.verifyIsAvailableCalled);
+        assertTrue(presenter.verifySetupGamePromptMessage);
+        assertTrue(presenter.verifyAvailableVersionsMessage);
+    }
+
+    @Test
+    public void testAvailableVersionsMessage() {
+        interactor.availableVersionsMessage();
+
+        assertTrue(presenter.verifyAvailableVersionsMessage);
+        assertTrue(factory.verifyGetAvailableVersionsCalled);
     }
 }

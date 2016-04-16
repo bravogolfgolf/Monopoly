@@ -1,15 +1,15 @@
 package game.interactors.setupgame;
 
-import game.controllers.Presenter;
 import game.controllers.setupgame.SetupGameInteractor;
 
 public class SetupGame implements SetupGameInteractor {
-    private final Presenter presenter;
+
+    private final SetupGamePresenter presenter;
     private final SetupGameFactory factory;
     private final SetupGameResponse response = new SetupGameResponse();
     private SetupGameRequest request;
 
-    public SetupGame(Presenter presenter, SetupGameFactory factory) {
+    public SetupGame(SetupGamePresenter presenter, SetupGameFactory factory) {
         this.presenter = presenter;
         this.factory = factory;
     }
@@ -17,8 +17,8 @@ public class SetupGame implements SetupGameInteractor {
     @Override
     public void handle(SetupGameRequest request) {
         this.request = request;
-            if (requestedVersionIsAvailable()) versionCreatedMessage();
-            else setupGamePrompt();
+        if (requestedVersionIsAvailable()) versionCreatedMessage();
+        else setupGamePrompt();
     }
 
     private boolean requestedVersionIsAvailable() {

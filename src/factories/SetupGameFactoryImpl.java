@@ -1,39 +1,50 @@
 package game.factories;
 
+import game.Context;
+import game.entitiies.Board;
 import game.entitiies.Token;
 import game.interactors.setupgame.SetupGameFactory;
+import game.repositories.PlayerRepositoryImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SetupGameFactoryImpl implements SetupGameFactory {
+class SetupGameFactoryImpl implements SetupGameFactory {
 
-    private final SetupGameBoardGateway board;
-    private final SetupGamePlayerGateway player;
+    @Override
+    public String[] getAvailableVersions() {
+        String[] result = new String[]{"USA", "FRA"};
+        Arrays.sort(result);
+        return result;
+    }
 
-    public SetupGameFactoryImpl(SetupGameBoardGateway board, SetupGamePlayerGateway player) {
-        this.board = board;
-        this.player = player;
+    @Override
+    public boolean isAvailable(String version) {
+        return Arrays.asList(getAvailableVersions()).contains(version);
     }
 
     @Override
     public void make(String version) {
         switch (version) {
             case "USA":
-                setup("USA");
+                setupUSA("USA");
                 break;
             case "FRA":
-                setup("FRA");
+                setupFRA("FRA");
                 break;
             default:
                 throw new IllegalArgumentException();
         }
     }
 
-    private void setup(String version) {
-        board.setVersion(version);
-        player.setTokens(tokensList());
+    private void setupUSA(String version) {
+        Context.board = new Board(version);
+        Context.playerGateway = new PlayerRepositoryImpl(tokensList());
+    }
+
+    private void setupFRA(String version) {
+        setupUSA(version);
     }
 
     private List<Token> tokensList() {
@@ -43,15 +54,5 @@ public class SetupGameFactoryImpl implements SetupGameFactory {
             tokens.add(new Token(token));
         }
         return tokens;
-    }
-
-    @Override
-    public String[] getAvailableVersions() {
-        return new String[]{"USA", "FRA"};
-    }
-
-    @Override
-    public boolean isAvailable(String version) {
-        return Arrays.asList(getAvailableVersions()).contains(version);
     }
 }

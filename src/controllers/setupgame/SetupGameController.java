@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SetupGameController implements Controller {
+
     private final View view;
     private final SetupGameInteractor interactor;
     private final Presenter presenter;
@@ -30,20 +31,13 @@ public class SetupGameController implements Controller {
         parse(line);
     }
 
-    protected void handle(String text) throws IOException {
-        SetupGameRequest request = new SetupGameRequest();
-        request.version = text;
-        interactor.handle(request);
+    private void prompt() throws IOException {
+        interactor.setupGamePrompt();
         updateView();
     }
 
     private void updateView() throws IOException {
         view.write(presenter.getFormattedMessage());
-    }
-
-    private void prompt() throws IOException {
-        interactor.setupGamePrompt();
-        updateView();
     }
 
     void parse(String line) throws IOException {
@@ -76,4 +70,10 @@ public class SetupGameController implements Controller {
         }
     }
 
+    private void handle(String text) throws IOException {
+        SetupGameRequest request = new SetupGameRequest();
+        request.version = text;
+        interactor.handle(request);
+        updateView();
+    }
 }

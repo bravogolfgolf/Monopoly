@@ -1,9 +1,10 @@
 package game.entitiies;
 
 public class Player {
-    private final String token;
 
-    public Player(String token) {
+    private final Token token;
+
+    public Player(Token token) {
         this.token = token;
     }
 
@@ -11,7 +12,9 @@ public class Player {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Player player = (Player) o;
+
         return token.equals(player.token);
     }
 
