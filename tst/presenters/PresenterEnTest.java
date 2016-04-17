@@ -6,6 +6,9 @@ import game.interactors.setupgame.SetupGameResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Hashtable;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(HierarchicalContextRunner.class)
@@ -33,6 +36,18 @@ public class PresenterEnTest {
             expected = "Available versions: (1)FRA, (2)USA\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
+
+        @Test
+        public void testGetMenuMap() {
+            response.versions = new String[]{"FRA", "USA"};
+            presenter.availableVersionsMessage(response);
+            Map<Integer, String> map = new Hashtable<Integer, String>() {{
+                put(1, "FRA");
+                put(2, "USA");
+            }};
+            assertEquals(map, presenter.getMenuMap());
+        }
+
 
         @Test
         public void testSetupGamePromptMessage() {

@@ -8,9 +8,10 @@ import java.util.Set;
 class CreatePlayerRepositoryFake extends PlayerRepositoryImpl {
 
     private int createCalledCounter = 0;
-    boolean verifyPlayerLimitExceededCalled = false;
-    boolean verifyCreateCalled = false;
     boolean verifyCreateCalledEightTimes = false;
+    boolean verifyCreateCalled = false;
+    boolean verifyPlayerLimitExceededCalled = false;
+    boolean verifyGetAvailableTokens = false;
 
     CreatePlayerRepositoryFake(Set<Token> tokens) {
         super(tokens);
@@ -28,5 +29,11 @@ class CreatePlayerRepositoryFake extends PlayerRepositoryImpl {
     public boolean playerLimitExceeded() {
         verifyPlayerLimitExceededCalled = true;
         return super.playerLimitExceeded();
+    }
+
+    @Override
+    public String[] getAvailableTokens() {
+        verifyGetAvailableTokens = true;
+        return super.getAvailableTokens();
     }
 }
