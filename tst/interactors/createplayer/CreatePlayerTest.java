@@ -48,4 +48,22 @@ public class CreatePlayerTest {
         assertTrue(player.verifyCreateCalled);
         assertTrue(presenter.verifyPlayerCreatedMessage);
     }
+
+    @Test
+    public void testUserInterfaceOptions() {
+        interactor.userInterfaceOptions();
+
+        assertTrue(player.verifyGetAvailableTokens);
+        assertTrue(presenter.verifyAvailableTokensMessage);
+    }
+
+    @Test
+    public void verifyUserInterfacePrompt() {
+        interactor.userInterfacePrompt();
+
+        assertTrue(presenter.verifyCreatePlayerPromptMessage);
+        assertTrue(player.verifyGetAvailableTokens);
+        assertTrue(presenter.verifyAvailableTokensMessage);
+
+    }
 }
