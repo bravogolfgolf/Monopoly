@@ -21,11 +21,6 @@ public class PresenterMock implements Presenter, SetupGamePresenter, CreatePlaye
     }
 
     @Override
-    public void tokenInUseMessage(CreatePlayerResponse response) {
-
-    }
-
-    @Override
     public void exceededPlayerLimitMessage() {
 
     }

@@ -47,13 +47,6 @@ public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter,
     }
 
     @Override
-    public void tokenInUseMessage(CreatePlayerResponse response) {
-        template = "%s token already in use.";
-        variables = response.tokens;
-        addMessageToBuffer(template, variables);
-    }
-
-    @Override
     public void availableTokensMessage(CreatePlayerResponse response) {
         template = "Available tokens: %s";
         variables = response.tokens;

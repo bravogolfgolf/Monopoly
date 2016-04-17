@@ -45,21 +45,7 @@ public class CreatePlayerTest {
         interactor.handle(request);
 
         assertTrue(player.verifyPlayerLimitExceededCalled);
-        assertTrue(player.verifyIsAvailableCalled);
         assertTrue(player.verifyCreateCalled);
         assertTrue(presenter.verifyPlayerCreatedMessage);
-    }
-
-    @Test
-    public void testTokenInUse() {
-        request.token = "InValid";
-        interactor.handle(request);
-
-        assertTrue(player.verifyPlayerLimitExceededCalled);
-        assertTrue(player.verifyIsAvailableCalled);
-        assertTrue(presenter.verifyTokenInUseMessage);
-        assertTrue(presenter.verifyCreatePlayerPromptMessage);
-        assertTrue(player.verifyGetAvailableTokensCalled);
-        assertTrue(presenter.verifyAvailableTokensMessage);
     }
 }

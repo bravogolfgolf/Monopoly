@@ -7,6 +7,4 @@ public interface CreatePlayerGateway {
     boolean playerLimitExceeded();
 
     String[] getAvailableTokens();
-
-    boolean isAvailable(String token);
 }

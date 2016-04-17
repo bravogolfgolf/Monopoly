@@ -24,7 +24,6 @@ public class PlayerRepositoryImplTest {
     public void testCreatePlayer() {
         playerRepository.create("Cat");
         assertTrue(playerRepository.count() == 1);
-        assertTrue(!playerRepository.isAvailable("Cat"));
     }
 
     @Test

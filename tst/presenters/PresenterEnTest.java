@@ -83,13 +83,5 @@ public class PresenterEnTest {
             expected = "Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
-
-        @Test
-        public void testTokenInUseMessage() {
-            response.tokens = new String[]{"Cat"};
-            presenter.tokenInUseMessage(response);
-            expected = "Cat token already in use.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
-        }
     }
 }

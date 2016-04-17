@@ -4,7 +4,6 @@ import game.entitiies.Player;
 import game.entitiies.Token;
 import game.interactors.createplayer.CreatePlayerGateway;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,11 +32,6 @@ public class PlayerRepositoryImpl implements CreatePlayerGateway {
 
     int count() {
         return players.size();
-    }
-
-    @Override
-    public boolean isAvailable(String token) {
-        return Arrays.asList(getAvailableTokens()).contains(token);
     }
 
     @Override
