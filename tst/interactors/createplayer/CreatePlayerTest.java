@@ -5,16 +5,16 @@ import game.entitiies.Token;
 import game.interactors.PresenterEnMock;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
 
 
 public class CreatePlayerTest {
 
-    private final List<Token> tokens = new ArrayList<>(Arrays.asList(new Token("Wheelbarrow"), new Token("Battleship"), new Token("Scottish Terrier"), new Token("Top Hat"), new Token("Cat"), new Token("Thimble"), new Token("Boot"), new Token("Automobile")));
+    private final Set<Token> tokens = new LinkedHashSet<>(Arrays.asList(new Token("Wheelbarrow"), new Token("Battleship"), new Token("Scottish Terrier"), new Token("Top Hat"), new Token("Cat"), new Token("Thimble"), new Token("Boot"), new Token("Automobile")));
     private final CreatePlayerRepositoryFake player = new CreatePlayerRepositoryFake(tokens);
     private final PresenterEnMock presenter = new PresenterEnMock();
     private final CreatePlayerInteractor interactor = new CreatePlayer(presenter, player);

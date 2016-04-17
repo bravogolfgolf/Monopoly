@@ -4,9 +4,9 @@ import game.entitiies.Token;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
 
@@ -16,7 +16,7 @@ public class PlayerRepositoryImplTest {
 
     @Before
     public void setUp() {
-        List<Token> tokens = new ArrayList<>(Collections.singletonList(new Token("Cat")));
+        Set<Token> tokens = new LinkedHashSet<>(Collections.singletonList(new Token("Cat")));
         playerRepository = new PlayerRepositoryImpl(tokens);
     }
 

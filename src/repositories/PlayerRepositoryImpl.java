@@ -6,36 +6,24 @@ import game.interactors.createplayer.CreatePlayerGateway;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class PlayerRepositoryImpl implements CreatePlayerGateway {
 
     private static final int PLAYER_LIMIT = 8;
     private final Set<Player> players = new HashSet<>();
-    private final List<Token> tokens;
+    private final Set<Token> tokens;
 
-    public PlayerRepositoryImpl(List<Token> tokens) {
+    public PlayerRepositoryImpl(Set<Token> tokens) {
         this.tokens = tokens;
     }
 
     @Override
     public boolean create(String request) {
-        int index = getIndexFromAvailableTokens(request);
-        Token token = removeTokenAtIndexFromAvailableTokens(index);
+        Token token = new Token(request);
+        tokens.remove(token);
         Player player = new Player(token);
         return players.add(player);
-    }
-
-    private int getIndexFromAvailableTokens(String request) {
-        int index = -1;
-        for (Token token : tokens)
-            if (token.getDescription().equals(request)) index = tokens.indexOf(token);
-        return index;
-    }
-
-    private Token removeTokenAtIndexFromAvailableTokens(int index) {
-        return tokens.remove(index);
     }
 
     @Override
@@ -55,10 +43,10 @@ public class PlayerRepositoryImpl implements CreatePlayerGateway {
     @Override
     public String[] getAvailableTokens() {
         String[] result = new String[tokens.size()];
-        for (int i = 0; i < tokens.size(); i++) {
-            result[i] = tokens.get(i).getDescription();
+        int counter = 0;
+        for (Token token : tokens) {
+            result[counter++] = token.getDescription();
         }
-        Arrays.sort(result);
         return result;
     }
 

@@ -3,7 +3,7 @@ package game.interactors.createplayer;
 import game.entitiies.Token;
 import game.repositories.PlayerRepositoryImpl;
 
-import java.util.List;
+import java.util.Set;
 
 class CreatePlayerRepositoryFake extends PlayerRepositoryImpl {
 
@@ -14,7 +14,7 @@ class CreatePlayerRepositoryFake extends PlayerRepositoryImpl {
     boolean verifyGetAvailableTokensCalled = false;
     boolean verifyIsAvailableCalled = false;
 
-    CreatePlayerRepositoryFake(List<Token> tokens) {
+    CreatePlayerRepositoryFake(Set<Token> tokens) {
         super(tokens);
     }
 
