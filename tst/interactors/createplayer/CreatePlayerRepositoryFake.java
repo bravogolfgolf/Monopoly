@@ -3,7 +3,7 @@ package game.interactors.createplayer;
 import game.entitiies.Token;
 import game.repositories.PlayerRepositoryImpl;
 
-import java.util.List;
+import java.util.Set;
 
 class CreatePlayerRepositoryFake extends PlayerRepositoryImpl {
 
@@ -11,10 +11,8 @@ class CreatePlayerRepositoryFake extends PlayerRepositoryImpl {
     boolean verifyPlayerLimitExceededCalled = false;
     boolean verifyCreateCalled = false;
     boolean verifyCreateCalledEightTimes = false;
-    boolean verifyGetAvailableTokensCalled = false;
-    boolean verifyIsAvailableCalled = false;
 
-    CreatePlayerRepositoryFake(List<Token> tokens) {
+    CreatePlayerRepositoryFake(Set<Token> tokens) {
         super(tokens);
     }
 
@@ -30,17 +28,5 @@ class CreatePlayerRepositoryFake extends PlayerRepositoryImpl {
     public boolean playerLimitExceeded() {
         verifyPlayerLimitExceededCalled = true;
         return super.playerLimitExceeded();
-    }
-
-    @Override
-    public String[] getAvailableTokens() {
-        verifyGetAvailableTokensCalled = true;
-        return super.getAvailableTokens();
-    }
-
-    @Override
-    public boolean isAvailable(String token) {
-        verifyIsAvailableCalled = true;
-        return super.isAvailable(token);
     }
 }

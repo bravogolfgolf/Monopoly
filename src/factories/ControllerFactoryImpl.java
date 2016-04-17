@@ -1,16 +1,12 @@
 package game.factories;
 
-import game.Controller;
 import game.ControllerFactory;
-import game.controllers.createPlayer.CreatePlayerController;
-import game.controllers.createPlayer.CreatePlayerInteractor;
-import game.controllers.setupgame.SetupGameController;
-import game.controllers.setupgame.SetupGameInteractor;
+import game.controllers.ControllerImpl;
+import game.controllers.Interactor;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.setupgame.SetupGame;
 import game.interactors.setupgame.SetupGameFactory;
 import game.presenters.PresenterEn;
-import game.presenters.PresenterImpl;
 import game.view.Console;
 
 import java.io.BufferedReader;
@@ -25,18 +21,18 @@ public class ControllerFactoryImpl implements ControllerFactory {
     private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
     private final Console console = new Console(reader, writer);
-    private final PresenterImpl presenter = new PresenterEn();
+    private final PresenterEn presenter = new PresenterEn();
 
     @Override
-    public Controller make(String controller) {
-        if (controller.equals("SetupGameController")) {
+    public game.Controller make(String controller) {
+        if (controller.equals("SetupGame")) {
             SetupGameFactory factory = new SetupGameFactoryImpl();
-            SetupGameInteractor interactor = new SetupGame(presenter, factory);
-            return new SetupGameController(console, interactor, presenter);
+            Interactor interactor = new SetupGame(presenter, factory);
+            return new ControllerImpl(console, interactor, presenter);
         }
-        if (controller.equals("CreatePlayerController")) {
-            CreatePlayerInteractor interactor = new CreatePlayer(presenter, playerGateway);
-            return new CreatePlayerController(console, interactor, presenter);
+        if (controller.equals("CreatePlayer")) {
+            Interactor interactor = new CreatePlayer(presenter, playerGateway);
+            return new ControllerImpl(console, interactor, presenter);
         }
         throw new IllegalArgumentException();
     }

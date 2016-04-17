@@ -5,23 +5,30 @@ import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.setupgame.SetupGamePresenter;
 import game.interactors.setupgame.SetupGameResponse;
 
-public class PresenterMock implements Presenter, SetupGamePresenter, CreatePlayerPresenter {
+import java.util.Hashtable;
+import java.util.Map;
 
-    public boolean verifyGetFormattedMessage = false;
+class PresenterMock implements Presenter, SetupGamePresenter, CreatePlayerPresenter {
+
+    boolean verifyGetMenuMapCalled = false;
+    boolean verifyGetFormattedMessageCalled = false;
 
     @Override
     public String getFormattedMessage() {
-        verifyGetFormattedMessage = true;
-        return "";
+        verifyGetFormattedMessageCalled = true;
+        return null;
+    }
+
+    @Override
+    public Map<Integer, String> getMenuMap() {
+        verifyGetMenuMapCalled = true;
+        return new Hashtable<Integer, String>() {{
+            put(1, "Cat");
+        }};
     }
 
     @Override
     public void playerCreatedMessage(CreatePlayerResponse response) {
-
-    }
-
-    @Override
-    public void tokenInUseMessage(CreatePlayerResponse response) {
 
     }
 

@@ -1,46 +1,55 @@
 package game.presenters;
 
 import game.controllers.Presenter;
-import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.setupgame.SetupGamePresenter;
-import game.interactors.setupgame.SetupGameResponse;
 
-public class PresenterImpl implements Presenter, CreatePlayerPresenter, SetupGamePresenter {
+import java.util.Hashtable;
+import java.util.Map;
+
+class PresenterImpl implements Presenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
+    final Map<Integer, String> menuMap = new Hashtable<>();
     String template;
     String[] variables;
 
+    @Override
     public String getFormattedMessage() {
         String result = messageBuffer.toString();
         messageBuffer = new StringBuffer();
         return result;
     }
 
-    void addMenuToBuffer(String template, String[] variables) {
-        String[] menuItems = createMenuArray(variables);
-        addMessageToBuffer(template, menuItems);
+    @Override
+    public Map<Integer, String> getMenuMap() {
+        return menuMap;
+    }
+
+    void createMenuMap(String[] strings) {
+        int counter = 1;
+        for (String string : strings) {
+            menuMap.put(counter++, string);
+        }
+    }
+
+    void addMenuToBuffer(String template, Map map) {
+        variables = createMenuArray(map);
+        addMessageToBuffer(template, variables);
+    }
+
+    private String[] createMenuArray(Map map) {
+        String[] menuItems = new String[map.size()];
+        int counter = map.size();
+        for (Map.Entry item : menuMap.entrySet()) {
+            menuItems[--counter] = String.format("(%d)%s", item.getKey(), item.getValue());
+        }
+        return menuItems;
     }
 
     void addMessageToBuffer(String template, String[] variables) {
         String variable = arrayToCommaDelimitedString(variables);
         String formattedMessage = formatMessage(template, variable);
         addMessageToBuffer(formattedMessage);
-    }
-
-    void addMessageToBuffer(String message) {
-        String newLine = addNewLine(message);
-        messageBuffer.append(newLine);
-    }
-
-    private String[] createMenuArray(String[] variables) {
-        String[] menuItems = new String[variables.length];
-        for (int i = 1; i <= variables.length; i++) {
-            menuItems[i - 1] = String.format("(%d)%s", i, variables[i - 1]);
-        }
-        return menuItems;
     }
 
     private String arrayToCommaDelimitedString(CharSequence[] array) {
@@ -51,47 +60,12 @@ public class PresenterImpl implements Presenter, CreatePlayerPresenter, SetupGam
         return String.format(template, variable);
     }
 
+    void addMessageToBuffer(String message) {
+        String newLine = addNewLine(message);
+        messageBuffer.append(newLine);
+    }
+
     private String addNewLine(String string) {
         return String.format(string + "%s", NEW_LINE);
-    }
-
-    @Override
-    public void playerCreatedMessage(CreatePlayerResponse response) {
-
-    }
-
-    @Override
-    public void tokenInUseMessage(CreatePlayerResponse response) {
-
-    }
-
-    @Override
-    public void exceededPlayerLimitMessage() {
-
-    }
-
-    @Override
-    public void createPlayerPromptMessage() {
-
-    }
-
-    @Override
-    public void availableTokensMessage(CreatePlayerResponse response) {
-
-    }
-
-    @Override
-    public void setupGamePromptMessage() {
-
-    }
-
-    @Override
-    public void versionCreatedMessage(SetupGameResponse response) {
-
-    }
-
-    @Override
-    public void availableVersionsMessage(SetupGameResponse response) {
-
     }
 }

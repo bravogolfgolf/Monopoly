@@ -1,9 +1,11 @@
 package game.presenters;
 
+import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.setupgame.SetupGamePresenter;
 import game.interactors.setupgame.SetupGameResponse;
 
-public class PresenterEn extends PresenterImpl {
+public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter, SetupGamePresenter {
 
     @Override
     public void versionCreatedMessage(SetupGameResponse response) {
@@ -16,7 +18,8 @@ public class PresenterEn extends PresenterImpl {
     public void availableVersionsMessage(SetupGameResponse response) {
         template = "Available versions: %s";
         variables = response.versions;
-        addMenuToBuffer(template, variables);
+        createMenuMap(response.versions);
+        addMenuToBuffer(template, menuMap);
     }
 
     @Override
@@ -45,16 +48,9 @@ public class PresenterEn extends PresenterImpl {
     }
 
     @Override
-    public void tokenInUseMessage(CreatePlayerResponse response) {
-        template = "%s token already in use.";
-        variables = response.tokens;
-        addMessageToBuffer(template, variables);
-    }
-
-    @Override
     public void availableTokensMessage(CreatePlayerResponse response) {
         template = "Available tokens: %s";
-        variables = response.tokens;
-        addMenuToBuffer(template, variables);
+        createMenuMap(response.tokens);
+        addMenuToBuffer(template, menuMap);
     }
 }
