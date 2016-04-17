@@ -10,7 +10,6 @@ import game.interactors.createplayer.CreatePlayer;
 import game.interactors.setupgame.SetupGame;
 import game.interactors.setupgame.SetupGameFactory;
 import game.presenters.PresenterEn;
-import game.presenters.PresenterImpl;
 import game.view.Console;
 
 import java.io.BufferedReader;
@@ -25,7 +24,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
     private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
     private final Console console = new Console(reader, writer);
-    private final PresenterImpl presenter = new PresenterEn();
+    private final PresenterEn presenter = new PresenterEn();
 
     @Override
     public Controller make(String controller) {

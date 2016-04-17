@@ -1,12 +1,8 @@
 package game.presenters;
 
 import game.controllers.Presenter;
-import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.setupgame.SetupGamePresenter;
-import game.interactors.setupgame.SetupGameResponse;
 
-public class PresenterImpl implements Presenter, CreatePlayerPresenter, SetupGamePresenter {
+class PresenterImpl implements Presenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
@@ -53,45 +49,5 @@ public class PresenterImpl implements Presenter, CreatePlayerPresenter, SetupGam
 
     private String addNewLine(String string) {
         return String.format(string + "%s", NEW_LINE);
-    }
-
-    @Override
-    public void playerCreatedMessage(CreatePlayerResponse response) {
-
-    }
-
-    @Override
-    public void tokenInUseMessage(CreatePlayerResponse response) {
-
-    }
-
-    @Override
-    public void exceededPlayerLimitMessage() {
-
-    }
-
-    @Override
-    public void createPlayerPromptMessage() {
-
-    }
-
-    @Override
-    public void availableTokensMessage(CreatePlayerResponse response) {
-
-    }
-
-    @Override
-    public void setupGamePromptMessage() {
-
-    }
-
-    @Override
-    public void versionCreatedMessage(SetupGameResponse response) {
-
-    }
-
-    @Override
-    public void availableVersionsMessage(SetupGameResponse response) {
-
     }
 }

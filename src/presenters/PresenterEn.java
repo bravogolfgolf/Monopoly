@@ -1,9 +1,11 @@
 package game.presenters;
 
+import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.setupgame.SetupGamePresenter;
 import game.interactors.setupgame.SetupGameResponse;
 
-public class PresenterEn extends PresenterImpl {
+public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter, SetupGamePresenter {
 
     @Override
     public void versionCreatedMessage(SetupGameResponse response) {
