@@ -18,7 +18,8 @@ public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter,
     public void availableVersionsMessage(SetupGameResponse response) {
         template = "Available versions: %s";
         variables = response.versions;
-        addMenuToBuffer(template, variables);
+        createMenuMap(response.versions);
+        addMenuToBuffer(template, menuMap);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter,
     @Override
     public void availableTokensMessage(CreatePlayerResponse response) {
         template = "Available tokens: %s";
-        variables = response.tokens;
-        addMenuToBuffer(template, variables);
+        createMenuMap(response.tokens);
+        addMenuToBuffer(template, menuMap);
     }
 }

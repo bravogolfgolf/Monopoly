@@ -11,6 +11,7 @@ import java.io.IOException;
 import static org.junit.Assert.assertTrue;
 
 public class CreatePlayerControllerTest {
+
     private final View view = new ConsoleDummy();
     private final PresenterMock presenter = new PresenterMock();
     private final CreatePlayerMock interactor = new CreatePlayerMock();
@@ -21,7 +22,7 @@ public class CreatePlayerControllerTest {
         controller.execute();
 
         assertTrue(interactor.verifyAvailableTokensMessage);
-        assertTrue(presenter.verifyGetFormattedMessage);
+        assertTrue(presenter.verifyGetMenuMapCalled);
         assertTrue(interactor.verifyHandleCalled);
     }
 

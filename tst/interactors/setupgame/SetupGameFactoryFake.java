@@ -4,7 +4,6 @@ class SetupGameFactoryFake implements SetupGameFactory {
 
     boolean verifyCreateMethodCalled = false;
     boolean verifyGetAvailableVersionsCalled = false;
-    boolean verifyIsAvailableCalled = false;
 
     @Override
     public void make(String version) {

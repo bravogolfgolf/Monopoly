@@ -20,7 +20,9 @@ public class SetupGameControllerTest {
     public void testSetupGameControllerValidInput() throws IOException {
         Controller controller = new SetupGameControllerValidInputStub(view, interactor, presenter);
         controller.execute();
+
         assertTrue(interactor.verifyAvailableVersionsMessageCalled);
+        assertTrue(presenter.verifyGetMenuMapCalled);
         assertTrue(interactor.verifyHandleCalled);
     }
 
@@ -28,6 +30,7 @@ public class SetupGameControllerTest {
     public void testSetupGameControllerInValidInput() throws IOException {
         Controller controller = new SetupGameControllerInValidInputStub(view, interactor, presenter);
         controller.execute();
+
         assertTrue(interactor.verifySetupGamePromptCalled);
     }
 }

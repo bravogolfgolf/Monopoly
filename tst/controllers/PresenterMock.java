@@ -5,14 +5,24 @@ import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.setupgame.SetupGamePresenter;
 import game.interactors.setupgame.SetupGameResponse;
 
+import java.util.Hashtable;
+import java.util.Map;
+
 public class PresenterMock implements Presenter, SetupGamePresenter, CreatePlayerPresenter {
 
-    public boolean verifyGetFormattedMessage = false;
+    public boolean verifyGetMenuMapCalled = false;
 
     @Override
     public String getFormattedMessage() {
-        verifyGetFormattedMessage = true;
-        return "";
+        return null;
+    }
+
+    @Override
+    public Map<Integer, String> getMenuMap() {
+        verifyGetMenuMapCalled = true;
+        return new Hashtable<Integer, String>() {{
+            put(1, "Cat");
+        }};
     }
 
     @Override

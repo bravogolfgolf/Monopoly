@@ -6,17 +6,13 @@ import game.controllers.View;
 import game.interactors.createplayer.CreatePlayerRequest;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CreatePlayerController implements Controller {
 
     private final View view;
     private final CreatePlayerInteractor interactor;
     private final Presenter presenter;
-    private final Map<Integer, String> selections = new HashMap<>();
 
     public CreatePlayerController(View view, CreatePlayerInteractor interactor, Presenter presenter) {
         this.view = view;
@@ -45,9 +41,7 @@ public class CreatePlayerController implements Controller {
 
         try {
             selection = Integer.parseInt(line);
-            String message = getMenuMessage();
-            parseMenuMessageIntoMap(message);
-            String result = selections.get(selection);
+            String result = getMenuMessage().get(selection);
             handle(result);
 
         } catch (NumberFormatException e) {
@@ -55,19 +49,9 @@ public class CreatePlayerController implements Controller {
         }
     }
 
-    private String getMenuMessage() {
+    private Map<Integer, String> getMenuMessage() {
         interactor.availableTokensMessage();
-        return presenter.getFormattedMessage().trim();
-    }
-
-    private void parseMenuMessageIntoMap(String message) {
-        Pattern pattern = Pattern.compile("\\([\\d]*\\)\\w*[\\s\\w*]*");
-        Matcher matcher = pattern.matcher(message);
-        while (matcher.find()) {
-            String text = matcher.group();
-            String[] keyAndValue = text.replaceFirst("^\\(", "").split("\\)");
-            selections.put(Integer.parseInt(keyAndValue[0]), keyAndValue[1]);
-        }
+        return presenter.getMenuMap();
     }
 
     private void handle(String text) throws IOException {
