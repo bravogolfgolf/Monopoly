@@ -20,15 +20,15 @@ public class CreatePlayer implements Interactor {
         this.request = request;
 
         if (player.playerLimitExceeded())
-            exceededPlayerLimitMessage();
-        else playerCreatedMessage();
+            exceededPlayerLimit();
+        else createPlayer();
     }
 
-    private void exceededPlayerLimitMessage() {
+    private void exceededPlayerLimit() {
         presenter.exceededPlayerLimitMessage();
     }
 
-    private void playerCreatedMessage() {
+    private void createPlayer() {
         player.create(request.string);
         response.tokens = new String[]{request.string};
         presenter.playerCreatedMessage(response);

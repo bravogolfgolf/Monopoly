@@ -18,10 +18,10 @@ public class SetupGame implements Interactor {
     @Override
     public void handle(InteractorRequest request) {
         this.request = request;
-        versionCreatedMessage();
+        createVersion();
     }
 
-    private void versionCreatedMessage() {
+    private void createVersion() {
         factory.make(request.string);
         response.versions = new String[]{request.string};
         presenter.versionCreatedMessage(response);
