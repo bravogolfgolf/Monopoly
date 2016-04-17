@@ -12,6 +12,6 @@ class CreatePlayerControllerInvalidInputStub extends CreatePlayerController {
 
     @Override
     public void execute() throws IOException {
-        super.parse("a");
+        super.parse("999");
     }
 }

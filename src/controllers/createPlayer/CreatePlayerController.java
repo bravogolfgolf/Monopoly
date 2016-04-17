@@ -42,6 +42,8 @@ public class CreatePlayerController implements Controller {
         try {
             selection = Integer.parseInt(line);
             String result = getMenuMessage().get(selection);
+            if (result == null)
+                prompt();
             handle(result);
 
         } catch (NumberFormatException e) {

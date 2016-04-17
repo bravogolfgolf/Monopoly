@@ -12,6 +12,6 @@ class SetupGameControllerInValidInputStub extends SetupGameController {
 
     @Override
     public void execute() throws IOException {
-        super.parse("a");
+        super.parse("999");
     }
 }
