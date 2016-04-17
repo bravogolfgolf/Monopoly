@@ -19,8 +19,8 @@ public class CreatePlayer implements CreatePlayerInteractor {
         this.request = request;
 
         if (player.playerLimitExceeded())
-                playerCreatedMessage();
-        else exceededPlayerLimitMessage();
+            exceededPlayerLimitMessage();
+        else playerCreatedMessage();
     }
 
     private void exceededPlayerLimitMessage() {

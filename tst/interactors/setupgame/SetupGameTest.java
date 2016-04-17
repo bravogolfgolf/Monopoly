@@ -18,19 +18,8 @@ public class SetupGameTest {
         request.version = "Valid";
         interactor.handle(request);
 
-        assertTrue(factory.verifyIsAvailableCalled);
         assertTrue(factory.verifyCreateMethodCalled);
         assertTrue(presenter.verifyVersionCreatedMessage);
-    }
-
-    @Test
-    public void testInvalidRequest() {
-        request.version = "Invalid";
-        interactor.handle(request);
-
-        assertTrue(factory.verifyIsAvailableCalled);
-        assertTrue(presenter.verifySetupGamePromptMessage);
-        assertTrue(presenter.verifyAvailableVersionsMessage);
     }
 
     @Test

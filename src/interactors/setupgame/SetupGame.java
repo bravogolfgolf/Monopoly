@@ -17,12 +17,7 @@ public class SetupGame implements SetupGameInteractor {
     @Override
     public void handle(SetupGameRequest request) {
         this.request = request;
-        if (requestedVersionIsAvailable()) versionCreatedMessage();
-        else setupGamePrompt();
-    }
-
-    private boolean requestedVersionIsAvailable() {
-        return factory.isAvailable(request.version);
+        versionCreatedMessage();
     }
 
     private void versionCreatedMessage() {

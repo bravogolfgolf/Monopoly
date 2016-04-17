@@ -16,10 +16,4 @@ class SetupGameFactoryFake implements SetupGameFactory {
         verifyGetAvailableVersionsCalled = true;
         return new String[0];
     }
-
-    @Override
-    public boolean isAvailable(String version) {
-        verifyIsAvailableCalled = true;
-        return (version.equals("Valid"));
-    }
 }

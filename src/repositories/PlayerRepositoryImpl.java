@@ -27,7 +27,7 @@ public class PlayerRepositoryImpl implements CreatePlayerGateway {
 
     @Override
     public boolean playerLimitExceeded() {
-        return count() < PLAYER_LIMIT;
+        return (count() >= PLAYER_LIMIT);
     }
 
     int count() {

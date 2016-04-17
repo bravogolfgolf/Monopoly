@@ -20,11 +20,6 @@ class SetupGameFactoryImpl implements SetupGameFactory {
     }
 
     @Override
-    public boolean isAvailable(String version) {
-        return Arrays.asList(getAvailableVersions()).contains(version);
-    }
-
-    @Override
     public void make(String version) {
         switch (version) {
             case "USA":

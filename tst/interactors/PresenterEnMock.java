@@ -8,7 +8,6 @@ import game.interactors.setupgame.SetupGameResponse;
 public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresenter {
 
     public boolean verifyVersionCreatedMessage = false;
-    public boolean verifySetupGamePromptMessage = false;
     public boolean verifyExceededPlayerLimitMessage = false;
     public boolean verifyAvailableVersionsMessage = false;
     public boolean verifyPlayerCreatedMessage = false;
@@ -20,7 +19,6 @@ public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresente
 
     @Override
     public void setupGamePromptMessage() {
-        verifySetupGamePromptMessage = true;
     }
 
     @Override
