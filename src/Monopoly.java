@@ -16,10 +16,10 @@ final class Monopoly {
 
         ControllerFactory factory = new ControllerFactoryImpl();
 
-        Controller controller = factory.make("SetupGameController");
+        Controller controller = factory.make("SetupGame");
         controller.execute();
 
-        controller = factory.make("CreatePlayerController");
+        controller = factory.make("CreatePlayer");
         controller.execute();
     }
 }

@@ -8,12 +8,14 @@ import game.interactors.setupgame.SetupGameResponse;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class PresenterMock implements Presenter, SetupGamePresenter, CreatePlayerPresenter {
+class PresenterMock implements Presenter, SetupGamePresenter, CreatePlayerPresenter {
 
-    public boolean verifyGetMenuMapCalled = false;
+    boolean verifyGetMenuMapCalled = false;
+    boolean verifyGetFormattedMessageCalled = false;
 
     @Override
     public String getFormattedMessage() {
+        verifyGetFormattedMessageCalled = true;
         return null;
     }
 

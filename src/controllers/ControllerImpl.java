@@ -1,20 +1,18 @@
-package game.controllers.setupgame;
+package game.controllers;
 
 import game.Controller;
-import game.controllers.Presenter;
-import game.controllers.View;
-import game.interactors.setupgame.SetupGameRequest;
+import game.interactors.InteractorRequest;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class SetupGameController implements Controller {
+public class ControllerImpl implements Controller {
 
     private final View view;
-    private final SetupGameInteractor interactor;
+    private final Interactor interactor;
     private final Presenter presenter;
 
-    public SetupGameController(View view, SetupGameInteractor interactor, Presenter presenter) {
+    public ControllerImpl(View view, Interactor interactor, Presenter presenter) {
         this.view = view;
         this.interactor = interactor;
         this.presenter = presenter;
@@ -28,7 +26,7 @@ public class SetupGameController implements Controller {
     }
 
     private void prompt() throws IOException {
-        interactor.setupGamePrompt();
+        interactor.userInterfacePrompt();
         updateView();
     }
 
@@ -52,13 +50,13 @@ public class SetupGameController implements Controller {
     }
 
     private Map<Integer, String> getMenuMessage() {
-        interactor.availableVersionsMessage();
+        interactor.userInterfaceOptions();
         return presenter.getMenuMap();
     }
 
     private void handle(String text) throws IOException {
-        SetupGameRequest request = new SetupGameRequest();
-        request.version = text;
+        InteractorRequest request = new InteractorRequest();
+        request.string = text;
         interactor.handle(request);
         updateView();
     }

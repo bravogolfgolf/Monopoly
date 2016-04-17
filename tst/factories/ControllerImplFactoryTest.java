@@ -3,8 +3,7 @@ package game.factories;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ControllerFactoryTest {
-
+public class ControllerImplFactoryTest {
 
     private ControllerFactoryImpl controllerFactory;
 
@@ -21,8 +20,8 @@ public class ControllerFactoryTest {
 
     @Test
     public void testMakeController() {
-        controllerFactory.make("SetupGameController");
-        controllerFactory.make("CreatePlayerController");
+        controllerFactory.make("SetupGame");
+        controllerFactory.make("CreatePlayer");
     }
 }
 

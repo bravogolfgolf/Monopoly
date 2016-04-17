@@ -1,6 +1,7 @@
 package game.interactors.setupgame;
 
-import game.controllers.setupgame.SetupGameInteractor;
+import game.controllers.Interactor;
+import game.interactors.InteractorRequest;
 import game.interactors.PresenterEnMock;
 import org.junit.Test;
 
@@ -10,12 +11,12 @@ public class SetupGameTest {
 
     private final PresenterEnMock presenter = new PresenterEnMock();
     private final SetupGameFactoryFake factory = new SetupGameFactoryFake();
-    private final SetupGameInteractor interactor = new SetupGame(presenter, factory);
-    private final SetupGameRequest request = new SetupGameRequest();
+    private final Interactor interactor = new SetupGame(presenter, factory);
+    private final InteractorRequest request = new InteractorRequest();
 
     @Test
     public void testValidRequest() {
-        request.version = "Valid";
+        request.string = "Valid";
         interactor.handle(request);
 
         assertTrue(factory.verifyCreateMethodCalled);
@@ -24,7 +25,7 @@ public class SetupGameTest {
 
     @Test
     public void testAvailableVersionsMessage() {
-        interactor.availableVersionsMessage();
+        interactor.userInterfaceOptions();
 
         assertTrue(presenter.verifyAvailableVersionsMessage);
         assertTrue(factory.verifyGetAvailableVersionsCalled);

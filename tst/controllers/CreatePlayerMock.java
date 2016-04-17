@@ -1,25 +1,25 @@
-package game.controllers.createPlayer;
+package game.controllers;
 
-import game.interactors.createplayer.CreatePlayerRequest;
+import game.interactors.InteractorRequest;
 
-class CreatePlayerMock implements CreatePlayerInteractor {
+class CreatePlayerMock implements Interactor {
 
     boolean verifyHandleCalled = false;
     boolean verifyAvailableTokensMessage = false;
     boolean verifyCreatePlayerPrompt;
 
     @Override
-    public void createPlayerPrompt() {
+    public void userInterfacePrompt() {
         verifyCreatePlayerPrompt = true;
     }
 
     @Override
-    public void availableTokensMessage() {
+    public void userInterfaceOptions() {
         verifyAvailableTokensMessage = true;
     }
 
     @Override
-    public void handle(CreatePlayerRequest request) {
+    public void handle(InteractorRequest request) {
         verifyHandleCalled = true;
     }
 }

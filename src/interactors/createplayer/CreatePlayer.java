@@ -1,13 +1,14 @@
 package game.interactors.createplayer;
 
-import game.controllers.createPlayer.CreatePlayerInteractor;
+import game.controllers.Interactor;
+import game.interactors.InteractorRequest;
 
-public class CreatePlayer implements CreatePlayerInteractor {
+public class CreatePlayer implements Interactor {
 
     private final CreatePlayerPresenter presenter;
     private final CreatePlayerGateway player;
     private final CreatePlayerResponse response = new CreatePlayerResponse();
-    private CreatePlayerRequest request;
+    private InteractorRequest request;
 
     public CreatePlayer(CreatePlayerPresenter presenter, CreatePlayerGateway player) {
         this.presenter = presenter;
@@ -15,7 +16,7 @@ public class CreatePlayer implements CreatePlayerInteractor {
     }
 
     @Override
-    public void handle(CreatePlayerRequest request) {
+    public void handle(InteractorRequest request) {
         this.request = request;
 
         if (player.playerLimitExceeded())
@@ -28,19 +29,19 @@ public class CreatePlayer implements CreatePlayerInteractor {
     }
 
     private void playerCreatedMessage() {
-        player.create(request.token);
-        response.tokens = new String[]{request.token};
+        player.create(request.string);
+        response.tokens = new String[]{request.string};
         presenter.playerCreatedMessage(response);
     }
 
     @Override
-    public void createPlayerPrompt() {
+    public void userInterfacePrompt() {
         presenter.createPlayerPromptMessage();
-        availableTokensMessage();
+        userInterfaceOptions();
     }
 
     @Override
-    public void availableTokensMessage() {
+    public void userInterfaceOptions() {
         response.tokens = player.getAvailableTokens();
         presenter.availableTokensMessage(response);
     }

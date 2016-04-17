@@ -1,13 +1,14 @@
 package game.interactors.setupgame;
 
-import game.controllers.setupgame.SetupGameInteractor;
+import game.controllers.Interactor;
+import game.interactors.InteractorRequest;
 
-public class SetupGame implements SetupGameInteractor {
+public class SetupGame implements Interactor {
 
     private final SetupGamePresenter presenter;
     private final SetupGameFactory factory;
     private final SetupGameResponse response = new SetupGameResponse();
-    private SetupGameRequest request;
+    private InteractorRequest request;
 
     public SetupGame(SetupGamePresenter presenter, SetupGameFactory factory) {
         this.presenter = presenter;
@@ -15,25 +16,25 @@ public class SetupGame implements SetupGameInteractor {
     }
 
     @Override
-    public void handle(SetupGameRequest request) {
+    public void handle(InteractorRequest request) {
         this.request = request;
         versionCreatedMessage();
     }
 
     private void versionCreatedMessage() {
-        factory.make(request.version);
-        response.versions = new String[]{request.version};
+        factory.make(request.string);
+        response.versions = new String[]{request.string};
         presenter.versionCreatedMessage(response);
     }
 
     @Override
-    public void setupGamePrompt() {
+    public void userInterfacePrompt() {
         presenter.setupGamePromptMessage();
-        availableVersionsMessage();
+        userInterfaceOptions();
     }
 
     @Override
-    public void availableVersionsMessage() {
+    public void userInterfaceOptions() {
         response.versions = factory.getAvailableVersions();
         presenter.availableVersionsMessage(response);
     }
