@@ -13,6 +13,7 @@ import static org.junit.Assert.assertTrue;
 public class ControllerImplTest {
 
     private final View view = new ConsoleDummy();
+    private final ManagerMock manager = new ManagerMock();
     private final PresenterMock presenter = new PresenterMock();
 
     public class SetupGame {
@@ -21,31 +22,30 @@ public class ControllerImplTest {
 
         @Test
         public void testSetupGameControllerValidNumberInput() throws IOException {
-            Controller controller = new ControllerImplValidNumberInputStub(view, interactor, presenter);
+            Controller controller = new ControllerImplValidNumberInputStub(view, manager, interactor, presenter);
             controller.execute();
 
             assertTrue(interactor.verifyUserInterfaceOptionsCalled);
             assertTrue(presenter.verifyGetMenuMapCalled);
             assertTrue(interactor.verifyHandleCalled);
+            assertTrue(manager.verifyValidNumberEnteredCalled);
             assertTrue(presenter.verifyGetFormattedMessageCalled);
         }
 
         @Test
         public void testSetupGameControllerInValidNumberInput() throws IOException {
-            Controller controller = new ControllerImplInvalidNumberInputStub(view, interactor, presenter);
+            Controller controller = new ControllerImplInvalidNumberInputStub(view, manager, interactor, presenter);
             controller.execute();
 
-            assertTrue(interactor.verifyUserInterfacePromptCalled);
-            assertTrue(presenter.verifyGetFormattedMessageCalled);
+            assertTrue(manager.verifyInvalidNumberEnteredCalled);
         }
 
         @Test
         public void testSetupGameControllerInValidTextInput() throws IOException {
-            Controller controller = new ControllerImplInvalidTextInputStub(view, interactor, presenter);
+            Controller controller = new ControllerImplInvalidTextInputStub(view, manager, interactor, presenter);
             controller.execute();
 
-            assertTrue(interactor.verifyUserInterfacePromptCalled);
-            assertTrue(presenter.verifyGetFormattedMessageCalled);
+            assertTrue(manager.verifyInvalidTextEnteredCalled);
         }
     }
 
@@ -55,31 +55,30 @@ public class ControllerImplTest {
 
         @Test
         public void testCreatePlayerControllerValidNumberInput() throws IOException {
-            Controller controller = new ControllerImplValidNumberInputStub(view, interactor, presenter);
+            Controller controller = new ControllerImplValidNumberInputStub(view, manager, interactor, presenter);
             controller.execute();
 
             assertTrue(interactor.verifyAvailableTokensMessage);
             assertTrue(presenter.verifyGetMenuMapCalled);
             assertTrue(interactor.verifyHandleCalled);
+            assertTrue(manager.verifyValidNumberEnteredCalled);
             assertTrue(presenter.verifyGetFormattedMessageCalled);
         }
 
         @Test
         public void testCreatePlayerControllerInValidNumberInput() throws IOException {
-            Controller controller = new ControllerImplInvalidNumberInputStub(view, interactor, presenter);
+            Controller controller = new ControllerImplInvalidNumberInputStub(view, manager, interactor, presenter);
             controller.execute();
 
-            assertTrue(interactor.verifyCreatePlayerPrompt);
-            assertTrue(presenter.verifyGetFormattedMessageCalled);
+            assertTrue(manager.verifyInvalidNumberEnteredCalled);
         }
 
         @Test
         public void testCreatePlayerControllerInValidTextInput() throws IOException {
-            Controller controller = new ControllerImplInvalidTextInputStub(view, interactor, presenter);
+            Controller controller = new ControllerImplInvalidTextInputStub(view, manager, interactor, presenter);
             controller.execute();
 
-            assertTrue(interactor.verifyCreatePlayerPrompt);
-            assertTrue(presenter.verifyGetFormattedMessageCalled);
+            assertTrue(manager.verifyInvalidTextEnteredCalled);
         }
     }
 }

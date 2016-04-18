@@ -6,11 +6,9 @@ class CreatePlayerMock implements Interactor {
 
     boolean verifyHandleCalled = false;
     boolean verifyAvailableTokensMessage = false;
-    boolean verifyCreatePlayerPrompt;
 
     @Override
     public void userInterfacePrompt() {
-        verifyCreatePlayerPrompt = true;
     }
 
     @Override

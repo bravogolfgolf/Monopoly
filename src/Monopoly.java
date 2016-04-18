@@ -1,30 +1,37 @@
 package game;
 
-import game.entitiies.Board;
 import game.factories.ControllerFactoryImpl;
-import game.repositories.PlayerRepositoryImpl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Monopoly {
 
-    public static Board board;
-    public static PlayerRepositoryImpl playerGateway;
+    private static final List<Controller> list = new ArrayList<>();
+    private Controller controller;
 
     public static void main(String[] args) throws IOException {
-
         Monopoly monopoly = new Monopoly();
-        monopoly.start();
+        monopoly.setup();
+        monopoly.loop();
     }
 
-    private void start() throws IOException {
-
+    private void setup() {
         ControllerFactoryImpl factory = new ControllerFactoryImpl();
 
-        Controller controller = factory.make("SetupGame");
-        controller.execute();
+        controller = factory.make("SetupGame");
+        addControllerToStack(controller);
+    }
 
-        controller = factory.make("CreatePlayer");
-        controller.execute();
+    private void loop() throws IOException {
+        while (list.size() > 0) {
+            controller = list.remove(0);
+            controller.execute();
+        }
+    }
+
+    public static void addControllerToStack(Controller controller) {
+        list.add(controller);
     }
 }
