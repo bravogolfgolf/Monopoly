@@ -1,20 +1,25 @@
 package game;
 
+import game.entitiies.Board;
 import game.factories.ControllerFactoryImpl;
+import game.repositories.PlayerRepositoryImpl;
 
 import java.io.IOException;
 
-final class Monopoly {
+public final class Monopoly {
+
+    public static Board board;
+    public static PlayerRepositoryImpl playerGateway;
 
     public static void main(String[] args) throws IOException {
 
-        Monopoly game = new Monopoly();
-        game.start();
+        Monopoly monopoly = new Monopoly();
+        monopoly.start();
     }
 
     private void start() throws IOException {
 
-        ControllerFactory factory = new ControllerFactoryImpl();
+        ControllerFactoryImpl factory = new ControllerFactoryImpl();
 
         Controller controller = factory.make("SetupGame");
         controller.execute();

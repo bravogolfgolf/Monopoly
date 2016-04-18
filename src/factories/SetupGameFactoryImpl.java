@@ -1,6 +1,6 @@
 package game.factories;
 
-import game.Context;
+import game.Monopoly;
 import game.entitiies.Board;
 import game.entitiies.Token;
 import game.interactors.setupgame.SetupGameFactory;
@@ -34,8 +34,8 @@ class SetupGameFactoryImpl implements SetupGameFactory {
     }
 
     private void setupUSA(String version) {
-        Context.board = new Board(version);
-        Context.playerGateway = new PlayerRepositoryImpl(tokensList());
+        Monopoly.board = new Board(version);
+        Monopoly.playerGateway = new PlayerRepositoryImpl(tokensList());
     }
 
     private void setupFRA(String version) {

@@ -1,6 +1,5 @@
 package game.factories;
 
-import game.ControllerFactory;
 import game.controllers.ControllerImpl;
 import game.controllers.Interactor;
 import game.interactors.createplayer.CreatePlayer;
@@ -14,16 +13,15 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import static game.Context.playerGateway;
+import static game.Monopoly.playerGateway;
 
-public class ControllerFactoryImpl implements ControllerFactory {
+public class ControllerFactoryImpl {
 
     private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
     private final Console console = new Console(reader, writer);
     private final PresenterEn presenter = new PresenterEn();
 
-    @Override
     public game.Controller make(String controller) {
         if (controller.equals("SetupGame")) {
             SetupGameFactory factory = new SetupGameFactoryImpl();
