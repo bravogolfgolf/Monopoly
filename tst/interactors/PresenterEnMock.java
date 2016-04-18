@@ -1,9 +1,7 @@
 package game.interactors;
 
 import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.setupgame.SetupGamePresenter;
-import game.interactors.setupgame.SetupGameResponse;
 
 public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresenter {
 
@@ -14,10 +12,11 @@ public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresente
     public boolean verifyPlayerCreatedMessage = false;
     public boolean verifyCreatePlayerPromptMessage = false;
     public boolean verifyAvailableTokensMessage = false;
+    public boolean verifyUserInterfaceOptionsMessage = false;
 
 
     @Override
-    public void versionCreatedMessage(SetupGameResponse response) {
+    public void versionCreatedMessage(InteractorResponse response) {
         verifyVersionCreatedMessage = true;
     }
 
@@ -27,8 +26,13 @@ public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresente
     }
 
     @Override
-    public void availableVersionsMessage(SetupGameResponse response) {
+    public void availableVersionsMessage(InteractorResponse response) {
         verifyAvailableVersionsMessage = true;
+    }
+
+    @Override
+    public void userInterfaceOptionsMessage(InteractorResponse response) {
+        verifyUserInterfaceOptionsMessage = true;
     }
 
     @Override
@@ -37,7 +41,7 @@ public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresente
     }
 
     @Override
-    public void playerCreatedMessage(CreatePlayerResponse response) {
+    public void playerCreatedMessage(InteractorResponse response) {
         verifyPlayerCreatedMessage = true;
     }
 
@@ -47,7 +51,7 @@ public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresente
     }
 
     @Override
-    public void availableTokensMessage(CreatePlayerResponse response) {
+    public void availableTokensMessage(InteractorResponse response) {
         verifyAvailableTokensMessage = true;
     }
 }

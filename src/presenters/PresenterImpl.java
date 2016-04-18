@@ -1,11 +1,13 @@
 package game.presenters;
 
 import game.controllers.Presenter;
+import game.interactors.InteractorPresenter;
+import game.interactors.InteractorResponse;
 
 import java.util.Hashtable;
 import java.util.Map;
 
-class PresenterImpl implements Presenter {
+class PresenterImpl implements Presenter, InteractorPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
@@ -23,6 +25,11 @@ class PresenterImpl implements Presenter {
     @Override
     public Map<Integer, String> getMenuMap() {
         return menuMap;
+    }
+
+    @Override
+    public void userInterfaceOptionsMessage(InteractorResponse response) {
+        createMenuMap(response.options);
     }
 
     void createMenuMap(String[] strings) {

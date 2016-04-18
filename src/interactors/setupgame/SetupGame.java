@@ -2,12 +2,13 @@ package game.interactors.setupgame;
 
 import game.controllers.Interactor;
 import game.interactors.InteractorRequest;
+import game.interactors.InteractorResponse;
 
 public class SetupGame implements Interactor {
 
     private final SetupGamePresenter presenter;
     private final SetupGameFactory factory;
-    private final SetupGameResponse response = new SetupGameResponse();
+    private final InteractorResponse response = new InteractorResponse();
     private InteractorRequest request;
 
     public SetupGame(SetupGamePresenter presenter, SetupGameFactory factory) {
@@ -23,19 +24,24 @@ public class SetupGame implements Interactor {
 
     private void createVersion() {
         factory.make(request.string);
-        response.versions = new String[]{request.string};
+        response.options = new String[]{request.string};
         presenter.versionCreatedMessage(response);
     }
 
     @Override
     public void userInterfacePrompt() {
         presenter.setupGamePromptMessage();
-        userInterfaceOptions();
+        getUserInterfaceOptions();
+        presenter.availableVersionsMessage(response);
     }
 
     @Override
     public void userInterfaceOptions() {
-        response.versions = factory.getAvailableVersions();
-        presenter.availableVersionsMessage(response);
+        getUserInterfaceOptions();
+        presenter.userInterfaceOptionsMessage(response);
+    }
+
+    private void getUserInterfaceOptions(){
+        response.options = factory.getAvailableVersions();
     }
 }

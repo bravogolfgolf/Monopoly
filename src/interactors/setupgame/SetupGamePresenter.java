@@ -1,10 +1,13 @@
 package game.interactors.setupgame;
 
-public interface SetupGamePresenter {
+import game.interactors.InteractorPresenter;
+import game.interactors.InteractorResponse;
+
+public interface SetupGamePresenter extends InteractorPresenter {
 
     void setupGamePromptMessage();
 
-    void versionCreatedMessage(SetupGameResponse response);
+    void versionCreatedMessage(InteractorResponse response);
 
-    void availableVersionsMessage(SetupGameResponse response);
+    void availableVersionsMessage(InteractorResponse response);
 }

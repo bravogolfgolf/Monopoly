@@ -28,7 +28,7 @@ public class SetupGameTest {
         interactor.userInterfaceOptions();
 
         assertTrue(factory.verifyGetAvailableVersionsCalled);
-        assertTrue(presenter.verifyAvailableVersionsMessage);
+        assertTrue(presenter.verifyUserInterfaceOptionsMessage);
 
     }
 

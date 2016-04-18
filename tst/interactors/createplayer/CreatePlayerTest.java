@@ -54,7 +54,7 @@ public class CreatePlayerTest {
         interactor.userInterfaceOptions();
 
         assertTrue(player.verifyGetAvailableTokens);
-        assertTrue(presenter.verifyAvailableTokensMessage);
+        assertTrue(presenter.verifyUserInterfaceOptionsMessage);
     }
 
     @Test
