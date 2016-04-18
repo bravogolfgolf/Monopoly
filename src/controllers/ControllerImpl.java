@@ -9,11 +9,13 @@ import java.util.Map;
 public class ControllerImpl implements Controller {
 
     private final View view;
+    private final Manager manager;
     private final Interactor interactor;
     private final Presenter presenter;
 
-    public ControllerImpl(View view, Interactor interactor, Presenter presenter) {
+    public ControllerImpl(View view, Manager manager, Interactor interactor, Presenter presenter) {
         this.view = view;
+        this.manager = manager;
         this.interactor = interactor;
         this.presenter = presenter;
     }
@@ -41,11 +43,12 @@ public class ControllerImpl implements Controller {
             selection = Integer.parseInt(line);
             String result = getMenuMessage().get(selection);
             if (result == null)
-                prompt();
+                manager.invalidNumberEntered();
             handle(result);
+            manager.validNumberEntered();
 
         } catch (NumberFormatException e) {
-            prompt();
+            manager.invalidTextEntered();
         }
     }
 

@@ -1,6 +1,5 @@
 package game.factories;
 
-import game.Context;
 import game.entitiies.Board;
 import game.entitiies.Token;
 import game.interactors.setupgame.SetupGameFactory;
@@ -9,6 +8,9 @@ import game.repositories.PlayerRepositoryImpl;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
+
+import static game.factories.ControllerFactoryImpl.board;
+import static game.factories.ControllerFactoryImpl.playerGateway;
 
 class SetupGameFactoryImpl implements SetupGameFactory {
 
@@ -34,8 +36,8 @@ class SetupGameFactoryImpl implements SetupGameFactory {
     }
 
     private void setupUSA(String version) {
-        Context.board = new Board(version);
-        Context.playerGateway = new PlayerRepositoryImpl(tokensList());
+        board = new Board(version);
+        playerGateway = new PlayerRepositoryImpl(tokensList());
     }
 
     private void setupFRA(String version) {

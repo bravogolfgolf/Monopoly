@@ -3,23 +3,35 @@ package game;
 import game.factories.ControllerFactoryImpl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-final class Monopoly {
+public final class Monopoly {
+
+    private static final List<Controller> list = new ArrayList<>();
+    private Controller controller;
 
     public static void main(String[] args) throws IOException {
-
-        Monopoly game = new Monopoly();
-        game.start();
+        Monopoly monopoly = new Monopoly();
+        monopoly.setup();
+        monopoly.loop();
     }
 
-    private void start() throws IOException {
+    private void setup() {
+        ControllerFactoryImpl factory = new ControllerFactoryImpl();
 
-        ControllerFactory factory = new ControllerFactoryImpl();
+        controller = factory.make("SetupGame");
+        addControllerToStack(controller);
+    }
 
-        Controller controller = factory.make("SetupGame");
-        controller.execute();
+    private void loop() throws IOException {
+        while (list.size() > 0) {
+            controller = list.remove(0);
+            controller.execute();
+        }
+    }
 
-        controller = factory.make("CreatePlayer");
-        controller.execute();
+    public static void addControllerToStack(Controller controller) {
+        list.add(controller);
     }
 }

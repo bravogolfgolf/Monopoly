@@ -1,8 +1,7 @@
 package game.presenters;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.setupgame.SetupGameResponse;
+import game.interactors.InteractorResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,11 +18,11 @@ public class PresenterEnTest {
 
     public class setupGame {
 
-        private final SetupGameResponse response = new SetupGameResponse();
+        private final InteractorResponse response = new InteractorResponse();
 
         @Test
         public void testVersionCreatedMessage() {
-            response.versions = new String[]{"USA"};
+            response.options = new String[]{"USA"};
             presenter.versionCreatedMessage(response);
             expected = "USA version of game created.\n";
             assertEquals(expected, presenter.getFormattedMessage());
@@ -31,7 +30,7 @@ public class PresenterEnTest {
 
         @Test
         public void testAvailableVersionsMessage() {
-            response.versions = new String[]{"FRA", "USA"};
+            response.options = new String[]{"FRA", "USA"};
             presenter.availableVersionsMessage(response);
             expected = "Available versions: (1)FRA, (2)USA\n";
             assertEquals(expected, presenter.getFormattedMessage());
@@ -39,15 +38,14 @@ public class PresenterEnTest {
 
         @Test
         public void testGetMenuMap() {
-            response.versions = new String[]{"FRA", "USA"};
-            presenter.availableVersionsMessage(response);
+            response.options = new String[]{"FRA", "USA"};
+            presenter.userInterfaceOptionsMessage(response);
             Map<Integer, String> map = new Hashtable<Integer, String>() {{
                 put(1, "FRA");
                 put(2, "USA");
             }};
             assertEquals(map, presenter.getMenuMap());
         }
-
 
         @Test
         public void testSetupGamePromptMessage() {
@@ -59,11 +57,11 @@ public class PresenterEnTest {
 
     public class createPlayer {
 
-        private final CreatePlayerResponse response = new CreatePlayerResponse();
+        private final InteractorResponse response = new InteractorResponse();
 
         @Test
         public void testCreatePlayerPrompt() {
-            response.tokens = new String[]{"Cat"};
+            response.options = new String[]{"Cat"};
             presenter.createPlayerPromptMessage();
             expected = "Please select token for player.\n";
             assertEquals(expected, presenter.getFormattedMessage());
@@ -78,7 +76,7 @@ public class PresenterEnTest {
 
         @Test
         public void testPlayerCreatedMessage() {
-            response.tokens = new String[]{"Cat"};
+            response.options = new String[]{"Cat"};
             presenter.playerCreatedMessage(response);
             expected = "Player created with Cat token.\n";
             assertEquals(expected, presenter.getFormattedMessage());
@@ -93,7 +91,7 @@ public class PresenterEnTest {
 
         @Test
         public void testAvailableTokensMessage() {
-            response.tokens = new String[]{"Automobile", "Battleship", "Boot", "Cat", "Scottish Terrier", "Thimble", "Top Hat", "Wheelbarrow"};
+            response.options = new String[]{"Automobile", "Battleship", "Boot", "Cat", "Scottish Terrier", "Thimble", "Top Hat", "Wheelbarrow"};
             presenter.availableTokensMessage(response);
             expected = "Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow\n";
             assertEquals(expected, presenter.getFormattedMessage());

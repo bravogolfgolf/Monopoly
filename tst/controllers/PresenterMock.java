@@ -1,14 +1,9 @@
 package game.controllers;
 
-import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.setupgame.SetupGamePresenter;
-import game.interactors.setupgame.SetupGameResponse;
-
 import java.util.Hashtable;
 import java.util.Map;
 
-class PresenterMock implements Presenter, SetupGamePresenter, CreatePlayerPresenter {
+class PresenterMock implements Presenter {
 
     boolean verifyGetMenuMapCalled = false;
     boolean verifyGetFormattedMessageCalled = false;
@@ -25,40 +20,5 @@ class PresenterMock implements Presenter, SetupGamePresenter, CreatePlayerPresen
         return new Hashtable<Integer, String>() {{
             put(1, "Cat");
         }};
-    }
-
-    @Override
-    public void playerCreatedMessage(CreatePlayerResponse response) {
-
-    }
-
-    @Override
-    public void exceededPlayerLimitMessage() {
-
-    }
-
-    @Override
-    public void createPlayerPromptMessage() {
-
-    }
-
-    @Override
-    public void availableTokensMessage(CreatePlayerResponse response) {
-
-    }
-
-    @Override
-    public void setupGamePromptMessage() {
-
-    }
-
-    @Override
-    public void versionCreatedMessage(SetupGameResponse response) {
-
-    }
-
-    @Override
-    public void availableVersionsMessage(SetupGameResponse response) {
-
     }
 }

@@ -3,8 +3,9 @@ package game.controllers;
 import java.io.IOException;
 
 class ControllerImplInvalidTextInputStub extends ControllerImpl {
-    ControllerImplInvalidTextInputStub(View view, Interactor interactor, Presenter presenter) {
-        super(view, interactor, presenter);
+
+    ControllerImplInvalidTextInputStub(View view, Manager manager, Interactor interactor, Presenter presenter) {
+        super(view, manager, interactor, presenter);
     }
 
     @Override

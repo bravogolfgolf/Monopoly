@@ -1,24 +1,23 @@
 package game.presenters;
 
+import game.interactors.InteractorResponse;
 import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.setupgame.SetupGamePresenter;
-import game.interactors.setupgame.SetupGameResponse;
 
 public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter, SetupGamePresenter {
 
     @Override
-    public void versionCreatedMessage(SetupGameResponse response) {
+    public void versionCreatedMessage(InteractorResponse response) {
         template = "%s version of game created.";
-        variables = response.versions;
+        variables = response.options;
         addMessageToBuffer(template, variables);
     }
 
     @Override
-    public void availableVersionsMessage(SetupGameResponse response) {
+    public void availableVersionsMessage(InteractorResponse response) {
         template = "Available versions: %s";
-        variables = response.versions;
-        createMenuMap(response.versions);
+        variables = response.options;
+        createMenuMap(response.options);
         addMenuToBuffer(template, menuMap);
     }
 
@@ -35,9 +34,9 @@ public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter,
     }
 
     @Override
-    public void playerCreatedMessage(CreatePlayerResponse response) {
+    public void playerCreatedMessage(InteractorResponse response) {
         template = "Player created with %s token.";
-        variables = response.tokens;
+        variables = response.options;
         addMessageToBuffer(template, variables);
     }
 
@@ -48,9 +47,9 @@ public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter,
     }
 
     @Override
-    public void availableTokensMessage(CreatePlayerResponse response) {
+    public void availableTokensMessage(InteractorResponse response) {
         template = "Available tokens: %s";
-        createMenuMap(response.tokens);
+        createMenuMap(response.options);
         addMenuToBuffer(template, menuMap);
     }
 }
