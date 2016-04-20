@@ -4,7 +4,8 @@ import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static game.manager.StateImpl.PROMPT;
+import static game.manager.StateImpl.CREATE_PLAYER;
+import static game.manager.StateImpl.SETUP_GAME;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(HierarchicalContextRunner.class)
@@ -14,7 +15,7 @@ public class ManagerTest {
 
     public class SetupGame {
 
-        private final SetupGameManager manager = new SetupGameManager(PROMPT, factory);
+        private final SetupGameManager manager = new SetupGameManager(SETUP_GAME, factory);
 
         @Test
         public void testValidEntry() {
@@ -31,7 +32,7 @@ public class ManagerTest {
 
     public class CreatePlayer {
 
-        private final CreatePlayerManager manager = new CreatePlayerManager(PROMPT, factory);
+        private final CreatePlayerManager manager = new CreatePlayerManager(CREATE_PLAYER, factory);
 
         @Test
         public void testValidEntry() {

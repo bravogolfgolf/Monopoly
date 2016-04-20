@@ -23,7 +23,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import static game.manager.StateImpl.PROMPT;
+import static game.manager.StateImpl.SETUP_GAME;
 
 public class ControllerFactoryImpl implements ControllerFactory {
 
@@ -36,7 +36,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
 
     public Command make(String controller) {
         if (controller.equals("SetupGame")) {
-            Manager manager = new SetupGameManager(PROMPT, this);
+            Manager manager = new SetupGameManager(SETUP_GAME, this);
             View view = new SetupGameView(console, manager);
             SetupGameFactory factory = new SetupGameFactoryImpl();
             Interactor interactor = new SetupGame(presenter, factory);
@@ -45,7 +45,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
             return command;
         }
         if (controller.equals("CreatePlayer")) {
-            Manager manager = new CreatePlayerManager(PROMPT, this);
+            Manager manager = new CreatePlayerManager(SETUP_GAME, this);
             View view = new CreatePlayerView(console, manager);
             Interactor interactor = new CreatePlayer(presenter, playerGateway);
             ControllerImpl command = new ControllerImpl(view, interactor, presenter);
