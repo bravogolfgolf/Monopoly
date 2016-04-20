@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static game.manager.StateImpl.PROMPT;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(HierarchicalContextRunner.class)
 public class ManagerTest {
@@ -14,51 +14,36 @@ public class ManagerTest {
 
     public class SetupGame {
 
-        private final SetupGameManagerFake manager = new SetupGameManagerFake(PROMPT, factory);
+        private final SetupGameManager manager = new SetupGameManager(PROMPT, factory);
 
         @Test
-        public void testValidNumber () {
-            manager.validNumberEntered();
-            assertTrue(manager.addNextCommandToList);
+        public void testValidEntry() {
+            manager.validEntry();
+            assertEquals("CreatePlayer", factory.verifyMakeString);
         }
 
         @Test
-        public void testInvalidText () {
-            manager.invalidTextEntered();
-            assertTrue(manager.addCommandBackToListCalled);
-            assertTrue(factory.verifyMakeCalled);
-        }
-
-        @Test
-        public void testInvalidNumber () {
-            manager.invalidNumberEntered();
-            assertTrue(manager.addCommandBackToListCalled);
-            assertTrue(factory.verifyMakeCalled);
+        public void testInvalidEntry() {
+            manager.invalidEntry();
+            assertEquals("SetupGame", factory.verifyMakeString);
         }
     }
 
     public class CreatePlayer {
 
-        private final CreatePlayerManagerFake manager = new CreatePlayerManagerFake(PROMPT, factory);
+        private final CreatePlayerManager manager = new CreatePlayerManager(PROMPT, factory);
 
         @Test
-        public void testValidNumber () {
-            manager.validNumberEntered();
-            assertTrue(manager.addNextCommandToList);
+        public void testValidEntry() {
+            manager.validEntry();
+//            Next Step not available yet
+//            assertEquals("", factory.verifyMakeString);
         }
 
         @Test
-        public void testInvalidText () {
-            manager.invalidTextEntered();
-            assertTrue(manager.addCommandBackToListCalled);
-            assertTrue(factory.verifyMakeCalled);
-        }
-
-        @Test
-        public void testInvalidNumber () {
-            manager.invalidNumberEntered();
-            assertTrue(manager.addCommandBackToListCalled);
-            assertTrue(factory.verifyMakeCalled);
+        public void testInvalidEntry() {
+            manager.invalidEntry();
+            assertEquals("CreatePlayer", factory.verifyMakeString);
         }
     }
 }

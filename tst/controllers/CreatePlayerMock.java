@@ -5,15 +5,11 @@ import game.interactors.InteractorRequest;
 class CreatePlayerMock implements Interactor {
 
     boolean verifyHandleCalled = false;
-    boolean verifyAvailableTokensMessage = false;
-
-    @Override
-    public void userInterfacePrompt() {
-    }
+    boolean verifyUserInterfaceOptionsCalled = false;
 
     @Override
     public void userInterfaceOptions() {
-        verifyAvailableTokensMessage = true;
+        verifyUserInterfaceOptionsCalled = true;
     }
 
     @Override

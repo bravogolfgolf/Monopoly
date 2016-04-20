@@ -18,7 +18,5 @@ public class SetupGameManager extends ManagerImpl {
     public void addNextCommandToList() {
         controller=factory.make("CreatePlayer");
         addControllerToStack(controller);
-
-
     }
 }

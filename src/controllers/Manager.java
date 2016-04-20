@@ -2,9 +2,7 @@ package game.controllers;
 
 public interface Manager {
 
-    void validNumberEntered();
+    void validEntry();
 
-    void invalidNumberEntered();
-
-    void invalidTextEntered();
+    void invalidEntry();
 }

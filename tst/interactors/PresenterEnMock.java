@@ -6,14 +6,10 @@ import game.interactors.setupgame.SetupGamePresenter;
 public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresenter {
 
     public boolean verifyVersionCreatedMessage = false;
-    public boolean verifySetupGamePromptMessage = false;
-    public boolean verifyAvailableVersionsMessage = false;
     public boolean verifyExceededPlayerLimitMessage = false;
     public boolean verifyPlayerCreatedMessage = false;
-    public boolean verifyCreatePlayerPromptMessage = false;
     public boolean verifyAvailableTokensMessage = false;
-    public boolean verifyUserInterfaceOptionsMessage = false;
-
+    public boolean verifyAvailableVersionsMessageCalled=false;
 
     @Override
     public void versionCreatedMessage(InteractorResponse response) {
@@ -21,18 +17,8 @@ public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresente
     }
 
     @Override
-    public void setupGamePromptMessage() {
-        verifySetupGamePromptMessage = true;
-    }
-
-    @Override
     public void availableVersionsMessage(InteractorResponse response) {
-        verifyAvailableVersionsMessage = true;
-    }
-
-    @Override
-    public void userInterfaceOptionsMessage(InteractorResponse response) {
-        verifyUserInterfaceOptionsMessage = true;
+        verifyAvailableVersionsMessageCalled = true;
     }
 
     @Override
@@ -43,11 +29,6 @@ public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresente
     @Override
     public void playerCreatedMessage(InteractorResponse response) {
         verifyPlayerCreatedMessage = true;
-    }
-
-    @Override
-    public void createPlayerPromptMessage() {
-        verifyCreatePlayerPromptMessage = true;
     }
 
     @Override

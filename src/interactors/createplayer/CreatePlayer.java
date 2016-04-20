@@ -36,20 +36,8 @@ public class CreatePlayer implements Interactor {
     }
 
     @Override
-    public void userInterfacePrompt() {
-        presenter.createPlayerPromptMessage();
-        getUserInterfaceOptions();
-        presenter.availableTokensMessage(response);
-    }
-
-    @Override
     public void userInterfaceOptions() {
-        getUserInterfaceOptions();
-        presenter.userInterfaceOptionsMessage(response);
-    }
-
-    private void getUserInterfaceOptions(){
         response.options = player.getAvailableTokens();
-
+        presenter.availableTokensMessage(response);
     }
 }

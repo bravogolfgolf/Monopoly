@@ -1,12 +1,12 @@
 package game.manager;
 
-import game.Controller;
+import game.Command;
 import game.controllers.Manager;
 
 abstract class ManagerImpl implements Manager {
 
     private State state;
-    Controller controller;
+    Command controller;
     final ControllerFactory factory;
 
     ManagerImpl(State state, ControllerFactory factory) {
@@ -19,18 +19,13 @@ abstract class ManagerImpl implements Manager {
     }
 
     @Override
-    public void validNumberEntered() {
+    public void validEntry() {
         state.validNumberEntered(this);
     }
 
     @Override
-    public void invalidNumberEntered() {
+    public void invalidEntry() {
         state.invalidNumberEntered(this);
-    }
-
-    @Override
-    public void invalidTextEntered() {
-        state.invalidTextEntered(this);
     }
 
     public abstract void addCommandBackToList();

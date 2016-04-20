@@ -46,26 +46,11 @@ public class PresenterEnTest {
             }};
             assertEquals(map, presenter.getMenuMap());
         }
-
-        @Test
-        public void testSetupGamePromptMessage() {
-            presenter.setupGamePromptMessage();
-            expected = "Select version of game you would like to play.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
-        }
     }
 
     public class createPlayer {
 
         private final InteractorResponse response = new InteractorResponse();
-
-        @Test
-        public void testCreatePlayerPrompt() {
-            response.options = new String[]{"Cat"};
-            presenter.createPlayerPromptMessage();
-            expected = "Please select token for player.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
-        }
 
         @Test
         public void testExceededPlayerLimitMessage() {
@@ -79,13 +64,6 @@ public class PresenterEnTest {
             response.options = new String[]{"Cat"};
             presenter.playerCreatedMessage(response);
             expected = "Player created with Cat token.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
-        }
-
-        @Test
-        public void testPlayerPromptMessage() {
-            presenter.createPlayerPromptMessage();
-            expected = "Please select token for player.\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
 

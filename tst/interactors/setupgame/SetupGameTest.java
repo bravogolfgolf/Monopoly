@@ -28,17 +28,6 @@ public class SetupGameTest {
         interactor.userInterfaceOptions();
 
         assertTrue(factory.verifyGetAvailableVersionsCalled);
-        assertTrue(presenter.verifyUserInterfaceOptionsMessage);
-
-    }
-
-    @Test
-    public void verifyUserInterfacePrompt() {
-        interactor.userInterfacePrompt();
-
-        assertTrue(presenter.verifySetupGamePromptMessage);
-        assertTrue(factory.verifyGetAvailableVersionsCalled);
-        assertTrue(presenter.verifyAvailableVersionsMessage);
-
+        assertTrue(presenter.verifyAvailableVersionsMessageCalled);
     }
 }

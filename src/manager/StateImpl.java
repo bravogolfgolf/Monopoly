@@ -14,11 +14,5 @@ public enum StateImpl implements State {
             manager.setState(PROMPT);
             manager.addCommandBackToList();
         }
-
-        @Override
-        public void invalidTextEntered(ManagerImpl manager) {
-            manager.setState(PROMPT);
-            manager.addCommandBackToList();
-        }
     }
 }

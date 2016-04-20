@@ -29,19 +29,8 @@ public class SetupGame implements Interactor {
     }
 
     @Override
-    public void userInterfacePrompt() {
-        presenter.setupGamePromptMessage();
-        getUserInterfaceOptions();
-        presenter.availableVersionsMessage(response);
-    }
-
-    @Override
     public void userInterfaceOptions() {
-        getUserInterfaceOptions();
-        presenter.userInterfaceOptionsMessage(response);
-    }
-
-    private void getUserInterfaceOptions(){
         response.options = factory.getAvailableVersions();
+        presenter.availableVersionsMessage(response);
     }
 }

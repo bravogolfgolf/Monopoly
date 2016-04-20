@@ -1,15 +1,12 @@
 package game.interactors.createplayer;
 
-import game.interactors.InteractorPresenter;
 import game.interactors.InteractorResponse;
 
-public interface CreatePlayerPresenter extends InteractorPresenter {
+public interface CreatePlayerPresenter  {
 
     void playerCreatedMessage(InteractorResponse response);
 
     void exceededPlayerLimitMessage();
-
-    void createPlayerPromptMessage();
 
     void availableTokensMessage(InteractorResponse response);
 }
