@@ -1,5 +1,7 @@
 package game.controllers;
 
+import game.view.Manager;
+
 class ManagerDummy implements Manager {
 
     @Override

@@ -1,7 +1,5 @@
 package game.view;
 
-import game.controllers.Manager;
-
 class CreatePlayerManagerMock implements Manager {
 
     boolean verifyValidEntryCalled = false;

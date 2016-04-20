@@ -1,4 +1,4 @@
-package game.controllers;
+package game.view;
 
 public interface Manager {
 

@@ -1,7 +1,7 @@
 package game.manager;
 
 import game.Command;
-import game.controllers.Manager;
+import game.view.Manager;
 
 abstract class ManagerImpl implements Manager {
 

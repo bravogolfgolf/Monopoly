@@ -3,7 +3,6 @@ package game.factories;
 import game.Command;
 import game.controllers.ControllerImpl;
 import game.controllers.Interactor;
-import game.controllers.Manager;
 import game.controllers.View;
 import game.display.ConsoleImpl;
 import game.entitiies.Board;
@@ -16,6 +15,7 @@ import game.manager.SetupGameManager;
 import game.presenters.PresenterEn;
 import game.repositories.PlayerRepositoryImpl;
 import game.view.CreatePlayerView;
+import game.view.Manager;
 import game.view.SetupGameView;
 
 import java.io.BufferedReader;

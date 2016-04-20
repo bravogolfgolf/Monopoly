@@ -1,6 +1,7 @@
 package game.controllers;
 
 import game.view.Console;
+import game.view.Manager;
 import game.view.SetupGameView;
 
 import java.io.IOException;

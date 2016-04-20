@@ -2,6 +2,7 @@ package game.controllers;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.view.Console;
+import game.view.Manager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

@@ -2,6 +2,7 @@ package game.controllers;
 
 import game.view.Console;
 import game.view.CreatePlayerView;
+import game.view.Manager;
 
 import java.io.IOException;
 import java.util.Map;
