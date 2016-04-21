@@ -21,30 +21,10 @@ public class CreatePlayerTest {
     private final InteractorRequest request = new InteractorRequest();
 
     @Test
-    public void testExceededPlayerLimit() {
-        nineRequests();
-
-        assertTrue(player.verifyPlayerLimitExceededCalled);
-        assertTrue(player.verifyCreateCalled);
-        assertTrue(player.verifyCreateCalledEightTimes);
-        assertTrue(presenter.verifyExceededPlayerLimitMessage);
-    }
-
-    private void nineRequests() {
-        String[] tokens = player.getAvailableTokens();
-        for (String token : tokens) {
-            request.string = token;
-            interactor.handle(request);
-        }
-        interactor.handle(request);
-    }
-
-    @Test
     public void testPlayerCreated() {
         request.string = "Cat";
         interactor.handle(request);
 
-        assertTrue(player.verifyPlayerLimitExceededCalled);
         assertTrue(player.verifyCreateCalled);
         assertTrue(presenter.verifyPlayerCreatedMessage);
     }

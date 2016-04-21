@@ -29,12 +29,6 @@ public class PresenterEn extends PresenterImpl implements UIManagerPresenter, Cr
     }
 
     @Override
-    public void exceededPlayerLimitMessage() {
-        template = "Exceeded eight player limit.";
-        addMessageToBuffer(template);
-    }
-
-    @Override
     public void playerCreatedMessage(InteractorResponse response) {
         template = "Player created with %s token.";
         variables = response.options;

@@ -22,13 +22,12 @@ public class PlayerRepositoryImplTest {
 
     @Test
     public void testCreatePlayer() {
-        playerRepository.create("Cat");
-        assertTrue(playerRepository.count() == 1);
-    }
-
-    @Test
-    public void testGetTokens() {
         String[] tokens = playerRepository.getAvailableTokens();
         assertTrue(tokens.length == 1);
+
+        playerRepository.create("Cat");
+
+        tokens = playerRepository.getAvailableTokens();
+        assertTrue(tokens.length == 0);
     }
 }

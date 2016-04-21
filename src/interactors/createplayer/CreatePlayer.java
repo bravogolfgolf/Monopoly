@@ -17,14 +17,7 @@ public class CreatePlayer implements Interactor {
 
     @Override
     public void handle(InteractorRequest request) {
-
-        if (player.playerLimitExceeded())
-            exceededPlayerLimit();
-        else createPlayer(request);
-    }
-
-    private void exceededPlayerLimit() {
-        presenter.exceededPlayerLimitMessage();
+         createPlayer(request);
     }
 
     private void createPlayer(InteractorRequest request) {

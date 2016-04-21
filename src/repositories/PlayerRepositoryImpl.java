@@ -9,7 +9,6 @@ import java.util.Set;
 
 public class PlayerRepositoryImpl implements CreatePlayerGateway {
 
-    private static final int PLAYER_LIMIT = 8;
     private final Set<Player> players = new HashSet<>();
     private final Set<Token> tokens;
 
@@ -23,15 +22,6 @@ public class PlayerRepositoryImpl implements CreatePlayerGateway {
         tokens.remove(token);
         Player player = new Player(token);
         return players.add(player);
-    }
-
-    @Override
-    public boolean playerLimitExceeded() {
-        return (count() >= PLAYER_LIMIT);
-    }
-
-    int count() {
-        return players.size();
     }
 
     @Override
