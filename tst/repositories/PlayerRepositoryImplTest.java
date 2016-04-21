@@ -1,6 +1,6 @@
 package game.repositories;
 
-import game.entitiies.Token;
+import game.entities.Token;
 import org.junit.Before;
 import org.junit.Test;
 

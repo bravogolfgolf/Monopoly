@@ -3,7 +3,7 @@ package game.factories;
 import game.Command;
 import game.controllers.ControllerImpl;
 import game.display.ConsoleImpl;
-import game.entitiies.Board;
+import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.setupgame.SetupGame;
 import game.manager.*;

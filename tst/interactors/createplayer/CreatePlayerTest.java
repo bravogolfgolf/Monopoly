@@ -1,7 +1,7 @@
 package game.interactors.createplayer;
 
 import game.controllers.Interactor;
-import game.entitiies.Token;
+import game.entities.Token;
 import game.interactors.InteractorRequest;
 import game.interactors.PresenterEnMock;
 import org.junit.Test;

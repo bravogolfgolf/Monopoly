@@ -1,7 +1,7 @@
 package game.repositories;
 
-import game.entitiies.Player;
-import game.entitiies.Token;
+import game.entities.Player;
+import game.entities.Token;
 import game.interactors.createplayer.CreatePlayerGateway;
 
 import java.util.HashSet;

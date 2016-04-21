@@ -1,7 +1,7 @@
 package game.factories;
 
-import game.entitiies.Board;
-import game.entitiies.Token;
+import game.entities.Board;
+import game.entities.Token;
 import game.interactors.setupgame.SetupGameFactory;
 import game.repositories.PlayerRepositoryImpl;
 

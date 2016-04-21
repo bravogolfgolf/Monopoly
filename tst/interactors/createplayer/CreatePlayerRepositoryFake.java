@@ -1,6 +1,6 @@
 package game.interactors.createplayer;
 
-import game.entitiies.Token;
+import game.entities.Token;
 import game.repositories.PlayerRepositoryImpl;
 
 import java.util.Set;

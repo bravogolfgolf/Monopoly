@@ -1,4 +1,4 @@
-package game.entitiies;
+package game.entities;
 
 public class Board {
 
