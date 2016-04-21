@@ -26,10 +26,10 @@ public class ControllerFactoryImpl implements ControllerFactory {
     private final ConsoleImpl console = new ConsoleImpl(reader, writer);
     private final PresenterEn presenter = new PresenterEn();
 
-    public Command make(String controller, StateImpl stateUI) {
+    public Command make(String controller, UIStateImpl stateUI) {
         if (controller.equals("SetupGame")) {
-            ManagerUI manager = new SetupGameManagerUI(presenter, this);
-            manager.setStateUI(stateUI);
+            UIManager manager = new UIManagerSetupGame(presenter, this);
+            manager.setUiState(stateUI);
             SetupGameView view = new SetupGameView(console, manager);
             SetupGameFactoryImpl factory = new SetupGameFactoryImpl();
             SetupGame interactor = new SetupGame(presenter, factory);
@@ -38,8 +38,8 @@ public class ControllerFactoryImpl implements ControllerFactory {
             return command;
         }
         if (controller.equals("CreatePlayer")) {
-            ManagerUI manager = new CreatePlayerManagerUI(presenter, this);
-            manager.setStateUI(stateUI);
+            UIManager manager = new UIManagerCreatePlayer(presenter, this);
+            manager.setUiState(stateUI);
             CreatePlayerView view = new CreatePlayerView(console, manager);
             CreatePlayer interactor = new CreatePlayer(presenter, playerGateway);
             ControllerImpl command = new ControllerImpl(view, interactor, presenter);

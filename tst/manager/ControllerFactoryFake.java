@@ -8,7 +8,7 @@ class ControllerFactoryFake extends ControllerFactoryImpl {
     String verifyMakeString = "";
 
     @Override
-    public Command make(String controller, StateImpl stateUI) {
+    public Command make(String controller, UIStateImpl stateUI) {
         verifyMakeString = controller;
         return super.make(controller, stateUI);
     }

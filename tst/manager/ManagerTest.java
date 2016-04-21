@@ -5,8 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static game.manager.StateImpl.CREATE_PLAYER_0;
-import static game.manager.StateImpl.SETUP_GAME;
+import static game.manager.UIStateImpl.CREATE_PLAYER_0;
+import static game.manager.UIStateImpl.SETUP_GAME;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -18,11 +18,11 @@ public class ManagerTest {
 
     public class SetupGame {
 
-        private final SetupGameManagerUI manager = new SetupGameManagerUI(presenter, factory);
+        private final UIManagerSetupGame manager = new UIManagerSetupGame(presenter, factory);
 
         @Before
         public void setup() {
-            manager.setStateUI(SETUP_GAME);
+            manager.setUiState(SETUP_GAME);
         }
 
         @Test
@@ -47,12 +47,12 @@ public class ManagerTest {
 
     public class CreatePlayer {
 
-        private final CreatePlayerManagerUI manager = new CreatePlayerManagerUI(presenter, factory);
+        private final UIManagerCreatePlayer manager = new UIManagerCreatePlayer(presenter, factory);
 
 
         @Before
         public void setup() {
-            manager.setStateUI(CREATE_PLAYER_0);
+            manager.setUiState(CREATE_PLAYER_0);
         }
 
         @Test
