@@ -17,7 +17,6 @@ public class CreatePlayerView implements View {
         this.manager = manager;
     }
 
-    @Override
     public void setController(Controller controller) {
         this.controller = controller;
     }
