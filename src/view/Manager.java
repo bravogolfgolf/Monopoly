@@ -2,7 +2,9 @@ package game.view;
 
 public interface Manager {
 
-    void validEntry();
+    void promptMessage();
+
+    void validUseCaseEntry();
 
     void invalidEntry();
 }

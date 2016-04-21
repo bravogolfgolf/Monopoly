@@ -52,7 +52,7 @@ public class CreatePlayerView implements View {
                 manager.invalidEntry();
             else {
                 controller.handle(result);
-                manager.validEntry();
+                manager.validUseCaseEntry();
             }
 
         } catch (NumberFormatException e) {

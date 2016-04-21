@@ -30,13 +30,13 @@ public enum StateImpl implements StateUI {
         @Override
         public void validUseCaseEntry(ManagerUI manager) {
             manager.setStateUI(CREATE_PLAYER_1);
-            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_1 );
+            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_1);
         }
 
         @Override
         public void invalidEntry(ManagerUI manager) {
             manager.setStateUI(CREATE_PLAYER_0);
-            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_0 );
+            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_0);
         }
     },
 
@@ -56,7 +56,7 @@ public enum StateImpl implements StateUI {
         @Override
         public void invalidEntry(ManagerUI manager) {
             manager.setStateUI(CREATE_PLAYER_1);
-            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_1 );
+            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_1);
         }
     },
 
@@ -69,13 +69,13 @@ public enum StateImpl implements StateUI {
         @Override
         public void validUseCaseEntry(ManagerUI manager) {
             manager.setStateUI(CREATE_PLAYER_3);
-            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_3 );
+            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_3);
         }
 
         @Override
         public void invalidEntry(ManagerUI manager) {
             manager.setStateUI(CREATE_PLAYER_2);
-            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_2 );
+            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_2);
         }
     },
 
@@ -88,7 +88,7 @@ public enum StateImpl implements StateUI {
         @Override
         public void validUseCaseEntry(ManagerUI manager) {
             manager.setStateUI(CREATE_PLAYER_4);
-            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_4 );
+            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_4);
         }
 
         @Override
@@ -113,7 +113,7 @@ public enum StateImpl implements StateUI {
         @Override
         public void invalidEntry(ManagerUI manager) {
             manager.setStateUI(CREATE_PLAYER_4);
-            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_4 );
+            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_4);
         }
     },
 
@@ -126,7 +126,7 @@ public enum StateImpl implements StateUI {
         @Override
         public void validUseCaseEntry(ManagerUI manager) {
             manager.setStateUI(CREATE_PLAYER_6);
-            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_6 );
+            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_6);
         }
 
         @Override
@@ -145,13 +145,13 @@ public enum StateImpl implements StateUI {
         @Override
         public void validUseCaseEntry(ManagerUI manager) {
             manager.setStateUI(CREATE_PLAYER_7);
-            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_7 );
+            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_7);
         }
 
         @Override
         public void invalidEntry(ManagerUI manager) {
             manager.setStateUI(CREATE_PLAYER_6);
-            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_6 );
+            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_6);
         }
     },
 
@@ -170,7 +170,7 @@ public enum StateImpl implements StateUI {
         @Override
         public void invalidEntry(ManagerUI manager) {
             manager.setStateUI(CREATE_PLAYER_7);
-            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_7 );
+            manager.addNextCommandToList("CreatePlayer", CREATE_PLAYER_7);
         }
     },
 

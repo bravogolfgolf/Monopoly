@@ -3,8 +3,9 @@ package game.presenters;
 import game.interactors.InteractorResponse;
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.setupgame.SetupGamePresenter;
+import game.manager.ManagerUIPresenter;
 
-public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter, SetupGamePresenter {
+public class PresenterEn extends PresenterImpl implements ManagerUIPresenter, CreatePlayerPresenter, SetupGamePresenter {
 
     @Override
     public void versionCreatedMessage(InteractorResponse response) {
