@@ -3,9 +3,9 @@ package game.manager;
 import game.Command;
 import game.Monopoly;
 
-public class CreatePlayerManagerUI extends ManagerUI {
+public class CreatePlayerUIManager extends UIManager {
 
-    public CreatePlayerManagerUI(ManagerUIPresenter presenter, ControllerFactory factory) {
+    public CreatePlayerUIManager(ManagerUIPresenter presenter, ControllerFactory factory) {
         super(presenter, factory);
     }
 

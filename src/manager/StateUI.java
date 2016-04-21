@@ -2,9 +2,9 @@ package game.manager;
 
 interface StateUI {
 
-    void promptMessage(ManagerUI manager);
+    void promptMessage(UIManager manager);
 
-    void validUseCaseEntry(ManagerUI manager);
+    void validUseCaseEntry(UIManager manager);
 
-    void invalidEntry(ManagerUI manager);
+    void invalidEntry(UIManager manager);
 }

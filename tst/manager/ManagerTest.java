@@ -18,7 +18,7 @@ public class ManagerTest {
 
     public class SetupGame {
 
-        private final SetupGameManagerUI manager = new SetupGameManagerUI(presenter, factory);
+        private final SetupGameUIManager manager = new SetupGameUIManager(presenter, factory);
 
         @Before
         public void setup() {
@@ -47,7 +47,7 @@ public class ManagerTest {
 
     public class CreatePlayer {
 
-        private final CreatePlayerManagerUI manager = new CreatePlayerManagerUI(presenter, factory);
+        private final CreatePlayerUIManager manager = new CreatePlayerUIManager(presenter, factory);
 
 
         @Before

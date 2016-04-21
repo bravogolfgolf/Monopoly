@@ -28,7 +28,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
 
     public Command make(String controller, StateImpl stateUI) {
         if (controller.equals("SetupGame")) {
-            ManagerUI manager = new SetupGameManagerUI(presenter, this);
+            UIManager manager = new SetupGameUIManager(presenter, this);
             manager.setStateUI(stateUI);
             SetupGameView view = new SetupGameView(console, manager);
             SetupGameFactoryImpl factory = new SetupGameFactoryImpl();
@@ -38,7 +38,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
             return command;
         }
         if (controller.equals("CreatePlayer")) {
-            ManagerUI manager = new CreatePlayerManagerUI(presenter, this);
+            UIManager manager = new CreatePlayerUIManager(presenter, this);
             manager.setStateUI(stateUI);
             CreatePlayerView view = new CreatePlayerView(console, manager);
             CreatePlayer interactor = new CreatePlayer(presenter, playerGateway);
