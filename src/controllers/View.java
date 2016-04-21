@@ -11,5 +11,5 @@ public interface View {
 
     void write(String text) throws IOException;
 
-    void userInterfacePrompt() throws IOException;
+    void userInterfacePrompt();
 }

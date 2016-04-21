@@ -35,7 +35,7 @@ class CreatePlayerViewMock extends CreatePlayerView {
     }
 
     @Override
-    public void userInterfacePrompt() throws IOException {
+    public void userInterfacePrompt() {
         verifyUserInterfacePromptCalled = true;
     }
 }

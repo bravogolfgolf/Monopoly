@@ -33,7 +33,7 @@ public class SetupGameViewTest {
         }
 
         @Test
-        public void testUserInterfacePrompt() throws IOException {
+        public void testUserInterfacePrompt() {
             view.userInterfacePrompt();
             assertTrue(manager.verifyPromptMessageCalled);
         }

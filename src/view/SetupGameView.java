@@ -37,7 +37,7 @@ public class SetupGameView implements View {
     }
 
     @Override
-    public void userInterfacePrompt() throws IOException {
+    public void userInterfacePrompt() {
         manager.promptMessage();
     }
 
