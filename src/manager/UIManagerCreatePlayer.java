@@ -10,18 +10,13 @@ public class UIManagerCreatePlayer extends UIManager {
     }
 
     @Override
-    public void promptMessage(StateImpl state) {
+    public void promptMessage(UIStateImpl state) {
         presenter.createPlayerPromptMessage();
     }
 
     @Override
-    public void addCommandBackToList() {
-    }
-
-    @Override
-    public void addNextCommandToList(String command, StateImpl state) {
-        Command controller = factory.make(command, state);
-        Monopoly.addControllerToStack(controller);
-
+    public void addCommandToStack(String commandString, UIStateImpl state) {
+        Command command = factory.make(commandString, state);
+        Monopoly.addCommandToStack(command);
     }
 }

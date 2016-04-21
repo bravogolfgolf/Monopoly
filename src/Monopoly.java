@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static game.manager.StateImpl.SETUP_GAME;
+import static game.manager.UIStateImpl.SETUP_GAME;
 
 public final class Monopoly {
 
@@ -23,7 +23,7 @@ public final class Monopoly {
         ControllerFactoryImpl factory = new ControllerFactoryImpl();
 
         controller = factory.make("SetupGame", SETUP_GAME);
-        addControllerToStack(controller);
+        addCommandToStack(controller);
     }
 
     private void loop() throws IOException {
@@ -33,7 +33,7 @@ public final class Monopoly {
         }
     }
 
-    public static void addControllerToStack(Command controller) {
-        list.add(controller);
+    public static void addCommandToStack(Command command) {
+        list.add(command);
     }
 }

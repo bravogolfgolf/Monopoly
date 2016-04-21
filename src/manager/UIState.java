@@ -1,6 +1,6 @@
 package game.manager;
 
-interface StateUI {
+interface UIState {
 
     void promptMessage(UIManager manager);
 

@@ -3,8 +3,8 @@ package game.factories;
 import org.junit.Before;
 import org.junit.Test;
 
-import static game.manager.StateImpl.CREATE_PLAYER_0;
-import static game.manager.StateImpl.SETUP_GAME;
+import static game.manager.UIStateImpl.CREATE_PLAYER_0;
+import static game.manager.UIStateImpl.SETUP_GAME;
 
 public class ControllerImplFactoryTest {
 

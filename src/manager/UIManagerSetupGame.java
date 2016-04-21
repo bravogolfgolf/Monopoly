@@ -1,6 +1,7 @@
 package game.manager;
 
-import static game.Monopoly.addControllerToStack;
+import game.Command;
+import game.Monopoly;
 
 public class UIManagerSetupGame extends UIManager {
 
@@ -9,18 +10,13 @@ public class UIManagerSetupGame extends UIManager {
     }
 
     @Override
-    public void promptMessage(StateImpl state) {
+    public void promptMessage(UIStateImpl state) {
         presenter.setupGamePromptMessage();
     }
 
     @Override
-    public void addCommandBackToList() {
-
-    }
-
-    @Override
-    public void addNextCommandToList(String command, StateImpl state) {
-        controller = factory.make(command, state);
-        addControllerToStack(controller);
+    public void addCommandToStack(String commandString, UIStateImpl state) {
+        Command command = factory.make(commandString, state);
+        Monopoly.addCommandToStack(command);
     }
 }

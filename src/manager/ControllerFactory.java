@@ -4,5 +4,5 @@ import game.Command;
 
 public interface ControllerFactory {
 
-    Command make(String controller, StateImpl stateUI);
+    Command make(String controller, UIStateImpl stateUI);
 }

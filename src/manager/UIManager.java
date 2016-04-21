@@ -1,43 +1,39 @@
 package game.manager;
 
-import game.Command;
 import game.view.Manager;
 
 public abstract class UIManager implements Manager {
 
-    private StateUI stateUI;
+    private UIState uiState;
     final ManagerUIPresenter presenter;
     final ControllerFactory factory;
-    Command controller;
 
     UIManager(ManagerUIPresenter presenter, ControllerFactory factory) {
         this.presenter = presenter;
         this.factory = factory;
     }
 
-    public void setStateUI(StateUI stateUI) {
-        this.stateUI = stateUI;
+    public void setUiState(UIState uiState) {
+        this.uiState = uiState;
     }
 
     @Override
     public void promptMessage() {
-        stateUI.promptMessage(this);
+        uiState.promptMessage(this);
     }
 
     @Override
     public void validUseCaseEntry() {
-        stateUI.validUseCaseEntry(this);
+        uiState.validUseCaseEntry(this);
     }
 
     @Override
     public void invalidEntry() {
-        stateUI.invalidEntry(this);
+        uiState.invalidEntry(this);
     }
 
-    public abstract void promptMessage(StateImpl state);
+    public abstract void promptMessage(UIStateImpl state);
 
-    public abstract void addCommandBackToList();
-
-    public abstract void addNextCommandToList(String command, StateImpl state);
+    public abstract void addCommandToStack(String commandString, UIStateImpl state);
 
 }
