@@ -28,7 +28,7 @@ public class ManagerTest {
         @Test
         public void testUserPrompt() {
             manager.promptMessage();
-            assertTrue(presenter.setupGamePromptMessage);
+            assertTrue(presenter.verifySetupGamePromptMessageCalled);
         }
 
 
@@ -58,7 +58,7 @@ public class ManagerTest {
         @Test
         public void testUserPrompt() {
             manager.promptMessage();
-            assertTrue(presenter.setupGamePromptMessage);
+            assertTrue(presenter.verifyCreatePlayerPromptMessageCalled);
         }
 
         @Test

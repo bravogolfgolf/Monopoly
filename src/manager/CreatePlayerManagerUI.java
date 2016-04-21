@@ -11,7 +11,7 @@ public class CreatePlayerManagerUI extends ManagerUI {
 
     @Override
     public void promptMessage(StateImpl state) {
-
+        presenter.createPlayerPromptMessage();
     }
 
     @Override
