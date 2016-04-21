@@ -8,8 +8,8 @@ import java.util.List;
 
 public final class Monopoly {
 
-    private static final List<Controller> list = new ArrayList<>();
-    private Controller controller;
+    private static final List<Command> list = new ArrayList<>();
+    private Command controller;
 
     public static void main(String[] args) throws IOException {
         Monopoly monopoly = new Monopoly();
@@ -31,7 +31,7 @@ public final class Monopoly {
         }
     }
 
-    public static void addControllerToStack(Controller controller) {
+    public static void addControllerToStack(Command controller) {
         list.add(controller);
     }
 }

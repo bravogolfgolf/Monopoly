@@ -3,14 +3,14 @@ package game.controllers;
 import java.util.Hashtable;
 import java.util.Map;
 
-class PresenterMock implements Presenter {
+class SetupGamePresenterMock implements Presenter {
 
     boolean verifyGetMenuMapCalled = false;
-    boolean verifyGetFormattedMessageCalled = false;
+    int verifyGetFormattedMessageCalledCount = 0;
 
     @Override
     public String getFormattedMessage() {
-        verifyGetFormattedMessageCalled = true;
+        verifyGetFormattedMessageCalledCount++;
         return null;
     }
 
@@ -18,7 +18,7 @@ class PresenterMock implements Presenter {
     public Map<Integer, String> getMenuMap() {
         verifyGetMenuMapCalled = true;
         return new Hashtable<Integer, String>() {{
-            put(1, "Cat");
+            put(1, "USA");
         }};
     }
 }

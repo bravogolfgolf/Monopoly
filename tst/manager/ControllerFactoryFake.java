@@ -1,15 +1,15 @@
 package game.manager;
 
-import game.Controller;
+import game.Command;
 import game.factories.ControllerFactoryImpl;
 
 class ControllerFactoryFake extends ControllerFactoryImpl {
 
-    boolean verifyMakeCalled = false;
+    String verifyMakeString = "";
 
     @Override
-    public Controller make(String controller) {
-        verifyMakeCalled = true;
+    public Command make(String controller) {
+        verifyMakeString = controller;
         return super.make(controller);
     }
 }

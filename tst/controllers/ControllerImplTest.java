@@ -1,84 +1,63 @@
 package game.controllers;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import game.Controller;
+import game.view.Console;
+import game.view.Manager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.IOException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(HierarchicalContextRunner.class)
 public class ControllerImplTest {
 
-    private final View view = new ConsoleDummy();
-    private final ManagerMock manager = new ManagerMock();
-    private final PresenterMock presenter = new PresenterMock();
+    private final Manager manager = new ManagerDummy();
+    private final Console console = new ConsoleDummy();
 
     public class SetupGame {
 
+        private final SetupGameViewMock view = new SetupGameViewMock(console, manager);
+        private final SetupGamePresenterMock presenter = new SetupGamePresenterMock();
         private final SetupGameMock interactor = new SetupGameMock();
 
         @Test
         public void testSetupGameControllerValidNumberInput() throws IOException {
-            Controller controller = new ControllerImplValidNumberInputStub(view, manager, interactor, presenter);
+            ControllerImpl controller = new ControllerImpl(view, interactor, presenter);
+            view.setController(controller);
             controller.execute();
 
+            assertTrue(view.verifyUserInterfacePromptCalled);
             assertTrue(interactor.verifyUserInterfaceOptionsCalled);
             assertTrue(presenter.verifyGetMenuMapCalled);
+            assertTrue(view.verifySetMapCalled);
+            assertTrue(view.verifyWriteCalled);
             assertTrue(interactor.verifyHandleCalled);
-            assertTrue(manager.verifyValidNumberEnteredCalled);
-            assertTrue(presenter.verifyGetFormattedMessageCalled);
-        }
-
-        @Test
-        public void testSetupGameControllerInValidNumberInput() throws IOException {
-            Controller controller = new ControllerImplInvalidNumberInputStub(view, manager, interactor, presenter);
-            controller.execute();
-
-            assertTrue(manager.verifyInvalidNumberEnteredCalled);
-        }
-
-        @Test
-        public void testSetupGameControllerInValidTextInput() throws IOException {
-            Controller controller = new ControllerImplInvalidTextInputStub(view, manager, interactor, presenter);
-            controller.execute();
-
-            assertTrue(manager.verifyInvalidTextEnteredCalled);
+            assertEquals(2, presenter.verifyGetFormattedMessageCalledCount);
         }
     }
 
     public class CreatePlayer {
 
+        private final CreatePlayerViewMock view = new CreatePlayerViewMock(console, manager);
+        private final CreatePlayerPresenterMock presenter = new CreatePlayerPresenterMock();
         private final CreatePlayerMock interactor = new CreatePlayerMock();
 
         @Test
         public void testCreatePlayerControllerValidNumberInput() throws IOException {
-            Controller controller = new ControllerImplValidNumberInputStub(view, manager, interactor, presenter);
+            ControllerImpl controller = new ControllerImpl(view, interactor, presenter);
+            view.setController(controller);
             controller.execute();
 
-            assertTrue(interactor.verifyAvailableTokensMessage);
+            assertTrue(view.verifyUserInterfacePromptCalled);
+            assertTrue(interactor.verifyUserInterfaceOptionsCalled);
             assertTrue(presenter.verifyGetMenuMapCalled);
+            assertTrue(view.verifySetMapCalled);
+            assertTrue(view.verifyWriteCalled);
             assertTrue(interactor.verifyHandleCalled);
-            assertTrue(manager.verifyValidNumberEnteredCalled);
-            assertTrue(presenter.verifyGetFormattedMessageCalled);
-        }
-
-        @Test
-        public void testCreatePlayerControllerInValidNumberInput() throws IOException {
-            Controller controller = new ControllerImplInvalidNumberInputStub(view, manager, interactor, presenter);
-            controller.execute();
-
-            assertTrue(manager.verifyInvalidNumberEnteredCalled);
-        }
-
-        @Test
-        public void testCreatePlayerControllerInValidTextInput() throws IOException {
-            Controller controller = new ControllerImplInvalidTextInputStub(view, manager, interactor, presenter);
-            controller.execute();
-
-            assertTrue(manager.verifyInvalidTextEnteredCalled);
+            assertEquals(2, presenter.verifyGetFormattedMessageCalledCount);
         }
     }
 }

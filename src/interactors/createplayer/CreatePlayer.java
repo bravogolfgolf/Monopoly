@@ -9,7 +9,6 @@ public class CreatePlayer implements Interactor {
     private final CreatePlayerPresenter presenter;
     private final CreatePlayerGateway player;
     private final InteractorResponse response = new InteractorResponse();
-    private InteractorRequest request;
 
     public CreatePlayer(CreatePlayerPresenter presenter, CreatePlayerGateway player) {
         this.presenter = presenter;
@@ -18,38 +17,25 @@ public class CreatePlayer implements Interactor {
 
     @Override
     public void handle(InteractorRequest request) {
-        this.request = request;
 
         if (player.playerLimitExceeded())
             exceededPlayerLimit();
-        else createPlayer();
+        else createPlayer(request);
     }
 
     private void exceededPlayerLimit() {
         presenter.exceededPlayerLimitMessage();
     }
 
-    private void createPlayer() {
+    private void createPlayer(InteractorRequest request) {
         player.create(request.string);
         response.options = new String[]{request.string};
         presenter.playerCreatedMessage(response);
     }
 
     @Override
-    public void userInterfacePrompt() {
-        presenter.createPlayerPromptMessage();
-        getUserInterfaceOptions();
-        presenter.availableTokensMessage(response);
-    }
-
-    @Override
     public void userInterfaceOptions() {
-        getUserInterfaceOptions();
-        presenter.userInterfaceOptionsMessage(response);
-    }
-
-    private void getUserInterfaceOptions(){
         response.options = player.getAvailableTokens();
-
+        presenter.availableTokensMessage(response);
     }
 }

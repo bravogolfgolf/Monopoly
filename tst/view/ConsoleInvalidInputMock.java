@@ -1,14 +1,11 @@
-package game.controllers;
-
-import game.view.Console;
+package game.view;
 
 import java.io.IOException;
 
-class ConsoleDummy implements Console{
-
+class ConsoleInvalidInputMock implements Console{
     @Override
     public String read() throws IOException {
-        return null;
+        return "0";
     }
 
     @Override

@@ -1,6 +1,6 @@
 package game.manager;
 
-import game.Controller;
+import game.Command;
 import game.Monopoly;
 
 public class CreatePlayerManager extends ManagerImpl {
@@ -11,7 +11,7 @@ public class CreatePlayerManager extends ManagerImpl {
 
     @Override
     public void addCommandBackToList() {
-        Controller controller = factory.make("CreatePlayer");
+        Command controller = factory.make("CreatePlayer");
         Monopoly.addControllerToStack(controller);
     }
 

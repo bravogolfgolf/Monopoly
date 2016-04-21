@@ -8,11 +8,6 @@ class SetupGameMock implements Interactor {
     boolean verifyUserInterfaceOptionsCalled = false;
 
     @Override
-    public void userInterfacePrompt() {
-        
-    }
-
-    @Override
     public void userInterfaceOptions() {
         verifyUserInterfaceOptionsCalled = true;
     }

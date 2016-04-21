@@ -9,7 +9,6 @@ public class SetupGame implements Interactor {
     private final SetupGamePresenter presenter;
     private final SetupGameFactory factory;
     private final InteractorResponse response = new InteractorResponse();
-    private InteractorRequest request;
 
     public SetupGame(SetupGamePresenter presenter, SetupGameFactory factory) {
         this.presenter = presenter;
@@ -18,30 +17,18 @@ public class SetupGame implements Interactor {
 
     @Override
     public void handle(InteractorRequest request) {
-        this.request = request;
-        createVersion();
+        createVersion(request);
     }
 
-    private void createVersion() {
+    private void createVersion(InteractorRequest request) {
         factory.make(request.string);
         response.options = new String[]{request.string};
         presenter.versionCreatedMessage(response);
     }
 
     @Override
-    public void userInterfacePrompt() {
-        presenter.setupGamePromptMessage();
-        getUserInterfaceOptions();
-        presenter.availableVersionsMessage(response);
-    }
-
-    @Override
     public void userInterfaceOptions() {
-        getUserInterfaceOptions();
-        presenter.userInterfaceOptionsMessage(response);
-    }
-
-    private void getUserInterfaceOptions(){
         response.options = factory.getAvailableVersions();
+        presenter.availableVersionsMessage(response);
     }
 }
