@@ -2,9 +2,9 @@ package game.manager;
 
 import static game.Monopoly.addControllerToStack;
 
-public class SetupGameUIManager extends UIManager {
+public class UIManagerSetupGame extends UIManager {
 
-    public SetupGameUIManager(ManagerUIPresenter presenter, ControllerFactory factory) {
+    public UIManagerSetupGame(ManagerUIPresenter presenter, ControllerFactory factory) {
         super(presenter, factory);
     }
 
