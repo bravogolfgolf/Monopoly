@@ -53,13 +53,6 @@ public class PresenterEnTest {
         private final InteractorResponse response = new InteractorResponse();
 
         @Test
-        public void testExceededPlayerLimitMessage() {
-            presenter.exceededPlayerLimitMessage();
-            expected = "Exceeded eight player limit.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
-        }
-
-        @Test
         public void testPlayerCreatedMessage() {
             response.options = new String[]{"Cat"};
             presenter.playerCreatedMessage(response);

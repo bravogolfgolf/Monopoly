@@ -6,7 +6,5 @@ public interface CreatePlayerPresenter  {
 
     void playerCreatedMessage(InteractorResponse response);
 
-    void exceededPlayerLimitMessage();
-
     void availableTokensMessage(InteractorResponse response);
 }

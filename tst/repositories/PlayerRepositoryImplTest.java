@@ -1,6 +1,6 @@
 package game.repositories;
 
-import game.entitiies.Token;
+import game.entities.Token;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,13 +22,12 @@ public class PlayerRepositoryImplTest {
 
     @Test
     public void testCreatePlayer() {
-        playerRepository.create("Cat");
-        assertTrue(playerRepository.count() == 1);
-    }
-
-    @Test
-    public void testGetTokens() {
         String[] tokens = playerRepository.getAvailableTokens();
         assertTrue(tokens.length == 1);
+
+        playerRepository.create("Cat");
+
+        tokens = playerRepository.getAvailableTokens();
+        assertTrue(tokens.length == 0);
     }
 }

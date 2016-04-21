@@ -6,7 +6,6 @@ import game.interactors.setupgame.SetupGamePresenter;
 public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresenter {
 
     public boolean verifyVersionCreatedMessage = false;
-    public boolean verifyExceededPlayerLimitMessage = false;
     public boolean verifyPlayerCreatedMessage = false;
     public boolean verifyAvailableTokensMessage = false;
     public boolean verifyAvailableVersionsMessageCalled=false;
@@ -19,11 +18,6 @@ public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresente
     @Override
     public void availableVersionsMessage(InteractorResponse response) {
         verifyAvailableVersionsMessageCalled = true;
-    }
-
-    @Override
-    public void exceededPlayerLimitMessage() {
-        verifyExceededPlayerLimitMessage = true;
     }
 
     @Override

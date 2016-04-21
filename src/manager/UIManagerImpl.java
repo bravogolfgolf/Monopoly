@@ -3,15 +3,23 @@ package game.manager;
 import game.Command;
 import game.Monopoly;
 
-public class UIManagerSetupGame extends UIManager {
+public class UIManagerImpl extends UIManager {
 
-    public UIManagerSetupGame(UIManagerPresenter presenter, ControllerFactory factory) {
+    public UIManagerImpl(UIManagerPresenter presenter, ControllerFactory factory) {
         super(presenter, factory);
     }
 
     @Override
     public void promptMessage(UIStateImpl state) {
-        presenter.setupGamePromptMessage();
+
+        switch (state) {
+            case SETUP_GAME:
+                presenter.setupGamePromptMessage();
+                break;
+            default:
+                presenter.createPlayerPromptMessage();
+                break;
+        }
     }
 
     @Override

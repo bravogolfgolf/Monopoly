@@ -1,6 +1,5 @@
 package game.entities;
 
-import game.entitiies.Token;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

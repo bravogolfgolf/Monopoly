@@ -5,11 +5,13 @@ import game.factories.CommandFactoryImpl;
 
 class CommandFactoryFake extends CommandFactoryImpl {
 
-    String verifyMakeString = "";
+    String verifyMakeCommand = "";
+    UIStateImpl verifyMakeState = null;
 
     @Override
     public Command make(String controller, UIStateImpl stateUI) {
-        verifyMakeString = controller;
+        verifyMakeCommand = controller;
+        verifyMakeState = stateUI;
         return super.make(controller, stateUI);
     }
 }
