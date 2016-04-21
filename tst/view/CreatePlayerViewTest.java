@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(HierarchicalContextRunner.class)
@@ -35,10 +34,8 @@ public class CreatePlayerViewTest {
 
         @Test
         public void testUserInterfacePrompt() throws IOException {
-            view.setMap(menuMap);
             view.userInterfacePrompt();
-            String expected = "Please select token for player.\n";
-            assertEquals(expected, console.verifyWriteMessage);
+            assertTrue(manager.verifyPromptMessageCalled);
         }
 
         @Test

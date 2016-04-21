@@ -38,7 +38,7 @@ public class SetupGameView implements View {
 
     @Override
     public void userInterfacePrompt() throws IOException {
-        write("Select version of game you would like to play.\n");
+        manager.promptMessage();
     }
 
     protected void parse(String line) throws IOException {

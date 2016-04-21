@@ -38,7 +38,7 @@ public class CreatePlayerView implements View {
 
     @Override
     public void userInterfacePrompt() throws IOException {
-        write("Please select token for player.\n");
+       manager.promptMessage();
     }
 
     protected void parse(String line) throws IOException {
