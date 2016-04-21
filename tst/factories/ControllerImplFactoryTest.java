@@ -8,12 +8,12 @@ import static game.manager.UIStateImpl.SETUP_GAME;
 
 public class ControllerImplFactoryTest {
 
-    private ControllerFactoryImpl controllerFactory;
+    private CommandFactoryImpl controllerFactory;
 
     @Before
     public void setUp() {
 
-        controllerFactory = new ControllerFactoryImpl();
+        controllerFactory = new CommandFactoryImpl();
     }
 
     @Test(expected = IllegalArgumentException.class)

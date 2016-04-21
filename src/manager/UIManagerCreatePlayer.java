@@ -5,7 +5,7 @@ import game.Monopoly;
 
 public class UIManagerCreatePlayer extends UIManager {
 
-    public UIManagerCreatePlayer(ManagerUIPresenter presenter, ControllerFactory factory) {
+    public UIManagerCreatePlayer(UIManagerPresenter presenter, ControllerFactory factory) {
         super(presenter, factory);
     }
 

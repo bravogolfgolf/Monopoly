@@ -17,7 +17,6 @@ public class CreatePlayerView implements View {
         this.manager = manager;
     }
 
-    @Override
     public void setController(Controller controller) {
         this.controller = controller;
     }
@@ -38,8 +37,8 @@ public class CreatePlayerView implements View {
     }
 
     @Override
-    public void userInterfacePrompt() throws IOException {
-        write("Please select token for player.\n");
+    public void userInterfacePrompt() {
+       manager.promptMessage();
     }
 
     protected void parse(String line) throws IOException {

@@ -34,7 +34,7 @@ class SetupGameViewMock extends SetupGameView {
     }
 
     @Override
-    public void userInterfacePrompt() throws IOException {
+    public void userInterfacePrompt() {
         verifyUserInterfacePromptCalled = true;
     }
 }

@@ -1,6 +1,7 @@
 package game.manager;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
+import game.presenters.PresenterEn;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,13 +9,13 @@ import org.junit.runner.RunWith;
 import static game.manager.UIStateImpl.CREATE_PLAYER_0;
 import static game.manager.UIStateImpl.SETUP_GAME;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(HierarchicalContextRunner.class)
 public class ManagerTest {
 
-    private final ControllerFactoryFake factory = new ControllerFactoryFake();
-    private final PresenterEnMock presenter = new PresenterEnMock();
+    private final CommandFactoryFake factory = new CommandFactoryFake();
+    private final PresenterEn presenter = new PresenterEn();
+    private String expected;
 
     public class SetupGame {
 
@@ -28,9 +29,9 @@ public class ManagerTest {
         @Test
         public void testUserPrompt() {
             manager.promptMessage();
-            assertTrue(presenter.verifySetupGamePromptMessageCalled);
+            expected = "Select version of game you would like to play.\n";
+            assertEquals(expected, presenter.getFormattedMessage());
         }
-
 
         @Test
         public void testValidEntry() {
@@ -58,7 +59,8 @@ public class ManagerTest {
         @Test
         public void testUserPrompt() {
             manager.promptMessage();
-            assertTrue(presenter.verifyCreatePlayerPromptMessageCalled);
+            expected = "Please select tokens for players. (Player 2 - 8)\n";
+            assertEquals(expected, presenter.getFormattedMessage());
         }
 
         @Test

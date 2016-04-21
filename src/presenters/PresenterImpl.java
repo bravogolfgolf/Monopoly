@@ -32,6 +32,7 @@ class PresenterImpl implements Presenter {
 
     void createMenuMap(String[] strings) {
         int counter = 1;
+        menuMap.clear();
         for (String string : strings) {
             menuMap.put(counter++, string);
         }

@@ -17,7 +17,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class ControllerFactoryImpl implements ControllerFactory {
+public class CommandFactoryImpl implements ControllerFactory {
 
     static Board board;
     static PlayerRepositoryImpl playerGateway;

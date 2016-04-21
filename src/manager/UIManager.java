@@ -5,10 +5,10 @@ import game.view.Manager;
 public abstract class UIManager implements Manager {
 
     private UIState uiState;
-    final ManagerUIPresenter presenter;
+    final UIManagerPresenter presenter;
     final ControllerFactory factory;
 
-    UIManager(ManagerUIPresenter presenter, ControllerFactory factory) {
+    UIManager(UIManagerPresenter presenter, ControllerFactory factory) {
         this.presenter = presenter;
         this.factory = factory;
     }

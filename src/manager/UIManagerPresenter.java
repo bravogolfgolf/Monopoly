@@ -1,6 +1,6 @@
 package game.manager;
 
-public interface ManagerUIPresenter {
+public interface UIManagerPresenter {
 
     void setupGamePromptMessage();
 
