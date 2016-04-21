@@ -1,6 +1,6 @@
 package game.manager;
 
-class PresenterEnMock implements ManagerUIPresenter {
+class PresenterEnMock implements UIManagerPresenter {
     boolean verifySetupGamePromptMessageCalled = false;
     boolean verifyCreatePlayerPromptMessageCalled = false;
 
