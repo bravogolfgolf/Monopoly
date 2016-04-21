@@ -5,7 +5,12 @@ import game.view.Manager;
 class ManagerDummy implements Manager {
 
     @Override
-    public void validEntry() {
+    public void promptMessage() {
+
+    }
+
+    @Override
+    public void validUseCaseEntry() {
 
     }
 

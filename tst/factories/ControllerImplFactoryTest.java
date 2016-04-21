@@ -3,6 +3,9 @@ package game.factories;
 import org.junit.Before;
 import org.junit.Test;
 
+import static game.manager.StateImpl.CREATE_PLAYER_0;
+import static game.manager.StateImpl.SETUP_GAME;
+
 public class ControllerImplFactoryTest {
 
     private ControllerFactoryImpl controllerFactory;
@@ -15,13 +18,13 @@ public class ControllerImplFactoryTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testControllerFactoryException() {
-        controllerFactory.make("");
+        controllerFactory.make("", SETUP_GAME);
     }
 
     @Test
     public void testMakeController() {
-        controllerFactory.make("SetupGame");
-        controllerFactory.make("CreatePlayer");
+        controllerFactory.make("SetupGame", SETUP_GAME);
+        controllerFactory.make("CreatePlayer", CREATE_PLAYER_0);
     }
 }
 

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static game.manager.StateImpl.SETUP_GAME;
+
 public final class Monopoly {
 
     private static final List<Command> list = new ArrayList<>();
@@ -20,7 +22,7 @@ public final class Monopoly {
     private void setup() {
         ControllerFactoryImpl factory = new ControllerFactoryImpl();
 
-        controller = factory.make("SetupGame");
+        controller = factory.make("SetupGame", SETUP_GAME);
         addControllerToStack(controller);
     }
 
