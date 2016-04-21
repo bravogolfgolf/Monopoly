@@ -10,7 +10,7 @@ public class SetupGameManagerUI extends ManagerUI {
 
     @Override
     public void promptMessage(StateImpl state) {
-
+        presenter.setupGamePromptMessage();
     }
 
     @Override

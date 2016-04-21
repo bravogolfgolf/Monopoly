@@ -23,6 +23,12 @@ public class PresenterEn extends PresenterImpl implements ManagerUIPresenter, Cr
     }
 
     @Override
+    public void setupGamePromptMessage() {
+        template = "Select version of game you would like to play.";
+        addMessageToBuffer(template);
+    }
+
+    @Override
     public void exceededPlayerLimitMessage() {
         template = "Exceeded eight player limit.";
         addMessageToBuffer(template);
@@ -33,6 +39,12 @@ public class PresenterEn extends PresenterImpl implements ManagerUIPresenter, Cr
         template = "Player created with %s token.";
         variables = response.options;
         addMessageToBuffer(template, variables);
+    }
+
+    @Override
+    public void createPlayerPromptMessage() {
+        template = "Please select token for player.";
+        addMessageToBuffer(template);
     }
 
     @Override
