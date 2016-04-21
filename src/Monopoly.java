@@ -1,6 +1,6 @@
 package game;
 
-import game.factories.ControllerFactoryImpl;
+import game.factories.CommandFactoryImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import static game.manager.UIStateImpl.SETUP_GAME;
 public final class Monopoly {
 
     private static final List<Command> list = new ArrayList<>();
-    private Command controller;
+    private Command command;
 
     public static void main(String[] args) throws IOException {
         Monopoly monopoly = new Monopoly();
@@ -20,16 +20,16 @@ public final class Monopoly {
     }
 
     private void setup() {
-        ControllerFactoryImpl factory = new ControllerFactoryImpl();
+        CommandFactoryImpl factory = new CommandFactoryImpl();
 
-        controller = factory.make("SetupGame", SETUP_GAME);
-        addCommandToStack(controller);
+        command = factory.make("SetupGame", SETUP_GAME);
+        addCommandToStack(command);
     }
 
     private void loop() throws IOException {
         while (list.size() > 0) {
-            controller = list.remove(0);
-            controller.execute();
+            command = list.remove(0);
+            command.execute();
         }
     }
 

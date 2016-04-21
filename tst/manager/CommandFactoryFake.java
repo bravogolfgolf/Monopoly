@@ -1,9 +1,9 @@
 package game.manager;
 
 import game.Command;
-import game.factories.ControllerFactoryImpl;
+import game.factories.CommandFactoryImpl;
 
-class ControllerFactoryFake extends ControllerFactoryImpl {
+class CommandFactoryFake extends CommandFactoryImpl {
 
     String verifyMakeString = "";
 
