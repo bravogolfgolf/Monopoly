@@ -6,7 +6,10 @@ import game.display.ConsoleImpl;
 import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.setupgame.SetupGame;
-import game.manager.*;
+import game.manager.ControllerFactory;
+import game.manager.UIManager;
+import game.manager.UIManagerImpl;
+import game.manager.UIStateImpl;
 import game.presenters.PresenterEn;
 import game.repositories.PlayerRepositoryImpl;
 import game.view.CreatePlayerView;
@@ -25,11 +28,11 @@ public class CommandFactoryImpl implements ControllerFactory {
     private final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
     private final ConsoleImpl console = new ConsoleImpl(reader, writer);
     private final PresenterEn presenter = new PresenterEn();
+    private final UIManager manager = new UIManagerImpl(presenter, this);
 
     public Command make(String controller, UIStateImpl stateUI) {
         if (controller.equals("SetupGame")) {
-            UIManager manager = new UIManagerSetupGame(presenter, this);
-            manager.setUiState(stateUI);
+            setUIState(stateUI);
             SetupGameView view = new SetupGameView(console, manager);
             SetupGameFactoryImpl factory = new SetupGameFactoryImpl();
             SetupGame interactor = new SetupGame(presenter, factory);
@@ -38,8 +41,7 @@ public class CommandFactoryImpl implements ControllerFactory {
             return command;
         }
         if (controller.equals("CreatePlayer")) {
-            UIManager manager = new UIManagerCreatePlayer(presenter, this);
-            manager.setUiState(stateUI);
+            setUIState(stateUI);
             CreatePlayerView view = new CreatePlayerView(console, manager);
             CreatePlayer interactor = new CreatePlayer(presenter, playerGateway);
             ControllerImpl command = new ControllerImpl(view, interactor, presenter);
@@ -47,5 +49,9 @@ public class CommandFactoryImpl implements ControllerFactory {
             return command;
         }
         throw new IllegalArgumentException();
+    }
+
+    private void setUIState(UIStateImpl stateUI) {
+        manager.setUiState(stateUI);
     }
 }
