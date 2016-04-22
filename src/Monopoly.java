@@ -3,9 +3,9 @@ package game;
 import game.display.ConsoleImpl;
 import game.factories.ControllerFactoryImpl;
 import game.manager.ControllerFactory;
-import game.manager.UIManager;
-import game.manager.UIManagerImpl;
-import game.manager.UIStateImpl;
+import game.manager.StateImpl;
+import game.manager.StateManager;
+import game.manager.StateManagerImpl;
 import game.presenters.PresenterEn;
 import game.view.ViewImpl;
 
@@ -26,8 +26,8 @@ final class Monopoly {
         ViewImpl view = new ViewImpl(console);
         PresenterEn presenter = new PresenterEn();
         ControllerFactory factory = new ControllerFactoryImpl(view, presenter);
-        UIManager manager = new UIManagerImpl(view,presenter,factory);
-        manager.setUiState(UIStateImpl.SETUP_GAME);
+        StateManager manager = new StateManagerImpl(view,presenter,factory);
+        manager.setState(StateImpl.SETUP_GAME);
         manager.initialize();
 
     }
