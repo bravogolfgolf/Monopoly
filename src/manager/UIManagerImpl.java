@@ -6,10 +6,6 @@ import static game.Monopoly.factory;
 
 public class UIManagerImpl extends UIManager {
 
-    public UIManagerImpl(UIManagerPresenter presenter) {
-        super(presenter);
-    }
-
     @Override
     public void promptMessage(UIStateImpl state) {
 

@@ -16,9 +16,14 @@ import static org.junit.Assert.assertEquals;
 public class ManagerTest {
 
     private final PresenterEn presenter = new PresenterEn();
-    private final UIManagerImpl manager = new UIManagerImpl(presenter);
+    private final UIManagerImpl manager = new UIManagerImpl();
     private final Controller controller = new ControllerDummy();
     private String expected;
+
+    @Before
+    public void setup() {
+        manager.setPresenter(presenter);
+    }
 
     public class SETUP_GAME {
 

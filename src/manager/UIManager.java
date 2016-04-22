@@ -1,21 +1,35 @@
 package game.manager;
 
+import game.controllers.ControllerImpl;
+import game.presenters.PresenterEn;
 import game.view.Controller;
 import game.view.Manager;
+import game.view.ViewImpl;
 
 import java.io.IOException;
 
 public abstract class UIManager implements Manager {
 
     private UIState uiState;
-    final UIManagerPresenter presenter;
-
-    UIManager(UIManagerPresenter presenter) {
-        this.presenter = presenter;
-    }
+    protected UIManagerPresenter presenter;
+    protected ControllerImpl controller;
+    private ViewImpl view;
 
     public void setUiState(UIState uiState) {
         this.uiState = uiState;
+    }
+
+    public void setPresenter(PresenterEn presenter) {
+        this.presenter = presenter;
+    }
+
+    public void setController(ControllerImpl controller) {
+        this.controller = controller;
+    }
+
+    public void setView(ViewImpl view) {
+        this.view = view;
+        this.view.setController(controller);
     }
 
     @Override
@@ -42,5 +56,4 @@ public abstract class UIManager implements Manager {
     public abstract void promptMessage(UIStateImpl state);
 
     public abstract void addControllerToStack(String commandString);
-
 }

@@ -17,7 +17,7 @@ public final class Monopoly {
     private static final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
     private static final ConsoleImpl console = new ConsoleImpl(reader, writer);
     private static final PresenterEn presenter = new PresenterEn();
-    private static final UIManager manager = new UIManagerImpl(presenter);
+    private static final UIManager manager = new UIManagerImpl();
     private static final ViewImpl view = new ViewImpl(console, manager);
     public static final ControllerFactoryImpl factory = new ControllerFactoryImpl(view, presenter);
     public static ControllerImpl controller;
@@ -25,21 +25,17 @@ public final class Monopoly {
     public static void main(String[] args) throws IOException {
         Monopoly monopoly = new Monopoly();
         monopoly.setup();
-        monopoly.loop();
     }
 
-    private void setup() {
-        manager.setUiState(UIStateImpl.SETUP_GAME);
+    private void setup() throws IOException {
         controller = factory.make("SetupGame");
-    }
+        manager.setUiState(UIStateImpl.SETUP_GAME);
+        manager.setPresenter(presenter);
+        manager.setController(controller);
+        manager.setView(view);
 
-    private void loop() throws IOException {
-        while (controller != null) {
-            view.setController(controller);
-            manager.initialize();
-            controller.execute();
-            view.read();
-        }
+        manager.initialize();
+        controller.execute();
+        view.read();
     }
-
 }
