@@ -2,7 +2,7 @@ package game.view;
 
 class CreatePlayerManagerMock implements Manager {
 
-    boolean verifyValidEntryCalled = false;
+    boolean validUseCaseEntryCalled = false;
     boolean verifyInvalidEntryCalled = false;
     boolean verifyPromptMessageCalled = false;
 
@@ -13,7 +13,7 @@ class CreatePlayerManagerMock implements Manager {
 
     @Override
     public void validUseCaseEntry() {
-        verifyValidEntryCalled = true;
+        validUseCaseEntryCalled = true;
     }
 
     @Override

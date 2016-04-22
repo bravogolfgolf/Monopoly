@@ -12,18 +12,18 @@ import java.util.Map;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(HierarchicalContextRunner.class)
-public class CreatePlayerViewTest {
+public class ViewImplTest {
 
     private final CreatePlayerManagerMock manager = new CreatePlayerManagerMock();
     private final Controller controller = new ControllerImplDummy();
     private final Map<Integer, String> menuMap = new HashMap<Integer, String>() {{
-        put(1, "Cat");
+        put(1, "Valid");
     }};
 
     public class ValidInput {
 
         private final ConsoleValidInputMock console = new ConsoleValidInputMock();
-        private final CreatePlayerView view = new CreatePlayerView(console, manager);
+        private final ViewImpl view = new ViewImpl(console, manager);
 
 
         @Before
@@ -47,14 +47,14 @@ public class CreatePlayerViewTest {
         @Test
         public void testRead() throws IOException {
             view.read();
-            assertTrue(manager.verifyValidEntryCalled);
+            assertTrue(manager.validUseCaseEntryCalled);
         }
     }
 
     public class InvalidInput {
 
         private final ConsoleInvalidInputMock console = new ConsoleInvalidInputMock();
-        private final SetupGameView view = new SetupGameView(console, manager);
+        private final ViewImpl view = new ViewImpl(console, manager);
 
         @Before
         public void setUp() {

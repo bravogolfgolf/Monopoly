@@ -12,8 +12,7 @@ import game.manager.UIManagerImpl;
 import game.manager.UIStateImpl;
 import game.presenters.PresenterEn;
 import game.repositories.PlayerRepositoryImpl;
-import game.view.CreatePlayerView;
-import game.view.SetupGameView;
+import game.view.ViewImpl;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -29,11 +28,11 @@ public class CommandFactoryImpl implements ControllerFactory {
     private final ConsoleImpl console = new ConsoleImpl(reader, writer);
     private final PresenterEn presenter = new PresenterEn();
     private final UIManager manager = new UIManagerImpl(presenter, this);
+    private final ViewImpl view = new ViewImpl(console, manager);
 
     public Command make(String controller, UIStateImpl stateUI) {
         if (controller.equals("SetupGame")) {
             setUIState(stateUI);
-            SetupGameView view = new SetupGameView(console, manager);
             SetupGameFactoryImpl factory = new SetupGameFactoryImpl();
             SetupGame interactor = new SetupGame(presenter, factory);
             ControllerImpl command = new ControllerImpl(view, interactor, presenter);
@@ -42,7 +41,6 @@ public class CommandFactoryImpl implements ControllerFactory {
         }
         if (controller.equals("CreatePlayer")) {
             setUIState(stateUI);
-            CreatePlayerView view = new CreatePlayerView(console, manager);
             CreatePlayer interactor = new CreatePlayer(presenter, playerGateway);
             ControllerImpl command = new ControllerImpl(view, interactor, presenter);
             view.setController(command);

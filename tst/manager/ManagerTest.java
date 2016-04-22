@@ -59,7 +59,7 @@ public class ManagerTest {
         @Test
         public void testUserPrompt() {
             manager.promptMessage();
-            expected = "Please select tokens for players. (Player 2 - 8)\n";
+            expected = "Please select tokens for players. (Players 2 - 8)\n";
             assertEquals(expected, presenter.getFormattedMessage());
             assertEquals("", factory.verifyMakeCommand);
             assertEquals(null, factory.verifyMakeState);

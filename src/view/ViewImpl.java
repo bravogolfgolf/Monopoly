@@ -5,14 +5,14 @@ import game.controllers.View;
 import java.io.IOException;
 import java.util.Map;
 
-public class SetupGameView implements View {
+public class ViewImpl implements View {
 
     private final Console console;
     private final Manager manager;
     private Map<Integer, String> menuMap;
     private Controller controller;
 
-    public SetupGameView(Console console, Manager manager) {
+    public ViewImpl(Console console, Manager manager) {
         this.console = console;
         this.manager = manager;
     }
@@ -38,7 +38,7 @@ public class SetupGameView implements View {
 
     @Override
     public void userInterfacePrompt() {
-        manager.promptMessage();
+       manager.promptMessage();
     }
 
     protected void parse(String line) throws IOException {

@@ -37,7 +37,7 @@ public class PresenterEn extends PresenterImpl implements UIManagerPresenter, Cr
 
     @Override
     public void createPlayerPromptMessage() {
-        template = "Please select tokens for players. (Player 2 - 8)";
+        template = "Please select tokens for players. (Players 2 - 8)";
         addMessageToBuffer(template);
     }
 
