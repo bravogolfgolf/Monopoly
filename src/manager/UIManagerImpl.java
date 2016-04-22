@@ -22,7 +22,7 @@ public class UIManagerImpl extends UIManager {
     }
 
     @Override
-    public void addCommandToStack(String commandString) {
-        Monopoly.addCommandToStack(commandString);
+    public void addControllerToStack(String controller) {
+        Monopoly.addControllerToStack(controller);
     }
 }

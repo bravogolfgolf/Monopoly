@@ -1,12 +1,12 @@
 package game;
 
+import game.controllers.ControllerImpl;
 import game.display.ConsoleImpl;
-import game.factories.CommandFactoryImpl;
+import game.factories.ControllerFactoryImpl;
 import game.manager.UIManager;
 import game.manager.UIManagerImpl;
 import game.manager.UIStateImpl;
 import game.presenters.PresenterEn;
-import game.view.Controller;
 import game.view.ViewImpl;
 
 import java.io.*;
@@ -21,8 +21,8 @@ public final class Monopoly {
     private static final PresenterEn presenter = new PresenterEn();
     private static final UIManager manager = new UIManagerImpl(presenter);
     private static final ViewImpl view = new ViewImpl(console, manager);
-    private static final CommandFactoryImpl factory = new CommandFactoryImpl(view, presenter);
-    public static final List<Command> list = new ArrayList<>();
+    private static final ControllerFactoryImpl factory = new ControllerFactoryImpl(view, presenter);
+    public static final List<ControllerImpl> list = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         Monopoly monopoly = new Monopoly();
@@ -32,20 +32,20 @@ public final class Monopoly {
 
     private void setup() {
         manager.setUiState(UIStateImpl.SETUP_GAME);
-        addCommandToStack("SetupGame");
-        view.setController((Controller) list.get(0));
+        addControllerToStack("SetupGame");
+        view.setController(list.get(0));
     }
 
     private void loop() throws IOException {
         while (list.size() > 0) {
-            Command command = list.remove(0);
-            view.setController((Controller) command);
+            ControllerImpl controller = list.remove(0);
+            view.setController(controller);
             view.userInterfacePrompt();
-            command.execute();
+            controller.execute();
         }
     }
 
-    public static void addCommandToStack(String commandString) {
+    public static void addControllerToStack(String commandString) {
         list.add(factory.make(commandString));
     }
 }

@@ -9,12 +9,12 @@ public class ControllerImplFactoryTest {
 
     private final View view = new ViewDummy();
     private final PresenterEn presenter = new PresenterEnDummy();
-    private CommandFactoryImpl controllerFactory;
+    private ControllerFactoryImpl controllerFactory;
 
     @Before
     public void setUp() {
 
-        controllerFactory = new CommandFactoryImpl(view, presenter);
+        controllerFactory = new ControllerFactoryImpl(view, presenter);
     }
 
     @Test(expected = IllegalArgumentException.class)

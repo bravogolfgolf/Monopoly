@@ -32,6 +32,6 @@ public abstract class UIManager implements Manager {
 
     public abstract void promptMessage(UIStateImpl state);
 
-    public abstract void addCommandToStack(String commandString);
+    public abstract void addControllerToStack(String commandString);
 
 }
