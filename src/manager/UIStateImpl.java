@@ -25,11 +25,6 @@ public enum UIStateImpl implements UIState {
             manager.setUiState(CREATE_PLAYER_0);
             manager.initialize();
         }
-
-        @Override
-        public void invalidEntry(UIManager manager) throws IOException {
-            manager.initialize();
-        }
     },
 
     CREATE_PLAYER_0 {
@@ -50,11 +45,6 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_1);
-            manager.initialize();
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) throws IOException {
             manager.initialize();
         }
     },
@@ -80,11 +70,6 @@ public enum UIStateImpl implements UIState {
             manager.initialize();
 
         }
-
-        @Override
-        public void invalidEntry(UIManager manager) throws IOException {
-            manager.initialize();
-        }
     },
 
     CREATE_PLAYER_2 {
@@ -105,11 +90,6 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_3);
-            manager.initialize();
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) throws IOException {
             manager.initialize();
         }
     },
@@ -134,11 +114,6 @@ public enum UIStateImpl implements UIState {
             manager.setUiState(CREATE_PLAYER_4);
             manager.initialize();
         }
-
-        @Override
-        public void invalidEntry(UIManager manager) throws IOException {
-            manager.initialize();
-        }
     },
 
     CREATE_PLAYER_4 {
@@ -159,11 +134,6 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_5);
-            manager.initialize();
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) throws IOException {
             manager.initialize();
         }
     },
@@ -188,11 +158,6 @@ public enum UIStateImpl implements UIState {
             manager.setUiState(CREATE_PLAYER_6);
             manager.initialize();
         }
-
-        @Override
-        public void invalidEntry(UIManager manager) throws IOException {
-            manager.initialize();
-        }
     },
 
     CREATE_PLAYER_6 {
@@ -213,11 +178,6 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_7);
-            manager.initialize();
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) throws IOException {
             manager.initialize();
         }
     },
@@ -241,11 +201,6 @@ public enum UIStateImpl implements UIState {
         public void validTextEntry(UIManager manager) {
             manager.setUiState(NEXT);
         }
-
-        @Override
-        public void invalidEntry(UIManager manager) throws IOException {
-            manager.initialize();
-        }
     },
 
     NEXT {
@@ -261,11 +216,6 @@ public enum UIStateImpl implements UIState {
 
         @Override
         public void validTextEntry(UIManager manager) {
-
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) {
 
         }
     }

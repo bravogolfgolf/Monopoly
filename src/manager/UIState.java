@@ -9,6 +9,4 @@ interface UIState {
     void validNumber(UIManager manager) throws IOException;
 
     void validTextEntry(UIManager manager) throws IOException;
-
-    void invalidEntry(UIManager manager) throws IOException;
 }
