@@ -12,11 +12,6 @@ class ViewDummy implements View {
     }
 
     @Override
-    public void read() throws IOException {
-
-    }
-
-    @Override
     public void write(String text) throws IOException {
 
     }

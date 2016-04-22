@@ -33,12 +33,6 @@ public class ViewImplTest {
         }
 
         @Test
-        public void testUserInterfacePrompt() {
-            view.userInterfacePrompt();
-            assertTrue(manager.verifyPromptMessageCalled);
-        }
-
-        @Test
         public void testWrite() throws IOException {
             view.write("");
             assertTrue(console.verifyWriteCalled);

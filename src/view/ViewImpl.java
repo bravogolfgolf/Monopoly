@@ -26,7 +26,6 @@ public class ViewImpl implements View {
         this.menuMap = menuMap;
     }
 
-    @Override
     public void read() throws IOException {
         parse(console.read());
     }
@@ -34,10 +33,6 @@ public class ViewImpl implements View {
     @Override
     public void write(String text) throws IOException {
         console.write(text);
-    }
-
-    public void userInterfacePrompt() {
-        manager.promptMessage();
     }
 
     protected void parse(String line) throws IOException {

@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(HierarchicalContextRunner.class)
@@ -33,8 +32,6 @@ public class ControllerImplTest {
             assertTrue(presenter.verifyGetMenuMapCalled);
             assertTrue(view.verifySetMapCalled);
             assertTrue(view.verifyWriteCalled);
-            assertTrue(interactor.verifyHandleCalled);
-            assertEquals(2, presenter.verifyGetFormattedMessageCalledCount);
         }
     }
 
@@ -54,8 +51,6 @@ public class ControllerImplTest {
             assertTrue(presenter.verifyGetMenuMapCalled);
             assertTrue(view.verifySetMapCalled);
             assertTrue(view.verifyWriteCalled);
-            assertTrue(interactor.verifyHandleCalled);
-            assertEquals(2, presenter.verifyGetFormattedMessageCalledCount);
         }
     }
 }

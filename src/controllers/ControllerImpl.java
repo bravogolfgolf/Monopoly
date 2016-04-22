@@ -21,7 +21,6 @@ public class ControllerImpl implements Controller {
         interactor.userInterfaceOptions();
         view.setMap(presenter.getMenuMap());
         updateView();
-        view.read();
     }
 
     private void updateView() throws IOException {

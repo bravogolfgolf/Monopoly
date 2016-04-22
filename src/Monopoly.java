@@ -33,15 +33,15 @@ public final class Monopoly {
     private void setup() {
         manager.setUiState(UIStateImpl.SETUP_GAME);
         addControllerToStack("SetupGame");
-        view.setController(list.get(0));
     }
 
     private void loop() throws IOException {
         while (list.size() > 0) {
             ControllerImpl controller = list.remove(0);
             view.setController(controller);
-            view.userInterfacePrompt();
+            manager.promptMessage();
             controller.execute();
+            view.read();
         }
     }
 
