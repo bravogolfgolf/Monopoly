@@ -1,6 +1,5 @@
 package game.manager;
 
-import game.factories.ControllerFactoryImpl;
 import game.presenters.PresenterEn;
 import game.view.ViewImpl;
 
@@ -8,7 +7,7 @@ import java.io.IOException;
 
 public class UIManagerImpl extends UIManager {
 
-    public UIManagerImpl(ViewImpl view, PresenterEn presenter, ControllerFactoryImpl factory) {
+    public UIManagerImpl(ViewImpl view, PresenterEn presenter, ControllerFactory factory) {
         super(view, presenter, factory);
     }
 

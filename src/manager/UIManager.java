@@ -1,7 +1,5 @@
 package game.manager;
 
-import game.controllers.ControllerImpl;
-import game.factories.ControllerFactoryImpl;
 import game.presenters.PresenterEn;
 import game.view.Manager;
 import game.view.ViewImpl;
@@ -13,10 +11,10 @@ public abstract class UIManager implements Manager {
     private UIState uiState;
     final ViewImpl view;
     final PresenterEn presenter;
-    final ControllerFactoryImpl factory;
-    ControllerImpl controller;
+    final ControllerFactory factory;
+    Controller controller;
 
-    UIManager(ViewImpl view, PresenterEn presenter, ControllerFactoryImpl factory) {
+    UIManager(ViewImpl view, PresenterEn presenter, ControllerFactory factory) {
         this.view = view;
         this.presenter = presenter;
         this.factory = factory;
