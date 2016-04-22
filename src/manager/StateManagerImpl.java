@@ -2,9 +2,9 @@ package game.manager;
 
 import java.io.IOException;
 
-public class UIManagerImpl extends UIManager {
+public class StateManagerImpl extends StateManager {
 
-    public UIManagerImpl(ManagerView view, ManagerPresenter presenter, ControllerFactory factory) {
+    public StateManagerImpl(ManagerView view, ManagerPresenter presenter, ControllerFactory factory) {
         super(view, presenter, factory);
     }
 

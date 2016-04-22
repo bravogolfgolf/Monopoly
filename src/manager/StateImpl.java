@@ -2,11 +2,11 @@ package game.manager;
 
 import java.io.IOException;
 
-public enum UIStateImpl implements UIState {
+public enum StateImpl implements State {
 
     SETUP_GAME {
         @Override
-        public void initialize(UIManager manager) throws IOException {
+        public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("SetupGame");
             manager.createController("SetupGame");
             manager.setViewManager();
@@ -15,20 +15,20 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
-        public void validNumber(UIManager manager) throws IOException {
+        public void validNumber(StateManager manager) throws IOException {
             manager.initialize();
         }
 
         @Override
-        public void validTextEntry(UIManager manager) throws IOException {
-            manager.setUiState(CREATE_PLAYER_0);
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_0);
             manager.initialize();
         }
     },
 
     CREATE_PLAYER_0 {
         @Override
-        public void initialize(UIManager manager) throws IOException {
+        public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_0");
             manager.createController("CreatePlayer");
             manager.executeController();
@@ -36,20 +36,20 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
-        public void validNumber(UIManager manager) throws IOException {
+        public void validNumber(StateManager manager) throws IOException {
             manager.initialize();
         }
 
         @Override
-        public void validTextEntry(UIManager manager) throws IOException {
-            manager.setUiState(CREATE_PLAYER_1);
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_1);
             manager.initialize();
         }
     },
 
     CREATE_PLAYER_1 {
         @Override
-        public void initialize(UIManager manager) throws IOException {
+        public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_1");
             manager.createController("CreatePlayer");
             manager.executeController();
@@ -57,13 +57,13 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
-        public void validNumber(UIManager manager) throws IOException {
+        public void validNumber(StateManager manager) throws IOException {
             manager.initialize();
         }
 
         @Override
-        public void validTextEntry(UIManager manager) throws IOException {
-            manager.setUiState(CREATE_PLAYER_2);
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_2);
             manager.initialize();
 
         }
@@ -71,7 +71,7 @@ public enum UIStateImpl implements UIState {
 
     CREATE_PLAYER_2 {
         @Override
-        public void initialize(UIManager manager) throws IOException {
+        public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_2");
             manager.createController("CreatePlayer");
             manager.executeController();
@@ -79,20 +79,20 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
-        public void validNumber(UIManager manager) {
-            manager.setUiState(NEXT);
+        public void validNumber(StateManager manager) {
+            manager.setState(NEXT);
         }
 
         @Override
-        public void validTextEntry(UIManager manager) throws IOException {
-            manager.setUiState(CREATE_PLAYER_3);
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_3);
             manager.initialize();
         }
     },
 
     CREATE_PLAYER_3 {
         @Override
-        public void initialize(UIManager manager) throws IOException {
+        public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_3");
             manager.createController("CreatePlayer");
             manager.executeController();
@@ -100,20 +100,20 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
-        public void validNumber(UIManager manager) {
-            manager.setUiState(NEXT);
+        public void validNumber(StateManager manager) {
+            manager.setState(NEXT);
         }
 
         @Override
-        public void validTextEntry(UIManager manager) throws IOException {
-            manager.setUiState(CREATE_PLAYER_4);
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_4);
             manager.initialize();
         }
     },
 
     CREATE_PLAYER_4 {
         @Override
-        public void initialize(UIManager manager) throws IOException {
+        public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_4");
             manager.createController("CreatePlayer");
             manager.executeController();
@@ -121,20 +121,20 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
-        public void validNumber(UIManager manager) {
-            manager.setUiState(NEXT);
+        public void validNumber(StateManager manager) {
+            manager.setState(NEXT);
         }
 
         @Override
-        public void validTextEntry(UIManager manager) throws IOException {
-            manager.setUiState(CREATE_PLAYER_5);
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_5);
             manager.initialize();
         }
     },
 
     CREATE_PLAYER_5 {
         @Override
-        public void initialize(UIManager manager) throws IOException {
+        public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_5");
             manager.createController("CreatePlayer");
             manager.executeController();
@@ -142,20 +142,20 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
-        public void validNumber(UIManager manager) {
-            manager.setUiState(NEXT);
+        public void validNumber(StateManager manager) {
+            manager.setState(NEXT);
         }
 
         @Override
-        public void validTextEntry(UIManager manager) throws IOException {
-            manager.setUiState(CREATE_PLAYER_6);
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_6);
             manager.initialize();
         }
     },
 
     CREATE_PLAYER_6 {
         @Override
-        public void initialize(UIManager manager) throws IOException {
+        public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_6");
             manager.createController("CreatePlayer");
             manager.executeController();
@@ -163,20 +163,20 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
-        public void validNumber(UIManager manager) {
-            manager.setUiState(NEXT);
+        public void validNumber(StateManager manager) {
+            manager.setState(NEXT);
         }
 
         @Override
-        public void validTextEntry(UIManager manager) throws IOException {
-            manager.setUiState(CREATE_PLAYER_7);
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_7);
             manager.initialize();
         }
     },
 
     CREATE_PLAYER_7 {
         @Override
-        public void initialize(UIManager manager) throws IOException {
+        public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_7");
             manager.createController("CreatePlayer");
             manager.executeController();
@@ -184,29 +184,29 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
-        public void validNumber(UIManager manager) {
-            manager.setUiState(NEXT);
+        public void validNumber(StateManager manager) {
+            manager.setState(NEXT);
         }
 
         @Override
-        public void validTextEntry(UIManager manager) {
-            manager.setUiState(NEXT);
+        public void validTextEntry(StateManager manager) {
+            manager.setState(NEXT);
         }
     },
 
     NEXT {
         @Override
-        public void initialize(UIManager manager) {
+        public void initialize(StateManager manager) {
 
         }
 
         @Override
-        public void validNumber(UIManager manager) {
+        public void validNumber(StateManager manager) {
 
         }
 
         @Override
-        public void validTextEntry(UIManager manager) {
+        public void validTextEntry(StateManager manager) {
 
         }
     }

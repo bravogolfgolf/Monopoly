@@ -4,32 +4,32 @@ import game.view.Manager;
 
 import java.io.IOException;
 
-public abstract class UIManager implements Manager {
+public abstract class StateManager implements Manager {
 
-    private UIState uiState;
+    private State state;
     final ManagerView view;
     final ManagerPresenter presenter;
     final ControllerFactory factory;
     Controller controller;
 
-    UIManager(ManagerView view, ManagerPresenter presenter, ControllerFactory factory) {
+    StateManager(ManagerView view, ManagerPresenter presenter, ControllerFactory factory) {
         this.view = view;
         this.presenter = presenter;
         this.factory = factory;
     }
 
-    public void setUiState(UIState uiState) {
-        this.uiState = uiState;
+    public void setState(State state) {
+        this.state = state;
     }
 
     public void initialize() throws IOException {
-        uiState.initialize(this);
+        state.initialize(this);
     }
 
     @Override
     public void validTextEntry(String result) throws IOException {
         controller.handle(result);
-        uiState.validTextEntry(this);
+        state.validTextEntry(this);
     }
 
     @Override
@@ -39,7 +39,7 @@ public abstract class UIManager implements Manager {
 
     @Override
     public void validNumber() throws IOException {
-        uiState.validNumber(this);
+        state.validNumber(this);
     }
 
     public abstract void promptMessage(String state);
