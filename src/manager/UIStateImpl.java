@@ -1,251 +1,212 @@
 package game.manager;
 
+import java.io.IOException;
+
 public enum UIStateImpl implements UIState {
 
     SETUP_GAME {
         @Override
-        public void promptMessage(UIManager manager) {
+        public void initialize(UIManager manager) throws IOException {
             manager.promptMessage(SETUP_GAME);
+            manager.createController("SetupGame");
+            manager.setViewManager();
+            manager.executeController();
+            manager.readView();
         }
 
         @Override
-        public void zeroEntered(UIManager manager) {
-            manager.setUiState(SETUP_GAME);
-            manager.addControllerToStack("SetupGame");
+        public void validNumber(UIManager manager) throws IOException {
+            manager.initialize();
         }
 
         @Override
-        public void validUseCaseEntry(UIManager manager) {
+        public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_0);
-            manager.addControllerToStack("CreatePlayer");
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) {
-            manager.setUiState(SETUP_GAME);
-            manager.addControllerToStack("SetupGame");
+            manager.initialize();
         }
     },
 
     CREATE_PLAYER_0 {
         @Override
-        public void promptMessage(UIManager manager) {
+        public void initialize(UIManager manager) throws IOException {
             manager.promptMessage(CREATE_PLAYER_0);
+            manager.createController("CreatePlayer");
+            manager.executeController();
+            manager.readView();
         }
 
         @Override
-        public void zeroEntered(UIManager manager) {
-            manager.setUiState(CREATE_PLAYER_0);
-            manager.addControllerToStack("CreatePlayer");
+        public void validNumber(UIManager manager) throws IOException {
+            manager.initialize();
         }
 
         @Override
-        public void validUseCaseEntry(UIManager manager) {
+        public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_1);
-            manager.addControllerToStack("CreatePlayer");
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) {
-            manager.setUiState(CREATE_PLAYER_0);
-            manager.addControllerToStack("CreatePlayer");
+            manager.initialize();
         }
     },
 
     CREATE_PLAYER_1 {
         @Override
-        public void promptMessage(UIManager manager) {
+        public void initialize(UIManager manager) throws IOException {
             manager.promptMessage(CREATE_PLAYER_1);
+            manager.createController("CreatePlayer");
+            manager.executeController();
+            manager.readView();
         }
 
         @Override
-        public void zeroEntered(UIManager manager) {
-            manager.setUiState(CREATE_PLAYER_1);
-            manager.addControllerToStack("CreatePlayer");
+        public void validNumber(UIManager manager) throws IOException {
+            manager.initialize();
         }
 
         @Override
-        public void validUseCaseEntry(UIManager manager) {
+        public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_2);
-            manager.addControllerToStack("CreatePlayer");
+            manager.initialize();
 
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) {
-            manager.setUiState(CREATE_PLAYER_1);
-            manager.addControllerToStack("CreatePlayer");
         }
     },
 
     CREATE_PLAYER_2 {
         @Override
-        public void promptMessage(UIManager manager) {
+        public void initialize(UIManager manager) throws IOException {
             manager.promptMessage(CREATE_PLAYER_2);
+            manager.createController("CreatePlayer");
+            manager.executeController();
+            manager.readView();
         }
 
         @Override
-        public void zeroEntered(UIManager manager) {
+        public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-//            manager.addControllerToStack("Next");
         }
 
         @Override
-        public void validUseCaseEntry(UIManager manager) {
+        public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_3);
-            manager.addControllerToStack("CreatePlayer");
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) {
-            manager.setUiState(CREATE_PLAYER_2);
-            manager.addControllerToStack("CreatePlayer");
+            manager.initialize();
         }
     },
 
     CREATE_PLAYER_3 {
         @Override
-        public void promptMessage(UIManager manager) {
+        public void initialize(UIManager manager) throws IOException {
             manager.promptMessage(CREATE_PLAYER_3);
+            manager.createController("CreatePlayer");
+            manager.executeController();
+            manager.readView();
         }
 
         @Override
-        public void zeroEntered(UIManager manager) {
+        public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-//            manager.addControllerToStack("Next");
         }
 
         @Override
-        public void validUseCaseEntry(UIManager manager) {
+        public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_4);
-            manager.addControllerToStack("CreatePlayer");
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) {
-            manager.setUiState(CREATE_PLAYER_3);
-            manager.addControllerToStack("CreatePlayer");
+            manager.initialize();
         }
     },
 
     CREATE_PLAYER_4 {
         @Override
-        public void promptMessage(UIManager manager) {
+        public void initialize(UIManager manager) throws IOException {
             manager.promptMessage(CREATE_PLAYER_4);
+            manager.createController("CreatePlayer");
+            manager.executeController();
+            manager.readView();
         }
 
         @Override
-        public void zeroEntered(UIManager manager) {
+        public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-//            manager.addControllerToStack("Next");
         }
 
         @Override
-        public void validUseCaseEntry(UIManager manager) {
+        public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_5);
-            manager.addControllerToStack("CreatePlayer");
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) {
-            manager.setUiState(CREATE_PLAYER_4);
-            manager.addControllerToStack("CreatePlayer");
+            manager.initialize();
         }
     },
 
     CREATE_PLAYER_5 {
         @Override
-        public void promptMessage(UIManager manager) {
+        public void initialize(UIManager manager) throws IOException {
             manager.promptMessage(CREATE_PLAYER_5);
+            manager.createController("CreatePlayer");
+            manager.executeController();
+            manager.readView();
         }
 
         @Override
-        public void zeroEntered(UIManager manager) {
+        public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-//            manager.addControllerToStack("Next");
         }
 
         @Override
-        public void validUseCaseEntry(UIManager manager) {
+        public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_6);
-            manager.addControllerToStack("CreatePlayer");
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) {
-            manager.setUiState(CREATE_PLAYER_5);
-            manager.addControllerToStack("CreatePlayer");
+            manager.initialize();
         }
     },
 
     CREATE_PLAYER_6 {
         @Override
-        public void promptMessage(UIManager manager) {
+        public void initialize(UIManager manager) throws IOException {
             manager.promptMessage(CREATE_PLAYER_6);
+            manager.createController("CreatePlayer");
+            manager.executeController();
+            manager.readView();
         }
 
         @Override
-        public void zeroEntered(UIManager manager) {
+        public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-//            manager.addControllerToStack("Next");
         }
 
         @Override
-        public void validUseCaseEntry(UIManager manager) {
+        public void validTextEntry(UIManager manager) throws IOException {
             manager.setUiState(CREATE_PLAYER_7);
-            manager.addControllerToStack("CreatePlayer");
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) {
-            manager.setUiState(CREATE_PLAYER_6);
-            manager.addControllerToStack("CreatePlayer");
+            manager.initialize();
         }
     },
 
     CREATE_PLAYER_7 {
         @Override
-        public void promptMessage(UIManager manager) {
+        public void initialize(UIManager manager) throws IOException {
             manager.promptMessage(CREATE_PLAYER_7);
+            manager.createController("CreatePlayer");
+            manager.executeController();
+            manager.readView();
         }
 
         @Override
-        public void zeroEntered(UIManager manager) {
+        public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-//            manager.addControllerToStack("Next");
         }
 
         @Override
-        public void validUseCaseEntry(UIManager manager) {
+        public void validTextEntry(UIManager manager) {
             manager.setUiState(NEXT);
-//            manager.addControllerToStack("Next");
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) {
-            manager.setUiState(CREATE_PLAYER_7);
-            manager.addControllerToStack("CreatePlayer");
         }
     },
 
     NEXT {
         @Override
-        public void promptMessage(UIManager manager) {
+        public void initialize(UIManager manager) {
 
         }
 
         @Override
-        public void zeroEntered(UIManager manager) {
+        public void validNumber(UIManager manager) {
 
         }
 
         @Override
-        public void validUseCaseEntry(UIManager manager) {
-
-        }
-
-        @Override
-        public void invalidEntry(UIManager manager) {
+        public void validTextEntry(UIManager manager) {
 
         }
     }

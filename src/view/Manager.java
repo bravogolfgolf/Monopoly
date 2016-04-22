@@ -1,12 +1,12 @@
 package game.view;
 
+import java.io.IOException;
+
 public interface Manager {
 
-    void promptMessage();
+    void validTextEntry(String result) throws IOException;
 
-    void validUseCaseEntry();
+    void invalidEntry() throws IOException;
 
-    void invalidEntry();
-
-    void zeroEntered();
+    void validNumber() throws IOException;
 }

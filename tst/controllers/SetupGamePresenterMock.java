@@ -6,11 +6,9 @@ import java.util.Map;
 class SetupGamePresenterMock implements Presenter {
 
     boolean verifyGetMenuMapCalled = false;
-    int verifyGetFormattedMessageCalledCount = 0;
 
     @Override
     public String getFormattedMessage() {
-        verifyGetFormattedMessageCalledCount++;
         return null;
     }
 

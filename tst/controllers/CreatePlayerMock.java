@@ -4,7 +4,6 @@ import game.interactors.InteractorRequest;
 
 class CreatePlayerMock implements Interactor {
 
-    boolean verifyHandleCalled = false;
     boolean verifyUserInterfaceOptionsCalled = false;
 
     @Override
@@ -14,6 +13,5 @@ class CreatePlayerMock implements Interactor {
 
     @Override
     public void handle(InteractorRequest request) {
-        verifyHandleCalled = true;
     }
 }

@@ -8,9 +8,11 @@ import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.setupgame.SetupGame;
 import game.interactors.setupgame.SetupGamePresenter;
+import game.manager.Controller;
+import game.manager.ControllerFactory;
 import game.repositories.PlayerRepositoryImpl;
 
-public class ControllerFactoryImpl {
+public class ControllerFactoryImpl implements ControllerFactory {
 
     static Board board;
     static PlayerRepositoryImpl playerGateway;
@@ -22,7 +24,8 @@ public class ControllerFactoryImpl {
         this.presenter = presenter;
     }
 
-    public ControllerImpl make(String controller) {
+    @Override
+    public Controller make(String controller) {
         if (controller.equals("SetupGame")) {
             SetupGameFactoryImpl factory = new SetupGameFactoryImpl();
             SetupGame interactor = new SetupGame((SetupGamePresenter) presenter, factory);

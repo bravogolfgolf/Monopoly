@@ -1,7 +1,7 @@
 package game.controllers;
 
 import game.interactors.InteractorRequest;
-import game.view.Controller;
+import game.manager.Controller;
 
 import java.io.IOException;
 
@@ -17,17 +17,18 @@ public class ControllerImpl implements Controller {
         this.presenter = presenter;
     }
 
+    @Override
     public void execute() throws IOException {
         interactor.userInterfaceOptions();
         view.setMap(presenter.getMenuMap());
         updateView();
-        view.read();
     }
 
     private void updateView() throws IOException {
         view.write(presenter.getFormattedMessage());
     }
 
+    @Override
     public void handle(String text) throws IOException {
         InteractorRequest request = new InteractorRequest();
         request.string = text;

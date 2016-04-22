@@ -15,7 +15,6 @@ import static org.junit.Assert.assertTrue;
 public class ViewImplTest {
 
     private final CreatePlayerManagerMock manager = new CreatePlayerManagerMock();
-    private final Controller controller = new ControllerImplDummy();
     private final Map<Integer, String> menuMap = new HashMap<Integer, String>() {{
         put(1, "Valid");
     }};
@@ -23,19 +22,13 @@ public class ViewImplTest {
     public class ValidUseCaseInput {
 
         private final ConsoleValidUseCaseInputMock console = new ConsoleValidUseCaseInputMock();
-        private final ViewImpl view = new ViewImpl(console, manager);
+        private final ViewImpl view = new ViewImpl(console);
 
 
         @Before
         public void setUp() {
             view.setMap(menuMap);
-            view.setController(controller);
-        }
-
-        @Test
-        public void testUserInterfacePrompt() {
-            view.userInterfacePrompt();
-            assertTrue(manager.verifyPromptMessageCalled);
+            view.setManager(manager);
         }
 
         @Test
@@ -54,12 +47,12 @@ public class ViewImplTest {
     public class zeroEntered {
 
         private final ConsoleZeroEnteredMock console = new ConsoleZeroEnteredMock();
-        private final ViewImpl view = new ViewImpl(console, manager);
+        private final ViewImpl view = new ViewImpl(console);
 
         @Before
         public void setUp() {
             view.setMap(menuMap);
-            view.setController(controller);
+            view.setManager(manager);
         }
 
         @Test
@@ -73,12 +66,12 @@ public class ViewImplTest {
     public class InvalidInput {
 
         private final ConsoleInvalidInputMock console = new ConsoleInvalidInputMock();
-        private final ViewImpl view = new ViewImpl(console, manager);
+        private final ViewImpl view = new ViewImpl(console);
 
         @Before
         public void setUp() {
             view.setMap(menuMap);
-            view.setController(controller);
+            view.setManager(manager);
         }
 
         @Test

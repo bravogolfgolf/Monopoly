@@ -1,12 +1,12 @@
 package game.manager;
 
+import java.io.IOException;
+
 interface UIState {
 
-    void promptMessage(UIManager manager);
+    void initialize(UIManager manager) throws IOException;
 
-    void zeroEntered(UIManager manager);
+    void validNumber(UIManager manager) throws IOException;
 
-    void validUseCaseEntry(UIManager manager);
-
-    void invalidEntry(UIManager manager);
+    void validTextEntry(UIManager manager) throws IOException;
 }

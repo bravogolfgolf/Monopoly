@@ -1,11 +1,14 @@
 package game.manager;
 
-import game.Monopoly;
+import game.presenters.PresenterEn;
+import game.view.ViewImpl;
+
+import java.io.IOException;
 
 public class UIManagerImpl extends UIManager {
 
-    public UIManagerImpl(UIManagerPresenter presenter) {
-        super(presenter);
+    public UIManagerImpl(ViewImpl view, PresenterEn presenter, ControllerFactory factory) {
+        super(view, presenter, factory);
     }
 
     @Override
@@ -26,7 +29,22 @@ public class UIManagerImpl extends UIManager {
     }
 
     @Override
-    public void addControllerToStack(String controller) {
-        Monopoly.addControllerToStack(controller);
+    public void createController(String controller) {
+        super.controller = factory.make(controller);
+    }
+
+    @Override
+    public void executeController() throws IOException {
+        super.controller.execute();
+    }
+
+    @Override
+    public void setViewManager() {
+        super.view.setManager(this);
+    }
+
+    @Override
+    public void readView() throws IOException {
+        super.view.read();
     }
 }
