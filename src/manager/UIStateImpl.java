@@ -1,29 +1,36 @@
 package game.manager;
 
+import java.io.IOException;
+
 public enum UIStateImpl implements UIState {
 
     SETUP_GAME {
         @Override
-        public void initialize(UIManager manager) {
+        public void initialize(UIManager manager) throws IOException {
             manager.promptMessage(SETUP_GAME);
+            manager.createController("SetupGame");
+            manager.setViewManager();
+            manager.setViewController();
+            manager.executeController();
+            manager.readView();
         }
 
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(SETUP_GAME);
-            manager.addControllerToStack("SetupGame");
+            manager.createController("SetupGame");
         }
 
         @Override
         public void validTextEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_0);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(SETUP_GAME);
-            manager.addControllerToStack("SetupGame");
+            manager.createController("SetupGame");
         }
     },
 
@@ -36,19 +43,19 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_0);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
 
         @Override
         public void validTextEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_1);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_0);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
     },
 
@@ -61,20 +68,20 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_1);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
 
         @Override
         public void validTextEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_2);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
 
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_1);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
     },
 
@@ -87,19 +94,18 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            UIManager.controller = null;
         }
 
         @Override
         public void validTextEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_3);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_2);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
     },
 
@@ -112,19 +118,18 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            UIManager.controller = null;
         }
 
         @Override
         public void validTextEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_4);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_3);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
     },
 
@@ -137,19 +142,18 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            UIManager.controller = null;
         }
 
         @Override
         public void validTextEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_5);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_4);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
     },
 
@@ -162,19 +166,18 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            UIManager.controller = null;
         }
 
         @Override
         public void validTextEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_6);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_5);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
     },
 
@@ -187,19 +190,18 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            UIManager.controller = null;
         }
 
         @Override
         public void validTextEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_7);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_6);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
     },
 
@@ -212,19 +214,17 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            UIManager.controller = null;
         }
 
         @Override
         public void validTextEntry(UIManager manager) {
             manager.setUiState(NEXT);
-//            manager.addControllerToStack("Next");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_7);
-            manager.addControllerToStack("CreatePlayer");
+            manager.createController("CreatePlayer");
         }
     },
 

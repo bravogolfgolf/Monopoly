@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public interface Manager {
 
-    void initialize();
+    void initialize() throws IOException;
 
     void validTextEntry(Controller controller, String result) throws IOException;
 

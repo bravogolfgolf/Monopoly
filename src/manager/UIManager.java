@@ -1,24 +1,27 @@
 package game.manager;
 
 import game.controllers.ControllerImpl;
-import game.display.ConsoleImpl;
 import game.factories.ControllerFactoryImpl;
 import game.presenters.PresenterEn;
 import game.view.Controller;
 import game.view.Manager;
 import game.view.ViewImpl;
 
-import java.io.*;
+import java.io.IOException;
 
 public abstract class UIManager implements Manager {
 
-    private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    private static final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-    private static final ConsoleImpl console = new ConsoleImpl(reader, writer);
-    public static final PresenterEn presenter = new PresenterEn();
-    public final ViewImpl view = new ViewImpl(console, this);
-    public final ControllerFactoryImpl factory = new ControllerFactoryImpl(view, presenter);
-    public static ControllerImpl controller;
+    final ViewImpl view;
+    protected final PresenterEn presenter;
+    final ControllerFactoryImpl factory;
+
+    UIManager(ViewImpl view, PresenterEn presenter, ControllerFactoryImpl factory) {
+        this.view = view;
+        this.presenter = presenter;
+        this.factory = factory;
+    }
+
+    public ControllerImpl controller;
     private UIState uiState;
 
     public void setUiState(UIState uiState) {
@@ -26,7 +29,7 @@ public abstract class UIManager implements Manager {
     }
 
     @Override
-    public void initialize() {
+    public void initialize() throws IOException {
         uiState.initialize(this);
     }
 
@@ -48,5 +51,13 @@ public abstract class UIManager implements Manager {
 
     public abstract void promptMessage(UIStateImpl state);
 
-    public abstract void addControllerToStack(String commandString);
+    public abstract void createController(String commandString);
+
+    public abstract void executeController() throws IOException;
+
+    public abstract void setViewManager();
+
+    public abstract void setViewController();
+
+    public abstract void readView() throws IOException;
 }

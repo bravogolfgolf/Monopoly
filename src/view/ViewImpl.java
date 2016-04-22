@@ -7,18 +7,24 @@ import java.util.Map;
 
 public class ViewImpl implements View {
 
-    private final Console console;
-    private final Manager manager;
+    private Console console;
+    private Manager manager;
     private Map<Integer, String> menuMap;
     private Controller controller;
 
-    public ViewImpl(Console console, Manager manager) {
+    public ViewImpl(Console console) {
         this.console = console;
-        this.manager = manager;
+    }
+
+    public ViewImpl() {
     }
 
     public void setController(Controller controller) {
         this.controller = controller;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
 
     @Override

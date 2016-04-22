@@ -18,7 +18,7 @@ public class ControllerImplTest {
 
     public class SetupGame {
 
-        private final ViewImplMock view = new ViewImplMock(console, manager);
+        private final ViewImplMock view = new ViewImplMock(console);
         private final SetupGamePresenterMock presenter = new SetupGamePresenterMock();
         private final SetupGameMock interactor = new SetupGameMock();
 
@@ -37,7 +37,7 @@ public class ControllerImplTest {
 
     public class CreatePlayer {
 
-        private final ViewImplMock view = new ViewImplMock(console, manager);
+        private final ViewImplMock view = new ViewImplMock(console);
         private final CreatePlayerPresenterMock presenter = new CreatePlayerPresenterMock();
         private final CreatePlayerMock interactor = new CreatePlayerMock();
 
