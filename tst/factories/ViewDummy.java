@@ -1,11 +1,11 @@
 package game.factories;
 
-import game.controllers.View;
+import game.controllers.ControllerView;
 
 import java.io.IOException;
 import java.util.Map;
 
-class ViewDummy implements View {
+class ViewDummy implements ControllerView {
     @Override
     public void setMap(Map<Integer, String> menuMap) {
 

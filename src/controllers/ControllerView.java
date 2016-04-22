@@ -3,7 +3,7 @@ package game.controllers;
 import java.io.IOException;
 import java.util.Map;
 
-public interface View {
+public interface ControllerView {
 
     void setMap(Map<Integer, String> menuMap);
 

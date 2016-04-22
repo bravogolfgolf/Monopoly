@@ -1,6 +1,6 @@
 package game.factories;
 
-import game.controllers.View;
+import game.controllers.ControllerView;
 import game.manager.ControllerFactory;
 import game.presenters.PresenterEn;
 import org.junit.Before;
@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class ControllerImplFactoryTest {
 
-    private final View view = new ViewDummy();
+    private final ControllerView view = new ViewDummy();
     private final PresenterEn presenter = new PresenterEnDummy();
     private ControllerFactory controllerFactory;
 

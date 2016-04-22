@@ -1,25 +1,22 @@
 package game.manager;
 
-import game.presenters.PresenterEn;
-import game.view.ViewImpl;
-
 import java.io.IOException;
 
 public class UIManagerImpl extends UIManager {
 
-    public UIManagerImpl(ViewImpl view, PresenterEn presenter, ControllerFactory factory) {
+    public UIManagerImpl(ManagerView view, ManagerPresenter presenter, ControllerFactory factory) {
         super(view, presenter, factory);
     }
 
     @Override
-    public void promptMessage(UIStateImpl state) {
+    public void promptMessage(String state) {
 
         switch (state) {
-            case SETUP_GAME:
+            case "SetupGame":
                 presenter.setupGamePromptMessage();
                 break;
-            case CREATE_PLAYER_0:
-            case CREATE_PLAYER_1:
+            case "CreatePlayer_0":
+            case "CreatePlayer_1":
                 presenter.createPlayerPromptMessageFewerThanTwo();
                 break;
             default:

@@ -1,20 +1,18 @@
 package game.manager;
 
-import game.presenters.PresenterEn;
 import game.view.Manager;
-import game.view.ViewImpl;
 
 import java.io.IOException;
 
 public abstract class UIManager implements Manager {
 
     private UIState uiState;
-    final ViewImpl view;
-    final PresenterEn presenter;
+    final ManagerView view;
+    final ManagerPresenter presenter;
     final ControllerFactory factory;
     Controller controller;
 
-    UIManager(ViewImpl view, PresenterEn presenter, ControllerFactory factory) {
+    UIManager(ManagerView view, ManagerPresenter presenter, ControllerFactory factory) {
         this.view = view;
         this.presenter = presenter;
         this.factory = factory;
@@ -44,7 +42,7 @@ public abstract class UIManager implements Manager {
         uiState.validNumber(this);
     }
 
-    public abstract void promptMessage(UIStateImpl state);
+    public abstract void promptMessage(String state);
 
     public abstract void createController(String commandString);
 

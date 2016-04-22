@@ -1,11 +1,12 @@
 package game.view;
 
-import game.controllers.View;
+import game.controllers.ControllerView;
+import game.manager.ManagerView;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class ViewImpl implements View {
+public class ViewImpl implements ControllerView, ManagerView {
 
     private final Console console;
     private Manager manager;
@@ -15,6 +16,7 @@ public class ViewImpl implements View {
         this.console = console;
     }
 
+    @Override
     public void setManager(Manager manager) {
         this.manager = manager;
     }
@@ -24,6 +26,7 @@ public class ViewImpl implements View {
         this.menuMap = menuMap;
     }
 
+    @Override
     public void read() throws IOException {
         parse(console.read());
     }

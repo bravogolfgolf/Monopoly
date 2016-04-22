@@ -7,7 +7,7 @@ public enum UIStateImpl implements UIState {
     SETUP_GAME {
         @Override
         public void initialize(UIManager manager) throws IOException {
-            manager.promptMessage(SETUP_GAME);
+            manager.promptMessage("SetupGame");
             manager.createController("SetupGame");
             manager.setViewManager();
             manager.executeController();
@@ -29,7 +29,7 @@ public enum UIStateImpl implements UIState {
     CREATE_PLAYER_0 {
         @Override
         public void initialize(UIManager manager) throws IOException {
-            manager.promptMessage(CREATE_PLAYER_0);
+            manager.promptMessage("CreatePlayer_0");
             manager.createController("CreatePlayer");
             manager.executeController();
             manager.readView();
@@ -50,7 +50,7 @@ public enum UIStateImpl implements UIState {
     CREATE_PLAYER_1 {
         @Override
         public void initialize(UIManager manager) throws IOException {
-            manager.promptMessage(CREATE_PLAYER_1);
+            manager.promptMessage("CreatePlayer_1");
             manager.createController("CreatePlayer");
             manager.executeController();
             manager.readView();
@@ -72,7 +72,7 @@ public enum UIStateImpl implements UIState {
     CREATE_PLAYER_2 {
         @Override
         public void initialize(UIManager manager) throws IOException {
-            manager.promptMessage(CREATE_PLAYER_2);
+            manager.promptMessage("CreatePlayer_2");
             manager.createController("CreatePlayer");
             manager.executeController();
             manager.readView();
@@ -93,7 +93,7 @@ public enum UIStateImpl implements UIState {
     CREATE_PLAYER_3 {
         @Override
         public void initialize(UIManager manager) throws IOException {
-            manager.promptMessage(CREATE_PLAYER_3);
+            manager.promptMessage("CreatePlayer_3");
             manager.createController("CreatePlayer");
             manager.executeController();
             manager.readView();
@@ -114,7 +114,7 @@ public enum UIStateImpl implements UIState {
     CREATE_PLAYER_4 {
         @Override
         public void initialize(UIManager manager) throws IOException {
-            manager.promptMessage(CREATE_PLAYER_4);
+            manager.promptMessage("CreatePlayer_4");
             manager.createController("CreatePlayer");
             manager.executeController();
             manager.readView();
@@ -135,7 +135,7 @@ public enum UIStateImpl implements UIState {
     CREATE_PLAYER_5 {
         @Override
         public void initialize(UIManager manager) throws IOException {
-            manager.promptMessage(CREATE_PLAYER_5);
+            manager.promptMessage("CreatePlayer_5");
             manager.createController("CreatePlayer");
             manager.executeController();
             manager.readView();
@@ -156,7 +156,7 @@ public enum UIStateImpl implements UIState {
     CREATE_PLAYER_6 {
         @Override
         public void initialize(UIManager manager) throws IOException {
-            manager.promptMessage(CREATE_PLAYER_6);
+            manager.promptMessage("CreatePlayer_6");
             manager.createController("CreatePlayer");
             manager.executeController();
             manager.readView();
@@ -177,7 +177,7 @@ public enum UIStateImpl implements UIState {
     CREATE_PLAYER_7 {
         @Override
         public void initialize(UIManager manager) throws IOException {
-            manager.promptMessage(CREATE_PLAYER_7);
+            manager.promptMessage("CreatePlayer_7");
             manager.createController("CreatePlayer");
             manager.executeController();
             manager.readView();

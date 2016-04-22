@@ -7,11 +7,11 @@ import java.io.IOException;
 
 public class ControllerImpl implements Controller {
 
-    private final View view;
+    private final ControllerView view;
     private final Interactor interactor;
     private final Presenter presenter;
 
-    public ControllerImpl(View view, Interactor interactor, Presenter presenter) {
+    public ControllerImpl(ControllerView view, Interactor interactor, Presenter presenter) {
         this.view = view;
         this.interactor = interactor;
         this.presenter = presenter;
