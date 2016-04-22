@@ -1,7 +1,5 @@
 package game.manager;
 
-import game.Monopoly;
-
 public enum UIStateImpl implements UIState {
 
     SETUP_GAME {
@@ -89,7 +87,7 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            Monopoly.controller = null;
+            UIManager.controller = null;
         }
 
         @Override
@@ -114,7 +112,7 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            Monopoly.controller = null;
+            UIManager.controller = null;
         }
 
         @Override
@@ -139,7 +137,7 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            Monopoly.controller = null;
+            UIManager.controller = null;
         }
 
         @Override
@@ -164,7 +162,7 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            Monopoly.controller = null;
+            UIManager.controller = null;
         }
 
         @Override
@@ -189,7 +187,7 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            Monopoly.controller = null;
+            UIManager.controller = null;
         }
 
         @Override
@@ -214,7 +212,7 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validNumber(UIManager manager) {
             manager.setUiState(NEXT);
-            Monopoly.controller = null;
+            UIManager.controller = null;
         }
 
         @Override

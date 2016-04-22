@@ -22,7 +22,7 @@ public class ManagerTest {
 
     @Before
     public void setup() {
-        manager.setPresenter(presenter);
+//        manager.setPresenter(presenter);
     }
 
     public class SETUP_GAME {

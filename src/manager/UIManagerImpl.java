@@ -1,9 +1,5 @@
 package game.manager;
 
-import game.Monopoly;
-
-import static game.Monopoly.factory;
-
 public class UIManagerImpl extends UIManager {
 
     @Override
@@ -25,6 +21,6 @@ public class UIManagerImpl extends UIManager {
 
     @Override
     public void addControllerToStack(String controller) {
-        Monopoly.controller = factory.make(controller);
+        UIManager.controller = factory.make(controller);
     }
 }
