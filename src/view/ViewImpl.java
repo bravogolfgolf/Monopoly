@@ -36,7 +36,6 @@ public class ViewImpl implements View {
         console.write(text);
     }
 
-    @Override
     public void userInterfacePrompt() {
        manager.promptMessage();
     }

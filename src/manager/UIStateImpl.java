@@ -11,13 +11,13 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_0);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_0);
+            manager.addCommandToStack("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(SETUP_GAME);
-            manager.addCommandToStack("SetupGame", SETUP_GAME);
+            manager.addCommandToStack("SetupGame");
         }
     },
 
@@ -30,13 +30,13 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_1);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_1);
+            manager.addCommandToStack("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_0);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_0);
+            manager.addCommandToStack("CreatePlayer");
         }
     },
 
@@ -49,14 +49,14 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_2);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_2);
+            manager.addCommandToStack("CreatePlayer");
 
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_1);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_1);
+            manager.addCommandToStack("CreatePlayer");
         }
     },
 
@@ -69,13 +69,13 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_3);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_3);
+            manager.addCommandToStack("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_2);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_2);
+            manager.addCommandToStack("CreatePlayer");
         }
     },
 
@@ -88,13 +88,13 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_4);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_4);
+            manager.addCommandToStack("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_3);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_3);
+            manager.addCommandToStack("CreatePlayer");
         }
     },
 
@@ -107,13 +107,13 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_5);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_5);
+            manager.addCommandToStack("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_4);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_4);
+            manager.addCommandToStack("CreatePlayer");
         }
     },
 
@@ -126,13 +126,13 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_6);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_6);
+            manager.addCommandToStack("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_5);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_5);
+            manager.addCommandToStack("CreatePlayer");
         }
     },
 
@@ -145,13 +145,13 @@ public enum UIStateImpl implements UIState {
         @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_7);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_7);
+            manager.addCommandToStack("CreatePlayer");
         }
 
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_6);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_6);
+            manager.addCommandToStack("CreatePlayer");
         }
     },
 
@@ -170,7 +170,7 @@ public enum UIStateImpl implements UIState {
         @Override
         public void invalidEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_7);
-            manager.addCommandToStack("CreatePlayer", CREATE_PLAYER_7);
+            manager.addCommandToStack("CreatePlayer");
         }
     },
 

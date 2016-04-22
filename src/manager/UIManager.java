@@ -6,11 +6,9 @@ public abstract class UIManager implements Manager {
 
     private UIState uiState;
     final UIManagerPresenter presenter;
-    final ControllerFactory factory;
 
-    UIManager(UIManagerPresenter presenter, ControllerFactory factory) {
+    UIManager(UIManagerPresenter presenter) {
         this.presenter = presenter;
-        this.factory = factory;
     }
 
     public void setUiState(UIState uiState) {
@@ -34,6 +32,6 @@ public abstract class UIManager implements Manager {
 
     public abstract void promptMessage(UIStateImpl state);
 
-    public abstract void addCommandToStack(String commandString, UIStateImpl state);
+    public abstract void addCommandToStack(String commandString);
 
 }

@@ -1,12 +1,11 @@
 package game.manager;
 
-import game.Command;
 import game.Monopoly;
 
 public class UIManagerImpl extends UIManager {
 
-    public UIManagerImpl(UIManagerPresenter presenter, ControllerFactory factory) {
-        super(presenter, factory);
+    public UIManagerImpl(UIManagerPresenter presenter) {
+        super(presenter);
     }
 
     @Override
@@ -23,8 +22,7 @@ public class UIManagerImpl extends UIManager {
     }
 
     @Override
-    public void addCommandToStack(String commandString, UIStateImpl state) {
-        Command command = factory.make(commandString, state);
-        Monopoly.addCommandToStack(command);
+    public void addCommandToStack(String commandString) {
+        Monopoly.addCommandToStack(commandString);
     }
 }

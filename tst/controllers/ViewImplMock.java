@@ -9,7 +9,6 @@ import java.util.Map;
 
 class ViewImplMock extends ViewImpl {
 
-    boolean verifyUserInterfacePromptCalled = false;
     boolean verifySetMapCalled = false;
     boolean verifyWriteCalled = false;
 
@@ -32,10 +31,5 @@ class ViewImplMock extends ViewImpl {
     public void write(String text) throws IOException {
         verifyWriteCalled = true;
         super.write(text);
-    }
-
-    @Override
-    public void userInterfacePrompt() {
-        verifyUserInterfacePromptCalled = true;
     }
 }

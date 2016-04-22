@@ -20,7 +20,6 @@ public class ControllerImpl implements Controller, Command {
 
     @Override
     public void execute() throws IOException {
-        view.userInterfacePrompt();
         interactor.userInterfaceOptions();
         view.setMap(presenter.getMenuMap());
         updateView();

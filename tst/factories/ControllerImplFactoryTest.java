@@ -1,30 +1,31 @@
 package game.factories;
 
+import game.controllers.View;
+import game.presenters.PresenterEn;
 import org.junit.Before;
 import org.junit.Test;
 
-import static game.manager.UIStateImpl.CREATE_PLAYER_0;
-import static game.manager.UIStateImpl.SETUP_GAME;
-
 public class ControllerImplFactoryTest {
 
+    private final View view = new ViewDummy();
+    private final PresenterEn presenter = new PresenterEnDummy();
     private CommandFactoryImpl controllerFactory;
 
     @Before
     public void setUp() {
 
-        controllerFactory = new CommandFactoryImpl();
+        controllerFactory = new CommandFactoryImpl(view, presenter);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testControllerFactoryException() {
-        controllerFactory.make("", SETUP_GAME);
+        controllerFactory.make("");
     }
 
     @Test
     public void testMakeController() {
-        controllerFactory.make("SetupGame", SETUP_GAME);
-        controllerFactory.make("CreatePlayer", CREATE_PLAYER_0);
+        controllerFactory.make("SetupGame");
+        controllerFactory.make("CreatePlayer");
     }
 }
 

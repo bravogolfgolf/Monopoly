@@ -29,7 +29,6 @@ public class ControllerImplTest {
             view.setController(controller);
             controller.execute();
 
-            assertTrue(view.verifyUserInterfacePromptCalled);
             assertTrue(interactor.verifyUserInterfaceOptionsCalled);
             assertTrue(presenter.verifyGetMenuMapCalled);
             assertTrue(view.verifySetMapCalled);
@@ -51,7 +50,6 @@ public class ControllerImplTest {
             view.setController(controller);
             controller.execute();
 
-            assertTrue(view.verifyUserInterfacePromptCalled);
             assertTrue(interactor.verifyUserInterfaceOptionsCalled);
             assertTrue(presenter.verifyGetMenuMapCalled);
             assertTrue(view.verifySetMapCalled);
