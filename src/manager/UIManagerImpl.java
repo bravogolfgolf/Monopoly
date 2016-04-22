@@ -45,11 +45,6 @@ public class UIManagerImpl extends UIManager {
     }
 
     @Override
-    public void setViewController() {
-        super.view.setController(super.controller);
-    }
-
-    @Override
     public void readView() throws IOException {
         super.view.read();
     }

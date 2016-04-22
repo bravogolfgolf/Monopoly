@@ -7,12 +7,7 @@ class CreatePlayerManagerMock implements Manager {
     boolean verifyZeroEnteredCalled = false;
 
     @Override
-    public void initialize() {
-
-    }
-
-    @Override
-    public void validTextEntry(Controller controller, String result) {
+    public void validTextEntry(String result) {
         validUseCaseEntryCalled = true;
     }
 

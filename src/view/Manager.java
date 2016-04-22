@@ -4,9 +4,7 @@ import java.io.IOException;
 
 public interface Manager {
 
-    void initialize() throws IOException;
-
-    void validTextEntry(Controller controller, String result) throws IOException;
+    void validTextEntry(String result) throws IOException;
 
     void invalidEntry() throws IOException;
 

@@ -10,7 +10,7 @@ import game.view.ViewImpl;
 
 import java.io.*;
 
-public final class Monopoly {
+final class Monopoly {
 
     private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));

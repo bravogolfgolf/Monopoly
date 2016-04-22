@@ -7,17 +7,12 @@ import java.util.Map;
 
 public class ViewImpl implements View {
 
-    private Console console;
+    private final Console console;
     private Manager manager;
     private Map<Integer, String> menuMap;
-    private Controller controller;
 
     public ViewImpl(Console console) {
         this.console = console;
-    }
-
-    public void setController(Controller controller) {
-        this.controller = controller;
     }
 
     public void setManager(Manager manager) {
@@ -47,7 +42,7 @@ public class ViewImpl implements View {
             String result = menuMap.get(selection);
             if (selection == 0) manager.validNumber();
             else if (result == null) manager.invalidEntry();
-            else manager.validTextEntry(controller, result);
+            else manager.validTextEntry(result);
 
         } catch (NumberFormatException e) {
             manager.invalidEntry();

@@ -1,11 +1,10 @@
 package game.controllers;
 
 import game.interactors.InteractorRequest;
-import game.view.Controller;
 
 import java.io.IOException;
 
-public class ControllerImpl implements Controller {
+public class ControllerImpl {
 
     private final View view;
     private final Interactor interactor;

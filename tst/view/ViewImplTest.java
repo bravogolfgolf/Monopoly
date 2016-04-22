@@ -15,7 +15,6 @@ import static org.junit.Assert.assertTrue;
 public class ViewImplTest {
 
     private final CreatePlayerManagerMock manager = new CreatePlayerManagerMock();
-    private final Controller controller = new ControllerImplDummy();
     private final Map<Integer, String> menuMap = new HashMap<Integer, String>() {{
         put(1, "Valid");
     }};
@@ -30,7 +29,6 @@ public class ViewImplTest {
         public void setUp() {
             view.setMap(menuMap);
             view.setManager(manager);
-            view.setController(controller);
         }
 
         @Test
@@ -55,7 +53,6 @@ public class ViewImplTest {
         public void setUp() {
             view.setMap(menuMap);
             view.setManager(manager);
-            view.setController(controller);
         }
 
         @Test
@@ -75,7 +72,6 @@ public class ViewImplTest {
         public void setUp() {
             view.setMap(menuMap);
             view.setManager(manager);
-            view.setController(controller);
         }
 
         @Test

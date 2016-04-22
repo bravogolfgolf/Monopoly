@@ -3,9 +3,8 @@ package game.presenters;
 import game.interactors.InteractorResponse;
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.setupgame.SetupGamePresenter;
-import game.manager.UIManagerPresenter;
 
-public class PresenterEn extends PresenterImpl implements UIManagerPresenter, CreatePlayerPresenter, SetupGamePresenter {
+public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter, SetupGamePresenter {
 
     @Override
     public void versionCreatedMessage(InteractorResponse response) {
@@ -22,7 +21,6 @@ public class PresenterEn extends PresenterImpl implements UIManagerPresenter, Cr
         addMenuToBuffer(template, menuMap);
     }
 
-    @Override
     public void setupGamePromptMessage() {
         template = "Select version of game you would like to play.";
         addMessageToBuffer(template);
@@ -35,13 +33,11 @@ public class PresenterEn extends PresenterImpl implements UIManagerPresenter, Cr
         addMessageToBuffer(template, variables);
     }
 
-    @Override
     public void createPlayerPromptMessageFewerThanTwo() {
         template = "Please select token for player. (Players 2 - 8)";
         addMessageToBuffer(template);
     }
 
-    @Override
     public void createPlayerPromptMessageTwoOrMore() {
         template = "Please select token for player or 0 to begin play. (Players 2 - 8)";
         addMessageToBuffer(template);
