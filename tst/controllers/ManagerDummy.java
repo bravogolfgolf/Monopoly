@@ -1,5 +1,6 @@
 package game.controllers;
 
+import game.view.Controller;
 import game.view.Manager;
 
 class ManagerDummy implements Manager {
@@ -10,7 +11,7 @@ class ManagerDummy implements Manager {
     }
 
     @Override
-    public void validTextEntry() {
+    public void validTextEntry(Controller controller, String result) {
 
     }
 

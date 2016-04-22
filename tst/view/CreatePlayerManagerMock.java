@@ -12,7 +12,7 @@ class CreatePlayerManagerMock implements Manager {
     }
 
     @Override
-    public void validTextEntry() {
+    public void validTextEntry(Controller controller, String result) {
         validUseCaseEntryCalled = true;
     }
 

@@ -1,6 +1,9 @@
 package game.manager;
 
+import game.view.Controller;
 import game.view.Manager;
+
+import java.io.IOException;
 
 public abstract class UIManager implements Manager {
 
@@ -21,7 +24,8 @@ public abstract class UIManager implements Manager {
     }
 
     @Override
-    public void validTextEntry() {
+    public void validTextEntry(Controller controller, String result) throws IOException {
+        controller.handle(result);
         uiState.validTextEntry(this);
     }
 
