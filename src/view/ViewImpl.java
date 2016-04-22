@@ -47,7 +47,7 @@ public class ViewImpl implements View {
             selection = Integer.parseInt(line);
             String result = menuMap.get(selection);
             if (selection == 0) manager.zeroEntered();
-            if (result == null) manager.invalidEntry();
+            else if (result == null) manager.invalidEntry();
             else {
                 controller.handle(result);
                 manager.validUseCaseEntry();

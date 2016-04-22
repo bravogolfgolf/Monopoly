@@ -4,5 +4,7 @@ public interface UIManagerPresenter {
 
     void setupGamePromptMessage();
 
-    void createPlayerPromptMessage();
+    void createPlayerPromptMessageFewerThanTwo();
+
+    void createPlayerPromptMessageTwoOrMore();
 }

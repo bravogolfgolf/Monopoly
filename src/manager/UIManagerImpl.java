@@ -15,8 +15,12 @@ public class UIManagerImpl extends UIManager {
             case SETUP_GAME:
                 presenter.setupGamePromptMessage();
                 break;
+            case CREATE_PLAYER_0:
+            case CREATE_PLAYER_1:
+                presenter.createPlayerPromptMessageFewerThanTwo();
+                break;
             default:
-                presenter.createPlayerPromptMessage();
+                presenter.createPlayerPromptMessageTwoOrMore();
                 break;
         }
     }

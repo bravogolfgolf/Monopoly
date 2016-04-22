@@ -9,6 +9,12 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
+        public void zeroEntered(UIManager manager) {
+            manager.setUiState(SETUP_GAME);
+            manager.addControllerToStack("SetupGame");
+        }
+
+        @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_0);
             manager.addControllerToStack("CreatePlayer");
@@ -28,6 +34,12 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
+        public void zeroEntered(UIManager manager) {
+            manager.setUiState(CREATE_PLAYER_0);
+            manager.addControllerToStack("CreatePlayer");
+        }
+
+        @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_1);
             manager.addControllerToStack("CreatePlayer");
@@ -44,6 +56,12 @@ public enum UIStateImpl implements UIState {
         @Override
         public void promptMessage(UIManager manager) {
             manager.promptMessage(CREATE_PLAYER_1);
+        }
+
+        @Override
+        public void zeroEntered(UIManager manager) {
+            manager.setUiState(CREATE_PLAYER_1);
+            manager.addControllerToStack("CreatePlayer");
         }
 
         @Override
@@ -67,6 +85,12 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
+        public void zeroEntered(UIManager manager) {
+            manager.setUiState(NEXT);
+//            manager.addControllerToStack("Next");
+        }
+
+        @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_3);
             manager.addControllerToStack("CreatePlayer");
@@ -83,6 +107,12 @@ public enum UIStateImpl implements UIState {
         @Override
         public void promptMessage(UIManager manager) {
             manager.promptMessage(CREATE_PLAYER_3);
+        }
+
+        @Override
+        public void zeroEntered(UIManager manager) {
+            manager.setUiState(NEXT);
+//            manager.addControllerToStack("Next");
         }
 
         @Override
@@ -105,6 +135,12 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
+        public void zeroEntered(UIManager manager) {
+            manager.setUiState(NEXT);
+//            manager.addControllerToStack("Next");
+        }
+
+        @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_5);
             manager.addControllerToStack("CreatePlayer");
@@ -121,6 +157,12 @@ public enum UIStateImpl implements UIState {
         @Override
         public void promptMessage(UIManager manager) {
             manager.promptMessage(CREATE_PLAYER_5);
+        }
+
+        @Override
+        public void zeroEntered(UIManager manager) {
+            manager.setUiState(NEXT);
+//            manager.addControllerToStack("Next");
         }
 
         @Override
@@ -143,6 +185,12 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
+        public void zeroEntered(UIManager manager) {
+            manager.setUiState(NEXT);
+//            manager.addControllerToStack("Next");
+        }
+
+        @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(CREATE_PLAYER_7);
             manager.addControllerToStack("CreatePlayer");
@@ -162,9 +210,15 @@ public enum UIStateImpl implements UIState {
         }
 
         @Override
+        public void zeroEntered(UIManager manager) {
+            manager.setUiState(NEXT);
+//            manager.addControllerToStack("Next");
+        }
+
+        @Override
         public void validUseCaseEntry(UIManager manager) {
             manager.setUiState(NEXT);
-//            manager.addControllerToStack("Next",NEXT);
+//            manager.addControllerToStack("Next");
         }
 
         @Override
@@ -177,6 +231,11 @@ public enum UIStateImpl implements UIState {
     NEXT {
         @Override
         public void promptMessage(UIManager manager) {
+
+        }
+
+        @Override
+        public void zeroEntered(UIManager manager) {
 
         }
 

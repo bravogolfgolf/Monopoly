@@ -32,7 +32,7 @@ public abstract class UIManager implements Manager {
 
     @Override
     public void zeroEntered() {
-
+        uiState.zeroEntered(this);
     }
 
     public abstract void promptMessage(UIStateImpl state);

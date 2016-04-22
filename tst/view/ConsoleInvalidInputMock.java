@@ -6,7 +6,7 @@ class ConsoleInvalidInputMock implements Console{
 
     @Override
     public String read() throws IOException {
-        return "0";
+        return "a";
     }
 
     @Override
