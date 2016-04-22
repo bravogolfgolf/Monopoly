@@ -22,7 +22,6 @@ final class Monopoly {
     }
 
     private void setup() throws IOException {
-
         ViewImpl view = new ViewImpl(console);
         PresenterEn presenter = new PresenterEn();
         ControllerFactoryImpl factory = new ControllerFactoryImpl(view, presenter);
@@ -30,14 +29,5 @@ final class Monopoly {
         manager.setUiState(UIStateImpl.SETUP_GAME);
         manager.initialize();
 
-//        UIManager.controller = UIManager.factory.make("SetupGame");
-//        UIManager.manager.setUiState(UIStateImpl.SETUP_GAME);
-//        UIManager.manager.setPresenter(UIManager.presenter);
-//        UIManager.manager.setController(UIManager.controller);
-//        UIManager.manager.setView(UIManager.view);
-//
-//        UIManager.manager.initialize();
-//        UIManager.controller.execute();
-//        UIManager.view.read();
     }
 }
