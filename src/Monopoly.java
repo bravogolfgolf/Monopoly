@@ -10,8 +10,6 @@ import game.presenters.PresenterEn;
 import game.view.ViewImpl;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public final class Monopoly {
 
@@ -21,8 +19,8 @@ public final class Monopoly {
     private static final PresenterEn presenter = new PresenterEn();
     private static final UIManager manager = new UIManagerImpl(presenter);
     private static final ViewImpl view = new ViewImpl(console, manager);
-    private static final ControllerFactoryImpl factory = new ControllerFactoryImpl(view, presenter);
-    public static final List<ControllerImpl> list = new ArrayList<>();
+    public static final ControllerFactoryImpl factory = new ControllerFactoryImpl(view, presenter);
+    public static ControllerImpl controller;
 
     public static void main(String[] args) throws IOException {
         Monopoly monopoly = new Monopoly();
@@ -32,12 +30,11 @@ public final class Monopoly {
 
     private void setup() {
         manager.setUiState(UIStateImpl.SETUP_GAME);
-        addControllerToStack("SetupGame");
+        controller = factory.make("SetupGame");
     }
 
     private void loop() throws IOException {
-        while (list.size() > 0) {
-            ControllerImpl controller = list.remove(0);
+        while (controller != null) {
             view.setController(controller);
             manager.initialize();
             controller.execute();
@@ -45,7 +42,4 @@ public final class Monopoly {
         }
     }
 
-    public static void addControllerToStack(String commandString) {
-        list.add(factory.make(commandString));
-    }
 }
