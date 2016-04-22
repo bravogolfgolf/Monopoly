@@ -16,9 +16,6 @@ public class ViewImpl implements View {
         this.console = console;
     }
 
-    public ViewImpl() {
-    }
-
     public void setController(Controller controller) {
         this.controller = controller;
     }
