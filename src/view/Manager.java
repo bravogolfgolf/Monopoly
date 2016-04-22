@@ -8,7 +8,7 @@ public interface Manager {
 
     void validTextEntry(Controller controller, String result) throws IOException;
 
-    void invalidEntry();
+    void invalidEntry() throws IOException;
 
-    void validNumber();
+    void validNumber() throws IOException;
 }

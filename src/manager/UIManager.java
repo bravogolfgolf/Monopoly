@@ -40,12 +40,12 @@ public abstract class UIManager implements Manager {
     }
 
     @Override
-    public void invalidEntry() {
-        uiState.invalidEntry(this);
+    public void invalidEntry() throws IOException {
+        initialize();
     }
 
     @Override
-    public void validNumber() {
+    public void validNumber() throws IOException {
         uiState.validNumber(this);
     }
 
