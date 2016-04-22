@@ -39,7 +39,7 @@ public final class Monopoly {
         while (list.size() > 0) {
             ControllerImpl controller = list.remove(0);
             view.setController(controller);
-            manager.promptMessage();
+            manager.initialize();
             controller.execute();
             view.read();
         }

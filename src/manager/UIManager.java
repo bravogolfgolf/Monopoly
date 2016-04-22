@@ -16,13 +16,13 @@ public abstract class UIManager implements Manager {
     }
 
     @Override
-    public void promptMessage() {
-        uiState.promptMessage(this);
+    public void initialize() {
+        uiState.initialize(this);
     }
 
     @Override
-    public void validUseCaseEntry() {
-        uiState.validUseCaseEntry(this);
+    public void validTextEntry() {
+        uiState.validTextEntry(this);
     }
 
     @Override
@@ -31,8 +31,8 @@ public abstract class UIManager implements Manager {
     }
 
     @Override
-    public void zeroEntered() {
-        uiState.zeroEntered(this);
+    public void validNumber() {
+        uiState.validNumber(this);
     }
 
     public abstract void promptMessage(UIStateImpl state);

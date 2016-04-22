@@ -2,11 +2,11 @@ package game.view;
 
 public interface Manager {
 
-    void promptMessage();
+    void initialize();
 
-    void validUseCaseEntry();
+    void validTextEntry();
 
     void invalidEntry();
 
-    void zeroEntered();
+    void validNumber();
 }

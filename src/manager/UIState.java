@@ -2,11 +2,11 @@ package game.manager;
 
 interface UIState {
 
-    void promptMessage(UIManager manager);
+    void initialize(UIManager manager);
 
-    void zeroEntered(UIManager manager);
+    void validNumber(UIManager manager);
 
-    void validUseCaseEntry(UIManager manager);
+    void validTextEntry(UIManager manager);
 
     void invalidEntry(UIManager manager);
 }

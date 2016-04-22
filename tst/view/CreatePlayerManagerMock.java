@@ -4,16 +4,15 @@ class CreatePlayerManagerMock implements Manager {
 
     boolean validUseCaseEntryCalled = false;
     boolean verifyInvalidEntryCalled = false;
-    boolean verifyPromptMessageCalled = false;
     boolean verifyZeroEnteredCalled = false;
 
     @Override
-    public void promptMessage() {
-        verifyPromptMessageCalled = true;
+    public void initialize() {
+
     }
 
     @Override
-    public void validUseCaseEntry() {
+    public void validTextEntry() {
         validUseCaseEntryCalled = true;
     }
 
@@ -23,7 +22,7 @@ class CreatePlayerManagerMock implements Manager {
     }
 
     @Override
-    public void zeroEntered() {
+    public void validNumber() {
         verifyZeroEnteredCalled = true;
     }
 }

@@ -41,11 +41,11 @@ public class ViewImpl implements View {
         try {
             selection = Integer.parseInt(line);
             String result = menuMap.get(selection);
-            if (selection == 0) manager.zeroEntered();
+            if (selection == 0) manager.validNumber();
             else if (result == null) manager.invalidEntry();
             else {
                 controller.handle(result);
-                manager.validUseCaseEntry();
+                manager.validTextEntry();
             }
 
         } catch (NumberFormatException e) {

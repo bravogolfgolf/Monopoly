@@ -27,20 +27,20 @@ public class ManagerTest {
 
         @Test
         public void testUserPrompt() {
-            manager.promptMessage();
+            manager.initialize();
             expected = "Select version of game you would like to play.\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
 
         @Test
         public void testZeroEntered(){
-            manager.zeroEntered();
+            manager.validNumber();
             assertEquals(1, Monopoly.list.size());
         }
 
         @Test
         public void testValidUseCaseEntry() {
-            manager.validUseCaseEntry();
+            manager.validTextEntry();
             assertEquals(1, Monopoly.list.size());
         }
 
@@ -61,20 +61,20 @@ public class ManagerTest {
 
         @Test
         public void testUserPrompt() {
-            manager.promptMessage();
+            manager.initialize();
             expected = "Please select token for player. (Players 2 - 8)\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
 
         @Test
         public void testZeroEntered(){
-            manager.zeroEntered();
+            manager.validNumber();
             assertEquals(1, Monopoly.list.size());
         }
 
         @Test
         public void testValidUseCaseEntry() {
-            manager.validUseCaseEntry();
+            manager.validTextEntry();
             assertEquals(1, Monopoly.list.size());
         }
 
@@ -95,21 +95,21 @@ public class ManagerTest {
 
         @Test
         public void testUserPrompt() {
-            manager.promptMessage();
+            manager.initialize();
             expected = "Please select token for player or 0 to begin play. (Players 2 - 8)\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
 
         @Test
         public void testZeroEntered(){
-            manager.zeroEntered();
+            manager.validNumber();
 //            Not defined yet
 //            assertEquals(1, Monopoly.list.size());
         }
 
         @Test
         public void testValidUseCaseEntry() {
-            manager.validUseCaseEntry();
+            manager.validTextEntry();
             assertEquals(1, Monopoly.list.size());
         }
 
