@@ -2,18 +2,17 @@ package game.controllers;
 
 import game.view.Console;
 import game.view.Manager;
-import game.view.SetupGameView;
+import game.view.ViewImpl;
 
 import java.io.IOException;
 import java.util.Map;
 
-class SetupGameViewMock extends SetupGameView {
+class ViewImplMock extends ViewImpl {
 
-    boolean verifyUserInterfacePromptCalled = false;
     boolean verifySetMapCalled = false;
     boolean verifyWriteCalled = false;
 
-    SetupGameViewMock(Console console, Manager manager) {
+    ViewImplMock(Console console, Manager manager) {
         super(console, manager);
     }
 
@@ -31,11 +30,6 @@ class SetupGameViewMock extends SetupGameView {
     @Override
     public void write(String text) throws IOException {
         verifyWriteCalled = true;
-    }
-
-    @Override
-    public void userInterfacePrompt() {
-        verifyUserInterfacePromptCalled = true;
+        super.write(text);
     }
 }
-

@@ -1,6 +1,7 @@
 package game.manager;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
+import game.Monopoly;
 import game.presenters.PresenterEn;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,17 +13,16 @@ import static org.junit.Assert.assertEquals;
 @RunWith(HierarchicalContextRunner.class)
 public class ManagerTest {
 
-    private final CommandFactoryFake factory = new CommandFactoryFake();
     private final PresenterEn presenter = new PresenterEn();
-    private final UIManagerImpl manager = new UIManagerImpl(presenter, factory);
+    private final UIManagerImpl manager = new UIManagerImpl(presenter);
     private String expected;
 
-    public class SetupGame {
-
+    public class SETUP_GAME {
 
         @Before
         public void setup() {
             manager.setUiState(SETUP_GAME);
+            Monopoly.list.clear();
         }
 
         @Test
@@ -30,53 +30,93 @@ public class ManagerTest {
             manager.promptMessage();
             expected = "Select version of game you would like to play.\n";
             assertEquals(expected, presenter.getFormattedMessage());
-            assertEquals("", factory.verifyMakeCommand);
-            assertEquals(null, factory.verifyMakeState);
         }
 
         @Test
-        public void testValidEntry() {
+        public void testZeroEntered(){
+            manager.zeroEntered();
+            assertEquals(1, Monopoly.list.size());
+        }
+
+        @Test
+        public void testValidUseCaseEntry() {
             manager.validUseCaseEntry();
-            assertEquals("CreatePlayer", factory.verifyMakeCommand);
-            assertEquals(CREATE_PLAYER_0, factory.verifyMakeState);
+            assertEquals(1, Monopoly.list.size());
         }
 
         @Test
         public void testInvalidEntry() {
             manager.invalidEntry();
-            assertEquals("SetupGame", factory.verifyMakeCommand);
-            assertEquals(SETUP_GAME, factory.verifyMakeState);
+            assertEquals(1, Monopoly.list.size());
         }
     }
 
-    public class CreatePlayer {
+    public class CREATE_PLAYER_0 {
 
         @Before
         public void setup() {
             manager.setUiState(CREATE_PLAYER_0);
+            Monopoly.list.clear();
         }
 
         @Test
         public void testUserPrompt() {
             manager.promptMessage();
-            expected = "Please select tokens for players. (Player 2 - 8)\n";
+            expected = "Please select token for player. (Players 2 - 8)\n";
             assertEquals(expected, presenter.getFormattedMessage());
-            assertEquals("", factory.verifyMakeCommand);
-            assertEquals(null, factory.verifyMakeState);
         }
 
         @Test
-        public void testValidEntry() {
+        public void testZeroEntered(){
+            manager.zeroEntered();
+            assertEquals(1, Monopoly.list.size());
+        }
+
+        @Test
+        public void testValidUseCaseEntry() {
             manager.validUseCaseEntry();
-            assertEquals("CreatePlayer", factory.verifyMakeCommand);
-            assertEquals(CREATE_PLAYER_1, factory.verifyMakeState);
+            assertEquals(1, Monopoly.list.size());
         }
 
         @Test
         public void testInvalidEntry() {
             manager.invalidEntry();
-            assertEquals("CreatePlayer", factory.verifyMakeCommand);
-            assertEquals(UIStateImpl.CREATE_PLAYER_0, factory.verifyMakeState);
+            assertEquals(1, Monopoly.list.size());
+        }
+    }
+
+    public class CREATE_PLAYER_2 {
+
+        @Before
+        public void setup() {
+            manager.setUiState(CREATE_PLAYER_2);
+            Monopoly.list.clear();
+        }
+
+        @Test
+        public void testUserPrompt() {
+            manager.promptMessage();
+            expected = "Please select token for player or 0 to begin play. (Players 2 - 8)\n";
+            assertEquals(expected, presenter.getFormattedMessage());
+        }
+
+        @Test
+        public void testZeroEntered(){
+            manager.zeroEntered();
+//            Not defined yet
+//            assertEquals(1, Monopoly.list.size());
+        }
+
+        @Test
+        public void testValidUseCaseEntry() {
+            manager.validUseCaseEntry();
+            assertEquals(1, Monopoly.list.size());
+        }
+
+        @Test
+        public void testInvalidEntry() {
+            manager.invalidEntry();
+            assertEquals(1, Monopoly.list.size());
         }
     }
 }

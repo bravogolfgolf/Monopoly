@@ -1,17 +1,28 @@
 package game;
 
-import game.factories.CommandFactoryImpl;
+import game.controllers.ControllerImpl;
+import game.display.ConsoleImpl;
+import game.factories.ControllerFactoryImpl;
+import game.manager.UIManager;
+import game.manager.UIManagerImpl;
+import game.manager.UIStateImpl;
+import game.presenters.PresenterEn;
+import game.view.ViewImpl;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static game.manager.UIStateImpl.SETUP_GAME;
-
 public final class Monopoly {
 
-    private static final List<Command> list = new ArrayList<>();
-    private Command command;
+    private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+    private static final ConsoleImpl console = new ConsoleImpl(reader, writer);
+    private static final PresenterEn presenter = new PresenterEn();
+    private static final UIManager manager = new UIManagerImpl(presenter);
+    private static final ViewImpl view = new ViewImpl(console, manager);
+    private static final ControllerFactoryImpl factory = new ControllerFactoryImpl(view, presenter);
+    public static final List<ControllerImpl> list = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         Monopoly monopoly = new Monopoly();
@@ -20,20 +31,21 @@ public final class Monopoly {
     }
 
     private void setup() {
-        CommandFactoryImpl factory = new CommandFactoryImpl();
-
-        command = factory.make("SetupGame", SETUP_GAME);
-        addCommandToStack(command);
+        manager.setUiState(UIStateImpl.SETUP_GAME);
+        addControllerToStack("SetupGame");
+        view.setController(list.get(0));
     }
 
     private void loop() throws IOException {
         while (list.size() > 0) {
-            command = list.remove(0);
-            command.execute();
+            ControllerImpl controller = list.remove(0);
+            view.setController(controller);
+            view.userInterfacePrompt();
+            controller.execute();
         }
     }
 
-    public static void addCommandToStack(Command command) {
-        list.add(command);
+    public static void addControllerToStack(String commandString) {
+        list.add(factory.make(commandString));
     }
 }

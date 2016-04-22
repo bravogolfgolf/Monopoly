@@ -1,12 +1,11 @@
 package game.controllers;
 
-import game.Command;
 import game.interactors.InteractorRequest;
 import game.view.Controller;
 
 import java.io.IOException;
 
-public class ControllerImpl implements Controller, Command {
+public class ControllerImpl implements Controller {
 
     private final View view;
     private final Interactor interactor;
@@ -18,9 +17,7 @@ public class ControllerImpl implements Controller, Command {
         this.presenter = presenter;
     }
 
-    @Override
     public void execute() throws IOException {
-        view.userInterfacePrompt();
         interactor.userInterfaceOptions();
         view.setMap(presenter.getMenuMap());
         updateView();

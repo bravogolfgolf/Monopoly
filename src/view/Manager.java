@@ -7,4 +7,6 @@ public interface Manager {
     void validUseCaseEntry();
 
     void invalidEntry();
+
+    void zeroEntered();
 }

@@ -9,8 +9,8 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static game.factories.CommandFactoryImpl.board;
-import static game.factories.CommandFactoryImpl.playerGateway;
+import static game.factories.ControllerFactoryImpl.board;
+import static game.factories.ControllerFactoryImpl.playerGateway;
 
 class SetupGameFactoryImpl implements SetupGameFactory {
 

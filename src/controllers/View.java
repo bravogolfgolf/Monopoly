@@ -10,6 +10,4 @@ public interface View {
     void read() throws IOException;
 
     void write(String text) throws IOException;
-
-    void userInterfacePrompt();
 }

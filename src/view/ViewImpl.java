@@ -5,14 +5,14 @@ import game.controllers.View;
 import java.io.IOException;
 import java.util.Map;
 
-public class SetupGameView implements View {
+public class ViewImpl implements View {
 
     private final Console console;
     private final Manager manager;
     private Map<Integer, String> menuMap;
     private Controller controller;
 
-    public SetupGameView(Console console, Manager manager) {
+    public ViewImpl(Console console, Manager manager) {
         this.console = console;
         this.manager = manager;
     }
@@ -36,7 +36,6 @@ public class SetupGameView implements View {
         console.write(text);
     }
 
-    @Override
     public void userInterfacePrompt() {
         manager.promptMessage();
     }
@@ -47,8 +46,8 @@ public class SetupGameView implements View {
         try {
             selection = Integer.parseInt(line);
             String result = menuMap.get(selection);
-            if (result == null)
-                manager.invalidEntry();
+            if (selection == 0) manager.zeroEntered();
+            else if (result == null) manager.invalidEntry();
             else {
                 controller.handle(result);
                 manager.validUseCaseEntry();

@@ -2,11 +2,11 @@ package game.view;
 
 import java.io.IOException;
 
-class ConsoleInvalidInputMock implements Console{
+class ConsoleZeroEnteredMock implements Console{
 
     @Override
     public String read() throws IOException {
-        return "a";
+        return "0";
     }
 
     @Override
