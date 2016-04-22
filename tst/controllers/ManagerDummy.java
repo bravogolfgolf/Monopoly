@@ -18,4 +18,9 @@ class ManagerDummy implements Manager {
     public void invalidEntry() {
 
     }
+
+    @Override
+    public void zeroEntered() {
+
+    }
 }

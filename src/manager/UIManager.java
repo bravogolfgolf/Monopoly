@@ -30,6 +30,11 @@ public abstract class UIManager implements Manager {
         uiState.invalidEntry(this);
     }
 
+    @Override
+    public void zeroEntered() {
+
+    }
+
     public abstract void promptMessage(UIStateImpl state);
 
     public abstract void addControllerToStack(String commandString);

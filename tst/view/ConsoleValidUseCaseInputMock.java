@@ -2,7 +2,7 @@ package game.view;
 
 import java.io.IOException;
 
-class ConsoleValidInputMock implements Console {
+class ConsoleValidUseCaseInputMock implements Console {
 
     boolean verifyWriteCalled = false;
 

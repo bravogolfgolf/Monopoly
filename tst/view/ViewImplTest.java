@@ -20,9 +20,9 @@ public class ViewImplTest {
         put(1, "Valid");
     }};
 
-    public class ValidInput {
+    public class ValidUseCaseInput {
 
-        private final ConsoleValidInputMock console = new ConsoleValidInputMock();
+        private final ConsoleValidUseCaseInputMock console = new ConsoleValidUseCaseInputMock();
         private final ViewImpl view = new ViewImpl(console, manager);
 
 
@@ -50,6 +50,25 @@ public class ViewImplTest {
             assertTrue(manager.validUseCaseEntryCalled);
         }
     }
+
+    public class zeroEntered {
+
+        private final ConsoleZeroEnteredMock console = new ConsoleZeroEnteredMock();
+        private final ViewImpl view = new ViewImpl(console, manager);
+
+        @Before
+        public void setUp() {
+            view.setMap(menuMap);
+            view.setController(controller);
+        }
+
+        @Test
+        public void testRead() throws IOException {
+            view.read();
+            assertTrue(manager.verifyZeroEnteredCalled);
+        }
+    }
+
 
     public class InvalidInput {
 

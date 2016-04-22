@@ -37,7 +37,7 @@ public class ViewImpl implements View {
     }
 
     public void userInterfacePrompt() {
-       manager.promptMessage();
+        manager.promptMessage();
     }
 
     protected void parse(String line) throws IOException {
@@ -46,8 +46,8 @@ public class ViewImpl implements View {
         try {
             selection = Integer.parseInt(line);
             String result = menuMap.get(selection);
-            if (result == null)
-                manager.invalidEntry();
+            if (selection == 0) manager.zeroEntered();
+            if (result == null) manager.invalidEntry();
             else {
                 controller.handle(result);
                 manager.validUseCaseEntry();
