@@ -7,11 +7,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class SetupGameTest {
+public class SelectVersionTest {
 
     private final PresenterEnMock presenter = new PresenterEnMock();
-    private final SetupGameFactoryFake factory = new SetupGameFactoryFake();
-    private final Interactor interactor = new SetupGame(presenter, factory);
+    private final SelectVersionFactoryFake factory = new SelectVersionFactoryFake();
+    private final Interactor interactor = new SelectVersion(presenter, factory);
     private final InteractorRequest request = new InteractorRequest();
 
     @Test

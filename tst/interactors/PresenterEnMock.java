@@ -1,9 +1,9 @@
 package game.interactors;
 
 import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.setupgame.SetupGamePresenter;
+import game.interactors.setupgame.SelectVersionPresenter;
 
-public class PresenterEnMock implements SetupGamePresenter, CreatePlayerPresenter {
+public class PresenterEnMock implements SelectVersionPresenter, CreatePlayerPresenter {
 
     public boolean verifyVersionCreatedMessage = false;
     public boolean verifyPlayerCreatedMessage = false;

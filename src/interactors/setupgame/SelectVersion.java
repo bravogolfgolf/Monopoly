@@ -4,13 +4,13 @@ import game.controllers.Interactor;
 import game.interactors.InteractorRequest;
 import game.interactors.InteractorResponse;
 
-public class SetupGame implements Interactor {
+public class SelectVersion implements Interactor {
 
-    private final SetupGamePresenter presenter;
-    private final SetupGameFactory factory;
+    private final SelectVersionPresenter presenter;
+    private final SelectVersionFactory factory;
     private final InteractorResponse response = new InteractorResponse();
 
-    public SetupGame(SetupGamePresenter presenter, SetupGameFactory factory) {
+    public SelectVersion(SelectVersionPresenter presenter, SelectVersionFactory factory) {
         this.presenter = presenter;
         this.factory = factory;
     }

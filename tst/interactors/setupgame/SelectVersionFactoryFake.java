@@ -1,6 +1,6 @@
 package game.interactors.setupgame;
 
-class SetupGameFactoryFake implements SetupGameFactory {
+class SelectVersionFactoryFake implements SelectVersionFactory {
 
     boolean verifyCreateMethodCalled = false;
     boolean verifyGetAvailableVersionsCalled = false;

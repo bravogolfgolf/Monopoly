@@ -7,8 +7,8 @@ public enum StateImpl implements State {
     SETUP_GAME {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.promptMessage("SetupGame");
-            manager.createController("SetupGame");
+            manager.promptMessage("SelectVersion");
+            manager.createController("SelectVersion");
             manager.setViewManager();
             manager.executeController();
             manager.readView();

@@ -1,11 +1,11 @@
 package game.factories;
 
-import game.interactors.setupgame.SetupGameFactory;
+import game.interactors.setupgame.SelectVersionFactory;
 import org.junit.Test;
 
-public class SetupGameFactoryTest {
+public class SelectVersionFactoryTest {
 
-    private final SetupGameFactory factory = new SetupGameFactoryImpl();
+    private final SelectVersionFactory factory = new SelectVersionFactoryImpl();
 
     @Test(expected = IllegalArgumentException.class)
     public void testMakeException() {

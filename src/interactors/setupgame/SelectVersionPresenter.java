@@ -2,7 +2,7 @@ package game.interactors.setupgame;
 
 import game.interactors.InteractorResponse;
 
-public interface SetupGamePresenter {
+public interface SelectVersionPresenter {
 
     void versionCreatedMessage(InteractorResponse response);
 

@@ -1,6 +1,6 @@
 package game.interactors.setupgame;
 
-public interface SetupGameFactory {
+public interface SelectVersionFactory {
 
     void make(String version);
 

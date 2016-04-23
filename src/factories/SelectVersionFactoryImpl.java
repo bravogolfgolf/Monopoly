@@ -2,7 +2,7 @@ package game.factories;
 
 import game.entities.Board;
 import game.entities.Token;
-import game.interactors.setupgame.SetupGameFactory;
+import game.interactors.setupgame.SelectVersionFactory;
 import game.repositories.PlayerRepositoryImpl;
 
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.Set;
 import static game.factories.ControllerFactoryImpl.board;
 import static game.factories.ControllerFactoryImpl.playerGateway;
 
-class SetupGameFactoryImpl implements SetupGameFactory {
+class SelectVersionFactoryImpl implements SelectVersionFactory {
 
     @Override
     public String[] getAvailableVersions() {

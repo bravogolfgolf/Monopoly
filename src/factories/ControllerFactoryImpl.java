@@ -6,8 +6,8 @@ import game.controllers.Presenter;
 import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.setupgame.SetupGame;
-import game.interactors.setupgame.SetupGamePresenter;
+import game.interactors.setupgame.SelectVersion;
+import game.interactors.setupgame.SelectVersionPresenter;
 import game.manager.Controller;
 import game.manager.ControllerFactory;
 import game.repositories.PlayerRepositoryImpl;
@@ -26,9 +26,9 @@ public class ControllerFactoryImpl implements ControllerFactory {
 
     @Override
     public Controller make(String controller) {
-        if (controller.equals("SetupGame")) {
-            SetupGameFactoryImpl factory = new SetupGameFactoryImpl();
-            SetupGame interactor = new SetupGame((SetupGamePresenter) presenter, factory);
+        if (controller.equals("SelectVersion")) {
+            SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
+            SelectVersion interactor = new SelectVersion((SelectVersionPresenter) presenter, factory);
             return new ControllerImpl(view, interactor, presenter);
         }
         if (controller.equals("CreatePlayer")) {
