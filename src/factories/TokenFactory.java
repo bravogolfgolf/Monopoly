@@ -7,7 +7,7 @@ import java.util.TreeSet;
 
 class TokenFactory {
 
-    private static Set<Players.Player.Token> tokens = new TreeSet<>();
+    private static final Set<Players.Player.Token> tokens = new TreeSet<>();
     private static String[] tokenDescriptions = new String[0];
 
     static Set<Players.Player.Token> tokenSet(String version) {
