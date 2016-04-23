@@ -2,14 +2,13 @@ package game.factories;
 
 import game.entities.Players;
 
-import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 class TokenFactory {
 
     static Set<Players.Player.Token> tokenSet(String version) {
-        Set<Players.Player.Token> tokens = new LinkedHashSet<>();
+        Set<Players.Player.Token> tokens = new TreeSet<>();
         String[] tokenDescriptions = new String[0];
 
         String[] tokensUSA = new String[]{"Wheelbarrow", "Battleship", "Scottish Terrier", "Top Hat", "Cat", "Thimble", "Boot", "Automobile"};
@@ -20,7 +19,6 @@ class TokenFactory {
         if (version.equals("TEST"))
             tokenDescriptions = tokensTEST;
 
-        Arrays.sort(tokenDescriptions);
         makeSet(tokens, tokenDescriptions);
         return tokens;
     }
