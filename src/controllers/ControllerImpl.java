@@ -1,17 +1,17 @@
 package game.controllers;
 
 import game.interactors.InteractorRequest;
-import game.manager.Controller;
+import game.manager.ManagerController;
 
 import java.io.IOException;
 
-public class ControllerImpl implements Controller {
+public class ControllerImpl implements ManagerController {
 
     private final ControllerView view;
     private final Interactor interactor;
-    private final Presenter presenter;
+    private final ControllerPresenter presenter;
 
-    public ControllerImpl(ControllerView view, Interactor interactor, Presenter presenter) {
+    public ControllerImpl(ControllerView view, Interactor interactor, ControllerPresenter presenter) {
         this.view = view;
         this.interactor = interactor;
         this.presenter = presenter;

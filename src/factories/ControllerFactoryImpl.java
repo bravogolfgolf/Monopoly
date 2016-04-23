@@ -1,31 +1,31 @@
 package game.factories;
 
 import game.controllers.ControllerImpl;
+import game.controllers.ControllerPresenter;
 import game.controllers.ControllerView;
-import game.controllers.Presenter;
 import game.entities.Board;
 import game.entities.Players;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.setupgame.SelectVersion;
-import game.interactors.setupgame.SelectVersionPresenter;
-import game.manager.Controller;
+import game.interactors.selectversion.SelectVersion;
+import game.interactors.selectversion.SelectVersionPresenter;
 import game.manager.ControllerFactory;
+import game.manager.ManagerController;
 
 public class ControllerFactoryImpl implements ControllerFactory {
 
     static Board board;
     static Players playerGateway;
     private final ControllerView view;
-    private final Presenter presenter;
+    private final ControllerPresenter presenter;
 
-    public ControllerFactoryImpl(ControllerView view, Presenter presenter) {
+    public ControllerFactoryImpl(ControllerView view, ControllerPresenter presenter) {
         this.view = view;
         this.presenter = presenter;
     }
 
     @Override
-    public Controller make(String controller) {
+    public ManagerController make(String controller) {
         if (controller.equals("SelectVersion")) {
             SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
             SelectVersion interactor = new SelectVersion((SelectVersionPresenter) presenter, factory);

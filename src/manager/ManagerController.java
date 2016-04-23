@@ -2,7 +2,7 @@ package game.manager;
 
 import java.io.IOException;
 
-public interface Controller {
+public interface ManagerController {
 
     void execute() throws IOException;
 

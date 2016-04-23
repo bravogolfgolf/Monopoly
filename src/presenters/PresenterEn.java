@@ -2,7 +2,7 @@ package game.presenters;
 
 import game.interactors.InteractorResponse;
 import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.setupgame.SelectVersionPresenter;
+import game.interactors.selectversion.SelectVersionPresenter;
 import game.manager.ManagerPresenter;
 
 public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter, SelectVersionPresenter, ManagerPresenter {

@@ -1,4 +1,4 @@
-package game.interactors.setupgame;
+package game.interactors.selectversion;
 
 import game.interactors.InteractorResponse;
 

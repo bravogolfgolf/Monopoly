@@ -1,6 +1,6 @@
 package game.factories;
 
-import game.interactors.setupgame.SelectVersionFactory;
+import game.interactors.selectversion.SelectVersionFactory;
 import org.junit.Test;
 
 public class SelectVersionFactoryTest {
