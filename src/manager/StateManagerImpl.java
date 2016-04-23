@@ -12,7 +12,7 @@ public class StateManagerImpl extends StateManager {
     public void promptMessage(String state) {
 
         switch (state) {
-            case "SetupGame":
+            case "SelectVersion":
                 presenter.setupGamePromptMessage();
                 break;
             case "CreatePlayer_0":

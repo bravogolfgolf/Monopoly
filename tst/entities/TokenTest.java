@@ -8,7 +8,7 @@ public class TokenTest {
 
     @Test
     public void createToken() {
-        Token token = new Token("Cat");
+        Players.Player.Token token = new Players.Player.Token("Cat");
         assertTrue("Cat".equals(token.getDescription()));
     }
 }

@@ -3,7 +3,7 @@ package game.controllers;
 import java.util.Hashtable;
 import java.util.Map;
 
-class SetupGamePresenterMock implements Presenter {
+class SetupGamePresenterMock implements ControllerPresenter {
 
     boolean verifyGetMenuMapCalled = false;
 

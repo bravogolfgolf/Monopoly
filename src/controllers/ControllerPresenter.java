@@ -2,7 +2,7 @@ package game.controllers;
 
 import java.util.Map;
 
-public interface Presenter {
+public interface ControllerPresenter {
 
     String getFormattedMessage();
 

@@ -25,7 +25,7 @@ public class ControllerImplFactoryTest {
 
     @Test
     public void testMakeController() {
-        controllerFactory.make("SetupGame");
+        controllerFactory.make("SelectVersion");
         controllerFactory.make("CreatePlayer");
     }
 }

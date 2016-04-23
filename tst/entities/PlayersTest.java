@@ -1,6 +1,5 @@
-package game.repositories;
+package game.entities;
 
-import game.entities.Token;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,14 +9,14 @@ import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
 
-public class PlayerRepositoryImplTest {
+public class PlayersTest {
 
-    private PlayerRepositoryImpl playerRepository;
+    private Players playerRepository;
 
     @Before
     public void setUp() {
-        Set<Token> tokens = new LinkedHashSet<>(Collections.singletonList(new Token("Cat")));
-        playerRepository = new PlayerRepositoryImpl(tokens);
+        Set<Players.Player.Token> tokens = new LinkedHashSet<>(Collections.singletonList(new Players.Player.Token("Cat")));
+        playerRepository = new Players(tokens);
     }
 
     @Test

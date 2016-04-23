@@ -10,7 +10,7 @@ public abstract class StateManager implements Manager {
     final ManagerView view;
     final ManagerPresenter presenter;
     final ControllerFactory factory;
-    Controller controller;
+    ManagerController controller;
 
     StateManager(ManagerView view, ManagerPresenter presenter, ControllerFactory factory) {
         this.view = view;

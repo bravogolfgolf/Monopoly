@@ -1,7 +1,7 @@
 package game.interactors.createplayer;
 
 import game.controllers.Interactor;
-import game.entities.Token;
+import game.entities.Players;
 import game.interactors.InteractorRequest;
 import game.interactors.PresenterEnMock;
 import org.junit.Test;
@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 
 public class CreatePlayerTest {
 
-    private final Set<Token> tokens = new LinkedHashSet<>(Arrays.asList(new Token("Wheelbarrow"), new Token("Battleship"), new Token("Scottish Terrier"), new Token("Top Hat"), new Token("Cat"), new Token("Thimble"), new Token("Boot"), new Token("Automobile")));
+    private final Set<Players.Player.Token> tokens = new LinkedHashSet<>(Arrays.asList(new Players.Player.Token("Wheelbarrow"), new Players.Player.Token("Battleship"), new Players.Player.Token("Scottish Terrier"), new Players.Player.Token("Top Hat"), new Players.Player.Token("Cat"), new Players.Player.Token("Thimble"), new Players.Player.Token("Boot"), new Players.Player.Token("Automobile")));
     private final CreatePlayerRepositoryFake player = new CreatePlayerRepositoryFake(tokens);
     private final PresenterEnMock presenter = new PresenterEnMock();
     private final Interactor interactor = new CreatePlayer(presenter, player);

@@ -27,7 +27,7 @@ final class Monopoly {
         PresenterEn presenter = new PresenterEn();
         ControllerFactory factory = new ControllerFactoryImpl(view, presenter);
         StateManager manager = new StateManagerImpl(view,presenter,factory);
-        manager.setState(StateImpl.SETUP_GAME);
+        manager.setState(StateImpl.VERSION);
         manager.initialize();
 
     }
