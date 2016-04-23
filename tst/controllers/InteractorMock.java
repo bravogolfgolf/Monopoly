@@ -2,9 +2,10 @@ package game.controllers;
 
 import game.interactors.InteractorRequest;
 
-class CreatePlayerMock implements ControllerInteractor {
+class InteractorMock implements ControllerInteractor {
 
     boolean verifyUserInterfaceOptionsCalled = false;
+    boolean verifyHandleCalled = false;
 
     @Override
     public void userInterfaceOptions() {
@@ -13,5 +14,6 @@ class CreatePlayerMock implements ControllerInteractor {
 
     @Override
     public void handle(InteractorRequest request) {
+        verifyHandleCalled = true;
     }
 }

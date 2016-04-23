@@ -5,7 +5,7 @@ import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.selectversion.SelectVersionPresenter;
 import game.manager.ManagerPresenter;
 
-public class PresenterEn extends PresenterImpl implements CreatePlayerPresenter, SelectVersionPresenter, ManagerPresenter {
+public class PresenterEn extends Presenter implements CreatePlayerPresenter, SelectVersionPresenter, ManagerPresenter {
 
     @Override
     public void versionCreatedMessage(InteractorResponse response) {

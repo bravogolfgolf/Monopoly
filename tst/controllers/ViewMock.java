@@ -1,17 +1,17 @@
 package game.controllers;
 
+import game.view.View;
 import game.view.ViewConsole;
-import game.view.ViewImpl;
 
 import java.io.IOException;
 import java.util.Map;
 
-class ViewImplMock extends ViewImpl {
+class ViewMock extends View {
 
     boolean verifySetMapCalled = false;
     boolean verifyWriteCalled = false;
 
-    ViewImplMock(ViewConsole console) {
+    ViewMock(ViewConsole console) {
         super(console);
     }
 

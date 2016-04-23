@@ -40,22 +40,7 @@ public class Players implements CreatePlayerGateway {
             this.token = token;
         }
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-
-            Player player = (Player) o;
-
-            return token.equals(player.token);
-        }
-
-        @Override
-        public int hashCode() {
-            return token.hashCode();
-        }
-
-        public static class Token {
+        public static class Token implements Comparable {
 
             private final String description;
 
@@ -70,17 +55,21 @@ public class Players implements CreatePlayerGateway {
             @Override
             public boolean equals(Object o) {
                 if (this == o) return true;
-                if (o == null || getClass() != o.getClass()) return false;
+                if (!(o instanceof Token)) return false;
 
                 Token token = (Token) o;
 
                 return description.equals(token.description);
-
             }
 
             @Override
             public int hashCode() {
                 return description.hashCode();
+            }
+
+            @Override
+            public int compareTo(Object o) {
+                return this.description.compareTo(((Token)o).description);
             }
         }
     }

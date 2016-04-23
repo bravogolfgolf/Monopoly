@@ -1,53 +1,38 @@
 package game.controllers;
 
-import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.manager.ManagerController;
 import game.view.ViewConsole;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
 
-@RunWith(HierarchicalContextRunner.class)
 public class ControllerTest {
 
     private final ViewConsole console = new ConsoleDummy();
+    private final ViewMock view = new ViewMock(console);
+    private final PresenterMock presenter = new PresenterMock();
+    private final InteractorMock interactor = new InteractorMock();
 
-    public class SetupGame {
 
-        private final ViewImplMock view = new ViewImplMock(console);
-        private final SetupGamePresenterMock presenter = new SetupGamePresenterMock();
-        private final SetupGameMock interactor = new SetupGameMock();
+    @Test
+    public void testControllerExecute() throws IOException {
+        ManagerController controller = new Controller(view, interactor, presenter);
+        controller.execute();
 
-        @Test
-        public void testSetupGameControllerValidNumberInput() throws IOException {
-            ManagerController controller = new Controller(view, interactor, presenter);
-            controller.execute();
-
-            assertTrue(interactor.verifyUserInterfaceOptionsCalled);
-            assertTrue(presenter.verifyGetMenuMapCalled);
-            assertTrue(view.verifySetMapCalled);
-            assertTrue(view.verifyWriteCalled);
-        }
+        assertTrue(interactor.verifyUserInterfaceOptionsCalled);
+        assertTrue(presenter.verifyGetMenuMapCalled);
+        assertTrue(view.verifySetMapCalled);
+        assertTrue(view.verifyWriteCalled);
     }
 
-    public class CreatePlayer {
 
-        private final ViewImplMock view = new ViewImplMock(console);
-        private final CreatePlayerPresenterMock presenter = new CreatePlayerPresenterMock();
-        private final CreatePlayerMock interactor = new CreatePlayerMock();
+    @Test
+    public void testControllerHandle() throws IOException {
+        ManagerController controller = new Controller(view, interactor, presenter);
+        controller.handle("Valid");
 
-        @Test
-        public void testCreatePlayerControllerValidNumberInput() throws IOException {
-            ManagerController controller = new Controller(view, interactor, presenter);
-            controller.execute();
-
-            assertTrue(interactor.verifyUserInterfaceOptionsCalled);
-            assertTrue(presenter.verifyGetMenuMapCalled);
-            assertTrue(view.verifySetMapCalled);
-            assertTrue(view.verifyWriteCalled);
-        }
+        assertTrue(interactor.verifyHandleCalled);
     }
 }

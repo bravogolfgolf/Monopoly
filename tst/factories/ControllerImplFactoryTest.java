@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class ControllerImplFactoryTest {
 
-    private final ControllerView view = new ViewDummy();
+    private final ControllerView view = new ConsoleDummy();
     private final PresenterEn presenter = new PresenterEnDummy();
     private ControllerFactory controllerFactory;
 
