@@ -15,7 +15,7 @@ import game.manager.ManagerController;
 public class ControllerFactoryImpl implements ControllerFactory {
 
     static Board board;
-    static Players playerGateway;
+    static Players players;
     private final ControllerView view;
     private final ControllerPresenter presenter;
 
@@ -32,7 +32,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
             return new Controller(view, interactor, presenter);
         }
         if (controller.equals("CreatePlayer")) {
-            CreatePlayer interactor = new CreatePlayer((CreatePlayerPresenter) presenter, playerGateway);
+            CreatePlayer interactor = new CreatePlayer((CreatePlayerPresenter) presenter, players);
             return new Controller(view, interactor, presenter);
         }
         throw new IllegalArgumentException();
