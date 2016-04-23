@@ -9,13 +9,9 @@ public class SetMap extends Controller {
     }
 
     @Override
-    public void execute() throws IOException {
-
-    }
-
-    @Override
     public void handle(String text) throws IOException {
-        interactor.userInterfaceOptions();
+        request.string = text;
+        interactor.handle(request);
         view.setMap(presenter.getMenuMap());
         view.write(presenter.getFormattedMessage());
     }

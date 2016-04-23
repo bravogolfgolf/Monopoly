@@ -17,7 +17,7 @@ public class ControllerTest {
 
 
     @Test
-    public void testControllerHandle() throws IOException {
+    public void testBasic() throws IOException {
         ManagerController controller = new Basic(view, interactor, presenter);
         controller.handle("Valid");
 
@@ -32,7 +32,7 @@ public class ControllerTest {
         ManagerController controller = new SetMap(view, interactor, presenter);
         controller.handle("Valid");
 
-        assertTrue(interactor.verifyUserInterfaceOptionsCalled);
+        assertTrue(interactor.verifyHandleCalled);
         assertTrue(presenter.verifyGetMenuMapCalled);
         assertTrue(view.verifySetMapCalled);
         assertTrue(view.verifyWriteCalled);

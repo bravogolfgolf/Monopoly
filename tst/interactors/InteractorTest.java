@@ -30,14 +30,6 @@ public class InteractorTest {
             assertTrue(factory.verifyCreateMethodCalled);
             assertTrue(presenter.verifyVersionCreatedMessage);
         }
-
-        @Test
-        public void testUserInterfaceOptions() {
-            interactor.userInterfaceOptions();
-
-            assertTrue(factory.verifyGetAvailableVersionsCalled);
-            assertTrue(presenter.verifyAvailableVersionsMessageCalled);
-        }
     }
 
     public class CreatePlayerTest {
@@ -51,14 +43,6 @@ public class InteractorTest {
 
             assertTrue(player.verifyCreateCalled);
             assertTrue(presenter.verifyPlayerCreatedMessage);
-        }
-
-        @Test
-        public void testUserInterfaceOptions() {
-            interactor.userInterfaceOptions();
-
-            assertTrue(player.verifyGetAvailableTokens);
-            assertTrue(presenter.verifyAvailableTokensMessage);
         }
     }
 

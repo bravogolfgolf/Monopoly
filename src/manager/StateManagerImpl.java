@@ -31,8 +31,8 @@ public class StateManagerImpl extends StateManager {
     }
 
     @Override
-    public void executeController() throws IOException {
-        super.controller.execute();
+    public void callHandleOnController(String option) throws IOException {
+        super.controller.handle(option);
     }
 
     @Override

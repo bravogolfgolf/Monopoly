@@ -9,9 +9,8 @@ class PlayersMock implements CreatePlayerGateway, OptionsPlayerGateway {
     boolean verifyGetAvailableTokens = false;
 
     @Override
-    public boolean create(String request) {
+    public void create(String request) {
         verifyCreateCalled = true;
-        return false;
     }
 
     @Override

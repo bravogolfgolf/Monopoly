@@ -16,11 +16,11 @@ public class Players implements CreatePlayerGateway, OptionsPlayerGateway {
     }
 
     @Override
-    public boolean create(String request) {
+    public void create(String request) {
         Player.Token token = new Player.Token(request);
         tokens.remove(token);
         Player player = new Player(token);
-        return players.add(player);
+        players.add(player);
     }
 
     @Override

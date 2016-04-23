@@ -6,5 +6,4 @@ public interface ControllerInteractor {
 
     void handle(InteractorRequest request);
 
-    void userInterfaceOptions();
 }
