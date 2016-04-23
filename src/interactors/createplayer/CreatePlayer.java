@@ -1,4 +1,4 @@
-package game.interactors.gamesetup.createplayer;
+package game.interactors.createplayer;
 
 import game.controllers.ControllerInteractor;
 import game.interactors.InteractorRequest;

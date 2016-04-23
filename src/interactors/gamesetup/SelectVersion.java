@@ -1,4 +1,4 @@
-package game.interactors.gamesetup.selectversion;
+package game.interactors.gamesetup;
 
 import game.controllers.ControllerInteractor;
 import game.interactors.InteractorRequest;

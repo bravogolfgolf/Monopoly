@@ -1,8 +1,7 @@
-package game.interactors.gamesetup.selectversion;
+package game.interactors.gamesetup;
 
 import game.controllers.ControllerInteractor;
 import game.interactors.InteractorRequest;
-import game.interactors.PresenterEnMock;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

@@ -1,4 +1,4 @@
-package game.interactors.gamesetup.selectversion;
+package game.interactors.gamesetup;
 
 class SelectVersionFactoryFake implements SelectVersionFactory {
 

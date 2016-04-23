@@ -1,9 +1,9 @@
-package game.interactors.gamesetup.createplayer;
+package game.interactors.createplayer;
 
 import game.controllers.ControllerInteractor;
 import game.entities.Players;
 import game.interactors.InteractorRequest;
-import game.interactors.PresenterEnMock;
+import game.interactors.gamesetup.PresenterEnMock;
 import org.junit.Test;
 
 import java.util.Arrays;

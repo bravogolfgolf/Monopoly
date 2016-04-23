@@ -1,7 +1,7 @@
-package game.interactors;
+package game.interactors.gamesetup;
 
-import game.interactors.gamesetup.createplayer.CreatePlayerPresenter;
-import game.interactors.gamesetup.selectversion.SelectVersionPresenter;
+import game.interactors.InteractorResponse;
+import game.interactors.createplayer.CreatePlayerPresenter;
 
 public class PresenterEnMock implements SelectVersionPresenter, CreatePlayerPresenter {
 
