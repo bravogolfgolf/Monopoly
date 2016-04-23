@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public enum StateImpl implements State {
 
-    SETUP_GAME {
+    VERSION {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("SelectVersion");
