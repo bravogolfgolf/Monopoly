@@ -1,8 +1,8 @@
 package game.factories;
 
 import game.entities.Board;
+import game.entities.Players;
 import game.interactors.setupgame.SelectVersionFactory;
-import game.repositories.PlayerRepositoryImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +37,7 @@ class SelectVersionFactoryImpl implements SelectVersionFactory {
 
     private void setup(String version) {
         board = new Board(boardList(version));
-        playerGateway = new PlayerRepositoryImpl(tokenSet(version));
+        playerGateway = new Players(tokenSet(version));
     }
 
     private List<Board.Space> boardList(String version) {

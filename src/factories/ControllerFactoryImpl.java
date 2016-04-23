@@ -4,18 +4,18 @@ import game.controllers.ControllerImpl;
 import game.controllers.ControllerView;
 import game.controllers.Presenter;
 import game.entities.Board;
+import game.entities.Players;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.setupgame.SelectVersion;
 import game.interactors.setupgame.SelectVersionPresenter;
 import game.manager.Controller;
 import game.manager.ControllerFactory;
-import game.repositories.PlayerRepositoryImpl;
 
 public class ControllerFactoryImpl implements ControllerFactory {
 
     static Board board;
-    static PlayerRepositoryImpl playerGateway;
+    static Players playerGateway;
     private final ControllerView view;
     private final Presenter presenter;
 

@@ -1,10 +1,10 @@
 package game.interactors.createplayer;
 
-import game.repositories.PlayerRepositoryImpl;
+import game.entities.Players;
 
 import java.util.Set;
 
-class CreatePlayerRepositoryFake extends PlayerRepositoryImpl {
+class CreatePlayerRepositoryFake extends Players {
 
     boolean verifyCreateCalled = false;
     boolean verifyGetAvailableTokens = false;

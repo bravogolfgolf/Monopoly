@@ -1,16 +1,16 @@
-package game.repositories;
+package game.entities;
 
 import game.interactors.createplayer.CreatePlayerGateway;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class PlayerRepositoryImpl implements CreatePlayerGateway {
+public class Players implements CreatePlayerGateway {
 
     private final Set<Player> players = new HashSet<>();
     private final Set<Player.Token> tokens;
 
-    public PlayerRepositoryImpl(Set<Player.Token> tokens) {
+    public Players(Set<Player.Token> tokens) {
         this.tokens = tokens;
     }
 
@@ -63,7 +63,7 @@ public class PlayerRepositoryImpl implements CreatePlayerGateway {
                 this.description = description;
             }
 
-            public String getDescription() {
+            String getDescription() {
                 return description;
             }
 
