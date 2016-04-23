@@ -6,7 +6,7 @@ import game.interactors.InteractorResponse;
 import java.util.Hashtable;
 import java.util.Map;
 
-class Presenter implements ControllerPresenter {
+abstract class Presenter implements ControllerPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();

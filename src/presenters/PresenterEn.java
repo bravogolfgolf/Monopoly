@@ -3,10 +3,11 @@ package game.presenters;
 import game.interactors.InteractorResponse;
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.options.OptionsPresenter;
+import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectversion.SelectVersionPresenter;
 import game.manager.ManagerPresenter;
 
-public class PresenterEn extends Presenter implements CreatePlayerPresenter, SelectVersionPresenter, OptionsPresenter, ManagerPresenter {
+public class PresenterEn extends Presenter implements ManagerPresenter, SelectVersionPresenter, CreatePlayerPresenter, OptionsPresenter, SelectFirstPresenter {
 
     @Override
     public void versionCreatedMessage(InteractorResponse response) {
@@ -53,5 +54,12 @@ public class PresenterEn extends Presenter implements CreatePlayerPresenter, Sel
         template = "Available tokens: %s";
         createMenuMap(response.options);
         addMenuToBuffer(template, menuMap);
+    }
+
+    @Override
+    public void playerSelectedToGoFirstMessage(InteractorResponse response) {
+        template = "%s selected to go first.";
+        variables = new String[]{response.token};
+        addMessageToBuffer(template, variables);
     }
 }

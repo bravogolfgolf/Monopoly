@@ -78,5 +78,12 @@ public class PresenterEnTest {
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
+    @Test
+    public void testPlayerSelectedToGoFirstMessage() {
+        response.token = "Cat";
+        presenter.playerSelectedToGoFirstMessage(response);
+        expected = "Cat selected to go first.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
+    }
 
 }

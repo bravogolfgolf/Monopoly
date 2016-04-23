@@ -4,6 +4,7 @@ import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.ControllerInteractor;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.options.Options;
+import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -72,6 +73,27 @@ public class InteractorTest {
 
             assertTrue(player.verifyGetAvailableTokens);
             assertTrue(presenter.verifyAvailableTokensMessage);
+        }
+    }
+
+    public class SelectFirstTest {
+
+        private final ControllerInteractor interactor = new SelectFirst(presenter, player);
+
+        @Test(expected = IllegalArgumentException.class)
+        public void testHandleInvalidRequest() {
+            request.string = "Invalid";
+            interactor.handle(request);
+        }
+
+        @Test
+        public void testHandleTokens() {
+            request.string = "";
+            interactor.handle(request);
+
+            assertTrue(player.verifyRandomizePlayers);
+            assertTrue(player.verifyGetFirstPlayer);
+            assertTrue(presenter.verifyPlayerSelectedToGoFirstMessage);
         }
     }
 }
