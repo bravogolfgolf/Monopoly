@@ -1,11 +1,12 @@
 package game.entities;
 
 import game.interactors.createplayer.CreatePlayerGateway;
+import game.interactors.options.OptionsPlayerGateway;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Players implements CreatePlayerGateway {
+public class Players implements CreatePlayerGateway, OptionsPlayerGateway {
 
     private final Set<Player> players = new HashSet<>();
     private final Set<Player.Token> tokens;
@@ -69,7 +70,7 @@ public class Players implements CreatePlayerGateway {
 
             @Override
             public int compareTo(Object o) {
-                return this.description.compareTo(((Token)o).description);
+                return this.description.compareTo(((Token) o).description);
             }
         }
     }

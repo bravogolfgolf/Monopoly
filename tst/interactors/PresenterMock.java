@@ -1,14 +1,15 @@
-package game.interactors.gamesetup;
+package game.interactors;
 
-import game.interactors.InteractorResponse;
 import game.interactors.createplayer.CreatePlayerPresenter;
+import game.interactors.gamesetup.SelectVersionPresenter;
+import game.interactors.options.OptionsPresenter;
 
-public class PresenterEnMock implements SelectVersionPresenter, CreatePlayerPresenter {
+class PresenterMock implements SelectVersionPresenter, CreatePlayerPresenter, OptionsPresenter {
 
-    public boolean verifyVersionCreatedMessage = false;
-    public boolean verifyPlayerCreatedMessage = false;
-    public boolean verifyAvailableTokensMessage = false;
-    public boolean verifyAvailableVersionsMessageCalled=false;
+    boolean verifyVersionCreatedMessage = false;
+    boolean verifyPlayerCreatedMessage = false;
+    boolean verifyAvailableTokensMessage = false;
+    boolean verifyAvailableVersionsMessageCalled = false;
 
     @Override
     public void versionCreatedMessage(InteractorResponse response) {
