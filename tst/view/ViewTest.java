@@ -12,7 +12,7 @@ import java.util.Map;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(HierarchicalContextRunner.class)
-public class ViewImplTest {
+public class ViewTest {
 
     private final CreatePlayerManagerMock manager = new CreatePlayerManagerMock();
     private final Map<Integer, String> menuMap = new HashMap<Integer, String>() {{
@@ -22,7 +22,7 @@ public class ViewImplTest {
     public class ValidUseCaseInput {
 
         private final ConsoleValidUseCaseInputMock console = new ConsoleValidUseCaseInputMock();
-        private final ViewImpl view = new ViewImpl(console);
+        private final View view = new View(console);
 
 
         @Before
@@ -47,7 +47,7 @@ public class ViewImplTest {
     public class zeroEntered {
 
         private final ConsoleZeroEnteredMock console = new ConsoleZeroEnteredMock();
-        private final ViewImpl view = new ViewImpl(console);
+        private final View view = new View(console);
 
         @Before
         public void setUp() {
@@ -66,7 +66,7 @@ public class ViewImplTest {
     public class InvalidInput {
 
         private final ConsoleInvalidInputMock console = new ConsoleInvalidInputMock();
-        private final ViewImpl view = new ViewImpl(console);
+        private final View view = new View(console);
 
         @Before
         public void setUp() {

@@ -6,12 +6,12 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-public class ConsoleImpl implements ViewConsole {
+public class Console implements ViewConsole {
 
     private final BufferedReader reader;
     private final BufferedWriter writer;
 
-    public ConsoleImpl(BufferedReader reader, BufferedWriter writer) {
+    public Console(BufferedReader reader, BufferedWriter writer) {
         this.reader = reader;
         this.writer = writer;
     }

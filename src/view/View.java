@@ -6,13 +6,13 @@ import game.manager.ManagerView;
 import java.io.IOException;
 import java.util.Map;
 
-public class ViewImpl implements ControllerView, ManagerView {
+public class View implements ControllerView, ManagerView {
 
     private final ViewConsole console;
     private ViewManager manager;
     private Map<Integer, String> menuMap;
 
-    public ViewImpl(ViewConsole console) {
+    public View(ViewConsole console) {
         this.console = console;
     }
 
