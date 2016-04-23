@@ -2,7 +2,7 @@ package game.controllers;
 
 import game.interactors.InteractorRequest;
 
-public interface Interactor {
+public interface ControllerInteractor {
 
     void handle(InteractorRequest request);
 

@@ -2,7 +2,7 @@ package game.controllers;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.manager.ManagerController;
-import game.view.Console;
+import game.view.ViewConsole;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -11,9 +11,9 @@ import java.io.IOException;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(HierarchicalContextRunner.class)
-public class ControllerImplTest {
+public class ControllerTest {
 
-    private final Console console = new ConsoleDummy();
+    private final ViewConsole console = new ConsoleDummy();
 
     public class SetupGame {
 
@@ -23,7 +23,7 @@ public class ControllerImplTest {
 
         @Test
         public void testSetupGameControllerValidNumberInput() throws IOException {
-            ManagerController controller = new ControllerImpl(view, interactor, presenter);
+            ManagerController controller = new Controller(view, interactor, presenter);
             controller.execute();
 
             assertTrue(interactor.verifyUserInterfaceOptionsCalled);
@@ -41,7 +41,7 @@ public class ControllerImplTest {
 
         @Test
         public void testCreatePlayerControllerValidNumberInput() throws IOException {
-            ManagerController controller = new ControllerImpl(view, interactor, presenter);
+            ManagerController controller = new Controller(view, interactor, presenter);
             controller.execute();
 
             assertTrue(interactor.verifyUserInterfaceOptionsCalled);

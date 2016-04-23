@@ -1,12 +1,12 @@
 package game.display;
 
-import game.view.Console;
+import game.view.ViewConsole;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-public class ConsoleImpl implements Console {
+public class ConsoleImpl implements ViewConsole {
 
     private final BufferedReader reader;
     private final BufferedWriter writer;

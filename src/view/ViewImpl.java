@@ -8,16 +8,16 @@ import java.util.Map;
 
 public class ViewImpl implements ControllerView, ManagerView {
 
-    private final Console console;
-    private Manager manager;
+    private final ViewConsole console;
+    private ViewManager manager;
     private Map<Integer, String> menuMap;
 
-    public ViewImpl(Console console) {
+    public ViewImpl(ViewConsole console) {
         this.console = console;
     }
 
     @Override
-    public void setManager(Manager manager) {
+    public void setManager(ViewManager manager) {
         this.manager = manager;
     }
 

@@ -1,10 +1,10 @@
 package game.controllers;
 
-import game.view.Console;
+import game.view.ViewConsole;
 
 import java.io.IOException;
 
-class ConsoleDummy implements Console{
+class ConsoleDummy implements ViewConsole {
 
     @Override
     public String read() throws IOException {

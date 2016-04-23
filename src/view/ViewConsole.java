@@ -2,7 +2,7 @@ package game.view;
 
 import java.io.IOException;
 
-public interface Console {
+public interface ViewConsole {
 
     String read() throws IOException;
 

@@ -2,7 +2,7 @@ package game.view;
 
 import java.io.IOException;
 
-class ConsoleZeroEnteredMock implements Console{
+class ConsoleZeroEnteredMock implements ViewConsole {
 
     @Override
     public String read() throws IOException {

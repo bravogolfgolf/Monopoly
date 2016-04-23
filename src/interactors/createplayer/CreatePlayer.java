@@ -1,10 +1,10 @@
 package game.interactors.createplayer;
 
-import game.controllers.Interactor;
+import game.controllers.ControllerInteractor;
 import game.interactors.InteractorRequest;
 import game.interactors.InteractorResponse;
 
-public class CreatePlayer implements Interactor {
+public class CreatePlayer implements ControllerInteractor {
 
     private final CreatePlayerPresenter presenter;
     private final CreatePlayerGateway player;
