@@ -1,6 +1,5 @@
 package game.repositories;
 
-import game.entities.Token;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +15,7 @@ public class PlayerRepositoryImplTest {
 
     @Before
     public void setUp() {
-        Set<Token> tokens = new LinkedHashSet<>(Collections.singletonList(new Token("Cat")));
+        Set<PlayerRepositoryImpl.Player.Token> tokens = new LinkedHashSet<>(Collections.singletonList(new PlayerRepositoryImpl.Player.Token("Cat")));
         playerRepository = new PlayerRepositoryImpl(tokens);
     }
 

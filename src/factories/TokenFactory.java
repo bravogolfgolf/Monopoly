@@ -1,6 +1,6 @@
 package game.factories;
 
-import game.entities.Token;
+import game.repositories.PlayerRepositoryImpl;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -8,8 +8,8 @@ import java.util.Set;
 
 class TokenFactory {
 
-    static Set<Token> tokenSet(String version) {
-        Set<Token> tokens = new LinkedHashSet<>();
+    static Set<PlayerRepositoryImpl.Player.Token> tokenSet(String version) {
+        Set<PlayerRepositoryImpl.Player.Token> tokens = new LinkedHashSet<>();
         String[] tokenDescriptions = new String[0];
 
         String[] tokensUSA = new String[]{"Wheelbarrow", "Battleship", "Scottish Terrier", "Top Hat", "Cat", "Thimble", "Boot", "Automobile"};
@@ -25,9 +25,9 @@ class TokenFactory {
         return tokens;
     }
 
-    private static void makeSet(Set<Token> tokens, String[] tokenDescriptions) {
+    private static void makeSet(Set<PlayerRepositoryImpl.Player.Token> tokens, String[] tokenDescriptions) {
         for (String token : tokenDescriptions) {
-            tokens.add(new Token(token));
+            tokens.add(new PlayerRepositoryImpl.Player.Token(token));
         }
     }
 }
