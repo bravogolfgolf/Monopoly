@@ -6,9 +6,11 @@ import java.util.Map;
 class PresenterMock implements ControllerPresenter {
 
     boolean verifyGetMenuMapCalled = false;
+    boolean verifyGetFormattedMessage = false;
 
     @Override
     public String getFormattedMessage() {
+        verifyGetFormattedMessage = true;
         return null;
     }
 

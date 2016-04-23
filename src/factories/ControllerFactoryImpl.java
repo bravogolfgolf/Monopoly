@@ -1,6 +1,6 @@
 package game.factories;
 
-import game.controllers.Controller;
+import game.controllers.Basic;
 import game.controllers.ControllerPresenter;
 import game.controllers.ControllerView;
 import game.entities.Board;
@@ -29,11 +29,11 @@ public class ControllerFactoryImpl implements ControllerFactory {
         if (controller.equals("SelectVersion")) {
             SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
             SelectVersion interactor = new SelectVersion((SelectVersionPresenter) presenter, factory);
-            return new Controller(view, interactor, presenter);
+            return new Basic(view, interactor, presenter);
         }
         if (controller.equals("CreatePlayer")) {
             CreatePlayer interactor = new CreatePlayer((CreatePlayerPresenter) presenter, players);
-            return new Controller(view, interactor, presenter);
+            return new Basic(view, interactor, presenter);
         }
         throw new IllegalArgumentException();
     }

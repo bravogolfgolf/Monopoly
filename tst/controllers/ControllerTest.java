@@ -17,22 +17,24 @@ public class ControllerTest {
 
 
     @Test
-    public void testControllerExecute() throws IOException {
-        ManagerController controller = new Controller(view, interactor, presenter);
-        controller.execute();
+    public void testControllerHandle() throws IOException {
+        ManagerController controller = new Basic(view, interactor, presenter);
+        controller.handle("Valid");
 
-        assertTrue(interactor.verifyUserInterfaceOptionsCalled);
-        assertTrue(presenter.verifyGetMenuMapCalled);
-        assertTrue(view.verifySetMapCalled);
+        assertTrue(interactor.verifyHandleCalled);
+        assertTrue(presenter.verifyGetFormattedMessage);
         assertTrue(view.verifyWriteCalled);
     }
 
 
     @Test
-    public void testControllerHandle() throws IOException {
-        ManagerController controller = new Controller(view, interactor, presenter);
+    public void testSetMap() throws IOException {
+        ManagerController controller = new SetMap(view, interactor, presenter);
         controller.handle("Valid");
 
-        assertTrue(interactor.verifyHandleCalled);
+        assertTrue(interactor.verifyUserInterfaceOptionsCalled);
+        assertTrue(presenter.verifyGetMenuMapCalled);
+        assertTrue(view.verifySetMapCalled);
+        assertTrue(view.verifyWriteCalled);
     }
 }
