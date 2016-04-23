@@ -1,4 +1,4 @@
-package game.interactors.createplayer;
+package game.interactors.gamesetup.createplayer;
 
 public interface CreatePlayerGateway {
 

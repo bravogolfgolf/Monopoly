@@ -5,10 +5,10 @@ import game.controllers.ControllerPresenter;
 import game.controllers.ControllerView;
 import game.entities.Board;
 import game.entities.Players;
-import game.interactors.createplayer.CreatePlayer;
-import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.selectversion.SelectVersion;
-import game.interactors.selectversion.SelectVersionPresenter;
+import game.interactors.gamesetup.createplayer.CreatePlayer;
+import game.interactors.gamesetup.createplayer.CreatePlayerPresenter;
+import game.interactors.gamesetup.selectversion.SelectVersion;
+import game.interactors.gamesetup.selectversion.SelectVersionPresenter;
 import game.manager.ControllerFactory;
 import game.manager.ManagerController;
 

@@ -1,6 +1,6 @@
 package game.entities;
 
-import game.interactors.createplayer.CreatePlayerGateway;
+import game.interactors.gamesetup.createplayer.CreatePlayerGateway;
 
 import java.util.HashSet;
 import java.util.Set;

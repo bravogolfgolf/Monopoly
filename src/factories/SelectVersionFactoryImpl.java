@@ -2,7 +2,7 @@ package game.factories;
 
 import game.entities.Board;
 import game.entities.Players;
-import game.interactors.selectversion.SelectVersionFactory;
+import game.interactors.gamesetup.selectversion.SelectVersionFactory;
 
 import java.util.Arrays;
 
