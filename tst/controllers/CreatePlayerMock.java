@@ -2,7 +2,7 @@ package game.controllers;
 
 import game.interactors.InteractorRequest;
 
-class CreatePlayerMock implements Interactor {
+class CreatePlayerMock implements ControllerInteractor {
 
     boolean verifyUserInterfaceOptionsCalled = false;
 

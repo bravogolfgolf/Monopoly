@@ -1,10 +1,10 @@
 package game.manager;
 
-import game.view.Manager;
+import game.view.ViewManager;
 
 import java.io.IOException;
 
-public abstract class StateManager implements Manager {
+public abstract class StateManager implements ViewManager {
 
     private State state;
     final ManagerView view;

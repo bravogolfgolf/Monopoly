@@ -1,11 +1,11 @@
 package game.manager;
 
-import game.view.Manager;
+import game.view.ViewManager;
 
 import java.io.IOException;
 
 public interface ManagerView {
-    void setManager(Manager manager);
+    void setManager(ViewManager manager);
 
     void read() throws IOException;
 }

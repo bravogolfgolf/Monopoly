@@ -5,13 +5,13 @@ import game.manager.ManagerController;
 
 import java.io.IOException;
 
-public class ControllerImpl implements ManagerController {
+public class Controller implements ManagerController {
 
     private final ControllerView view;
-    private final Interactor interactor;
+    private final ControllerInteractor interactor;
     private final ControllerPresenter presenter;
 
-    public ControllerImpl(ControllerView view, Interactor interactor, ControllerPresenter presenter) {
+    public Controller(ControllerView view, ControllerInteractor interactor, ControllerPresenter presenter) {
         this.view = view;
         this.interactor = interactor;
         this.presenter = presenter;

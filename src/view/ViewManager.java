@@ -2,7 +2,7 @@ package game.view;
 
 import java.io.IOException;
 
-public interface Manager {
+public interface ViewManager {
 
     void validTextEntry(String result) throws IOException;
 

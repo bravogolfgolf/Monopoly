@@ -1,6 +1,6 @@
 package game.view;
 
-class CreatePlayerManagerMock implements Manager {
+class CreatePlayerManagerMock implements ViewManager {
 
     boolean validUseCaseEntryCalled = false;
     boolean verifyInvalidEntryCalled = false;

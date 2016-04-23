@@ -1,6 +1,6 @@
 package game.interactors.selectversion;
 
-import game.controllers.Interactor;
+import game.controllers.ControllerInteractor;
 import game.interactors.InteractorRequest;
 import game.interactors.PresenterEnMock;
 import org.junit.Test;
@@ -11,7 +11,7 @@ public class SelectVersionTest {
 
     private final PresenterEnMock presenter = new PresenterEnMock();
     private final SelectVersionFactoryFake factory = new SelectVersionFactoryFake();
-    private final Interactor interactor = new SelectVersion(presenter, factory);
+    private final ControllerInteractor interactor = new SelectVersion(presenter, factory);
     private final InteractorRequest request = new InteractorRequest();
 
     @Test

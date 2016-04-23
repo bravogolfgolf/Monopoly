@@ -1,10 +1,10 @@
 package game.interactors.selectversion;
 
-import game.controllers.Interactor;
+import game.controllers.ControllerInteractor;
 import game.interactors.InteractorRequest;
 import game.interactors.InteractorResponse;
 
-public class SelectVersion implements Interactor {
+public class SelectVersion implements ControllerInteractor {
 
     private final SelectVersionPresenter presenter;
     private final SelectVersionFactory factory;
