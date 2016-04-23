@@ -1,16 +1,14 @@
 package game.factories;
 
 import game.entities.Board;
-import game.entities.Token;
 import game.interactors.setupgame.SelectVersionFactory;
 import game.repositories.PlayerRepositoryImpl;
 
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import static game.factories.ControllerFactoryImpl.board;
 import static game.factories.ControllerFactoryImpl.playerGateway;
+import static game.factories.TokenFactory.tokenSet;
 
 class SelectVersionFactoryImpl implements SelectVersionFactory {
 
@@ -37,29 +35,6 @@ class SelectVersionFactoryImpl implements SelectVersionFactory {
 
     private void setup(String version) {
         board = new Board(version);
-        playerGateway = new PlayerRepositoryImpl(tokensList(version));
-    }
-
-    private Set<Token> tokensList(String version) {
-        Set<Token> tokens = new LinkedHashSet<>();
-        String[] tokenDescriptions = new String[8];
-
-        String[] tokensUSA = new String[]{"Wheelbarrow", "Battleship", "Scottish Terrier", "Top Hat", "Cat", "Thimble", "Boot", "Automobile"};
-        String[] tokensTEST = new String[]{"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"};
-
-        if (version.equals("USA"))
-            tokenDescriptions = tokensUSA;
-        if (version.equals("TEST"))
-            tokenDescriptions = tokensTEST;
-
-        Arrays.sort(tokenDescriptions);
-        makeSet(tokens, tokenDescriptions);
-        return tokens;
-    }
-
-    private void makeSet(Set<Token> tokens, String[] tokenDescriptions) {
-        for (String token : tokenDescriptions) {
-            tokens.add(new Token(token));
-        }
+        playerGateway = new PlayerRepositoryImpl(tokenSet(version));
     }
 }
