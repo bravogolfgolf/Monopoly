@@ -15,9 +15,36 @@ public class PresenterEnTest {
     private String expected;
 
     @Test
-    public void testSetupGamePromptMessage() {
-        presenter.setupGamePromptMessage();
+    public void testGetMenuMap() {
+        response.options = new String[]{"FRA", "USA"};
+        presenter.userInterfaceOptionsMessage(response);
+        Map<Integer, String> map = new Hashtable<Integer, String>() {{
+            put(1, "FRA");
+            put(2, "USA");
+        }};
+        assertEquals(map, presenter.getMenuMap());
+    }
+
+    @Test
+    public void testSelectVersionPromptMessage() {
+        presenter.selectVersionPromptMessage();
         expected = "Select version of game you would like to play.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
+    }
+
+    @Test
+    public void testAvailableVersionsMessage() {
+        response.options = new String[]{"FRA", "USA"};
+        presenter.availableVersionsMessage(response);
+        expected = "Available versions: (1)FRA, (2)USA\n";
+        assertEquals(expected, presenter.getFormattedMessage());
+    }
+
+    @Test
+    public void testVersionCreatedMessage() {
+        response.options = new String[]{"USA"};
+        presenter.versionCreatedMessage(response);
+        expected = "USA version of game created.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
@@ -36,30 +63,11 @@ public class PresenterEnTest {
     }
 
     @Test
-    public void testVersionCreatedMessage() {
-        response.options = new String[]{"USA"};
-        presenter.versionCreatedMessage(response);
-        expected = "USA version of game created.\n";
+    public void testAvailableTokensMessage() {
+        response.options = new String[]{"Automobile", "Battleship", "Boot", "Cat", "Scottish Terrier", "Thimble", "Top Hat", "Wheelbarrow"};
+        presenter.availableTokensMessage(response);
+        expected = "Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow\n";
         assertEquals(expected, presenter.getFormattedMessage());
-    }
-
-    @Test
-    public void testAvailableVersionsMessage() {
-        response.options = new String[]{"FRA", "USA"};
-        presenter.availableVersionsMessage(response);
-        expected = "Available versions: (1)FRA, (2)USA\n";
-        assertEquals(expected, presenter.getFormattedMessage());
-    }
-
-    @Test
-    public void testGetMenuMap() {
-        response.options = new String[]{"FRA", "USA"};
-        presenter.userInterfaceOptionsMessage(response);
-        Map<Integer, String> map = new Hashtable<Integer, String>() {{
-            put(1, "FRA");
-            put(2, "USA");
-        }};
-        assertEquals(map, presenter.getMenuMap());
     }
 
     @Test
@@ -70,11 +78,5 @@ public class PresenterEnTest {
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
-    @Test
-    public void testAvailableTokensMessage() {
-        response.options = new String[]{"Automobile", "Battleship", "Boot", "Cat", "Scottish Terrier", "Thimble", "Top Hat", "Wheelbarrow"};
-        presenter.availableTokensMessage(response);
-        expected = "Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow\n";
-        assertEquals(expected, presenter.getFormattedMessage());
-    }
+
 }

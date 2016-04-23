@@ -2,8 +2,8 @@ package game.presenters;
 
 import game.interactors.InteractorResponse;
 import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.gamesetup.SelectVersionPresenter;
 import game.interactors.options.OptionsPresenter;
+import game.interactors.selectversion.SelectVersionPresenter;
 import game.manager.ManagerPresenter;
 
 public class PresenterEn extends Presenter implements CreatePlayerPresenter, SelectVersionPresenter, OptionsPresenter, ManagerPresenter {
@@ -24,7 +24,7 @@ public class PresenterEn extends Presenter implements CreatePlayerPresenter, Sel
     }
 
     @Override
-    public void setupGamePromptMessage() {
+    public void selectVersionPromptMessage() {
         template = "Select version of game you would like to play.";
         addMessageToBuffer(template);
     }

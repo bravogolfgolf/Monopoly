@@ -8,10 +8,10 @@ import game.entities.Board;
 import game.entities.Players;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.gamesetup.SelectVersion;
-import game.interactors.gamesetup.SelectVersionPresenter;
 import game.interactors.options.Options;
 import game.interactors.options.OptionsPresenter;
+import game.interactors.selectversion.SelectVersion;
+import game.interactors.selectversion.SelectVersionPresenter;
 import game.manager.ControllerFactory;
 import game.manager.ManagerController;
 

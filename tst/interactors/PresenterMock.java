@@ -1,8 +1,8 @@
 package game.interactors;
 
 import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.gamesetup.SelectVersionPresenter;
 import game.interactors.options.OptionsPresenter;
+import game.interactors.selectversion.SelectVersionPresenter;
 
 class PresenterMock implements SelectVersionPresenter, CreatePlayerPresenter, OptionsPresenter {
 

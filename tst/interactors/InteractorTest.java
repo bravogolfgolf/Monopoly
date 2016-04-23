@@ -3,8 +3,8 @@ package game.interactors;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.ControllerInteractor;
 import game.interactors.createplayer.CreatePlayer;
-import game.interactors.gamesetup.SelectVersion;
 import game.interactors.options.Options;
+import game.interactors.selectversion.SelectVersion;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
