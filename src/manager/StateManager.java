@@ -46,7 +46,7 @@ public abstract class StateManager implements ViewManager {
 
     public abstract void createController(String commandString);
 
-    public abstract void executeController() throws IOException;
+    public abstract void callHandleOnController(String versions) throws IOException;
 
     public abstract void setViewManager();
 

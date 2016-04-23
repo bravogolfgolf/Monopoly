@@ -5,34 +5,18 @@ import game.manager.ManagerController;
 
 import java.io.IOException;
 
-public class Controller implements ManagerController {
+abstract class Controller implements ManagerController {
+    final ControllerView view;
+    final ControllerInteractor interactor;
+    final ControllerPresenter presenter;
+    final InteractorRequest request = new InteractorRequest();
 
-    private final ControllerView view;
-    private final ControllerInteractor interactor;
-    private final ControllerPresenter presenter;
-
-    public Controller(ControllerView view, ControllerInteractor interactor, ControllerPresenter presenter) {
-        this.view = view;
+    Controller(ControllerView view, ControllerInteractor interactor, ControllerPresenter presenter) {
         this.interactor = interactor;
+        this.view = view;
         this.presenter = presenter;
     }
 
     @Override
-    public void execute() throws IOException {
-        interactor.userInterfaceOptions();
-        view.setMap(presenter.getMenuMap());
-        updateView();
-    }
-
-    private void updateView() throws IOException {
-        view.write(presenter.getFormattedMessage());
-    }
-
-    @Override
-    public void handle(String text) throws IOException {
-        InteractorRequest request = new InteractorRequest();
-        request.string = text;
-        interactor.handle(request);
-        updateView();
-    }
+    public abstract void handle(String text) throws IOException;
 }

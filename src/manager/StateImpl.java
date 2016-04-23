@@ -8,9 +8,13 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("SelectVersion");
+
+            manager.createController("Options");
+            manager.setViewManager();
+            manager.callHandleOnController("Versions");
+
             manager.createController("SelectVersion");
             manager.setViewManager();
-            manager.executeController();
             manager.readView();
         }
 
@@ -30,8 +34,13 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_0");
+
+            manager.createController("Options");
+            manager.setViewManager();
+            manager.callHandleOnController("Tokens");
+
             manager.createController("CreatePlayer");
-            manager.executeController();
+            manager.setViewManager();
             manager.readView();
         }
 
@@ -51,8 +60,13 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_1");
+
+            manager.createController("Options");
+            manager.setViewManager();
+            manager.callHandleOnController("Tokens");
+
             manager.createController("CreatePlayer");
-            manager.executeController();
+            manager.setViewManager();
             manager.readView();
         }
 
@@ -73,8 +87,13 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_2");
+
+            manager.createController("Options");
+            manager.setViewManager();
+            manager.callHandleOnController("Tokens");
+
             manager.createController("CreatePlayer");
-            manager.executeController();
+            manager.setViewManager();
             manager.readView();
         }
 
@@ -94,8 +113,13 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_3");
+
+            manager.createController("Options");
+            manager.setViewManager();
+            manager.callHandleOnController("Tokens");
+
             manager.createController("CreatePlayer");
-            manager.executeController();
+            manager.setViewManager();
             manager.readView();
         }
 
@@ -115,8 +139,13 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_4");
+
+            manager.createController("Options");
+            manager.setViewManager();
+            manager.callHandleOnController("Tokens");
+
             manager.createController("CreatePlayer");
-            manager.executeController();
+            manager.setViewManager();
             manager.readView();
         }
 
@@ -136,8 +165,13 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_5");
+
+            manager.createController("Options");
+            manager.setViewManager();
+            manager.callHandleOnController("Tokens");
+
             manager.createController("CreatePlayer");
-            manager.executeController();
+            manager.setViewManager();
             manager.readView();
         }
 
@@ -157,8 +191,13 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_6");
+
+            manager.createController("Options");
+            manager.setViewManager();
+            manager.callHandleOnController("Tokens");
+
             manager.createController("CreatePlayer");
-            manager.executeController();
+            manager.setViewManager();
             manager.readView();
         }
 
@@ -178,8 +217,13 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_7");
+
+            manager.createController("Options");
+            manager.setViewManager();
+            manager.callHandleOnController("Tokens");
+
             manager.createController("CreatePlayer");
-            manager.executeController();
+            manager.setViewManager();
             manager.readView();
         }
 

@@ -1,6 +1,9 @@
-package game.interactors.selectversion;
+package game.interactors;
 
-class SelectVersionFactoryFake implements SelectVersionFactory {
+import game.interactors.gamesetup.SelectVersionFactory;
+import game.interactors.options.OptionsFactory;
+
+class SelectVersionFactoryMock implements SelectVersionFactory, OptionsFactory {
 
     boolean verifyCreateMethodCalled = false;
     boolean verifyGetAvailableVersionsCalled = false;
@@ -13,6 +16,6 @@ class SelectVersionFactoryFake implements SelectVersionFactory {
     @Override
     public String[] getAvailableVersions() {
         verifyGetAvailableVersionsCalled = true;
-        return new String[0];
+        return new String[]{"USA"};
     }
 }

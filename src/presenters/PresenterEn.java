@@ -2,10 +2,11 @@ package game.presenters;
 
 import game.interactors.InteractorResponse;
 import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.selectversion.SelectVersionPresenter;
+import game.interactors.gamesetup.SelectVersionPresenter;
+import game.interactors.options.OptionsPresenter;
 import game.manager.ManagerPresenter;
 
-public class PresenterEn extends Presenter implements CreatePlayerPresenter, SelectVersionPresenter, ManagerPresenter {
+public class PresenterEn extends Presenter implements CreatePlayerPresenter, SelectVersionPresenter, OptionsPresenter, ManagerPresenter {
 
     @Override
     public void versionCreatedMessage(InteractorResponse response) {

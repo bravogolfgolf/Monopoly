@@ -2,7 +2,8 @@ package game.factories;
 
 import game.entities.Board;
 import game.entities.Players;
-import game.interactors.selectversion.SelectVersionFactory;
+import game.interactors.gamesetup.SelectVersionFactory;
+import game.interactors.options.OptionsFactory;
 
 import java.util.Arrays;
 
@@ -10,7 +11,7 @@ import static game.factories.ControllerFactoryImpl.board;
 import static game.factories.ControllerFactoryImpl.players;
 import static game.factories.TokenFactory.tokenSet;
 
-class SelectVersionFactoryImpl implements SelectVersionFactory {
+class SelectVersionFactoryImpl implements SelectVersionFactory, OptionsFactory {
 
     @Override
     public String[] getAvailableVersions() {

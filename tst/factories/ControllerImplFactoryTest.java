@@ -27,6 +27,7 @@ public class ControllerImplFactoryTest {
     public void testMakeController() {
         controllerFactory.make("SelectVersion");
         controllerFactory.make("CreatePlayer");
+        controllerFactory.make("Options");
     }
 }
 

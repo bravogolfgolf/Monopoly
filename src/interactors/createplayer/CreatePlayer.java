@@ -17,18 +17,9 @@ public class CreatePlayer implements ControllerInteractor {
 
     @Override
     public void handle(InteractorRequest request) {
-         createPlayer(request);
-    }
-
-    private void createPlayer(InteractorRequest request) {
         player.create(request.string);
         response.options = new String[]{request.string};
         presenter.playerCreatedMessage(response);
     }
 
-    @Override
-    public void userInterfaceOptions() {
-        response.options = player.getAvailableTokens();
-        presenter.availableTokensMessage(response);
-    }
 }

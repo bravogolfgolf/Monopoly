@@ -1,4 +1,4 @@
-package game.interactors.selectversion;
+package game.interactors.gamesetup;
 
 import game.controllers.ControllerInteractor;
 import game.interactors.InteractorRequest;
@@ -17,18 +17,9 @@ public class SelectVersion implements ControllerInteractor {
 
     @Override
     public void handle(InteractorRequest request) {
-        createVersion(request);
-    }
-
-    private void createVersion(InteractorRequest request) {
         factory.make(request.string);
         response.options = new String[]{request.string};
         presenter.versionCreatedMessage(response);
     }
 
-    @Override
-    public void userInterfaceOptions() {
-        response.options = factory.getAvailableVersions();
-        presenter.availableVersionsMessage(response);
-    }
 }

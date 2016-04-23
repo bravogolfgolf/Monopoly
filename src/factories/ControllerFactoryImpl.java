@@ -1,14 +1,17 @@
 package game.factories;
 
-import game.controllers.Controller;
+import game.controllers.Basic;
 import game.controllers.ControllerPresenter;
 import game.controllers.ControllerView;
+import game.controllers.SetMap;
 import game.entities.Board;
 import game.entities.Players;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.selectversion.SelectVersion;
-import game.interactors.selectversion.SelectVersionPresenter;
+import game.interactors.gamesetup.SelectVersion;
+import game.interactors.gamesetup.SelectVersionPresenter;
+import game.interactors.options.Options;
+import game.interactors.options.OptionsPresenter;
 import game.manager.ControllerFactory;
 import game.manager.ManagerController;
 
@@ -18,6 +21,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
     static Players players;
     private final ControllerView view;
     private final ControllerPresenter presenter;
+    private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
 
     public ControllerFactoryImpl(ControllerView view, ControllerPresenter presenter) {
         this.view = view;
@@ -26,14 +30,18 @@ public class ControllerFactoryImpl implements ControllerFactory {
 
     @Override
     public ManagerController make(String controller) {
+
         if (controller.equals("SelectVersion")) {
-            SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
             SelectVersion interactor = new SelectVersion((SelectVersionPresenter) presenter, factory);
-            return new Controller(view, interactor, presenter);
+            return new Basic(view, interactor, presenter);
         }
         if (controller.equals("CreatePlayer")) {
             CreatePlayer interactor = new CreatePlayer((CreatePlayerPresenter) presenter, players);
-            return new Controller(view, interactor, presenter);
+            return new Basic(view, interactor, presenter);
+        }
+        if (controller.equals("Options")) {
+            Options interactor = new Options((OptionsPresenter) presenter, factory, players);
+            return new SetMap(view, interactor, presenter);
         }
         throw new IllegalArgumentException();
     }
