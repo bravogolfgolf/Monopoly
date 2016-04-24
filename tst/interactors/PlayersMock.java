@@ -1,8 +1,12 @@
 package game.interactors;
 
+import game.entities.Token;
 import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.options.OptionsPlayerGateway;
 import game.interactors.selectfirst.SelectFirstPlayerGateway;
+
+import java.util.Set;
+import java.util.TreeSet;
 
 class PlayersMock implements CreatePlayerGateway, OptionsPlayerGateway, SelectFirstPlayerGateway {
 
@@ -10,16 +14,25 @@ class PlayersMock implements CreatePlayerGateway, OptionsPlayerGateway, SelectFi
     boolean verifyGetAvailableTokens = false;
     boolean verifyRandomizePlayers = false;
     boolean verifyGetFirstPlayer = false;
+    boolean verifyGetPlayerCalled = false;
 
     @Override
-    public void create(String request) {
+    public void create(Token request) {
         verifyCreateCalled = true;
     }
 
     @Override
-    public String[] getAvailableTokens() {
+    public Token getPlayer(Token request) {
+        verifyGetPlayerCalled = true;
+        return null;
+    }
+
+    @Override
+    public Set<Token> getAvailableTokens() {
         verifyGetAvailableTokens = true;
-        return new String[]{"Cat"};
+        return new TreeSet<Token>() {{
+            new Token("Cat");
+        }};
     }
 
     @Override
@@ -28,8 +41,8 @@ class PlayersMock implements CreatePlayerGateway, OptionsPlayerGateway, SelectFi
     }
 
     @Override
-    public String getFirstPlayer() {
+    public Token getNextPlayer() {
         verifyGetFirstPlayer = true;
-        return "Cat";
+        return new Token("Cat");
     }
 }

@@ -18,15 +18,15 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     @Override
     public void availableVersionsMessage(InteractorResponse response) {
         template = "Available versions: %s";
-        variables = response.options;
-        createMenuMap(response.options);
+        variables = response.versions;
+        createMenuMap(variables);
         addMenuToBuffer(template, menuMap);
     }
 
     @Override
     public void versionCreatedMessage(InteractorResponse response) {
         template = "\n%s version of game created.";
-        variables = response.options;
+        variables = new String[]{response.version};
         addMessageToBuffer(template, variables);
     }
 
@@ -45,21 +45,21 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     @Override
     public void availableTokensMessage(InteractorResponse response) {
         template = "Available tokens: %s";
-        createMenuMap(response.options);
+        createMenuMap(response.tokens);
         addMenuToBuffer(template, menuMap);
     }
 
     @Override
     public void playerCreatedMessage(InteractorResponse response) {
         template = "\nPlayer created with %s token.";
-        variables = response.options;
+        variables = new String[]{response.token.getDescription()};
         addMessageToBuffer(template, variables);
     }
 
     @Override
     public void playerSelectedToGoFirstMessage(InteractorResponse response) {
         template = "\n%s selected to go first.";
-        variables = new String[]{response.token};
+        variables = new String[]{response.token.getDescription()};
         addMessageToBuffer(template, variables);
     }
 }

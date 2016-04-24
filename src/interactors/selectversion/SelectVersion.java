@@ -18,7 +18,7 @@ public class SelectVersion implements ControllerInteractor {
     @Override
     public void handle(InteractorRequest request) {
         factory.make(request.string);
-        response.options = new String[]{request.string};
+        response.version = request.string;
         presenter.versionCreatedMessage(response);
     }
 

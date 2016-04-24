@@ -1,10 +1,11 @@
 package game.presenters;
 
 import game.controllers.ControllerPresenter;
-import game.interactors.InteractorResponse;
+import game.entities.Token;
 
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Set;
 
 abstract class Presenter implements ControllerPresenter {
 
@@ -26,15 +27,19 @@ abstract class Presenter implements ControllerPresenter {
         return menuMap;
     }
 
-    void userInterfaceOptionsMessage(InteractorResponse response) {
-        createMenuMap(response.options);
-    }
-
     void createMenuMap(String[] strings) {
         int counter = 1;
         menuMap.clear();
         for (String string : strings) {
             menuMap.put(counter++, string);
+        }
+    }
+
+    void createMenuMap(Set<Token> tokens) {
+        int counter = 1;
+        menuMap.clear();
+        for (Token token : tokens) {
+            menuMap.put(counter++, token.getDescription());
         }
     }
 

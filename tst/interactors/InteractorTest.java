@@ -42,6 +42,7 @@ public class InteractorTest {
             interactor.handle(request);
 
             assertTrue(player.verifyCreateCalled);
+            assertTrue(player.verifyGetPlayerCalled);
             assertTrue(presenter.verifyPlayerCreatedMessage);
         }
     }

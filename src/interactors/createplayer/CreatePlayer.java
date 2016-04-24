@@ -1,6 +1,7 @@
 package game.interactors.createplayer;
 
 import game.controllers.ControllerInteractor;
+import game.entities.Token;
 import game.interactors.InteractorRequest;
 import game.interactors.InteractorResponse;
 
@@ -17,8 +18,9 @@ public class CreatePlayer implements ControllerInteractor {
 
     @Override
     public void handle(InteractorRequest request) {
-        players.create(request.string);
-        response.options = new String[]{request.string};
+        Token token = new Token(request.string);
+        players.create(token);
+        response.token = players.getPlayer(token);
         presenter.playerCreatedMessage(response);
     }
 

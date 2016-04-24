@@ -32,12 +32,12 @@ public class Options implements ControllerInteractor {
     }
 
     private void tokenOptions() {
-        response.options = players.getAvailableTokens();
+        response.tokens = players.getAvailableTokens();
         presenter.availableTokensMessage(response);
     }
 
     private void versionOptions() {
-        response.options = factory.getAvailableVersions();
+        response.versions = factory.getAvailableVersions();
         presenter.availableVersionsMessage(response);
     }
 }

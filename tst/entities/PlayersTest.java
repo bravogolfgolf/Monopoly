@@ -14,22 +14,22 @@ public class PlayersTest {
 
     @Before
     public void setUp() {
-        Set<Players.Player.Token> tokens = new TreeSet<Players.Player.Token>() {{
-            add(new Players.Player.Token("Cat"));
-            add(new Players.Player.Token("Boot"));
+        Set<Token> tokens = new TreeSet<Token>() {{
+            add(new Token("Cat"));
+            add(new Token("Boot"));
         }};
         playerRepository = new Players(tokens);
     }
 
     @Test
     public void testCreatePlayer() {
-        String[] tokens = playerRepository.getAvailableTokens();
-        assertTrue(tokens.length == 2);
+        Set<Token> tokens = playerRepository.getAvailableTokens();
+        assertTrue(tokens.size() == 2);
 
-        playerRepository.create("Cat");
+        playerRepository.create(new Token("Cat"));
 
         tokens = playerRepository.getAvailableTokens();
-        assertTrue(tokens.length == 1);
+        assertTrue(tokens.size() == 1);
     }
 
     @Test
@@ -38,18 +38,18 @@ public class PlayersTest {
 
         for (int i = 0; i < 100; i++) {
 
-            Set<Players.Player.Token> treeSet = new TreeSet<Players.Player.Token>() {{
-                add(new Players.Player.Token("Cat"));
-                add(new Players.Player.Token("Boot"));
+            Set<Token> treeSet = new TreeSet<Token>() {{
+                add(new Token("Cat"));
+                add(new Token("Boot"));
             }};
             playerRepository = new Players(treeSet);
 
-            playerRepository.create("Cat");
-            playerRepository.create("Boot");
+            playerRepository.create(new Token("Cat"));
+            playerRepository.create(new Token("Boot"));
 
             playerRepository.randomizePlayers();
 
-            if (playerRepository.getFirstPlayer().equals("Cat"))
+            if (playerRepository.getNextPlayer().getDescription().equals("Cat"))
                 count++;
         }
         assertTrue(count > 0);

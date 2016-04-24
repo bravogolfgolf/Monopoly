@@ -1,10 +1,10 @@
 package game.presenters;
 
+import game.entities.Token;
 import game.interactors.InteractorResponse;
 import org.junit.Test;
 
-import java.util.Hashtable;
-import java.util.Map;
+import java.util.TreeSet;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,17 +15,6 @@ public class PresenterEnTest {
     private String expected;
 
     @Test
-    public void testGetMenuMap() {
-        response.options = new String[]{"FRA", "USA"};
-        presenter.userInterfaceOptionsMessage(response);
-        Map<Integer, String> map = new Hashtable<Integer, String>() {{
-            put(1, "FRA");
-            put(2, "USA");
-        }};
-        assertEquals(map, presenter.getMenuMap());
-    }
-
-    @Test
     public void testSelectVersionPromptMessage() {
         presenter.selectVersionPromptMessage();
         expected = "\nSelect version of game you would like to play.\n";
@@ -34,7 +23,7 @@ public class PresenterEnTest {
 
     @Test
     public void testAvailableVersionsMessage() {
-        response.options = new String[]{"FRA", "USA"};
+        response.versions = new String[]{"FRA", "USA"};
         presenter.availableVersionsMessage(response);
         expected = "Available versions: (1)FRA, (2)USA\n";
         assertEquals(expected, presenter.getFormattedMessage());
@@ -42,7 +31,7 @@ public class PresenterEnTest {
 
     @Test
     public void testVersionCreatedMessage() {
-        response.options = new String[]{"USA"};
+        response.version = "USA";
         presenter.versionCreatedMessage(response);
         expected = "\nUSA version of game created.\n";
         assertEquals(expected, presenter.getFormattedMessage());
@@ -64,7 +53,16 @@ public class PresenterEnTest {
 
     @Test
     public void testAvailableTokensMessage() {
-        response.options = new String[]{"Automobile", "Battleship", "Boot", "Cat", "Scottish Terrier", "Thimble", "Top Hat", "Wheelbarrow"};
+        response.tokens = new TreeSet<Token>() {{
+            add(new Token("Automobile"));
+            add(new Token("Battleship"));
+            add(new Token("Boot"));
+            add(new Token("Cat"));
+            add(new Token("Scottish Terrier"));
+            add(new Token("Thimble"));
+            add(new Token("Top Hat"));
+            add(new Token("Wheelbarrow"));
+        }};
         presenter.availableTokensMessage(response);
         expected = "Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow\n";
         assertEquals(expected, presenter.getFormattedMessage());
@@ -72,7 +70,7 @@ public class PresenterEnTest {
 
     @Test
     public void testPlayerCreatedMessage() {
-        response.options = new String[]{"Cat"};
+        response.token = new Token("Cat");
         presenter.playerCreatedMessage(response);
         expected = "\nPlayer created with Cat token.\n";
         assertEquals(expected, presenter.getFormattedMessage());
@@ -80,7 +78,7 @@ public class PresenterEnTest {
 
     @Test
     public void testPlayerSelectedToGoFirstMessage() {
-        response.token = "Cat";
+        response.token = new Token("Cat");
         presenter.playerSelectedToGoFirstMessage(response);
         expected = "\nCat selected to go first.\n";
         assertEquals(expected, presenter.getFormattedMessage());
