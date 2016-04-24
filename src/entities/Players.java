@@ -67,21 +67,6 @@ public class Players implements CreatePlayerGateway, OptionsPlayerGateway, Selec
             }
 
             @Override
-            public boolean equals(Object o) {
-                if (this == o) return true;
-                if (!(o instanceof Token)) return false;
-
-                Token token = (Token) o;
-
-                return description.equals(token.description);
-            }
-
-            @Override
-            public int hashCode() {
-                return description.hashCode();
-            }
-
-            @Override
             public int compareTo(Object o) {
                 return this.description.compareTo(((Token) o).description);
             }
