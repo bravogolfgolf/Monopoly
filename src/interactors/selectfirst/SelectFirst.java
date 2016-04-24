@@ -23,7 +23,7 @@ public class SelectFirst implements ControllerInteractor {
 
     private void selectPlayerToGoFirst() {
         players.randomizePlayers();
-        response.token = players.getFirstPlayer();
+        response.token = players.getNextPlayer();
         presenter.playerSelectedToGoFirstMessage(response);
     }
 }

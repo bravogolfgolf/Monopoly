@@ -1,25 +1,17 @@
 package game.interactors;
 
-import game.interactors.createplayer.CreatePlayerGateway;
-import game.interactors.options.OptionsPlayerGateway;
-import game.interactors.selectfirst.SelectFirstPlayerGateway;
+import game.entities.Players;
+import game.entities.Token;
 
-class PlayersMock implements CreatePlayerGateway, OptionsPlayerGateway, SelectFirstPlayerGateway {
+class PlayersMock extends Players {
 
     boolean verifyCreateCalled = false;
-    boolean verifyGetAvailableTokens = false;
     boolean verifyRandomizePlayers = false;
     boolean verifyGetFirstPlayer = false;
 
     @Override
-    public void create(String request) {
+    public void addWith(Token request) {
         verifyCreateCalled = true;
-    }
-
-    @Override
-    public String[] getAvailableTokens() {
-        verifyGetAvailableTokens = true;
-        return new String[]{"Cat"};
     }
 
     @Override
@@ -28,8 +20,8 @@ class PlayersMock implements CreatePlayerGateway, OptionsPlayerGateway, SelectFi
     }
 
     @Override
-    public String getFirstPlayer() {
+    public Token getNextPlayer() {
         verifyGetFirstPlayer = true;
-        return "Cat";
+        return new Token("Cat");
     }
 }

@@ -1,17 +1,16 @@
 package game.factories;
 
 import game.entities.Board;
-import game.entities.Players;
+import game.entities.Tokens;
 import game.interactors.options.OptionsFactory;
 import game.interactors.selectversion.SelectVersionFactory;
 
 import java.util.Arrays;
 
 import static game.factories.ControllerFactoryImpl.board;
-import static game.factories.ControllerFactoryImpl.players;
-import static game.factories.TokenFactory.tokenSet;
+import static game.factories.ControllerFactoryImpl.tokens;
 
-class SelectVersionFactoryImpl implements SelectVersionFactory, OptionsFactory {
+public class SelectVersionFactoryImpl implements SelectVersionFactory, OptionsFactory {
 
     @Override
     public String[] getAvailableVersions() {
@@ -36,6 +35,6 @@ class SelectVersionFactoryImpl implements SelectVersionFactory, OptionsFactory {
 
     private void setup(String version) {
         board = new Board(BoardFactory.boardList(version));
-        players = new Players(tokenSet(version));
+        tokens = Tokens.create(version);
     }
 }

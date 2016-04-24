@@ -15,6 +15,7 @@ public class InteractorTest {
 
     private final PresenterMock presenter = new PresenterMock();
     private final SelectVersionFactoryMock factory = new SelectVersionFactoryMock();
+    private final TokensMock tokens = new TokensMock();
     private final PlayersMock player = new PlayersMock();
     private final InteractorRequest request = new InteractorRequest();
 
@@ -34,13 +35,14 @@ public class InteractorTest {
 
     public class CreatePlayerTest {
 
-        private final CreatePlayer interactor = new CreatePlayer(presenter, player);
+        private final CreatePlayer interactor = new CreatePlayer(presenter, tokens, player);
 
         @Test
         public void testHandle() {
             request.string = "Valid";
             interactor.handle(request);
 
+            assertTrue(tokens.verifyRemoveTokenCalled);
             assertTrue(player.verifyCreateCalled);
             assertTrue(presenter.verifyPlayerCreatedMessage);
         }
@@ -48,7 +50,7 @@ public class InteractorTest {
 
     public class OptionsTest {
 
-        private final Options interactor = new Options(presenter, factory, player);
+        private final Options interactor = new Options(presenter, factory, tokens);
 
         @Test(expected = IllegalArgumentException.class)
         public void testHandleInvalidRequest() {
@@ -70,7 +72,7 @@ public class InteractorTest {
             request.string = "Tokens";
             interactor.handle(request);
 
-            assertTrue(player.verifyGetAvailableTokens);
+            assertTrue(tokens.verifyGetAvailableTokens);
             assertTrue(presenter.verifyAvailableTokensMessage);
         }
     }
