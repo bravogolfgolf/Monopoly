@@ -22,7 +22,7 @@ public class CreatePlayer implements ControllerInteractor {
     public void handle(InteractorRequest request) {
         response.token = new Token(request.string);
         tokens.removeToken(response.token);
-        players.create(response.token);
+        players.addWith(response.token);
         presenter.playerCreatedMessage(response);
     }
 

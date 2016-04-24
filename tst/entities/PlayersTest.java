@@ -11,7 +11,7 @@ public class PlayersTest {
     @Test
     public void testCreatePlayer() {
         Token token = new Token("Cat");
-        playerRepository.create(token);
+        playerRepository.addWith(token);
         assertTrue(playerRepository.getNextPlayer().equals(token));
     }
 
@@ -21,8 +21,8 @@ public class PlayersTest {
 
         for (int i = 0; i < 100; i++) {
 
-            playerRepository.create(new Token("Cat"));
-            playerRepository.create(new Token("Boot"));
+            playerRepository.addWith(new Token("Cat"));
+            playerRepository.addWith(new Token("Boot"));
 
             playerRepository.randomizePlayers();
 

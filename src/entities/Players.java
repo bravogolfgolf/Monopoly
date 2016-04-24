@@ -12,7 +12,7 @@ public class Players implements CreatePlayerGateway, SelectFirstPlayerGateway {
     private final List<Token> players = new LinkedList<>();
 
     @Override
-    public void create(Token token) {
+    public void addWith(Token token) {
         players.add(token);
     }
 

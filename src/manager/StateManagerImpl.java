@@ -13,14 +13,14 @@ public class StateManagerImpl extends StateManager {
 
         switch (state) {
             case "SelectVersion":
-                presenter.selectVersionPromptMessage();
+                super.presenter.selectVersionPromptMessage();
                 break;
             case "CreatePlayer_0":
             case "CreatePlayer_1":
-                presenter.createPlayerPromptMessageFewerThanTwo();
+                super.presenter.createPlayerPromptMessageFewerThanTwo();
                 break;
             default:
-                presenter.createPlayerPromptMessageTwoOrMore();
+                super.presenter.createPlayerPromptMessageTwoOrMore();
                 break;
         }
     }

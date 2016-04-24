@@ -10,7 +10,7 @@ class PlayersMock extends Players {
     boolean verifyGetFirstPlayer = false;
 
     @Override
-    public void create(Token request) {
+    public void addWith(Token request) {
         verifyCreateCalled = true;
     }
 

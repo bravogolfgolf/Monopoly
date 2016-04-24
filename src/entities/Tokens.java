@@ -6,7 +6,7 @@ import game.interactors.options.OptionsTokensGateway;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Tokens implements CreatePlayerTokensGateway, OptionsTokensGateway {
+public class Tokens implements OptionsTokensGateway, CreatePlayerTokensGateway {
 
     private final Set<Token> tokens;
 
