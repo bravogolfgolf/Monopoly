@@ -1,5 +1,6 @@
 package game.factories;
 
+import game.entities.Players;
 import game.manager.ControllerFactory;
 import game.presenters.PresenterEn;
 import game.view.View;
@@ -10,13 +11,16 @@ public class ControllerImplFactoryTest {
 
     private final ConsoleDummy console = new ConsoleDummy();
     private final View view = new ViewDummy(console);
-    private final PresenterEn presenter = new PresenterEnDummy();
+    private final PresenterEn presenter = new PresenterEn();
+    private final Players players = new Players();
+    private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
+
     private ControllerFactory controllerFactory;
 
     @Before
     public void setUp() {
 
-        controllerFactory = new ControllerFactoryImpl(view, presenter);
+        controllerFactory = new ControllerFactoryImpl(view, presenter, factory, players);
     }
 
     @Test(expected = IllegalArgumentException.class)

@@ -1,17 +1,11 @@
 package game.interactors;
 
+import game.entities.Players;
 import game.entities.Token;
-import game.interactors.createplayer.CreatePlayerGateway;
-import game.interactors.options.OptionsPlayerGateway;
-import game.interactors.selectfirst.SelectFirstPlayerGateway;
 
-import java.util.Set;
-import java.util.TreeSet;
-
-class PlayersMock implements CreatePlayerGateway, OptionsPlayerGateway, SelectFirstPlayerGateway {
+class PlayersMock extends Players {
 
     boolean verifyCreateCalled = false;
-    boolean verifyGetAvailableTokens = false;
     boolean verifyRandomizePlayers = false;
     boolean verifyGetFirstPlayer = false;
     boolean verifyGetPlayerCalled = false;
@@ -25,14 +19,6 @@ class PlayersMock implements CreatePlayerGateway, OptionsPlayerGateway, SelectFi
     public Token getPlayer(Token request) {
         verifyGetPlayerCalled = true;
         return null;
-    }
-
-    @Override
-    public Set<Token> getAvailableTokens() {
-        verifyGetAvailableTokens = true;
-        return new TreeSet<Token>() {{
-            new Token("Cat");
-        }};
     }
 
     @Override

@@ -8,13 +8,13 @@ public class Options implements ControllerInteractor {
 
     private final OptionsPresenter presenter;
     private final OptionsFactory factory;
-    private final OptionsPlayerGateway players;
+    private final OptionsTokensGateway tokens;
     private final InteractorResponse response = new InteractorResponse();
 
-    public Options(OptionsPresenter presenter, OptionsFactory factory, OptionsPlayerGateway players) {
+    public Options(OptionsPresenter presenter, OptionsFactory factory, OptionsTokensGateway tokens) {
         this.presenter = presenter;
         this.factory = factory;
-        this.players = players;
+        this.tokens = tokens;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class Options implements ControllerInteractor {
     }
 
     private void tokenOptions() {
-        response.tokens = players.getAvailableTokens();
+        response.tokens = tokens.getAvailableTokens();
         presenter.availableTokensMessage(response);
     }
 

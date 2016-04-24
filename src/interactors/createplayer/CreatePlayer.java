@@ -8,17 +8,20 @@ import game.interactors.InteractorResponse;
 public class CreatePlayer implements ControllerInteractor {
 
     private final CreatePlayerPresenter presenter;
+    private final CreatePlayerTokensGateway tokens;
     private final CreatePlayerGateway players;
     private final InteractorResponse response = new InteractorResponse();
 
-    public CreatePlayer(CreatePlayerPresenter presenter, CreatePlayerGateway players) {
+    public CreatePlayer(CreatePlayerPresenter presenter, CreatePlayerTokensGateway tokens, CreatePlayerGateway players) {
         this.presenter = presenter;
         this.players = players;
+        this.tokens = tokens;
     }
 
     @Override
     public void handle(InteractorRequest request) {
         Token token = new Token(request.string);
+        tokens.removeToken(token);
         players.create(token);
         response.token = players.getPlayer(token);
         presenter.playerCreatedMessage(response);

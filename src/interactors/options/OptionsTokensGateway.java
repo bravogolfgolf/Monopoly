@@ -4,7 +4,7 @@ import game.entities.Token;
 
 import java.util.Set;
 
-public interface OptionsPlayerGateway {
+public interface OptionsTokensGateway {
 
     Set<Token> getAvailableTokens();
 }
