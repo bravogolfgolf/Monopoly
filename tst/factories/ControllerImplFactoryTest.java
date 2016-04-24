@@ -1,8 +1,8 @@
 package game.factories;
 
-import game.entities.Players;
 import game.manager.ControllerFactory;
 import game.presenters.PresenterEn;
+import game.repositories.Players;
 import game.view.View;
 import org.junit.Before;
 import org.junit.Test;

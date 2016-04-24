@@ -1,13 +1,13 @@
 package game;
 
 import game.display.Console;
-import game.entities.Players;
 import game.factories.ControllerFactoryImpl;
 import game.factories.SelectVersionFactoryImpl;
 import game.manager.StateImpl;
 import game.manager.StateManager;
 import game.manager.StateManagerImpl;
 import game.presenters.PresenterEn;
+import game.repositories.Players;
 import game.view.View;
 
 import java.io.*;

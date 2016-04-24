@@ -1,5 +1,6 @@
-package game.entities;
+package game.repositories;
 
+import game.entities.Token;
 import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.selectfirst.SelectFirstPlayerGateway;
 

@@ -5,8 +5,8 @@ import game.entities.Board;
 import java.util.ArrayList;
 import java.util.List;
 
-class BoardFactory {
-    static List<Board.Space> boardList(String version) {
+class SpacesUSA {
+    static List<Board.Space> create() {
         return new ArrayList<Board.Space>() {{
             add(new Board.Space.Go("Go"));
             add(new Board.Space.RealEstate("Mediterranean Avenue"));

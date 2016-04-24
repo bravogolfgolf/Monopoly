@@ -1,7 +1,7 @@
 package game.interactors;
 
-import game.entities.Players;
 import game.entities.Token;
+import game.repositories.Players;
 
 class PlayersMock extends Players {
 
