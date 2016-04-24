@@ -38,7 +38,7 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
 
     @Override
     public void createPlayerPromptMessageTwoOrMore() {
-        template = "\nPlease select token for player or 0 to begin play. (Players 2 - 8)";
+        template = "\nPlease select token for player or (0)Play to begin. (Players 2 - 8)";
         addNewLine(template);
     }
 
@@ -61,5 +61,11 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
         template = "\n%s selected to go first.";
         variables = new String[]{response.token};
         addMessageToBuffer(template, variables);
+    }
+
+    @Override
+    public void startTurn() {
+        template = "\nAvailable options: (0)Roll.";
+        addNewLine(template);
     }
 }

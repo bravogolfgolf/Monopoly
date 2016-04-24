@@ -56,7 +56,7 @@ public class PresenterEnTest {
     @Test
     public void testCreatePlayerPromptMessageTwoOrMore() {
         presenter.createPlayerPromptMessageTwoOrMore();
-        expected = "\nPlease select token for player or 0 to begin play. (Players 2 - 8)\n";
+        expected = "\nPlease select token for player or (0)Play to begin. (Players 2 - 8)\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
@@ -81,6 +81,13 @@ public class PresenterEnTest {
         response.token = "Cat";
         presenter.playerSelectedToGoFirstMessage(response);
         expected = "\nCat selected to go first.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
+    }
+
+    @Test
+    public void testStartTurnMessage(){
+        presenter.startTurn();
+        expected = "\nAvailable options: (0)Roll.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 }
