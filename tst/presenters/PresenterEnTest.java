@@ -3,6 +3,9 @@ package game.presenters;
 import game.interactors.InteractorResponse;
 import org.junit.Test;
 
+import java.util.Hashtable;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
 
 public class PresenterEnTest {
@@ -10,6 +13,15 @@ public class PresenterEnTest {
     private final PresenterEn presenter = new PresenterEn();
     private final InteractorResponse response = new InteractorResponse();
     private String expected;
+
+    @Test
+    public void testGetMenuMap() {
+        Map<Integer, String> expected = new Hashtable<Integer, String>(){{
+            put(1,"Cat");
+        }};
+        presenter.createMenuMap(new String[]{"Cat"});
+        assertEquals(expected, presenter.getMenuMap());
+    }
 
     @Test
     public void testSelectVersionPromptMessage() {
