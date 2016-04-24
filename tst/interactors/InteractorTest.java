@@ -44,7 +44,6 @@ public class InteractorTest {
 
             assertTrue(tokens.verifyRemoveTokenCalled);
             assertTrue(player.verifyCreateCalled);
-            assertTrue(player.verifyGetPlayerCalled);
             assertTrue(presenter.verifyPlayerCreatedMessage);
         }
     }

@@ -12,7 +12,7 @@ public class PlayersTest {
     public void testCreatePlayer() {
         Token token = new Token("Cat");
         playerRepository.create(token);
-        assertTrue(playerRepository.getPlayer(token).equals(token));
+        assertTrue(playerRepository.getNextPlayer().equals(token));
     }
 
     @Test

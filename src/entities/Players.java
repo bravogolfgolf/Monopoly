@@ -17,13 +17,6 @@ public class Players implements CreatePlayerGateway, SelectFirstPlayerGateway {
     }
 
     @Override
-    public Token getPlayer(Token token) {
-        if (players.contains(token))
-            return token;
-        throw new IllegalArgumentException();
-    }
-
-    @Override
     public void randomizePlayers() {
         Collections.shuffle(players);
     }

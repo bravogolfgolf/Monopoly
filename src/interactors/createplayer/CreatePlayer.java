@@ -20,10 +20,9 @@ public class CreatePlayer implements ControllerInteractor {
 
     @Override
     public void handle(InteractorRequest request) {
-        Token token = new Token(request.string);
-        tokens.removeToken(token);
-        players.create(token);
-        response.token = players.getPlayer(token);
+        response.token = new Token(request.string);
+        tokens.removeToken(response.token);
+        players.create(response.token);
         presenter.playerCreatedMessage(response);
     }
 
