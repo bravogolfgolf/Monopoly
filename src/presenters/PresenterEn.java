@@ -10,10 +10,9 @@ import game.manager.ManagerPresenter;
 public class PresenterEn extends Presenter implements ManagerPresenter, SelectVersionPresenter, CreatePlayerPresenter, OptionsPresenter, SelectFirstPresenter {
 
     @Override
-    public void versionCreatedMessage(InteractorResponse response) {
-        template = "%s version of game created.";
-        variables = response.options;
-        addMessageToBuffer(template, variables);
+    public void selectVersionPromptMessage() {
+        template = "\nSelect version of game you would like to play.";
+        addMessageToBuffer(template);
     }
 
     @Override
@@ -25,27 +24,21 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     }
 
     @Override
-    public void selectVersionPromptMessage() {
-        template = "Select version of game you would like to play.";
-        addMessageToBuffer(template);
-    }
-
-    @Override
-    public void playerCreatedMessage(InteractorResponse response) {
-        template = "Player created with %s token.";
+    public void versionCreatedMessage(InteractorResponse response) {
+        template = "\n%s version of game created.";
         variables = response.options;
         addMessageToBuffer(template, variables);
     }
 
     @Override
     public void createPlayerPromptMessageFewerThanTwo() {
-        template = "Please select token for player. (Players 2 - 8)";
+        template = "\nPlease select token for player. (Players 2 - 8)";
         addMessageToBuffer(template);
     }
 
     @Override
     public void createPlayerPromptMessageTwoOrMore() {
-        template = "Please select token for player or 0 to begin play. (Players 2 - 8)";
+        template = "\nPlease select token for player or 0 to begin play. (Players 2 - 8)";
         addMessageToBuffer(template);
     }
 
@@ -57,8 +50,15 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     }
 
     @Override
+    public void playerCreatedMessage(InteractorResponse response) {
+        template = "\nPlayer created with %s token.";
+        variables = response.options;
+        addMessageToBuffer(template, variables);
+    }
+
+    @Override
     public void playerSelectedToGoFirstMessage(InteractorResponse response) {
-        template = "%s selected to go first.";
+        template = "\n%s selected to go first.";
         variables = new String[]{response.token};
         addMessageToBuffer(template, variables);
     }

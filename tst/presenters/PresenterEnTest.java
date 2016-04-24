@@ -28,7 +28,7 @@ public class PresenterEnTest {
     @Test
     public void testSelectVersionPromptMessage() {
         presenter.selectVersionPromptMessage();
-        expected = "Select version of game you would like to play.\n";
+        expected = "\nSelect version of game you would like to play.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
@@ -44,21 +44,21 @@ public class PresenterEnTest {
     public void testVersionCreatedMessage() {
         response.options = new String[]{"USA"};
         presenter.versionCreatedMessage(response);
-        expected = "USA version of game created.\n";
+        expected = "\nUSA version of game created.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void testCreatePlayerPromptMessageFewerThanTwo() {
         presenter.createPlayerPromptMessageFewerThanTwo();
-        expected = "Please select token for player. (Players 2 - 8)\n";
+        expected = "\nPlease select token for player. (Players 2 - 8)\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
     public void testCreatePlayerPromptMessageTwoOrMore() {
         presenter.createPlayerPromptMessageTwoOrMore();
-        expected = "Please select token for player or 0 to begin play. (Players 2 - 8)\n";
+        expected = "\nPlease select token for player or 0 to begin play. (Players 2 - 8)\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
@@ -74,7 +74,7 @@ public class PresenterEnTest {
     public void testPlayerCreatedMessage() {
         response.options = new String[]{"Cat"};
         presenter.playerCreatedMessage(response);
-        expected = "Player created with Cat token.\n";
+        expected = "\nPlayer created with Cat token.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
@@ -82,7 +82,7 @@ public class PresenterEnTest {
     public void testPlayerSelectedToGoFirstMessage() {
         response.token = "Cat";
         presenter.playerSelectedToGoFirstMessage(response);
-        expected = "Cat selected to go first.\n";
+        expected = "\nCat selected to go first.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 

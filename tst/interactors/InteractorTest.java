@@ -1,7 +1,6 @@
 package game.interactors;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import game.controllers.ControllerInteractor;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.options.Options;
 import game.interactors.selectfirst.SelectFirst;
@@ -21,7 +20,7 @@ public class InteractorTest {
 
     public class SelectVersionTest {
 
-        private final ControllerInteractor interactor = new SelectVersion(presenter, factory);
+        private final SelectVersion interactor = new SelectVersion(presenter, factory);
 
         @Test
         public void testHandle() {
@@ -35,7 +34,7 @@ public class InteractorTest {
 
     public class CreatePlayerTest {
 
-        private final ControllerInteractor interactor = new CreatePlayer(presenter, player);
+        private final CreatePlayer interactor = new CreatePlayer(presenter, player);
 
         @Test
         public void testHandle() {
@@ -49,7 +48,7 @@ public class InteractorTest {
 
     public class OptionsTest {
 
-        private final ControllerInteractor interactor = new Options(presenter, factory, player);
+        private final Options interactor = new Options(presenter, factory, player);
 
         @Test(expected = IllegalArgumentException.class)
         public void testHandleInvalidRequest() {
@@ -78,7 +77,7 @@ public class InteractorTest {
 
     public class SelectFirstTest {
 
-        private final ControllerInteractor interactor = new SelectFirst(presenter, player);
+        private final SelectFirst interactor = new SelectFirst(presenter, player);
 
         @Test(expected = IllegalArgumentException.class)
         public void testHandleInvalidRequest() {

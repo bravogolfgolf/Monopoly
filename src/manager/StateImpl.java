@@ -98,8 +98,13 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) {
-            manager.setState(NEXT);
+        public void validNumber(StateManager manager) throws IOException {
+            manager.setState(RANDOM);
+
+            manager.createController("SelectFirst");
+            manager.setViewManager();
+            manager.callHandleOnController("");
+
         }
 
         @Override
@@ -124,8 +129,12 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) {
-            manager.setState(NEXT);
+        public void validNumber(StateManager manager) throws IOException {
+            manager.setState(RANDOM);
+
+            manager.createController("SelectFirst");
+            manager.setViewManager();
+            manager.callHandleOnController("");
         }
 
         @Override
@@ -150,8 +159,12 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) {
-            manager.setState(NEXT);
+        public void validNumber(StateManager manager) throws IOException {
+            manager.setState(RANDOM);
+
+            manager.createController("SelectFirst");
+            manager.setViewManager();
+            manager.callHandleOnController("");
         }
 
         @Override
@@ -176,8 +189,12 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) {
-            manager.setState(NEXT);
+        public void validNumber(StateManager manager) throws IOException {
+            manager.setState(RANDOM);
+
+            manager.createController("SelectFirst");
+            manager.setViewManager();
+            manager.callHandleOnController("");
         }
 
         @Override
@@ -202,8 +219,12 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) {
-            manager.setState(NEXT);
+        public void validNumber(StateManager manager) throws IOException {
+            manager.setState(RANDOM);
+
+            manager.createController("SelectFirst");
+            manager.setViewManager();
+            manager.callHandleOnController("");
         }
 
         @Override
@@ -228,17 +249,25 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) {
-            manager.setState(NEXT);
+        public void validNumber(StateManager manager) throws IOException {
+            manager.setState(RANDOM);
+
+            manager.createController("SelectFirst");
+            manager.setViewManager();
+            manager.callHandleOnController("");
         }
 
         @Override
-        public void validTextEntry(StateManager manager) {
-            manager.setState(NEXT);
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(RANDOM);
+
+            manager.createController("SelectFirst");
+            manager.setViewManager();
+            manager.callHandleOnController("");
         }
     },
 
-    NEXT {
+    RANDOM {
         @Override
         public void initialize(StateManager manager) {
 
