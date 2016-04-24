@@ -12,7 +12,7 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     @Override
     public void selectVersionPromptMessage() {
         template = "\nSelect version of game you would like to play.";
-        addMessageToBuffer(template);
+        addNewLine(template);
     }
 
     @Override
@@ -33,13 +33,13 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     @Override
     public void createPlayerPromptMessageFewerThanTwo() {
         template = "\nPlease select token for player. (Players 2 - 8)";
-        addMessageToBuffer(template);
+        addNewLine(template);
     }
 
     @Override
     public void createPlayerPromptMessageTwoOrMore() {
         template = "\nPlease select token for player or 0 to begin play. (Players 2 - 8)";
-        addMessageToBuffer(template);
+        addNewLine(template);
     }
 
     @Override
@@ -52,14 +52,14 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     @Override
     public void playerCreatedMessage(InteractorResponse response) {
         template = "\nPlayer created with %s token.";
-        variables = new String[]{response.token.getDescription()};
+        variables = new String[]{response.token};
         addMessageToBuffer(template, variables);
     }
 
     @Override
     public void playerSelectedToGoFirstMessage(InteractorResponse response) {
         template = "\n%s selected to go first.";
-        variables = new String[]{response.token.getDescription()};
+        variables = new String[]{response.token};
         addMessageToBuffer(template, variables);
     }
 }

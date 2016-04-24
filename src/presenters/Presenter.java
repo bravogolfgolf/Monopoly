@@ -1,11 +1,9 @@
 package game.presenters;
 
 import game.controllers.ControllerPresenter;
-import game.entities.Token;
 
 import java.util.Hashtable;
 import java.util.Map;
-import java.util.Set;
 
 abstract class Presenter implements ControllerPresenter {
 
@@ -35,14 +33,6 @@ abstract class Presenter implements ControllerPresenter {
         }
     }
 
-    void createMenuMap(Set<Token> tokens) {
-        int counter = 1;
-        menuMap.clear();
-        for (Token token : tokens) {
-            menuMap.put(counter++, token.getDescription());
-        }
-    }
-
     void addMenuToBuffer(String template, Map map) {
         variables = createMenuArray(map);
         addMessageToBuffer(template, variables);
@@ -59,24 +49,24 @@ abstract class Presenter implements ControllerPresenter {
 
     void addMessageToBuffer(String template, String[] variables) {
         String variable = arrayToCommaDelimitedString(variables);
-        String formattedMessage = formatMessage(template, variable);
-        addMessageToBuffer(formattedMessage);
+        formatMessage(template, variable);
     }
 
     private String arrayToCommaDelimitedString(CharSequence[] array) {
         return String.join(", ", array);
     }
 
-    private String formatMessage(String template, String variable) {
-        return String.format(template, variable);
+    private void formatMessage(String template, String variable) {
+        String formattedMessage = String.format(template, variable);
+        addNewLine(formattedMessage);
     }
 
-    void addMessageToBuffer(String message) {
-        String newLine = addNewLine(message);
+    void addNewLine(String formattedMessage) {
+        String newLine = String.format(formattedMessage + "%s", NEW_LINE);
+        addMessageToBuffer(newLine);
+    }
+
+    private void addMessageToBuffer(String newLine) {
         messageBuffer.append(newLine);
-    }
-
-    private String addNewLine(String string) {
-        return String.format(string + "%s", NEW_LINE);
     }
 }

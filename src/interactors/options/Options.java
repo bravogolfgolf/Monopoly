@@ -1,8 +1,11 @@
 package game.interactors.options;
 
 import game.controllers.ControllerInteractor;
+import game.entities.Token;
 import game.interactors.InteractorRequest;
 import game.interactors.InteractorResponse;
+
+import java.util.Set;
 
 public class Options implements ControllerInteractor {
 
@@ -31,13 +34,22 @@ public class Options implements ControllerInteractor {
         }
     }
 
-    private void tokenOptions() {
-        response.tokens = tokens.getAvailableTokens();
-        presenter.availableTokensMessage(response);
-    }
-
     private void versionOptions() {
         response.versions = factory.getAvailableVersions();
         presenter.availableVersionsMessage(response);
+    }
+
+    private void tokenOptions() {
+        prepareResponse(tokens.getAvailableTokens());
+    }
+
+    private void prepareResponse(Set<Token> tokens) {
+        int counter = 0;
+        String[] strings = new String[tokens.size()];
+        for (Token token : tokens) {
+            strings[counter++] = token.getDescription();
+        }
+        response.tokens = strings;
+        presenter.availableTokensMessage(response);
     }
 }
