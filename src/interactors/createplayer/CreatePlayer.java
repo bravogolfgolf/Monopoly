@@ -7,17 +7,17 @@ import game.interactors.InteractorResponse;
 public class CreatePlayer implements ControllerInteractor {
 
     private final CreatePlayerPresenter presenter;
-    private final CreatePlayerGateway player;
+    private final CreatePlayerGateway players;
     private final InteractorResponse response = new InteractorResponse();
 
-    public CreatePlayer(CreatePlayerPresenter presenter, CreatePlayerGateway player) {
+    public CreatePlayer(CreatePlayerPresenter presenter, CreatePlayerGateway players) {
         this.presenter = presenter;
-        this.player = player;
+        this.players = players;
     }
 
     @Override
     public void handle(InteractorRequest request) {
-        player.create(request.string);
+        players.create(request.string);
         response.options = new String[]{request.string};
         presenter.playerCreatedMessage(response);
     }

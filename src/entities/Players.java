@@ -2,13 +2,16 @@ package game.entities;
 
 import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.options.OptionsPlayerGateway;
+import game.interactors.selectfirst.SelectFirstPlayerGateway;
 
-import java.util.HashSet;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-public class Players implements CreatePlayerGateway, OptionsPlayerGateway {
+public class Players implements CreatePlayerGateway, OptionsPlayerGateway, SelectFirstPlayerGateway {
 
-    private final Set<Player> players = new HashSet<>();
+    private final List<Player> players = new LinkedList<>();
     private final Set<Player.Token> tokens;
 
     public Players(Set<Player.Token> tokens) {
@@ -31,6 +34,16 @@ public class Players implements CreatePlayerGateway, OptionsPlayerGateway {
             result[counter++] = token.getDescription();
         }
         return result;
+    }
+
+    @Override
+    public void randomizePlayers() {
+        Collections.shuffle(players);
+    }
+
+    @Override
+    public String getFirstPlayer() {
+        return players.get(0).token.getDescription();
     }
 
     public static class Player {

@@ -15,31 +15,20 @@ public class PresenterEnTest {
     private String expected;
 
     @Test
-    public void testSetupGamePromptMessage() {
-        presenter.setupGamePromptMessage();
-        expected = "Select version of game you would like to play.\n";
-        assertEquals(expected, presenter.getFormattedMessage());
+    public void testGetMenuMap() {
+        response.options = new String[]{"FRA", "USA"};
+        presenter.userInterfaceOptionsMessage(response);
+        Map<Integer, String> map = new Hashtable<Integer, String>() {{
+            put(1, "FRA");
+            put(2, "USA");
+        }};
+        assertEquals(map, presenter.getMenuMap());
     }
 
     @Test
-    public void testCreatePlayerPromptMessageFewerThanTwo() {
-        presenter.createPlayerPromptMessageFewerThanTwo();
-        expected = "Please select token for player. (Players 2 - 8)\n";
-        assertEquals(expected, presenter.getFormattedMessage());
-    }
-
-    @Test
-    public void testCreatePlayerPromptMessageTwoOrMore() {
-        presenter.createPlayerPromptMessageTwoOrMore();
-        expected = "Please select token for player or 0 to begin play. (Players 2 - 8)\n";
-        assertEquals(expected, presenter.getFormattedMessage());
-    }
-
-    @Test
-    public void testVersionCreatedMessage() {
-        response.options = new String[]{"USA"};
-        presenter.versionCreatedMessage(response);
-        expected = "USA version of game created.\n";
+    public void testSelectVersionPromptMessage() {
+        presenter.selectVersionPromptMessage();
+        expected = "\nSelect version of game you would like to play.\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
@@ -52,21 +41,24 @@ public class PresenterEnTest {
     }
 
     @Test
-    public void testGetMenuMap() {
-        response.options = new String[]{"FRA", "USA"};
-        presenter.userInterfaceOptionsMessage(response);
-        Map<Integer, String> map = new Hashtable<Integer, String>() {{
-            put(1, "FRA");
-            put(2, "USA");
-        }};
-        assertEquals(map, presenter.getMenuMap());
+    public void testVersionCreatedMessage() {
+        response.options = new String[]{"USA"};
+        presenter.versionCreatedMessage(response);
+        expected = "\nUSA version of game created.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
     }
 
     @Test
-    public void testPlayerCreatedMessage() {
-        response.options = new String[]{"Cat"};
-        presenter.playerCreatedMessage(response);
-        expected = "Player created with Cat token.\n";
+    public void testCreatePlayerPromptMessageFewerThanTwo() {
+        presenter.createPlayerPromptMessageFewerThanTwo();
+        expected = "\nPlease select token for player. (Players 2 - 8)\n";
+        assertEquals(expected, presenter.getFormattedMessage());
+    }
+
+    @Test
+    public void testCreatePlayerPromptMessageTwoOrMore() {
+        presenter.createPlayerPromptMessageTwoOrMore();
+        expected = "\nPlease select token for player or 0 to begin play. (Players 2 - 8)\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
 
@@ -77,4 +69,21 @@ public class PresenterEnTest {
         expected = "Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow\n";
         assertEquals(expected, presenter.getFormattedMessage());
     }
+
+    @Test
+    public void testPlayerCreatedMessage() {
+        response.options = new String[]{"Cat"};
+        presenter.playerCreatedMessage(response);
+        expected = "\nPlayer created with Cat token.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
+    }
+
+    @Test
+    public void testPlayerSelectedToGoFirstMessage() {
+        response.token = "Cat";
+        presenter.playerSelectedToGoFirstMessage(response);
+        expected = "\nCat selected to go first.\n";
+        assertEquals(expected, presenter.getFormattedMessage());
+    }
+
 }

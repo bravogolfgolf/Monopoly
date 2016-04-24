@@ -1,4 +1,4 @@
-package game.interactors.gamesetup;
+package game.interactors.selectversion;
 
 public interface SelectVersionFactory {
 

@@ -1,14 +1,15 @@
 package game.factories;
 
-import game.controllers.ControllerView;
 import game.manager.ControllerFactory;
 import game.presenters.PresenterEn;
+import game.view.View;
 import org.junit.Before;
 import org.junit.Test;
 
 public class ControllerImplFactoryTest {
 
-    private final ControllerView view = new ConsoleDummy();
+    private final ConsoleDummy console = new ConsoleDummy();
+    private final View view = new ViewDummy(console);
     private final PresenterEn presenter = new PresenterEnDummy();
     private ControllerFactory controllerFactory;
 
@@ -28,6 +29,7 @@ public class ControllerImplFactoryTest {
         controllerFactory.make("SelectVersion");
         controllerFactory.make("CreatePlayer");
         controllerFactory.make("Options");
+        controllerFactory.make("SelectFirst");
     }
 }
 

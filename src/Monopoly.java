@@ -2,7 +2,6 @@ package game;
 
 import game.display.Console;
 import game.factories.ControllerFactoryImpl;
-import game.manager.ControllerFactory;
 import game.manager.StateImpl;
 import game.manager.StateManager;
 import game.manager.StateManagerImpl;
@@ -25,8 +24,8 @@ final class Monopoly {
     private void setup() throws IOException {
         View view = new View(console);
         PresenterEn presenter = new PresenterEn();
-        ControllerFactory factory = new ControllerFactoryImpl(view, presenter);
-        StateManager manager = new StateManagerImpl(view,presenter,factory);
+        ControllerFactoryImpl factory = new ControllerFactoryImpl(view, presenter);
+        StateManager manager = new StateManagerImpl(view, presenter, factory);
         manager.setState(StateImpl.VERSION);
         manager.initialize();
 
