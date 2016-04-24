@@ -17,12 +17,13 @@ public class SelectFirst implements ControllerInteractor {
 
     @Override
     public void handle(InteractorRequest request) {
-        if (request.string.equals("")) {
-            players.randomizePlayers();
-            response.token = players.getFirstPlayer();
-            presenter.playerSelectedToGoFirstMessage(response);
-        } else
-            throw new IllegalArgumentException();
+        if (request.string.equals("")) selectPlayerToGoFirst();
+        else throw new IllegalArgumentException();
+    }
 
+    private void selectPlayerToGoFirst() {
+        players.randomizePlayers();
+        response.token = players.getFirstPlayer();
+        presenter.playerSelectedToGoFirstMessage(response);
     }
 }
