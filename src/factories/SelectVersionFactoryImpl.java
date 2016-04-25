@@ -1,9 +1,9 @@
 package game.factories;
 
 import game.entities.Board;
-import game.entities.Tokens;
 import game.interactors.options.OptionsFactory;
 import game.interactors.selectversion.SelectVersionFactory;
+import game.repositories.Tokens;
 
 import java.util.Arrays;
 
@@ -23,18 +23,15 @@ public class SelectVersionFactoryImpl implements SelectVersionFactory, OptionsFa
     public void make(String version) {
         switch (version) {
             case "USA":
-                setup(version);
+                board = new Board(SpacesUSA.create());
+                tokens = new Tokens(TokensUSA.create());
                 break;
             case "TEST":
-                setup(version);
+                board = new Board(SpacesTEST.create());
+                tokens = new Tokens(TokensTEST.create());
                 break;
             default:
                 throw new IllegalArgumentException();
         }
-    }
-
-    private void setup(String version) {
-        board = new Board(BoardFactory.boardList(version));
-        tokens = Tokens.create(version);
     }
 }

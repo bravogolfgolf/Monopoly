@@ -4,8 +4,12 @@ import java.io.IOException;
 
 public class Basic extends Controller {
 
-    public Basic(ControllerView view, ControllerInteractor interactor, ControllerPresenter presenter) {
-        super(view, interactor, presenter);
+    private final BasicView view;
+
+    public Basic(BasicView view, ControllerInteractor interactor, ControllerPresenter presenter) {
+        this.view = view;
+        super.interactor = interactor;
+        super.presenter = presenter;
     }
 
     @Override

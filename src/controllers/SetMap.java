@@ -4,8 +4,12 @@ import java.io.IOException;
 
 public class SetMap extends Controller {
 
-    public SetMap(ControllerView view, ControllerInteractor interactor, ControllerPresenter presenter) {
-        super(view, interactor, presenter);
+    private final SetMapView view;
+
+    public SetMap(SetMapView view, ControllerInteractor interactor, ControllerPresenter presenter) {
+        this.view = view;
+        super.interactor = interactor;
+        super.presenter = presenter;
     }
 
     @Override

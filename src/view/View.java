@@ -1,12 +1,13 @@
 package game.view;
 
-import game.controllers.ControllerView;
+import game.controllers.BasicView;
+import game.controllers.SetMapView;
 import game.manager.ManagerView;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class View implements ControllerView, ManagerView {
+public class View implements BasicView, SetMapView, ManagerView {
 
     private final ViewConsole console;
     private ViewManager manager;

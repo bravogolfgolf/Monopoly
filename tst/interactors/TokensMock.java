@@ -5,6 +5,7 @@ import game.interactors.createplayer.CreatePlayerTokensGateway;
 import game.interactors.options.OptionsTokensGateway;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 class TokensMock implements CreatePlayerTokensGateway, OptionsTokensGateway {
 
@@ -19,6 +20,8 @@ class TokensMock implements CreatePlayerTokensGateway, OptionsTokensGateway {
     @Override
     public Set<Token> getAvailableTokens() {
         verifyGetAvailableTokens = true;
-        return null;
+        return new TreeSet<Token>(){{
+            add(new Token("Cat"));
+        }};
     }
 }
