@@ -19,8 +19,8 @@ public class PresenterEnTest {
         Map<Integer, String> expected = new Hashtable<Integer, String>(){{
             put(1,"Cat");
         }};
-        presenter.createMenuMap(new String[]{"Cat"});
-        assertEquals(expected, presenter.getMenuMap());
+        presenter.clearAndCreateMenuMap(new String[]{"Cat"});
+        assertEquals(expected, presenter.returnAndClearMenuMap());
     }
 
     @Test

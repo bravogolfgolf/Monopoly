@@ -19,7 +19,7 @@ public class SetMap extends Controller {
     public void handle(String text) throws IOException {
         request.string = text;
         interactor.handle(request);
-        parser.setMap(presenter.getMenuMap());
+        parser.setMap(presenter.returnAndClearMenuMap());
         console.write(presenter.getFormattedMessage());
     }
 }

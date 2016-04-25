@@ -15,7 +15,7 @@ class PresenterMock implements ControllerPresenter {
     }
 
     @Override
-    public Map<Integer, String> getMenuMap() {
+    public Map<Integer, String> returnAndClearMenuMap() {
         verifyGetMenuMapCalled = true;
         return new Hashtable<Integer, String>() {{
             put(1, "USA");

@@ -19,7 +19,7 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     public void availableVersionsMessage(InteractorResponse response) {
         template = "Available versions: %s";
         variables = response.versions;
-        createMenuMap(variables);
+        clearAndCreateMenuMap(variables);
         addMenuToBuffer(template, menuMap);
     }
 
@@ -45,7 +45,7 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     @Override
     public void availableTokensMessage(InteractorResponse response) {
         template = "Available tokens: %s";
-        createMenuMap(response.tokens);
+        clearAndCreateMenuMap(response.tokens);
         addMenuToBuffer(template, menuMap);
     }
 

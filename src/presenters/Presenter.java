@@ -21,16 +21,22 @@ abstract class Presenter implements ControllerPresenter {
     }
 
     @Override
-    public Map<Integer, String> getMenuMap() {
-        return menuMap;
+    public Map<Integer, String> returnAndClearMenuMap() {
+        Map<Integer, String> result = new Hashtable<>(menuMap);
+        clearMenuMap();
+        return result;
     }
 
-    void createMenuMap(String[] strings) {
+    void clearAndCreateMenuMap(String[] strings) {
         int counter = 1;
-        menuMap.clear();
+        clearMenuMap();
         for (String string : strings) {
             menuMap.put(counter++, string);
         }
+    }
+
+    private void clearMenuMap() {
+        menuMap.clear();
     }
 
     void addMenuToBuffer(String template, Map map) {

@@ -6,5 +6,5 @@ public interface ControllerPresenter {
 
     String getFormattedMessage();
 
-    Map<Integer, String> getMenuMap();
+    Map<Integer, String> returnAndClearMenuMap();
 }
