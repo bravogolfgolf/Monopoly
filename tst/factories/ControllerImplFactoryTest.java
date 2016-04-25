@@ -10,7 +10,7 @@ import org.junit.Test;
 public class ControllerImplFactoryTest {
 
     private final ConsoleDummy console = new ConsoleDummy();
-    private final Parser parser = new ParserDummy();
+    private final Parser parser = new Parser();
     private final PresenterEn presenter = new PresenterEn();
     private final Players players = new Players();
     private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
