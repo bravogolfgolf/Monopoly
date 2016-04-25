@@ -1,6 +1,6 @@
 package game.interactors.selectfirst;
 
-import game.controllers.setmap.MenuInteractor;
+import game.controllers.menu.MenuInteractor;
 import game.entities.Token;
 
 public class SelectFirst implements MenuInteractor {

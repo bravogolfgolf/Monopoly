@@ -2,7 +2,7 @@ package game.factories;
 
 import game.controllers.Controller;
 import game.controllers.basic.Basic;
-import game.controllers.setmap.Menu;
+import game.controllers.menu.Menu;
 import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.options.VersionOptions;

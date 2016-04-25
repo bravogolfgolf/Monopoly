@@ -1,4 +1,4 @@
-package game.controllers.setmap;
+package game.controllers.menu;
 
 import game.controllers.Controller;
 import game.parser.ControllerConsole;

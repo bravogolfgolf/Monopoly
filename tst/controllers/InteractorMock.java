@@ -2,7 +2,7 @@ package game.controllers;
 
 import game.controllers.basic.BasicInteractor;
 import game.controllers.basic.BasicRequest;
-import game.controllers.setmap.MenuInteractor;
+import game.controllers.menu.MenuInteractor;
 
 class InteractorMock implements BasicInteractor, MenuInteractor {
 

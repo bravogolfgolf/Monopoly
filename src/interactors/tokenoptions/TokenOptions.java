@@ -1,6 +1,6 @@
 package game.interactors.tokenoptions;
 
-import game.controllers.setmap.MenuInteractor;
+import game.controllers.menu.MenuInteractor;
 import game.entities.Token;
 
 import java.util.Set;

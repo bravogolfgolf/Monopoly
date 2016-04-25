@@ -1,6 +1,6 @@
 package game.manager;
 
-import game.controllers.setmap.Menu;
+import game.controllers.menu.Menu;
 
 import java.io.IOException;
 

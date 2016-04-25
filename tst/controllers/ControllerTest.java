@@ -1,7 +1,7 @@
 package game.controllers;
 
 import game.controllers.basic.Basic;
-import game.controllers.setmap.Menu;
+import game.controllers.menu.Menu;
 import org.junit.Test;
 
 import java.io.IOException;

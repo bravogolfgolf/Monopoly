@@ -1,6 +1,6 @@
 package game.interactors.options;
 
-import game.controllers.setmap.MenuInteractor;
+import game.controllers.menu.MenuInteractor;
 
 public class VersionOptions implements MenuInteractor {
 
