@@ -1,7 +1,6 @@
 package game.controllers;
 
 import game.manager.ManagerController;
-import game.view.ViewConsole;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -10,31 +9,31 @@ import static org.junit.Assert.assertTrue;
 
 public class ControllerTest {
 
-    private final ViewConsole console = new ConsoleDummy();
-    private final ViewMock view = new ViewMock(console);
+    private final ConsoleMock console = new ConsoleMock();
+    private final ParserMock parser = new ParserMock();
     private final PresenterMock presenter = new PresenterMock();
     private final InteractorMock interactor = new InteractorMock();
 
 
     @Test
     public void testBasic() throws IOException {
-        ManagerController controller = new Basic(view, interactor, presenter);
+        ManagerController controller = new Basic(interactor, presenter, console);
         controller.handle("Valid");
 
         assertTrue(interactor.verifyHandleCalled);
         assertTrue(presenter.verifyGetFormattedMessage);
-        assertTrue(view.verifyWriteCalled);
+        assertTrue(console.verifyWriteCalled);
     }
 
 
     @Test
     public void testSetMap() throws IOException {
-        ManagerController controller = new SetMap(view, interactor, presenter);
+        ManagerController controller = new SetMap(parser, interactor, presenter, console);
         controller.handle("Valid");
 
         assertTrue(interactor.verifyHandleCalled);
         assertTrue(presenter.verifyGetMenuMapCalled);
-        assertTrue(view.verifySetMapCalled);
-        assertTrue(view.verifyWriteCalled);
+        assertTrue(parser.verifySetMapCalled);
+        assertTrue(console.verifyWriteCalled);
     }
 }

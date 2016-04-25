@@ -9,25 +9,29 @@ import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
 import game.manager.ControllerFactory;
 import game.manager.ManagerController;
+import game.parser.ControllerConsole;
+import game.parser.Parser;
 import game.presenters.PresenterEn;
 import game.repositories.Players;
 import game.repositories.Tokens;
-import game.view.View;
 
 public class ControllerFactoryImpl implements ControllerFactory {
 
     static Board board;
     static Tokens tokens;
-    private final View view;
+    private final Parser parser;
     private final PresenterEn presenter;
     private final SelectVersionFactoryImpl factory;
     private final Players players;
+    private final ControllerConsole console;
 
-    public ControllerFactoryImpl(View view, PresenterEn presenter, SelectVersionFactoryImpl factory, Players players) {
-        this.view = view;
+
+    public ControllerFactoryImpl(Parser parser, PresenterEn presenter, SelectVersionFactoryImpl factory, Players players, ControllerConsole console) {
+        this.parser = parser;
         this.presenter = presenter;
         this.factory = factory;
         this.players = players;
+        this.console = console;
     }
 
     @Override
@@ -35,22 +39,22 @@ public class ControllerFactoryImpl implements ControllerFactory {
 
         if (controller.equals("SelectVersion")) {
             SelectVersion interactor = new SelectVersion(presenter, factory);
-            return new Basic(view, interactor, presenter);
+            return new Basic(interactor, presenter, console);
         }
 
         if (controller.equals("CreatePlayer")) {
             CreatePlayer interactor = new CreatePlayer(presenter, tokens, players);
-            return new Basic(view, interactor, presenter);
+            return new Basic(interactor, presenter, console);
         }
 
         if (controller.equals("Options")) {
             Options interactor = new Options(presenter, factory, tokens);
-            return new SetMap(view, interactor, presenter);
+            return new SetMap(parser, interactor, presenter, console);
         }
 
         if (controller.equals("SelectFirst")) {
             SelectFirst interactor = new SelectFirst(presenter, players);
-            return new Basic(view, interactor, presenter);
+            return new Basic(interactor, presenter, console);
         }
 
         throw new IllegalArgumentException();

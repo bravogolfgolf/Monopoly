@@ -1,6 +1,6 @@
-package game.view;
+package game.parser;
 
-class CreatePlayerManagerMock implements ViewManager {
+class StateManagerMock implements ParserManager {
 
     boolean validUseCaseEntryCalled = false;
     boolean verifyInvalidEntryCalled = false;

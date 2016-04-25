@@ -4,8 +4,8 @@ import java.io.IOException;
 
 public class StateManagerImpl extends StateManager {
 
-    public StateManagerImpl(ManagerView view, ManagerPresenter presenter, ControllerFactory factory) {
-        super(view, presenter, factory);
+    public StateManagerImpl(ManagerPresenter presenter, ControllerFactory factory, ManagerConsole console) {
+        super(presenter, factory, console);
     }
 
     @Override
@@ -36,12 +36,7 @@ public class StateManagerImpl extends StateManager {
     }
 
     @Override
-    public void setViewManager() {
-        super.view.setManager(this);
-    }
-
-    @Override
     public void readView() throws IOException {
-        super.view.read();
+        super.console.read();
     }
 }

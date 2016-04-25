@@ -6,9 +6,9 @@ import game.factories.SelectVersionFactoryImpl;
 import game.manager.StateImpl;
 import game.manager.StateManager;
 import game.manager.StateManagerImpl;
+import game.parser.Parser;
 import game.presenters.PresenterEn;
 import game.repositories.Players;
-import game.view.View;
 
 import java.io.*;
 
@@ -16,7 +16,11 @@ final class Monopoly {
 
     private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-    private final Console console = new Console(reader, writer);
+    private final Parser parser = new Parser();
+    private final Console console = new Console(reader, writer, parser);
+    private final PresenterEn presenter = new PresenterEn();
+    private final Players players = new Players();
+    private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
 
     public static void main(String[] args) throws IOException {
         Monopoly monopoly = new Monopoly();
@@ -24,12 +28,9 @@ final class Monopoly {
     }
 
     private void setup() throws IOException {
-        View view = new View(console);
-        PresenterEn presenter = new PresenterEn();
-        Players players = new Players();
-        SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
-        ControllerFactoryImpl controllerFactory = new ControllerFactoryImpl(view, presenter, factory, players);
-        StateManager manager = new StateManagerImpl(view, presenter, controllerFactory);
+        ControllerFactoryImpl controllerFactory = new ControllerFactoryImpl(parser, presenter, factory, players, console);
+        StateManager manager = new StateManagerImpl(presenter, controllerFactory, console);
+        parser.setManager(manager);
         manager.setState(StateImpl.VERSION);
         manager.initialize();
 

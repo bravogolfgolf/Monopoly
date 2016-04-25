@@ -1,15 +1,12 @@
-package game.view;
+package game.controllers;
+
+import game.parser.ControllerConsole;
 
 import java.io.IOException;
 
-class ConsoleValidUseCaseInputMock implements ViewConsole {
+class ConsoleMock implements ControllerConsole {
 
     boolean verifyWriteCalled = false;
-
-    @Override
-    public String read() throws IOException {
-        return "1";
-    }
 
     @Override
     public void write(String text) throws IOException {

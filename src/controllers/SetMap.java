@@ -1,22 +1,25 @@
 package game.controllers;
 
+import game.parser.ControllerConsole;
+
 import java.io.IOException;
 
 public class SetMap extends Controller {
 
-    private final SetMapView view;
+    private final SetMapParser parser;
 
-    public SetMap(SetMapView view, ControllerInteractor interactor, ControllerPresenter presenter) {
-        this.view = view;
+    public SetMap(SetMapParser parser, ControllerInteractor interactor, ControllerPresenter presenter, ControllerConsole console) {
+        this.parser = parser;
         super.interactor = interactor;
         super.presenter = presenter;
+        super.console = console;
     }
 
     @Override
     public void handle(String text) throws IOException {
         request.string = text;
         interactor.handle(request);
-        view.setMap(presenter.getMenuMap());
-        view.write(presenter.getFormattedMessage());
+        parser.setMap(presenter.getMenuMap());
+        console.write(presenter.getFormattedMessage());
     }
 }

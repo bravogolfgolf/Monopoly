@@ -1,24 +1,17 @@
-package game.view;
+package game.parser;
 
-import game.controllers.BasicView;
-import game.controllers.SetMapView;
-import game.manager.ManagerView;
+import game.controllers.SetMapParser;
+import game.display.ConsoleParser;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class View implements BasicView, SetMapView, ManagerView {
+public class Parser implements ConsoleParser, SetMapParser {
 
-    private final ViewConsole console;
-    private ViewManager manager;
+    private ParserManager manager;
     private Map<Integer, String> menuMap;
 
-    public View(ViewConsole console) {
-        this.console = console;
-    }
-
-    @Override
-    public void setManager(ViewManager manager) {
+    public void setManager(ParserManager manager) {
         this.manager = manager;
     }
 
@@ -28,16 +21,7 @@ public class View implements BasicView, SetMapView, ManagerView {
     }
 
     @Override
-    public void read() throws IOException {
-        parse(console.read());
-    }
-
-    @Override
-    public void write(String text) throws IOException {
-        console.write(text);
-    }
-
-    protected void parse(String line) throws IOException {
+    public void parse(String line) throws IOException {
         int selection;
 
         try {

@@ -16,7 +16,7 @@ public class TokensTest {
     private Tokens tokens;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         token = new Token("Cat");
         tokensSet = new TreeSet<Token>() {{
             add(token);
