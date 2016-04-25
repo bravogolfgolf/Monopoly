@@ -1,9 +1,9 @@
 package game.interactors;
 
-import game.interactors.options.OptionsFactory;
+import game.interactors.options.VersionOptionsFactory;
 import game.interactors.selectversion.SelectVersionFactory;
 
-class SelectVersionFactoryMock implements SelectVersionFactory, OptionsFactory {
+class SelectVersionFactoryMock implements SelectVersionFactory, VersionOptionsFactory {
 
     boolean verifyCreateMethodCalled = false;
     boolean verifyGetAvailableVersionsCalled = false;

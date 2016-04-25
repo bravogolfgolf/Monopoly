@@ -2,5 +2,5 @@ package game.manager;
 
 public interface ControllerFactory {
 
-    ManagerController make(String controller);
+    ManagerBasic make(String controller);
 }

@@ -2,7 +2,7 @@ package game.presenters;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.options.OptionsResponse;
+import game.interactors.options.VersionOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionResponse;
 import org.junit.Test;
@@ -86,7 +86,7 @@ public class PresenterEnTest {
 
     public class OptionsPresenter {
 
-        OptionsResponse response = new OptionsResponse();
+        VersionOptionsResponse response = new VersionOptionsResponse();
 
         @Test
         public void testAvailableVersionsMessage() {

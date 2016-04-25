@@ -9,7 +9,7 @@ public enum StateImpl implements State {
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("SelectVersion");
 
-            manager.createController("Options");
+            manager.createController("VersionOptions");
             manager.callHandleOnController("Versions");
 
             manager.createController("SelectVersion");
@@ -33,7 +33,7 @@ public enum StateImpl implements State {
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_0");
 
-            manager.createController("Options");
+            manager.createController("VersionOptions");
             manager.callHandleOnController("Tokens");
 
             manager.createController("CreatePlayer");
@@ -57,7 +57,7 @@ public enum StateImpl implements State {
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_1");
 
-            manager.createController("Options");
+            manager.createController("VersionOptions");
             manager.callHandleOnController("Tokens");
 
             manager.createController("CreatePlayer");
@@ -82,7 +82,7 @@ public enum StateImpl implements State {
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_2");
 
-            manager.createController("Options");
+            manager.createController("VersionOptions");
             manager.callHandleOnController("Tokens");
 
             manager.createController("CreatePlayer");
@@ -111,7 +111,7 @@ public enum StateImpl implements State {
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_3");
 
-            manager.createController("Options");
+            manager.createController("VersionOptions");
             manager.callHandleOnController("Tokens");
 
             manager.createController("CreatePlayer");
@@ -140,7 +140,7 @@ public enum StateImpl implements State {
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_4");
 
-            manager.createController("Options");
+            manager.createController("VersionOptions");
             manager.callHandleOnController("Tokens");
 
             manager.createController("CreatePlayer");
@@ -169,7 +169,7 @@ public enum StateImpl implements State {
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_5");
 
-            manager.createController("Options");
+            manager.createController("VersionOptions");
             manager.callHandleOnController("Tokens");
 
             manager.createController("CreatePlayer");
@@ -198,7 +198,7 @@ public enum StateImpl implements State {
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_6");
 
-            manager.createController("Options");
+            manager.createController("VersionOptions");
             manager.callHandleOnController("Tokens");
 
             manager.createController("CreatePlayer");
@@ -227,7 +227,7 @@ public enum StateImpl implements State {
         public void initialize(StateManager manager) throws IOException {
             manager.promptMessage("CreatePlayer_7");
 
-            manager.createController("Options");
+            manager.createController("VersionOptions");
             manager.callHandleOnController("Tokens");
 
             manager.createController("CreatePlayer");

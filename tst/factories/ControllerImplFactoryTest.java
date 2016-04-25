@@ -32,8 +32,9 @@ public class ControllerImplFactoryTest {
     @Test
     public void testMakeController() {
         controllerFactory.make("SelectVersion");
+        controllerFactory.make("VersionOptions");
         controllerFactory.make("CreatePlayer");
-        controllerFactory.make("Options");
+        controllerFactory.make("TokenOptions");
         controllerFactory.make("SelectFirst");
     }
 }

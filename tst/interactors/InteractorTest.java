@@ -1,9 +1,9 @@
 package game.interactors;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import game.controllers.InteractorRequest;
+import game.controllers.basic.BasicRequest;
 import game.interactors.createplayer.CreatePlayer;
-import game.interactors.options.Options;
+import game.interactors.options.VersionOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class InteractorTest {
     private final SelectVersionFactoryMock factory = new SelectVersionFactoryMock();
     private final TokensMock tokens = new TokensMock();
     private final PlayersMock player = new PlayersMock();
-    private final InteractorRequest request = new InteractorRequest();
+    private final BasicRequest request = new BasicRequest();
 
     public class SelectVersionTest {
 
@@ -51,7 +51,7 @@ public class InteractorTest {
 
     public class OptionsTest {
 
-        private final Options interactor = new Options(presenter, factory, tokens);
+        private final VersionOptions interactor = new VersionOptions(presenter, factory, tokens);
 
         @Test(expected = IllegalArgumentException.class)
         public void testHandleInvalidRequest() {

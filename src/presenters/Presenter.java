@@ -1,11 +1,12 @@
 package game.presenters;
 
-import game.controllers.ControllerPresenter;
+import game.controllers.basic.BasicPresenter;
+import game.controllers.setmap.MenuPresenter;
 
 import java.util.Hashtable;
 import java.util.Map;
 
-abstract class Presenter implements ControllerPresenter {
+abstract class Presenter implements BasicPresenter, MenuPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();

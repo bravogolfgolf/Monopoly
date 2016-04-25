@@ -1,14 +1,15 @@
 package game.factories;
 
-import game.controllers.Basic;
-import game.controllers.SetMap;
+import game.controllers.basic.Basic;
+import game.controllers.setmap.Menu;
 import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
-import game.interactors.options.Options;
+import game.interactors.options.VersionOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
+import game.interactors.tokenoptions.TokenOptions;
 import game.manager.ControllerFactory;
-import game.manager.ManagerController;
+import game.manager.ManagerBasic;
 import game.parser.ControllerConsole;
 import game.parser.Parser;
 import game.presenters.PresenterEn;
@@ -35,11 +36,16 @@ public class ControllerFactoryImpl implements ControllerFactory {
     }
 
     @Override
-    public ManagerController make(String controller) {
+    public ManagerBasic make(String controller) {
 
         if (controller.equals("SelectVersion")) {
             SelectVersion interactor = new SelectVersion(presenter, factory);
             return new Basic(interactor, presenter, console);
+        }
+
+        if (controller.equals("VersionOptions")) {
+            VersionOptions interactor = new VersionOptions(presenter, factory, tokens);
+            return new Menu(parser, interactor, presenter, console);
         }
 
         if (controller.equals("CreatePlayer")) {
@@ -47,9 +53,9 @@ public class ControllerFactoryImpl implements ControllerFactory {
             return new Basic(interactor, presenter, console);
         }
 
-        if (controller.equals("Options")) {
-            Options interactor = new Options(presenter, factory, tokens);
-            return new SetMap(parser, interactor, presenter, console);
+        if (controller.equals("TokenOptions")) {
+            TokenOptions interactor = new TokenOptions(presenter, tokens);
+            return new Menu(parser, interactor, presenter, console);
         }
 
         if (controller.equals("SelectFirst")) {

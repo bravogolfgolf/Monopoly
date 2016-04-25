@@ -1,10 +1,10 @@
 package game.interactors.selectfirst;
 
-import game.controllers.ControllerInteractor;
-import game.controllers.InteractorRequest;
+import game.controllers.basic.BasicInteractor;
+import game.controllers.basic.BasicRequest;
 import game.entities.Token;
 
-public class SelectFirst implements ControllerInteractor {
+public class SelectFirst implements BasicInteractor {
 
     private final SelectFirstPresenter presenter;
     private final SelectFirstPlayerGateway players;
@@ -16,7 +16,7 @@ public class SelectFirst implements ControllerInteractor {
     }
 
     @Override
-    public void handle(InteractorRequest request) {
+    public void handle(BasicRequest request) {
         if (request.string.equals("")) selectPlayerToGoFirst();
         else throw new IllegalArgumentException();
     }

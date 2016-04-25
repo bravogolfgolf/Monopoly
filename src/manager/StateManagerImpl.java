@@ -27,12 +27,12 @@ public class StateManagerImpl extends StateManager {
 
     @Override
     public void createController(String controller) {
-        super.controller = factory.make(controller);
+        super.basicController = factory.make(controller);
     }
 
     @Override
     public void callHandleOnController(String option) throws IOException {
-        super.controller.handle(option);
+        super.menuController.handle();
     }
 
     @Override

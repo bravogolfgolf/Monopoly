@@ -1,8 +1,8 @@
-package game.controllers;
+package game.controllers.basic;
 
 import java.util.Map;
 
-public interface ControllerPresenter {
+public interface BasicPresenter {
 
     String getFormattedMessage();
 

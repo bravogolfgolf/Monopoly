@@ -2,15 +2,17 @@ package game.presenters;
 
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.options.OptionsPresenter;
-import game.interactors.options.OptionsResponse;
+import game.interactors.options.VersionOptionsPresenter;
+import game.interactors.options.VersionOptionsResponse;
 import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionPresenter;
 import game.interactors.selectversion.SelectVersionResponse;
+import game.interactors.tokenoptions.TokenOptionsPresenter;
+import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.manager.ManagerPresenter;
 
-public class PresenterEn extends Presenter implements ManagerPresenter, SelectVersionPresenter, CreatePlayerPresenter, OptionsPresenter, SelectFirstPresenter {
+public class PresenterEn extends Presenter implements ManagerPresenter, SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter {
 
     @Override
     public void selectVersionPromptMessage() {
@@ -19,7 +21,7 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     }
 
     @Override
-    public void availableVersionsMessage(OptionsResponse response) {
+    public void availableVersionsMessage(VersionOptionsResponse response) {
         template = "Available versions: %s";
         variables = response.versions;
         clearAndCreateMenuMap(variables);
@@ -46,7 +48,7 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     }
 
     @Override
-    public void availableTokensMessage(OptionsResponse response) {
+    public void availableTokensMessage(VersionOptionsResponse response) {
         template = "Available tokens: %s";
         clearAndCreateMenuMap(response.tokens);
         addMenuToBuffer(template, menuMap);
@@ -70,5 +72,10 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     public void startTurn() {
         template = "\nAvailable options: (0)Roll.";
         addNewLine(template);
+    }
+
+    @Override
+    public void availableTokensMessage(TokenOptionsResponse response) {
+
     }
 }

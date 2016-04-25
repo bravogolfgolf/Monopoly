@@ -1,29 +1,31 @@
 package game.interactors.options;
 
-import game.controllers.ControllerInteractor;
-import game.controllers.InteractorRequest;
+import game.controllers.basic.BasicInteractor;
+import game.controllers.basic.BasicRequest;
+import game.controllers.setmap.MenuInteractor;
 import game.entities.Token;
 
 import java.util.Set;
 
-public class Options implements ControllerInteractor {
+public class VersionOptions implements BasicInteractor, MenuInteractor {
 
-    private final OptionsPresenter presenter;
-    private final OptionsFactory factory;
+    private final VersionOptionsPresenter presenter;
+    private final VersionOptionsFactory factory;
     private final OptionsTokensGateway tokens;
-    private final OptionsResponse response = new OptionsResponse();
+    private final VersionOptionsResponse response = new VersionOptionsResponse();
 
-    public Options(OptionsPresenter presenter, OptionsFactory factory, OptionsTokensGateway tokens) {
+    public VersionOptions(VersionOptionsPresenter presenter, VersionOptionsFactory factory, OptionsTokensGateway tokens) {
         this.presenter = presenter;
         this.factory = factory;
         this.tokens = tokens;
     }
 
     @Override
-    public void handle(InteractorRequest request) {
+    public void handle(BasicRequest request) {
         switch (request.string) {
             case "Versions":
-                versionOptions();
+                response.versions = factory.getAvailableVersions();
+                presenter.availableVersionsMessage(response);
                 break;
             case "Tokens":
                 tokenOptions();
@@ -33,7 +35,8 @@ public class Options implements ControllerInteractor {
         }
     }
 
-    private void versionOptions() {
+    @Override
+    public void handle() {
         response.versions = factory.getAvailableVersions();
         presenter.availableVersionsMessage(response);
     }

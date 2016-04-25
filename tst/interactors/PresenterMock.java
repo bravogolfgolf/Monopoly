@@ -2,14 +2,14 @@ package game.interactors;
 
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.options.OptionsPresenter;
-import game.interactors.options.OptionsResponse;
+import game.interactors.options.VersionOptionsPresenter;
+import game.interactors.options.VersionOptionsResponse;
 import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionPresenter;
 import game.interactors.selectversion.SelectVersionResponse;
 
-class PresenterMock implements SelectVersionPresenter, CreatePlayerPresenter, OptionsPresenter, SelectFirstPresenter {
+class PresenterMock implements SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, SelectFirstPresenter {
 
     boolean verifyVersionCreatedMessage = false;
     boolean verifyPlayerCreatedMessage = false;
@@ -23,7 +23,7 @@ class PresenterMock implements SelectVersionPresenter, CreatePlayerPresenter, Op
     }
 
     @Override
-    public void availableVersionsMessage(OptionsResponse response) {
+    public void availableVersionsMessage(VersionOptionsResponse response) {
         verifyAvailableVersionsMessageCalled = true;
     }
 
@@ -33,7 +33,7 @@ class PresenterMock implements SelectVersionPresenter, CreatePlayerPresenter, Op
     }
 
     @Override
-    public void availableTokensMessage(OptionsResponse response) {
+    public void availableTokensMessage(VersionOptionsResponse response) {
         verifyAvailableTokensMessage = true;
     }
 

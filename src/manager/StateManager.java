@@ -10,7 +10,8 @@ public abstract class StateManager implements ParserManager {
     final ManagerPresenter presenter;
     final ManagerConsole console;
     final ControllerFactory factory;
-    ManagerController controller;
+    ManagerBasic basicController;
+    ManagerMenu menuController;
 
     StateManager(ManagerPresenter presenter, ControllerFactory factory, ManagerConsole console) {
         this.presenter = presenter;
@@ -28,7 +29,7 @@ public abstract class StateManager implements ParserManager {
 
     @Override
     public void validTextEntry(String result) throws IOException {
-        controller.handle(result);
+        basicController.handle(result);
         state.validTextEntry(this);
     }
 

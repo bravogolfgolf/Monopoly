@@ -1,6 +1,8 @@
 package game.controllers;
 
-import game.manager.ManagerController;
+import game.controllers.basic.Basic;
+import game.controllers.setmap.Menu;
+import game.manager.ManagerBasic;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -17,7 +19,7 @@ public class ControllerTest {
 
     @Test
     public void testBasic() throws IOException {
-        ManagerController controller = new Basic(interactor, presenter, console);
+        ManagerBasic controller = new Basic(interactor, presenter, console);
         controller.handle("Valid");
 
         assertTrue(interactor.verifyHandleCalled);
@@ -28,7 +30,7 @@ public class ControllerTest {
 
     @Test
     public void testSetMap() throws IOException {
-        ManagerController controller = new SetMap(parser, interactor, presenter, console);
+        Menu controller = new Menu(parser, interactor, presenter, console);
         controller.handle("Valid");
 
         assertTrue(interactor.verifyHandleCalled);

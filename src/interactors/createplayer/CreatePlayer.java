@@ -1,10 +1,10 @@
 package game.interactors.createplayer;
 
-import game.controllers.ControllerInteractor;
-import game.controllers.InteractorRequest;
+import game.controllers.basic.BasicInteractor;
+import game.controllers.basic.BasicRequest;
 import game.entities.Token;
 
-public class CreatePlayer implements ControllerInteractor {
+public class CreatePlayer implements BasicInteractor {
 
     private final CreatePlayerPresenter presenter;
     private final CreatePlayerTokensGateway tokens;
@@ -18,7 +18,7 @@ public class CreatePlayer implements ControllerInteractor {
     }
 
     @Override
-    public void handle(InteractorRequest request) {
+    public void handle(BasicRequest request) {
         Token token = new Token(request.string);
         tokens.removeToken(token);
         players.addWith(token);
