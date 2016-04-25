@@ -1,4 +1,4 @@
-package game.interactors;
+package game.controllers;
 
 public class InteractorRequest {
 

@@ -1,6 +1,7 @@
 package game.interactors;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
+import game.controllers.InteractorRequest;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.options.Options;
 import game.interactors.selectfirst.SelectFirst;

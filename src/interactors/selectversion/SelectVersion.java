@@ -1,14 +1,13 @@
 package game.interactors.selectversion;
 
 import game.controllers.ControllerInteractor;
-import game.interactors.InteractorRequest;
-import game.interactors.InteractorResponse;
+import game.controllers.InteractorRequest;
 
 public class SelectVersion implements ControllerInteractor {
 
     private final SelectVersionPresenter presenter;
     private final SelectVersionFactory factory;
-    private final InteractorResponse response = new InteractorResponse();
+    private final SelectVersionResponse response = new SelectVersionResponse();
 
     public SelectVersion(SelectVersionPresenter presenter, SelectVersionFactory factory) {
         this.presenter = presenter;

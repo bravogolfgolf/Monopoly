@@ -1,10 +1,8 @@
 package game.interactors.options;
 
-import game.interactors.InteractorResponse;
-
 public interface OptionsPresenter {
 
-    void availableVersionsMessage(InteractorResponse response);
+    void availableVersionsMessage(OptionsResponse response);
 
-    void availableTokensMessage(InteractorResponse response);
+    void availableTokensMessage(OptionsResponse response);
 }

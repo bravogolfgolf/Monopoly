@@ -1,16 +1,15 @@
 package game.interactors.createplayer;
 
 import game.controllers.ControllerInteractor;
+import game.controllers.InteractorRequest;
 import game.entities.Token;
-import game.interactors.InteractorRequest;
-import game.interactors.InteractorResponse;
 
 public class CreatePlayer implements ControllerInteractor {
 
     private final CreatePlayerPresenter presenter;
     private final CreatePlayerTokensGateway tokens;
     private final CreatePlayerGateway players;
-    private final InteractorResponse response = new InteractorResponse();
+    private final CreatePlayerResponse response = new CreatePlayerResponse();
 
     public CreatePlayer(CreatePlayerPresenter presenter, CreatePlayerTokensGateway tokens, CreatePlayerGateway players) {
         this.presenter = presenter;

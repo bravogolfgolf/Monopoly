@@ -1,15 +1,14 @@
 package game.interactors.selectfirst;
 
 import game.controllers.ControllerInteractor;
+import game.controllers.InteractorRequest;
 import game.entities.Token;
-import game.interactors.InteractorRequest;
-import game.interactors.InteractorResponse;
 
 public class SelectFirst implements ControllerInteractor {
 
     private final SelectFirstPresenter presenter;
     private final SelectFirstPlayerGateway players;
-    private final InteractorResponse response = new InteractorResponse();
+    private final SelectFirstResponse response = new SelectFirstResponse();
 
     public SelectFirst(SelectFirstPresenter presenter, SelectFirstPlayerGateway players) {
         this.presenter = presenter;

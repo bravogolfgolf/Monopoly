@@ -1,9 +1,8 @@
 package game.interactors.options;
 
 import game.controllers.ControllerInteractor;
+import game.controllers.InteractorRequest;
 import game.entities.Token;
-import game.interactors.InteractorRequest;
-import game.interactors.InteractorResponse;
 
 import java.util.Set;
 
@@ -12,7 +11,7 @@ public class Options implements ControllerInteractor {
     private final OptionsPresenter presenter;
     private final OptionsFactory factory;
     private final OptionsTokensGateway tokens;
-    private final InteractorResponse response = new InteractorResponse();
+    private final OptionsResponse response = new OptionsResponse();
 
     public Options(OptionsPresenter presenter, OptionsFactory factory, OptionsTokensGateway tokens) {
         this.presenter = presenter;

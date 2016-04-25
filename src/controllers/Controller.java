@@ -1,6 +1,5 @@
 package game.controllers;
 
-import game.interactors.InteractorRequest;
 import game.manager.ManagerController;
 import game.parser.ControllerConsole;
 
