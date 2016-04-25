@@ -2,19 +2,20 @@ package game.controllers;
 
 import game.controllers.basic.BasicInteractor;
 import game.controllers.basic.BasicRequest;
-import game.controllers.setmap.MenuInteractor;
+import game.controllers.menu.MenuInteractor;
 
 class InteractorMock implements BasicInteractor, MenuInteractor {
 
-    boolean verifyHandleCalled = false;
+    boolean verifyHandleWithArgumentCalled = false;
+    boolean verifyHandleWithOutArgumentCalled = false;
 
     @Override
     public void handle(BasicRequest request) {
-        verifyHandleCalled = true;
+        verifyHandleWithArgumentCalled = true;
     }
 
     @Override
     public void handle() {
-
+        verifyHandleWithOutArgumentCalled = true;
     }
 }

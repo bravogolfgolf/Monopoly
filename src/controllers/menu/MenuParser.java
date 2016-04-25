@@ -1,4 +1,4 @@
-package game.controllers.setmap;
+package game.controllers.menu;
 
 import java.util.Map;
 

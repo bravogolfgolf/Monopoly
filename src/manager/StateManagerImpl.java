@@ -1,5 +1,7 @@
 package game.manager;
 
+import game.controllers.menu.Menu;
+
 import java.io.IOException;
 
 public class StateManagerImpl extends StateManager {
@@ -27,12 +29,12 @@ public class StateManagerImpl extends StateManager {
 
     @Override
     public void createController(String controller) {
-        super.basicController = factory.make(controller);
+        super.controller = factory.make(controller);
     }
 
     @Override
-    public void callHandleOnController(String option) throws IOException {
-        super.menuController.handle();
+    public void callHandleOnController() throws IOException {
+        ((Menu) controller).handle();
     }
 
     @Override

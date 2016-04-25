@@ -1,6 +1,6 @@
 package game.parser;
 
-import game.controllers.setmap.MenuParser;
+import game.controllers.menu.MenuParser;
 import game.display.ConsoleParser;
 
 import java.io.IOException;

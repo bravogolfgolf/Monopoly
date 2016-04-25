@@ -1,7 +1,6 @@
 package game.interactors.tokenoptions;
 
-import game.controllers.basic.BasicRequest;
-import game.controllers.setmap.MenuInteractor;
+import game.controllers.menu.MenuInteractor;
 import game.entities.Token;
 
 import java.util.Set;
@@ -15,11 +14,6 @@ public class TokenOptions implements MenuInteractor {
     public TokenOptions(TokenOptionsPresenter presenter, TokenOptionsTokensGateway tokens) {
         this.presenter = presenter;
         this.tokens = tokens;
-    }
-
-    @Override
-    public void handle(BasicRequest request) {
-
     }
 
     @Override

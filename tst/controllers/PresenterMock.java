@@ -1,7 +1,7 @@
 package game.controllers;
 
 import game.controllers.basic.BasicPresenter;
-import game.controllers.setmap.MenuPresenter;
+import game.controllers.menu.MenuPresenter;
 
 import java.util.Hashtable;
 import java.util.Map;

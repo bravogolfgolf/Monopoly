@@ -1,7 +1,8 @@
 package game.factories;
 
+import game.controllers.Controller;
 import game.controllers.basic.Basic;
-import game.controllers.setmap.Menu;
+import game.controllers.menu.Menu;
 import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.options.VersionOptions;
@@ -9,7 +10,6 @@ import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
 import game.interactors.tokenoptions.TokenOptions;
 import game.manager.ControllerFactory;
-import game.manager.ManagerBasic;
 import game.parser.ControllerConsole;
 import game.parser.Parser;
 import game.presenters.PresenterEn;
@@ -36,7 +36,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
     }
 
     @Override
-    public ManagerBasic make(String controller) {
+    public Controller make(String controller) {
 
         if (controller.equals("SelectVersion")) {
             SelectVersion interactor = new SelectVersion(presenter, factory);
@@ -44,7 +44,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
         }
 
         if (controller.equals("VersionOptions")) {
-            VersionOptions interactor = new VersionOptions(presenter, factory, tokens);
+            VersionOptions interactor = new VersionOptions(presenter, factory);
             return new Menu(parser, interactor, presenter, console);
         }
 
@@ -60,7 +60,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
 
         if (controller.equals("SelectFirst")) {
             SelectFirst interactor = new SelectFirst(presenter, players);
-            return new Basic(interactor, presenter, console);
+            return new Menu(parser, interactor, presenter, console);
         }
 
         throw new IllegalArgumentException();
