@@ -1,24 +1,27 @@
 package game.display;
 
-import game.view.ViewConsole;
+import game.manager.ManagerConsole;
+import game.parser.ControllerConsole;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-public class Console implements ViewConsole {
+public class Console implements ControllerConsole, ManagerConsole {
 
     private final BufferedReader reader;
     private final BufferedWriter writer;
+    private final ConsoleParser parser;
 
-    public Console(BufferedReader reader, BufferedWriter writer) {
+    public Console(BufferedReader reader, BufferedWriter writer, ConsoleParser parser) {
         this.reader = reader;
         this.writer = writer;
+        this.parser = parser;
     }
 
     @Override
-    public String read() throws IOException {
-        return reader.readLine();
+    public void read() throws IOException {
+        parser.parse(reader.readLine());
     }
 
     @Override

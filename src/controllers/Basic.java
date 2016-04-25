@@ -1,21 +1,21 @@
 package game.controllers;
 
+import game.parser.ControllerConsole;
+
 import java.io.IOException;
 
 public class Basic extends Controller {
 
-    private final BasicView view;
-
-    public Basic(BasicView view, ControllerInteractor interactor, ControllerPresenter presenter) {
-        this.view = view;
+    public Basic(ControllerInteractor interactor, ControllerPresenter presenter, ControllerConsole console) {
         super.interactor = interactor;
         super.presenter = presenter;
+        super.console = console;
     }
 
     @Override
     public void handle(String text) throws IOException {
         request.string = text;
         interactor.handle(request);
-        view.write(presenter.getFormattedMessage());
+        console.write(presenter.getFormattedMessage());
     }
 }

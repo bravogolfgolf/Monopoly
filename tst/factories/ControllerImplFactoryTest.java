@@ -1,16 +1,16 @@
 package game.factories;
 
 import game.manager.ControllerFactory;
+import game.parser.Parser;
 import game.presenters.PresenterEn;
 import game.repositories.Players;
-import game.view.View;
 import org.junit.Before;
 import org.junit.Test;
 
 public class ControllerImplFactoryTest {
 
     private final ConsoleDummy console = new ConsoleDummy();
-    private final View view = new ViewDummy(console);
+    private final Parser parser = new ParserDummy();
     private final PresenterEn presenter = new PresenterEn();
     private final Players players = new Players();
     private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
@@ -20,7 +20,7 @@ public class ControllerImplFactoryTest {
     @Before
     public void setUp() {
 
-        controllerFactory = new ControllerFactoryImpl(view, presenter, factory, players);
+        controllerFactory = new ControllerFactoryImpl(parser, presenter, factory, players, console);
     }
 
     @Test(expected = IllegalArgumentException.class)

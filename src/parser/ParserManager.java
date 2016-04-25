@@ -1,8 +1,8 @@
-package game.view;
+package game.parser;
 
 import java.io.IOException;
 
-public interface ViewManager {
+public interface ParserManager {
 
     void validTextEntry(String result) throws IOException;
 

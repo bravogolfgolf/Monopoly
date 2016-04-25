@@ -1,8 +1,8 @@
-package game.controllers;
+package game.parser;
 
 import java.io.IOException;
 
-public interface BasicView {
+public interface ControllerConsole {
 
     void write(String text) throws IOException;
 }

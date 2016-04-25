@@ -1,21 +1,21 @@
 package game.manager;
 
-import game.view.ViewManager;
+import game.parser.ParserManager;
 
 import java.io.IOException;
 
-public abstract class StateManager implements ViewManager {
+public abstract class StateManager implements ParserManager {
 
     private State state;
-    final ManagerView view;
     final ManagerPresenter presenter;
+    final ManagerConsole console;
     final ControllerFactory factory;
     ManagerController controller;
 
-    StateManager(ManagerView view, ManagerPresenter presenter, ControllerFactory factory) {
-        this.view = view;
+    StateManager(ManagerPresenter presenter, ControllerFactory factory, ManagerConsole console) {
         this.presenter = presenter;
         this.factory = factory;
+        this.console = console;
     }
 
     public void setState(State state) {
@@ -47,8 +47,6 @@ public abstract class StateManager implements ViewManager {
     public abstract void createController(String commandString);
 
     public abstract void callHandleOnController(String versions) throws IOException;
-
-    public abstract void setViewManager();
 
     public abstract void readView() throws IOException;
 }
