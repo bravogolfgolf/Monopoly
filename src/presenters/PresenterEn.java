@@ -48,13 +48,6 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     }
 
     @Override
-    public void availableTokensMessage(VersionOptionsResponse response) {
-        template = "Available tokens: %s";
-        clearAndCreateMenuMap(response.tokens);
-        addMenuToBuffer(template, menuMap);
-    }
-
-    @Override
     public void playerCreatedMessage(CreatePlayerResponse response) {
         template = "\nPlayer created with %s token.";
         variables = new String[]{response.token};
@@ -76,6 +69,8 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
 
     @Override
     public void availableTokensMessage(TokenOptionsResponse response) {
-
+        template = "Available tokens: %s";
+        clearAndCreateMenuMap(response.tokens);
+        addMenuToBuffer(template, menuMap);
     }
 }

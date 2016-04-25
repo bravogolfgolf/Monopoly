@@ -6,6 +6,7 @@ import game.interactors.createplayer.CreatePlayer;
 import game.interactors.options.VersionOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
+import game.interactors.tokenoptions.TokenOptions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -49,29 +50,25 @@ public class InteractorTest {
         }
     }
 
-    public class OptionsTest {
+    public class VersionOptionsTest {
 
-        private final VersionOptions interactor = new VersionOptions(presenter, factory, tokens);
-
-        @Test(expected = IllegalArgumentException.class)
-        public void testHandleInvalidRequest() {
-            request.string = "Invalid";
-            interactor.handle(request);
-        }
+        private final VersionOptions interactor = new VersionOptions(presenter, factory);
 
         @Test
         public void testHandleVersions() {
-            request.string = "Versions";
-            interactor.handle(request);
+            interactor.handle();
 
             assertTrue(factory.verifyGetAvailableVersionsCalled);
             assertTrue(presenter.verifyAvailableVersionsMessageCalled);
         }
+    }
+
+    public class TokenOptionsTest {
+        private final TokenOptions interactor = new TokenOptions(presenter, tokens);
 
         @Test
         public void testHandleTokens() {
-            request.string = "Tokens";
-            interactor.handle(request);
+            interactor.handle();
 
             assertTrue(tokens.verifyGetAvailableTokens);
             assertTrue(presenter.verifyAvailableTokensMessage);
@@ -82,16 +79,9 @@ public class InteractorTest {
 
         private final SelectFirst interactor = new SelectFirst(presenter, player);
 
-        @Test(expected = IllegalArgumentException.class)
-        public void testHandleInvalidRequest() {
-            request.string = "Invalid";
-            interactor.handle(request);
-        }
-
         @Test
         public void testHandleTokens() {
-            request.string = "";
-            interactor.handle(request);
+            interactor.handle();
 
             assertTrue(player.verifyRandomizePlayers);
             assertTrue(player.verifyGetFirstPlayer);

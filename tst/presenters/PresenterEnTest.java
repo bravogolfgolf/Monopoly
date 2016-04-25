@@ -5,6 +5,7 @@ import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.options.VersionOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionResponse;
+import game.interactors.tokenoptions.TokenOptionsResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,7 +20,7 @@ public class PresenterEnTest {
     private final PresenterEn presenter = new PresenterEn();
     private String expected;
 
-    public class Presenter {
+    public class PresenterTest {
 
         @Test
         public void testGetMenuMap() {
@@ -31,7 +32,7 @@ public class PresenterEnTest {
         }
     }
 
-    public class SelectVersion {
+    public class SelectVersionTest {
 
         @Test
         public void testSelectVersionPromptMessage() {
@@ -40,9 +41,9 @@ public class PresenterEnTest {
             assertEquals(expected, presenter.getFormattedMessage());
         }
 
-        public class SelectVersionPresenter {
+        public class SelectVersionResponseTest {
 
-            SelectVersionResponse response = new SelectVersionResponse();
+            private final SelectVersionResponse response = new SelectVersionResponse();
 
             @Test
             public void testVersionCreatedMessage() {
@@ -54,7 +55,7 @@ public class PresenterEnTest {
         }
     }
 
-    public class CreatePlayer {
+    public class CreatePlayerTest {
 
         @Test
         public void testCreatePlayerPromptMessageFewerThanTwo() {
@@ -70,7 +71,7 @@ public class PresenterEnTest {
             assertEquals(expected, presenter.getFormattedMessage());
         }
 
-        public class CreatePlayerPresenter {
+        public class CreatePlayerResponseTest {
 
             private final CreatePlayerResponse response = new CreatePlayerResponse();
 
@@ -84,9 +85,9 @@ public class PresenterEnTest {
         }
     }
 
-    public class OptionsPresenter {
+    public class VersionOptionsResponseTest {
 
-        VersionOptionsResponse response = new VersionOptionsResponse();
+        private final VersionOptionsResponse response = new VersionOptionsResponse();
 
         @Test
         public void testAvailableVersionsMessage() {
@@ -95,6 +96,11 @@ public class PresenterEnTest {
             expected = "Available versions: (1)FRA, (2)USA\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
+    }
+
+    public class TokenOptionsResponseTest {
+
+        private final TokenOptionsResponse response = new TokenOptionsResponse();
 
         @Test
         public void testAvailableTokensMessage() {
@@ -105,7 +111,7 @@ public class PresenterEnTest {
         }
     }
 
-    public class SelectFirstPresenter {
+    public class SelectFirstResponseTest {
 
         private final SelectFirstResponse response = new SelectFirstResponse();
 
@@ -118,7 +124,7 @@ public class PresenterEnTest {
         }
     }
 
-    public class StartTurnPresenter {
+    public class StartTurnPresenterTest {
 
         @Test
         public void testStartTurnMessage() {

@@ -6,15 +6,16 @@ import game.controllers.setmap.MenuInteractor;
 
 class InteractorMock implements BasicInteractor, MenuInteractor {
 
-    boolean verifyHandleCalled = false;
+    boolean verifyHandleWithArgumentCalled = false;
+    boolean verifyHandleWithOutArgumentCalled = false;
 
     @Override
     public void handle(BasicRequest request) {
-        verifyHandleCalled = true;
+        verifyHandleWithArgumentCalled = true;
     }
 
     @Override
     public void handle() {
-
+        verifyHandleWithOutArgumentCalled = true;
     }
 }

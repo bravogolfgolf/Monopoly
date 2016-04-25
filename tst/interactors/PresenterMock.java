@@ -8,8 +8,10 @@ import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionPresenter;
 import game.interactors.selectversion.SelectVersionResponse;
+import game.interactors.tokenoptions.TokenOptionsPresenter;
+import game.interactors.tokenoptions.TokenOptionsResponse;
 
-class PresenterMock implements SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, SelectFirstPresenter {
+class PresenterMock implements SelectVersionPresenter, VersionOptionsPresenter, CreatePlayerPresenter, TokenOptionsPresenter, SelectFirstPresenter {
 
     boolean verifyVersionCreatedMessage = false;
     boolean verifyPlayerCreatedMessage = false;
@@ -33,7 +35,7 @@ class PresenterMock implements SelectVersionPresenter, CreatePlayerPresenter, Ve
     }
 
     @Override
-    public void availableTokensMessage(VersionOptionsResponse response) {
+    public void availableTokensMessage(TokenOptionsResponse response) {
         verifyAvailableTokensMessage = true;
     }
 

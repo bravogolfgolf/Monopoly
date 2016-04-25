@@ -1,10 +1,9 @@
 package game.interactors.selectfirst;
 
-import game.controllers.basic.BasicInteractor;
-import game.controllers.basic.BasicRequest;
+import game.controllers.setmap.MenuInteractor;
 import game.entities.Token;
 
-public class SelectFirst implements BasicInteractor {
+public class SelectFirst implements MenuInteractor {
 
     private final SelectFirstPresenter presenter;
     private final SelectFirstPlayerGateway players;
@@ -16,9 +15,8 @@ public class SelectFirst implements BasicInteractor {
     }
 
     @Override
-    public void handle(BasicRequest request) {
-        if (request.string.equals("")) selectPlayerToGoFirst();
-        else throw new IllegalArgumentException();
+    public void handle() {
+        selectPlayerToGoFirst();
     }
 
     private void selectPlayerToGoFirst() {

@@ -1,11 +1,11 @@
 package game.controllers.basic;
 
-import game.manager.ManagerBasic;
+import game.controllers.Controller;
 import game.parser.ControllerConsole;
 
 import java.io.IOException;
 
-public class Basic implements ManagerBasic {
+public class Basic extends Controller {
 
     private final BasicInteractor interactor;
     private final BasicPresenter presenter;
@@ -18,7 +18,6 @@ public class Basic implements ManagerBasic {
         this.console = console;
     }
 
-    @Override
     public void handle(String text) throws IOException {
         request.string = text;
         interactor.handle(request);

@@ -1,6 +1,8 @@
 package game.manager;
 
+import game.controllers.Controller;
+
 public interface ControllerFactory {
 
-    ManagerBasic make(String controller);
+    Controller make(String controller);
 }
