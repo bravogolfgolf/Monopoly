@@ -1,6 +1,7 @@
 package game.manager;
 
 public interface ManagerPresenter {
+
     void selectVersionPromptMessage();
 
     void createPlayerPromptMessageFewerThanTwo();
