@@ -10,14 +10,12 @@ import game.parser.Parser;
 import game.presenters.PresenterEn;
 import game.repositories.Players;
 
-import java.io.*;
+import java.io.IOException;
 
 final class Monopoly {
 
-    private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    private final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
     private final Parser parser = new Parser();
-    private final Console console = new Console(reader, writer, parser);
+    private final Console console = new Console(parser);
     private final PresenterEn presenter = new PresenterEn();
     private final Players players = new Players();
     private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();

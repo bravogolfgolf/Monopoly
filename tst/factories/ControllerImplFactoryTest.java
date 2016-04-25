@@ -1,5 +1,6 @@
 package game.factories;
 
+import game.display.Console;
 import game.manager.ControllerFactory;
 import game.parser.Parser;
 import game.presenters.PresenterEn;
@@ -9,8 +10,8 @@ import org.junit.Test;
 
 public class ControllerImplFactoryTest {
 
-    private final ConsoleDummy console = new ConsoleDummy();
     private final Parser parser = new Parser();
+    private final Console console = new Console(parser);
     private final PresenterEn presenter = new PresenterEn();
     private final Players players = new Players();
     private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
