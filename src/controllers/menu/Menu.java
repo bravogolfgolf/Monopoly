@@ -10,14 +10,13 @@ public class Menu extends Controller {
     private final MenuParser parser;
     private final MenuInteractor interactor;
     private final MenuPresenter presenter;
-    private final ControllerConsole console;
 
     public Menu(MenuParser parser, MenuInteractor interactor, MenuPresenter presenter, ControllerConsole console) {
-
+        super(console);
         this.parser = parser;
         this.interactor = interactor;
         this.presenter = presenter;
-        this.console = console;
+
     }
 
     public void handle() throws IOException {

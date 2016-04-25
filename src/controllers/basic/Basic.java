@@ -9,13 +9,12 @@ public class Basic extends Controller {
 
     private final BasicInteractor interactor;
     private final BasicPresenter presenter;
-    private final ControllerConsole console;
     private final BasicRequest request = new BasicRequest();
 
     public Basic(BasicInteractor interactor, BasicPresenter presenter, ControllerConsole console) {
+        super(console);
         this.interactor = interactor;
         this.presenter = presenter;
-        this.console = console;
     }
 
     public void handle(String text) throws IOException {
