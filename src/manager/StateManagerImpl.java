@@ -1,7 +1,5 @@
 package game.manager;
 
-import game.controllers.menu.Menu;
-
 import java.io.IOException;
 
 public class StateManagerImpl extends StateManager {
@@ -17,7 +15,7 @@ public class StateManagerImpl extends StateManager {
 
     @Override
     public void callHandleOnController() throws IOException {
-        ((Menu) controller).handle();
+        controller.execute();
     }
 
     @Override

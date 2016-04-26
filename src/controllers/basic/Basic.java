@@ -1,11 +1,12 @@
 package game.controllers.basic;
 
 import game.controllers.Controller;
+import game.manager.ManagerBasic;
 import game.parser.ControllerConsole;
 
 import java.io.IOException;
 
-public class Basic extends Controller {
+public class Basic extends Controller implements ManagerBasic {
 
     private final BasicInteractor interactor;
     private final BasicPresenter presenter;
@@ -17,6 +18,12 @@ public class Basic extends Controller {
         this.presenter = presenter;
     }
 
+    @Override
+    public void execute() throws IOException {
+
+    }
+
+    @Override
     public void handle(String text) throws IOException {
         request.string = text;
         interactor.handle(request);

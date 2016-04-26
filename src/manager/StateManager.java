@@ -1,7 +1,6 @@
 package game.manager;
 
 import game.controllers.Controller;
-import game.controllers.basic.Basic;
 import game.parser.ParserManager;
 
 import java.io.IOException;
@@ -28,7 +27,7 @@ public abstract class StateManager implements ParserManager {
 
     @Override
     public void validTextEntry(String result) throws IOException {
-        ((Basic) controller).handle(result);
+        ((ManagerBasic) controller).handle(result);
         state.validTextEntry(this);
     }
 

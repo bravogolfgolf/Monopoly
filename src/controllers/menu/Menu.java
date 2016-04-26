@@ -16,10 +16,10 @@ public class Menu extends Controller {
         this.parser = parser;
         this.interactor = interactor;
         this.presenter = presenter;
-
     }
 
-    public void handle() throws IOException {
+    @Override
+    public void execute() throws IOException {
         interactor.handle();
         parser.setMap(presenter.returnAndClearMenuMap());
         console.write(presenter.getFormattedMessage());
