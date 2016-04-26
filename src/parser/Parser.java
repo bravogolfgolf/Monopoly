@@ -28,7 +28,7 @@ public class Parser implements ConsoleParser, MenuParser {
             selection = Integer.parseInt(line);
 
             String result = menuMap.get(selection);
-            if (selection == 0) manager.validNumber();
+            if (selection == 0) manager.zeroEntered();
             else if (result == null) manager.invalidEntry();
             else manager.validTextEntry(result);
 

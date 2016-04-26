@@ -8,5 +8,5 @@ public interface ParserManager {
 
     void invalidEntry() throws IOException;
 
-    void validNumber() throws IOException;
+    void zeroEntered() throws IOException;
 }

@@ -20,7 +20,7 @@ public class Basic extends Controller implements ManagerBasic {
 
     @Override
     public void execute() throws IOException {
-
+        console.read();
     }
 
     @Override

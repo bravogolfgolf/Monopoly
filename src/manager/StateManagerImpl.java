@@ -4,22 +4,13 @@ import java.io.IOException;
 
 public class StateManagerImpl extends StateManager {
 
-    public StateManagerImpl(ControllerFactory factory, ManagerConsole console) {
-        super(factory, console);
+    public StateManagerImpl(ControllerFactory factory) {
+        super(factory);
     }
 
     @Override
-    public void createController(String controller) {
+    public void createAndExecuteController(String controller) throws IOException {
         super.controller = factory.make(controller);
-    }
-
-    @Override
-    public void callHandleOnController() throws IOException {
-        controller.execute();
-    }
-
-    @Override
-    public void readView() throws IOException {
-        super.console.read();
+        super.controller.execute();
     }
 }
