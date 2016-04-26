@@ -9,8 +9,8 @@ import java.util.TreeSet;
 
 class TokensMock implements CreatePlayerTokensGateway, TokenOptionsTokensGateway {
 
-    boolean verifyGetAvailableTokens = false;
     boolean verifyRemoveTokenCalled = false;
+    boolean verifyGetAvailableTokensCalled = false;
 
     @Override
     public void removeToken(Token token) {
@@ -19,7 +19,7 @@ class TokensMock implements CreatePlayerTokensGateway, TokenOptionsTokensGateway
 
     @Override
     public Set<Token> getAvailableTokens() {
-        verifyGetAvailableTokens = true;
+        verifyGetAvailableTokensCalled = true;
         return new TreeSet<Token>() {{
             add(new Token("Cat"));
         }};

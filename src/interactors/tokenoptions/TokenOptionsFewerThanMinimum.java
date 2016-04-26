@@ -8,6 +8,6 @@ public class TokenOptionsFewerThanMinimum extends TokenOptions {
 
     @Override
     void sendUserInterfacePrompt() {
-        presenter.createPlayerPromptMessageFewerThanMinimum();
+        presenter.createPlayerPromptMessageFewerThanMinimumMessage();
     }
 }

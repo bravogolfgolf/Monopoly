@@ -15,12 +15,12 @@ class PresenterMock implements SelectVersionPresenter, VersionOptionsPresenter, 
 
     boolean verifySelectVersionPromptMessageCalled = false;
     boolean verifyVersionCreatedMessage = false;
-    boolean verifyPlayerCreatedMessage = false;
-    boolean verifyAvailableTokensMessage = false;
     boolean verifyAvailableVersionsMessageCalled = false;
+    boolean verifyPlayerCreatedMessage = false;
+    boolean verifyCreatePlayerPromptMessageFewerThanMinimumMessage = false;
+    boolean verifyCreatePlayerPromptMessageMinimumToMaximumMessage = false;
+    boolean verifyAvailableTokensMessage = false;
     boolean verifyPlayerSelectedToGoFirstMessage = false;
-    boolean verifyCreatePlayerPromptMessageFewerThanMinimum = false;
-    boolean verifyCreatePlayerPromptMessageMinimumToMaximum = false;
 
     @Override
     public void selectVersionPromptMessage() {
@@ -43,13 +43,13 @@ class PresenterMock implements SelectVersionPresenter, VersionOptionsPresenter, 
     }
 
     @Override
-    public void createPlayerPromptMessageFewerThanMinimum() {
-        verifyCreatePlayerPromptMessageFewerThanMinimum = true;
+    public void createPlayerPromptMessageFewerThanMinimumMessage() {
+        verifyCreatePlayerPromptMessageFewerThanMinimumMessage = true;
     }
 
     @Override
-    public void createPlayerPromptMessageMinimumToMaximum() {
-        verifyCreatePlayerPromptMessageMinimumToMaximum = true;
+    public void createPlayerPromptMessageMinimumToMaximumMessage() {
+        verifyCreatePlayerPromptMessageMinimumToMaximumMessage = true;
     }
 
     @Override

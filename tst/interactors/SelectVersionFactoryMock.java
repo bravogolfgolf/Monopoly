@@ -5,12 +5,12 @@ import game.interactors.selectversion.SelectVersionFactory;
 
 class SelectVersionFactoryMock implements SelectVersionFactory, VersionOptionsFactory {
 
-    boolean verifyCreateMethodCalled = false;
+    boolean verifyMakeCalled = false;
     boolean verifyGetAvailableVersionsCalled = false;
 
     @Override
     public void make(String version) {
-        verifyCreateMethodCalled = true;
+        verifyMakeCalled = true;
     }
 
     @Override
