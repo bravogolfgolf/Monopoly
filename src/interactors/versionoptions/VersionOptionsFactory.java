@@ -1,4 +1,4 @@
-package game.interactors.options;
+package game.interactors.versionoptions;
 
 public interface VersionOptionsFactory {
 

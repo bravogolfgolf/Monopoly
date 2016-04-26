@@ -3,12 +3,12 @@ package game.interactors;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.basic.BasicRequest;
 import game.interactors.createplayer.CreatePlayer;
-import game.interactors.options.VersionOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
 import game.interactors.tokenoptions.TokenOptions;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
+import game.interactors.versionoptions.VersionOptions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

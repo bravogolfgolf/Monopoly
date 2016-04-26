@@ -2,14 +2,14 @@ package game.interactors;
 
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.options.VersionOptionsPresenter;
-import game.interactors.options.VersionOptionsResponse;
 import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionPresenter;
 import game.interactors.selectversion.SelectVersionResponse;
 import game.interactors.tokenoptions.TokenOptionsPresenter;
 import game.interactors.tokenoptions.TokenOptionsResponse;
+import game.interactors.versionoptions.VersionOptionsPresenter;
+import game.interactors.versionoptions.VersionOptionsResponse;
 
 class PresenterMock implements SelectVersionPresenter, VersionOptionsPresenter, CreatePlayerPresenter, TokenOptionsPresenter, SelectFirstPresenter {
 

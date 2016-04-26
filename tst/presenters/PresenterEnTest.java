@@ -2,10 +2,10 @@ package game.presenters;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.options.VersionOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
+import game.interactors.versionoptions.VersionOptionsResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -129,7 +129,7 @@ public class PresenterEnTest {
         @Test
         public void testStartTurnMessage() {
             presenter.startTurn();
-            expected = "\nAvailable options: (0)Roll.\n";
+            expected = "\nAvailable versionoptions: (0)Roll.\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
     }

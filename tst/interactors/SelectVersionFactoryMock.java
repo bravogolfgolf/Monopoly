@@ -1,7 +1,7 @@
 package game.interactors;
 
-import game.interactors.options.VersionOptionsFactory;
 import game.interactors.selectversion.SelectVersionFactory;
+import game.interactors.versionoptions.VersionOptionsFactory;
 
 class SelectVersionFactoryMock implements SelectVersionFactory, VersionOptionsFactory {
 

@@ -1,10 +1,10 @@
 package game.presenters;
 
 import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.options.VersionOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
+import game.interactors.versionoptions.VersionOptionsResponse;
 
 public class PresenterEn extends Presenter {
 
@@ -57,7 +57,7 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void startTurn() {
-        template = "\nAvailable options: (0)Roll.";
+        template = "\nAvailable versionoptions: (0)Roll.";
         addNewLine(template);
     }
 

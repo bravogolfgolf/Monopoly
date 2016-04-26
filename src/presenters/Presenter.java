@@ -4,14 +4,14 @@ import game.controllers.basic.BasicPresenter;
 import game.controllers.menu.MenuPresenter;
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.options.VersionOptionsPresenter;
-import game.interactors.options.VersionOptionsResponse;
 import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionPresenter;
 import game.interactors.selectversion.SelectVersionResponse;
 import game.interactors.tokenoptions.TokenOptionsPresenter;
 import game.interactors.tokenoptions.TokenOptionsResponse;
+import game.interactors.versionoptions.VersionOptionsPresenter;
+import game.interactors.versionoptions.VersionOptionsResponse;
 import game.manager.ManagerPresenter;
 
 import java.util.Hashtable;
