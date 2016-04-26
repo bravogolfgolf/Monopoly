@@ -16,6 +16,7 @@ public class VersionOptions implements MenuInteractor {
     @Override
     public void handle() {
         response.versions = factory.getAvailableVersions();
+        presenter.selectVersionPromptMessage();
         presenter.availableVersionsMessage(response);
     }
 }

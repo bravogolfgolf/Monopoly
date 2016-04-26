@@ -16,6 +16,6 @@ class SelectVersionFactoryMock implements SelectVersionFactory, VersionOptionsFa
     @Override
     public String[] getAvailableVersions() {
         verifyGetAvailableVersionsCalled = true;
-        return new String[]{"USA"};
+        return new String[0];
     }
 }

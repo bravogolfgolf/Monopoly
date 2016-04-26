@@ -1,18 +1,12 @@
 package game.presenters;
 
-import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.options.VersionOptionsPresenter;
 import game.interactors.options.VersionOptionsResponse;
-import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
-import game.interactors.selectversion.SelectVersionPresenter;
 import game.interactors.selectversion.SelectVersionResponse;
-import game.interactors.tokenoptions.TokenOptionsPresenter;
 import game.interactors.tokenoptions.TokenOptionsResponse;
-import game.manager.ManagerPresenter;
 
-public class PresenterEn extends Presenter implements ManagerPresenter, SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter {
+public class PresenterEn extends Presenter {
 
     @Override
     public void selectVersionPromptMessage() {
@@ -36,13 +30,13 @@ public class PresenterEn extends Presenter implements ManagerPresenter, SelectVe
     }
 
     @Override
-    public void createPlayerPromptMessageFewerThanTwo() {
+    public void createPlayerPromptMessageFewerThanMinimum() {
         template = "\nPlease select token for player. (Players 2 - 8)";
         addNewLine(template);
     }
 
     @Override
-    public void createPlayerPromptMessageTwoOrMore() {
+    public void createPlayerPromptMessageMinimumToMaximum() {
         template = "\nPlease select token for player or (0)Play to begin. (Players 2 - 8)";
         addNewLine(template);
     }

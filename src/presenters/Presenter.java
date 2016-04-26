@@ -2,11 +2,22 @@ package game.presenters;
 
 import game.controllers.basic.BasicPresenter;
 import game.controllers.menu.MenuPresenter;
+import game.interactors.createplayer.CreatePlayerPresenter;
+import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.options.VersionOptionsPresenter;
+import game.interactors.options.VersionOptionsResponse;
+import game.interactors.selectfirst.SelectFirstPresenter;
+import game.interactors.selectfirst.SelectFirstResponse;
+import game.interactors.selectversion.SelectVersionPresenter;
+import game.interactors.selectversion.SelectVersionResponse;
+import game.interactors.tokenoptions.TokenOptionsPresenter;
+import game.interactors.tokenoptions.TokenOptionsResponse;
+import game.manager.ManagerPresenter;
 
 import java.util.Hashtable;
 import java.util.Map;
 
-abstract class Presenter implements BasicPresenter, MenuPresenter {
+public abstract class Presenter implements BasicPresenter, MenuPresenter, ManagerPresenter, SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
@@ -76,4 +87,31 @@ abstract class Presenter implements BasicPresenter, MenuPresenter {
     private void addMessageToBuffer(String newLine) {
         messageBuffer.append(newLine);
     }
+
+    @Override
+    public abstract void selectVersionPromptMessage();
+
+    @Override
+    public abstract void availableVersionsMessage(VersionOptionsResponse response);
+
+    @Override
+    public abstract void versionCreatedMessage(SelectVersionResponse response);
+
+    @Override
+    public abstract void createPlayerPromptMessageFewerThanMinimum();
+
+    @Override
+    public abstract void createPlayerPromptMessageMinimumToMaximum();
+
+    @Override
+    public abstract void playerCreatedMessage(CreatePlayerResponse response);
+
+    @Override
+    public abstract void playerSelectedToGoFirstMessage(SelectFirstResponse response);
+
+    @Override
+    public abstract void startTurn();
+
+    @Override
+    public abstract void availableTokensMessage(TokenOptionsResponse response);
 }

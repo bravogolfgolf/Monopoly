@@ -34,7 +34,8 @@ public class ControllerImplFactoryTest {
         controllerFactory.make("SelectVersion");
         controllerFactory.make("VersionOptions");
         controllerFactory.make("CreatePlayer");
-        controllerFactory.make("TokenOptions");
+        controllerFactory.make("TokenOptionsFewerThanMinimum");
+        controllerFactory.make("TokenOptionsMinimumToMaximum");
         controllerFactory.make("SelectFirst");
     }
 }
