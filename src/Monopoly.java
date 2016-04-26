@@ -17,7 +17,6 @@ final class Monopoly {
 
     private final Parser parser = new Parser();
     private final Console console = new Console(parser);
-    private final Presenter presenter = new PresenterEn();
     private final Players players = new Players();
     private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
 
@@ -27,11 +26,11 @@ final class Monopoly {
     }
 
     private void setup() throws IOException {
-        ControllerFactoryImpl controllerFactory = new ControllerFactoryImpl(parser, presenter, factory, players, console);
-        StateManager manager = new StateManagerImpl(presenter, controllerFactory, console);
+        final Presenter presenter = new PresenterEn();
+        final ControllerFactoryImpl controllerFactory = new ControllerFactoryImpl(parser, presenter, factory, players, console);
+        final StateManager manager = new StateManagerImpl(presenter, controllerFactory, console);
         parser.setManager(manager);
         manager.setState(StateImpl.VERSION);
         manager.initialize();
-
     }
 }
