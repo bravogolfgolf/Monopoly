@@ -7,11 +7,8 @@ public enum StateImpl implements State {
     VERSION {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createController("VersionOptions");
-            manager.callHandleOnController();
-
-            manager.createController("SelectVersion");
-            manager.readView();
+            manager.createAndExecuteController("VersionOptions");
+            manager.createAndExecuteController("SelectVersion");
         }
 
         @Override
@@ -29,11 +26,8 @@ public enum StateImpl implements State {
     CREATE_PLAYER_0 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createController("TokenOptionsFewerThanMinimum");
-            manager.callHandleOnController();
-
-            manager.createController("CreatePlayer");
-            manager.readView();
+            manager.createAndExecuteController("TokenOptionsFewerThanMinimum");
+            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
@@ -51,11 +45,8 @@ public enum StateImpl implements State {
     CREATE_PLAYER_1 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createController("TokenOptionsFewerThanMinimum");
-            manager.callHandleOnController();
-
-            manager.createController("CreatePlayer");
-            manager.readView();
+            manager.createAndExecuteController("TokenOptionsFewerThanMinimum");
+            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
@@ -74,20 +65,14 @@ public enum StateImpl implements State {
     CREATE_PLAYER_2 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createController("TokenOptionsMinimumToMaximum");
-            manager.callHandleOnController();
-
-            manager.createController("CreatePlayer");
-            manager.readView();
+            manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
+            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
             manager.setState(GAME_OVER);
-
-            manager.createController("SelectFirst");
-            manager.callHandleOnController();
-
+            manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
 
@@ -101,20 +86,14 @@ public enum StateImpl implements State {
     CREATE_PLAYER_3 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createController("TokenOptionsMinimumToMaximum");
-            manager.callHandleOnController();
-
-            manager.createController("CreatePlayer");
-            manager.readView();
+            manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
+            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
             manager.setState(GAME_OVER);
-
-            manager.createController("SelectFirst");
-            manager.callHandleOnController();
-
+            manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
 
@@ -128,20 +107,14 @@ public enum StateImpl implements State {
     CREATE_PLAYER_4 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createController("TokenOptionsMinimumToMaximum");
-            manager.callHandleOnController();
-
-            manager.createController("CreatePlayer");
-            manager.readView();
+            manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
+            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
             manager.setState(GAME_OVER);
-
-            manager.createController("SelectFirst");
-            manager.callHandleOnController();
-
+            manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
 
@@ -155,20 +128,14 @@ public enum StateImpl implements State {
     CREATE_PLAYER_5 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createController("TokenOptionsMinimumToMaximum");
-            manager.callHandleOnController();
-
-            manager.createController("CreatePlayer");
-            manager.readView();
+            manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
+            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
             manager.setState(GAME_OVER);
-
-            manager.createController("SelectFirst");
-            manager.callHandleOnController();
-
+            manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
 
@@ -182,20 +149,14 @@ public enum StateImpl implements State {
     CREATE_PLAYER_6 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createController("TokenOptionsMinimumToMaximum");
-            manager.callHandleOnController();
-
-            manager.createController("CreatePlayer");
-            manager.readView();
+            manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
+            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
             manager.setState(GAME_OVER);
-
-            manager.createController("SelectFirst");
-            manager.callHandleOnController();
-
+            manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
 
@@ -209,30 +170,21 @@ public enum StateImpl implements State {
     CREATE_PLAYER_7 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createController("TokenOptionsMinimumToMaximum");
-            manager.callHandleOnController();
-
-            manager.createController("CreatePlayer");
-            manager.readView();
+            manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
+            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
             manager.setState(GAME_OVER);
-
-            manager.createController("SelectFirst");
-            manager.callHandleOnController();
-
+            manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
 
         @Override
         public void validTextEntry(StateManager manager) throws IOException {
             manager.setState(GAME_OVER);
-
-            manager.createController("SelectFirst");
-            manager.callHandleOnController();
-
+            manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
     },

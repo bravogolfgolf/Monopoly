@@ -1,11 +1,10 @@
 package game.display;
 
-import game.manager.ManagerConsole;
 import game.parser.ControllerConsole;
 
 import java.io.*;
 
-public class Console implements ControllerConsole, ManagerConsole {
+public class Console implements ControllerConsole {
 
     private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));

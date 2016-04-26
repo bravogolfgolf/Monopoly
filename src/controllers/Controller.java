@@ -8,7 +8,7 @@ public abstract class Controller {
 
     protected final ControllerConsole console;
 
-    public Controller(ControllerConsole console) {
+    protected Controller(ControllerConsole console) {
         this.console = console;
     }
 

@@ -7,7 +7,7 @@ import java.util.Set;
 
 public abstract class TokenOptions implements MenuInteractor {
 
-    protected final TokenOptionsPresenter presenter;
+    final TokenOptionsPresenter presenter;
     private final TokenOptionsTokensGateway tokens;
     private final TokenOptionsResponse response = new TokenOptionsResponse();
 
