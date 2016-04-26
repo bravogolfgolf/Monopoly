@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(HierarchicalContextRunner.class)
 public class PresenterEnTest {
 
-    private final PresenterEn presenter = new PresenterEn();
+    private final Presenter presenter = new PresenterEn();
     private String expected;
 
     public class PresenterTest {

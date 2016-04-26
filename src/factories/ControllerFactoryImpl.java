@@ -3,6 +3,7 @@ package game.factories;
 import game.controllers.Controller;
 import game.controllers.basic.Basic;
 import game.controllers.menu.Menu;
+import game.display.Console;
 import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.options.VersionOptions;
@@ -10,9 +11,8 @@ import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
 import game.interactors.tokenoptions.TokenOptions;
 import game.manager.ControllerFactory;
-import game.parser.ControllerConsole;
 import game.parser.Parser;
-import game.presenters.PresenterEn;
+import game.presenters.Presenter;
 import game.repositories.Players;
 import game.repositories.Tokens;
 
@@ -21,13 +21,13 @@ public class ControllerFactoryImpl implements ControllerFactory {
     static Board board;
     static Tokens tokens;
     private final Parser parser;
-    private final PresenterEn presenter;
+    private final Presenter presenter;
     private final SelectVersionFactoryImpl factory;
     private final Players players;
-    private final ControllerConsole console;
+    private final Console console;
 
 
-    public ControllerFactoryImpl(Parser parser, PresenterEn presenter, SelectVersionFactoryImpl factory, Players players, ControllerConsole console) {
+    public ControllerFactoryImpl(Parser parser, Presenter presenter, SelectVersionFactoryImpl factory, Players players, Console console) {
         this.parser = parser;
         this.presenter = presenter;
         this.factory = factory;

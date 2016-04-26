@@ -7,6 +7,7 @@ import game.manager.StateImpl;
 import game.manager.StateManager;
 import game.manager.StateManagerImpl;
 import game.parser.Parser;
+import game.presenters.Presenter;
 import game.presenters.PresenterEn;
 import game.repositories.Players;
 
@@ -16,7 +17,7 @@ final class Monopoly {
 
     private final Parser parser = new Parser();
     private final Console console = new Console(parser);
-    private final PresenterEn presenter = new PresenterEn();
+    private final Presenter presenter = new PresenterEn();
     private final Players players = new Players();
     private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
 
