@@ -28,7 +28,7 @@ final class Monopoly {
     private void setup() throws IOException {
         final Presenter presenter = new PresenterEn();
         final ControllerFactoryImpl controllerFactory = new ControllerFactoryImpl(parser, presenter, factory, players, console);
-        final StateManager manager = new StateManagerImpl(controllerFactory, console);
+        final StateManager manager = new StateManagerImpl(controllerFactory);
         parser.setManager(manager);
         manager.setState(StateImpl.VERSION);
         manager.initialize();

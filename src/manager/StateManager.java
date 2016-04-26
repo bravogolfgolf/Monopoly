@@ -1,7 +1,6 @@
 package game.manager;
 
 import game.controllers.Controller;
-import game.controllers.basic.Basic;
 import game.parser.ParserManager;
 
 import java.io.IOException;
@@ -9,13 +8,11 @@ import java.io.IOException;
 public abstract class StateManager implements ParserManager {
 
     private State state;
-    final ManagerConsole console;
     final ControllerFactory factory;
     Controller controller;
 
-    StateManager(ControllerFactory factory, ManagerConsole console) {
+    StateManager(ControllerFactory factory) {
         this.factory = factory;
-        this.console = console;
     }
 
     public void setState(State state) {
@@ -28,7 +25,7 @@ public abstract class StateManager implements ParserManager {
 
     @Override
     public void validTextEntry(String result) throws IOException {
-        ((Basic) controller).handle(result);
+        ((ManagerBasic) controller).handle(result);
         state.validTextEntry(this);
     }
 
@@ -38,13 +35,9 @@ public abstract class StateManager implements ParserManager {
     }
 
     @Override
-    public void validNumber() throws IOException {
+    public void zeroEntered() throws IOException {
         state.validNumber(this);
     }
 
-    public abstract void createController(String commandString);
-
-    public abstract void callHandleOnController() throws IOException;
-
-    public abstract void readView() throws IOException;
+    public abstract void createAndExecuteController(String commandString) throws IOException;
 }

@@ -17,7 +17,7 @@ class StateManagerMock implements ParserManager {
     }
 
     @Override
-    public void validNumber() {
+    public void zeroEntered() {
         verifyZeroEnteredCalled = true;
     }
 }

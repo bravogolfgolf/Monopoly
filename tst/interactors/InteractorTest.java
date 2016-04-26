@@ -32,7 +32,7 @@ public class InteractorTest {
             request.string = "Valid";
             interactor.handle(request);
 
-            assertTrue(factory.verifyCreateMethodCalled);
+            assertTrue(factory.verifyMakeCalled);
             assertTrue(presenter.verifyVersionCreatedMessage);
         }
     }
@@ -47,7 +47,7 @@ public class InteractorTest {
             interactor.handle(request);
 
             assertTrue(tokens.verifyRemoveTokenCalled);
-            assertTrue(player.verifyCreateCalled);
+            assertTrue(player.verifyAddWithCalled);
             assertTrue(presenter.verifyPlayerCreatedMessage);
         }
     }
@@ -74,8 +74,8 @@ public class InteractorTest {
         public void testHandleTokens() {
             interactor.handle();
 
-            assertTrue(tokens.verifyGetAvailableTokens);
-            assertTrue(presenter.verifyCreatePlayerPromptMessageFewerThanMinimum);
+            assertTrue(tokens.verifyGetAvailableTokensCalled);
+            assertTrue(presenter.verifyCreatePlayerPromptMessageFewerThanMinimumMessage);
             assertTrue(presenter.verifyAvailableTokensMessage);
         }
     }
@@ -88,8 +88,8 @@ public class InteractorTest {
         public void testHandleTokens() {
             interactor.handle();
 
-            assertTrue(tokens.verifyGetAvailableTokens);
-            assertTrue(presenter.verifyCreatePlayerPromptMessageMinimumToMaximum);
+            assertTrue(tokens.verifyGetAvailableTokensCalled);
+            assertTrue(presenter.verifyCreatePlayerPromptMessageMinimumToMaximumMessage);
             assertTrue(presenter.verifyAvailableTokensMessage);
         }
     }
@@ -102,8 +102,8 @@ public class InteractorTest {
         public void testHandleTokens() {
             interactor.handle();
 
-            assertTrue(player.verifyRandomizePlayers);
-            assertTrue(player.verifyGetFirstPlayer);
+            assertTrue(player.verifyRandomizePlayersCalled);
+            assertTrue(player.verifyGetNextPlayerCalled);
             assertTrue(presenter.verifyPlayerSelectedToGoFirstMessage);
         }
     }

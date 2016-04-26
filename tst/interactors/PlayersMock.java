@@ -5,23 +5,23 @@ import game.repositories.Players;
 
 class PlayersMock extends Players {
 
-    boolean verifyCreateCalled = false;
-    boolean verifyRandomizePlayers = false;
-    boolean verifyGetFirstPlayer = false;
+    boolean verifyAddWithCalled = false;
+    boolean verifyRandomizePlayersCalled = false;
+    boolean verifyGetNextPlayerCalled = false;
 
     @Override
     public void addWith(Token request) {
-        verifyCreateCalled = true;
+        verifyAddWithCalled = true;
     }
 
     @Override
     public void randomizePlayers() {
-        verifyRandomizePlayers = true;
+        verifyRandomizePlayersCalled = true;
     }
 
     @Override
     public Token getNextPlayer() {
-        verifyGetFirstPlayer = true;
+        verifyGetNextPlayerCalled = true;
         return new Token("Cat");
     }
 }

@@ -2,9 +2,9 @@ package game.interactors.tokenoptions;
 
 public interface TokenOptionsPresenter {
 
-    void createPlayerPromptMessageFewerThanMinimum();
+    void createPlayerPromptMessageFewerThanMinimumMessage();
 
-    void createPlayerPromptMessageMinimumToMaximum();
+    void createPlayerPromptMessageMinimumToMaximumMessage();
 
     void availableTokensMessage(TokenOptionsResponse response);
 }

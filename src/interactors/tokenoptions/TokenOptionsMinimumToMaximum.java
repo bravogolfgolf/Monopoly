@@ -8,6 +8,6 @@ public class TokenOptionsMinimumToMaximum extends TokenOptions {
 
     @Override
     void sendUserInterfacePrompt() {
-        presenter.createPlayerPromptMessageMinimumToMaximum();
+        presenter.createPlayerPromptMessageMinimumToMaximumMessage();
     }
 }
