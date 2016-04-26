@@ -71,7 +71,7 @@ public enum StateImpl implements State {
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
-            manager.setState(GAME_OVER);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
@@ -92,7 +92,7 @@ public enum StateImpl implements State {
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
-            manager.setState(GAME_OVER);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
@@ -113,7 +113,7 @@ public enum StateImpl implements State {
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
-            manager.setState(GAME_OVER);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
@@ -134,7 +134,7 @@ public enum StateImpl implements State {
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
-            manager.setState(GAME_OVER);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
@@ -155,7 +155,7 @@ public enum StateImpl implements State {
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
-            manager.setState(GAME_OVER);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
@@ -176,20 +176,20 @@ public enum StateImpl implements State {
 
         @Override
         public void validNumber(StateManager manager) throws IOException {
-            manager.setState(GAME_OVER);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
 
         @Override
         public void validTextEntry(StateManager manager) throws IOException {
-            manager.setState(GAME_OVER);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
         }
     },
 
-    GAME_OVER {
+    START_TURN {
         @Override
         public void initialize(StateManager manager) throws IOException {
 
