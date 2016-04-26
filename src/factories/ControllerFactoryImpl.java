@@ -10,6 +10,8 @@ import game.interactors.options.VersionOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
 import game.interactors.tokenoptions.TokenOptions;
+import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
+import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
 import game.manager.ControllerFactory;
 import game.parser.Parser;
 import game.presenters.Presenter;
@@ -53,8 +55,13 @@ public class ControllerFactoryImpl implements ControllerFactory {
             return new Basic(interactor, presenter, console);
         }
 
-        if (controller.equals("TokenOptions")) {
-            TokenOptions interactor = new TokenOptions(presenter, tokens);
+        if (controller.equals("TokenOptionsFewerThanMinimum")) {
+            TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens);
+            return new Menu(parser, interactor, presenter, console);
+        }
+
+        if (controller.equals("TokenOptionsMinimumToMaximum")) {
+            TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens);
             return new Menu(parser, interactor, presenter, console);
         }
 

@@ -30,13 +30,13 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
-    public void createPlayerPromptMessageFewerThanTwo() {
+    public void createPlayerPromptMessageFewerThanMinimum() {
         template = "\nPlease select token for player. (Players 2 - 8)";
         addNewLine(template);
     }
 
     @Override
-    public void createPlayerPromptMessageTwoOrMore() {
+    public void createPlayerPromptMessageMinimumToMaximum() {
         template = "\nPlease select token for player or (0)Play to begin. (Players 2 - 8)";
         addNewLine(template);
     }

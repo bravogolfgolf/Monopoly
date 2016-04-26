@@ -98,10 +98,10 @@ public abstract class Presenter implements BasicPresenter, MenuPresenter, Manage
     public abstract void versionCreatedMessage(SelectVersionResponse response);
 
     @Override
-    public abstract void createPlayerPromptMessageFewerThanTwo();
+    public abstract void createPlayerPromptMessageFewerThanMinimum();
 
     @Override
-    public abstract void createPlayerPromptMessageTwoOrMore();
+    public abstract void createPlayerPromptMessageMinimumToMaximum();
 
     @Override
     public abstract void playerCreatedMessage(CreatePlayerResponse response);

@@ -5,13 +5,13 @@ import game.entities.Token;
 
 import java.util.Set;
 
-public class TokenOptions implements MenuInteractor {
+public abstract class TokenOptions implements MenuInteractor {
 
-    private final TokenOptionsPresenter presenter;
+    protected final TokenOptionsPresenter presenter;
     private final TokenOptionsTokensGateway tokens;
     private final TokenOptionsResponse response = new TokenOptionsResponse();
 
-    public TokenOptions(TokenOptionsPresenter presenter, TokenOptionsTokensGateway tokens) {
+    TokenOptions(TokenOptionsPresenter presenter, TokenOptionsTokensGateway tokens) {
         this.presenter = presenter;
         this.tokens = tokens;
     }
@@ -19,6 +19,8 @@ public class TokenOptions implements MenuInteractor {
     @Override
     public void handle() {
         prepareResponse(tokens.getAvailableTokens());
+        sendUserInterfacePrompt();
+        presenter.availableTokensMessage(response);
     }
 
     private void prepareResponse(Set<Token> tokens) {
@@ -28,6 +30,7 @@ public class TokenOptions implements MenuInteractor {
             strings[counter++] = token.getDescription();
         }
         response.tokens = strings;
-        presenter.availableTokensMessage(response);
     }
+
+    abstract void sendUserInterfacePrompt();
 }

@@ -9,13 +9,11 @@ import java.io.IOException;
 public abstract class StateManager implements ParserManager {
 
     private State state;
-    final ManagerPresenter presenter;
     final ManagerConsole console;
     final ControllerFactory factory;
     Controller controller;
 
-    StateManager(ManagerPresenter presenter, ControllerFactory factory, ManagerConsole console) {
-        this.presenter = presenter;
+    StateManager(ControllerFactory factory, ManagerConsole console) {
         this.factory = factory;
         this.console = console;
     }
@@ -43,8 +41,6 @@ public abstract class StateManager implements ParserManager {
     public void validNumber() throws IOException {
         state.validNumber(this);
     }
-
-    public abstract void promptMessage(String state);
 
     public abstract void createController(String commandString);
 

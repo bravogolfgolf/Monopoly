@@ -59,14 +59,14 @@ public class PresenterEnTest {
 
         @Test
         public void testCreatePlayerPromptMessageFewerThanTwo() {
-            presenter.createPlayerPromptMessageFewerThanTwo();
+            presenter.createPlayerPromptMessageFewerThanMinimum();
             expected = "\nPlease select token for player. (Players 2 - 8)\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
 
         @Test
         public void testCreatePlayerPromptMessageTwoOrMore() {
-            presenter.createPlayerPromptMessageTwoOrMore();
+            presenter.createPlayerPromptMessageMinimumToMaximum();
             expected = "\nPlease select token for player or (0)Play to begin. (Players 2 - 8)\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }

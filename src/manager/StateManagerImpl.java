@@ -6,22 +6,8 @@ import java.io.IOException;
 
 public class StateManagerImpl extends StateManager {
 
-    public StateManagerImpl(ManagerPresenter presenter, ControllerFactory factory, ManagerConsole console) {
-        super(presenter, factory, console);
-    }
-
-    @Override
-    public void promptMessage(String state) {
-
-        switch (state) {
-            case "CreatePlayer_0":
-            case "CreatePlayer_1":
-                super.presenter.createPlayerPromptMessageFewerThanTwo();
-                break;
-            default:
-                super.presenter.createPlayerPromptMessageTwoOrMore();
-                break;
-        }
+    public StateManagerImpl(ControllerFactory factory, ManagerConsole console) {
+        super(factory, console);
     }
 
     @Override
