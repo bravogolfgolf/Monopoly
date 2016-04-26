@@ -14,9 +14,6 @@ public class StateManagerImpl extends StateManager {
     public void promptMessage(String state) {
 
         switch (state) {
-            case "SelectVersion":
-                super.presenter.selectVersionPromptMessage();
-                break;
             case "CreatePlayer_0":
             case "CreatePlayer_1":
                 super.presenter.createPlayerPromptMessageFewerThanTwo();

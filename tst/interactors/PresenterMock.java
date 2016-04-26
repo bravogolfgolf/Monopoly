@@ -13,11 +13,17 @@ import game.interactors.tokenoptions.TokenOptionsResponse;
 
 class PresenterMock implements SelectVersionPresenter, VersionOptionsPresenter, CreatePlayerPresenter, TokenOptionsPresenter, SelectFirstPresenter {
 
+    boolean verifySelectVersionPromptMessageCalled = false;
     boolean verifyVersionCreatedMessage = false;
     boolean verifyPlayerCreatedMessage = false;
     boolean verifyAvailableTokensMessage = false;
     boolean verifyAvailableVersionsMessageCalled = false;
     boolean verifyPlayerSelectedToGoFirstMessage = false;
+
+    @Override
+    public void selectVersionPromptMessage() {
+        verifySelectVersionPromptMessageCalled = true;
+    }
 
     @Override
     public void versionCreatedMessage(SelectVersionResponse response) {

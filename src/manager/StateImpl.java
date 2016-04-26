@@ -7,8 +7,6 @@ public enum StateImpl implements State {
     VERSION {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.promptMessage("SelectVersion");
-
             manager.createController("VersionOptions");
             manager.callHandleOnController();
 

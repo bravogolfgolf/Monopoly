@@ -59,6 +59,7 @@ public class InteractorTest {
             interactor.handle();
 
             assertTrue(factory.verifyGetAvailableVersionsCalled);
+            assertTrue(presenter.verifySelectVersionPromptMessageCalled);
             assertTrue(presenter.verifyAvailableVersionsMessageCalled);
         }
     }
