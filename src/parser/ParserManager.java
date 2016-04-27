@@ -4,9 +4,13 @@ import java.io.IOException;
 
 public interface ParserManager {
 
-    void validTextEntry(String result) throws IOException;
-
     void invalidEntry() throws IOException;
 
+    void validTextEntry(String result) throws IOException;
+
     void zeroEntered() throws IOException;
+
+    void oneEntered();
+
+    void twoEntered();
 }

@@ -12,14 +12,24 @@ public enum StateImpl implements State {
         }
 
         @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_0);
+            manager.initialize();
+        }
+
+        @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.initialize();
         }
 
         @Override
-        public void validTextEntry(StateManager manager) throws IOException {
-            manager.setState(CREATE_PLAYER_0);
-            manager.initialize();
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
         }
     },
 
@@ -31,14 +41,24 @@ public enum StateImpl implements State {
         }
 
         @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_1);
+            manager.initialize();
+        }
+
+        @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.initialize();
         }
 
         @Override
-        public void validTextEntry(StateManager manager) throws IOException {
-            manager.setState(CREATE_PLAYER_1);
-            manager.initialize();
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
         }
     },
 
@@ -50,14 +70,24 @@ public enum StateImpl implements State {
         }
 
         @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_2);
+            manager.initialize();
+
+        }
+
+        @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.initialize();
         }
 
         @Override
-        public void validTextEntry(StateManager manager) throws IOException {
-            manager.setState(CREATE_PLAYER_2);
-            manager.initialize();
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
 
         }
     },
@@ -70,6 +100,12 @@ public enum StateImpl implements State {
         }
 
         @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_3);
+            manager.initialize();
+        }
+
+        @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
@@ -77,9 +113,13 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validTextEntry(StateManager manager) throws IOException {
-            manager.setState(CREATE_PLAYER_3);
-            manager.initialize();
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
         }
     },
 
@@ -91,6 +131,12 @@ public enum StateImpl implements State {
         }
 
         @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_4);
+            manager.initialize();
+        }
+
+        @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
@@ -98,9 +144,13 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validTextEntry(StateManager manager) throws IOException {
-            manager.setState(CREATE_PLAYER_4);
-            manager.initialize();
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
         }
     },
 
@@ -112,6 +162,12 @@ public enum StateImpl implements State {
         }
 
         @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_5);
+            manager.initialize();
+        }
+
+        @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
@@ -119,9 +175,13 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validTextEntry(StateManager manager) throws IOException {
-            manager.setState(CREATE_PLAYER_5);
-            manager.initialize();
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
         }
     },
 
@@ -133,6 +193,12 @@ public enum StateImpl implements State {
         }
 
         @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_6);
+            manager.initialize();
+        }
+
+        @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
@@ -140,9 +206,13 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validTextEntry(StateManager manager) throws IOException {
-            manager.setState(CREATE_PLAYER_6);
-            manager.initialize();
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
         }
     },
 
@@ -154,6 +224,12 @@ public enum StateImpl implements State {
         }
 
         @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(CREATE_PLAYER_7);
+            manager.initialize();
+        }
+
+        @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
@@ -161,9 +237,13 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validTextEntry(StateManager manager) throws IOException {
-            manager.setState(CREATE_PLAYER_7);
-            manager.initialize();
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
         }
     },
 
@@ -175,6 +255,13 @@ public enum StateImpl implements State {
         }
 
         @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+            manager.setState(START_TURN);
+            manager.createAndExecuteController("SelectFirst");
+            manager.initialize();
+        }
+
+        @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
@@ -182,10 +269,13 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validTextEntry(StateManager manager) throws IOException {
-            manager.setState(START_TURN);
-            manager.createAndExecuteController("SelectFirst");
-            manager.initialize();
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
         }
     },
 
@@ -196,12 +286,22 @@ public enum StateImpl implements State {
         }
 
         @Override
+        public void validTextEntry(StateManager manager) {
+
+        }
+
+        @Override
         public void zeroEntered(StateManager manager) {
 
         }
 
         @Override
-        public void validTextEntry(StateManager manager) {
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
 
         }
     }

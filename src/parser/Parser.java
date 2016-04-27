@@ -28,8 +28,11 @@ public class Parser implements ConsoleParser, WriterParser {
             selection = Integer.parseInt(line);
 
             String result = menuMap.get(selection);
-            if (selection == 0) manager.zeroEntered();
-            else if (result == null) manager.invalidEntry();
+            if (result == null)
+                if (selection == 0) manager.zeroEntered();
+                else if (selection == 1) manager.oneEntered();
+                else if (selection == 2) manager.twoEntered();
+                else manager.invalidEntry();
             else manager.validTextEntry(result);
 
         } catch (NumberFormatException e) {
