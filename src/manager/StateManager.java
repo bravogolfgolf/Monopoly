@@ -24,19 +24,30 @@ public abstract class StateManager implements ParserManager {
     }
 
     @Override
+    public void invalidEntry() throws IOException {
+        initialize();
+    }
+
+    @Override
     public void validTextEntry(String result) throws IOException {
         controller.handle(result);
         state.validTextEntry(this);
     }
 
     @Override
-    public void invalidEntry() throws IOException {
-        initialize();
+    public void zeroEntered() throws IOException {
+        state.zeroEntered(this);
     }
 
     @Override
-    public void zeroEntered() throws IOException {
-        state.validNumber(this);
+    public void oneEntered() {
+        state.oneEntered(this);
+    }
+
+    @Override
+    public void twoEntered() {
+        state.twoEntered(this);
+
     }
 
     public abstract void createAndExecuteController(String commandString) throws IOException;

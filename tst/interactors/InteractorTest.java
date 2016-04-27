@@ -1,7 +1,7 @@
 package game.interactors;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import game.controllers.basic.BasicRequest;
+import game.controllers.reader.ReaderRequest;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
@@ -22,7 +22,7 @@ public class InteractorTest {
     private final SelectVersionFactoryMock factory = new SelectVersionFactoryMock();
     private final TokensMock tokens = new TokensMock();
     private final PlayersMock player = new PlayersMock();
-    private final BasicRequest request = new BasicRequest();
+    private final ReaderRequest request = new ReaderRequest();
 
     public class SelectVersionTest {
 

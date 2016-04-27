@@ -1,12 +1,11 @@
 package game.controllers;
 
-import game.controllers.basic.BasicPresenter;
-import game.controllers.menu.MenuPresenter;
+import game.controllers.writer.WriterPresenter;
 
 import java.util.Hashtable;
 import java.util.Map;
 
-class PresenterMock implements BasicPresenter, MenuPresenter {
+class PresenterMock implements ReaderPresenter, WriterPresenter {
 
     boolean verifyGetMenuMapCalled = false;
     boolean verifyGetFormattedMessage = false;

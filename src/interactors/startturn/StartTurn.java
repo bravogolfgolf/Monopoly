@@ -1,8 +1,8 @@
 package game.interactors.startturn;
 
-import game.controllers.menu.MenuInteractor;
+import game.controllers.WriterInteractor;
 
-public class StartTurn implements MenuInteractor {
+public class StartTurn implements WriterInteractor {
 
     private final StartTurnPresenter presenter;
 

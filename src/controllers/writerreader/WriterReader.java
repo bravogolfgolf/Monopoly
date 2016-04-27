@@ -1,18 +1,18 @@
-package game.controllers.writeread;
+package game.controllers.writerreader;
 
 import game.controllers.Controller;
-import game.controllers.basic.BasicPresenter;
-import game.controllers.menu.MenuInteractor;
+import game.controllers.ReaderPresenter;
+import game.controllers.WriterInteractor;
 import game.parser.ControllerConsole;
 
 import java.io.IOException;
 
-public class WriteRead extends Controller {
+public class WriterReader extends Controller {
 
-    private final MenuInteractor interactor;
-    private final BasicPresenter presenter;
+    private final WriterInteractor interactor;
+    private final ReaderPresenter presenter;
 
-    public WriteRead(MenuInteractor interactor, BasicPresenter presenter, ControllerConsole console) {
+    public WriterReader(WriterInteractor interactor, ReaderPresenter presenter, ControllerConsole console) {
         super(console);
         this.interactor = interactor;
         this.presenter = presenter;

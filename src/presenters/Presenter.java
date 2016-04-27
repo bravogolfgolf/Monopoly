@@ -1,7 +1,7 @@
 package game.presenters;
 
-import game.controllers.basic.BasicPresenter;
-import game.controllers.menu.MenuPresenter;
+import game.controllers.ReaderPresenter;
+import game.controllers.writer.WriterPresenter;
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.selectfirst.SelectFirstPresenter;
@@ -17,7 +17,7 @@ import game.interactors.versionoptions.VersionOptionsResponse;
 import java.util.Hashtable;
 import java.util.Map;
 
-public abstract class Presenter implements BasicPresenter, MenuPresenter, StartTurnPresenter, SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter {
+public abstract class Presenter implements ReaderPresenter, WriterPresenter, StartTurnPresenter, SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();

@@ -1,12 +1,12 @@
 package game.parser;
 
-import game.controllers.menu.MenuParser;
+import game.controllers.writer.WriterParser;
 import game.display.ConsoleParser;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class Parser implements ConsoleParser, MenuParser {
+public class Parser implements ConsoleParser, WriterParser {
 
     private ParserManager manager;
     private Map<Integer, String> menuMap;
@@ -28,8 +28,11 @@ public class Parser implements ConsoleParser, MenuParser {
             selection = Integer.parseInt(line);
 
             String result = menuMap.get(selection);
-            if (selection == 0) manager.zeroEntered();
-            else if (result == null) manager.invalidEntry();
+            if (result == null)
+                if (selection == 0) manager.zeroEntered();
+                else if (selection == 1) manager.oneEntered();
+                else if (selection == 2) manager.twoEntered();
+                else manager.invalidEntry();
             else manager.validTextEntry(result);
 
         } catch (NumberFormatException e) {

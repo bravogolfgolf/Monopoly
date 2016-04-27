@@ -1,8 +1,8 @@
 package game.controllers;
 
-import game.controllers.basic.Basic;
-import game.controllers.menu.Menu;
-import game.controllers.writeread.WriteRead;
+import game.controllers.reader.Reader;
+import game.controllers.writer.Writer;
+import game.controllers.writerreader.WriterReader;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ public class ControllerTest {
 
     @Test
     public void testBasic() throws IOException {
-        controller = new Basic(interactor, presenter, console);
+        controller = new Reader(interactor, presenter, console);
 
         controller.execute();
         assertTrue(console.verifyReadCalled);
@@ -35,7 +35,7 @@ public class ControllerTest {
 
     @Test
     public void testMenu() throws IOException {
-        controller = new Menu(parser, interactor, presenter, console);
+        controller = new Writer(parser, interactor, presenter, console);
         controller.execute();
 
         assertTrue(interactor.verifyHandleWithOutArgumentCalled);
@@ -46,7 +46,7 @@ public class ControllerTest {
 
     @Test
     public void testWriteRead() throws IOException {
-        controller = new WriteRead(interactor, presenter, console);
+        controller = new WriterReader(interactor, presenter, console);
         controller.execute();
 
         assertTrue(interactor.verifyHandleWithOutArgumentCalled);
