@@ -3,6 +3,7 @@ package game.interactors;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.reader.ReaderRequest;
 import game.interactors.createplayer.CreatePlayer;
+import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
 import game.interactors.startturn.StartTurn;
@@ -117,6 +118,16 @@ public class InteractorTest {
         public void testHandle() {
             interactor.handle();
             assertTrue(presenter.verifyStartTurnCalled);
+        }
+    }
+
+    public class ManagerPropertiesTest {
+
+        @Test
+        public void testHandle() {
+            PropertyOptions interactor = new PropertyOptions(presenter);
+            interactor.handle();
+            assertTrue(presenter.verifyPropertyOptionsMessageCalled);
         }
     }
 }

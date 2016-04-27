@@ -4,6 +4,7 @@ import game.controllers.ReaderPresenter;
 import game.controllers.writer.WriterPresenter;
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.propertyoptions.PropertyOptionsPresenter;
 import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionPresenter;
@@ -17,7 +18,9 @@ import game.interactors.versionoptions.VersionOptionsResponse;
 import java.util.Hashtable;
 import java.util.Map;
 
-public abstract class Presenter implements ReaderPresenter, WriterPresenter, StartTurnPresenter, SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter {
+public abstract class Presenter implements ReaderPresenter, WriterPresenter, StartTurnPresenter,
+        SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, TokenOptionsPresenter,
+        SelectFirstPresenter, PropertyOptionsPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
@@ -104,14 +107,15 @@ public abstract class Presenter implements ReaderPresenter, WriterPresenter, Sta
     public abstract void createPlayerPromptMessageMinimumToMaximumMessage();
 
     @Override
+    public abstract void availableTokensMessage(TokenOptionsResponse response);
+
+    @Override
     public abstract void playerCreatedMessage(CreatePlayerResponse response);
 
     @Override
     public abstract void playerSelectedToGoFirstMessage(SelectFirstResponse response);
 
     @Override
-    public abstract void startTurn();
+    public abstract void startTurnMessage();
 
-    @Override
-    public abstract void availableTokensMessage(TokenOptionsResponse response);
 }

@@ -1,6 +1,7 @@
 package game.presenters;
 
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
@@ -42,6 +43,13 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
+    public void availableTokensMessage(TokenOptionsResponse response) {
+        template = "Available tokens: %s";
+        clearAndCreateMenuMap(response.tokens);
+        addMenuToBuffer(template, menuMap);
+    }
+
+    @Override
     public void playerCreatedMessage(CreatePlayerResponse response) {
         template = "\nPlayer created with %s token.";
         variables = new String[]{response.token};
@@ -56,15 +64,14 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
-    public void startTurn() {
+    public void startTurnMessage() {
         template = "\nAvailable options: (0)Roll (1)Manage Properties (2)Trade.";
         addNewLine(template);
     }
 
     @Override
-    public void availableTokensMessage(TokenOptionsResponse response) {
-        template = "Available tokens: %s";
-        clearAndCreateMenuMap(response.tokens);
-        addMenuToBuffer(template, menuMap);
+    public void propertyOptionsMessage(PropertyOptionsResponse response) {
+        template = "\nNo properties to manage. Select (0)Exit to continue.";
+        addNewLine(template);
     }
 }

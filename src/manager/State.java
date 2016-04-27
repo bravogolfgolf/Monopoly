@@ -10,7 +10,7 @@ interface State {
 
     void zeroEntered(StateManager manager) throws IOException;
 
-    void oneEntered(StateManager manager);
+    void oneEntered(StateManager manager) throws IOException;
 
     void twoEntered(StateManager manager);
 }
