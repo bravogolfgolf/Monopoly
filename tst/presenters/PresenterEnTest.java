@@ -41,6 +41,19 @@ public class PresenterEnTest {
             assertEquals(expected, presenter.getFormattedMessage());
         }
 
+        public class VersionOptionsResponseTest {
+
+            private final VersionOptionsResponse response = new VersionOptionsResponse();
+
+            @Test
+            public void testAvailableVersionsMessage() {
+                response.versions = new String[]{"FRA", "USA"};
+                presenter.availableVersionsMessage(response);
+                expected = "Available versions: (1)FRA, (2)USA\n";
+                assertEquals(expected, presenter.getFormattedMessage());
+            }
+        }
+
         public class SelectVersionResponseTest {
 
             private final SelectVersionResponse response = new SelectVersionResponse();
@@ -71,6 +84,19 @@ public class PresenterEnTest {
             assertEquals(expected, presenter.getFormattedMessage());
         }
 
+        public class TokenOptionsResponseTest {
+
+            private final TokenOptionsResponse response = new TokenOptionsResponse();
+
+            @Test
+            public void testAvailableTokensMessage() {
+                response.tokens = new String[]{"Automobile", "Battleship", "Boot", "Cat", "Scottish Terrier", "Thimble", "Top Hat", "Wheelbarrow"};
+                presenter.availableTokensMessage(response);
+                expected = "Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow\n";
+                assertEquals(expected, presenter.getFormattedMessage());
+            }
+        }
+
         public class CreatePlayerResponseTest {
 
             private final CreatePlayerResponse response = new CreatePlayerResponse();
@@ -82,32 +108,6 @@ public class PresenterEnTest {
                 expected = "\nPlayer created with Cat token.\n";
                 assertEquals(expected, presenter.getFormattedMessage());
             }
-        }
-    }
-
-    public class VersionOptionsResponseTest {
-
-        private final VersionOptionsResponse response = new VersionOptionsResponse();
-
-        @Test
-        public void testAvailableVersionsMessage() {
-            response.versions = new String[]{"FRA", "USA"};
-            presenter.availableVersionsMessage(response);
-            expected = "Available versions: (1)FRA, (2)USA\n";
-            assertEquals(expected, presenter.getFormattedMessage());
-        }
-    }
-
-    public class TokenOptionsResponseTest {
-
-        private final TokenOptionsResponse response = new TokenOptionsResponse();
-
-        @Test
-        public void testAvailableTokensMessage() {
-            response.tokens = new String[]{"Automobile", "Battleship", "Boot", "Cat", "Scottish Terrier", "Thimble", "Top Hat", "Wheelbarrow"};
-            presenter.availableTokensMessage(response);
-            expected = "Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow\n";
-            assertEquals(expected, presenter.getFormattedMessage());
         }
     }
 
