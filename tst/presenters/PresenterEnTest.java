@@ -129,7 +129,7 @@ public class PresenterEnTest {
         @Test
         public void testStartTurnMessage() {
             presenter.startTurn();
-            expected = "\nAvailable versionoptions: (0)Roll.\n";
+            expected = "\nAvailable options: (0)Roll (1)Manage Properties (2)Trade.\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
     }

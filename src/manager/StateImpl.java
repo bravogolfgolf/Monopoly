@@ -192,7 +192,7 @@ public enum StateImpl implements State {
     START_TURN {
         @Override
         public void initialize(StateManager manager) throws IOException {
-
+            manager.createAndExecuteController("StartTurn");
         }
 
         @Override

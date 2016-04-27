@@ -1,28 +1,29 @@
-package game.controllers.menu;
+package game.controllers.writeread;
 
 import game.controllers.Controller;
+import game.controllers.basic.BasicPresenter;
+import game.controllers.menu.MenuInteractor;
 import game.parser.ControllerConsole;
 
 import java.io.IOException;
 
-public class Menu extends Controller {
+public class WriteRead extends Controller {
 
-    private final MenuParser parser;
     private final MenuInteractor interactor;
-    private final MenuPresenter presenter;
+    private final BasicPresenter presenter;
 
-    public Menu(MenuParser parser, MenuInteractor interactor, MenuPresenter presenter, ControllerConsole console) {
+    public WriteRead(MenuInteractor interactor, BasicPresenter presenter, ControllerConsole console) {
         super(console);
-        this.parser = parser;
         this.interactor = interactor;
         this.presenter = presenter;
+
     }
 
     @Override
     public void execute() throws IOException {
         interactor.handle();
-        parser.setMap(presenter.returnAndClearMenuMap());
         console.write(presenter.getFormattedMessage());
+        read();
     }
 
     @Override

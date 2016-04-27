@@ -1,17 +1,13 @@
 package game.interactors;
 
-import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
-import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
-import game.interactors.selectversion.SelectVersionPresenter;
 import game.interactors.selectversion.SelectVersionResponse;
-import game.interactors.tokenoptions.TokenOptionsPresenter;
 import game.interactors.tokenoptions.TokenOptionsResponse;
-import game.interactors.versionoptions.VersionOptionsPresenter;
 import game.interactors.versionoptions.VersionOptionsResponse;
+import game.presenters.Presenter;
 
-class PresenterMock implements SelectVersionPresenter, VersionOptionsPresenter, CreatePlayerPresenter, TokenOptionsPresenter, SelectFirstPresenter {
+class PresenterMock extends Presenter {
 
     boolean verifySelectVersionPromptMessageCalled = false;
     boolean verifyVersionCreatedMessage = false;
@@ -21,6 +17,7 @@ class PresenterMock implements SelectVersionPresenter, VersionOptionsPresenter, 
     boolean verifyCreatePlayerPromptMessageMinimumToMaximumMessage = false;
     boolean verifyAvailableTokensMessage = false;
     boolean verifyPlayerSelectedToGoFirstMessage = false;
+    boolean verifyStartTurnCalled = false;
 
     @Override
     public void selectVersionPromptMessage() {
@@ -60,5 +57,10 @@ class PresenterMock implements SelectVersionPresenter, VersionOptionsPresenter, 
     @Override
     public void playerSelectedToGoFirstMessage(SelectFirstResponse response) {
         verifyPlayerSelectedToGoFirstMessage = true;
+    }
+
+    @Override
+    public void startTurn() {
+        verifyStartTurnCalled = true;
     }
 }

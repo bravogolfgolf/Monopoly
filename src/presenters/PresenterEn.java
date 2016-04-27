@@ -57,7 +57,7 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void startTurn() {
-        template = "\nAvailable versionoptions: (0)Roll.";
+        template = "\nAvailable options: (0)Roll (1)Manage Properties (2)Trade.";
         addNewLine(template);
     }
 

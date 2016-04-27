@@ -8,16 +8,16 @@ import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionPresenter;
 import game.interactors.selectversion.SelectVersionResponse;
+import game.interactors.startturn.StartTurnPresenter;
 import game.interactors.tokenoptions.TokenOptionsPresenter;
 import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsPresenter;
 import game.interactors.versionoptions.VersionOptionsResponse;
-import game.manager.ManagerPresenter;
 
 import java.util.Hashtable;
 import java.util.Map;
 
-public abstract class Presenter implements BasicPresenter, MenuPresenter, ManagerPresenter, SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter {
+public abstract class Presenter implements BasicPresenter, MenuPresenter, StartTurnPresenter, SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
