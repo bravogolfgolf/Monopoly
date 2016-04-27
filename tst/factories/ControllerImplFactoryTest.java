@@ -38,6 +38,7 @@ public class ControllerImplFactoryTest {
         controllerFactory.make("TokenOptionsMinimumToMaximum");
         controllerFactory.make("SelectFirst");
         controllerFactory.make("StartTurn");
+        controllerFactory.make("PropertyOptions");
     }
 }
 

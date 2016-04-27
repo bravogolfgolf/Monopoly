@@ -7,6 +7,7 @@ import game.controllers.writerreader.WriterReader;
 import game.display.Console;
 import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
+import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
 import game.interactors.startturn.StartTurn;
@@ -75,6 +76,11 @@ public class ControllerFactoryImpl implements ControllerFactory {
         if (controller.equals("StartTurn")) {
             StartTurn interactor = new StartTurn(presenter);
             return new WriterReader(interactor, presenter, console);
+        }
+
+        if (controller.equals("PropertyOptions")) {
+            PropertyOptions interactor = new PropertyOptions(presenter);
+            return new Writer(parser, interactor, presenter, console);
         }
 
         throw new IllegalArgumentException();

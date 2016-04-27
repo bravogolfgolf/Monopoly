@@ -12,6 +12,6 @@ public class StartTurn implements WriterInteractor {
 
     @Override
     public void handle() {
-        presenter.startTurn();
+        presenter.startTurnMessage();
     }
 }

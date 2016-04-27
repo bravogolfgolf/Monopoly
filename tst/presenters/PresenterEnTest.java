@@ -2,6 +2,7 @@ package game.presenters;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
@@ -124,12 +125,25 @@ public class PresenterEnTest {
         }
     }
 
-    public class StartTurnPresenterTest {
+    public class StartTurnTest {
 
         @Test
         public void testStartTurnMessage() {
-            presenter.startTurn();
+            presenter.startTurnMessage();
             expected = "\nAvailable options: (0)Roll (1)Manage Properties (2)Trade.\n";
+            assertEquals(expected, presenter.getFormattedMessage());
+        }
+    }
+
+    public class PropertyOptionsResponseTest {
+
+        private final PropertyOptionsResponse response = new PropertyOptionsResponse();
+
+        @Test
+        public void testPropertyOptionsMessage() {
+            response.properties = null;
+            presenter.propertyOptionsMessage(response);
+            expected = "\nNo properties to manage. Select (0)Exit to continue.\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
     }

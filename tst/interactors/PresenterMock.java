@@ -1,6 +1,7 @@
 package game.interactors;
 
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
@@ -18,6 +19,7 @@ class PresenterMock extends Presenter {
     boolean verifyAvailableTokensMessage = false;
     boolean verifyPlayerSelectedToGoFirstMessage = false;
     boolean verifyStartTurnCalled = false;
+    boolean verifyPropertyOptionsMessageCalled = false;
 
     @Override
     public void selectVersionPromptMessage() {
@@ -60,7 +62,12 @@ class PresenterMock extends Presenter {
     }
 
     @Override
-    public void startTurn() {
+    public void startTurnMessage() {
         verifyStartTurnCalled = true;
+    }
+
+    @Override
+    public void propertyOptionsMessage(PropertyOptionsResponse response) {
+        verifyPropertyOptionsMessageCalled = true;
     }
 }
