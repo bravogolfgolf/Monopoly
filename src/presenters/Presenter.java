@@ -5,8 +5,10 @@ import game.controllers.writer.WriterPresenter;
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.propertyoptions.PropertyOptionsPresenter;
+import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
+import game.interactors.selectproperty.SelectPropertyPresenter;
 import game.interactors.selectversion.SelectVersionPresenter;
 import game.interactors.selectversion.SelectVersionResponse;
 import game.interactors.startturn.StartTurnPresenter;
@@ -18,9 +20,9 @@ import game.interactors.versionoptions.VersionOptionsResponse;
 import java.util.Hashtable;
 import java.util.Map;
 
-public abstract class Presenter implements ReaderPresenter, WriterPresenter, StartTurnPresenter,
-        SelectVersionPresenter, CreatePlayerPresenter, VersionOptionsPresenter, TokenOptionsPresenter,
-        SelectFirstPresenter, PropertyOptionsPresenter {
+public abstract class Presenter implements ReaderPresenter, WriterPresenter, SelectVersionPresenter,
+        VersionOptionsPresenter, CreatePlayerPresenter, TokenOptionsPresenter, SelectFirstPresenter,
+        StartTurnPresenter, SelectPropertyPresenter, PropertyOptionsPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
@@ -118,4 +120,9 @@ public abstract class Presenter implements ReaderPresenter, WriterPresenter, Sta
     @Override
     public abstract void startTurnMessage();
 
+    @Override
+    public abstract void selectPropertyPromptMessage();
+
+    @Override
+    public abstract void propertyOptionsMessage(PropertyOptionsResponse response);
 }

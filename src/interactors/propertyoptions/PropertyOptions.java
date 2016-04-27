@@ -14,6 +14,7 @@ public class PropertyOptions implements WriterInteractor {
     @Override
     public void handle() {
         response.properties = null;
+        presenter.selectPropertyPromptMessage();
         presenter.propertyOptionsMessage(response);
     }
 }
