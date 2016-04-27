@@ -3,12 +3,13 @@ package game.interactors;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.basic.BasicRequest;
 import game.interactors.createplayer.CreatePlayer;
-import game.interactors.options.VersionOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
+import game.interactors.startturn.StartTurn;
 import game.interactors.tokenoptions.TokenOptions;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
+import game.interactors.versionoptions.VersionOptions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -57,7 +58,7 @@ public class InteractorTest {
         private final VersionOptions interactor = new VersionOptions(presenter, factory);
 
         @Test
-        public void testHandleVersions() {
+        public void testHandle() {
             interactor.handle();
 
             assertTrue(factory.verifyGetAvailableVersionsCalled);
@@ -71,7 +72,7 @@ public class InteractorTest {
         private final TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens);
 
         @Test
-        public void testHandleTokens() {
+        public void testHandle() {
             interactor.handle();
 
             assertTrue(tokens.verifyGetAvailableTokensCalled);
@@ -85,7 +86,7 @@ public class InteractorTest {
         private final TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens);
 
         @Test
-        public void testHandleTokens() {
+        public void testHandle() {
             interactor.handle();
 
             assertTrue(tokens.verifyGetAvailableTokensCalled);
@@ -99,12 +100,23 @@ public class InteractorTest {
         private final SelectFirst interactor = new SelectFirst(presenter, player);
 
         @Test
-        public void testHandleTokens() {
+        public void testHandle() {
             interactor.handle();
 
             assertTrue(player.verifyRandomizePlayersCalled);
             assertTrue(player.verifyGetNextPlayerCalled);
             assertTrue(presenter.verifyPlayerSelectedToGoFirstMessage);
+        }
+    }
+
+    public class StartTurnTest {
+
+        private final StartTurn interactor = new StartTurn(presenter);
+
+        @Test
+        public void testHandle() {
+            interactor.handle();
+            assertTrue(presenter.verifyStartTurnCalled);
         }
     }
 }

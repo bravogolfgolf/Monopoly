@@ -1,8 +1,8 @@
 package game.factories;
 
 import game.entities.Board;
-import game.interactors.options.VersionOptionsFactory;
 import game.interactors.selectversion.SelectVersionFactory;
+import game.interactors.versionoptions.VersionOptionsFactory;
 import game.repositories.Tokens;
 
 import java.util.Arrays;

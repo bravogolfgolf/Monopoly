@@ -3,15 +3,17 @@ package game.factories;
 import game.controllers.Controller;
 import game.controllers.basic.Basic;
 import game.controllers.menu.Menu;
+import game.controllers.writeread.WriteRead;
 import game.display.Console;
 import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
-import game.interactors.options.VersionOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectversion.SelectVersion;
+import game.interactors.startturn.StartTurn;
 import game.interactors.tokenoptions.TokenOptions;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
+import game.interactors.versionoptions.VersionOptions;
 import game.manager.ControllerFactory;
 import game.parser.Parser;
 import game.presenters.Presenter;
@@ -68,6 +70,11 @@ public class ControllerFactoryImpl implements ControllerFactory {
         if (controller.equals("SelectFirst")) {
             SelectFirst interactor = new SelectFirst(presenter, players);
             return new Menu(parser, interactor, presenter, console);
+        }
+
+        if (controller.equals("StartTurn")) {
+            StartTurn interactor = new StartTurn(presenter);
+            return new WriteRead(interactor, presenter, console);
         }
 
         throw new IllegalArgumentException();

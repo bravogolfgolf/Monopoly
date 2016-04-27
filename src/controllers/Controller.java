@@ -13,4 +13,10 @@ public abstract class Controller {
     }
 
     public abstract void execute() throws IOException;
+
+    protected void read() throws IOException {
+        console.read();
+    }
+
+    public abstract void handle(String text) throws IOException;
 }
