@@ -1,12 +1,12 @@
 package game.parser;
 
-import game.controllers.menu.MenuParser;
+import game.controllers.writer.WriterParser;
 import game.display.ConsoleParser;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class Parser implements ConsoleParser, MenuParser {
+public class Parser implements ConsoleParser, WriterParser {
 
     private ParserManager manager;
     private Map<Integer, String> menuMap;

@@ -1,9 +1,9 @@
 package game.factories;
 
 import game.controllers.Controller;
-import game.controllers.basic.Basic;
-import game.controllers.menu.Menu;
-import game.controllers.writeread.WriteRead;
+import game.controllers.reader.Reader;
+import game.controllers.writer.Writer;
+import game.controllers.writerreader.WriterReader;
 import game.display.Console;
 import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
@@ -44,37 +44,37 @@ public class ControllerFactoryImpl implements ControllerFactory {
 
         if (controller.equals("SelectVersion")) {
             SelectVersion interactor = new SelectVersion(presenter, factory);
-            return new Basic(interactor, presenter, console);
+            return new Reader(interactor, presenter, console);
         }
 
         if (controller.equals("VersionOptions")) {
             VersionOptions interactor = new VersionOptions(presenter, factory);
-            return new Menu(parser, interactor, presenter, console);
+            return new Writer(parser, interactor, presenter, console);
         }
 
         if (controller.equals("CreatePlayer")) {
             CreatePlayer interactor = new CreatePlayer(presenter, tokens, players);
-            return new Basic(interactor, presenter, console);
+            return new Reader(interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsFewerThanMinimum")) {
             TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens);
-            return new Menu(parser, interactor, presenter, console);
+            return new Writer(parser, interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsMinimumToMaximum")) {
             TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens);
-            return new Menu(parser, interactor, presenter, console);
+            return new Writer(parser, interactor, presenter, console);
         }
 
         if (controller.equals("SelectFirst")) {
             SelectFirst interactor = new SelectFirst(presenter, players);
-            return new Menu(parser, interactor, presenter, console);
+            return new Writer(parser, interactor, presenter, console);
         }
 
         if (controller.equals("StartTurn")) {
             StartTurn interactor = new StartTurn(presenter);
-            return new WriteRead(interactor, presenter, console);
+            return new WriterReader(interactor, presenter, console);
         }
 
         throw new IllegalArgumentException();

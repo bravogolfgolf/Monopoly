@@ -1,11 +1,11 @@
 package game.interactors.tokenoptions;
 
-import game.controllers.menu.MenuInteractor;
+import game.controllers.WriterInteractor;
 import game.entities.Token;
 
 import java.util.Set;
 
-public abstract class TokenOptions implements MenuInteractor {
+public abstract class TokenOptions implements WriterInteractor {
 
     final TokenOptionsPresenter presenter;
     private final TokenOptionsTokensGateway tokens;

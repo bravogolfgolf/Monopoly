@@ -1,8 +1,8 @@
-package game.controllers.menu;
+package game.controllers.writer;
 
 import java.util.Map;
 
-public interface MenuPresenter {
+public interface WriterPresenter {
 
     Map<Integer,String> returnAndClearMenuMap();
 

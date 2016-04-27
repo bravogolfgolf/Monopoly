@@ -6,7 +6,7 @@ interface State {
 
     void initialize(StateManager manager) throws IOException;
 
-    void validNumber(StateManager manager) throws IOException;
+    void zeroEntered(StateManager manager) throws IOException;
 
     void validTextEntry(StateManager manager) throws IOException;
 }

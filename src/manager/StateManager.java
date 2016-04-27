@@ -36,7 +36,7 @@ public abstract class StateManager implements ParserManager {
 
     @Override
     public void zeroEntered() throws IOException {
-        state.validNumber(this);
+        state.zeroEntered(this);
     }
 
     public abstract void createAndExecuteController(String commandString) throws IOException;

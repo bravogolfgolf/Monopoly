@@ -12,7 +12,7 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) throws IOException {
+        public void zeroEntered(StateManager manager) throws IOException {
             manager.initialize();
         }
 
@@ -31,7 +31,7 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) throws IOException {
+        public void zeroEntered(StateManager manager) throws IOException {
             manager.initialize();
         }
 
@@ -50,7 +50,7 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) throws IOException {
+        public void zeroEntered(StateManager manager) throws IOException {
             manager.initialize();
         }
 
@@ -70,7 +70,7 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) throws IOException {
+        public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
@@ -91,7 +91,7 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) throws IOException {
+        public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
@@ -112,7 +112,7 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) throws IOException {
+        public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
@@ -133,7 +133,7 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) throws IOException {
+        public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
@@ -154,7 +154,7 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) throws IOException {
+        public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
@@ -175,7 +175,7 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) throws IOException {
+        public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
             manager.createAndExecuteController("SelectFirst");
             manager.initialize();
@@ -196,7 +196,7 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void validNumber(StateManager manager) {
+        public void zeroEntered(StateManager manager) {
 
         }
 

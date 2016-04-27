@@ -1,8 +1,8 @@
 package game.interactors.versionoptions;
 
-import game.controllers.menu.MenuInteractor;
+import game.controllers.WriterInteractor;
 
-public class VersionOptions implements MenuInteractor {
+public class VersionOptions implements WriterInteractor {
 
     private final VersionOptionsPresenter presenter;
     private final VersionOptionsFactory factory;

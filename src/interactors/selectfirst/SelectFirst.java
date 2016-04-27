@@ -1,9 +1,9 @@
 package game.interactors.selectfirst;
 
-import game.controllers.menu.MenuInteractor;
+import game.controllers.WriterInteractor;
 import game.entities.Token;
 
-public class SelectFirst implements MenuInteractor {
+public class SelectFirst implements WriterInteractor {
 
     private final SelectFirstPresenter presenter;
     private final SelectFirstPlayerGateway players;

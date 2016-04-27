@@ -1,10 +1,10 @@
 package game.interactors.createplayer;
 
-import game.controllers.basic.BasicInteractor;
-import game.controllers.basic.BasicRequest;
+import game.controllers.reader.ReaderInteractor;
+import game.controllers.reader.ReaderRequest;
 import game.entities.Token;
 
-public class CreatePlayer implements BasicInteractor {
+public class CreatePlayer implements ReaderInteractor {
 
     private final CreatePlayerPresenter presenter;
     private final CreatePlayerTokensGateway tokens;
@@ -18,7 +18,7 @@ public class CreatePlayer implements BasicInteractor {
     }
 
     @Override
-    public void handle(BasicRequest request) {
+    public void handle(ReaderRequest request) {
         Token token = new Token(request.string);
         tokens.removeToken(token);
         players.addWith(token);

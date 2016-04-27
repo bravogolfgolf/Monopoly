@@ -1,9 +1,9 @@
 package game.interactors.selectversion;
 
-import game.controllers.basic.BasicInteractor;
-import game.controllers.basic.BasicRequest;
+import game.controllers.reader.ReaderInteractor;
+import game.controllers.reader.ReaderRequest;
 
-public class SelectVersion implements BasicInteractor {
+public class SelectVersion implements ReaderInteractor {
 
     private final SelectVersionPresenter presenter;
     private final SelectVersionFactory factory;
@@ -15,7 +15,7 @@ public class SelectVersion implements BasicInteractor {
     }
 
     @Override
-    public void handle(BasicRequest request) {
+    public void handle(ReaderRequest request) {
         factory.make(request.string);
         response.version = request.string;
         presenter.versionCreatedMessage(response);

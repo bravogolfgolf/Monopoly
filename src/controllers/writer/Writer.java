@@ -1,17 +1,18 @@
-package game.controllers.menu;
+package game.controllers.writer;
 
 import game.controllers.Controller;
+import game.controllers.WriterInteractor;
 import game.parser.ControllerConsole;
 
 import java.io.IOException;
 
-public class Menu extends Controller {
+public class Writer extends Controller {
 
-    private final MenuParser parser;
-    private final MenuInteractor interactor;
-    private final MenuPresenter presenter;
+    private final WriterParser parser;
+    private final WriterInteractor interactor;
+    private final WriterPresenter presenter;
 
-    public Menu(MenuParser parser, MenuInteractor interactor, MenuPresenter presenter, ControllerConsole console) {
+    public Writer(WriterParser parser, WriterInteractor interactor, WriterPresenter presenter, ControllerConsole console) {
         super(console);
         this.parser = parser;
         this.interactor = interactor;

@@ -1,16 +1,15 @@
 package game.controllers;
 
-import game.controllers.basic.BasicInteractor;
-import game.controllers.basic.BasicRequest;
-import game.controllers.menu.MenuInteractor;
+import game.controllers.reader.ReaderInteractor;
+import game.controllers.reader.ReaderRequest;
 
-class InteractorMock implements BasicInteractor, MenuInteractor {
+class InteractorMock implements ReaderInteractor, WriterInteractor {
 
     boolean verifyHandleWithArgumentCalled = false;
     boolean verifyHandleWithOutArgumentCalled = false;
 
     @Override
-    public void handle(BasicRequest request) {
+    public void handle(ReaderRequest request) {
         verifyHandleWithArgumentCalled = true;
     }
 

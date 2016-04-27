@@ -1,8 +1,8 @@
-package game.controllers.menu;
+package game.controllers.writer;
 
 import java.util.Map;
 
-public interface MenuParser {
+public interface WriterParser {
 
     void setMap(Map<Integer, String> menuMap);
 }
