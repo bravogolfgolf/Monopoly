@@ -104,6 +104,9 @@ public abstract class Presenter implements ReaderPresenter, WriterPresenter, Sta
     public abstract void createPlayerPromptMessageMinimumToMaximumMessage();
 
     @Override
+    public abstract void availableTokensMessage(TokenOptionsResponse response);
+
+    @Override
     public abstract void playerCreatedMessage(CreatePlayerResponse response);
 
     @Override
@@ -111,7 +114,4 @@ public abstract class Presenter implements ReaderPresenter, WriterPresenter, Sta
 
     @Override
     public abstract void startTurn();
-
-    @Override
-    public abstract void availableTokensMessage(TokenOptionsResponse response);
 }

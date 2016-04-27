@@ -42,6 +42,13 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
+    public void availableTokensMessage(TokenOptionsResponse response) {
+        template = "Available tokens: %s";
+        clearAndCreateMenuMap(response.tokens);
+        addMenuToBuffer(template, menuMap);
+    }
+
+    @Override
     public void playerCreatedMessage(CreatePlayerResponse response) {
         template = "\nPlayer created with %s token.";
         variables = new String[]{response.token};
@@ -59,12 +66,5 @@ public class PresenterEn extends Presenter {
     public void startTurn() {
         template = "\nAvailable options: (0)Roll (1)Manage Properties (2)Trade.";
         addNewLine(template);
-    }
-
-    @Override
-    public void availableTokensMessage(TokenOptionsResponse response) {
-        template = "Available tokens: %s";
-        clearAndCreateMenuMap(response.tokens);
-        addMenuToBuffer(template, menuMap);
     }
 }
