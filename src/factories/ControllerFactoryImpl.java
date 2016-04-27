@@ -9,6 +9,7 @@ import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
+import game.interactors.selectproperty.SelectProperty;
 import game.interactors.selectversion.SelectVersion;
 import game.interactors.startturn.StartTurn;
 import game.interactors.tokenoptions.TokenOptions;
@@ -42,19 +43,13 @@ public class ControllerFactoryImpl implements ControllerFactory {
 
     @Override
     public Controller make(String controller) {
-
-        if (controller.equals("SelectVersion")) {
-            SelectVersion interactor = new SelectVersion(presenter, factory);
-            return new Reader(interactor, presenter, console);
-        }
-
         if (controller.equals("VersionOptions")) {
             VersionOptions interactor = new VersionOptions(presenter, factory);
             return new Writer(parser, interactor, presenter, console);
         }
 
-        if (controller.equals("CreatePlayer")) {
-            CreatePlayer interactor = new CreatePlayer(presenter, tokens, players);
+        if (controller.equals("SelectVersion")) {
+            SelectVersion interactor = new SelectVersion(presenter, factory);
             return new Reader(interactor, presenter, console);
         }
 
@@ -66,6 +61,11 @@ public class ControllerFactoryImpl implements ControllerFactory {
         if (controller.equals("TokenOptionsMinimumToMaximum")) {
             TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens);
             return new Writer(parser, interactor, presenter, console);
+        }
+
+        if (controller.equals("CreatePlayer")) {
+            CreatePlayer interactor = new CreatePlayer(presenter, tokens, players);
+            return new Reader(interactor, presenter, console);
         }
 
         if (controller.equals("SelectFirst")) {
@@ -81,6 +81,11 @@ public class ControllerFactoryImpl implements ControllerFactory {
         if (controller.equals("PropertyOptions")) {
             PropertyOptions interactor = new PropertyOptions(presenter);
             return new Writer(parser, interactor, presenter, console);
+        }
+
+        if (controller.equals("SelectProperty")){
+            SelectProperty interactor = new SelectProperty(presenter);
+            return new Reader(interactor, presenter, console);
         }
 
         throw new IllegalArgumentException();

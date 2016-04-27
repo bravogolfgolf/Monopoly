@@ -5,12 +5,14 @@ import game.controllers.reader.ReaderRequest;
 import game.interactors.createplayer.CreatePlayer;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
+import game.interactors.selectproperty.SelectProperty;
 import game.interactors.selectversion.SelectVersion;
 import game.interactors.startturn.StartTurn;
 import game.interactors.tokenoptions.TokenOptions;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
 import game.interactors.versionoptions.VersionOptions;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -25,17 +27,38 @@ public class InteractorTest {
     private final PlayersMock player = new PlayersMock();
     private final ReaderRequest request = new ReaderRequest();
 
+
+    @Before
+    public void setup() {
+        request.string = "";
+    }
+
     public class SelectVersionTest {
 
         private final SelectVersion interactor = new SelectVersion(presenter, factory);
 
         @Test
         public void testHandle() {
-            request.string = "Valid";
             interactor.handle(request);
 
             assertTrue(factory.verifyMakeCalled);
             assertTrue(presenter.verifyVersionCreatedMessage);
+        }
+
+
+        public class VersionOptionsTest {
+
+            private final VersionOptions interactor = new VersionOptions(presenter, factory);
+
+            @Test
+            public void testHandle() {
+                interactor.handle();
+
+                assertTrue(factory.verifyGetAvailableVersionsCalled);
+                assertTrue(presenter.verifySelectVersionPromptMessageCalled);
+                assertTrue(presenter.verifyAvailableVersionsMessageCalled);
+            }
+
         }
     }
 
@@ -45,54 +68,42 @@ public class InteractorTest {
 
         @Test
         public void testHandle() {
-            request.string = "Valid";
             interactor.handle(request);
 
             assertTrue(tokens.verifyRemoveTokenCalled);
             assertTrue(player.verifyAddWithCalled);
             assertTrue(presenter.verifyPlayerCreatedMessage);
         }
-    }
 
-    public class VersionOptionsTest {
 
-        private final VersionOptions interactor = new VersionOptions(presenter, factory);
+        public class TokenOptionsFewerThanMinimumTest {
 
-        @Test
-        public void testHandle() {
-            interactor.handle();
+            private final TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens);
 
-            assertTrue(factory.verifyGetAvailableVersionsCalled);
-            assertTrue(presenter.verifySelectVersionPromptMessageCalled);
-            assertTrue(presenter.verifyAvailableVersionsMessageCalled);
+            @Test
+            public void testHandle() {
+                interactor.handle();
+
+                assertTrue(tokens.verifyGetAvailableTokensCalled);
+                assertTrue(presenter.verifyCreatePlayerPromptMessageFewerThanMinimumMessage);
+                assertTrue(presenter.verifyAvailableTokensMessage);
+            }
+
         }
-    }
 
-    public class TokenOptionsFewerThanMinimumTest {
+        public class TokenOptionsMinimumToMaximumTest {
 
-        private final TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens);
+            private final TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens);
 
-        @Test
-        public void testHandle() {
-            interactor.handle();
+            @Test
+            public void testHandle() {
+                interactor.handle();
 
-            assertTrue(tokens.verifyGetAvailableTokensCalled);
-            assertTrue(presenter.verifyCreatePlayerPromptMessageFewerThanMinimumMessage);
-            assertTrue(presenter.verifyAvailableTokensMessage);
-        }
-    }
+                assertTrue(tokens.verifyGetAvailableTokensCalled);
+                assertTrue(presenter.verifyCreatePlayerPromptMessageMinimumToMaximumMessage);
+                assertTrue(presenter.verifyAvailableTokensMessage);
+            }
 
-    public class TokenOptionsMinimumToMaximumTest {
-
-        private final TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens);
-
-        @Test
-        public void testHandle() {
-            interactor.handle();
-
-            assertTrue(tokens.verifyGetAvailableTokensCalled);
-            assertTrue(presenter.verifyCreatePlayerPromptMessageMinimumToMaximumMessage);
-            assertTrue(presenter.verifyAvailableTokensMessage);
         }
     }
 
@@ -121,13 +132,26 @@ public class InteractorTest {
         }
     }
 
-    public class ManagerPropertiesTest {
+    public class SelectPropertyTest {
+
+        private final SelectProperty interactor = new SelectProperty(presenter);
 
         @Test
         public void testHandle() {
-            PropertyOptions interactor = new PropertyOptions(presenter);
-            interactor.handle();
-            assertTrue(presenter.verifyPropertyOptionsMessageCalled);
+            interactor.handle(request);
+        }
+
+
+        public class PropertyOptionsTest {
+
+            private final PropertyOptions interactor = new PropertyOptions(presenter);
+
+            @Test
+            public void testHandle() {
+                interactor.handle();
+                assertTrue(presenter.verifySelectPropertyPromptMessageCalled);
+                assertTrue(presenter.verifyPropertyOptionsMessageCalled);
+            }
         }
     }
 }

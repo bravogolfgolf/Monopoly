@@ -70,8 +70,14 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
+    public void selectPropertyPromptMessage() {
+        template = "\nSelect property to manage or (0)Done to return to previous menu.";
+        addNewLine(template);
+    }
+
+    @Override
     public void propertyOptionsMessage(PropertyOptionsResponse response) {
-        template = "\nNo properties to manage. Select (0)Exit to continue.";
+        template = "No properties to manage.";
         addNewLine(template);
     }
 }

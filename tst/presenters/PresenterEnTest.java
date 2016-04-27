@@ -137,13 +137,21 @@ public class PresenterEnTest {
 
     public class PropertyOptionsResponseTest {
 
+        @Test
+        public void testSelectPropertyPromptMessage() {
+            presenter.selectPropertyPromptMessage();
+            expected = "\nSelect property to manage or (0)Done to return to previous menu.\n";
+            assertEquals(expected, presenter.getFormattedMessage());
+        }
+
+
         private final PropertyOptionsResponse response = new PropertyOptionsResponse();
 
         @Test
         public void testPropertyOptionsMessage() {
             response.properties = null;
             presenter.propertyOptionsMessage(response);
-            expected = "\nNo properties to manage. Select (0)Exit to continue.\n";
+            expected = "No properties to manage.\n";
             assertEquals(expected, presenter.getFormattedMessage());
         }
     }

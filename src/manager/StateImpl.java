@@ -298,6 +298,8 @@ public enum StateImpl implements State {
         @Override
         public void oneEntered(StateManager manager) throws IOException {
             manager.createAndExecuteController("PropertyOptions");
+            manager.createAndExecuteController("SelectProperty");
+            manager.initialize();
         }
 
         @Override

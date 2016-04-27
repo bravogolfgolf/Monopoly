@@ -11,14 +11,15 @@ import game.presenters.Presenter;
 class PresenterMock extends Presenter {
 
     boolean verifySelectVersionPromptMessageCalled = false;
-    boolean verifyVersionCreatedMessage = false;
     boolean verifyAvailableVersionsMessageCalled = false;
-    boolean verifyPlayerCreatedMessage = false;
+    boolean verifyVersionCreatedMessage = false;
     boolean verifyCreatePlayerPromptMessageFewerThanMinimumMessage = false;
     boolean verifyCreatePlayerPromptMessageMinimumToMaximumMessage = false;
     boolean verifyAvailableTokensMessage = false;
+    boolean verifyPlayerCreatedMessage = false;
     boolean verifyPlayerSelectedToGoFirstMessage = false;
     boolean verifyStartTurnCalled = false;
+    boolean verifySelectPropertyPromptMessageCalled = false;
     boolean verifyPropertyOptionsMessageCalled = false;
 
     @Override
@@ -64,6 +65,11 @@ class PresenterMock extends Presenter {
     @Override
     public void startTurnMessage() {
         verifyStartTurnCalled = true;
+    }
+
+    @Override
+    public void selectPropertyPromptMessage() {
+        verifySelectPropertyPromptMessageCalled = true;
     }
 
     @Override

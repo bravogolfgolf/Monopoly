@@ -31,14 +31,15 @@ public class ControllerImplFactoryTest {
 
     @Test
     public void testMakeController() {
-        controllerFactory.make("SelectVersion");
         controllerFactory.make("VersionOptions");
-        controllerFactory.make("CreatePlayer");
+        controllerFactory.make("SelectVersion");
         controllerFactory.make("TokenOptionsFewerThanMinimum");
         controllerFactory.make("TokenOptionsMinimumToMaximum");
+        controllerFactory.make("CreatePlayer");
         controllerFactory.make("SelectFirst");
         controllerFactory.make("StartTurn");
         controllerFactory.make("PropertyOptions");
+        controllerFactory.make("SelectProperty");
     }
 }
 
