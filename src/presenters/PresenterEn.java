@@ -1,6 +1,7 @@
 package game.presenters;
 
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionResponse;
@@ -79,5 +80,18 @@ public class PresenterEn extends Presenter {
     public void propertyOptionsMessage(PropertyOptionsResponse response) {
         template = "No properties to manage.";
         addNewLine(template);
+    }
+
+    @Override
+    public void selectTradingPartnerPromptMessage() {
+        template = "\nSelect player to trade with or (0)Done to return to previous menu.";
+        addNewLine(template);
+    }
+
+    @Override
+    public void partnerOptionsMessage(PartnerOptionsResponse response) {
+        template = "Available trading partners: %s";
+        clearAndCreateMenuMap(response.players);
+        addMenuToBuffer(template, menuMap);
     }
 }

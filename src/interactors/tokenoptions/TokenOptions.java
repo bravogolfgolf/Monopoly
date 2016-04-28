@@ -18,8 +18,8 @@ public abstract class TokenOptions implements WriterInteractor {
 
     @Override
     public void handle() {
-        prepareResponse(tokens.getAvailableTokens());
         sendUserInterfacePrompt();
+        prepareResponse(tokens.getAvailableTokens());
         presenter.availableTokensMessage(response);
     }
 

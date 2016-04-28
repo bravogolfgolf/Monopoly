@@ -7,6 +7,7 @@ import game.controllers.writerreader.WriterReader;
 import game.display.Console;
 import game.entities.Board;
 import game.interactors.createplayer.CreatePlayer;
+import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectproperty.SelectProperty;
@@ -86,6 +87,11 @@ public class ControllerFactoryImpl implements ControllerFactory {
         if (controller.equals("SelectProperty")){
             SelectProperty interactor = new SelectProperty(presenter);
             return new Reader(interactor, presenter, console);
+        }
+
+        if (controller.equals("PartnerOptions")) {
+            PartnerOptions interactor = new PartnerOptions(presenter,players);
+            return new Writer(parser, interactor, presenter, console);
         }
 
         throw new IllegalArgumentException();
