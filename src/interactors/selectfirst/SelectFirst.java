@@ -1,7 +1,7 @@
 package game.interactors.selectfirst;
 
-import game.controllers.writer.ReaderRequest;
-import game.controllers.writer.WriterInteractor;
+import game.controllers.ReaderRequest;
+import game.controllers.WriterInteractor;
 import game.entities.Token;
 
 public class SelectFirst implements WriterInteractor {

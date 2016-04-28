@@ -1,7 +1,7 @@
 package game.interactors.partneroptions;
 
-import game.controllers.writer.ReaderRequest;
-import game.controllers.writer.WriterInteractor;
+import game.controllers.ReaderRequest;
+import game.controllers.WriterInteractor;
 
 public class PartnerOptions implements WriterInteractor {
 

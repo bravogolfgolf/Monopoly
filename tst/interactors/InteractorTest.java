@@ -1,7 +1,7 @@
 package game.interactors;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import game.controllers.writer.ReaderRequest;
+import game.controllers.ReaderRequest;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;

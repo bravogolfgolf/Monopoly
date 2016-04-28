@@ -1,4 +1,4 @@
-package game.controllers.writer;
+package game.controllers;
 
 import java.util.Map;
 

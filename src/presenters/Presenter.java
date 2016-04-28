@@ -1,7 +1,7 @@
 package game.presenters;
 
-import game.controllers.writer.WriterPresenter;
-import game.controllers.writerreader.ReaderPresenter;
+import game.controllers.ReaderPresenter;
+import game.controllers.WriterPresenter;
 import game.interactors.partneroptions.PartnerOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsResponse;

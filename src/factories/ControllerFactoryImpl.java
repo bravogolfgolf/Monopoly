@@ -1,8 +1,8 @@
 package game.factories;
 
-import game.controllers.Controller;
-import game.controllers.writer.WriterReaderHandler;
-import game.controllers.writerreader.WriterReader;
+import game.controllers.Writer;
+import game.controllers.WriterReader;
+import game.controllers.WriterReaderHandler;
 import game.display.Console;
 import game.entities.Board;
 import game.interactors.partneroptions.PartnerOptions;
@@ -38,7 +38,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
     }
 
     @Override
-    public Controller make(String controller) {
+    public Writer make(String controller) {
         if (controller.equals("VersionOptions")) {
             VersionOptions interactor = new VersionOptions(presenter, factory);
             return new WriterReaderHandler(parser, interactor, presenter, console);
@@ -56,11 +56,11 @@ public class ControllerFactoryImpl implements ControllerFactory {
 
         if (controller.equals("SelectFirst")) {
             SelectFirst interactor = new SelectFirst(presenter, players);
-            return new WriterReaderHandler(parser, interactor, presenter, console);
+            return new WriterReader(interactor, presenter, console);
         }
 
         if (controller.equals("StartTurn")) {
-            return new WriterReader(presenter, console);
+            return new Writer(presenter, console);
         }
 
         if (controller.equals("PropertyOptions")) {

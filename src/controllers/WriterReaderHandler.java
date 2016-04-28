@@ -1,21 +1,19 @@
-package game.controllers.writer;
+package game.controllers;
 
-import game.controllers.Controller;
-import game.parser.ControllerConsole;
+import game.display.Console;
+import game.presenters.Presenter;
 
 import java.io.IOException;
 
-public class WriterReaderHandler extends Controller {
+public class WriterReaderHandler extends WriterReader {
 
     private final WriterParser parser;
-    private final WriterInteractor interactor;
-    private final WriterPresenter presenter;
     private final ReaderRequest request = new ReaderRequest();
+    private final WriterPresenter presenter;
 
-    public WriterReaderHandler(WriterParser parser, WriterInteractor interactor, WriterPresenter presenter, ControllerConsole console) {
-        super(console);
+    public WriterReaderHandler(WriterParser parser, WriterInteractor interactor, Presenter presenter, Console console) {
+        super(interactor, presenter, console);
         this.parser = parser;
-        this.interactor = interactor;
         this.presenter = presenter;
     }
 

@@ -1,6 +1,6 @@
 package game.manager;
 
-import game.controllers.Controller;
+import game.controllers.Writer;
 import game.parser.ParserManager;
 
 import java.io.IOException;
@@ -9,7 +9,7 @@ public abstract class StateManager implements ParserManager {
 
     private State state;
     final ControllerFactory factory;
-    Controller controller;
+    Writer controller;
 
     StateManager(ControllerFactory factory) {
         this.factory = factory;

@@ -1,6 +1,6 @@
 package game.parser;
 
-import game.controllers.writer.WriterParser;
+import game.controllers.WriterParser;
 import game.display.ConsoleParser;
 
 import java.io.IOException;

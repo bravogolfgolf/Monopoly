@@ -1,13 +1,18 @@
 package game.controllers;
 
-import game.parser.ControllerConsole;
+import game.display.Console;
+import game.display.ConsoleParser;
 
 import java.io.IOException;
 
-class ConsoleMock implements ControllerConsole {
+class ConsoleMock extends Console {
 
     boolean verifyWriteCalled = false;
     boolean verifyReadCalled = false;
+
+    ConsoleMock(ConsoleParser parser) {
+        super(parser);
+    }
 
     @Override
     public void read() throws IOException {

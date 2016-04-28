@@ -1,7 +1,7 @@
 package game.interactors.propertyoptions;
 
-import game.controllers.writer.ReaderRequest;
-import game.controllers.writer.WriterInteractor;
+import game.controllers.ReaderRequest;
+import game.controllers.WriterInteractor;
 
 public class PropertyOptions implements WriterInteractor {
 
