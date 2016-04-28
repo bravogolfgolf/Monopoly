@@ -303,8 +303,11 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void twoEntered(StateManager manager) {
-
+        public void twoEntered(StateManager manager) throws IOException {
+            manager.createAndExecuteController("PartnerOptions");
+            manager.createAndExecuteController("SelectPartner");
+            manager.createAndExecuteController("SelectProperty");
+            manager.initialize();
         }
     }
 }

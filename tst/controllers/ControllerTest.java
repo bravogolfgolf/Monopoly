@@ -19,7 +19,7 @@ public class ControllerTest {
 
 
     @Test
-    public void testBasic() throws IOException {
+    public void testReader() throws IOException {
         controller = new Reader(interactor, presenter, console);
 
         controller.execute();
@@ -34,7 +34,7 @@ public class ControllerTest {
 
 
     @Test
-    public void testMenu() throws IOException {
+    public void testWriter() throws IOException {
         controller = new Writer(parser, interactor, presenter, console);
         controller.execute();
 
@@ -45,7 +45,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void testWriteRead() throws IOException {
+    public void testWriterReader() throws IOException {
         controller = new WriterReader(interactor, presenter, console);
         controller.execute();
 

@@ -41,6 +41,7 @@ public class ControllerImplFactoryTest {
         controllerFactory.make("PropertyOptions");
         controllerFactory.make("SelectProperty");
         controllerFactory.make("PartnerOptions");
+        controllerFactory.make("SelectPartner");
     }
 }
 

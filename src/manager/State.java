@@ -12,5 +12,5 @@ interface State {
 
     void oneEntered(StateManager manager) throws IOException;
 
-    void twoEntered(StateManager manager);
+    void twoEntered(StateManager manager) throws IOException;
 }

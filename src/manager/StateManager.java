@@ -45,7 +45,7 @@ public abstract class StateManager implements ParserManager {
     }
 
     @Override
-    public void twoEntered() {
+    public void twoEntered() throws IOException {
         state.twoEntered(this);
 
     }

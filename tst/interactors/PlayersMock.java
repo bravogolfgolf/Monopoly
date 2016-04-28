@@ -7,7 +7,7 @@ class PlayersMock extends Players {
 
     boolean verifyAddWithCalled = false;
     boolean verifyRandomizePlayersCalled = false;
-    boolean verifyGetNextPlayerCalled = false;
+    boolean verifyGetCurrentPlayerCalled = false;
     boolean verifyGetAllPlayersExceptCurrentCalled = false;
 
     @Override
@@ -22,7 +22,7 @@ class PlayersMock extends Players {
 
     @Override
     public Token getCurrentPlayer() {
-        verifyGetNextPlayerCalled = true;
+        verifyGetCurrentPlayerCalled = true;
         return new Token("Cat");
     }
 
