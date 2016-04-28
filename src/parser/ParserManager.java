@@ -12,5 +12,5 @@ public interface ParserManager {
 
     void oneEntered() throws IOException;
 
-    void twoEntered();
+    void twoEntered() throws IOException;
 }

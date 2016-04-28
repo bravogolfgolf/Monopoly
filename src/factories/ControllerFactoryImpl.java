@@ -10,6 +10,7 @@ import game.interactors.createplayer.CreatePlayer;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
+import game.interactors.selectpartner.SelectPartner;
 import game.interactors.selectproperty.SelectProperty;
 import game.interactors.selectversion.SelectVersion;
 import game.interactors.startturn.StartTurn;
@@ -80,18 +81,23 @@ public class ControllerFactoryImpl implements ControllerFactory {
         }
 
         if (controller.equals("PropertyOptions")) {
-            PropertyOptions interactor = new PropertyOptions(presenter);
+            PropertyOptions interactor = new PropertyOptions(presenter, players);
             return new Writer(parser, interactor, presenter, console);
         }
 
-        if (controller.equals("SelectProperty")){
+        if (controller.equals("SelectProperty")) {
             SelectProperty interactor = new SelectProperty(presenter);
             return new Reader(interactor, presenter, console);
         }
 
         if (controller.equals("PartnerOptions")) {
-            PartnerOptions interactor = new PartnerOptions(presenter,players);
+            PartnerOptions interactor = new PartnerOptions(presenter, players);
             return new Writer(parser, interactor, presenter, console);
+        }
+
+        if (controller.equals("SelectPartner")) {
+            SelectPartner interactor = new SelectPartner(presenter);
+            return new Reader(interactor, presenter, console);
         }
 
         throw new IllegalArgumentException();

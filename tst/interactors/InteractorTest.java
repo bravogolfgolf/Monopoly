@@ -6,6 +6,7 @@ import game.interactors.createplayer.CreatePlayer;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
+import game.interactors.selectpartner.SelectPartner;
 import game.interactors.selectproperty.SelectProperty;
 import game.interactors.selectversion.SelectVersion;
 import game.interactors.startturn.StartTurn;
@@ -27,7 +28,6 @@ public class InteractorTest {
     private final TokensMock tokens = new TokensMock();
     private final PlayersMock players = new PlayersMock();
     private final ReaderRequest request = new ReaderRequest();
-
 
     @Before
     public void setup() {
@@ -117,7 +117,7 @@ public class InteractorTest {
             interactor.handle();
 
             assertTrue(players.verifyRandomizePlayersCalled);
-            assertTrue(players.verifyGetNextPlayerCalled);
+            assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(presenter.verifyPlayerSelectedToGoFirstMessage);
         }
     }
@@ -140,23 +140,35 @@ public class InteractorTest {
         @Test
         public void testHandle() {
             interactor.handle(request);
+            // TODO When properties are defined
         }
-
 
         public class PropertyOptionsTest {
 
-            private final PropertyOptions interactor = new PropertyOptions(presenter);
+            private final PropertyOptions interactor = new PropertyOptions(presenter, players);
 
             @Test
             public void testHandle() {
                 interactor.handle();
+                assertTrue(players.verifyGetCurrentPlayerCalled);
+                // TODO When properties are defined
                 assertTrue(presenter.verifySelectPropertyPromptMessageCalled);
                 assertTrue(presenter.verifyPropertyOptionsMessageCalled);
             }
         }
     }
 
-    public class SelectTradingPartner {
+    public class SelectPartnerTest {
+
+        private final SelectPartner interactor = new SelectPartner(presenter);
+
+        @Test
+        public void testHandle() {
+            interactor.handle(request);
+            // TODO When properties are defined
+            assertTrue(presenter.verifySelectPropertyPromptMessageCalled);
+            assertTrue(presenter.verifyPropertyOptionsMessageCalled);
+        }
 
         public class PartnerOptionsTest {
 
