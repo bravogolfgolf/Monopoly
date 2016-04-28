@@ -4,6 +4,7 @@ import game.controllers.ReaderPresenter;
 import game.controllers.writer.WriterPresenter;
 import game.interactors.createplayer.CreatePlayerPresenter;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.partneroptions.PartnerOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstPresenter;
@@ -22,7 +23,7 @@ import java.util.Map;
 
 public abstract class Presenter implements ReaderPresenter, WriterPresenter, SelectVersionPresenter,
         VersionOptionsPresenter, CreatePlayerPresenter, TokenOptionsPresenter, SelectFirstPresenter,
-        StartTurnPresenter, SelectPropertyPresenter, PropertyOptionsPresenter {
+        StartTurnPresenter, SelectPropertyPresenter, PropertyOptionsPresenter, PartnerOptionsPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
@@ -125,4 +126,5 @@ public abstract class Presenter implements ReaderPresenter, WriterPresenter, Sel
 
     @Override
     public abstract void propertyOptionsMessage(PropertyOptionsResponse response);
+
 }

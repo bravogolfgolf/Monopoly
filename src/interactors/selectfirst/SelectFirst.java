@@ -21,7 +21,7 @@ public class SelectFirst implements WriterInteractor {
 
     private void selectPlayerToGoFirst() {
         players.randomizePlayers();
-        Token token = players.getNextPlayer();
+        Token token = players.getCurrentPlayer();
         prepareResponse(token);
     }
 

@@ -3,6 +3,7 @@ package game.repositories;
 import game.entities.Token;
 import org.junit.Test;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 
 public class PlayersTest {
@@ -13,7 +14,8 @@ public class PlayersTest {
     public void testCreatePlayer() {
         Token token = new Token("Cat");
         playerRepository.addWith(token);
-        assertTrue(playerRepository.getNextPlayer().equals(token));
+        playerRepository.randomizePlayers();
+        assertTrue(playerRepository.getCurrentPlayer().equals(token));
     }
 
     @Test
@@ -27,9 +29,24 @@ public class PlayersTest {
 
             playerRepository.randomizePlayers();
 
-            if (playerRepository.getNextPlayer().getDescription().equals("Cat"))
+            if (playerRepository.getCurrentPlayer().getDescription().equals("Cat"))
                 count++;
         }
         assertTrue(count > 0);
+    }
+
+    @Test
+    public void testGetAllPlayersExceptCurrent() {
+        Token token = new Token("Cat");
+        playerRepository.addWith(token);
+        playerRepository.randomizePlayers();
+
+        token = new Token("Boot");
+        playerRepository.addWith(token);
+        token = new Token("Thimble");
+        playerRepository.addWith(token);
+
+        String[] expected = new String[]{"Boot", "Thimble"};
+        assertArrayEquals(expected, playerRepository.getAllPlayersExceptCurrent());
     }
 }

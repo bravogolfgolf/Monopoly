@@ -8,6 +8,7 @@ class PlayersMock extends Players {
     boolean verifyAddWithCalled = false;
     boolean verifyRandomizePlayersCalled = false;
     boolean verifyGetNextPlayerCalled = false;
+    boolean verifyGetAllPlayersExceptCurrentCalled = false;
 
     @Override
     public void addWith(Token request) {
@@ -20,8 +21,14 @@ class PlayersMock extends Players {
     }
 
     @Override
-    public Token getNextPlayer() {
+    public Token getCurrentPlayer() {
         verifyGetNextPlayerCalled = true;
         return new Token("Cat");
+    }
+
+    @Override
+    public String[] getAllPlayersExceptCurrent() {
+        verifyGetAllPlayersExceptCurrentCalled = true;
+        return new String[0];
     }
 }

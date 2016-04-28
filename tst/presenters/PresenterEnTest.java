@@ -2,6 +2,7 @@ package game.presenters;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionResponse;
@@ -112,7 +113,7 @@ public class PresenterEnTest {
         }
     }
 
-    public class SelectFirstResponseTest {
+    public class SelectFirstTest {
 
         private final SelectFirstResponse response = new SelectFirstResponse();
 
@@ -135,7 +136,7 @@ public class PresenterEnTest {
         }
     }
 
-    public class PropertyOptionsResponseTest {
+    public class PropertyOptionsTest {
 
         @Test
         public void testSelectPropertyPromptMessage() {
@@ -144,15 +145,42 @@ public class PresenterEnTest {
             assertEquals(expected, presenter.getFormattedMessage());
         }
 
+        public class PropertyOptionsResponseTest {
 
-        private final PropertyOptionsResponse response = new PropertyOptionsResponse();
+            private final PropertyOptionsResponse response = new PropertyOptionsResponse();
+
+            @Test
+            public void testPropertyOptionsMessage() {
+                response.properties = null;
+                presenter.propertyOptionsMessage(response);
+                expected = "No properties to manage.\n";
+                assertEquals(expected, presenter.getFormattedMessage());
+            }
+        }
+    }
+
+    public class SelectTradingPartnerTest {
 
         @Test
-        public void testPropertyOptionsMessage() {
-            response.properties = null;
-            presenter.propertyOptionsMessage(response);
-            expected = "No properties to manage.\n";
+        public void testTrade() {
+            presenter.selectTradingPartnerPromptMessage();
+            expected = "\nSelect player to trade with or (0)Done to return to previous menu.\n";
             assertEquals(expected, presenter.getFormattedMessage());
+        }
+
+        public class PartnerOptionsResponseTest {
+
+            private final PartnerOptionsResponse response = new PartnerOptionsResponse();
+
+            @Test
+            public void testPartnerOptionsMessage() {
+                response.players = new String[]{"Cat", "Boot"};
+                presenter.partnerOptionsMessage(response);
+                expected = "Available trading partners: (1)Cat, (2)Boot\n";
+                assertEquals(expected, presenter.getFormattedMessage());
+            }
+
+
         }
     }
 }

@@ -1,6 +1,7 @@
 package game.interactors;
 
 import game.interactors.createplayer.CreatePlayerResponse;
+import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.selectversion.SelectVersionResponse;
@@ -21,6 +22,8 @@ class PresenterMock extends Presenter {
     boolean verifyStartTurnCalled = false;
     boolean verifySelectPropertyPromptMessageCalled = false;
     boolean verifyPropertyOptionsMessageCalled = false;
+    boolean verifySelectTradingPartnerPromptMessageCalled = false;
+    boolean verifyPartnerOptionsMessageCalled = false;
 
     @Override
     public void selectVersionPromptMessage() {
@@ -75,5 +78,15 @@ class PresenterMock extends Presenter {
     @Override
     public void propertyOptionsMessage(PropertyOptionsResponse response) {
         verifyPropertyOptionsMessageCalled = true;
+    }
+
+    @Override
+    public void selectTradingPartnerPromptMessage() {
+        verifySelectTradingPartnerPromptMessageCalled = true;
+    }
+
+    @Override
+    public void partnerOptionsMessage(PartnerOptionsResponse response) {
+        verifyPartnerOptionsMessageCalled = true;
     }
 }

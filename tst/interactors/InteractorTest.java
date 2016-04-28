@@ -3,6 +3,7 @@ package game.interactors;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.reader.ReaderRequest;
 import game.interactors.createplayer.CreatePlayer;
+import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.selectproperty.SelectProperty;
@@ -24,7 +25,7 @@ public class InteractorTest {
     private final PresenterMock presenter = new PresenterMock();
     private final SelectVersionFactoryMock factory = new SelectVersionFactoryMock();
     private final TokensMock tokens = new TokensMock();
-    private final PlayersMock player = new PlayersMock();
+    private final PlayersMock players = new PlayersMock();
     private final ReaderRequest request = new ReaderRequest();
 
 
@@ -64,14 +65,14 @@ public class InteractorTest {
 
     public class CreatePlayerTest {
 
-        private final CreatePlayer interactor = new CreatePlayer(presenter, tokens, player);
+        private final CreatePlayer interactor = new CreatePlayer(presenter, tokens, players);
 
         @Test
         public void testHandle() {
             interactor.handle(request);
 
             assertTrue(tokens.verifyRemoveTokenCalled);
-            assertTrue(player.verifyAddWithCalled);
+            assertTrue(players.verifyAddWithCalled);
             assertTrue(presenter.verifyPlayerCreatedMessage);
         }
 
@@ -109,14 +110,14 @@ public class InteractorTest {
 
     public class SelectFirstTest {
 
-        private final SelectFirst interactor = new SelectFirst(presenter, player);
+        private final SelectFirst interactor = new SelectFirst(presenter, players);
 
         @Test
         public void testHandle() {
             interactor.handle();
 
-            assertTrue(player.verifyRandomizePlayersCalled);
-            assertTrue(player.verifyGetNextPlayerCalled);
+            assertTrue(players.verifyRandomizePlayersCalled);
+            assertTrue(players.verifyGetNextPlayerCalled);
             assertTrue(presenter.verifyPlayerSelectedToGoFirstMessage);
         }
     }
@@ -151,6 +152,22 @@ public class InteractorTest {
                 interactor.handle();
                 assertTrue(presenter.verifySelectPropertyPromptMessageCalled);
                 assertTrue(presenter.verifyPropertyOptionsMessageCalled);
+            }
+        }
+    }
+
+    public class SelectTradingPartner {
+
+        public class PartnerOptionsTest {
+
+            private final PartnerOptions interactor = new PartnerOptions(presenter, players);
+
+            @Test
+            public void testHandle() {
+                interactor.handle();
+                assertTrue(presenter.verifySelectTradingPartnerPromptMessageCalled);
+                assertTrue(players.verifyGetAllPlayersExceptCurrentCalled);
+                assertTrue(presenter.verifyPartnerOptionsMessageCalled);
             }
         }
     }

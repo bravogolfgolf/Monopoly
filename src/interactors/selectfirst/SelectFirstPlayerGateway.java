@@ -6,5 +6,5 @@ public interface SelectFirstPlayerGateway {
 
     void randomizePlayers();
 
-    Token getNextPlayer();
+    Token getCurrentPlayer();
 }

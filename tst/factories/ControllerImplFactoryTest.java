@@ -40,6 +40,7 @@ public class ControllerImplFactoryTest {
         controllerFactory.make("StartTurn");
         controllerFactory.make("PropertyOptions");
         controllerFactory.make("SelectProperty");
+        controllerFactory.make("PartnerOptions");
     }
 }
 
