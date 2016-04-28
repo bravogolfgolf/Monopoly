@@ -1,6 +1,8 @@
 package game.interactors.versionoptions;
 
-public interface VersionOptionsFactory {
+public interface VersionOptionsVersionFactory {
+
+    void make(String version);
 
     String[] getAvailableVersions();
 }

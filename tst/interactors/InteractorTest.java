@@ -1,15 +1,10 @@
 package game.interactors;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import game.controllers.reader.ReaderRequest;
-import game.interactors.createplayer.CreatePlayer;
+import game.controllers.writer.ReaderRequest;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
-import game.interactors.selectpartner.SelectPartner;
-import game.interactors.selectproperty.SelectProperty;
-import game.interactors.selectversion.SelectVersion;
-import game.interactors.startturn.StartTurn;
 import game.interactors.tokenoptions.TokenOptions;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
@@ -34,52 +29,35 @@ public class InteractorTest {
         request.string = "";
     }
 
-    public class SelectVersionTest {
+    public class VersionOptionsTest {
 
-        private final SelectVersion interactor = new SelectVersion(presenter, factory);
+        private final VersionOptions interactor = new VersionOptions(presenter, factory);
 
         @Test
         public void testHandle() {
+            interactor.handle();
+
+            assertTrue(factory.verifyGetAvailableVersionsCalled);
+            assertTrue(presenter.verifySelectVersionPromptMessageCalled);
+            assertTrue(presenter.verifyAvailableVersionsMessageCalled);
+        }
+
+        @Test
+        public void testHandleWithRequest() {
             interactor.handle(request);
 
             assertTrue(factory.verifyMakeCalled);
             assertTrue(presenter.verifyVersionCreatedMessage);
         }
-
-
-        public class VersionOptionsTest {
-
-            private final VersionOptions interactor = new VersionOptions(presenter, factory);
-
-            @Test
-            public void testHandle() {
-                interactor.handle();
-
-                assertTrue(factory.verifyGetAvailableVersionsCalled);
-                assertTrue(presenter.verifySelectVersionPromptMessageCalled);
-                assertTrue(presenter.verifyAvailableVersionsMessageCalled);
-            }
-
-        }
     }
 
-    public class CreatePlayerTest {
+    public class TokenOptionsTest {
 
-        private final CreatePlayer interactor = new CreatePlayer(presenter, tokens, players);
-
-        @Test
-        public void testHandle() {
-            interactor.handle(request);
-
-            assertTrue(tokens.verifyRemoveTokenCalled);
-            assertTrue(players.verifyAddWithCalled);
-            assertTrue(presenter.verifyPlayerCreatedMessage);
-        }
-
+        private final ReaderRequest request = new ReaderRequest();
 
         public class TokenOptionsFewerThanMinimumTest {
 
-            private final TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens);
+            private final TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players);
 
             @Test
             public void testHandle() {
@@ -90,11 +68,21 @@ public class InteractorTest {
                 assertTrue(presenter.verifyAvailableTokensMessage);
             }
 
+
+            @Test
+            public void testHandleWithRequest() {
+                interactor.handle(request);
+
+                assertTrue(tokens.verifyRemoveTokenCalled);
+                assertTrue(players.verifyAddWithCalled);
+                assertTrue(presenter.verifyPlayerCreatedMessage);
+            }
         }
+
 
         public class TokenOptionsMinimumToMaximumTest {
 
-            private final TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens);
+            private final TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players);
 
             @Test
             public void testHandle() {
@@ -105,6 +93,15 @@ public class InteractorTest {
                 assertTrue(presenter.verifyAvailableTokensMessage);
             }
 
+
+            @Test
+            public void testHandleWithRequest() {
+                interactor.handle(request);
+
+                assertTrue(tokens.verifyRemoveTokenCalled);
+                assertTrue(players.verifyAddWithCalled);
+                assertTrue(presenter.verifyPlayerCreatedMessage);
+            }
         }
     }
 
@@ -122,65 +119,30 @@ public class InteractorTest {
         }
     }
 
-    public class StartTurnTest {
+    public class PropertyOptionsTest {
 
-        private final StartTurn interactor = new StartTurn(presenter);
+        private final PropertyOptions interactor = new PropertyOptions(presenter, players);
 
         @Test
         public void testHandle() {
             interactor.handle();
-            assertTrue(presenter.verifyStartTurnCalled);
-        }
-    }
-
-    public class SelectPropertyTest {
-
-        private final SelectProperty interactor = new SelectProperty(presenter);
-
-        @Test
-        public void testHandle() {
-            interactor.handle(request);
-            // TODO When properties are defined
-        }
-
-        public class PropertyOptionsTest {
-
-            private final PropertyOptions interactor = new PropertyOptions(presenter, players);
-
-            @Test
-            public void testHandle() {
-                interactor.handle();
-                assertTrue(players.verifyGetCurrentPlayerCalled);
-                // TODO When properties are defined
-                assertTrue(presenter.verifySelectPropertyPromptMessageCalled);
-                assertTrue(presenter.verifyPropertyOptionsMessageCalled);
-            }
-        }
-    }
-
-    public class SelectPartnerTest {
-
-        private final SelectPartner interactor = new SelectPartner(presenter);
-
-        @Test
-        public void testHandle() {
-            interactor.handle(request);
+            assertTrue(players.verifyGetCurrentPlayerCalled);
             // TODO When properties are defined
             assertTrue(presenter.verifySelectPropertyPromptMessageCalled);
             assertTrue(presenter.verifyPropertyOptionsMessageCalled);
         }
+    }
 
-        public class PartnerOptionsTest {
+    public class PartnerOptionsTest {
 
-            private final PartnerOptions interactor = new PartnerOptions(presenter, players);
+        private final PartnerOptions interactor = new PartnerOptions(presenter, players);
 
-            @Test
-            public void testHandle() {
-                interactor.handle();
-                assertTrue(presenter.verifySelectTradingPartnerPromptMessageCalled);
-                assertTrue(players.verifyGetAllPlayersExceptCurrentCalled);
-                assertTrue(presenter.verifyPartnerOptionsMessageCalled);
-            }
+        @Test
+        public void testHandle() {
+            interactor.handle();
+            assertTrue(presenter.verifySelectTradingPartnerPromptMessageCalled);
+            assertTrue(players.verifyGetAllPlayersExceptCurrentCalled);
+            assertTrue(presenter.verifyPartnerOptionsMessageCalled);
         }
     }
 }

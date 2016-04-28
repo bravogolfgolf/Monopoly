@@ -1,9 +1,9 @@
 package game.controllers;
 
-import game.controllers.reader.ReaderInteractor;
-import game.controllers.reader.ReaderRequest;
+import game.controllers.writer.ReaderRequest;
+import game.controllers.writer.WriterInteractor;
 
-class InteractorMock implements ReaderInteractor, WriterInteractor {
+class InteractorMock implements WriterInteractor {
 
     boolean verifyHandleWithArgumentCalled = false;
     boolean verifyHandleWithOutArgumentCalled = false;

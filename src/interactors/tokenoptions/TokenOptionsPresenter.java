@@ -7,4 +7,6 @@ public interface TokenOptionsPresenter {
     void createPlayerPromptMessageMinimumToMaximumMessage();
 
     void availableTokensMessage(TokenOptionsResponse response);
+
+    void playerCreatedMessage(TokenOptionsResponse response);
 }

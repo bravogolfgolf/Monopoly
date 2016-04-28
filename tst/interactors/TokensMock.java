@@ -1,13 +1,12 @@
 package game.interactors;
 
 import game.entities.Token;
-import game.interactors.createplayer.CreatePlayerTokensGateway;
 import game.interactors.tokenoptions.TokenOptionsTokensGateway;
 
 import java.util.Set;
 import java.util.TreeSet;
 
-class TokensMock implements CreatePlayerTokensGateway, TokenOptionsTokensGateway {
+class TokensMock implements TokenOptionsTokensGateway {
 
     boolean verifyRemoveTokenCalled = false;
     boolean verifyGetAvailableTokensCalled = false;

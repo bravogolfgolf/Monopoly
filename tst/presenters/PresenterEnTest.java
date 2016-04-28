@@ -1,11 +1,9 @@
 package game.presenters;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
-import game.interactors.selectversion.SelectVersionResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsResponse;
 import org.junit.Test;
@@ -54,11 +52,6 @@ public class PresenterEnTest {
                 expected = "Available versions: (1)FRA, (2)USA\n";
                 assertEquals(expected, presenter.getFormattedMessage());
             }
-        }
-
-        public class SelectVersionResponseTest {
-
-            private final SelectVersionResponse response = new SelectVersionResponse();
 
             @Test
             public void testVersionCreatedMessage() {
@@ -97,11 +90,6 @@ public class PresenterEnTest {
                 expected = "Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow\n";
                 assertEquals(expected, presenter.getFormattedMessage());
             }
-        }
-
-        public class CreatePlayerResponseTest {
-
-            private final CreatePlayerResponse response = new CreatePlayerResponse();
 
             @Test
             public void testPlayerCreatedMessage() {

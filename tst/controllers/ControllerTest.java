@@ -1,7 +1,6 @@
 package game.controllers;
 
-import game.controllers.reader.Reader;
-import game.controllers.writer.Writer;
+import game.controllers.writer.WriterReaderHandler;
 import game.controllers.writerreader.WriterReader;
 import org.junit.Test;
 
@@ -17,41 +16,41 @@ public class ControllerTest {
     private final InteractorMock interactor = new InteractorMock();
     private Controller controller;
 
-
     @Test
-    public void testReader() throws IOException {
-        controller = new Reader(interactor, presenter, console);
-
-        controller.execute();
-        assertTrue(console.verifyReadCalled);
-
-
-        controller.handle("Valid");
-        assertTrue(interactor.verifyHandleWithArgumentCalled);
-        assertTrue(presenter.verifyGetFormattedMessage);
-        assertTrue(console.verifyWriteCalled);
-    }
-
-
-    @Test
-    public void testWriter() throws IOException {
-        controller = new Writer(parser, interactor, presenter, console);
+    public void writerReaderHandlerExecute() throws IOException {
+        controller = new WriterReaderHandler(parser, interactor, presenter, console);
         controller.execute();
 
         assertTrue(interactor.verifyHandleWithOutArgumentCalled);
         assertTrue(presenter.verifyGetMenuMapCalled);
         assertTrue(parser.verifySetMapCalled);
         assertTrue(console.verifyWriteCalled);
+        assertTrue(console.verifyReadCalled);
     }
 
     @Test
-    public void testWriterReader() throws IOException {
-        controller = new WriterReader(interactor, presenter, console);
+    public void writerReaderHandlerHandle() throws IOException {
+        controller = new WriterReaderHandler(parser, interactor, presenter, console);
+        controller.handle("");
+
+        assertTrue(interactor.verifyHandleWithArgumentCalled);
+        assertTrue(presenter.verifyGetFormattedMessageCalled);
+        assertTrue(console.verifyWriteCalled);
+    }
+
+    @Test
+    public void writerReaderExecute() throws IOException {
+        controller = new WriterReader(presenter, console);
         controller.execute();
 
-        assertTrue(interactor.verifyHandleWithOutArgumentCalled);
-        assertTrue(presenter.verifyGetFormattedMessage);
+        assertTrue(presenter.verifyStartTurnMessageCalled);
+        assertTrue(presenter.verifyGetFormattedMessageCalled);
         assertTrue(console.verifyWriteCalled);
-        assertTrue(console.verifyReadCalled);
+    }
+
+    @Test
+    public void writerReaderHandle() throws IOException {
+        controller = new WriterReader(presenter, console);
+        controller.handle("");
     }
 }

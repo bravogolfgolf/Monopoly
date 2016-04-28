@@ -8,7 +8,6 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("VersionOptions");
-            manager.createAndExecuteController("SelectVersion");
         }
 
         @Override
@@ -37,7 +36,6 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("TokenOptionsFewerThanMinimum");
-            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
@@ -66,7 +64,6 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("TokenOptionsFewerThanMinimum");
-            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
@@ -96,7 +93,6 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
-            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
@@ -127,7 +123,6 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
-            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
@@ -158,7 +153,6 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
-            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
@@ -189,7 +183,6 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
-            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
@@ -220,7 +213,6 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
-            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
@@ -251,7 +243,6 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("TokenOptionsMinimumToMaximum");
-            manager.createAndExecuteController("CreatePlayer");
         }
 
         @Override
@@ -296,12 +287,12 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void oneEntered(StateManager manager) throws IOException {
+        public void oneEntered(StateManager manager) {
 
         }
 
         @Override
-        public void twoEntered(StateManager manager) throws IOException {
+        public void twoEntered(StateManager manager) {
 
         }
     }

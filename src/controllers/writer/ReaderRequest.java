@@ -1,4 +1,4 @@
-package game.controllers.reader;
+package game.controllers.writer;
 
 public class ReaderRequest {
 

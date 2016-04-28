@@ -7,4 +7,6 @@ import java.util.Set;
 public interface TokenOptionsTokensGateway {
 
     Set<Token> getAvailableTokens();
+
+    void removeToken(Token token);
 }

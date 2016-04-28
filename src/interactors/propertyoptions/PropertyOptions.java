@@ -1,6 +1,7 @@
 package game.interactors.propertyoptions;
 
-import game.controllers.WriterInteractor;
+import game.controllers.writer.ReaderRequest;
+import game.controllers.writer.WriterInteractor;
 
 public class PropertyOptions implements WriterInteractor {
 
@@ -19,5 +20,10 @@ public class PropertyOptions implements WriterInteractor {
         players.getCurrentPlayer();
         presenter.selectPropertyPromptMessage();
         presenter.propertyOptionsMessage(response);
+    }
+
+    @Override
+    public void handle(ReaderRequest request) {
+
     }
 }

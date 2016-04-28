@@ -52,6 +52,12 @@ public class ParserTest {
             parser.parse("2");
             assertTrue(manager.verifyTwoEnteredCalled);
         }
+
+        @Test
+        public void testThreeEntered() throws IOException {
+            parser.parse("3");
+            assertTrue(manager.verifyInvalidEntryCalled);
+        }
     }
 
     public class MapWithoutValesExpectedTest {
@@ -85,6 +91,12 @@ public class ParserTest {
         public void testTwoEntered() throws IOException {
             parser.parse("2");
             assertTrue(manager.verifyTwoEnteredCalled);
+        }
+
+        @Test
+        public void testThreeEntered() throws IOException {
+            parser.parse("3");
+            assertTrue(manager.verifyInvalidEntryCalled);
         }
     }
 }
