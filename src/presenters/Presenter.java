@@ -1,18 +1,12 @@
 package game.presenters;
 
-import game.controllers.ReaderPresenter;
 import game.controllers.writer.WriterPresenter;
-import game.interactors.createplayer.CreatePlayerPresenter;
-import game.interactors.createplayer.CreatePlayerResponse;
+import game.controllers.writerreader.ReaderPresenter;
 import game.interactors.partneroptions.PartnerOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
-import game.interactors.selectproperty.SelectPropertyPresenter;
-import game.interactors.selectversion.SelectVersionPresenter;
-import game.interactors.selectversion.SelectVersionResponse;
-import game.interactors.startturn.StartTurnPresenter;
 import game.interactors.tokenoptions.TokenOptionsPresenter;
 import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsPresenter;
@@ -21,9 +15,9 @@ import game.interactors.versionoptions.VersionOptionsResponse;
 import java.util.Hashtable;
 import java.util.Map;
 
-public abstract class Presenter implements ReaderPresenter, WriterPresenter, SelectVersionPresenter,
-        VersionOptionsPresenter, CreatePlayerPresenter, TokenOptionsPresenter, SelectFirstPresenter,
-        StartTurnPresenter, SelectPropertyPresenter, PropertyOptionsPresenter, PartnerOptionsPresenter {
+public abstract class Presenter implements ReaderPresenter, WriterPresenter,
+        VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter,
+        PropertyOptionsPresenter, PartnerOptionsPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
@@ -101,9 +95,6 @@ public abstract class Presenter implements ReaderPresenter, WriterPresenter, Sel
     public abstract void availableVersionsMessage(VersionOptionsResponse response);
 
     @Override
-    public abstract void versionCreatedMessage(SelectVersionResponse response);
-
-    @Override
     public abstract void createPlayerPromptMessageFewerThanMinimumMessage();
 
     @Override
@@ -111,9 +102,6 @@ public abstract class Presenter implements ReaderPresenter, WriterPresenter, Sel
 
     @Override
     public abstract void availableTokensMessage(TokenOptionsResponse response);
-
-    @Override
-    public abstract void playerCreatedMessage(CreatePlayerResponse response);
 
     @Override
     public abstract void playerSelectedToGoFirstMessage(SelectFirstResponse response);

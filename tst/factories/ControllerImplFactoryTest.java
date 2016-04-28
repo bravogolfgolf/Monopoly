@@ -32,16 +32,12 @@ public class ControllerImplFactoryTest {
     @Test
     public void testMakeController() {
         controllerFactory.make("VersionOptions");
-        controllerFactory.make("SelectVersion");
         controllerFactory.make("TokenOptionsFewerThanMinimum");
         controllerFactory.make("TokenOptionsMinimumToMaximum");
-        controllerFactory.make("CreatePlayer");
         controllerFactory.make("SelectFirst");
         controllerFactory.make("StartTurn");
         controllerFactory.make("PropertyOptions");
-        controllerFactory.make("SelectProperty");
         controllerFactory.make("PartnerOptions");
-        controllerFactory.make("SelectPartner");
     }
 }
 

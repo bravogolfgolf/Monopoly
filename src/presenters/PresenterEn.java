@@ -1,10 +1,8 @@
 package game.presenters;
 
-import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
-import game.interactors.selectversion.SelectVersionResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsResponse;
 
@@ -25,7 +23,7 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
-    public void versionCreatedMessage(SelectVersionResponse response) {
+    public void versionCreatedMessage(VersionOptionsResponse response) {
         template = "\n%s version of game created.";
         variables = new String[]{response.version};
         addMessageToBuffer(template, variables);
@@ -51,7 +49,7 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
-    public void playerCreatedMessage(CreatePlayerResponse response) {
+    public void playerCreatedMessage(TokenOptionsResponse response) {
         template = "\nPlayer created with %s token.";
         variables = new String[]{response.token};
         addMessageToBuffer(template, variables);

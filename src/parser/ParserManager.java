@@ -10,7 +10,7 @@ public interface ParserManager {
 
     void zeroEntered() throws IOException;
 
-    void oneEntered() throws IOException;
+    void oneEntered();
 
-    void twoEntered() throws IOException;
+    void twoEntered();
 }

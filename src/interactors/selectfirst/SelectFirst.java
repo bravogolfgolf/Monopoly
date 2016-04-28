@@ -1,6 +1,7 @@
 package game.interactors.selectfirst;
 
-import game.controllers.WriterInteractor;
+import game.controllers.writer.ReaderRequest;
+import game.controllers.writer.WriterInteractor;
 import game.entities.Token;
 
 public class SelectFirst implements WriterInteractor {
@@ -16,17 +17,14 @@ public class SelectFirst implements WriterInteractor {
 
     @Override
     public void handle() {
-        selectPlayerToGoFirst();
-    }
-
-    private void selectPlayerToGoFirst() {
         players.randomizePlayers();
         Token token = players.getCurrentPlayer();
-        prepareResponse(token);
-    }
-
-    private void prepareResponse(Token token) {
         response.token = token.getDescription();
         presenter.playerSelectedToGoFirstMessage(response);
+    }
+
+    @Override
+    public void handle(ReaderRequest request) {
+
     }
 }

@@ -1,19 +1,13 @@
 package game.factories;
 
 import game.controllers.Controller;
-import game.controllers.reader.Reader;
-import game.controllers.writer.Writer;
+import game.controllers.writer.WriterReaderHandler;
 import game.controllers.writerreader.WriterReader;
 import game.display.Console;
 import game.entities.Board;
-import game.interactors.createplayer.CreatePlayer;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
-import game.interactors.selectpartner.SelectPartner;
-import game.interactors.selectproperty.SelectProperty;
-import game.interactors.selectversion.SelectVersion;
-import game.interactors.startturn.StartTurn;
 import game.interactors.tokenoptions.TokenOptions;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
@@ -47,57 +41,36 @@ public class ControllerFactoryImpl implements ControllerFactory {
     public Controller make(String controller) {
         if (controller.equals("VersionOptions")) {
             VersionOptions interactor = new VersionOptions(presenter, factory);
-            return new Writer(parser, interactor, presenter, console);
-        }
-
-        if (controller.equals("SelectVersion")) {
-            SelectVersion interactor = new SelectVersion(presenter, factory);
-            return new Reader(interactor, presenter, console);
+            return new WriterReaderHandler(parser, interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsFewerThanMinimum")) {
-            TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens);
-            return new Writer(parser, interactor, presenter, console);
+            TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players);
+            return new WriterReaderHandler(parser, interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsMinimumToMaximum")) {
-            TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens);
-            return new Writer(parser, interactor, presenter, console);
-        }
-
-        if (controller.equals("CreatePlayer")) {
-            CreatePlayer interactor = new CreatePlayer(presenter, tokens, players);
-            return new Reader(interactor, presenter, console);
+            TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players);
+            return new WriterReaderHandler(parser, interactor, presenter, console);
         }
 
         if (controller.equals("SelectFirst")) {
             SelectFirst interactor = new SelectFirst(presenter, players);
-            return new Writer(parser, interactor, presenter, console);
+            return new WriterReaderHandler(parser, interactor, presenter, console);
         }
 
         if (controller.equals("StartTurn")) {
-            StartTurn interactor = new StartTurn(presenter);
-            return new WriterReader(interactor, presenter, console);
+            return new WriterReader(presenter, console);
         }
 
         if (controller.equals("PropertyOptions")) {
             PropertyOptions interactor = new PropertyOptions(presenter, players);
-            return new Writer(parser, interactor, presenter, console);
-        }
-
-        if (controller.equals("SelectProperty")) {
-            SelectProperty interactor = new SelectProperty(presenter);
-            return new Reader(interactor, presenter, console);
+            return new WriterReaderHandler(parser, interactor, presenter, console);
         }
 
         if (controller.equals("PartnerOptions")) {
             PartnerOptions interactor = new PartnerOptions(presenter, players);
-            return new Writer(parser, interactor, presenter, console);
-        }
-
-        if (controller.equals("SelectPartner")) {
-            SelectPartner interactor = new SelectPartner(presenter);
-            return new Reader(interactor, presenter, console);
+            return new WriterReaderHandler(parser, interactor, presenter, console);
         }
 
         throw new IllegalArgumentException();

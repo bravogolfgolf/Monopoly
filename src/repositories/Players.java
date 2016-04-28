@@ -1,16 +1,16 @@
 package game.repositories;
 
 import game.entities.Token;
-import game.interactors.createplayer.CreatePlayerGateway;
 import game.interactors.partneroptions.PartnerOptionsGateway;
 import game.interactors.propertyoptions.PropertyOptionsPlayerGateway;
 import game.interactors.selectfirst.SelectFirstPlayerGateway;
+import game.interactors.tokenoptions.TokenOptionsPlayersGateway;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Players implements CreatePlayerGateway, SelectFirstPlayerGateway, PropertyOptionsPlayerGateway,
+public class Players implements TokenOptionsPlayersGateway, SelectFirstPlayerGateway, PropertyOptionsPlayerGateway,
         PartnerOptionsGateway {
 
     private final List<Token> players = new LinkedList<>();

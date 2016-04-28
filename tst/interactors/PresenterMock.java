@@ -1,10 +1,8 @@
 package game.interactors;
 
-import game.interactors.createplayer.CreatePlayerResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
-import game.interactors.selectversion.SelectVersionResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsResponse;
 import game.presenters.Presenter;
@@ -19,7 +17,6 @@ class PresenterMock extends Presenter {
     boolean verifyAvailableTokensMessage = false;
     boolean verifyPlayerCreatedMessage = false;
     boolean verifyPlayerSelectedToGoFirstMessage = false;
-    boolean verifyStartTurnCalled = false;
     boolean verifySelectPropertyPromptMessageCalled = false;
     boolean verifyPropertyOptionsMessageCalled = false;
     boolean verifySelectTradingPartnerPromptMessageCalled = false;
@@ -31,18 +28,13 @@ class PresenterMock extends Presenter {
     }
 
     @Override
-    public void versionCreatedMessage(SelectVersionResponse response) {
-        verifyVersionCreatedMessage = true;
-    }
-
-    @Override
     public void availableVersionsMessage(VersionOptionsResponse response) {
         verifyAvailableVersionsMessageCalled = true;
     }
 
     @Override
-    public void playerCreatedMessage(CreatePlayerResponse response) {
-        verifyPlayerCreatedMessage = true;
+    public void versionCreatedMessage(VersionOptionsResponse response) {
+        verifyVersionCreatedMessage = true;
     }
 
     @Override
@@ -61,13 +53,17 @@ class PresenterMock extends Presenter {
     }
 
     @Override
+    public void playerCreatedMessage(TokenOptionsResponse response) {
+        verifyPlayerCreatedMessage = true;
+    }
+
+    @Override
     public void playerSelectedToGoFirstMessage(SelectFirstResponse response) {
         verifyPlayerSelectedToGoFirstMessage = true;
     }
 
     @Override
     public void startTurnMessage() {
-        verifyStartTurnCalled = true;
     }
 
     @Override

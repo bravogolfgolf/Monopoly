@@ -1,6 +1,7 @@
 package game.interactors.partneroptions;
 
-import game.controllers.WriterInteractor;
+import game.controllers.writer.ReaderRequest;
+import game.controllers.writer.WriterInteractor;
 
 public class PartnerOptions implements WriterInteractor {
 
@@ -18,5 +19,10 @@ public class PartnerOptions implements WriterInteractor {
         presenter.selectTradingPartnerPromptMessage();
         response.players = players.getAllPlayersExceptCurrent();
         presenter.partnerOptionsMessage(response);
+    }
+
+    @Override
+    public void handle(ReaderRequest request) {
+
     }
 }
