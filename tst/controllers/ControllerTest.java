@@ -16,7 +16,7 @@ public class ControllerTest {
     private Controller controller;
 
     @Test
-    public void writerReaderHandlerExecute() throws IOException {
+    public void HandlerExecute() throws IOException {
         controller = new Handler(parser, interactor, presenter, console);
         controller.execute();
 
@@ -28,7 +28,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void writerReaderHandlerHandle() throws IOException {
+    public void HandlerHandle() throws IOException {
         controller = new Handler(parser, interactor, presenter, console);
         ((Handler) controller).handle("");
 
@@ -38,11 +38,22 @@ public class ControllerTest {
     }
 
     @Test
-    public void writerReaderExecute() throws IOException {
+    public void StartTurn() throws IOException {
         controller = new StartTurn(parser, presenter, console);
         controller.execute();
 
+        assertTrue(parser.verifyClearMapCalled);
         assertTrue(presenter.verifyStartTurnMessageCalled);
+        assertTrue(presenter.verifyGetFormattedMessageCalled);
+        assertTrue(console.verifyWriteCalled);
+    }
+
+    @Test
+    public void Message() throws IOException {
+        controller = new Message(interactor, presenter, console);
+        controller.execute();
+
+        assertTrue(interactor.verifyHandleWithOutArgumentCalled);
         assertTrue(presenter.verifyGetFormattedMessageCalled);
         assertTrue(console.verifyWriteCalled);
     }
