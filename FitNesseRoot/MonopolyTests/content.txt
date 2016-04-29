@@ -1,0 +1,11 @@
+!define TEST_SYSTEM {slim}
+!path /Users/brian/IdeaProjects/monopoly/out/production/monopoly
+!path /Users/brian/IdeaProjects/monopoly/out/test/monopoly
+
+|import          |
+|game.fitnesse   |
+|fitnesse.fixture|
+
+|Test Class For Fitnesse|
+|firstNumber|secondNumber|add?|
+|1|2|3|
