@@ -7,6 +7,5 @@ public abstract class Interactor {
     public abstract void handle();
 
     public void handle(ControllerRequest request) {
-
     }
 }

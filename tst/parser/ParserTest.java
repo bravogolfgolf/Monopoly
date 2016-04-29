@@ -29,6 +29,12 @@ public class ParserTest {
             parser.setManager(manager);
         }
 
+       @Test
+       public void clearMap(){
+           parser.clearMap();
+       }
+
+
         @Test
         public void testInvalidEntry() throws IOException {
             parser.parse("a");
