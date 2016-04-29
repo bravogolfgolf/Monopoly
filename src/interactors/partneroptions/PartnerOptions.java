@@ -1,9 +1,9 @@
 package game.interactors.partneroptions;
 
-import game.controllers.writer.ReaderRequest;
-import game.controllers.writer.WriterInteractor;
+import game.controllers.ControllerInteractor;
+import game.controllers.ControllerRequest;
 
-public class PartnerOptions implements WriterInteractor {
+public class PartnerOptions implements ControllerInteractor {
 
     private final PartnerOptionsPresenter presenter;
     private final PartnerOptionsGateway players;
@@ -22,7 +22,7 @@ public class PartnerOptions implements WriterInteractor {
     }
 
     @Override
-    public void handle(ReaderRequest request) {
+    public void handle(ControllerRequest request) {
 
     }
 }

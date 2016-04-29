@@ -1,12 +1,16 @@
 package game.controllers;
 
-import game.controllers.writer.WriterPresenter;
-import game.controllers.writerreader.ReaderPresenter;
+import game.interactors.partneroptions.PartnerOptionsResponse;
+import game.interactors.propertyoptions.PropertyOptionsResponse;
+import game.interactors.selectfirst.SelectFirstResponse;
+import game.interactors.tokenoptions.TokenOptionsResponse;
+import game.interactors.versionoptions.VersionOptionsResponse;
+import game.presenters.Presenter;
 
 import java.util.Hashtable;
 import java.util.Map;
 
-class PresenterMock implements ReaderPresenter, WriterPresenter {
+class PresenterMock extends Presenter {
 
     boolean verifyGetMenuMapCalled = false;
     boolean verifyGetFormattedMessageCalled = false;
@@ -24,10 +28,70 @@ class PresenterMock implements ReaderPresenter, WriterPresenter {
     }
 
     @Override
+    public void selectPropertyPromptMessage() {
+
+    }
+
+    @Override
+    public void propertyOptionsMessage(PropertyOptionsResponse response) {
+
+    }
+
+    @Override
     public Map<Integer, String> returnAndClearMenuMap() {
         verifyGetMenuMapCalled = true;
         return new Hashtable<Integer, String>() {{
             put(1, "USA");
         }};
+    }
+
+    @Override
+    public void selectVersionPromptMessage() {
+
+    }
+
+    @Override
+    public void availableVersionsMessage(VersionOptionsResponse response) {
+
+    }
+
+    @Override
+    public void versionCreatedMessage(VersionOptionsResponse response) {
+
+    }
+
+    @Override
+    public void createPlayerPromptMessageFewerThanMinimumMessage() {
+
+    }
+
+    @Override
+    public void createPlayerPromptMessageMinimumToMaximumMessage() {
+
+    }
+
+    @Override
+    public void availableTokensMessage(TokenOptionsResponse response) {
+
+    }
+
+    @Override
+    public void playerCreatedMessage(TokenOptionsResponse response) {
+
+    }
+
+    @Override
+    public void playerSelectedToGoFirstMessage(SelectFirstResponse response) {
+
+    }
+
+    @Override
+    public void selectTradingPartnerPromptMessage() {
+
+    }
+
+    @Override
+    public void partnerOptionsMessage(PartnerOptionsResponse response) {
+
     }
 }

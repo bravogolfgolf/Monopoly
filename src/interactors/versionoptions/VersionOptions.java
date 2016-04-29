@@ -1,15 +1,16 @@
 package game.interactors.versionoptions;
 
-import game.controllers.writer.ReaderRequest;
-import game.controllers.writer.WriterInteractor;
+import game.controllers.ControllerInteractor;
+import game.controllers.ControllerRequest;
+import game.presenters.Presenter;
 
-public class VersionOptions implements WriterInteractor {
+public class VersionOptions implements ControllerInteractor {
 
     private final VersionOptionsPresenter presenter;
     private final VersionOptionsVersionFactory factory;
     private final VersionOptionsResponse response = new VersionOptionsResponse();
 
-    public VersionOptions(VersionOptionsPresenter presenter, VersionOptionsVersionFactory factory) {
+    public VersionOptions(Presenter presenter, VersionOptionsVersionFactory factory) {
         this.presenter = presenter;
         this.factory = factory;
     }
@@ -22,7 +23,7 @@ public class VersionOptions implements WriterInteractor {
     }
 
     @Override
-    public void handle(ReaderRequest request) {
+    public void handle(ControllerRequest request) {
         factory.make(request.string);
         response.version = request.string;
         presenter.versionCreatedMessage(response);

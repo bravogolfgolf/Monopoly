@@ -1,9 +1,9 @@
 package game.interactors.propertyoptions;
 
-import game.controllers.writer.ReaderRequest;
-import game.controllers.writer.WriterInteractor;
+import game.controllers.ControllerInteractor;
+import game.controllers.ControllerRequest;
 
-public class PropertyOptions implements WriterInteractor {
+public class PropertyOptions implements ControllerInteractor {
 
     private final PropertyOptionsPresenter presenter;
     private final PropertyOptionsPlayerGateway players;
@@ -23,7 +23,7 @@ public class PropertyOptions implements WriterInteractor {
     }
 
     @Override
-    public void handle(ReaderRequest request) {
+    public void handle(ControllerRequest request) {
 
     }
 }

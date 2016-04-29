@@ -1,12 +1,12 @@
 package game.parser;
 
-import game.controllers.writer.WriterParser;
+import game.controllers.ControllerParser;
 import game.display.ConsoleParser;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class Parser implements ConsoleParser, WriterParser {
+public class Parser implements ConsoleParser, ControllerParser {
 
     private ParserManager manager;
     private Map<Integer, String> menuMap;
@@ -18,6 +18,12 @@ public class Parser implements ConsoleParser, WriterParser {
     @Override
     public void setMap(Map<Integer, String> menuMap) {
         this.menuMap = menuMap;
+    }
+
+    @Override
+    public void clearMap() {
+        if (menuMap != null)
+            menuMap.clear();
     }
 
     @Override

@@ -1,12 +1,12 @@
 package game.interactors.tokenoptions;
 
-import game.controllers.writer.ReaderRequest;
-import game.controllers.writer.WriterInteractor;
+import game.controllers.ControllerInteractor;
+import game.controllers.ControllerRequest;
 import game.entities.Token;
 
 import java.util.Set;
 
-public abstract class TokenOptions implements WriterInteractor {
+public abstract class TokenOptions implements ControllerInteractor {
 
     final TokenOptionsPresenter presenter;
     private final TokenOptionsTokensGateway tokens;
@@ -27,7 +27,7 @@ public abstract class TokenOptions implements WriterInteractor {
     }
 
     @Override
-    public void handle(ReaderRequest request) {
+    public void handle(ControllerRequest request) {
         Token token = new Token(request.string);
         tokens.removeToken(token);
         players.addWith(token);

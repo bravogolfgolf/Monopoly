@@ -1,7 +1,6 @@
 package game.presenters;
 
-import game.controllers.writer.WriterPresenter;
-import game.controllers.writerreader.ReaderPresenter;
+import game.controllers.ControllerPresenter;
 import game.interactors.partneroptions.PartnerOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -15,7 +14,7 @@ import game.interactors.versionoptions.VersionOptionsResponse;
 import java.util.Hashtable;
 import java.util.Map;
 
-public abstract class Presenter implements ReaderPresenter, WriterPresenter,
+public abstract class Presenter implements ControllerPresenter,
         VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter,
         PropertyOptionsPresenter, PartnerOptionsPresenter {
 
