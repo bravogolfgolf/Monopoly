@@ -17,7 +17,7 @@ public class ControllerTest {
 
     @Test
     public void writerReaderHandlerExecute() throws IOException {
-        controller = new SetMap(parser, interactor, presenter, console);
+        controller = new Handler(parser, interactor, presenter, console);
         controller.execute();
 
         assertTrue(interactor.verifyHandleWithOutArgumentCalled);
@@ -29,7 +29,7 @@ public class ControllerTest {
 
     @Test
     public void writerReaderHandlerHandle() throws IOException {
-        controller = new SetMap(parser, interactor, presenter, console);
+        controller = new Handler(parser, interactor, presenter, console);
         ((Handler) controller).handle("");
 
         assertTrue(interactor.verifyHandleWithArgumentCalled);
