@@ -2,14 +2,14 @@ package game.entities;
 
 public class Dice {
 
-    private int roll;
+    private int rolled;
     private boolean doubles;
 
     public void roll() {
-        int die1 = rollDie();
-        int die2 = rollDie();
-        roll = die1 + die2;
-        doubles = (die1 == die2);
+        int firstDie = rollDie();
+        int secondDie = rollDie();
+        rolled = firstDie + secondDie;
+        doubles = (firstDie == secondDie);
     }
 
     private int rollDie() {
@@ -17,7 +17,7 @@ public class Dice {
     }
 
     public int rolled() {
-        return roll;
+        return rolled;
     }
 
     public boolean isDoubles() {
