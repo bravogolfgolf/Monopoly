@@ -1,10 +1,9 @@
 package game.interactors.selectfirst;
 
-import game.controllers.ControllerInteractor;
-import game.controllers.ControllerRequest;
 import game.entities.Token;
+import game.interactors.Interactor;
 
-public class SelectFirst implements ControllerInteractor {
+public class SelectFirst extends Interactor {
 
     private final SelectFirstPresenter presenter;
     private final SelectFirstPlayerGateway players;
@@ -21,10 +20,5 @@ public class SelectFirst implements ControllerInteractor {
         Token token = players.getCurrentPlayer();
         response.token = token.getDescription();
         presenter.playerSelectedToGoFirstMessage(response);
-    }
-
-    @Override
-    public void handle(ControllerRequest request) {
-
     }
 }

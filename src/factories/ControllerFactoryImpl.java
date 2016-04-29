@@ -2,13 +2,14 @@ package game.factories;
 
 import game.controllers.Controller;
 import game.controllers.Handler;
-import game.controllers.SelectFirst;
+import game.controllers.Message;
 import game.controllers.StartTurn;
 import game.display.Console;
 import game.entities.Board;
+import game.interactors.Interactor;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
-import game.interactors.tokenoptions.TokenOptions;
+import game.interactors.selectfirst.SelectFirst;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
 import game.interactors.versionoptions.VersionOptions;
@@ -40,23 +41,23 @@ public class ControllerFactoryImpl implements ControllerFactory {
     @Override
     public Controller make(String controller) {
         if (controller.equals("VersionOptions")) {
-            VersionOptions interactor = new VersionOptions(presenter, factory);
+            Interactor interactor = new VersionOptions(presenter, factory);
             return new Handler(parser, interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsFewerThanMinimum")) {
-            TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players);
+            Interactor interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players);
             return new Handler(parser, interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsMinimumToMaximum")) {
-            TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players);
+            Interactor interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players);
             return new Handler(parser, interactor, presenter, console);
         }
 
-        if (controller.equals("SelectFirst")) {
-            game.interactors.selectfirst.SelectFirst interactor = new game.interactors.selectfirst.SelectFirst(presenter, players);
-            return new SelectFirst(interactor, presenter, console);
+        if (controller.equals("Message")) {
+            Interactor interactor = new SelectFirst(presenter, players);
+            return new Message(interactor, presenter, console);
         }
 
         if (controller.equals("StartTurn")) {
@@ -64,12 +65,12 @@ public class ControllerFactoryImpl implements ControllerFactory {
         }
 
         if (controller.equals("PropertyOptions")) {
-            PropertyOptions interactor = new PropertyOptions(presenter, players);
+            Interactor interactor = new PropertyOptions(presenter, players);
             return new Handler(parser, interactor, presenter, console);
         }
 
         if (controller.equals("PartnerOptions")) {
-            PartnerOptions interactor = new PartnerOptions(presenter, players);
+            Interactor interactor = new PartnerOptions(presenter, players);
             return new Handler(parser, interactor, presenter, console);
         }
 

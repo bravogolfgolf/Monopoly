@@ -1,18 +1,19 @@
 package game.controllers;
 
 import game.display.Console;
+import game.interactors.Interactor;
 import game.parser.ControllerConsole;
 import game.presenters.Presenter;
 
 import java.io.IOException;
 
-public class SelectFirst extends Controller {
+public class Message extends Controller {
 
-    private final ControllerInteractor interactor;
+    private final Interactor interactor;
     private final ControllerPresenter presenter;
     private final ControllerConsole console;
 
-    public SelectFirst(ControllerInteractor interactor, Presenter presenter, Console console) {
+    public Message(Interactor interactor, Presenter presenter, Console console) {
         this.interactor = interactor;
         this.presenter = presenter;
         this.console = console;

@@ -1,6 +1,8 @@
 package game.controllers;
 
-class InteractorMock implements ControllerInteractor {
+import game.interactors.Interactor;
+
+class InteractorMock extends Interactor {
 
     boolean verifyHandleWithArgumentCalled = false;
     boolean verifyHandleWithOutArgumentCalled = false;

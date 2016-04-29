@@ -104,7 +104,7 @@ public enum StateImpl implements State {
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
-            manager.createAndExecuteController("SelectFirst");
+            manager.createAndExecuteController("Message");
             manager.initialize();
         }
 
@@ -134,7 +134,7 @@ public enum StateImpl implements State {
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
-            manager.createAndExecuteController("SelectFirst");
+            manager.createAndExecuteController("Message");
             manager.initialize();
         }
 
@@ -164,7 +164,7 @@ public enum StateImpl implements State {
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
-            manager.createAndExecuteController("SelectFirst");
+            manager.createAndExecuteController("Message");
             manager.initialize();
         }
 
@@ -194,7 +194,7 @@ public enum StateImpl implements State {
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
-            manager.createAndExecuteController("SelectFirst");
+            manager.createAndExecuteController("Message");
             manager.initialize();
         }
 
@@ -224,7 +224,7 @@ public enum StateImpl implements State {
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
-            manager.createAndExecuteController("SelectFirst");
+            manager.createAndExecuteController("Message");
             manager.initialize();
         }
 
@@ -248,14 +248,14 @@ public enum StateImpl implements State {
         @Override
         public void validTextEntry(StateManager manager) throws IOException {
             manager.setState(START_TURN);
-            manager.createAndExecuteController("SelectFirst");
+            manager.createAndExecuteController("Message");
             manager.initialize();
         }
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
             manager.setState(START_TURN);
-            manager.createAndExecuteController("SelectFirst");
+            manager.createAndExecuteController("Message");
             manager.initialize();
         }
 
