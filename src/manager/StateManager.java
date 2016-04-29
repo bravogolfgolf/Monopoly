@@ -31,7 +31,7 @@ public abstract class StateManager implements ParserManager {
 
     @Override
     public void validTextEntry(String result) throws IOException {
-        ((Handler)controller).handle(result);
+        ((Handler) controller).handle(result);
         state.validTextEntry(this);
     }
 

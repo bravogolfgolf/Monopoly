@@ -135,7 +135,7 @@ public class InteractorTest {
 
     public class PartnerOptionsTest {
 
-        private final PartnerOptions interactor = new PartnerOptions(presenter, players);
+        private final Interactor interactor = new PartnerOptions(presenter, players);
 
         @Test
         public void testHandle() {

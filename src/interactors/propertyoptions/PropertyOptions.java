@@ -1,9 +1,8 @@
 package game.interactors.propertyoptions;
 
-import game.controllers.ControllerInteractor;
-import game.controllers.ControllerRequest;
+import game.interactors.Interactor;
 
-public class PropertyOptions implements ControllerInteractor {
+public class PropertyOptions extends Interactor {
 
     private final PropertyOptionsPresenter presenter;
     private final PropertyOptionsPlayerGateway players;
@@ -20,10 +19,5 @@ public class PropertyOptions implements ControllerInteractor {
         players.getCurrentPlayer();
         presenter.selectPropertyPromptMessage();
         presenter.propertyOptionsMessage(response);
-    }
-
-    @Override
-    public void handle(ControllerRequest request) {
-
     }
 }

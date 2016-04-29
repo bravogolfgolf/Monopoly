@@ -1,12 +1,12 @@
 package game.interactors.tokenoptions;
 
-import game.controllers.ControllerInteractor;
 import game.controllers.ControllerRequest;
 import game.entities.Token;
+import game.interactors.Interactor;
 
 import java.util.Set;
 
-public abstract class TokenOptions implements ControllerInteractor {
+public abstract class TokenOptions extends Interactor {
 
     final TokenOptionsPresenter presenter;
     private final TokenOptionsTokensGateway tokens;

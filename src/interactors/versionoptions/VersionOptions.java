@@ -1,10 +1,10 @@
 package game.interactors.versionoptions;
 
-import game.controllers.ControllerInteractor;
 import game.controllers.ControllerRequest;
+import game.interactors.Interactor;
 import game.presenters.Presenter;
 
-public class VersionOptions implements ControllerInteractor {
+public class VersionOptions extends Interactor {
 
     private final VersionOptionsPresenter presenter;
     private final VersionOptionsVersionFactory factory;

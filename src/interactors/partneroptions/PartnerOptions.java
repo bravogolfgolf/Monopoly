@@ -1,9 +1,8 @@
 package game.interactors.partneroptions;
 
-import game.controllers.ControllerInteractor;
-import game.controllers.ControllerRequest;
+import game.interactors.Interactor;
 
-public class PartnerOptions implements ControllerInteractor {
+public class PartnerOptions extends Interactor {
 
     private final PartnerOptionsPresenter presenter;
     private final PartnerOptionsGateway players;
@@ -19,10 +18,5 @@ public class PartnerOptions implements ControllerInteractor {
         presenter.selectTradingPartnerPromptMessage();
         response.players = players.getAllPlayersExceptCurrent();
         presenter.partnerOptionsMessage(response);
-    }
-
-    @Override
-    public void handle(ControllerRequest request) {
-
     }
 }
