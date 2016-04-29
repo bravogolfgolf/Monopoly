@@ -2,31 +2,28 @@ package game.controllers;
 
 import game.display.Console;
 import game.parser.ControllerConsole;
+import game.parser.Parser;
 import game.presenters.Presenter;
 
 import java.io.IOException;
 
-public class Writer {
+public class StartTurn extends Controller {
 
-    private final ReaderPresenter presenter;
-    final ControllerConsole console;
+    private final ControllerParser parser;
+    private final ControllerPresenter presenter;
+    private final ControllerConsole console;
 
-    public Writer(Presenter presenter, Console console) {
+    public StartTurn(Parser parser, Presenter presenter, Console console) {
+        this.parser = parser;
         this.console = console;
         this.presenter = presenter;
     }
 
-    void read() throws IOException {
-        console.read();
-    }
-
+    @Override
     public void execute() throws IOException {
+        parser.clearMap();
         presenter.startTurnMessage();
         console.write(presenter.getFormattedMessage());
-        read();
-    }
-
-    public void handle(String text) throws IOException {
-
+        console.read();
     }
 }

@@ -1,20 +1,25 @@
 package game.controllers;
 
 import game.display.Console;
+import game.parser.ControllerConsole;
+import game.parser.Parser;
 import game.presenters.Presenter;
 
 import java.io.IOException;
 
-public class WriterReaderHandler extends WriterReader {
+public class SetMap extends Controller implements Handler {
 
-    private final WriterParser parser;
-    private final ReaderRequest request = new ReaderRequest();
-    private final WriterPresenter presenter;
+    private final ControllerParser parser;
+    private final ControllerInteractor interactor;
+    private final ControllerPresenter presenter;
+    private final ControllerConsole console;
+    private final ControllerRequest request = new ControllerRequest();
 
-    public WriterReaderHandler(WriterParser parser, WriterInteractor interactor, Presenter presenter, Console console) {
-        super(interactor, presenter, console);
+    public SetMap(Parser parser, ControllerInteractor interactor, Presenter presenter, Console console) {
         this.parser = parser;
+        this.interactor = interactor;
         this.presenter = presenter;
+        this.console = console;
     }
 
     @Override
@@ -22,7 +27,7 @@ public class WriterReaderHandler extends WriterReader {
         interactor.handle();
         parser.setMap(presenter.returnAndClearMenuMap());
         console.write(presenter.getFormattedMessage());
-        read();
+        console.read();
     }
 
     @Override

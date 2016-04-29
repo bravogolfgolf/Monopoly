@@ -1,10 +1,10 @@
 package game.interactors.selectfirst;
 
-import game.controllers.ReaderRequest;
-import game.controllers.WriterInteractor;
+import game.controllers.ControllerInteractor;
+import game.controllers.ControllerRequest;
 import game.entities.Token;
 
-public class SelectFirst implements WriterInteractor {
+public class SelectFirst implements ControllerInteractor {
 
     private final SelectFirstPresenter presenter;
     private final SelectFirstPlayerGateway players;
@@ -24,7 +24,7 @@ public class SelectFirst implements WriterInteractor {
     }
 
     @Override
-    public void handle(ReaderRequest request) {
+    public void handle(ControllerRequest request) {
 
     }
 }

@@ -13,11 +13,11 @@ public class ControllerTest {
     private final ConsoleMock console = new ConsoleMock(parser);
     private final PresenterMock presenter = new PresenterMock();
     private final InteractorMock interactor = new InteractorMock();
-    private Writer controller;
+    private Controller controller;
 
     @Test
     public void writerReaderHandlerExecute() throws IOException {
-        controller = new WriterReaderHandler(parser, interactor, presenter, console);
+        controller = new SetMap(parser, interactor, presenter, console);
         controller.execute();
 
         assertTrue(interactor.verifyHandleWithOutArgumentCalled);
@@ -29,8 +29,8 @@ public class ControllerTest {
 
     @Test
     public void writerReaderHandlerHandle() throws IOException {
-        controller = new WriterReaderHandler(parser, interactor, presenter, console);
-        controller.handle("");
+        controller = new SetMap(parser, interactor, presenter, console);
+        ((Handler) controller).handle("");
 
         assertTrue(interactor.verifyHandleWithArgumentCalled);
         assertTrue(presenter.verifyGetFormattedMessageCalled);
@@ -39,17 +39,11 @@ public class ControllerTest {
 
     @Test
     public void writerReaderExecute() throws IOException {
-        controller = new Writer(presenter, console);
+        controller = new StartTurn(parser, presenter, console);
         controller.execute();
 
         assertTrue(presenter.verifyStartTurnMessageCalled);
         assertTrue(presenter.verifyGetFormattedMessageCalled);
         assertTrue(console.verifyWriteCalled);
-    }
-
-    @Test
-    public void writerReaderHandle() throws IOException {
-        controller = new Writer(presenter, console);
-        controller.handle("");
     }
 }

@@ -1,10 +1,10 @@
 package game.interactors.versionoptions;
 
-import game.controllers.ReaderRequest;
-import game.controllers.WriterInteractor;
+import game.controllers.ControllerInteractor;
+import game.controllers.ControllerRequest;
 import game.presenters.Presenter;
 
-public class VersionOptions implements WriterInteractor {
+public class VersionOptions implements ControllerInteractor {
 
     private final VersionOptionsPresenter presenter;
     private final VersionOptionsVersionFactory factory;
@@ -23,7 +23,7 @@ public class VersionOptions implements WriterInteractor {
     }
 
     @Override
-    public void handle(ReaderRequest request) {
+    public void handle(ControllerRequest request) {
         factory.make(request.string);
         response.version = request.string;
         presenter.versionCreatedMessage(response);

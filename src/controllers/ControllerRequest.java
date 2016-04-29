@@ -1,6 +1,6 @@
 package game.controllers;
 
-public class ReaderRequest {
+public class ControllerRequest {
 
     public String string;
 }

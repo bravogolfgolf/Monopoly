@@ -1,13 +1,13 @@
 package game.factories;
 
-import game.controllers.Writer;
-import game.controllers.WriterReader;
-import game.controllers.WriterReaderHandler;
+import game.controllers.Controller;
+import game.controllers.SelectFirst;
+import game.controllers.SetMap;
+import game.controllers.StartTurn;
 import game.display.Console;
 import game.entities.Board;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
-import game.interactors.selectfirst.SelectFirst;
 import game.interactors.tokenoptions.TokenOptions;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
@@ -38,39 +38,39 @@ public class ControllerFactoryImpl implements ControllerFactory {
     }
 
     @Override
-    public Writer make(String controller) {
+    public Controller make(String controller) {
         if (controller.equals("VersionOptions")) {
             VersionOptions interactor = new VersionOptions(presenter, factory);
-            return new WriterReaderHandler(parser, interactor, presenter, console);
+            return new SetMap(parser, interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsFewerThanMinimum")) {
             TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players);
-            return new WriterReaderHandler(parser, interactor, presenter, console);
+            return new SetMap(parser, interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsMinimumToMaximum")) {
             TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players);
-            return new WriterReaderHandler(parser, interactor, presenter, console);
+            return new SetMap(parser, interactor, presenter, console);
         }
 
         if (controller.equals("SelectFirst")) {
-            SelectFirst interactor = new SelectFirst(presenter, players);
-            return new WriterReader(interactor, presenter, console);
+            game.interactors.selectfirst.SelectFirst interactor = new game.interactors.selectfirst.SelectFirst(presenter, players);
+            return new SelectFirst(interactor, presenter, console);
         }
 
         if (controller.equals("StartTurn")) {
-            return new Writer(presenter, console);
+            return new StartTurn(parser, presenter, console);
         }
 
         if (controller.equals("PropertyOptions")) {
             PropertyOptions interactor = new PropertyOptions(presenter, players);
-            return new WriterReaderHandler(parser, interactor, presenter, console);
+            return new SetMap(parser, interactor, presenter, console);
         }
 
         if (controller.equals("PartnerOptions")) {
             PartnerOptions interactor = new PartnerOptions(presenter, players);
-            return new WriterReaderHandler(parser, interactor, presenter, console);
+            return new SetMap(parser, interactor, presenter, console);
         }
 
         throw new IllegalArgumentException();

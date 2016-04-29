@@ -1,12 +1,12 @@
 package game.controllers;
 
-class InteractorMock implements WriterInteractor {
+class InteractorMock implements ControllerInteractor {
 
     boolean verifyHandleWithArgumentCalled = false;
     boolean verifyHandleWithOutArgumentCalled = false;
 
     @Override
-    public void handle(ReaderRequest request) {
+    public void handle(ControllerRequest request) {
         verifyHandleWithArgumentCalled = true;
     }
 
