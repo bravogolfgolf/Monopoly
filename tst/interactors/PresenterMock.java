@@ -1,5 +1,6 @@
 package game.interactors;
 
+import game.entities.Dice;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
@@ -64,6 +65,11 @@ class PresenterMock extends Presenter {
 
     @Override
     public void startTurnMessage() {
+    }
+
+    @Override
+    public void rollMessage(Dice dice) {
+
     }
 
     @Override

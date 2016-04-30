@@ -2,6 +2,7 @@ package game.manager;
 
 import game.controllers.Controller;
 import game.controllers.Handler;
+import game.entities.Dice;
 import game.parser.ParserManager;
 
 import java.io.IOException;
@@ -51,5 +52,7 @@ public abstract class StateManager implements ParserManager {
 
     }
 
-    public abstract void createAndExecuteController(String commandString) throws IOException;
+    public abstract void createAndExecuteController(String contollerString) throws IOException;
+
+    public abstract void createAndExecuteController(String contollerString, Dice dice);
 }

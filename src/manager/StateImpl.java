@@ -1,5 +1,7 @@
 package game.manager;
 
+import game.entities.Dice;
+
 import java.io.IOException;
 
 public enum StateImpl implements State {
@@ -282,7 +284,64 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void zeroEntered(StateManager manager) {
+        public void zeroEntered(StateManager manager) throws IOException {
+            Dice dice = Dice.roll();
+            if (dice.isDoubles())
+                manager.setState(StateImpl.DOUBLES_1);
+            manager.setState(StateImpl.TURN);
+            manager.createAndExecuteController("Move", dice);
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
+        }
+    },
+
+    TURN {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
+        }
+    },
+
+    DOUBLES_1 {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
 
         }
 

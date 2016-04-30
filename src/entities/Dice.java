@@ -2,17 +2,23 @@ package game.entities;
 
 public class Dice {
 
-    private int rolled;
-    private boolean doubles;
+    private final int rolled;
+    private final boolean doubles;
 
-    public void roll() {
-        int firstDie = rollDie();
-        int secondDie = rollDie();
-        rolled = firstDie + secondDie;
-        doubles = (firstDie == secondDie);
+    private Dice(int rolled, boolean doubles) {
+        this.rolled = rolled;
+        this.doubles = doubles;
     }
 
-    private int rollDie() {
+    public static Dice roll() {
+        int firstDie = rollDie();
+        int secondDie = rollDie();
+        int rolled = firstDie + secondDie;
+        boolean doubles = (firstDie == secondDie);
+        return new Dice(rolled,doubles);
+    }
+
+    private static int rollDie() {
         return (int) (Math.random() * 6) + 1;
     }
 

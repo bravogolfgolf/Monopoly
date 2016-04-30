@@ -1,5 +1,6 @@
 package game.presenters;
 
+import game.entities.Dice;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
@@ -66,6 +67,11 @@ public class PresenterEn extends Presenter {
     public void startTurnMessage() {
         template = "\nAvailable options: (0)Roll (1)Manage Properties (2)Trade.";
         addNewLine(template);
+    }
+
+    @Override
+    public void rollMessage(Dice dice) {
+
     }
 
     @Override

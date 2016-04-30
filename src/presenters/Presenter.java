@@ -1,6 +1,7 @@
 package game.presenters;
 
 import game.controllers.ControllerPresenter;
+import game.entities.Dice;
 import game.interactors.partneroptions.PartnerOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -107,6 +108,9 @@ public abstract class Presenter implements ControllerPresenter,
 
     @Override
     public abstract void startTurnMessage();
+
+    @Override
+    public abstract void rollMessage(Dice dice);
 
     @Override
     public abstract void selectPropertyPromptMessage();

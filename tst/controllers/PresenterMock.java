@@ -1,5 +1,6 @@
 package game.controllers;
 
+import game.entities.Dice;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
@@ -15,6 +16,7 @@ class PresenterMock extends Presenter {
     boolean verifyGetMenuMapCalled = false;
     boolean verifyGetFormattedMessageCalled = false;
     boolean verifyStartTurnMessageCalled = false;
+    boolean verifyRollMessageCalled = false;
 
     @Override
     public String getFormattedMessage() {
@@ -25,6 +27,11 @@ class PresenterMock extends Presenter {
     @Override
     public void startTurnMessage() {
         verifyStartTurnMessageCalled = true;
+    }
+
+    @Override
+    public void rollMessage(Dice dice) {
+        verifyRollMessageCalled = true;
     }
 
     @Override
