@@ -167,8 +167,25 @@ public class PresenterEnTest {
                 expected = "Available trading partners: (1)Cat, (2)Boot\n";
                 assertEquals(expected, presenter.getFormattedMessage());
             }
+        }
+    }
 
+    public class MoveTest {
 
+        @Test
+        public void testRollMessage() {
+            DiceMock normal = new DiceMock(2, false);
+            presenter.rollMessage(normal);
+            expected = "You rolled 2.\n";
+            assertEquals(expected, presenter.getFormattedMessage());
+        }
+
+        @Test
+        public void testRollDoubleMessage() {
+            DiceMock doubles = new DiceMock(2, true);
+            presenter.rollMessage(doubles);
+            expected = "Doubles! You rolled 2.\n";
+            assertEquals(expected, presenter.getFormattedMessage());
         }
     }
 }

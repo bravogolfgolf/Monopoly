@@ -5,7 +5,7 @@ public class Dice {
     private final int rolled;
     private final boolean doubles;
 
-    private Dice(int rolled, boolean doubles) {
+    protected Dice(int rolled, boolean doubles) {
         this.rolled = rolled;
         this.doubles = doubles;
     }

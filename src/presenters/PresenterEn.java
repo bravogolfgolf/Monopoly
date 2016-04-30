@@ -71,7 +71,10 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void rollMessage(Dice dice) {
-
+        variables = new String[]{Integer.toString(dice.rolled())};
+        if (dice.isDoubles()) template = "Doubles! You rolled %s.";
+        else template = "You rolled %s.";
+        addMessageToBuffer(template, variables);
     }
 
     @Override
