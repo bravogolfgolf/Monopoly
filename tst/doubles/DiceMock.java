@@ -1,10 +1,10 @@
-package game.presenters;
+package game.doubles;
 
 import game.entities.Dice;
 
 public class DiceMock extends Dice {
 
-    DiceMock(int rolled, boolean doubles) {
+    public DiceMock(int rolled, boolean doubles) {
         super(rolled, doubles);
     }
 }

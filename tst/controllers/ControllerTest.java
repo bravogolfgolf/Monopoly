@@ -1,6 +1,10 @@
 package game.controllers;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
+import game.doubles.ConsoleMock;
+import game.doubles.InteractorMock;
+import game.doubles.ParserMock;
+import game.doubles.PresenterMock;
 import game.entities.Dice;
 import org.junit.Test;
 import org.junit.runner.RunWith;

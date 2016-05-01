@@ -1,4 +1,4 @@
-package game.interactors;
+package game.doubles;
 
 import game.entities.Token;
 import game.interactors.tokenoptions.TokenOptionsTokensGateway;
@@ -6,10 +6,10 @@ import game.interactors.tokenoptions.TokenOptionsTokensGateway;
 import java.util.Set;
 import java.util.TreeSet;
 
-class TokensMock implements TokenOptionsTokensGateway {
+public class TokensMock implements TokenOptionsTokensGateway {
 
-    boolean verifyRemoveTokenCalled = false;
-    boolean verifyGetAvailableTokensCalled = false;
+    public boolean verifyRemoveTokenCalled = false;
+    public boolean verifyGetAvailableTokensCalled = false;
 
     @Override
     public void removeToken(Token token) {

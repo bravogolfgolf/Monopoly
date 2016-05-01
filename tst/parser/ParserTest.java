@@ -1,6 +1,7 @@
 package game.parser;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
+import game.doubles.StateManagerMock;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

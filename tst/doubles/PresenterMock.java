@@ -1,4 +1,4 @@
-package game.interactors;
+package game.doubles;
 
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
@@ -8,22 +8,27 @@ import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsResponse;
 import game.presenters.Presenter;
 
-class PresenterMock extends Presenter {
+import java.util.Map;
 
-    boolean verifySelectVersionPromptMessageCalled = false;
-    boolean verifyAvailableVersionsMessageCalled = false;
-    boolean verifyVersionCreatedMessage = false;
-    boolean verifyCreatePlayerPromptMessageFewerThanMinimumMessage = false;
-    boolean verifyCreatePlayerPromptMessageMinimumToMaximumMessage = false;
-    boolean verifyAvailableTokensMessage = false;
-    boolean verifyPlayerCreatedMessage = false;
-    boolean verifyPlayerSelectedToGoFirstMessage = false;
-    boolean verifySelectPropertyPromptMessageCalled = false;
-    boolean verifyPropertyOptionsMessageCalled = false;
-    boolean verifySelectTradingPartnerPromptMessageCalled = false;
-    boolean verifyPartnerOptionsMessageCalled = false;
-    boolean verifyRollMessageCalled = false;
-    boolean verifyMoveMessageCalled = false;
+public class PresenterMock extends Presenter {
+
+    public boolean verifySelectVersionPromptMessageCalled = false;
+    public boolean verifyAvailableVersionsMessageCalled = false;
+    public boolean verifyVersionCreatedMessage = false;
+    public boolean verifyCreatePlayerPromptMessageFewerThanMinimumMessage = false;
+    public boolean verifyCreatePlayerPromptMessageMinimumToMaximumMessage = false;
+    public boolean verifyAvailableTokensMessage = false;
+    public boolean verifyPlayerCreatedMessage = false;
+    public boolean verifyPlayerSelectedToGoFirstMessage = false;
+    public boolean verifySelectPropertyPromptMessageCalled = false;
+    public boolean verifyPropertyOptionsMessageCalled = false;
+    public boolean verifySelectTradingPartnerPromptMessageCalled = false;
+    public boolean verifyPartnerOptionsMessageCalled = false;
+    public boolean verifyRollMessageCalled = false;
+    public boolean verifyMoveMessageCalled = false;
+    public boolean verifyStartTurnMessageCalled = false;
+    public boolean verifyGetFormattedMessageCalled = false;
+    public boolean verifyGetMenuMapCalled = false;
 
     @Override
     public void selectVersionPromptMessage() {
@@ -67,6 +72,7 @@ class PresenterMock extends Presenter {
 
     @Override
     public void startTurnMessage() {
+        verifyStartTurnMessageCalled = true;
     }
 
     @Override
@@ -82,6 +88,18 @@ class PresenterMock extends Presenter {
     @Override
     public void selectPropertyPromptMessage() {
         verifySelectPropertyPromptMessageCalled = true;
+    }
+
+    @Override
+    public String getFormattedMessage() {
+        verifyGetFormattedMessageCalled = true;
+        return null;
+    }
+
+    @Override
+    public Map<Integer, String> returnAndClearMenuMap() {
+        verifyGetMenuMapCalled = true;
+        return null;
     }
 
     @Override

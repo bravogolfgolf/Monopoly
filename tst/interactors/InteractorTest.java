@@ -2,6 +2,7 @@ package game.interactors;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.ControllerRequest;
+import game.doubles.*;
 import game.entities.Dice;
 import game.factories.SpacesTEST;
 import game.interactors.movetoken.MoveToken;

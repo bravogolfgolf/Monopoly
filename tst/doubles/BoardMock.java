@@ -1,4 +1,4 @@
-package game.interactors;
+package game.doubles;
 
 import game.entities.Board;
 import game.entities.Dice;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BoardMock extends Board {
 
-    boolean verifyMoveCalled = false;
+    public boolean verifyMoveCalled = false;
 
     public BoardMock(List<Space> board) {
         super(board);

@@ -1,5 +1,6 @@
 package game.entities;
 
+import game.doubles.DiceMock;
 import game.factories.SpacesTEST;
 import org.junit.Test;
 

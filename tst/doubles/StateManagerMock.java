@@ -1,12 +1,14 @@
-package game.parser;
+package game.doubles;
 
-class StateManagerMock implements ParserManager {
+import game.parser.ParserManager;
 
-    boolean validUseCaseEntryCalled = false;
-    boolean verifyInvalidEntryCalled = false;
-    boolean verifyZeroEnteredCalled = false;
-    boolean verifyOneEnteredCalled = false;
-    boolean verifyTwoEnteredCalled = false;
+public class StateManagerMock implements ParserManager {
+
+    public boolean validUseCaseEntryCalled = false;
+    public boolean verifyInvalidEntryCalled = false;
+    public boolean verifyZeroEnteredCalled = false;
+    public boolean verifyOneEnteredCalled = false;
+    public boolean verifyTwoEnteredCalled = false;
 
     @Override
     public void validTextEntry(String result) {

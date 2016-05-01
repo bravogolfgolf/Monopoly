@@ -1,11 +1,12 @@
-package game.controllers;
+package game.doubles;
 
+import game.controllers.ControllerRequest;
 import game.interactors.Interactor;
 
-class InteractorMock extends Interactor {
+public class InteractorMock extends Interactor {
 
-    boolean verifyHandleWithArgumentCalled = false;
-    boolean verifyHandleWithOutArgumentCalled = false;
+    public boolean verifyHandleWithArgumentCalled = false;
+    public boolean verifyHandleWithOutArgumentCalled = false;
 
     @Override
     public void handle(ControllerRequest request) {

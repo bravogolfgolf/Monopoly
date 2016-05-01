@@ -1,6 +1,6 @@
 package game.fitnesse;
 
-public class TestClassForFitnesse {
+public class FitnesseTest {
 
     private int firstNumber = 0;
     private int secondNumber = 0;

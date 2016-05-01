@@ -1,11 +1,11 @@
-package game.interactors;
+package game.doubles;
 
 import game.interactors.versionoptions.VersionOptionsVersionFactory;
 
-class SelectVersionFactoryMock implements VersionOptionsVersionFactory {
+public class SelectVersionFactoryMock implements VersionOptionsVersionFactory {
 
-    boolean verifyMakeCalled = false;
-    boolean verifyGetAvailableVersionsCalled = false;
+    public boolean verifyMakeCalled = false;
+    public boolean verifyGetAvailableVersionsCalled = false;
 
     @Override
     public void make(String version) {
