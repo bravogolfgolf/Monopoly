@@ -18,7 +18,7 @@ public class ControllerTest {
 
     private final ParserMock parser = new ParserMock();
     private final ConsoleMock console = new ConsoleMock(parser);
-    private final PresenterMock presenter = new PresenterMock(console);
+    private final PresenterMock presenter = new PresenterMock(console, parser);
     private final InteractorMock interactor = new InteractorMock();
     private Controller controller;
 
@@ -26,22 +26,21 @@ public class ControllerTest {
 
         @Test
         public void execute() throws IOException {
-            controller = new Options(parser, interactor, presenter, console);
+            controller = new Options(interactor, presenter, console);
             controller.execute();
 
             assertTrue(interactor.verifyHandleWithOutArgumentCalled);
-            assertTrue(presenter.verifyGetMenuMapCalled);
-            assertTrue(parser.verifySetMapCalled);
+            assertTrue(presenter.verifyWriteMessageCalled);
             assertTrue(console.verifyReadCalled);
         }
 
         @Test
         public void handle() throws IOException {
-            controller = new Options(parser, interactor, presenter, console);
+            controller = new Options(interactor, presenter, console);
             ((Options) controller).handle("");
 
             assertTrue(interactor.verifyHandleWithArgumentCalled);
-            assertTrue(presenter.verifyGetFormattedMessageCalled);
+            assertTrue(presenter.verifyWriteMessageCalled);
         }
     }
 
@@ -49,12 +48,11 @@ public class ControllerTest {
 
         @Test
         public void execute() throws IOException {
-            controller = new StartTurn(parser, presenter, console);
+            controller = new StartTurn(presenter, console);
             controller.execute();
 
-            assertTrue(parser.verifyClearMapCalled);
             assertTrue(presenter.verifyStartTurnMessageCalled);
-            assertTrue(presenter.verifyGetFormattedMessageCalled);
+            assertTrue(presenter.verifyWriteMessageCalled);
         }
     }
 
@@ -66,7 +64,7 @@ public class ControllerTest {
             controller.execute();
 
             assertTrue(interactor.verifyHandleWithOutArgumentCalled);
-            assertTrue(presenter.verifyGetFormattedMessageCalled);
+            assertTrue(presenter.verifyWriteMessageCalled);
         }
     }
 
@@ -79,7 +77,7 @@ public class ControllerTest {
             controller.execute();
 
             assertTrue(interactor.verifyHandleWithArgumentCalled);
-            assertTrue(presenter.verifyGetFormattedMessageCalled);
+            assertTrue(presenter.verifyWriteMessageCalled);
         }
     }
 }

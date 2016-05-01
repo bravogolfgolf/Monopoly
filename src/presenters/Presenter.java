@@ -13,6 +13,7 @@ import game.interactors.tokenoptions.TokenOptionsPresenter;
 import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsPresenter;
 import game.interactors.versionoptions.VersionOptionsResponse;
+import game.parser.Parser;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -23,40 +24,41 @@ public abstract class Presenter implements ControllerPresenter,
         PropertyOptionsPresenter, PartnerOptionsPresenter, MoveTokenPresenter {
 
     private final PresenterConsole console;
+    private final PresenterParser parser;
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
     final Map<Integer, String> menuMap = new Hashtable<>();
     String template;
     String[] variables;
 
-    public Presenter(Console console) {
+    public Presenter(Console console, Parser parser) {
         this.console = console;
+        this.parser = parser;
     }
 
     @Override
     public void writeMessage() throws IOException {
+        writeToParser();
+        writeToConsole();
+    }
+
+    private void writeToConsole() throws IOException {
         String result = messageBuffer.toString();
         messageBuffer = new StringBuffer();
         console.write(result);
     }
 
-    @Override
-    public Map<Integer, String> returnAndClearMenuMap() {
+    private void writeToParser() {
         Map<Integer, String> result = new Hashtable<>(menuMap);
-        clearMenuMap();
-        return result;
+        menuMap.clear();
+        parser.setMap(result);
     }
 
-    void clearAndCreateMenuMap(String[] strings) {
+    void createMenuMap(String[] strings) {
         int counter = 1;
-        clearMenuMap();
         for (String string : strings) {
             menuMap.put(counter++, string);
         }
-    }
-
-    private void clearMenuMap() {
-        menuMap.clear();
     }
 
     void addMenuToBuffer(String template, Map map) {

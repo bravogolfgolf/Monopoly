@@ -24,7 +24,7 @@ public class PresenterEnTest {
 
     private final ParserMock parser = new ParserMock();
     private final ConsoleMock console = new ConsoleMock(parser);
-    private final Presenter presenter = new PresenterEn(console);
+    private final Presenter presenter = new PresenterEn(console, parser);
     private String expected;
 
     private void verifyMessage() throws IOException {
@@ -32,15 +32,20 @@ public class PresenterEnTest {
         assertEquals(expected, console.verifyWriteMessage);
     }
 
+    private void verifyMenuMap(Map<Integer, String> expected) throws IOException {
+        presenter.writeMessage();
+        assertEquals(expected, parser.verifySetMapValue);
+    }
+
     public class PresenterTest {
 
         @Test
-        public void testGetMenuMap() {
+        public void testGetMenuMap() throws IOException {
             Map<Integer, String> expected = new Hashtable<Integer, String>() {{
                 put(1, "Cat");
             }};
-            presenter.clearAndCreateMenuMap(new String[]{"Cat"});
-            assertEquals(expected, presenter.returnAndClearMenuMap());
+            presenter.createMenuMap(new String[]{"Cat"});
+            verifyMenuMap(expected);
         }
     }
 
@@ -188,7 +193,7 @@ public class PresenterEnTest {
 
         @Test
         public void testRollMessage() throws IOException {
-            response.dice =  new DiceMock(2, false);
+            response.dice = new DiceMock(2, false);
             presenter.rollMessage(response);
             expected = "You rolled 2.\n";
             verifyMessage();
@@ -196,7 +201,7 @@ public class PresenterEnTest {
 
         @Test
         public void testRollDoubleMessage() throws IOException {
-            response.dice =  new DiceMock(2, true);
+            response.dice = new DiceMock(2, true);
             presenter.rollMessage(response);
             expected = "Doubles! You rolled 2.\n";
             verifyMessage();
