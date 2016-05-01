@@ -1,12 +1,11 @@
 package game.factories;
 
-import game.controllers.Controller;
-import game.controllers.Message;
-import game.controllers.Options;
-import game.controllers.StartTurn;
+import game.controllers.*;
 import game.display.Console;
 import game.entities.Board;
+import game.entities.Dice;
 import game.interactors.Interactor;
+import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
@@ -69,6 +68,16 @@ public class ControllerFactoryImpl implements ControllerFactory {
         if (controller.equals("PartnerOptions")) {
             Interactor interactor = new PartnerOptions(presenter, players);
             return new Options(interactor, presenter, console);
+        }
+
+        throw new IllegalArgumentException();
+    }
+
+    @Override
+    public Controller make(String controller, Dice dice) {
+        if (controller.equals("MoveToken")) {
+            Interactor interactor = new MoveToken(presenter, players, board);
+            return new Move(interactor, presenter, dice);
         }
 
         throw new IllegalArgumentException();

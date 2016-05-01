@@ -17,7 +17,8 @@ public class StateManagerImpl extends StateManager {
     }
 
     @Override
-    public void createAndExecuteController(String contollerString, Dice dice) {
-
+    public void createAndExecuteController(String contollerString, Dice dice) throws IOException {
+        super.controller = factory.make(contollerString, dice);
+        super.controller.execute();
     }
 }

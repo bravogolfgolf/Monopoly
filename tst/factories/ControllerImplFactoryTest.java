@@ -1,6 +1,7 @@
 package game.factories;
 
 import game.display.Console;
+import game.entities.Dice;
 import game.manager.ControllerFactory;
 import game.parser.Parser;
 import game.presenters.PresenterEn;
@@ -15,6 +16,7 @@ public class ControllerImplFactoryTest {
     private final PresenterEn presenter = new PresenterEn(console, parser);
     private final Players players = new Players();
     private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
+    private final Dice dice = Dice.roll();
 
     private ControllerFactory controllerFactory;
 
@@ -24,12 +26,17 @@ public class ControllerImplFactoryTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testControllerFactoryException() {
+    public void testControllerFactoryWithoutDiceException() {
         controllerFactory.make("");
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testControllerFactoryWithDiceException() {
+        controllerFactory.make("", dice);
+    }
+
     @Test
-    public void testMakeController() {
+    public void testMakeControllerWithoutDice() {
         controllerFactory.make("VersionOptions");
         controllerFactory.make("TokenOptionsFewerThanMinimum");
         controllerFactory.make("TokenOptionsMinimumToMaximum");
@@ -37,6 +44,11 @@ public class ControllerImplFactoryTest {
         controllerFactory.make("StartTurn");
         controllerFactory.make("PropertyOptions");
         controllerFactory.make("PartnerOptions");
+    }
+
+    @Test
+    public void testMakeControllerWitDice() {
+        controllerFactory.make("MoveToken", dice);
     }
 }
 

@@ -42,17 +42,17 @@ public abstract class StateManager implements ParserManager {
     }
 
     @Override
-    public void oneEntered() {
+    public void oneEntered() throws IOException {
         state.oneEntered(this);
     }
 
     @Override
-    public void twoEntered() {
+    public void twoEntered() throws IOException {
         state.twoEntered(this);
 
     }
 
     public abstract void createAndExecuteController(String contollerString) throws IOException;
 
-    public abstract void createAndExecuteController(String contollerString, Dice dice);
+    public abstract void createAndExecuteController(String contollerString, Dice dice) throws IOException;
 }
