@@ -22,7 +22,7 @@ public class ControllerTest {
 
         @Test
         public void execute() throws IOException {
-            controller = new Handler(parser, interactor, presenter, console);
+            controller = new Options(parser, interactor, presenter, console);
             controller.execute();
 
             assertTrue(interactor.verifyHandleWithOutArgumentCalled);
@@ -34,8 +34,8 @@ public class ControllerTest {
 
         @Test
         public void handle() throws IOException {
-            controller = new Handler(parser, interactor, presenter, console);
-            ((Handler) controller).handle("");
+            controller = new Options(parser, interactor, presenter, console);
+            ((Options) controller).handle("");
 
             assertTrue(interactor.verifyHandleWithArgumentCalled);
             assertTrue(presenter.verifyGetFormattedMessageCalled);
@@ -78,7 +78,6 @@ public class ControllerTest {
             controller = new Move(interactor, presenter, console, dice);
             controller.execute();
 
-            assertTrue(presenter.verifyRollMessageCalled);
             assertTrue(interactor.verifyHandleWithArgumentCalled);
             assertTrue(presenter.verifyGetFormattedMessageCalled);
             assertTrue(console.verifyWriteCalled);

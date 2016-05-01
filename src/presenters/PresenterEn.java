@@ -1,6 +1,6 @@
 package game.presenters;
 
-import game.entities.Dice;
+import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
@@ -70,11 +70,17 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
-    public void rollMessage(Dice dice) {
-        variables = new String[]{Integer.toString(dice.rolled())};
-        if (dice.isDoubles()) template = "Doubles! You rolled %s.";
+    public void rollMessage(MoveTokenResponse response) {
+        variables = new String[]{Integer.toString(response.dice.rolled())};
+        if (response.dice.isDoubles()) template = "Doubles! You rolled %s.";
         else template = "You rolled %s.";
         addMessageToBuffer(template, variables);
+    }
+
+    @Override
+    public void moveMessage(MoveTokenResponse response) {
+        template = String.format("%s landed on %s.", response.token, response.space);
+        addNewLine(template);
     }
 
     @Override

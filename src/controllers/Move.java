@@ -25,7 +25,6 @@ public class Move extends Controller {
 
     @Override
     public void execute() throws IOException {
-        presenter.rollMessage(dice);
         request.dice = dice;
         interactor.handle(request);
         console.write(presenter.getFormattedMessage());

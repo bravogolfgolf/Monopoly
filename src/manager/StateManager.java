@@ -1,7 +1,7 @@
 package game.manager;
 
 import game.controllers.Controller;
-import game.controllers.Handler;
+import game.controllers.Options;
 import game.entities.Dice;
 import game.parser.ParserManager;
 
@@ -32,7 +32,7 @@ public abstract class StateManager implements ParserManager {
 
     @Override
     public void validTextEntry(String result) throws IOException {
-        ((Handler) controller).handle(result);
+        ((Options) controller).handle(result);
         state.validTextEntry(this);
     }
 

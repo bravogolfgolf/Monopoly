@@ -8,7 +8,7 @@ import game.presenters.Presenter;
 
 import java.io.IOException;
 
-public class Handler extends Controller {
+public class Options extends Controller {
 
     private final ControllerParser parser;
     private final Interactor interactor;
@@ -16,7 +16,7 @@ public class Handler extends Controller {
     private final ControllerConsole console;
     private final ControllerRequest request = new ControllerRequest();
 
-    public Handler(Parser parser, Interactor interactor, Presenter presenter, Console console) {
+    public Options(Parser parser, Interactor interactor, Presenter presenter, Console console) {
         this.parser = parser;
         this.interactor = interactor;
         this.presenter = presenter;

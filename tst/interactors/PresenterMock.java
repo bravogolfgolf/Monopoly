@@ -1,6 +1,6 @@
 package game.interactors;
 
-import game.entities.Dice;
+import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
@@ -22,6 +22,8 @@ class PresenterMock extends Presenter {
     boolean verifyPropertyOptionsMessageCalled = false;
     boolean verifySelectTradingPartnerPromptMessageCalled = false;
     boolean verifyPartnerOptionsMessageCalled = false;
+    boolean verifyRollMessageCalled = false;
+    boolean verifyMoveMessageCalled = false;
 
     @Override
     public void selectVersionPromptMessage() {
@@ -68,8 +70,13 @@ class PresenterMock extends Presenter {
     }
 
     @Override
-    public void rollMessage(Dice dice) {
+    public void rollMessage(MoveTokenResponse dice) {
+        verifyRollMessageCalled = true;
+    }
 
+    @Override
+    public void moveMessage(MoveTokenResponse response) {
+        verifyMoveMessageCalled = true;
     }
 
     @Override

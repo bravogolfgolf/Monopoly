@@ -1,8 +1,8 @@
 package game.factories;
 
 import game.controllers.Controller;
-import game.controllers.Handler;
 import game.controllers.Message;
+import game.controllers.Options;
 import game.controllers.StartTurn;
 import game.display.Console;
 import game.entities.Board;
@@ -42,17 +42,17 @@ public class ControllerFactoryImpl implements ControllerFactory {
     public Controller make(String controller) {
         if (controller.equals("VersionOptions")) {
             Interactor interactor = new VersionOptions(presenter, factory);
-            return new Handler(parser, interactor, presenter, console);
+            return new Options(parser, interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsFewerThanMinimum")) {
             Interactor interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players);
-            return new Handler(parser, interactor, presenter, console);
+            return new Options(parser, interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsMinimumToMaximum")) {
             Interactor interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players);
-            return new Handler(parser, interactor, presenter, console);
+            return new Options(parser, interactor, presenter, console);
         }
 
         if (controller.equals("Message")) {
@@ -66,12 +66,12 @@ public class ControllerFactoryImpl implements ControllerFactory {
 
         if (controller.equals("PropertyOptions")) {
             Interactor interactor = new PropertyOptions(presenter, players);
-            return new Handler(parser, interactor, presenter, console);
+            return new Options(parser, interactor, presenter, console);
         }
 
         if (controller.equals("PartnerOptions")) {
             Interactor interactor = new PartnerOptions(presenter, players);
-            return new Handler(parser, interactor, presenter, console);
+            return new Options(parser, interactor, presenter, console);
         }
 
         throw new IllegalArgumentException();

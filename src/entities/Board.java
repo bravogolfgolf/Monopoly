@@ -1,13 +1,20 @@
 package game.entities;
 
+import game.interactors.movetoken.MoveTokenBoardGateway;
+
 import java.util.List;
 
-public class Board {
+public class Board implements MoveTokenBoardGateway {
 
     private final List<Space> board;
 
     public Board(List<Space> board) {
         this.board = board;
+    }
+
+    @Override
+    public Board.Space move(Token token, Dice dice) {
+        return new Board.Space.RealEstate("Baltic Avenue");
     }
 
     public static class Space {
@@ -16,6 +23,10 @@ public class Board {
 
         private Space(String description) {
             this.description = description;
+        }
+
+        public String getDescription() {
+            return description;
         }
 
         public static class Go extends Space {

@@ -1,7 +1,5 @@
 package game.controllers;
 
-import game.entities.Dice;
-
 import java.util.Map;
 
 public interface ControllerPresenter {
@@ -11,6 +9,4 @@ public interface ControllerPresenter {
     Map<Integer,String> returnAndClearMenuMap();
 
     void startTurnMessage();
-
-    void rollMessage(Dice dice);
 }
