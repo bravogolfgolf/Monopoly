@@ -1,7 +1,7 @@
 package game.entities;
 
 import game.doubles.DiceMock;
-import game.factories.SpacesTEST;
+import game.doubles.SpacesTEST;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

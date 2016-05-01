@@ -1,14 +1,19 @@
 package game.doubles;
 
-import game.parser.ParserManager;
+import game.manager.ControllerFactory;
+import game.manager.StateManagerImpl;
 
-public class StateManagerMock implements ParserManager {
+public class StateManagerMock extends StateManagerImpl {
 
     public boolean validUseCaseEntryCalled = false;
     public boolean verifyInvalidEntryCalled = false;
     public boolean verifyZeroEnteredCalled = false;
     public boolean verifyOneEnteredCalled = false;
     public boolean verifyTwoEnteredCalled = false;
+
+    public StateManagerMock(ControllerFactory factory) {
+        super(factory);
+    }
 
     @Override
     public void validTextEntry(String result) {

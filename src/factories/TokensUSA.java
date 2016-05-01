@@ -5,9 +5,9 @@ import game.entities.Token;
 import java.util.Set;
 import java.util.TreeSet;
 
-class TokensUSA {
+public class TokensUSA {
 
-    static Set<Token> create() {
+    public static Set<Token> create() {
         return new TreeSet<Token>() {{
             add(new Token("Wheelbarrow"));
             add(new Token("Battleship"));

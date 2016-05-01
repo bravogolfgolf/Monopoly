@@ -1,4 +1,4 @@
-package game.factories;
+package game.doubles;
 
 import game.entities.Board;
 
