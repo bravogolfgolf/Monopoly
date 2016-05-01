@@ -2,9 +2,9 @@ package game.doubles;
 
 import game.controllers.Controller;
 import game.entities.Dice;
-import game.manager.ControllerFactory;
+import game.manager.ManagerControllerFactory;
 
-public class ControllerFactoryImplDummy implements ControllerFactory {
+public class ControllerFactoryImplDummy implements ManagerControllerFactory {
     @Override
     public Controller make(String controller) {
         return null;

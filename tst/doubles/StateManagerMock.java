@@ -1,6 +1,6 @@
 package game.doubles;
 
-import game.manager.ControllerFactory;
+import game.manager.ManagerControllerFactory;
 import game.manager.StateManagerImpl;
 
 public class StateManagerMock extends StateManagerImpl {
@@ -11,7 +11,7 @@ public class StateManagerMock extends StateManagerImpl {
     public boolean verifyOneEnteredCalled = false;
     public boolean verifyTwoEnteredCalled = false;
 
-    public StateManagerMock(ControllerFactory factory) {
+    public StateManagerMock(ManagerControllerFactory factory) {
         super(factory);
     }
 

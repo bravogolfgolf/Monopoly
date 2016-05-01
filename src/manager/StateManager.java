@@ -10,10 +10,10 @@ import java.io.IOException;
 public abstract class StateManager implements ParserManager {
 
     private State state;
-    final ControllerFactory factory;
+    final ManagerControllerFactory factory;
     Controller controller;
 
-    StateManager(ControllerFactory factory) {
+    StateManager(ManagerControllerFactory factory) {
         this.factory = factory;
     }
 

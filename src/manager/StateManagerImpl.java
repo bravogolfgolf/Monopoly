@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class StateManagerImpl extends StateManager {
 
-    public StateManagerImpl(ControllerFactory factory) {
+    public StateManagerImpl(ManagerControllerFactory factory) {
         super(factory);
     }
 

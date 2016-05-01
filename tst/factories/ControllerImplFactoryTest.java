@@ -2,7 +2,7 @@ package game.factories;
 
 import game.display.Console;
 import game.entities.Dice;
-import game.manager.ControllerFactory;
+import game.manager.ManagerControllerFactory;
 import game.parser.Parser;
 import game.presenters.PresenterEn;
 import game.repositories.Players;
@@ -18,7 +18,7 @@ public class ControllerImplFactoryTest {
     private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
     private final Dice dice = Dice.roll();
 
-    private ControllerFactory controllerFactory;
+    private ManagerControllerFactory controllerFactory;
 
     @Before
     public void setUp() {

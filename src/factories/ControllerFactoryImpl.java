@@ -12,12 +12,12 @@ import game.interactors.selectfirst.SelectFirst;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
 import game.interactors.versionoptions.VersionOptions;
-import game.manager.ControllerFactory;
+import game.manager.ManagerControllerFactory;
 import game.presenters.Presenter;
 import game.repositories.Players;
 import game.repositories.Tokens;
 
-public class ControllerFactoryImpl implements ControllerFactory {
+public class ControllerFactoryImpl implements ManagerControllerFactory {
 
     static Board board;
     static Tokens tokens;
