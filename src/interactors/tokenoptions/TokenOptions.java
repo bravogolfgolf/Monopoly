@@ -30,7 +30,7 @@ public abstract class TokenOptions extends Interactor {
     public void handle(ControllerRequest request) {
         Token token = new Token(request.string);
         tokens.removeToken(token);
-        players.addWith(token);
+        players.add(token);
         response.token = token.getDescription();
         presenter.playerCreatedMessage(response);
     }

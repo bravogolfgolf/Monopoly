@@ -11,7 +11,7 @@ public class PlayersMock extends Players {
     public boolean verifyGetAllPlayersExceptCurrentCalled = false;
 
     @Override
-    public void addWith(Token request) {
+    public void add(Token request) {
         verifyAddWithCalled = true;
     }
 

@@ -4,5 +4,5 @@ import game.entities.Token;
 
 public interface TokenOptionsPlayersGateway {
 
-    void addWith(Token request);
+    void add(Token request);
 }

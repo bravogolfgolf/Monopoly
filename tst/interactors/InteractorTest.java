@@ -29,7 +29,7 @@ public class InteractorTest {
     private final SelectVersionFactoryMock factory = new SelectVersionFactoryMock();
     private final TokensMock tokens = new TokensMock(TokensUSA.create());
     private final PlayersMock players = new PlayersMock();
-    private final BoardMock board = new BoardMock(SpacesUSA.create());
+    private final BoardFake board = new BoardFake(SpacesUSA.create());
     private final ControllerRequest request = new ControllerRequest();
 
     @Before
@@ -162,13 +162,24 @@ public class InteractorTest {
         private final Interactor interactor = new MoveToken(presenter, players, board);
 
         @Test
-        public void testMoveToken() {
-
+        public void testMovePassedGO() {
+            request.dice = new DiceMock(2, false);
             interactor.handle(request);
+
             assertTrue(presenter.verifyRollMessageCalled);
             assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(board.verifyMoveCalled);
-            assertTrue(presenter.verifyMoveMessageCalled);
+            assertTrue(presenter.verifypassedGOMessageCalled);
+        }
+
+        @Test
+        public void testMoveDidNotPassedGO() {
+            request.dice = new DiceMock(1, false);
+            interactor.handle(request);
+
+            assertTrue(presenter.verifyRollMessageCalled);
+            assertTrue(players.verifyGetCurrentPlayerCalled);
+            assertTrue(board.verifyMoveCalled);
         }
     }
 }

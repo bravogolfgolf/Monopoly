@@ -1,20 +1,21 @@
 package game.doubles;
 
 import game.entities.Board;
+import game.entities.Token;
 
 import java.util.List;
 
-public class BoardMock extends Board {
+public class BoardFake extends Board {
 
     public boolean verifyMoveCalled = false;
 
-    public BoardMock(List<Space> board) {
+    public BoardFake(List<Space> board) {
         super(board);
     }
 
     @Override
-    public Space move(int spaceID, int forward) {
+    public boolean movesPassedGO(Token token, int forward) {
         verifyMoveCalled = true;
-        return new Space.Go(20,"Free Parking");
+        return (forward %2 == 0);
     }
 }

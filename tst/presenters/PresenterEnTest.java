@@ -208,11 +208,10 @@ public class PresenterEnTest {
         }
 
         @Test
-        public void testMoveMessage() throws IOException {
-            response.token = "Cat";
-            response.space = "Boardwalk";
-            presenter.moveMessage(response);
-            expected = "Cat landed on Boardwalk.\n";
+        public void testPassedGOMessage() throws IOException {
+            response.space = "GO";
+            presenter.passedGOMessage(response);
+            expected = "You passed GO! Collect 200.\n";
             verifyMessage();
         }
     }

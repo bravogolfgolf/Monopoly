@@ -8,7 +8,7 @@ import java.util.List;
 public class SpacesUSA {
     public static List<Board.Space> create() {
         return new ArrayList<Board.Space>() {{
-            add(new Board.Space.Go(0, "Go"));
+            add(new Board.Space.Go(0, "GO"));
             add(new Board.Space.RealEstate(1, "Mediterranean Avenue"));
             add(new Board.Space.CommunityChest(2, "Community Chest"));
             add(new Board.Space.RealEstate(3, "Baltic Avenue"));

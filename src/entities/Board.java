@@ -12,17 +12,27 @@ public class Board implements MoveTokenBoardGateway {
         this.board = board;
     }
 
-    public static Board create(List<Space> spaces){
+    public static Board create(List<Space> spaces) {
+        for (int i = 1; i < spaces.size(); i++) {
+            spaces.get(i - 1).setNextSpace(spaces.get(i));
+        }
+        spaces.get(39).setNextSpace(spaces.get(0));
         return new Board(spaces);
     }
 
     @Override
-    public Board.Space move(int spaceID, int forward) {
-        Space startingSpace = findSpaceBy(spaceID + forward);
-        return startingSpace;
+    public boolean movesPassedGO(Token token, int forward) {
+        boolean passedGO = false;
+        Space space = findSpaceBy(token.getSpaceID()).nextSpace;
+        for (int i = 1; i < forward; i++) {
+            passedGO = space.passedGO();
+            space = space.nextSpace;
+        }
+        token.setSpaceID(space.getSpaceID());
+        return passedGO;
     }
 
-    private Space findSpaceBy(int spaceID) {
+    public Space findSpaceBy(int spaceID) {
         for (Space space : board) {
             if (space.getSpaceID() == spaceID)
                 return space;
@@ -30,10 +40,11 @@ public class Board implements MoveTokenBoardGateway {
         throw new IllegalArgumentException();
     }
 
-    public static class Space {
+    public abstract static class Space {
 
         private final int spaceID;
         private final String description;
+        private Space nextSpace;
 
         private Space(int spaceID, String description) {
             this.spaceID = spaceID;
@@ -48,9 +59,22 @@ public class Board implements MoveTokenBoardGateway {
             return description;
         }
 
+        private void setNextSpace(Space nextSpace) {
+            this.nextSpace = nextSpace;
+        }
+
+        protected boolean passedGO() {
+            return false;
+        }
+
         public static class Go extends Space {
             public Go(int ID, String description) {
                 super(ID, description);
+            }
+
+            @Override
+            public boolean passedGO() {
+                return true;
             }
         }
 

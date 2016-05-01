@@ -25,7 +25,7 @@ public class PresenterMock extends Presenter {
     public boolean verifySelectTradingPartnerPromptMessageCalled = false;
     public boolean verifyPartnerOptionsMessageCalled = false;
     public boolean verifyRollMessageCalled = false;
-    public boolean verifyMoveMessageCalled = false;
+    public boolean verifypassedGOMessageCalled = false;
     public boolean verifyStartTurnMessageCalled = false;
     public boolean verifyWriteMessageCalled = false;
 
@@ -85,8 +85,8 @@ public class PresenterMock extends Presenter {
     }
 
     @Override
-    public void moveMessage(MoveTokenResponse response) {
-        verifyMoveMessageCalled = true;
+    public void passedGOMessage(MoveTokenResponse response) {
+        verifypassedGOMessageCalled = true;
     }
 
     @Override
