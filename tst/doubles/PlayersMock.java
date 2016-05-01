@@ -1,14 +1,14 @@
-package game.interactors;
+package game.doubles;
 
 import game.entities.Token;
 import game.repositories.Players;
 
-class PlayersMock extends Players {
+public class PlayersMock extends Players {
 
-    boolean verifyAddWithCalled = false;
-    boolean verifyRandomizePlayersCalled = false;
-    boolean verifyGetCurrentPlayerCalled = false;
-    boolean verifyGetAllPlayersExceptCurrentCalled = false;
+    public boolean verifyAddWithCalled = false;
+    public boolean verifyRandomizePlayersCalled = false;
+    public boolean verifyGetCurrentPlayerCalled = false;
+    public boolean verifyGetAllPlayersExceptCurrentCalled = false;
 
     @Override
     public void addWith(Token request) {

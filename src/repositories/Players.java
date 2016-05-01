@@ -1,6 +1,7 @@
 package game.repositories;
 
 import game.entities.Token;
+import game.interactors.movetoken.MoveTokenPlayerGateway;
 import game.interactors.partneroptions.PartnerOptionsGateway;
 import game.interactors.propertyoptions.PropertyOptionsPlayerGateway;
 import game.interactors.selectfirst.SelectFirstPlayerGateway;
@@ -11,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Players implements TokenOptionsPlayersGateway, SelectFirstPlayerGateway, PropertyOptionsPlayerGateway,
-        PartnerOptionsGateway {
+        PartnerOptionsGateway, MoveTokenPlayerGateway {
 
     private final List<Token> players = new LinkedList<>();
     private Token current;

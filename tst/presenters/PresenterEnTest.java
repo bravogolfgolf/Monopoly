@@ -1,6 +1,8 @@
 package game.presenters;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
+import game.doubles.DiceMock;
+import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
@@ -167,7 +169,36 @@ public class PresenterEnTest {
                 expected = "Available trading partners: (1)Cat, (2)Boot\n";
                 assertEquals(expected, presenter.getFormattedMessage());
             }
+        }
+    }
 
+    public class MoveTest {
+
+        private final MoveTokenResponse response = new MoveTokenResponse();
+
+        @Test
+        public void testRollMessage() {
+            response.dice =  new DiceMock(2, false);
+            presenter.rollMessage(response);
+            expected = "You rolled 2.\n";
+            assertEquals(expected, presenter.getFormattedMessage());
+        }
+
+        @Test
+        public void testRollDoubleMessage() {
+            response.dice =  new DiceMock(2, true);
+            presenter.rollMessage(response);
+            expected = "Doubles! You rolled 2.\n";
+            assertEquals(expected, presenter.getFormattedMessage());
+        }
+
+        @Test
+        public void testMoveMessage() {
+            response.token = "Cat";
+            response.space = "Boardwalk";
+            presenter.moveMessage(response);
+            expected = "Cat landed on Boardwalk.\n";
+            assertEquals(expected, presenter.getFormattedMessage());
 
         }
     }

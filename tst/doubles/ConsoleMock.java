@@ -1,16 +1,16 @@
-package game.controllers;
+package game.doubles;
 
 import game.display.Console;
 import game.display.ConsoleParser;
 
 import java.io.IOException;
 
-class ConsoleMock extends Console {
+public class ConsoleMock extends Console {
 
-    boolean verifyWriteCalled = false;
-    boolean verifyReadCalled = false;
+    public boolean verifyWriteCalled = false;
+    public boolean verifyReadCalled = false;
 
-    ConsoleMock(ConsoleParser parser) {
+    public ConsoleMock(ConsoleParser parser) {
         super(parser);
     }
 

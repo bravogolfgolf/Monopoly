@@ -6,6 +6,6 @@
 |game.fitnesse   |
 |fitnesse.fixture|
 
-|Test Class For Fitnesse|
+|fitnesse test|
 |firstNumber|secondNumber|add?|
 |1|2|3|

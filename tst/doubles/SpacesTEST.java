@@ -1,13 +1,13 @@
-package game.factories;
+package game.doubles;
 
 import game.entities.Board;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class SpacesTEST {
+public class SpacesTEST {
 
-    static List<Board.Space> create() {
+    public static List<Board.Space> create() {
         return new ArrayList<Board.Space>() {{
             add(new Board.Space.Go("Go"));
             add(new Board.Space.RealEstate("Mediterranean Avenue"));

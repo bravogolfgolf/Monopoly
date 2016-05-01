@@ -1,6 +1,8 @@
 package game.presenters;
 
 import game.controllers.ControllerPresenter;
+import game.interactors.movetoken.MoveTokenPresenter;
+import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -16,7 +18,7 @@ import java.util.Map;
 
 public abstract class Presenter implements ControllerPresenter,
         VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter,
-        PropertyOptionsPresenter, PartnerOptionsPresenter {
+        PropertyOptionsPresenter, PartnerOptionsPresenter, MoveTokenPresenter {
 
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
@@ -107,6 +109,9 @@ public abstract class Presenter implements ControllerPresenter,
 
     @Override
     public abstract void startTurnMessage();
+
+    @Override
+    public abstract void rollMessage(MoveTokenResponse dice);
 
     @Override
     public abstract void selectPropertyPromptMessage();

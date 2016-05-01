@@ -2,6 +2,10 @@ package game.interactors;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.ControllerRequest;
+import game.doubles.*;
+import game.entities.Dice;
+import game.factories.TokensUSA;
+import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
@@ -20,13 +24,15 @@ public class InteractorTest {
 
     private final PresenterMock presenter = new PresenterMock();
     private final SelectVersionFactoryMock factory = new SelectVersionFactoryMock();
-    private final TokensMock tokens = new TokensMock();
+    private final TokensMock tokens = new TokensMock(TokensUSA.create());
     private final PlayersMock players = new PlayersMock();
+    private final BoardMock board = new BoardMock(SpacesTEST.create());
     private final ControllerRequest request = new ControllerRequest();
 
     @Before
     public void setup() {
         request.string = "";
+        request.dice = Dice.roll();
     }
 
     public class VersionOptionsTest {
@@ -126,6 +132,7 @@ public class InteractorTest {
         @Test
         public void testHandle() {
             interactor.handle();
+
             assertTrue(players.verifyGetCurrentPlayerCalled);
             // TODO When properties are defined
             assertTrue(presenter.verifySelectPropertyPromptMessageCalled);
@@ -140,9 +147,25 @@ public class InteractorTest {
         @Test
         public void testHandle() {
             interactor.handle();
+
             assertTrue(presenter.verifySelectTradingPartnerPromptMessageCalled);
             assertTrue(players.verifyGetAllPlayersExceptCurrentCalled);
             assertTrue(presenter.verifyPartnerOptionsMessageCalled);
+        }
+    }
+
+    public class MoveTokenTest {
+
+        private final Interactor interactor = new MoveToken(presenter, players, board);
+
+        @Test
+        public void testMoveToken() {
+
+            interactor.handle(request);
+            assertTrue(presenter.verifyRollMessageCalled);
+            assertTrue(players.verifyGetCurrentPlayerCalled);
+            assertTrue(board.verifyMoveCalled);
+            assertTrue(presenter.verifyMoveMessageCalled);
         }
     }
 }

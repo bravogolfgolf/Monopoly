@@ -13,7 +13,7 @@ public class SelectVersionFactoryImpl implements VersionOptionsVersionFactory {
 
     @Override
     public String[] getAvailableVersions() {
-        String[] result = new String[]{"USA", "TEST"};
+        String[] result = new String[]{"USA"};
         Arrays.sort(result);
         return result;
     }
@@ -24,10 +24,6 @@ public class SelectVersionFactoryImpl implements VersionOptionsVersionFactory {
             case "USA":
                 board = new Board(SpacesUSA.create());
                 tokens = new Tokens(TokensUSA.create());
-                break;
-            case "TEST":
-                board = new Board(SpacesTEST.create());
-                tokens = new Tokens(TokensTEST.create());
                 break;
             default:
                 throw new IllegalArgumentException();
