@@ -12,7 +12,7 @@ public class ControllerImplFactoryTest {
 
     private final Parser parser = new Parser();
     private final Console console = new Console(parser);
-    private final PresenterEn presenter = new PresenterEn();
+    private final PresenterEn presenter = new PresenterEn(console);
     private final Players players = new Players();
     private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
 
@@ -20,7 +20,6 @@ public class ControllerImplFactoryTest {
 
     @Before
     public void setUp() {
-
         controllerFactory = new ControllerFactoryImpl(parser, presenter, factory, players, console);
     }
 

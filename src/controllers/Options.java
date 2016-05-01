@@ -2,7 +2,6 @@ package game.controllers;
 
 import game.display.Console;
 import game.interactors.Interactor;
-import game.parser.ControllerConsole;
 import game.parser.Parser;
 import game.presenters.Presenter;
 
@@ -27,13 +26,13 @@ public class Options extends Controller {
     public void execute() throws IOException {
         interactor.handle();
         parser.setMap(presenter.returnAndClearMenuMap());
-        console.write(presenter.getFormattedMessage());
+        presenter.writeMessage();
         console.read();
     }
 
     public void handle(String text) throws IOException {
         request.string = text;
         interactor.handle(request);
-        console.write(presenter.getFormattedMessage());
+        presenter.writeMessage();
     }
 }

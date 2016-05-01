@@ -22,7 +22,9 @@ import static org.junit.Assert.assertTrue;
 @RunWith(HierarchicalContextRunner.class)
 public class InteractorTest {
 
-    private final PresenterMock presenter = new PresenterMock();
+    private final ParserMock parser = new ParserMock();
+    private final ConsoleMock console = new ConsoleMock(parser);
+    private final PresenterMock presenter = new PresenterMock(console);
     private final SelectVersionFactoryMock factory = new SelectVersionFactoryMock();
     private final TokensMock tokens = new TokensMock(TokensUSA.create());
     private final PlayersMock players = new PlayersMock();

@@ -1,5 +1,6 @@
 package game.presenters;
 
+import game.display.Console;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -8,6 +9,10 @@ import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsResponse;
 
 public class PresenterEn extends Presenter {
+
+    public PresenterEn(Console console) {
+        super(console);
+    }
 
     @Override
     public void selectVersionPromptMessage() {

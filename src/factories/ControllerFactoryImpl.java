@@ -57,7 +57,7 @@ public class ControllerFactoryImpl implements ControllerFactory {
 
         if (controller.equals("Message")) {
             Interactor interactor = new SelectFirst(presenter, players);
-            return new Message(interactor, presenter, console);
+            return new Message(interactor, presenter);
         }
 
         if (controller.equals("StartTurn")) {

@@ -1,7 +1,6 @@
 package game.controllers;
 
 import game.display.Console;
-import game.parser.ControllerConsole;
 import game.parser.Parser;
 import game.presenters.Presenter;
 
@@ -23,7 +22,7 @@ public class StartTurn extends Controller {
     public void execute() throws IOException {
         parser.clearMap();
         presenter.startTurnMessage();
-        console.write(presenter.getFormattedMessage());
+        presenter.writeMessage();
         console.read();
     }
 }

@@ -1,5 +1,6 @@
 package game.doubles;
 
+import game.display.Console;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -29,6 +30,10 @@ public class PresenterMock extends Presenter {
     public boolean verifyStartTurnMessageCalled = false;
     public boolean verifyGetFormattedMessageCalled = false;
     public boolean verifyGetMenuMapCalled = false;
+
+    public PresenterMock(Console console) {
+        super(console);
+    }
 
     @Override
     public void selectVersionPromptMessage() {
@@ -91,9 +96,8 @@ public class PresenterMock extends Presenter {
     }
 
     @Override
-    public String getFormattedMessage() {
+    public void writeMessage() {
         verifyGetFormattedMessageCalled = true;
-        return null;
     }
 
     @Override

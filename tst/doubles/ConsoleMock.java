@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class ConsoleMock extends Console {
 
-    public boolean verifyWriteCalled = false;
     public boolean verifyReadCalled = false;
+    public String verifyWriteMessage;
 
     public ConsoleMock(ConsoleParser parser) {
         super(parser);
@@ -21,6 +21,6 @@ public class ConsoleMock extends Console {
 
     @Override
     public void write(String text) throws IOException {
-        verifyWriteCalled = true;
+        verifyWriteMessage = text;
     }
 }

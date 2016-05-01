@@ -1,6 +1,7 @@
 package game.presenters;
 
 import game.controllers.ControllerPresenter;
+import game.display.Console;
 import game.interactors.movetoken.MoveTokenPresenter;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsPresenter;
@@ -13,6 +14,7 @@ import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsPresenter;
 import game.interactors.versionoptions.VersionOptionsResponse;
 
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -20,17 +22,22 @@ public abstract class Presenter implements ControllerPresenter,
         VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter,
         PropertyOptionsPresenter, PartnerOptionsPresenter, MoveTokenPresenter {
 
+    private final PresenterConsole console;
     private static final String NEW_LINE = System.lineSeparator();
     private StringBuffer messageBuffer = new StringBuffer();
     final Map<Integer, String> menuMap = new Hashtable<>();
     String template;
     String[] variables;
 
+    public Presenter(Console console) {
+        this.console = console;
+    }
+
     @Override
-    public String getFormattedMessage() {
+    public void writeMessage() throws IOException {
         String result = messageBuffer.toString();
         messageBuffer = new StringBuffer();
-        return result;
+        console.write(result);
     }
 
     @Override

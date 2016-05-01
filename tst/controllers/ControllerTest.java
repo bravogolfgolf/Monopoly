@@ -18,7 +18,7 @@ public class ControllerTest {
 
     private final ParserMock parser = new ParserMock();
     private final ConsoleMock console = new ConsoleMock(parser);
-    private final PresenterMock presenter = new PresenterMock();
+    private final PresenterMock presenter = new PresenterMock(console);
     private final InteractorMock interactor = new InteractorMock();
     private Controller controller;
 
@@ -32,7 +32,6 @@ public class ControllerTest {
             assertTrue(interactor.verifyHandleWithOutArgumentCalled);
             assertTrue(presenter.verifyGetMenuMapCalled);
             assertTrue(parser.verifySetMapCalled);
-            assertTrue(console.verifyWriteCalled);
             assertTrue(console.verifyReadCalled);
         }
 
@@ -43,7 +42,6 @@ public class ControllerTest {
 
             assertTrue(interactor.verifyHandleWithArgumentCalled);
             assertTrue(presenter.verifyGetFormattedMessageCalled);
-            assertTrue(console.verifyWriteCalled);
         }
     }
 
@@ -57,7 +55,6 @@ public class ControllerTest {
             assertTrue(parser.verifyClearMapCalled);
             assertTrue(presenter.verifyStartTurnMessageCalled);
             assertTrue(presenter.verifyGetFormattedMessageCalled);
-            assertTrue(console.verifyWriteCalled);
         }
     }
 
@@ -65,12 +62,11 @@ public class ControllerTest {
 
         @Test
         public void execute() throws IOException {
-            controller = new Message(interactor, presenter, console);
+            controller = new Message(interactor, presenter);
             controller.execute();
 
             assertTrue(interactor.verifyHandleWithOutArgumentCalled);
             assertTrue(presenter.verifyGetFormattedMessageCalled);
-            assertTrue(console.verifyWriteCalled);
         }
     }
 
@@ -79,12 +75,11 @@ public class ControllerTest {
         @Test
         public void execute() throws IOException {
             Dice dice = Dice.roll();
-            controller = new Move(interactor, presenter, console, dice);
+            controller = new Move(interactor, presenter, dice);
             controller.execute();
 
             assertTrue(interactor.verifyHandleWithArgumentCalled);
             assertTrue(presenter.verifyGetFormattedMessageCalled);
-            assertTrue(console.verifyWriteCalled);
         }
     }
 }
