@@ -1,13 +1,19 @@
 package game.presenters;
 
+import game.display.Console;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsResponse;
+import game.parser.Parser;
 
 public class PresenterEn extends Presenter {
+
+    public PresenterEn(Console console, Parser parser) {
+        super(console, parser);
+    }
 
     @Override
     public void selectVersionPromptMessage() {
@@ -19,7 +25,7 @@ public class PresenterEn extends Presenter {
     public void availableVersionsMessage(VersionOptionsResponse response) {
         template = "Available versions: %s";
         variables = response.versions;
-        clearAndCreateMenuMap(variables);
+        createMenuMap(variables);
         addMenuToBuffer(template, menuMap);
     }
 
@@ -45,7 +51,7 @@ public class PresenterEn extends Presenter {
     @Override
     public void availableTokensMessage(TokenOptionsResponse response) {
         template = "Available tokens: %s";
-        clearAndCreateMenuMap(response.tokens);
+        createMenuMap(response.tokens);
         addMenuToBuffer(template, menuMap);
     }
 
@@ -104,7 +110,7 @@ public class PresenterEn extends Presenter {
     @Override
     public void partnerOptionsMessage(PartnerOptionsResponse response) {
         template = "Available trading partners: %s";
-        clearAndCreateMenuMap(response.players);
+        createMenuMap(response.players);
         addMenuToBuffer(template, menuMap);
     }
 }

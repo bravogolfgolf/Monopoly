@@ -1,7 +1,9 @@
 package game.presenters;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
+import game.doubles.ConsoleMock;
 import game.doubles.DiceMock;
+import game.doubles.ParserMock;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -11,6 +13,7 @@ import game.interactors.versionoptions.VersionOptionsResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -19,28 +22,40 @@ import static org.junit.Assert.assertEquals;
 @RunWith(HierarchicalContextRunner.class)
 public class PresenterEnTest {
 
-    private final Presenter presenter = new PresenterEn();
+    private final ParserMock parser = new ParserMock();
+    private final ConsoleMock console = new ConsoleMock(parser);
+    private final Presenter presenter = new PresenterEn(console, parser);
     private String expected;
+
+    private void verifyMessage() throws IOException {
+        presenter.writeMessage();
+        assertEquals(expected, console.verifyWriteMessage);
+    }
+
+    private void verifyMenuMap(Map<Integer, String> expected) throws IOException {
+        presenter.writeMessage();
+        assertEquals(expected, parser.verifySetMapValue);
+    }
 
     public class PresenterTest {
 
         @Test
-        public void testGetMenuMap() {
+        public void testGetMenuMap() throws IOException {
             Map<Integer, String> expected = new Hashtable<Integer, String>() {{
                 put(1, "Cat");
             }};
-            presenter.clearAndCreateMenuMap(new String[]{"Cat"});
-            assertEquals(expected, presenter.returnAndClearMenuMap());
+            presenter.createMenuMap(new String[]{"Cat"});
+            verifyMenuMap(expected);
         }
     }
 
     public class SelectVersionTest {
 
         @Test
-        public void testSelectVersionPromptMessage() {
+        public void testSelectVersionPromptMessage() throws IOException {
             presenter.selectVersionPromptMessage();
             expected = "\nSelect version of game you would like to play.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
+            verifyMessage();
         }
 
         public class VersionOptionsResponseTest {
@@ -48,19 +63,19 @@ public class PresenterEnTest {
             private final VersionOptionsResponse response = new VersionOptionsResponse();
 
             @Test
-            public void testAvailableVersionsMessage() {
+            public void testAvailableVersionsMessage() throws IOException {
                 response.versions = new String[]{"FRA", "USA"};
                 presenter.availableVersionsMessage(response);
                 expected = "Available versions: (1)FRA, (2)USA\n";
-                assertEquals(expected, presenter.getFormattedMessage());
+                verifyMessage();
             }
 
             @Test
-            public void testVersionCreatedMessage() {
+            public void testVersionCreatedMessage() throws IOException {
                 response.version = "USA";
                 presenter.versionCreatedMessage(response);
                 expected = "\nUSA version of game created.\n";
-                assertEquals(expected, presenter.getFormattedMessage());
+                verifyMessage();
             }
         }
     }
@@ -68,17 +83,17 @@ public class PresenterEnTest {
     public class CreatePlayerTest {
 
         @Test
-        public void testCreatePlayerPromptMessageFewerThanTwo() {
+        public void testCreatePlayerPromptMessageFewerThanTwo() throws IOException {
             presenter.createPlayerPromptMessageFewerThanMinimumMessage();
             expected = "\nPlease select token for player. (Players 2 - 8)\n";
-            assertEquals(expected, presenter.getFormattedMessage());
+            verifyMessage();
         }
 
         @Test
-        public void testCreatePlayerPromptMessageTwoOrMore() {
+        public void testCreatePlayerPromptMessageTwoOrMore() throws IOException {
             presenter.createPlayerPromptMessageMinimumToMaximumMessage();
             expected = "\nPlease select token for player or (0)Play to begin. (Players 2 - 8)\n";
-            assertEquals(expected, presenter.getFormattedMessage());
+            verifyMessage();
         }
 
         public class TokenOptionsResponseTest {
@@ -86,19 +101,19 @@ public class PresenterEnTest {
             private final TokenOptionsResponse response = new TokenOptionsResponse();
 
             @Test
-            public void testAvailableTokensMessage() {
+            public void testAvailableTokensMessage() throws IOException {
                 response.tokens = new String[]{"Automobile", "Battleship", "Boot", "Cat", "Scottish Terrier", "Thimble", "Top Hat", "Wheelbarrow"};
                 presenter.availableTokensMessage(response);
                 expected = "Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow\n";
-                assertEquals(expected, presenter.getFormattedMessage());
+                verifyMessage();
             }
 
             @Test
-            public void testPlayerCreatedMessage() {
+            public void testPlayerCreatedMessage() throws IOException {
                 response.token = "Cat";
                 presenter.playerCreatedMessage(response);
                 expected = "\nPlayer created with Cat token.\n";
-                assertEquals(expected, presenter.getFormattedMessage());
+                verifyMessage();
             }
         }
     }
@@ -108,31 +123,31 @@ public class PresenterEnTest {
         private final SelectFirstResponse response = new SelectFirstResponse();
 
         @Test
-        public void testPlayerSelectedToGoFirstMessage() {
+        public void testPlayerSelectedToGoFirstMessage() throws IOException {
             response.token = "Cat";
             presenter.playerSelectedToGoFirstMessage(response);
             expected = "\nCat selected to go first.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
+            verifyMessage();
         }
     }
 
     public class StartTurnTest {
 
         @Test
-        public void testStartTurnMessage() {
+        public void testStartTurnMessage() throws IOException {
             presenter.startTurnMessage();
             expected = "\nAvailable options: (0)Roll (1)Manage Properties (2)Trade.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
+            verifyMessage();
         }
     }
 
     public class PropertyOptionsTest {
 
         @Test
-        public void testSelectPropertyPromptMessage() {
+        public void testSelectPropertyPromptMessage() throws IOException {
             presenter.selectPropertyPromptMessage();
             expected = "\nSelect property to manage or (0)Done to return to previous menu.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
+            verifyMessage();
         }
 
         public class PropertyOptionsResponseTest {
@@ -140,11 +155,11 @@ public class PresenterEnTest {
             private final PropertyOptionsResponse response = new PropertyOptionsResponse();
 
             @Test
-            public void testPropertyOptionsMessage() {
+            public void testPropertyOptionsMessage() throws IOException {
                 response.properties = null;
                 presenter.propertyOptionsMessage(response);
                 expected = "No properties to manage.\n";
-                assertEquals(expected, presenter.getFormattedMessage());
+                verifyMessage();
             }
         }
     }
@@ -152,10 +167,10 @@ public class PresenterEnTest {
     public class SelectTradingPartnerTest {
 
         @Test
-        public void testTrade() {
+        public void testTrade() throws IOException {
             presenter.selectTradingPartnerPromptMessage();
             expected = "\nSelect player to trade with or (0)Done to return to previous menu.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
+            verifyMessage();
         }
 
         public class PartnerOptionsResponseTest {
@@ -163,11 +178,11 @@ public class PresenterEnTest {
             private final PartnerOptionsResponse response = new PartnerOptionsResponse();
 
             @Test
-            public void testPartnerOptionsMessage() {
+            public void testPartnerOptionsMessage() throws IOException {
                 response.players = new String[]{"Cat", "Boot"};
                 presenter.partnerOptionsMessage(response);
                 expected = "Available trading partners: (1)Cat, (2)Boot\n";
-                assertEquals(expected, presenter.getFormattedMessage());
+                verifyMessage();
             }
         }
     }
@@ -177,29 +192,28 @@ public class PresenterEnTest {
         private final MoveTokenResponse response = new MoveTokenResponse();
 
         @Test
-        public void testRollMessage() {
-            response.dice =  new DiceMock(2, false);
+        public void testRollMessage() throws IOException {
+            response.dice = new DiceMock(2, false);
             presenter.rollMessage(response);
             expected = "You rolled 2.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
+            verifyMessage();
         }
 
         @Test
-        public void testRollDoubleMessage() {
-            response.dice =  new DiceMock(2, true);
+        public void testRollDoubleMessage() throws IOException {
+            response.dice = new DiceMock(2, true);
             presenter.rollMessage(response);
             expected = "Doubles! You rolled 2.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
+            verifyMessage();
         }
 
         @Test
-        public void testMoveMessage() {
+        public void testMoveMessage() throws IOException {
             response.token = "Cat";
             response.space = "Boardwalk";
             presenter.moveMessage(response);
             expected = "Cat landed on Boardwalk.\n";
-            assertEquals(expected, presenter.getFormattedMessage());
-
+            verifyMessage();
         }
     }
 }

@@ -1,12 +1,10 @@
 package game.controllers;
 
-import java.util.Map;
+import java.io.IOException;
 
 public interface ControllerPresenter {
 
-    String getFormattedMessage();
-
-    Map<Integer,String> returnAndClearMenuMap();
+    void writeMessage() throws IOException;
 
     void startTurnMessage();
 }

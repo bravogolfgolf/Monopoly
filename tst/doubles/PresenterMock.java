@@ -1,14 +1,14 @@
 package game.doubles;
 
+import game.display.Console;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsResponse;
+import game.parser.Parser;
 import game.presenters.Presenter;
-
-import java.util.Map;
 
 public class PresenterMock extends Presenter {
 
@@ -27,8 +27,12 @@ public class PresenterMock extends Presenter {
     public boolean verifyRollMessageCalled = false;
     public boolean verifyMoveMessageCalled = false;
     public boolean verifyStartTurnMessageCalled = false;
-    public boolean verifyGetFormattedMessageCalled = false;
-    public boolean verifyGetMenuMapCalled = false;
+    public boolean verifyWriteMessageCalled = false;
+
+    public PresenterMock(Console console, Parser parser) {
+        super(console, parser);
+    }
+
 
     @Override
     public void selectVersionPromptMessage() {
@@ -91,15 +95,8 @@ public class PresenterMock extends Presenter {
     }
 
     @Override
-    public String getFormattedMessage() {
-        verifyGetFormattedMessageCalled = true;
-        return null;
-    }
-
-    @Override
-    public Map<Integer, String> returnAndClearMenuMap() {
-        verifyGetMenuMapCalled = true;
-        return null;
+    public void writeMessage() {
+        verifyWriteMessageCalled = true;
     }
 
     @Override
