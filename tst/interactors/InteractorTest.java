@@ -4,6 +4,7 @@ import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.ControllerRequest;
 import game.doubles.*;
 import game.entities.Dice;
+import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
@@ -28,7 +29,7 @@ public class InteractorTest {
     private final SelectVersionFactoryMock factory = new SelectVersionFactoryMock();
     private final TokensMock tokens = new TokensMock(TokensUSA.create());
     private final PlayersMock players = new PlayersMock();
-    private final BoardMock board = new BoardMock(SpacesTEST.create());
+    private final BoardMock board = new BoardMock(SpacesUSA.create());
     private final ControllerRequest request = new ControllerRequest();
 
     @Before

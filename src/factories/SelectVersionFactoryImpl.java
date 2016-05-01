@@ -22,7 +22,7 @@ public class SelectVersionFactoryImpl implements VersionOptionsVersionFactory {
     public void make(String version) {
         switch (version) {
             case "USA":
-                board = new Board(SpacesUSA.create());
+                board = Board.create(SpacesUSA.create());
                 tokens = new Tokens(TokensUSA.create());
                 break;
             default:

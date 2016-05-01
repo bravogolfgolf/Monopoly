@@ -1,8 +1,6 @@
 package game.doubles;
 
 import game.entities.Board;
-import game.entities.Dice;
-import game.entities.Token;
 
 import java.util.List;
 
@@ -15,8 +13,8 @@ public class BoardMock extends Board {
     }
 
     @Override
-    public Space move(Token token, Dice dice) {
+    public Space move(int spaceID, int forward) {
         verifyMoveCalled = true;
-        return super.move(token, dice);
+        return new Space.Go(20,"Free Parking");
     }
 }
