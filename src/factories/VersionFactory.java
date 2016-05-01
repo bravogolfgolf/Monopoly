@@ -6,10 +6,10 @@ import game.repositories.Tokens;
 
 import java.util.Arrays;
 
-import static game.factories.ControllerFactoryImpl.board;
-import static game.factories.ControllerFactoryImpl.tokens;
+import static game.factories.ControllerFactory.board;
+import static game.factories.ControllerFactory.tokens;
 
-public class SelectVersionFactoryImpl implements VersionOptionsVersionFactory {
+public class VersionFactory implements VersionOptionsVersionFactory {
 
     @Override
     public String[] getAvailableVersions() {

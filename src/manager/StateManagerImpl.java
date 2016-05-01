@@ -1,12 +1,13 @@
 package game.manager;
 
 import game.entities.Dice;
+import game.factories.ControllerFactory;
 
 import java.io.IOException;
 
 public class StateManagerImpl extends StateManager {
 
-    public StateManagerImpl(ManagerControllerFactory factory) {
+    public StateManagerImpl(ControllerFactory factory) {
         super(factory);
     }
 

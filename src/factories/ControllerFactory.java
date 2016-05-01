@@ -17,17 +17,17 @@ import game.presenters.Presenter;
 import game.repositories.Players;
 import game.repositories.Tokens;
 
-public class ControllerFactoryImpl implements ManagerControllerFactory {
+public class ControllerFactory implements ManagerControllerFactory {
 
     static Board board;
     static Tokens tokens;
     private final Presenter presenter;
-    private final SelectVersionFactoryImpl factory;
+    private final VersionFactory factory;
     private final Players players;
     private final Console console;
 
 
-    public ControllerFactoryImpl(Presenter presenter, SelectVersionFactoryImpl factory, Players players, Console console) {
+    public ControllerFactory(Presenter presenter, VersionFactory factory, Players players, Console console) {
         this.presenter = presenter;
         this.factory = factory;
         this.players = players;

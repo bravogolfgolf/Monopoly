@@ -9,20 +9,20 @@ import game.repositories.Players;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ControllerImplFactoryTest {
+public class ControllerFactoryTest {
 
     private final Parser parser = new Parser();
     private final Console console = new Console(parser);
     private final PresenterEn presenter = new PresenterEn(console, parser);
     private final Players players = new Players();
-    private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
+    private final VersionFactory factory = new VersionFactory();
     private final Dice dice = Dice.roll();
 
     private ManagerControllerFactory controllerFactory;
 
     @Before
     public void setUp() {
-        controllerFactory = new ControllerFactoryImpl(presenter, factory, players, console);
+        controllerFactory = new ControllerFactory(presenter, factory, players, console);
     }
 
     @Test(expected = IllegalArgumentException.class)

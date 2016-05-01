@@ -26,7 +26,7 @@ public class InteractorTest {
     private final ParserMock parser = new ParserMock();
     private final ConsoleMock console = new ConsoleMock(parser);
     private final PresenterMock presenter = new PresenterMock(console, parser);
-    private final SelectVersionFactoryMock factory = new SelectVersionFactoryMock();
+    private final VersionFactoryMock factory = new VersionFactoryMock();
     private final TokensMock tokens = new TokensMock(TokensUSA.create());
     private final PlayersMock players = new PlayersMock();
     private final BoardFake board = new BoardFake(SpacesUSA.create());

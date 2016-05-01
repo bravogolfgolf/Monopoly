@@ -1,8 +1,8 @@
 package game;
 
 import game.display.Console;
-import game.factories.ControllerFactoryImpl;
-import game.factories.SelectVersionFactoryImpl;
+import game.factories.ControllerFactory;
+import game.factories.VersionFactory;
 import game.manager.StateImpl;
 import game.manager.StateManager;
 import game.manager.StateManagerImpl;
@@ -18,7 +18,7 @@ final class Monopoly {
     private final Parser parser = new Parser();
     private final Console console = new Console(parser);
     private final Players players = new Players();
-    private final SelectVersionFactoryImpl factory = new SelectVersionFactoryImpl();
+    private final VersionFactory factory = new VersionFactory();
     private StateManager manager;
 
     public static void main(String[] args) throws IOException {
@@ -29,7 +29,7 @@ final class Monopoly {
 
     private void setup(StateImpl state) throws IOException {
         final Presenter presenter = new PresenterEn(console, parser);
-        final ControllerFactoryImpl controllerFactory = new ControllerFactoryImpl(presenter, factory, players, console);
+        final ControllerFactory controllerFactory = new ControllerFactory(presenter, factory, players, console);
         manager = new StateManagerImpl(controllerFactory);
         parser.setManager(manager);
         manager.setState(state);
