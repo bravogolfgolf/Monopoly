@@ -1,7 +1,6 @@
 package game.interactors.movetoken;
 
 import game.controllers.ControllerRequest;
-import game.entities.Board;
 import game.entities.Token;
 import game.interactors.Interactor;
 import game.presenters.Presenter;
@@ -21,16 +20,11 @@ public class MoveToken extends Interactor {
 
     @Override
     public void handle(ControllerRequest request) {
-
+        Token token = players.getCurrentPlayer();
+        boolean passedGO = board.movesPassedGO(token, request.dice.rolled());
         response.dice = request.dice;
         presenter.rollMessage(response);
-
-        Token token = players.getCurrentPlayer();
-        response.token = token.getDescription();
-
-        Board.Space space = board.move(token, request.dice);
-        response.space = space.getDescription();
-
-        presenter.moveMessage(response);
+        if (passedGO)
+            presenter.passedGOMessage(response);
     }
 }

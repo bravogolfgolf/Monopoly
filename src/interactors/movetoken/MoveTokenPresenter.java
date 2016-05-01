@@ -4,5 +4,5 @@ public interface MoveTokenPresenter {
 
     void rollMessage(MoveTokenResponse dice);
 
-    void moveMessage(MoveTokenResponse response);
+    void passedGOMessage(MoveTokenResponse response);
 }

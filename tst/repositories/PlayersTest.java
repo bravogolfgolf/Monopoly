@@ -9,13 +9,15 @@ import static org.junit.Assert.assertTrue;
 public class PlayersTest {
 
     private final Players playerRepository = new Players();
+    private final Token cat = new Token("Cat");
+    private final Token boot = new Token("Boot");
+    private final Token thimble = new Token("Thimble");
 
     @Test
-    public void testCreatePlayer() {
-        Token token = new Token("Cat");
-        playerRepository.addWith(token);
+    public void testAddPlayer() {
+        playerRepository.add(cat);
         playerRepository.randomizePlayers();
-        assertTrue(playerRepository.getCurrentPlayer().equals(token));
+        assertTrue(playerRepository.getCurrentPlayer().equals(cat));
     }
 
     @Test
@@ -24,8 +26,8 @@ public class PlayersTest {
 
         for (int i = 0; i < 100; i++) {
 
-            playerRepository.addWith(new Token("Cat"));
-            playerRepository.addWith(new Token("Boot"));
+            playerRepository.add(cat);
+            playerRepository.add(boot);
 
             playerRepository.randomizePlayers();
 
@@ -37,14 +39,11 @@ public class PlayersTest {
 
     @Test
     public void testGetAllPlayersExceptCurrent() {
-        Token token = new Token("Cat");
-        playerRepository.addWith(token);
+        playerRepository.add(cat);
         playerRepository.randomizePlayers();
 
-        token = new Token("Boot");
-        playerRepository.addWith(token);
-        token = new Token("Thimble");
-        playerRepository.addWith(token);
+        playerRepository.add(boot);
+        playerRepository.add(thimble);
 
         String[] expected = new String[]{"Boot", "Thimble"};
         assertArrayEquals(expected, playerRepository.getAllPlayersExceptCurrent());

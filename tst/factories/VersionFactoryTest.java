@@ -3,9 +3,9 @@ package game.factories;
 import game.interactors.versionoptions.VersionOptionsVersionFactory;
 import org.junit.Test;
 
-public class SelectVersionFactoryTest {
+public class VersionFactoryTest {
 
-    private final VersionOptionsVersionFactory factory = new SelectVersionFactoryImpl();
+    private final VersionOptionsVersionFactory factory = new VersionFactory();
 
     @Test(expected = IllegalArgumentException.class)
     public void testMakeException() {

@@ -4,6 +4,7 @@ import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.ControllerRequest;
 import game.doubles.*;
 import game.entities.Dice;
+import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
@@ -25,10 +26,10 @@ public class InteractorTest {
     private final ParserMock parser = new ParserMock();
     private final ConsoleMock console = new ConsoleMock(parser);
     private final PresenterMock presenter = new PresenterMock(console, parser);
-    private final SelectVersionFactoryMock factory = new SelectVersionFactoryMock();
+    private final VersionFactoryMock factory = new VersionFactoryMock();
     private final TokensMock tokens = new TokensMock(TokensUSA.create());
     private final PlayersMock players = new PlayersMock();
-    private final BoardMock board = new BoardMock(SpacesTEST.create());
+    private final BoardFake board = new BoardFake(SpacesUSA.create());
     private final ControllerRequest request = new ControllerRequest();
 
     @Before
@@ -161,13 +162,24 @@ public class InteractorTest {
         private final Interactor interactor = new MoveToken(presenter, players, board);
 
         @Test
-        public void testMoveToken() {
-
+        public void testMovePassedGO() {
+            request.dice = new DiceMock(2, false);
             interactor.handle(request);
+
             assertTrue(presenter.verifyRollMessageCalled);
             assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(board.verifyMoveCalled);
-            assertTrue(presenter.verifyMoveMessageCalled);
+            assertTrue(presenter.verifypassedGOMessageCalled);
+        }
+
+        @Test
+        public void testMoveDidNotPassedGO() {
+            request.dice = new DiceMock(1, false);
+            interactor.handle(request);
+
+            assertTrue(presenter.verifyRollMessageCalled);
+            assertTrue(players.verifyGetCurrentPlayerCalled);
+            assertTrue(board.verifyMoveCalled);
         }
     }
 }

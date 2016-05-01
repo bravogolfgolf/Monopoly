@@ -1,8 +1,8 @@
 package game.doubles;
 
-import game.factories.SelectVersionFactoryImpl;
+import game.factories.VersionFactory;
 
-public class SelectVersionFactoryMock extends SelectVersionFactoryImpl {
+public class VersionFactoryMock extends VersionFactory {
 
     public boolean verifyMakeCalled = false;
     public boolean verifyGetAvailableVersionsCalled = false;

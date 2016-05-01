@@ -18,7 +18,7 @@ public class Players implements TokenOptionsPlayersGateway, SelectFirstPlayerGat
     private Token current;
 
     @Override
-    public void addWith(Token token) {
+    public void add(Token token) {
         players.add(token);
     }
 

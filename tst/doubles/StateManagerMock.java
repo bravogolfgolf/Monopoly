@@ -1,6 +1,6 @@
 package game.doubles;
 
-import game.manager.ControllerFactory;
+import game.factories.ControllerFactory;
 import game.manager.StateManagerImpl;
 
 public class StateManagerMock extends StateManagerImpl {

@@ -84,8 +84,8 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
-    public void moveMessage(MoveTokenResponse response) {
-        template = String.format("%s landed on %s.", response.token, response.space);
+    public void passedGOMessage(MoveTokenResponse response) {
+        template = String.format("You passed %s! Collect 200.", response.space);
         addNewLine(template);
     }
 

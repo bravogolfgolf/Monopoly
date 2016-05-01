@@ -1,8 +1,7 @@
 package game.parser;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import game.doubles.ControllerFactoryImplDummy;
-import game.doubles.StateManagerMock;
+import game.doubles.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,9 +15,13 @@ import static org.junit.Assert.assertTrue;
 @RunWith(HierarchicalContextRunner.class)
 public class ParserTest {
 
-    private final ControllerFactoryImplDummy factory = new ControllerFactoryImplDummy();
-    private final StateManagerMock manager = new StateManagerMock(factory);
     private final Parser parser = new Parser();
+    private final ConsoleMock console = new ConsoleMock(parser);
+    private final PresenterMock presenter = new PresenterMock(console, parser);
+    private final VersionFactoryMock versionFactory = new VersionFactoryMock();
+    private final PlayersMock players = new PlayersMock();
+    private final ControllerFactoryDummy factory = new ControllerFactoryDummy(presenter, versionFactory, players, console);
+    private final StateManagerMock manager = new StateManagerMock(factory);
     private Map<Integer, String> menuMap;
 
     public class MapWithValesExpectedTest {

@@ -1,34 +1,33 @@
 package game.factories;
 
-import game.controllers.Controller;
-import game.controllers.Message;
-import game.controllers.Options;
-import game.controllers.StartTurn;
+import game.controllers.*;
 import game.display.Console;
 import game.entities.Board;
+import game.entities.Dice;
 import game.interactors.Interactor;
+import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
 import game.interactors.versionoptions.VersionOptions;
-import game.manager.ControllerFactory;
+import game.manager.ManagerControllerFactory;
 import game.presenters.Presenter;
 import game.repositories.Players;
 import game.repositories.Tokens;
 
-public class ControllerFactoryImpl implements ControllerFactory {
+public class ControllerFactory implements ManagerControllerFactory {
 
     static Board board;
     static Tokens tokens;
     private final Presenter presenter;
-    private final SelectVersionFactoryImpl factory;
+    private final VersionFactory factory;
     private final Players players;
     private final Console console;
 
 
-    public ControllerFactoryImpl(Presenter presenter, SelectVersionFactoryImpl factory, Players players, Console console) {
+    public ControllerFactory(Presenter presenter, VersionFactory factory, Players players, Console console) {
         this.presenter = presenter;
         this.factory = factory;
         this.players = players;
@@ -69,6 +68,16 @@ public class ControllerFactoryImpl implements ControllerFactory {
         if (controller.equals("PartnerOptions")) {
             Interactor interactor = new PartnerOptions(presenter, players);
             return new Options(interactor, presenter, console);
+        }
+
+        throw new IllegalArgumentException();
+    }
+
+    @Override
+    public Controller make(String controller, Dice dice) {
+        if (controller.equals("MoveToken")) {
+            Interactor interactor = new MoveToken(presenter, players, board);
+            return new Move(interactor, presenter, dice);
         }
 
         throw new IllegalArgumentException();
