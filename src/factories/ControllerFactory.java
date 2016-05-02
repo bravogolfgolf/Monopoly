@@ -1,6 +1,9 @@
 package game.factories;
 
-import game.controllers.*;
+import game.controllers.Controller;
+import game.controllers.Message;
+import game.controllers.Options;
+import game.controllers.StartTurn;
 import game.display.Console;
 import game.entities.Board;
 import game.interactors.Interactor;
@@ -61,7 +64,7 @@ public class ControllerFactory implements ManagerControllerFactory {
 
         if (controller.equals("MoveToken")) {
             Interactor interactor = new MoveToken(presenter, players, board);
-            return new Move(interactor, presenter);
+            return new Message(interactor, presenter);
         }
 
         if (controller.equals("PropertyOptions")) {

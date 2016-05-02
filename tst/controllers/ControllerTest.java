@@ -66,16 +66,4 @@ public class ControllerTest {
             assertTrue(presenter.verifyWriteMessageCalled);
         }
     }
-
-    public class MoveTest {
-
-        @Test
-        public void execute() throws IOException {
-            controller = new Move(interactor, presenter);
-            controller.execute();
-
-            assertTrue(interactor.verifyHandleWithOutArgumentCalled);
-            assertTrue(presenter.verifyWriteMessageCalled);
-        }
-    }
 }
