@@ -17,8 +17,8 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void selectVersionPromptMessage() {
-        template = "\nSelect version of game you would like to play.";
-        addNewLine(template);
+        template = "Select version of game you would like to play.";
+        addMessageToBuffer(template);
     }
 
     @Override
@@ -38,14 +38,14 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void createPlayerPromptMessageFewerThanMinimumMessage() {
-        template = "\nPlease select token for player. (Players 2 - 8)";
-        addNewLine(template);
+        template = "Please select token for player. (Players 2 - 8)";
+        addMessageToBuffer(template);
     }
 
     @Override
     public void createPlayerPromptMessageMinimumToMaximumMessage() {
-        template = "\nPlease select token for player or (0)Play to begin. (Players 2 - 8)";
-        addNewLine(template);
+        template = "Please select token for player or (0)Play to begin. (Players 2 - 8)";
+        addMessageToBuffer(template);
     }
 
     @Override
@@ -71,40 +71,36 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void startTurnMessage() {
-        template = "\nAvailable options: (0)Roll (1)Manage Properties (2)Trade.";
-        addNewLine(template);
+        template = "Available options: (0)Roll (1)Manage Properties (2)Trade.";
+        addMessageToBuffer(template);
     }
 
     @Override
     public void rollMessage(MoveTokenResponse response) {
-        variables = new String[]{Integer.toString(response.dice.rolled())};
-        if (response.dice.isDoubles()) template = "Doubles! You rolled %s.";
-        else template = "You rolled %s.";
-        addMessageToBuffer(template, variables);
-    }
+        if (response.isDoubles) template = String.format("Doubles! You rolled %d.", response.rolled);
+        else template = String.format("You rolled %d.", response.rolled);
+        addMessageToBuffer(template);
 
-    @Override
-    public void passedGOMessage(MoveTokenResponse response) {
-        template = String.format("You passed %s! Collect 200.", response.space);
-        addNewLine(template);
+        if (response.passedGO)
+            addMessageToBuffer(String.format("You passed %s! Collect 200.", response.GO));
     }
 
     @Override
     public void selectPropertyPromptMessage() {
-        template = "\nSelect property to manage or (0)Done to return to previous menu.";
-        addNewLine(template);
+        template = "Select property to manage or (0)Done to return to previous menu.";
+        addMessageToBuffer(template);
     }
 
     @Override
     public void propertyOptionsMessage(PropertyOptionsResponse response) {
         template = "No properties to manage.";
-        addNewLine(template);
+        addMessageToBuffer(template);
     }
 
     @Override
     public void selectTradingPartnerPromptMessage() {
-        template = "\nSelect player to trade with or (0)Done to return to previous menu.";
-        addNewLine(template);
+        template = "Select player to trade with or (0)Done to return to previous menu.";
+        addMessageToBuffer(template);
     }
 
     @Override

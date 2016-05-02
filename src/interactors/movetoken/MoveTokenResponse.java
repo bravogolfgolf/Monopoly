@@ -1,10 +1,12 @@
 package game.interactors.movetoken;
 
-import game.entities.Dice;
-
 public class MoveTokenResponse {
 
-    public Dice dice;
+    public int rolled;
 
-    public String space;
+    public boolean isDoubles;
+
+    public boolean passedGO;
+
+    public String GO;
 }

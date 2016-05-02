@@ -285,8 +285,8 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            dice = Dice.roll();
-            if (dice.isDoubles())
+            Dice.roll();
+            if (Dice.isDoubles())
                 manager.setState(StateImpl.DOUBLES_1);
             manager.setState(StateImpl.NOT_DOUBLES);
             manager.initialize();
@@ -308,7 +308,7 @@ public enum StateImpl implements State {
     NOT_DOUBLES {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createAndExecuteController("MoveToken", dice);
+            manager.createAndExecuteController("MoveToken");
         }
 
         @Override
@@ -335,7 +335,7 @@ public enum StateImpl implements State {
     DOUBLES_1 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createAndExecuteController("MoveToken", dice);
+            manager.createAndExecuteController("MoveToken");
         }
 
         @Override
@@ -415,7 +415,5 @@ public enum StateImpl implements State {
         public void twoEntered(StateManager manager) throws IOException {
             manager.initialize();
         }
-    };
-
-    private static Dice dice;
+    }
 }

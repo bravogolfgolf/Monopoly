@@ -5,7 +5,6 @@ import game.doubles.ConsoleMock;
 import game.doubles.InteractorMock;
 import game.doubles.ParserMock;
 import game.doubles.PresenterMock;
-import game.entities.Dice;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -64,19 +63,6 @@ public class ControllerTest {
             controller.execute();
 
             assertTrue(interactor.verifyHandleWithOutArgumentCalled);
-            assertTrue(presenter.verifyWriteMessageCalled);
-        }
-    }
-
-    public class MoveTest {
-
-        @Test
-        public void execute() throws IOException {
-            Dice dice = Dice.roll();
-            controller = new Move(interactor, presenter, dice);
-            controller.execute();
-
-            assertTrue(interactor.verifyHandleWithArgumentCalled);
             assertTrue(presenter.verifyWriteMessageCalled);
         }
     }

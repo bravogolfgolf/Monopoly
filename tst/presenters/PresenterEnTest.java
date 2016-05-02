@@ -2,7 +2,6 @@ package game.presenters;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.doubles.ConsoleMock;
-import game.doubles.DiceMock;
 import game.doubles.ParserMock;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
@@ -158,7 +157,7 @@ public class PresenterEnTest {
             public void testPropertyOptionsMessage() throws IOException {
                 response.properties = null;
                 presenter.propertyOptionsMessage(response);
-                expected = "No properties to manage.\n";
+                expected = "\nNo properties to manage.\n";
                 verifyMessage();
             }
         }
@@ -192,26 +191,46 @@ public class PresenterEnTest {
         private final MoveTokenResponse response = new MoveTokenResponse();
 
         @Test
-        public void testRollMessage() throws IOException {
-            response.dice = new DiceMock(2, false);
+        public void testRollMessageAndNotPassedGO() throws IOException {
+            response.rolled = 2;
+            response.isDoubles = false;
+            response.passedGO = false;
+            response.GO = "GO";
             presenter.rollMessage(response);
-            expected = "You rolled 2.\n";
+            expected = "\nYou rolled 2.\n";
             verifyMessage();
         }
 
         @Test
-        public void testRollDoubleMessage() throws IOException {
-            response.dice = new DiceMock(2, true);
+        public void testRollDoubleMessageAndNotPassedGO() throws IOException {
+            response.rolled = 2;
+            response.isDoubles = true;
+            response.passedGO = false;
+            response.GO = "GO";
             presenter.rollMessage(response);
-            expected = "Doubles! You rolled 2.\n";
+            expected = "\nDoubles! You rolled 2.\n";
             verifyMessage();
         }
 
         @Test
-        public void testPassedGOMessage() throws IOException {
-            response.space = "GO";
-            presenter.passedGOMessage(response);
-            expected = "You passed GO! Collect 200.\n";
+        public void testRollMessageAndPassedGO() throws IOException {
+            response.rolled = 2;
+            response.isDoubles = false;
+            response.passedGO = true;
+            response.GO = "GO";
+            presenter.rollMessage(response);
+            expected = "\nYou rolled 2.\n" + "\nYou passed GO! Collect 200.\n";
+            verifyMessage();
+        }
+
+        @Test
+        public void testRollDoubleMessageAndPassedGO() throws IOException {
+            response.rolled = 2;
+            response.isDoubles = true;
+            response.passedGO = true;
+            response.GO = "GO";
+            presenter.rollMessage(response);
+            expected = "\nDoubles! You rolled 2.\n" + "\nYou passed GO! Collect 200.\n";
             verifyMessage();
         }
     }

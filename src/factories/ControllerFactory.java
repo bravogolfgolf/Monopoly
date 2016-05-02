@@ -1,9 +1,11 @@
 package game.factories;
 
-import game.controllers.*;
+import game.controllers.Controller;
+import game.controllers.Message;
+import game.controllers.Options;
+import game.controllers.StartTurn;
 import game.display.Console;
 import game.entities.Board;
-import game.entities.Dice;
 import game.interactors.Interactor;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
@@ -60,6 +62,11 @@ public class ControllerFactory implements ManagerControllerFactory {
             return new StartTurn(presenter, console);
         }
 
+        if (controller.equals("MoveToken")) {
+            Interactor interactor = new MoveToken(presenter, players, board);
+            return new Message(interactor, presenter);
+        }
+
         if (controller.equals("PropertyOptions")) {
             Interactor interactor = new PropertyOptions(presenter, players);
             return new Options(interactor, presenter, console);
@@ -68,16 +75,6 @@ public class ControllerFactory implements ManagerControllerFactory {
         if (controller.equals("PartnerOptions")) {
             Interactor interactor = new PartnerOptions(presenter, players);
             return new Options(interactor, presenter, console);
-        }
-
-        throw new IllegalArgumentException();
-    }
-
-    @Override
-    public Controller make(String controller, Dice dice) {
-        if (controller.equals("MoveToken")) {
-            Interactor interactor = new MoveToken(presenter, players, board);
-            return new Move(interactor, presenter, dice);
         }
 
         throw new IllegalArgumentException();

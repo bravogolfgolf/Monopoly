@@ -35,7 +35,6 @@ public class InteractorTest {
     @Before
     public void setup() {
         request.string = "";
-        request.dice = Dice.roll();
     }
 
     public class VersionOptionsTest {
@@ -163,19 +162,17 @@ public class InteractorTest {
 
         @Test
         public void testMovePassedGO() {
-            request.dice = new DiceMock(2, false);
-            interactor.handle(request);
+            interactor.handle();
 
             assertTrue(presenter.verifyRollMessageCalled);
             assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(board.verifyMoveCalled);
-            assertTrue(presenter.verifypassedGOMessageCalled);
         }
 
         @Test
         public void testMoveDidNotPassedGO() {
-            request.dice = new DiceMock(1, false);
-            interactor.handle(request);
+            new Dice(1, false);
+            interactor.handle();
 
             assertTrue(presenter.verifyRollMessageCalled);
             assertTrue(players.verifyGetCurrentPlayerCalled);
