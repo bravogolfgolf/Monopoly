@@ -2,7 +2,6 @@ package game.presenters;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.doubles.ConsoleMock;
-import game.doubles.DiceMock;
 import game.doubles.ParserMock;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
@@ -193,7 +192,8 @@ public class PresenterEnTest {
 
         @Test
         public void testRollMessage() throws IOException {
-            response.dice = new DiceMock(2, false);
+            response.rolled = 2;
+            response.isDoubles = false;
             presenter.rollMessage(response);
             expected = "You rolled 2.\n";
             verifyMessage();
@@ -201,7 +201,8 @@ public class PresenterEnTest {
 
         @Test
         public void testRollDoubleMessage() throws IOException {
-            response.dice = new DiceMock(2, true);
+            response.rolled = 2;
+            response.isDoubles = true;
             presenter.rollMessage(response);
             expected = "Doubles! You rolled 2.\n";
             verifyMessage();

@@ -77,10 +77,9 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void rollMessage(MoveTokenResponse response) {
-        variables = new String[]{Integer.toString(response.dice.rolled())};
-        if (response.dice.isDoubles()) template = "Doubles! You rolled %s.";
-        else template = "You rolled %s.";
-        addMessageToBuffer(template, variables);
+        if (response.isDoubles) template = String.format("Doubles! You rolled %d.", response.rolled);
+        else template = String.format("You rolled %d.", response.rolled);
+        addNewLine(template);
     }
 
     @Override
