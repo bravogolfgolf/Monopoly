@@ -157,7 +157,7 @@ public class PresenterEnTest {
             public void testPropertyOptionsMessage() throws IOException {
                 response.properties = null;
                 presenter.propertyOptionsMessage(response);
-                expected = "No properties to manage.\n";
+                expected = "\nNo properties to manage.\n";
                 verifyMessage();
             }
         }
@@ -197,7 +197,7 @@ public class PresenterEnTest {
             response.passedGO = false;
             response.GO = "GO";
             presenter.rollMessage(response);
-            expected = "You rolled 2.\n";
+            expected = "\nYou rolled 2.\n";
             verifyMessage();
         }
 
@@ -208,7 +208,7 @@ public class PresenterEnTest {
             response.passedGO = false;
             response.GO = "GO";
             presenter.rollMessage(response);
-            expected = "Doubles! You rolled 2.\n";
+            expected = "\nDoubles! You rolled 2.\n";
             verifyMessage();
         }
 
@@ -219,7 +219,7 @@ public class PresenterEnTest {
             response.passedGO = true;
             response.GO = "GO";
             presenter.rollMessage(response);
-            expected = "You rolled 2.\n" + "You passed GO! Collect 200.\n";
+            expected = "\nYou rolled 2.\n" + "\nYou passed GO! Collect 200.\n";
             verifyMessage();
         }
 
@@ -230,7 +230,7 @@ public class PresenterEnTest {
             response.passedGO = true;
             response.GO = "GO";
             presenter.rollMessage(response);
-            expected = "Doubles! You rolled 2.\n" + "You passed GO! Collect 200.\n";
+            expected = "\nDoubles! You rolled 2.\n" + "\nYou passed GO! Collect 200.\n";
             verifyMessage();
         }
     }

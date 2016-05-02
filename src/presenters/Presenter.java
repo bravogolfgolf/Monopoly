@@ -89,12 +89,13 @@ public abstract class Presenter implements ControllerPresenter,
         addNewLine(formattedMessage);
     }
 
-    void addNewLine(String formattedMessage) {
-        String newLine = String.format(formattedMessage + "%s", NEW_LINE);
-        addMessageToBuffer(newLine);
+    void addMessageToBuffer(String template) {
+        String formattedMessage = String.format("%s" + template, NEW_LINE);
+        addNewLine(formattedMessage);
     }
 
-    private void addMessageToBuffer(String newLine) {
+    private void addNewLine(String formattedMessage) {
+        String newLine = String.format(formattedMessage + "%s", NEW_LINE);
         messageBuffer.append(newLine);
     }
 
