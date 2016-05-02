@@ -80,12 +80,9 @@ public class PresenterEn extends Presenter {
         if (response.isDoubles) template = String.format("Doubles! You rolled %d.", response.rolled);
         else template = String.format("You rolled %d.", response.rolled);
         addNewLine(template);
-    }
 
-    @Override
-    public void passedGOMessage(MoveTokenResponse response) {
-        template = String.format("You passed %s! Collect 200.", response.space);
-        addNewLine(template);
+        if (response.passedGO)
+            addNewLine(String.format("You passed %s! Collect 200.", response.GO));
     }
 
     @Override

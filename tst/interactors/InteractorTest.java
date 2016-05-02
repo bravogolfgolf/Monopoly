@@ -18,7 +18,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(HierarchicalContextRunner.class)
@@ -163,13 +162,11 @@ public class InteractorTest {
 
         @Test
         public void testMovePassedGO() {
-            new Dice(2, false);
             interactor.handle();
 
             assertTrue(presenter.verifyRollMessageCalled);
             assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(board.verifyMoveCalled);
-            assertTrue(presenter.verifypassedGOMessageCalled);
         }
 
         @Test
@@ -180,7 +177,6 @@ public class InteractorTest {
             assertTrue(presenter.verifyRollMessageCalled);
             assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(board.verifyMoveCalled);
-            assertFalse(presenter.verifypassedGOMessageCalled);
         }
     }
 }

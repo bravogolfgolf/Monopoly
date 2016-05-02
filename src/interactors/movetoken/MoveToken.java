@@ -24,8 +24,8 @@ public class MoveToken extends Interactor {
         boolean passedGO = board.movesPassedGO(token, Dice.rolled());
         response.rolled = Dice.rolled();
         response.isDoubles = Dice.isDoubles();
+        response.passedGO = passedGO;
+        response.GO = board.findSpaceBy(0).getDescription();
         presenter.rollMessage(response);
-        if (passedGO)
-            presenter.passedGOMessage(response);
     }
 }
