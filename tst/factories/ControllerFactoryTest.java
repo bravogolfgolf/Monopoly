@@ -36,6 +36,7 @@ public class ControllerFactoryTest {
         controllerFactory.make("Message");
         controllerFactory.make("StartTurn");
         controllerFactory.make("MoveToken");
+        controllerFactory.make("PassGo");
         controllerFactory.make("PropertyOptions");
         controllerFactory.make("PartnerOptions");
     }

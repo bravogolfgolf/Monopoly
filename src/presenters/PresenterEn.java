@@ -3,6 +3,7 @@ package game.presenters;
 import game.display.Console;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
+import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
@@ -106,5 +107,11 @@ public class PresenterEn extends Presenter {
         template = "Available trading partners: %s";
         createMenuMap(response.players);
         addMenuToBuffer(template, menuMap);
+    }
+
+    @Override
+    public void passGoMessage(PassGoResponse response) {
+        template =  String.format("Passed %s! Collect 200.", response.GO);
+        addMessageToBuffer(template);
     }
 }

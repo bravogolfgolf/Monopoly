@@ -1,5 +1,7 @@
 package game.manager;
 
+import game.Context;
+
 import java.io.IOException;
 
 public enum StateImpl implements State {
@@ -311,7 +313,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(StateImpl.ROLL);
+            manager.setState(StateImpl.MOVE);
             manager.initialize();
         }
 
@@ -328,10 +330,39 @@ public enum StateImpl implements State {
         }
     },
 
-    ROLL {
+    MOVE {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("MoveToken");
+            manager.setState(PASS_GO);
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
+        }
+    },
+
+    PASS_GO {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+            if (Context.currentPlayer.turnState.passedGO)
+                manager.createAndExecuteController("PassGo");
         }
 
         @Override

@@ -2,7 +2,7 @@ package game.entities;
 
 public class Token implements Comparable {
 
-    final TurnState turnState = new TurnState();
+    public final TurnState turnState = new TurnState();
 
     public enum TransactionType {PAY_CASH, RECIEVE_CASH, BUY_PROPERTY, MORTGAGE_PROPERTY, UN_MORTGAGE_PROPERTY}
 
@@ -64,7 +64,7 @@ public class Token implements Comparable {
         }
     }
 
-    class TurnState {
-        boolean passedGO = false;
+    public class TurnState {
+        public boolean passedGO = false;
     }
 }

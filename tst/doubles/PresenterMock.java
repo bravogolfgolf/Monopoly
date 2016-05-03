@@ -3,6 +3,7 @@ package game.doubles;
 import game.display.Console;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
+import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
@@ -27,6 +28,7 @@ public class PresenterMock extends Presenter {
     public boolean verifyRollMessageCalled = false;
     public boolean verifyStartTurnMessageCalled = false;
     public boolean verifyWriteMessageCalled = false;
+    public boolean verifypassGOMessage = false;
 
     public PresenterMock(Console console, Parser parser) {
         super(console, parser);
@@ -106,5 +108,10 @@ public class PresenterMock extends Presenter {
     @Override
     public void partnerOptionsMessage(PartnerOptionsResponse response) {
         verifyPartnerOptionsMessageCalled = true;
+    }
+
+    @Override
+    public void passGoMessage(PassGoResponse response) {
+        verifypassGOMessage = true;
     }
 }

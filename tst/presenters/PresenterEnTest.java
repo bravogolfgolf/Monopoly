@@ -5,6 +5,7 @@ import game.doubles.ConsoleMock;
 import game.doubles.ParserMock;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
+import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
@@ -185,7 +186,7 @@ public class PresenterEnTest {
         }
     }
 
-    public class MoveTest {
+    public class MoveTokenTest {
 
         private final MoveTokenResponse response = new MoveTokenResponse();
 
@@ -204,6 +205,19 @@ public class PresenterEnTest {
             response.isDoubles = true;
             presenter.rollMessage(response);
             expected = "\nDoubles! You rolled 2.\n";
+            verifyMessage();
+        }
+    }
+
+    public class passGOTest {
+
+        private final PassGoResponse response = new PassGoResponse();
+
+        @Test
+        public void testPassGoMessage() throws IOException {
+            response.GO = "GO";
+            presenter.passGoMessage(response);
+            expected = "\nPassed GO! Collect 200.\n";
             verifyMessage();
         }
     }
