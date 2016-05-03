@@ -4,5 +4,5 @@ import java.util.ArrayList;
 
 public class PropertyOptionsResponse {
 
-    public ArrayList properties;
+    public final ArrayList properties = new ArrayList();
 }

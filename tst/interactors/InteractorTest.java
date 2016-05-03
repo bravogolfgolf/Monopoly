@@ -121,20 +121,18 @@ public class InteractorTest {
             interactor.handle();
 
             assertTrue(players.verifyRandomizePlayersCalled);
-            assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(presenter.verifyPlayerSelectedToGoFirstMessage);
         }
     }
 
     public class PropertyOptionsTest {
 
-        private final PropertyOptions interactor = new PropertyOptions(presenter, players);
+        private final PropertyOptions interactor = new PropertyOptions(presenter);
 
         @Test
         public void testHandle() {
             interactor.handle();
 
-            assertTrue(players.verifyGetCurrentPlayerCalled);
             // TODO When properties are defined
             assertTrue(presenter.verifySelectPropertyPromptMessageCalled);
             assertTrue(presenter.verifyPropertyOptionsMessageCalled);
@@ -157,24 +155,22 @@ public class InteractorTest {
 
     public class MoveTokenTest {
 
-        private final Interactor interactor = new MoveToken(presenter, players, board);
+        private final Interactor interactor = new MoveToken(presenter, board);
 
         @Test
         public void testMovePassedGO() {
             interactor.handle();
 
-            assertTrue(presenter.verifyRollMessageCalled);
-            assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(board.verifyMoveCalled);
+            assertTrue(presenter.verifyRollMessageCalled);
         }
 
         @Test
         public void testMoveDidNotPassedGO() {
             interactor.handle();
 
-            assertTrue(presenter.verifyRollMessageCalled);
-            assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(board.verifyMoveCalled);
+            assertTrue(presenter.verifyRollMessageCalled);
         }
     }
 }

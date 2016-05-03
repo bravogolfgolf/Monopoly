@@ -9,20 +9,18 @@ import game.presenters.Presenter;
 public class MoveToken extends Interactor {
 
     private final MoveTokenPresenter presenter;
-    private final MoveTokenPlayerGateway players;
     private final MoveTokenBoardGateway board;
     private final MoveTokenResponse response = new MoveTokenResponse();
 
-    public MoveToken(Presenter presenter, MoveTokenPlayerGateway players, MoveTokenBoardGateway board) {
+    public MoveToken(Presenter presenter, MoveTokenBoardGateway board) {
         this.presenter = presenter;
-        this.players = players;
         this.board = board;
     }
 
     @Override
     public void handle() {
         Context.dice = Dice.roll();
-        Token token = players.getCurrentPlayer();
+        Token token = Context.currentPlayer;
         boolean passedGO = board.movesPassedGO(token, Context.dice.rolled());
         response.rolled = Context.dice.rolled();
         response.isDoubles = Context.dice.isDoubles();
