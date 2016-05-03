@@ -80,9 +80,6 @@ public class PresenterEn extends Presenter {
         if (response.isDoubles) template = String.format("Doubles! You rolled %d.", response.rolled);
         else template = String.format("You rolled %d.", response.rolled);
         addMessageToBuffer(template);
-
-        if (response.passedGO)
-            addMessageToBuffer(String.format("You passed %s! Collect 200.", response.GO));
     }
 
     @Override

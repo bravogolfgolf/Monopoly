@@ -190,46 +190,20 @@ public class PresenterEnTest {
         private final MoveTokenResponse response = new MoveTokenResponse();
 
         @Test
-        public void testRollMessageAndNotPassedGO() throws IOException {
+        public void testRollMessageWithoutDoubles() throws IOException {
             response.rolled = 2;
             response.isDoubles = false;
-            response.passedGO = false;
-            response.GO = "GO";
             presenter.rollMessage(response);
             expected = "\nYou rolled 2.\n";
             verifyMessage();
         }
 
         @Test
-        public void testRollDoubleMessageAndNotPassedGO() throws IOException {
+        public void testRollMessageWithDoubles() throws IOException {
             response.rolled = 2;
             response.isDoubles = true;
-            response.passedGO = false;
-            response.GO = "GO";
             presenter.rollMessage(response);
             expected = "\nDoubles! You rolled 2.\n";
-            verifyMessage();
-        }
-
-        @Test
-        public void testRollMessageAndPassedGO() throws IOException {
-            response.rolled = 2;
-            response.isDoubles = false;
-            response.passedGO = true;
-            response.GO = "GO";
-            presenter.rollMessage(response);
-            expected = "\nYou rolled 2.\n" + "\nYou passed GO! Collect 200.\n";
-            verifyMessage();
-        }
-
-        @Test
-        public void testRollDoubleMessageAndPassedGO() throws IOException {
-            response.rolled = 2;
-            response.isDoubles = true;
-            response.passedGO = true;
-            response.GO = "GO";
-            presenter.rollMessage(response);
-            expected = "\nDoubles! You rolled 2.\n" + "\nYou passed GO! Collect 200.\n";
             verifyMessage();
         }
     }
