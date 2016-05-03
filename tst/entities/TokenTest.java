@@ -17,6 +17,7 @@ public class TokenTest {
         assertEquals(0, token.getSpaceID());
         assertEquals(1500, token.cashBalance());
         assertEquals(1500, token.netWorth());
+        assertEquals(false, token.turnState.passedGO);
     }
 
     @Test

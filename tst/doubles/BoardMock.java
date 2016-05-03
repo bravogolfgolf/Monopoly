@@ -5,17 +5,16 @@ import game.entities.Token;
 
 import java.util.List;
 
-public class BoardFake extends Board {
+public class BoardMock extends Board {
 
     public boolean verifyMoveCalled = false;
 
-    public BoardFake(List<Space> board) {
+    public BoardMock(List<Space> board) {
         super(board);
     }
 
     @Override
-    public boolean movesPassedGO(Token token, int forward) {
+    public void move(Token token, int forward) {
         verifyMoveCalled = true;
-        return (forward %2 == 0);
     }
 }

@@ -21,11 +21,9 @@ public class MoveToken extends Interactor {
     public void handle() {
         Context.dice = Dice.roll();
         Token token = Context.currentPlayer;
-        boolean passedGO = board.movesPassedGO(token, Context.dice.rolled());
+        board.move(token, Context.dice.rolled());
         response.rolled = Context.dice.rolled();
         response.isDoubles = Context.dice.isDoubles();
-        response.passedGO = passedGO;
-        response.GO = board.findSpaceBy(0).getDescription();
         presenter.rollMessage(response);
     }
 }

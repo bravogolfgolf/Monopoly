@@ -4,8 +4,6 @@ import game.interactors.movetoken.MoveTokenBoardGateway;
 
 import java.util.List;
 
-import static game.entities.Token.TransactionType.RECIEVE_CASH;
-
 public class Board implements MoveTokenBoardGateway {
 
     private final List<Space> board;
@@ -15,24 +13,20 @@ public class Board implements MoveTokenBoardGateway {
     }
 
     public static Board create(List<Space> spaces) {
-        for (int i = 1; i < spaces.size(); i++) {
+        for (int i = 1; i < spaces.size(); i++)
             spaces.get(i - 1).setNextSpace(spaces.get(i));
-        }
         spaces.get(39).setNextSpace(spaces.get(0));
         return new Board(spaces);
     }
 
     @Override
-    public boolean movesPassedGO(Token token, int forward) {
-        boolean passedGO = false;
+    public void move(Token token, int forward) {
         Space space = findSpaceBy(token.getSpaceID()).nextSpace;
         for (int i = 1; i < forward; i++) {
-            passedGO = space.passedGO(token);
+            space.passedGO(token);
             space = space.nextSpace;
         }
-        space.landOn(token);
         token.setSpaceID(space.getSpaceID());
-        return passedGO;
     }
 
     public Space findSpaceBy(int spaceID) {
@@ -66,29 +60,19 @@ public class Board implements MoveTokenBoardGateway {
             this.nextSpace = nextSpace;
         }
 
-        protected boolean passedGO(Token token) {
-            return false;
-        }
-
-        public void landOn(Token token) {
+        protected void passedGO(Token token) {
+            token.turnState.passedGO = false;
         }
 
         public static class Go extends Space {
-            private static final int SALARY = 200;
 
             public Go(int ID, String description) {
                 super(ID, description);
             }
 
             @Override
-            public boolean passedGO(Token token) {
-                landOn(token);
-                return true;
-            }
-
-            @Override
-            public void landOn(Token token) {
-                token.transaction(SALARY, RECIEVE_CASH);
+            public void passedGO(Token token) {
+                token.turnState.passedGO = true;
             }
         }
 

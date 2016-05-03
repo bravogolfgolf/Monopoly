@@ -69,9 +69,8 @@ public abstract class Presenter implements ControllerPresenter,
     private String[] createMenuArray(Map map) {
         String[] menuItems = new String[map.size()];
         int counter = map.size();
-        for (Map.Entry item : menuMap.entrySet()) {
-            menuItems[--counter] = String.format("(%d)%s", item.getKey(), item.getValue());
-        }
+        for (Map.Entry item : menuMap.entrySet())
+            menuItems[--counter] = String.format("(%s)%s", item.getKey().toString(), item.getValue());
         return menuItems;
     }
 

@@ -28,7 +28,7 @@ public class InteractorTest {
     private final VersionFactoryMock factory = new VersionFactoryMock();
     private final TokensMock tokens = new TokensMock(TokensUSA.create());
     private final PlayersMock players = new PlayersMock();
-    private final BoardFake board = new BoardFake(SpacesUSA.create());
+    private final BoardMock board = new BoardMock(SpacesUSA.create());
     private final ControllerRequest request = new ControllerRequest();
 
     @Before
