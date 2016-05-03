@@ -7,6 +7,7 @@ import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
+import game.interactors.passgo.PassGo;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.tokenoptions.TokenOptions;
@@ -158,19 +159,23 @@ public class InteractorTest {
         private final Interactor interactor = new MoveToken(presenter, board);
 
         @Test
-        public void testMovePassedGO() {
+        public void testHandle() {
             interactor.handle();
 
             assertTrue(board.verifyMoveCalled);
             assertTrue(presenter.verifyRollMessageCalled);
         }
+    }
+
+    public class PassGOTest {
+
+        private final Interactor interactor = new PassGo(presenter, board);
 
         @Test
-        public void testMoveDidNotPassedGO() {
+        public void testHandle() {
             interactor.handle();
 
-            assertTrue(board.verifyMoveCalled);
-            assertTrue(presenter.verifyRollMessageCalled);
+            assertTrue(presenter.verifypassGOMessage);
         }
     }
 }

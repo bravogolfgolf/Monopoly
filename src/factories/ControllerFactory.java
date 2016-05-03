@@ -9,6 +9,7 @@ import game.entities.Board;
 import game.interactors.Interactor;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
+import game.interactors.passgo.PassGo;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
@@ -64,6 +65,11 @@ public class ControllerFactory implements ManagerControllerFactory {
 
         if (controller.equals("MoveToken")) {
             Interactor interactor = new MoveToken(presenter, board);
+            return new Message(interactor, presenter);
+        }
+
+        if (controller.equals("PassGo")) {
+            Interactor interactor = new PassGo(presenter, board);
             return new Message(interactor, presenter);
         }
 

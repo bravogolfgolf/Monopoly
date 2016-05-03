@@ -5,6 +5,7 @@ import game.display.Console;
 import game.interactors.movetoken.MoveTokenPresenter;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsPresenter;
+import game.interactors.passgo.PassGoPresenter;
 import game.interactors.propertyoptions.PropertyOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.selectfirst.SelectFirstPresenter;
@@ -21,7 +22,8 @@ import java.util.Map;
 
 public abstract class Presenter implements ControllerPresenter,
         VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter,
-        PropertyOptionsPresenter, PartnerOptionsPresenter, MoveTokenPresenter {
+        PropertyOptionsPresenter, PartnerOptionsPresenter, MoveTokenPresenter,
+        PassGoPresenter {
 
     private final PresenterConsole console;
     private final PresenterParser parser;

@@ -1,10 +1,11 @@
 package game.entities;
 
 import game.interactors.movetoken.MoveTokenBoardGateway;
+import game.interactors.passgo.PassGoBoardGateway;
 
 import java.util.List;
 
-public class Board implements MoveTokenBoardGateway {
+public class Board implements MoveTokenBoardGateway, PassGoBoardGateway {
 
     private final List<Space> board;
 
