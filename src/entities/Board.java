@@ -4,6 +4,8 @@ import game.interactors.movetoken.MoveTokenBoardGateway;
 
 import java.util.List;
 
+import static game.entities.Token.TransactionType.RECIEVE_CASH;
+
 public class Board implements MoveTokenBoardGateway {
 
     private final List<Space> board;
@@ -25,9 +27,10 @@ public class Board implements MoveTokenBoardGateway {
         boolean passedGO = false;
         Space space = findSpaceBy(token.getSpaceID()).nextSpace;
         for (int i = 1; i < forward; i++) {
-            passedGO = space.passedGO();
+            passedGO = space.passedGO(token);
             space = space.nextSpace;
         }
+        space.landOn(token);
         token.setSpaceID(space.getSpaceID());
         return passedGO;
     }
@@ -63,18 +66,29 @@ public class Board implements MoveTokenBoardGateway {
             this.nextSpace = nextSpace;
         }
 
-        protected boolean passedGO() {
+        protected boolean passedGO(Token token) {
             return false;
         }
 
+        public void landOn(Token token) {
+        }
+
         public static class Go extends Space {
+            private static final int SALARY = 200;
+
             public Go(int ID, String description) {
                 super(ID, description);
             }
 
             @Override
-            public boolean passedGO() {
+            public boolean passedGO(Token token) {
+                landOn(token);
                 return true;
+            }
+
+            @Override
+            public void landOn(Token token) {
+                token.transaction(SALARY, RECIEVE_CASH);
             }
         }
 

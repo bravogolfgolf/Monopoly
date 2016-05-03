@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 public class BoardTest {
 
-    private static final int FORWARD = 3;
+    private static final int NOT_PASS_GO = 3;
     private static final int PASS_GO = 41;
     private static final int LAND_ON_GO = 40;
     private final Token token = new Token("Cat");
@@ -17,9 +17,11 @@ public class BoardTest {
     @Test
     public void landOnSpaceWithoutPassingGo() {
         Space expected = new Space.RealEstate(3, "RealEstate");
-        boolean passedGO = board.movesPassedGO(token, FORWARD);
+        boolean passedGO = board.movesPassedGO(token, NOT_PASS_GO);
         assertEquals(expected.getSpaceID(), token.getSpaceID());
         assertEquals(false, passedGO);
+        assertEquals(1500, token.cashBalance());
+        assertEquals(1500, token.netWorth());
     }
 
     @Test
@@ -28,6 +30,8 @@ public class BoardTest {
         boolean passedGO = board.movesPassedGO(token, PASS_GO);
         assertEquals(expected.getSpaceID(), token.getSpaceID());
         assertEquals(true, passedGO);
+        assertEquals(1700, token.cashBalance());
+        assertEquals(1700, token.netWorth());
     }
 
     @Test
@@ -36,5 +40,7 @@ public class BoardTest {
         boolean passedGO = board.movesPassedGO(token, LAND_ON_GO);
         assertEquals(expected.getSpaceID(), token.getSpaceID());
         assertEquals(false, passedGO);
+        assertEquals(1700, token.cashBalance());
+        assertEquals(1700, token.netWorth());
     }
 }
