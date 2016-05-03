@@ -63,12 +63,12 @@ public class ControllerFactory implements ManagerControllerFactory {
         }
 
         if (controller.equals("MoveToken")) {
-            Interactor interactor = new MoveToken(presenter, players, board);
+            Interactor interactor = new MoveToken(presenter, board);
             return new Message(interactor, presenter);
         }
 
         if (controller.equals("PropertyOptions")) {
-            Interactor interactor = new PropertyOptions(presenter, players);
+            Interactor interactor = new PropertyOptions(presenter);
             return new Options(interactor, presenter, console);
         }
 

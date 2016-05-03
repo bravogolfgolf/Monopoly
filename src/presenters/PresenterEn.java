@@ -93,7 +93,8 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void propertyOptionsMessage(PropertyOptionsResponse response) {
-        template = "No properties to manage.";
+        if (response.properties.isEmpty())
+            template = "No properties to manage.";
         addMessageToBuffer(template);
     }
 

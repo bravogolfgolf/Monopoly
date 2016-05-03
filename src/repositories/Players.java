@@ -1,9 +1,8 @@
 package game.repositories;
 
+import game.Context;
 import game.entities.Token;
-import game.interactors.movetoken.MoveTokenPlayerGateway;
 import game.interactors.partneroptions.PartnerOptionsGateway;
-import game.interactors.propertyoptions.PropertyOptionsPlayerGateway;
 import game.interactors.selectfirst.SelectFirstPlayerGateway;
 import game.interactors.tokenoptions.TokenOptionsPlayersGateway;
 
@@ -11,11 +10,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Players implements TokenOptionsPlayersGateway, SelectFirstPlayerGateway, PropertyOptionsPlayerGateway,
-        PartnerOptionsGateway, MoveTokenPlayerGateway {
+public class Players implements TokenOptionsPlayersGateway, SelectFirstPlayerGateway, PartnerOptionsGateway {
 
     private final List<Token> players = new LinkedList<>();
-    private Token current;
 
     @Override
     public void add(Token token) {
@@ -25,18 +22,13 @@ public class Players implements TokenOptionsPlayersGateway, SelectFirstPlayerGat
     @Override
     public void randomizePlayers() {
         Collections.shuffle(players);
-        current = players.get(0);
-    }
-
-    @Override
-    public Token getCurrentPlayer() {
-        return current;
+        Context.currentPlayer = players.get(0);
     }
 
     @Override
     public String[] getAllPlayersExceptCurrent() {
         List<Token> tokens = new LinkedList<>(players);
-        tokens.remove(current);
+        tokens.remove(Context.currentPlayer);
 
         String[] result = new String[tokens.size()];
 

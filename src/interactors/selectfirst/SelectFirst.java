@@ -1,5 +1,6 @@
 package game.interactors.selectfirst;
 
+import game.Context;
 import game.entities.Token;
 import game.interactors.Interactor;
 
@@ -17,7 +18,7 @@ public class SelectFirst extends Interactor {
     @Override
     public void handle() {
         players.randomizePlayers();
-        Token token = players.getCurrentPlayer();
+        Token token = Context.currentPlayer;
         response.token = token.getDescription();
         presenter.playerSelectedToGoFirstMessage(response);
     }

@@ -155,7 +155,6 @@ public class PresenterEnTest {
 
             @Test
             public void testPropertyOptionsMessage() throws IOException {
-                response.properties = null;
                 presenter.propertyOptionsMessage(response);
                 expected = "\nNo properties to manage.\n";
                 verifyMessage();

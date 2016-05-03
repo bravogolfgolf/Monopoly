@@ -1,5 +1,6 @@
 package game.repositories;
 
+import game.Context;
 import game.entities.Token;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ public class PlayersTest {
     public void testAddPlayer() {
         playerRepository.add(cat);
         playerRepository.randomizePlayers();
-        assertTrue(playerRepository.getCurrentPlayer().equals(cat));
+        assertTrue(Context.currentPlayer.equals(cat));
     }
 
     @Test
@@ -31,7 +32,7 @@ public class PlayersTest {
 
             playerRepository.randomizePlayers();
 
-            if (playerRepository.getCurrentPlayer().getDescription().equals("Cat"))
+            if (Context.currentPlayer.getDescription().equals("Cat"))
                 count++;
         }
         assertTrue(count > 0);

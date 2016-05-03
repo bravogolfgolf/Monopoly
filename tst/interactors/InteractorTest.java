@@ -3,7 +3,6 @@ package game.interactors;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.ControllerRequest;
 import game.doubles.*;
-import game.entities.Dice;
 import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
 import game.interactors.movetoken.MoveToken;
@@ -29,7 +28,7 @@ public class InteractorTest {
     private final VersionFactoryMock factory = new VersionFactoryMock();
     private final TokensMock tokens = new TokensMock(TokensUSA.create());
     private final PlayersMock players = new PlayersMock();
-    private final BoardFake board = new BoardFake(SpacesUSA.create());
+    private final BoardMock board = new BoardMock(SpacesUSA.create());
     private final ControllerRequest request = new ControllerRequest();
 
     @Before
@@ -122,20 +121,18 @@ public class InteractorTest {
             interactor.handle();
 
             assertTrue(players.verifyRandomizePlayersCalled);
-            assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(presenter.verifyPlayerSelectedToGoFirstMessage);
         }
     }
 
     public class PropertyOptionsTest {
 
-        private final PropertyOptions interactor = new PropertyOptions(presenter, players);
+        private final PropertyOptions interactor = new PropertyOptions(presenter);
 
         @Test
         public void testHandle() {
             interactor.handle();
 
-            assertTrue(players.verifyGetCurrentPlayerCalled);
             // TODO When properties are defined
             assertTrue(presenter.verifySelectPropertyPromptMessageCalled);
             assertTrue(presenter.verifyPropertyOptionsMessageCalled);
@@ -158,25 +155,22 @@ public class InteractorTest {
 
     public class MoveTokenTest {
 
-        private final Interactor interactor = new MoveToken(presenter, players, board);
+        private final Interactor interactor = new MoveToken(presenter, board);
 
         @Test
         public void testMovePassedGO() {
             interactor.handle();
 
-            assertTrue(presenter.verifyRollMessageCalled);
-            assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(board.verifyMoveCalled);
+            assertTrue(presenter.verifyRollMessageCalled);
         }
 
         @Test
         public void testMoveDidNotPassedGO() {
-            new Dice(1, false);
             interactor.handle();
 
-            assertTrue(presenter.verifyRollMessageCalled);
-            assertTrue(players.verifyGetCurrentPlayerCalled);
             assertTrue(board.verifyMoveCalled);
+            assertTrue(presenter.verifyRollMessageCalled);
         }
     }
 }

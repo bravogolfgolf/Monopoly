@@ -13,23 +13,20 @@ public class Board implements MoveTokenBoardGateway {
     }
 
     public static Board create(List<Space> spaces) {
-        for (int i = 1; i < spaces.size(); i++) {
+        for (int i = 1; i < spaces.size(); i++)
             spaces.get(i - 1).setNextSpace(spaces.get(i));
-        }
         spaces.get(39).setNextSpace(spaces.get(0));
         return new Board(spaces);
     }
 
     @Override
-    public boolean movesPassedGO(Token token, int forward) {
-        boolean passedGO = false;
+    public void move(Token token, int forward) {
         Space space = findSpaceBy(token.getSpaceID()).nextSpace;
         for (int i = 1; i < forward; i++) {
-            passedGO = space.passedGO();
+            space.passedGO(token);
             space = space.nextSpace;
         }
         token.setSpaceID(space.getSpaceID());
-        return passedGO;
     }
 
     public Space findSpaceBy(int spaceID) {
@@ -63,18 +60,19 @@ public class Board implements MoveTokenBoardGateway {
             this.nextSpace = nextSpace;
         }
 
-        protected boolean passedGO() {
-            return false;
+        protected void passedGO(Token token) {
+            token.turnState.passedGO = false;
         }
 
         public static class Go extends Space {
+
             public Go(int ID, String description) {
                 super(ID, description);
             }
 
             @Override
-            public boolean passedGO() {
-                return true;
+            public void passedGO(Token token) {
+                token.turnState.passedGO = true;
             }
         }
 

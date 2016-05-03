@@ -1,5 +1,6 @@
 package game.doubles;
 
+import game.Context;
 import game.entities.Token;
 import game.repositories.Players;
 
@@ -7,7 +8,6 @@ public class PlayersMock extends Players {
 
     public boolean verifyAddWithCalled = false;
     public boolean verifyRandomizePlayersCalled = false;
-    public boolean verifyGetCurrentPlayerCalled = false;
     public boolean verifyGetAllPlayersExceptCurrentCalled = false;
 
     @Override
@@ -18,12 +18,7 @@ public class PlayersMock extends Players {
     @Override
     public void randomizePlayers() {
         verifyRandomizePlayersCalled = true;
-    }
-
-    @Override
-    public Token getCurrentPlayer() {
-        verifyGetCurrentPlayerCalled = true;
-        return new Token("Cat");
+        Context.currentPlayer = new Token("Cat");
     }
 
     @Override
