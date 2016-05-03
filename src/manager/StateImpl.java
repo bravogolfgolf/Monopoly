@@ -1,7 +1,5 @@
 package game.manager;
 
-import game.entities.Dice;
-
 import java.io.IOException;
 
 public enum StateImpl implements State {
@@ -105,7 +103,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(TURN);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("Message");
             manager.initialize();
         }
@@ -135,7 +133,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(TURN);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("Message");
             manager.initialize();
         }
@@ -165,7 +163,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(TURN);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("Message");
             manager.initialize();
         }
@@ -195,7 +193,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(TURN);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("Message");
             manager.initialize();
         }
@@ -225,7 +223,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(TURN);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("Message");
             manager.initialize();
         }
@@ -249,14 +247,14 @@ public enum StateImpl implements State {
 
         @Override
         public void validTextEntry(StateManager manager) throws IOException {
-            manager.setState(TURN);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("Message");
             manager.initialize();
         }
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(TURN);
+            manager.setState(START_TURN);
             manager.createAndExecuteController("Message");
             manager.initialize();
         }
@@ -272,7 +270,7 @@ public enum StateImpl implements State {
         }
     },
 
-    TURN {
+    START_TURN {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("StartTurn");
@@ -285,10 +283,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            Dice.roll();
-            if (Dice.isDoubles())
-                manager.setState(StateImpl.DOUBLES_1);
-            manager.setState(StateImpl.NOT_DOUBLES);
+            manager.setState(StateImpl.ROLL);
             manager.initialize();
         }
 
@@ -305,34 +300,7 @@ public enum StateImpl implements State {
         }
     },
 
-    NOT_DOUBLES {
-        @Override
-        public void initialize(StateManager manager) throws IOException {
-            manager.createAndExecuteController("MoveToken");
-        }
-
-        @Override
-        public void validTextEntry(StateManager manager) throws IOException {
-
-        }
-
-        @Override
-        public void zeroEntered(StateManager manager) throws IOException {
-
-        }
-
-        @Override
-        public void oneEntered(StateManager manager) {
-
-        }
-
-        @Override
-        public void twoEntered(StateManager manager) {
-
-        }
-    },
-
-    DOUBLES_1 {
+    ROLL {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("MoveToken");
@@ -373,7 +341,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(TURN);
+            manager.setState(START_TURN);
             manager.initialize();
         }
 
@@ -402,7 +370,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(TURN);
+            manager.setState(START_TURN);
             manager.initialize();
         }
 

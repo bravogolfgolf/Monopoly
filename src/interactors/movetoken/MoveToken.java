@@ -1,5 +1,6 @@
 package game.interactors.movetoken;
 
+import game.Context;
 import game.entities.Dice;
 import game.entities.Token;
 import game.interactors.Interactor;
@@ -20,10 +21,11 @@ public class MoveToken extends Interactor {
 
     @Override
     public void handle() {
+        Context.dice = Dice.roll();
         Token token = players.getCurrentPlayer();
-        boolean passedGO = board.movesPassedGO(token, Dice.rolled());
-        response.rolled = Dice.rolled();
-        response.isDoubles = Dice.isDoubles();
+        boolean passedGO = board.movesPassedGO(token, Context.dice.rolled());
+        response.rolled = Context.dice.rolled();
+        response.isDoubles = Context.dice.isDoubles();
         response.passedGO = passedGO;
         response.GO = board.findSpaceBy(0).getDescription();
         presenter.rollMessage(response);

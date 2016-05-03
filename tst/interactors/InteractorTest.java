@@ -3,7 +3,6 @@ package game.interactors;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.controllers.ControllerRequest;
 import game.doubles.*;
-import game.entities.Dice;
 import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
 import game.interactors.movetoken.MoveToken;
@@ -171,7 +170,6 @@ public class InteractorTest {
 
         @Test
         public void testMoveDidNotPassedGO() {
-            new Dice(1, false);
             interactor.handle();
 
             assertTrue(presenter.verifyRollMessageCalled);
