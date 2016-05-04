@@ -1,4 +1,4 @@
-package game.doubles;
+package game.fitnesse;
 
 import game.display.Console;
 import game.parser.Parser;
@@ -7,12 +7,10 @@ import java.io.IOException;
 
 public class ConsoleFitnesee extends Console {
 
-    public Parser parser;
-    public String expectedOutput;
+    String expectedOutput;
 
     public ConsoleFitnesee(Parser parser) {
         super(parser);
-        this.parser = parser;
     }
 
     @Override
