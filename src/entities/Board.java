@@ -62,7 +62,6 @@ public class Board implements MoveTokenBoardGateway, PassGoBoardGateway {
         }
 
         protected void passedGO(Token token) {
-            token.turnState.passedGO = false;
         }
 
         public static class Go extends Space {
