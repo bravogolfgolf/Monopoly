@@ -6,6 +6,12 @@
 |game.fitnesse   |
 |fitnesse.fixture|
 
-|fitnesse test|
+|fitnesse test                |
 |firstNumber|secondNumber|add?|
-|1|2|3|
+|1          |2           |3   |
+
+|script|Select Version |
+|check |expected output|!-
+Select version of game you would like to play.
+Available versions: (1)USA
+-!|
