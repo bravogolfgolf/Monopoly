@@ -1,6 +1,7 @@
 package game.interactors;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
+import game.Context;
 import game.controllers.ControllerRequest;
 import game.doubles.*;
 import game.factories.SpacesUSA;
@@ -31,10 +32,12 @@ public class InteractorTest {
     private final PlayersMock players = new PlayersMock();
     private final BoardMock board = new BoardMock(SpacesUSA.create());
     private final ControllerRequest request = new ControllerRequest();
+    private final TokenMock currentPlayer = new TokenMock("Mock");
 
     @Before
     public void setup() {
         request.string = "";
+        Context.currentPlayer = currentPlayer;
     }
 
     public class VersionOptionsTest {
@@ -175,6 +178,7 @@ public class InteractorTest {
         public void testHandle() {
             interactor.handle();
 
+            assertTrue(currentPlayer.verifyTransactionCalled);
             assertTrue(presenter.verifypassGOMessage);
         }
     }
