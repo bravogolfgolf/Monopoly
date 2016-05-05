@@ -334,7 +334,10 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("MoveToken");
-            manager.setState(PASS_GO);
+            if (Context.currentPlayer.turnState.passedGO){
+                manager.setState(PASS_GO);
+                manager.initialize();
+            }
         }
 
         @Override
@@ -361,8 +364,7 @@ public enum StateImpl implements State {
     PASS_GO {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            if (Context.currentPlayer.turnState.passedGO)
-                manager.createAndExecuteController("PassGo");
+            manager.createAndExecuteController("PassGo");
         }
 
         @Override
