@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ConsoleFitnesee extends Console {
 
-    String expectedOutput;
+    StringBuffer bufferedOutput = new StringBuffer();
 
     public ConsoleFitnesee(Parser parser) {
         super(parser);
@@ -20,6 +20,6 @@ public class ConsoleFitnesee extends Console {
 
     @Override
     public void write(String text) throws IOException {
-        expectedOutput = text;
+        bufferedOutput.append(text);
     }
 }
