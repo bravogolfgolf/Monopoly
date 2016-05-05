@@ -1,14 +1,18 @@
 package game.entities;
 
+import game.entities.Board.Space;
+
 public class Token implements Comparable {
+
+    private static final int INITIAL_STARTING_SPACE_ID = 0;
+    public final int spaceID = INITIAL_STARTING_SPACE_ID;
 
     public final TurnState turnState = new TurnState();
 
     public enum TransactionType {PAY_CASH, RECIEVE_CASH, BUY_PROPERTY, MORTGAGE_PROPERTY, UN_MORTGAGE_PROPERTY}
 
-    private static final int INITIAL_STARTING_SPACE_ID = 0;
     private final String description;
-    private int spaceID = INITIAL_STARTING_SPACE_ID;
+    private Space space;
     private int cashBalance = 1500;
     private int netWorth = 1500;
 
@@ -25,12 +29,12 @@ public class Token implements Comparable {
         return this.description.compareTo(((Token) o).description);
     }
 
-    public int getSpaceID() {
-        return spaceID;
+    public Space getSpace() {
+        return space;
     }
 
-    public void setSpaceID(int spaceID) {
-        this.spaceID = spaceID;
+    public void setSpace(Space space) {
+        this.space = space;
     }
 
     public int cashBalance() {

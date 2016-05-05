@@ -45,12 +45,12 @@ public class ControllerFactory implements ManagerControllerFactory {
         }
 
         if (controller.equals("TokenOptionsFewerThanMinimum")) {
-            Interactor interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players);
+            Interactor interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players, board);
             return new Options(interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsMinimumToMaximum")) {
-            Interactor interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players);
+            Interactor interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players, board);
             return new Options(interactor, presenter, console);
         }
 

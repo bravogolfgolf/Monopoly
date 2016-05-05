@@ -11,12 +11,14 @@ public abstract class TokenOptions extends Interactor {
     final TokenOptionsPresenter presenter;
     private final TokenOptionsTokensGateway tokens;
     private final TokenOptionsPlayersGateway players;
+    private final TokenOptionsBoardGateway board;
     private final TokenOptionsResponse response = new TokenOptionsResponse();
 
-    TokenOptions(TokenOptionsPresenter presenter, TokenOptionsTokensGateway tokens, TokenOptionsPlayersGateway players) {
+    TokenOptions(TokenOptionsPresenter presenter, TokenOptionsTokensGateway tokens, TokenOptionsPlayersGateway players, TokenOptionsBoardGateway board) {
         this.presenter = presenter;
         this.tokens = tokens;
         this.players = players;
+        this.board = board;
     }
 
     @Override
@@ -29,6 +31,7 @@ public abstract class TokenOptions extends Interactor {
     @Override
     public void handle(ControllerRequest request) {
         Token token = new Token(request.string);
+        token.setSpace(board.findSpaceBy(token.spaceID));
         tokens.removeToken(token);
         players.add(token);
         response.token = token.getDescription();

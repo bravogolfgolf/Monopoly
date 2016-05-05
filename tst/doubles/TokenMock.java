@@ -1,5 +1,6 @@
 package game.doubles;
 
+import game.entities.Board.Space;
 import game.entities.Token;
 
 public class TokenMock extends Token {
@@ -16,12 +17,12 @@ public class TokenMock extends Token {
     }
 
     @Override
-    public int getSpaceID() {
-        return -1;
+    public Space getSpace() {
+        return new Space.Go(0,"GO");
     }
 
     @Override
-    public void setSpaceID(int spaceID) {
+    public void setSpace(Space space) {
 
     }
 

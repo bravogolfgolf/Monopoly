@@ -2,10 +2,11 @@ package game.entities;
 
 import game.interactors.movetoken.MoveTokenBoardGateway;
 import game.interactors.passgo.PassGoBoardGateway;
+import game.interactors.tokenoptions.TokenOptionsBoardGateway;
 
 import java.util.List;
 
-public class Board implements MoveTokenBoardGateway, PassGoBoardGateway {
+public class Board implements MoveTokenBoardGateway, PassGoBoardGateway, TokenOptionsBoardGateway {
 
     private final List<Space> board;
 
@@ -22,14 +23,15 @@ public class Board implements MoveTokenBoardGateway, PassGoBoardGateway {
 
     @Override
     public void move(Token token, int forward) {
-        Space space = findSpaceBy(token.getSpaceID()).nextSpace;
+        Space space = token.getSpace().nextSpace;
         for (int i = 1; i < forward; i++) {
             space.passedGO(token);
             space = space.nextSpace;
         }
-        token.setSpaceID(space.getSpaceID());
+        token.setSpace(space);
     }
 
+    @Override
     public Space findSpaceBy(int spaceID) {
         for (Space space : board) {
             if (space.getSpaceID() == spaceID)

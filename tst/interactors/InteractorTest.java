@@ -68,7 +68,7 @@ public class InteractorTest {
 
         public class TokenOptionsFewerThanMinimumTest {
 
-            private final TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players);
+            private final TokenOptions interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players, board);
 
             @Test
             public void testHandle() {
@@ -84,6 +84,7 @@ public class InteractorTest {
             public void testHandleWithRequest() {
                 interactor.handle(request);
 
+                assertTrue(board.verifyFindBySpaceIDCalled);
                 assertTrue(tokens.verifyRemoveTokenCalled);
                 assertTrue(players.verifyAddWithCalled);
                 assertTrue(presenter.verifyPlayerCreatedMessage);
@@ -93,7 +94,7 @@ public class InteractorTest {
 
         public class TokenOptionsMinimumToMaximumTest {
 
-            private final TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players);
+            private final TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players, board);
 
             @Test
             public void testHandle() {
@@ -109,6 +110,7 @@ public class InteractorTest {
             public void testHandleWithRequest() {
                 interactor.handle(request);
 
+                assertTrue(board.verifyFindBySpaceIDCalled);
                 assertTrue(tokens.verifyRemoveTokenCalled);
                 assertTrue(players.verifyAddWithCalled);
                 assertTrue(presenter.verifyPlayerCreatedMessage);

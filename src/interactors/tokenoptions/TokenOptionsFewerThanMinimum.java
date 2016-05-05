@@ -2,8 +2,8 @@ package game.interactors.tokenoptions;
 
 public class TokenOptionsFewerThanMinimum extends TokenOptions {
 
-    public TokenOptionsFewerThanMinimum(TokenOptionsPresenter presenter, TokenOptionsTokensGateway tokens, TokenOptionsPlayersGateway players) {
-        super(presenter, tokens, players);
+    public TokenOptionsFewerThanMinimum(TokenOptionsPresenter presenter, TokenOptionsTokensGateway tokens, TokenOptionsPlayersGateway players, TokenOptionsBoardGateway board) {
+        super(presenter, tokens, players, board);
     }
 
     @Override
