@@ -19,19 +19,19 @@ public class FitnesseFixture {
         return getExpectedOutput();
     }
 
-    public void userEntersText() throws IOException {
+    public void whenUserEntersText() throws IOException {
         sendInput("a");
     }
 
-    public void userEntersZero() throws IOException {
+    public void whenUserEntersZero() throws IOException {
         sendInput("0");
     }
 
-    public void userEntersOne() throws IOException {
+    public void whenUserEntersOne() throws IOException {
         sendInput("1");
     }
 
-    public void userEntersTwo() throws IOException {
+    public void whenUserEntersTwo() throws IOException {
         sendInput("2");
     }
 
