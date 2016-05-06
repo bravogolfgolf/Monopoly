@@ -5,11 +5,11 @@ import game.parser.Parser;
 
 import java.io.IOException;
 
-public class ConsoleFitnesee extends Console {
+public class FitnesseConsole extends Console {
 
-    String expectedOutput;
+    StringBuffer bufferedOutput = new StringBuffer();
 
-    public ConsoleFitnesee(Parser parser) {
+    public FitnesseConsole(Parser parser) {
         super(parser);
     }
 
@@ -20,6 +20,6 @@ public class ConsoleFitnesee extends Console {
 
     @Override
     public void write(String text) throws IOException {
-        expectedOutput = text;
+        bufferedOutput.append(text);
     }
 }

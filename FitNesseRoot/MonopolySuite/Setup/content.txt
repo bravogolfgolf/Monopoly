@@ -1,0 +1,8 @@
+|import          |
+|game.fitnesse   |
+|fitnesse.fixture|
+
+|library|
+|fitnesse setup|
+
+|Setup|

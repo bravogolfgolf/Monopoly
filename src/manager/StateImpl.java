@@ -29,8 +29,8 @@ public enum StateImpl implements State {
         }
 
         @Override
-        public void twoEntered(StateManager manager) {
-
+        public void twoEntered(StateManager manager) throws IOException {
+            manager.initialize();
         }
     },
 
