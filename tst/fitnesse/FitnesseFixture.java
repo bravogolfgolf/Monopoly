@@ -6,12 +6,12 @@ public class FitnesseFixture {
 
     final FitnesseSetup fitnesse = new FitnesseSetup();
 
-    public String initialUserPromptShouldBe() throws IOException {
+    public String initialUserPromptIs() throws IOException {
         fitnesse.start();
         return getExpectedOutput();
     }
 
-    public String expectedResponseShouldBe(){
+    public String expectedResponseIs(){
         return getExpectedOutput();
     }
 
