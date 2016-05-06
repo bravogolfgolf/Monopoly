@@ -12,19 +12,13 @@ import game.repositories.Players;
 
 import java.io.IOException;
 
-final class MonopolyFitnesse {
+final class FitnesseSetup {
 
     public final Parser parser = new Parser();
-    public final ConsoleFitnesee console = new ConsoleFitnesee(parser);
+    public final FitnesseConsole console = new FitnesseConsole(parser);
     private final Players players = new Players();
     private final VersionFactory factory = new VersionFactory();
     private StateManager manager;
-
-    public static void main(String[] args) throws IOException {
-        MonopolyFitnesse monopoly = new MonopolyFitnesse();
-        monopoly.setup(StateImpl.VERSION);
-        monopoly.start();
-    }
 
     public void setup(StateImpl state) throws IOException {
         final Presenter presenter = new PresenterEn(console, parser);
