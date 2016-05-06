@@ -1,0 +1,22 @@
+|script|choose version        |
+|check |initial user prompt is|!-
+Select version of game you would like to play.
+Available versions: (1)USA
+-!|
+|when user enters text          |
+|check|expected response is|!-
+Select version of game you would like to play.
+Available versions: (1)USA
+-!|
+|when user enters zero          |
+|check|expected response is|!-
+Select version of game you would like to play.
+Available versions: (1)USA
+-!|
+|when user enters two           |
+|check|expected response is|!-
+Select version of game you would like to play.
+Available versions: (1)USA
+-!|
+|when user enters one          |
+|show|successfull transtion to next step|
