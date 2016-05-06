@@ -7,6 +7,10 @@ import java.io.IOException;
 public class ChooseMinimumNumberOfPlayers extends FitnesseFixture {
 
     public ChooseMinimumNumberOfPlayers() throws IOException {
-        fitnesse.setup(StateImpl.CREATE_PLAYER_0);
+        new ChooseMinimumNumberOfPlayers(StateImpl.CREATE_PLAYER_0);
+    }
+
+    private ChooseMinimumNumberOfPlayers(StateImpl state) throws IOException {
+        super(state);
     }
 }

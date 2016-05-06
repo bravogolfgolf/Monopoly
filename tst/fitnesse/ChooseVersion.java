@@ -7,6 +7,10 @@ import java.io.IOException;
 public class ChooseVersion extends FitnesseFixture {
 
     public ChooseVersion() throws IOException {
-        fitnesse.setup(StateImpl.VERSION);
+        new ChooseVersion(StateImpl.VERSION);
+    }
+
+    private ChooseVersion(StateImpl state) throws IOException {
+        super(state);
     }
 }

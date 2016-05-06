@@ -1,21 +1,30 @@
 package game.fitnesse;
 
+import game.manager.StateImpl;
+
 import java.io.IOException;
+
+import static game.fitnesse.Setup.monopoly;
 
 public class FitnesseFixture {
 
-    final FitnesseSetup fitnesse = new FitnesseSetup();
+    FitnesseFixture() {
+    }
+
+    FitnesseFixture(StateImpl state) throws IOException {
+        monopoly.setup(state);
+        monopoly.start();
+    }
 
     public String initialUserPromptIs() throws IOException {
-        fitnesse.start();
         return getExpectedOutput();
     }
 
-    public String expectedResponseIs(){
+    public String expectedResponseIs() {
         return getExpectedOutput();
     }
 
-    public String successfullTranstionToNextStep(){
+    public String successfullTranstionToNextStep() {
         return getExpectedOutput();
     }
 
@@ -36,12 +45,12 @@ public class FitnesseFixture {
     }
 
     private void sendInput(String input) throws IOException {
-        fitnesse.parser.parse(input);
+        monopoly.parser.parse(input);
     }
 
     private String getExpectedOutput() {
-        String result = fitnesse.console.bufferedOutput.toString();
-        fitnesse.console.bufferedOutput = new StringBuffer();
+        String result = monopoly.console.bufferedOutput.toString();
+        monopoly.console.bufferedOutput = new StringBuffer();
         return result;
     }
 }

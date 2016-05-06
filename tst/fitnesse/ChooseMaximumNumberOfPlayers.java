@@ -7,6 +7,10 @@ import java.io.IOException;
 public class ChooseMaximumNumberOfPlayers extends FitnesseFixture {
 
     public ChooseMaximumNumberOfPlayers() throws IOException {
-        fitnesse.setup(StateImpl.CREATE_PLAYER_2);
+        new ChooseMaximumNumberOfPlayers(StateImpl.CREATE_PLAYER_0);
+    }
+
+    private ChooseMaximumNumberOfPlayers(StateImpl state) throws IOException {
+        super(state);
     }
 }

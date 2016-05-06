@@ -12,7 +12,11 @@ import game.repositories.Players;
 
 import java.io.IOException;
 
-final class FitnesseSetup {
+public final class FitnesseSetup {
+
+
+    public FitnesseSetup() {
+    }
 
     public final Parser parser = new Parser();
     public final FitnesseConsole console = new FitnesseConsole(parser);
@@ -30,5 +34,14 @@ final class FitnesseSetup {
 
     public void start() throws IOException {
         manager.initialize();
+    }
+
+    public void startWithUSVersionInPlace() throws IOException {
+        Setup.monopoly = new FitnesseSetup();
+        setup(StateImpl.VERSION);
+        start();
+        final String US_VERSION = "1";
+        parser.parse(US_VERSION);
+        console.bufferedOutput = new StringBuffer();
     }
 }
