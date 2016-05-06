@@ -15,6 +15,10 @@ public class FitnesseFixture {
         return getExpectedOutput();
     }
 
+    public String successfullTranstionToNextStep(){
+        return getExpectedOutput();
+    }
+
     public void userEntersText() throws IOException {
         sendInput("a");
     }
