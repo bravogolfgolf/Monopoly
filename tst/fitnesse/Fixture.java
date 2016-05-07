@@ -6,13 +6,13 @@ import java.io.IOException;
 
 import static game.fitnesse.Setup.monopoly;
 
-public class FitnesseFixture {
+public class Fixture {
 
-    FitnesseFixture() {
+    Fixture() {
     }
 
-    FitnesseFixture(StateImpl state) throws IOException {
-        monopoly.setup(state);
+    Fixture(StateImpl state) throws IOException {
+        monopoly.manager.setState(state);
         monopoly.start();
     }
 

@@ -1,69 +1,70 @@
 -!|script|
-|Given US Version|
+|Given no game        |
+|Given version of game|
 
 |script|choose maximum number of players|
-|check|initial user prompt is|!-
+|check |initial user prompt is          |!-
 Please select token for player. (Players 2 - 8)
 Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow
 -!|
-|when user enters text          |
+|when user enters text     |
 |check|expected response is|!-
 Please select token for player. (Players 2 - 8)
 Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow
 -!|
-|when user enters zero          |
+|when user enters zero     |
 |check|expected response is|!-
 Please select token for player. (Players 2 - 8)
 Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow
 -!|
-|when user enters two           |
+|when user enters two      |
 |check|expected response is|!-
 Player created with Battleship token.
 
 Please select token for player. (Players 2 - 8)
 Available tokens: (1)Automobile, (2)Boot, (3)Cat, (4)Scottish Terrier, (5)Thimble, (6)Top Hat, (7)Wheelbarrow
 -!|
-|when user enters two           |
+|when user enters two      |
 |check|expected response is|!-
 Player created with Boot token.
 
 Please select token for player or (0)Play to begin. (Players 2 - 8)
 Available tokens: (1)Automobile, (2)Cat, (3)Scottish Terrier, (4)Thimble, (5)Top Hat, (6)Wheelbarrow
 -!|
-|when user enters one           |
+|when user enters one      |
 |check|expected response is|!-
 Player created with Automobile token.
 
 Please select token for player or (0)Play to begin. (Players 2 - 8)
 Available tokens: (1)Cat, (2)Scottish Terrier, (3)Thimble, (4)Top Hat, (5)Wheelbarrow
 -!|
-|when user enters one           |
+|when user enters one      |
 |check|expected response is|!-
 Player created with Cat token.
 
 Please select token for player or (0)Play to begin. (Players 2 - 8)
 Available tokens: (1)Scottish Terrier, (2)Thimble, (3)Top Hat, (4)Wheelbarrow
 -!|
-|when user enters one           |
+|when user enters one      |
 |check|expected response is|!-
 Player created with Scottish Terrier token.
 
 Please select token for player or (0)Play to begin. (Players 2 - 8)
 Available tokens: (1)Thimble, (2)Top Hat, (3)Wheelbarrow
 -!|
-|when user enters one           |
+|when user enters one      |
 |check|expected response is|!-
 Player created with Thimble token.
 
 Please select token for player or (0)Play to begin. (Players 2 - 8)
 Available tokens: (1)Top Hat, (2)Wheelbarrow
 -!|
-|when user enters one           |
+|when user enters one      |
 |check|expected response is|!-
 Player created with Top Hat token.
 
 Please select token for player or (0)Play to begin. (Players 2 - 8)
 Available tokens: (1)Wheelbarrow
 -!|
-|when user enters one           |
+|when user enters one                     |
 |check|successfull transtion to next step||

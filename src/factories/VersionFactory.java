@@ -6,8 +6,8 @@ import game.repositories.Tokens;
 
 import java.util.Arrays;
 
-import static game.factories.ControllerFactory.board;
-import static game.factories.ControllerFactory.tokens;
+import static game.Context.board;
+import static game.Context.tokens;
 
 public class VersionFactory implements VersionOptionsVersionFactory {
 

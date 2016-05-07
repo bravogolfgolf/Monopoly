@@ -2,9 +2,9 @@ package game.fitnesse;
 
 public class Setup {
 
-    static FitnesseSetup monopoly;
+    static MonopolyTest monopoly;
 
     public Setup() {
-        monopoly = new FitnesseSetup();
+        monopoly = new MonopolyTest();
     }
 }

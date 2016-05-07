@@ -12,16 +12,16 @@ import game.repositories.Players;
 
 import java.io.IOException;
 
-public final class FitnesseSetup {
+public final class MonopolyTest {
 
-    public FitnesseSetup() {
+    public MonopolyTest() {
     }
 
     public final Parser parser = new Parser();
-    public final FitnesseConsole console = new FitnesseConsole(parser);
+    public final ConsoleTest console = new ConsoleTest(parser);
     private final Players players = new Players();
     private final VersionFactory factory = new VersionFactory();
-    private StateManager manager;
+    StateManager manager;
 
     public void setup(StateImpl state) throws IOException {
         final Presenter presenter = new PresenterEn(console, parser);
@@ -33,21 +33,5 @@ public final class FitnesseSetup {
 
     public void start() throws IOException {
         manager.initialize();
-    }
-
-    public void startWithUSVersionInPlace() throws IOException {
-        setup(StateImpl.VERSION);
-        start();
-        final String US_VERSION = "1";
-        parser.parse(US_VERSION);
-        console.bufferedOutput = new StringBuffer();
-    }
-
-    public void twoPlayerGame() throws IOException {
-        final String AUTOMOBILE = "1", CAT = "3", START_GAME = "0";
-        parser.parse(AUTOMOBILE);
-        parser.parse(CAT);
-        parser.parse(START_GAME);
-        console.bufferedOutput = new StringBuffer();
     }
 }

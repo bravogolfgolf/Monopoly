@@ -1,6 +1,9 @@
-|scenario|Given US Version|
-|startWithUSVersionInPlace|
+|scenario|Given no game|
+|startNewGame|
+
+|scenario|Given version of game|
+|createVersionOfGame|
 
 |scenario|Given Two Player Game|
-|twoPlayerGame                 |
+|addTwoPlayersToGame|
 

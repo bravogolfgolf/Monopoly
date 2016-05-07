@@ -1,5 +1,6 @@
 -!|script|
-|Given US Version     |
+|Given no game        |
+|Given version of game|
 |Given Two Player Game|
 
 |script|start turn            |
@@ -13,10 +14,6 @@ Available options: (0)Roll (1)Manage Properties (2)Trade.
 |when user enters zero      |
 |check|expected response is||
 
--!|script|
-|Given US Version     |
-|Given Two Player Game|
-
 |script|start turn            |
 |check |initial user prompt is|!-
 Available options: (0)Roll (1)Manage Properties (2)Trade.
@@ -26,17 +23,13 @@ Available options: (0)Roll (1)Manage Properties (2)Trade.
 |when user enters zero      |
 |check|expected response is||
 
--!|script|
-|Given US Version           |
-|Given Two Player Game      |
-
 |script|start turn            |
 |check |initial user prompt is|!-
 Available options: (0)Roll (1)Manage Properties (2)Trade.
 -!|
 |when user enters two       |
 |check|expected response is||
-|when user enters one      |
+|when user enters one       |
 |check|expected response is||
 |when user enters zero      |
 |check|expected response is||

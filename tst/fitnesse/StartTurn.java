@@ -4,7 +4,7 @@ import game.manager.StateImpl;
 
 import java.io.IOException;
 
-public class StartTurn extends FitnesseFixture {
+public class StartTurn extends Fixture {
 
     public StartTurn() throws IOException {
         new StartTurn(StateImpl.NORMAL_TURN);
