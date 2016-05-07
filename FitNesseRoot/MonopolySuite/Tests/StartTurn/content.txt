@@ -3,7 +3,7 @@
 |Given version of game|
 |Given Two Player Game|
 
-|script|start turn            |
+|script|Fixture  |NORMAL_TURN |
 |check |initial user prompt is|!-
 Available options: (0)Roll (1)Manage Properties (2)Trade.
 -!|
@@ -14,7 +14,7 @@ Available options: (0)Roll (1)Manage Properties (2)Trade.
 |when user enters zero      |
 |check|expected response is||
 
-|script|start turn            |
+|script|Fixture  |NORMAL_TURN |
 |check |initial user prompt is|!-
 Available options: (0)Roll (1)Manage Properties (2)Trade.
 -!|
@@ -23,7 +23,7 @@ Available options: (0)Roll (1)Manage Properties (2)Trade.
 |when user enters zero      |
 |check|expected response is||
 
-|script|start turn            |
+|script|Fixture  |NORMAL_TURN |
 |check |initial user prompt is|!-
 Available options: (0)Roll (1)Manage Properties (2)Trade.
 -!|

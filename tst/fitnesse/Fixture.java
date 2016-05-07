@@ -1,5 +1,6 @@
 package game.fitnesse;
 
+import fitnesse.slim.converters.GenericEnumConverter;
 import game.manager.StateImpl;
 
 import java.io.IOException;
@@ -8,10 +9,11 @@ import static game.fitnesse.Setup.monopoly;
 
 public class Fixture {
 
-    Fixture() {
+    public Fixture() {
     }
 
-    Fixture(StateImpl state) throws IOException {
+    public Fixture(StateImpl state) throws IOException {
+        fitnesse.slim.converters.ConverterRegistry.addConverter(StateImpl.class, new GenericEnumConverter<>(StateImpl.class));
         monopoly.manager.setState(state);
         monopoly.start();
     }

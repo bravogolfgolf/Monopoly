@@ -6,5 +6,6 @@ public class Setup {
 
     public Setup() {
         monopoly = new MonopolyTest();
+
     }
 }
