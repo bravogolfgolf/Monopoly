@@ -1,7 +1,7 @@
 -!|script|
 |Given no game|
 
-|script|choose version        |
+|script|Fixture    |VERSION   |
 |check |initial user prompt is|!-
 Select version of game you would like to play.
 Available versions: (1)USA
