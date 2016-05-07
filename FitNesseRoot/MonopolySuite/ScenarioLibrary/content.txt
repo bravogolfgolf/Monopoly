@@ -1,2 +1,6 @@
-|scenario|US version in place|
-|startWithUSVersionInPlace        |
+|scenario|US Version in Place|
+|startWithUSVersionInPlace   |
+
+|scenario|Two Player Game|
+|twoPlayerGame           |
+

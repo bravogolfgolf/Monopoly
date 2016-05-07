@@ -35,12 +35,24 @@ public final class FitnesseSetup {
         manager.initialize();
     }
 
-    public void startWithUSVersionInPlace() throws IOException {
+    private void newSetup() {
         Setup.monopoly = new FitnesseSetup();
+    }
+
+    public void startWithUSVersionInPlace() throws IOException {
+        newSetup();
         setup(StateImpl.VERSION);
         start();
         final String US_VERSION = "1";
         parser.parse(US_VERSION);
+        console.bufferedOutput = new StringBuffer();
+    }
+
+    public void twoPlayerGame() throws IOException {
+        startWithUSVersionInPlace();
+        final String AUTOMOBILE = "1", CAT = "3";
+        parser.parse(AUTOMOBILE);
+        parser.parse(CAT);
         console.bufferedOutput = new StringBuffer();
     }
 }

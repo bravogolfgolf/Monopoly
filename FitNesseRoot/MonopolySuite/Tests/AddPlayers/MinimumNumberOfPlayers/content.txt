@@ -1,5 +1,5 @@
 -!|script|
-|US version in place|
+|US Version in Place|
 
 |script|choose minimum number of players|
 |check |initial user prompt is          |!-

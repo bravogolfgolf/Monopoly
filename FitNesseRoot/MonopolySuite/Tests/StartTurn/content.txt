@@ -1,1 +1,8 @@
-<test page>
+-!|script|
+|Two Player Game|
+
+|script|start turn|
+|check|initial user prompt is|!-
+Available options: (0)Roll (1)Manage Properties (2)Trade.
+-!|
+
