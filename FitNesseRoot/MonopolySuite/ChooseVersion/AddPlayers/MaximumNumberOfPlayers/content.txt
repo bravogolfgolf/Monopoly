@@ -1,8 +1,0 @@
--!|script|
-|US version in place|
-
-|script|choose maximum number of players|
-|check|initial user prompt is|!-
-Please select token for player. (Players 2 - 8)
-Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow
--!|

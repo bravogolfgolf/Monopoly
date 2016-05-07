@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import static game.fitnesse.Setup.monopoly;
 
+
 public class FitnesseFixture {
 
     FitnesseFixture() {

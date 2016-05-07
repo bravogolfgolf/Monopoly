@@ -36,11 +36,18 @@ public final class FitnesseSetup {
     }
 
     public void startWithUSVersionInPlace() throws IOException {
-        Setup.monopoly = new FitnesseSetup();
         setup(StateImpl.VERSION);
         start();
         final String US_VERSION = "1";
         parser.parse(US_VERSION);
+        console.bufferedOutput = new StringBuffer();
+    }
+
+    public void twoPlayerGame() throws IOException {
+        final String AUTOMOBILE = "1", CAT = "3", START_GAME = "0";
+        parser.parse(AUTOMOBILE);
+        parser.parse(CAT);
+        parser.parse(START_GAME);
         console.bufferedOutput = new StringBuffer();
     }
 }

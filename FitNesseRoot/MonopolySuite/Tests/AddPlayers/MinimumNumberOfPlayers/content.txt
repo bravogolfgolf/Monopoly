@@ -1,5 +1,5 @@
 -!|script|
-|US version in place|
+|Given US Version|
 
 |script|choose minimum number of players|
 |check |initial user prompt is          |!-
@@ -31,4 +31,4 @@ Please select token for player or (0)Play to begin. (Players 2 - 8)
 Available tokens: (1)Boot, (2)Cat, (3)Scottish Terrier, (4)Thimble, (5)Top Hat, (6)Wheelbarrow
 -!|
 |when user enters zero         |
-|show|successfull transtion to next step|
+|check|successfull transtion to next step||
