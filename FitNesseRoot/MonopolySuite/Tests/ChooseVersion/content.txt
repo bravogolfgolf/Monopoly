@@ -19,4 +19,9 @@ Select version of game you would like to play.
 Available versions: (1)USA
 -!|
 |when user enters one          |
-|show|successfull transtion to next step|
+|check|successfull transtion to next step|!-
+USA version of game created.
+
+Please select token for player. (Players 2 - 8)
+Available tokens: (1)Automobile, (2)Battleship, (3)Boot, (4)Cat, (5)Scottish Terrier, (6)Thimble, (7)Top Hat, (8)Wheelbarrow
+-!|

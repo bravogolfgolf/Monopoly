@@ -1,8 +1,17 @@
 -!|script|
-|Two Player Game|
+|Given US Version|
+|Given Two Player Game|
 
-|script|start turn|
-|check|initial user prompt is|!-
+|script|start turn            |
+|check |initial user prompt is|!-
 Available options: (0)Roll (1)Manage Properties (2)Trade.
 -!|
+|when user enters text     |
+|check|expected response is|!-
+Available options: (0)Roll (1)Manage Properties (2)Trade.
+-!|
+|when user enters zero     |
+|check|expected response is||
+
+
 

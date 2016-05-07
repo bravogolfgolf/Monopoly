@@ -1,5 +1,5 @@
 -!|script|
-|US Version in Place|
+|Given US Version|
 
 |script|choose maximum number of players|
 |check|initial user prompt is|!-
@@ -66,4 +66,4 @@ Please select token for player or (0)Play to begin. (Players 2 - 8)
 Available tokens: (1)Wheelbarrow
 -!|
 |when user enters one           |
-|show|successfull transtion to next step|
+|check|successfull transtion to next step||

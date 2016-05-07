@@ -1,6 +1,6 @@
-|scenario|US Version in Place|
-|startWithUSVersionInPlace   |
+|scenario|Given US Version|
+|startWithUSVersionInPlace|
 
-|scenario|Two Player Game|
-|twoPlayerGame           |
+|scenario|Given Two Player Game|
+|twoPlayerGame                 |
 
