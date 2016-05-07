@@ -5,11 +5,11 @@ import game.parser.Parser;
 
 import java.io.IOException;
 
-public class FitnesseConsole extends Console {
+public class ConsoleTest extends Console {
 
     StringBuffer bufferedOutput = new StringBuffer();
 
-    public FitnesseConsole(Parser parser) {
+    public ConsoleTest(Parser parser) {
         super(parser);
     }
 

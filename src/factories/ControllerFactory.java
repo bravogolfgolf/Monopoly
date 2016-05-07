@@ -1,11 +1,11 @@
 package game.factories;
 
+import game.Context;
 import game.controllers.Controller;
 import game.controllers.Message;
 import game.controllers.Options;
 import game.controllers.StartTurn;
 import game.display.Console;
-import game.entities.Board;
 import game.interactors.Interactor;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
@@ -18,22 +18,20 @@ import game.interactors.versionoptions.VersionOptions;
 import game.manager.ManagerControllerFactory;
 import game.presenters.Presenter;
 import game.repositories.Players;
-import game.repositories.Tokens;
+
+import static game.Context.*;
 
 public class ControllerFactory implements ManagerControllerFactory {
 
-    static Board board;
-    static Tokens tokens;
     private final Presenter presenter;
     private final VersionFactory factory;
-    private final Players players;
     private final Console console;
 
 
     public ControllerFactory(Presenter presenter, VersionFactory factory, Players players, Console console) {
         this.presenter = presenter;
         this.factory = factory;
-        this.players = players;
+        Context.players = players;
         this.console = console;
     }
 
