@@ -396,7 +396,6 @@ public enum StateImpl implements State {
 
         @Override
         public void validTextEntry(StateManager manager) throws IOException {
-            System.out.println("Manaage Property Functionalityu");
             manager.initialize();
         }
 
@@ -425,7 +424,6 @@ public enum StateImpl implements State {
 
         @Override
         public void validTextEntry(StateManager manager) throws IOException {
-            System.out.println("Trade Functionaity");
             manager.initialize();
         }
 
