@@ -1,8 +1,8 @@
 package game.interactors.tokenoptions;
 
-import game.entities.Board.Space;
+import game.entities.Token;
 
 public interface TokenOptionsBoardGateway {
 
-    Space findSpaceBy(int spaceID);
+    void setInitialSpace(Token token);
 }

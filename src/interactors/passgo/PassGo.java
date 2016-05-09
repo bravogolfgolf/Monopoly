@@ -21,7 +21,7 @@ public class PassGo extends Interactor {
     @Override
     public void handle() {
         banker.paySalary();
-        response.GO = board.findSpaceBy(0).getDescription();
+        response.GO = board.getInitialSpaceDescription();
         presenter.passGoMessage(response);
     }
 }

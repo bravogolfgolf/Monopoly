@@ -32,12 +32,13 @@ public class Board implements MoveTokenBoardGateway, PassGoBoardGateway, TokenOp
     }
 
     @Override
-    public Space findSpaceBy(int spaceID) {
-        for (Space space : board) {
-            if (space.getSpaceID() == spaceID)
-                return space;
-        }
-        throw new IllegalArgumentException();
+    public void setInitialSpace(Token token) {
+        token.setSpace(board.get(0));
+    }
+
+    @Override
+    public String getInitialSpaceDescription() {
+        return board.get(0).getDescription();
     }
 
     public abstract static class Space {
