@@ -1,10 +1,11 @@
 package game.interactors.movetoken;
 
-import game.Context;
 import game.entities.Dice;
-import game.entities.Token;
 import game.interactors.Interactor;
 import game.presenters.Presenter;
+
+import static game.Context.currentPlayer;
+import static game.Context.dice;
 
 public class MoveToken extends Interactor {
 
@@ -19,11 +20,10 @@ public class MoveToken extends Interactor {
 
     @Override
     public void handle() {
-        Context.dice = Dice.roll();
-        Token token = Context.currentPlayer;
-        board.move(token, Context.dice.rolled());
-        response.rolled = Context.dice.rolled();
-        response.isDoubles = Context.dice.isDoubles();
+        dice = Dice.roll();
+        board.move(currentPlayer, dice.rolled());
+        response.rolled = dice.rolled();
+        response.isDoubles = dice.isDoubles();
         presenter.rollMessage(response);
     }
 }
