@@ -85,9 +85,9 @@ public class InteractorTest {
             public void testHandleWithRequest() {
                 interactor.handle(request);
 
-                assertTrue(board.verifyFindBySpaceIDCalled);
-                assertTrue(tokens.verifyRemoveTokenCalled);
-                assertTrue(players.verifyAddWithCalled);
+                assertTrue(tokens.verifyCreateTokenCalled);
+                assertTrue(board.verifySetInitialSpaceCalled);
+                assertTrue(players.verifyAddCalled);
                 assertTrue(presenter.verifyPlayerCreatedMessage);
             }
         }
@@ -111,9 +111,9 @@ public class InteractorTest {
             public void testHandleWithRequest() {
                 interactor.handle(request);
 
-                assertTrue(board.verifyFindBySpaceIDCalled);
-                assertTrue(tokens.verifyRemoveTokenCalled);
-                assertTrue(players.verifyAddWithCalled);
+                assertTrue(board.verifySetInitialSpaceCalled);
+                assertTrue(tokens.verifyCreateTokenCalled);
+                assertTrue(players.verifyAddCalled);
                 assertTrue(presenter.verifyPlayerCreatedMessage);
             }
         }
@@ -182,6 +182,7 @@ public class InteractorTest {
             interactor.handle();
 
             assertTrue(banker.verifyPaySalaryCalled);
+            assertTrue(board.verifyGetInitialSpaceDescriptionCalled);
             assertTrue(presenter.verifypassGOMessage);
         }
     }

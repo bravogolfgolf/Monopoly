@@ -17,7 +17,12 @@ public class BoardTest {
 
     @Before
     public void setup(){
-        token.setSpace(board.findSpaceBy(token.spaceID));
+        board.setInitialSpace(token);
+    }
+
+    @Test
+    public void getInitialDescription(){
+        assertEquals("GO",board.getInitialSpaceDescription());
     }
 
     @Test

@@ -6,13 +6,13 @@ import game.repositories.Players;
 
 public class PlayersMock extends Players {
 
-    public boolean verifyAddWithCalled = false;
+    public boolean verifyAddCalled = false;
     public boolean verifyRandomizePlayersCalled = false;
     public boolean verifyGetAllPlayersExceptCurrentCalled = false;
 
     @Override
     public void add(Token request) {
-        verifyAddWithCalled = true;
+        verifyAddCalled = true;
     }
 
     @Override

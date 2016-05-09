@@ -19,7 +19,9 @@ public class Tokens implements TokenOptionsTokensGateway {
     }
 
     @Override
-    public void removeToken(Token token) {
+    public Token createToken(String text) {
+        Token token = new Token(text);
         tokens.remove(token);
+        return token;
     }
 }

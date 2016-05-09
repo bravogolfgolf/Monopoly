@@ -1,6 +1,5 @@
 package game.fitnesse;
 
-import game.Context;
 import game.entities.Board;
 import game.entities.Token;
 import game.factories.SpacesUSA;
@@ -10,7 +9,11 @@ import game.repositories.Tokens;
 
 import java.io.IOException;
 
+import static game.Context.*;
+
 public class MonopolyLibrary {
+
+    private Token token;
 
     public MonopolyLibrary() {
     }
@@ -21,19 +24,19 @@ public class MonopolyLibrary {
     }
 
     public boolean createVersionOfGame() throws IOException {
-        Context.board = Board.create(SpacesUSA.create());
-        Context.tokens = new Tokens(TokensUSA.create());
+        board = Board.create(SpacesUSA.create());
+        tokens = new Tokens(TokensUSA.create());
         return true;
     }
 
     public boolean addTwoPlayersToGame() throws IOException {
-        Token token = new Token("Cat");
-        token.setSpace(Context.board.findSpaceBy(token.spaceID));
-        Context.players.add(token);
-        token = new Token("Boot");
-        token.setSpace(Context.board.findSpaceBy(token.spaceID));
-        Context.players.add(token);
-        Context.players.randomizePlayers();
+        token = tokens.createToken("Cat");
+        board.setInitialSpace(token);
+        players.add(token);
+        token = tokens.createToken("Boot");
+        board.setInitialSpace(token);
+        players.add(token);
+        players.randomizePlayers();
         return true;
     }
 }
