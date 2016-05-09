@@ -5,8 +5,6 @@ import game.entities.Token;
 
 public class TokenMock extends Token {
 
-    public boolean verifyTransactionCalled = false;
-
     public TokenMock(String description) {
         super(description);
     }
@@ -38,8 +36,5 @@ public class TokenMock extends Token {
 
     @Override
     public void transaction(int amount, TransactionType type) {
-        verifyTransactionCalled = true;
     }
-
-
 }
