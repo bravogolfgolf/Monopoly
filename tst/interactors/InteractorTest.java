@@ -33,6 +33,7 @@ public class InteractorTest {
     private final BoardMock board = new BoardMock(SpacesUSA.create());
     private final ControllerRequest request = new ControllerRequest();
     private final TokenMock currentPlayer = new TokenMock("Mock");
+    private final BankerMock banker = new BankerMock();
 
     @Before
     public void setup() {
@@ -174,13 +175,13 @@ public class InteractorTest {
 
     public class PassGOTest {
 
-        private final Interactor interactor = new PassGo(presenter, board);
+        private final Interactor interactor = new PassGo(presenter, banker, board);
 
         @Test
         public void testHandle() {
             interactor.handle();
 
-            assertTrue(currentPlayer.verifyTransactionCalled);
+            assertTrue(banker.verifyPaySalaryCalled);
             assertTrue(presenter.verifypassGOMessage);
         }
     }

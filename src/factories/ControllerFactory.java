@@ -6,6 +6,7 @@ import game.controllers.Message;
 import game.controllers.Options;
 import game.controllers.StartTurn;
 import game.display.Console;
+import game.entities.Banker;
 import game.interactors.Interactor;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
@@ -26,7 +27,7 @@ public class ControllerFactory implements ManagerControllerFactory {
     private final Presenter presenter;
     private final VersionFactory factory;
     private final Console console;
-
+    private final Banker banker = new Banker();
 
     public ControllerFactory(Presenter presenter, VersionFactory factory, Players players, Console console) {
         this.presenter = presenter;
@@ -67,7 +68,7 @@ public class ControllerFactory implements ManagerControllerFactory {
         }
 
         if (controller.equals("PassGo")) {
-            Interactor interactor = new PassGo(presenter, board);
+            Interactor interactor = new PassGo(presenter, banker, board);
             return new Message(interactor, presenter);
         }
 

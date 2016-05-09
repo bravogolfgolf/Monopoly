@@ -1,27 +1,26 @@
 package game.interactors.passgo;
 
+import game.entities.Banker;
 import game.entities.Board;
 import game.interactors.Interactor;
 import game.presenters.Presenter;
 
-import static game.Context.currentPlayer;
-import static game.entities.Token.TransactionType.RECIEVE_CASH;
-
 public class PassGo extends Interactor {
 
     private final PassGoPresenter presenter;
-    private final PassGoResponse response = new PassGoResponse();
+    private final PassGoBankerGateway banker;
     private final PassGoBoardGateway board;
+    private final PassGoResponse response = new PassGoResponse();
 
-    public PassGo(Presenter presenter, Board board) {
+    public PassGo(Presenter presenter, Banker banker, Board board) {
         this.presenter = presenter;
+        this.banker = banker;
         this.board = board;
     }
 
     @Override
     public void handle() {
-        currentPlayer.turnState.passedGO = false;
-        currentPlayer.transaction(200, RECIEVE_CASH);
+        banker.paySalary();
         response.GO = board.findSpaceBy(0).getDescription();
         presenter.passGoMessage(response);
     }
