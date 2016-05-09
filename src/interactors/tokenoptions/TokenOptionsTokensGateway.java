@@ -8,5 +8,5 @@ public interface TokenOptionsTokensGateway {
 
     Set<Token> getAvailableTokens();
 
-    void removeToken(Token token);
+    Token createToken(String text);
 }

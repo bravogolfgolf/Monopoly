@@ -30,9 +30,8 @@ public abstract class TokenOptions extends Interactor {
 
     @Override
     public void handle(ControllerRequest request) {
-        Token token = new Token(request.string);
+        Token token = tokens.createToken(request.string);
         token.setSpace(board.findSpaceBy(token.spaceID));
-        tokens.removeToken(token);
         players.add(token);
         response.token = token.getDescription();
         presenter.playerCreatedMessage(response);

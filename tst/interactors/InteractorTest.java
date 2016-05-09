@@ -86,7 +86,7 @@ public class InteractorTest {
                 interactor.handle(request);
 
                 assertTrue(board.verifyFindBySpaceIDCalled);
-                assertTrue(tokens.verifyRemoveTokenCalled);
+                assertTrue(tokens.verifyCreateTokenCalled);
                 assertTrue(players.verifyAddWithCalled);
                 assertTrue(presenter.verifyPlayerCreatedMessage);
             }
@@ -112,7 +112,7 @@ public class InteractorTest {
                 interactor.handle(request);
 
                 assertTrue(board.verifyFindBySpaceIDCalled);
-                assertTrue(tokens.verifyRemoveTokenCalled);
+                assertTrue(tokens.verifyCreateTokenCalled);
                 assertTrue(players.verifyAddWithCalled);
                 assertTrue(presenter.verifyPlayerCreatedMessage);
             }

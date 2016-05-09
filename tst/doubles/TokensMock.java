@@ -8,7 +8,7 @@ import java.util.TreeSet;
 
 public class TokensMock extends Tokens {
 
-    public boolean verifyRemoveTokenCalled = false;
+    public boolean verifyCreateTokenCalled = false;
     public boolean verifyGetAvailableTokensCalled = false;
 
     public TokensMock(Set<Token> tokens) {
@@ -16,8 +16,9 @@ public class TokensMock extends Tokens {
     }
 
     @Override
-    public void removeToken(Token token) {
-        verifyRemoveTokenCalled = true;
+    public Token createToken(String text) {
+        verifyCreateTokenCalled = true;
+        return new Token("");
     }
 
     @Override

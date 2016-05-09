@@ -32,7 +32,7 @@ public class TokensTest {
     @Test
     public void testRemoveToken() {
         Set<Token> expected = new TreeSet<>();
-        tokens.removeToken(token);
+        tokens.createToken("Cat");
         assertEquals(expected, tokens.getAvailableTokens());
     }
 }
