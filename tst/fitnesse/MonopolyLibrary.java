@@ -13,8 +13,6 @@ import static game.Context.*;
 
 public class MonopolyLibrary {
 
-    private Token token;
-
     public MonopolyLibrary() {
     }
 
@@ -30,7 +28,7 @@ public class MonopolyLibrary {
     }
 
     public boolean addTwoPlayersToGame() throws IOException {
-        token = tokens.createToken("Cat");
+        Token token = tokens.createToken("Cat");
         board.setInitialSpace(token);
         players.add(token);
         token = tokens.createToken("Boot");

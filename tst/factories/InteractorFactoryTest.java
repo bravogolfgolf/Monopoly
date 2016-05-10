@@ -10,17 +10,17 @@ public class InteractorFactoryTest {
     private final Parser parser = new Parser();
     private final Console console = new Console(parser);
     private final PresenterEn presenter = new PresenterEn(console, parser);
-    private final VersionFactory factory = new VersionFactory();
+    private final VersionFactory versionFactory = new VersionFactory();
 
-    private final ControllerFactoryInteractorFactory interactorFactory = new InteractorFactory(presenter, factory);
+    private final ControllerFactoryInteractorFactory factory = new InteractorFactory(presenter, versionFactory);
 
     @Test(expected = IllegalArgumentException.class)
     public void testInteractorFactoryException() {
-        interactorFactory.make("");
+        factory.make("");
     }
 
     @Test
     public void testMakeInteractorOfType() {
-        interactorFactory.make("VersionOptions");
+        factory.make("VersionOptions");
     }
 }

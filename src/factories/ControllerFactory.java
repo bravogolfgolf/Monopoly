@@ -24,38 +24,38 @@ import static game.Context.*;
 public class ControllerFactory implements ManagerControllerFactory {
 
     private final Presenter presenter;
-    private final VersionFactory factory;
-    private final ControllerFactoryInteractorFactory interactorFactory;
+    private final ControllerFactoryInteractorFactory factory;
     private final Console console;
     private final Banker banker = new Banker();
 
-    public ControllerFactory(Presenter presenter, VersionFactory factory, InteractorFactory interactorFactory, Players players, Console console) {
+    public ControllerFactory(Presenter presenter, InteractorFactory factory, Players players, Console console) {
         this.presenter = presenter;
         this.factory = factory;
-        this.interactorFactory = interactorFactory;
         Context.players = players;
         this.console = console;
     }
 
     @Override
     public Controller make(String controller) {
+        Interactor interactor;
+
         if (controller.equals("VersionOptions")) {
-            Interactor interactor = interactorFactory.make(controller);
+            interactor = factory.make(controller);
             return new Options(interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsFewerThanMinimum")) {
-            Interactor interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players, board);
+            interactor = new TokenOptionsFewerThanMinimum(presenter, tokens, players, board);
             return new Options(interactor, presenter, console);
         }
 
         if (controller.equals("TokenOptionsMinimumToMaximum")) {
-            Interactor interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players, board);
+            interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players, board);
             return new Options(interactor, presenter, console);
         }
 
         if (controller.equals("Message")) {
-            Interactor interactor = new SelectFirst(presenter, players);
+            interactor = new SelectFirst(presenter, players);
             return new Message(interactor, presenter);
         }
 
@@ -64,22 +64,22 @@ public class ControllerFactory implements ManagerControllerFactory {
         }
 
         if (controller.equals("MoveToken")) {
-            Interactor interactor = new MoveToken(presenter, board);
+            interactor = new MoveToken(presenter, board);
             return new Message(interactor, presenter);
         }
 
         if (controller.equals("PassGo")) {
-            Interactor interactor = new PassGo(presenter, banker, board);
+            interactor = new PassGo(presenter, banker, board);
             return new Message(interactor, presenter);
         }
 
         if (controller.equals("PropertyOptions")) {
-            Interactor interactor = new PropertyOptions(presenter);
+            interactor = new PropertyOptions(presenter);
             return new Options(interactor, presenter, console);
         }
 
         if (controller.equals("PartnerOptions")) {
-            Interactor interactor = new PartnerOptions(presenter, players);
+            interactor = new PartnerOptions(presenter, players);
             return new Options(interactor, presenter, console);
         }
 

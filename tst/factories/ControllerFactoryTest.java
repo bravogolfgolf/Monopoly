@@ -13,26 +13,26 @@ public class ControllerFactoryTest {
     private final Console console = new Console(parser);
     private final PresenterEn presenter = new PresenterEn(console, parser);
     private final Players players = new Players();
-    private final VersionFactory factory = new VersionFactory();
-    private final InteractorFactory interactorFactory = new InteractorFactory(presenter, factory);
-    private final ManagerControllerFactory controllerFactory = new ControllerFactory(presenter, factory, interactorFactory, players, console);
+    private final VersionFactory versionFactory = new VersionFactory();
+    private final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory);
+    private final ManagerControllerFactory factory = new ControllerFactory(presenter, interactorFactory, players, console);
 
     @Test(expected = IllegalArgumentException.class)
     public void testControllerFactoryException() {
-        controllerFactory.make("");
+        factory.make("");
     }
 
     @Test
     public void testMakeControllerWithInteractorOfType() {
-        controllerFactory.make("VersionOptions");
-        controllerFactory.make("TokenOptionsFewerThanMinimum");
-        controllerFactory.make("TokenOptionsMinimumToMaximum");
-        controllerFactory.make("Message");
-        controllerFactory.make("StartTurn");
-        controllerFactory.make("MoveToken");
-        controllerFactory.make("PassGo");
-        controllerFactory.make("PropertyOptions");
-        controllerFactory.make("PartnerOptions");
+        factory.make("VersionOptions");
+        factory.make("TokenOptionsFewerThanMinimum");
+        factory.make("TokenOptionsMinimumToMaximum");
+        factory.make("Message");
+        factory.make("StartTurn");
+        factory.make("MoveToken");
+        factory.make("PassGo");
+        factory.make("PropertyOptions");
+        factory.make("PartnerOptions");
     }
 }
 

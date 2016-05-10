@@ -6,8 +6,8 @@ import game.presenters.Presenter;
 
 public class InteractorFactory implements ControllerFactoryInteractorFactory {
 
-    private Presenter presenter;
-    private VersionFactory factory;
+    private final Presenter presenter;
+    private final VersionFactory factory;
 
     public InteractorFactory(Presenter presenter, VersionFactory factory) {
         this.presenter = presenter;

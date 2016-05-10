@@ -21,7 +21,7 @@ public class ParserTest {
     private final VersionFactoryMock versionFactory = new VersionFactoryMock();
     private final PlayersMock players = new PlayersMock();
     private final InteractorFactoryMock interactorFactory = new InteractorFactoryMock(presenter, versionFactory);
-    private final ControllerFactoryDummy factory = new ControllerFactoryDummy(presenter, versionFactory, interactorFactory, players, console);
+    private final ControllerFactoryDummy factory = new ControllerFactoryDummy(presenter, interactorFactory, players, console);
     private final StateManagerMock manager = new StateManagerMock(factory);
     private Map<Integer, String> menuMap;
 
