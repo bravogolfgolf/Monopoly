@@ -5,7 +5,6 @@ import game.manager.ManagerControllerFactory;
 import game.parser.Parser;
 import game.presenters.PresenterEn;
 import game.repositories.Players;
-import org.junit.Before;
 import org.junit.Test;
 
 public class ControllerFactoryTest {
@@ -15,13 +14,8 @@ public class ControllerFactoryTest {
     private final PresenterEn presenter = new PresenterEn(console, parser);
     private final Players players = new Players();
     private final VersionFactory factory = new VersionFactory();
-
-    private ManagerControllerFactory controllerFactory;
-
-    @Before
-    public void setUp() {
-        controllerFactory = new ControllerFactory(presenter, factory, players, console);
-    }
+    private final InteractorFactory interactorFactory = new InteractorFactory(presenter, factory);
+    private final ManagerControllerFactory controllerFactory = new ControllerFactory(presenter, factory, interactorFactory, players, console);
 
     @Test(expected = IllegalArgumentException.class)
     public void testControllerFactoryException() {

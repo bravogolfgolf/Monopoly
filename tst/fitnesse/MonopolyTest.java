@@ -1,6 +1,7 @@
 package game.fitnesse;
 
 import game.factories.ControllerFactory;
+import game.factories.InteractorFactory;
 import game.factories.VersionFactory;
 import game.manager.StateImpl;
 import game.manager.StateManager;
@@ -25,7 +26,8 @@ public final class MonopolyTest {
 
     public void setup(StateImpl state) throws IOException {
         final Presenter presenter = new PresenterEn(console, parser);
-        final ControllerFactory controllerFactory = new ControllerFactory(presenter, factory, players, console);
+        final InteractorFactory interactorFactory = new InteractorFactory(presenter, factory);
+        final ControllerFactory controllerFactory = new ControllerFactory(presenter, factory, interactorFactory, players, console);
         manager = new StateManagerImpl(controllerFactory);
         parser.setManager(manager);
         manager.setState(state);

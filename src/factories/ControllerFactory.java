@@ -15,7 +15,6 @@ import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
-import game.interactors.versionoptions.VersionOptions;
 import game.manager.ManagerControllerFactory;
 import game.presenters.Presenter;
 import game.repositories.Players;
@@ -26,12 +25,14 @@ public class ControllerFactory implements ManagerControllerFactory {
 
     private final Presenter presenter;
     private final VersionFactory factory;
+    private final ControllerFactoryInteractorFactory interactorFactory;
     private final Console console;
     private final Banker banker = new Banker();
 
-    public ControllerFactory(Presenter presenter, VersionFactory factory, Players players, Console console) {
+    public ControllerFactory(Presenter presenter, VersionFactory factory, InteractorFactory interactorFactory, Players players, Console console) {
         this.presenter = presenter;
         this.factory = factory;
+        this.interactorFactory = interactorFactory;
         Context.players = players;
         this.console = console;
     }
@@ -39,7 +40,7 @@ public class ControllerFactory implements ManagerControllerFactory {
     @Override
     public Controller make(String controller) {
         if (controller.equals("VersionOptions")) {
-            Interactor interactor = new VersionOptions(presenter, factory);
+            Interactor interactor = interactorFactory.make(controller);
             return new Options(interactor, presenter, console);
         }
 
