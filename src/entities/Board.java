@@ -6,7 +6,7 @@ import game.interactors.tokenoptions.TokenOptionsBoardGateway;
 
 import java.util.List;
 
-public class Board implements MoveTokenBoardGateway, PassGoBoardGateway, TokenOptionsBoardGateway {
+public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway, PassGoBoardGateway {
 
     private final List<Space> board;
 

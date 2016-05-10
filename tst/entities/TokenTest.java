@@ -14,7 +14,6 @@ public class TokenTest {
     @Test
     public void createToken() {
         assertTrue("Cat".equals(token.getDescription()));
-        assertEquals(0, token.spaceID);
         assertEquals(1500, token.cashBalance());
         assertEquals(1500, token.netWorth());
         assertEquals(false, token.turnState.passedGO);

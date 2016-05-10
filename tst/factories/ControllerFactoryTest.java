@@ -1,11 +1,10 @@
 package game.factories;
 
 import game.display.Console;
+import game.entities.Banker;
 import game.manager.ManagerControllerFactory;
 import game.parser.Parser;
 import game.presenters.PresenterEn;
-import game.repositories.Players;
-import org.junit.Before;
 import org.junit.Test;
 
 public class ControllerFactoryTest {
@@ -13,32 +12,27 @@ public class ControllerFactoryTest {
     private final Parser parser = new Parser();
     private final Console console = new Console(parser);
     private final PresenterEn presenter = new PresenterEn(console, parser);
-    private final Players players = new Players();
-    private final VersionFactory factory = new VersionFactory();
-
-    private ManagerControllerFactory controllerFactory;
-
-    @Before
-    public void setUp() {
-        controllerFactory = new ControllerFactory(presenter, factory, players, console);
-    }
+    private final VersionFactory versionFactory = new VersionFactory();
+    private final Banker banker = new Banker();
+    private final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory, banker);
+    private final ManagerControllerFactory factory = new ControllerFactory(presenter, interactorFactory, console);
 
     @Test(expected = IllegalArgumentException.class)
-    public void testControllerFactoryWithoutDiceException() {
-        controllerFactory.make("");
+    public void testControllerFactoryException() {
+        factory.make("");
     }
 
     @Test
-    public void testMakeControllerWithoutDice() {
-        controllerFactory.make("VersionOptions");
-        controllerFactory.make("TokenOptionsFewerThanMinimum");
-        controllerFactory.make("TokenOptionsMinimumToMaximum");
-        controllerFactory.make("Message");
-        controllerFactory.make("StartTurn");
-        controllerFactory.make("MoveToken");
-        controllerFactory.make("PassGo");
-        controllerFactory.make("PropertyOptions");
-        controllerFactory.make("PartnerOptions");
+    public void testMakeControllerWithInteractorOfType() {
+        factory.make("VersionOptions");
+        factory.make("TokenOptionsFewerThanMinimum");
+        factory.make("TokenOptionsMinimumToMaximum");
+        factory.make("Message");
+        factory.make("StartTurn");
+        factory.make("MoveToken");
+        factory.make("PassGo");
+        factory.make("PropertyOptions");
+        factory.make("PartnerOptions");
     }
 }
 
