@@ -4,9 +4,6 @@ import game.entities.Board.Space;
 
 public class Token implements Comparable {
 
-    private static final int INITIAL_STARTING_SPACE_ID = 0;
-    public final int spaceID = INITIAL_STARTING_SPACE_ID;
-
     public final TurnState turnState = new TurnState();
 
     public enum TransactionType {PAY_CASH, RECIEVE_CASH, BUY_PROPERTY, MORTGAGE_PROPERTY, UN_MORTGAGE_PROPERTY}

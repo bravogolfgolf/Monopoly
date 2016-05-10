@@ -24,12 +24,12 @@ public class ControllerFactoryTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testControllerFactoryWithoutDiceException() {
+    public void testControllerFactoryException() {
         controllerFactory.make("");
     }
 
     @Test
-    public void testMakeControllerWithoutDice() {
+    public void testMakeControllerWithInteractorOfType() {
         controllerFactory.make("VersionOptions");
         controllerFactory.make("TokenOptionsFewerThanMinimum");
         controllerFactory.make("TokenOptionsMinimumToMaximum");
