@@ -313,7 +313,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(StateImpl.MOVE);
+            manager.setState(StateImpl.ROLL);
             manager.initialize();
         }
 
@@ -330,14 +330,14 @@ public enum StateImpl implements State {
         }
     },
 
-    MOVE {
+    ROLL {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("MoveToken");
-            if (Context.currentPlayer.turnState.passedGO){
-                manager.setState(PASS_GO);
-                manager.initialize();
-            }
+            if (Context.currentPlayer.turnState.passedGO)
+                manager.createAndExecuteController("PassGo");
+            manager.setState(LAND_ON);
+            manager.initialize();
         }
 
         @Override
@@ -361,10 +361,9 @@ public enum StateImpl implements State {
         }
     },
 
-    PASS_GO {
+    LAND_ON {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createAndExecuteController("PassGo");
         }
 
         @Override
