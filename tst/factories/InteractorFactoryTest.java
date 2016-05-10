@@ -24,5 +24,11 @@ public class InteractorFactoryTest {
     @Test
     public void testMakeInteractorOfType() {
         factory.make("VersionOptions");
-    }
+        factory.make("TokenOptionsFewerThanMinimum");
+        factory.make("TokenOptionsMinimumToMaximum");
+        factory.make("Message");
+        factory.make("MoveToken");
+        factory.make("PassGo");
+        factory.make("PropertyOptions");
+        factory.make("PartnerOptions");    }
 }
