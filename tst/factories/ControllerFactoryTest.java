@@ -1,10 +1,10 @@
 package game.factories;
 
 import game.display.Console;
+import game.entities.Banker;
 import game.manager.ManagerControllerFactory;
 import game.parser.Parser;
 import game.presenters.PresenterEn;
-import game.repositories.Players;
 import org.junit.Test;
 
 public class ControllerFactoryTest {
@@ -12,10 +12,10 @@ public class ControllerFactoryTest {
     private final Parser parser = new Parser();
     private final Console console = new Console(parser);
     private final PresenterEn presenter = new PresenterEn(console, parser);
-    private final Players players = new Players();
     private final VersionFactory versionFactory = new VersionFactory();
-    private final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory);
-    private final ManagerControllerFactory factory = new ControllerFactory(presenter, interactorFactory, players, console);
+    private final Banker banker = new Banker();
+    private final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory, banker);
+    private final ManagerControllerFactory factory = new ControllerFactory(presenter, interactorFactory, console);
 
     @Test(expected = IllegalArgumentException.class)
     public void testControllerFactoryException() {

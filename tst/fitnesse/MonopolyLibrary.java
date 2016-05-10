@@ -1,11 +1,8 @@
 package game.fitnesse;
 
-import game.entities.Board;
 import game.entities.Token;
-import game.factories.SpacesUSA;
-import game.factories.TokensUSA;
+import game.factories.VersionFactory;
 import game.manager.StateImpl;
-import game.repositories.Tokens;
 
 import java.io.IOException;
 
@@ -22,8 +19,8 @@ public class MonopolyLibrary {
     }
 
     public boolean createVersionOfGame() throws IOException {
-        board = Board.create(SpacesUSA.create());
-        tokens = new Tokens(TokensUSA.create());
+        VersionFactory factory = new VersionFactory();
+        factory.make("USA");
         return true;
     }
 

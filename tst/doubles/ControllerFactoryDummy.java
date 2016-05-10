@@ -10,11 +10,11 @@ import game.repositories.Players;
 public class ControllerFactoryDummy extends ControllerFactory {
 
     public ControllerFactoryDummy(Presenter presenter, InteractorFactory factory, Players players, Console console) {
-        super(presenter, factory, players, console);
+        super(presenter, factory, console);
     }
 
     @Override
-    public Controller make(String controller) {
+    public Controller make(String type) {
         return null;
     }
 }

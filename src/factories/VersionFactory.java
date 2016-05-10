@@ -2,12 +2,12 @@ package game.factories;
 
 import game.entities.Board;
 import game.interactors.versionoptions.VersionOptionsVersionFactory;
+import game.repositories.Players;
 import game.repositories.Tokens;
 
 import java.util.Arrays;
 
-import static game.Context.board;
-import static game.Context.tokens;
+import static game.Context.*;
 
 public class VersionFactory implements VersionOptionsVersionFactory {
 
@@ -24,6 +24,7 @@ public class VersionFactory implements VersionOptionsVersionFactory {
             case "USA":
                 board = Board.create(SpacesUSA.create());
                 tokens = new Tokens(TokensUSA.create());
+                players = new Players();
                 break;
             default:
                 throw new IllegalArgumentException();
