@@ -359,6 +359,7 @@ public enum StateImpl implements State {
     NOT_ROLL_DOUBLE {
         @Override
         public void initialize(StateManager manager) throws IOException {
+
         }
 
         @Override

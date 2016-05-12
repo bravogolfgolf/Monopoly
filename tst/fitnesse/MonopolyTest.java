@@ -1,6 +1,7 @@
 package game.fitnesse;
 
 import game.entities.Banker;
+import game.entities.Dice;
 import game.factories.ControllerFactory;
 import game.factories.InteractorFactory;
 import game.factories.VersionFactory;
@@ -11,6 +12,8 @@ import game.presenters.Presenter;
 import game.presenters.PresenterEn;
 
 import java.io.IOException;
+
+import static game.Context.dice;
 
 public final class MonopolyTest {
 
@@ -27,6 +30,7 @@ public final class MonopolyTest {
         final Presenter presenter = new PresenterEn(console, parser);
         final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory, banker, manager);
         final ControllerFactory controllerFactory = new ControllerFactory(presenter, interactorFactory, console);
+        dice = new Dice();
         manager.setFactory(controllerFactory);
         parser.setManager(manager);
         manager.setState(state);

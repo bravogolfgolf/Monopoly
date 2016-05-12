@@ -1,6 +1,5 @@
 package game.interactors.movetoken;
 
-import game.entities.Dice;
 import game.interactors.Interactor;
 import game.presenters.Presenter;
 
@@ -21,7 +20,7 @@ public class RollDice extends Interactor {
 
     @Override
     public void handle() {
-        dice = Dice.roll();
+        dice.roll();
         if (dice.isDoubles()) {
             response.isDoubles = dice.isDoubles();
             manager.setState(ROLL_DOUBLE_1);

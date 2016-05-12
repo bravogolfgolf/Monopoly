@@ -4,6 +4,7 @@ import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.Context;
 import game.controllers.ControllerRequest;
 import game.doubles.*;
+import game.entities.Dice;
 import game.factories.ControllerFactory;
 import game.factories.InteractorFactory;
 import game.factories.SpacesUSA;
@@ -45,6 +46,7 @@ public class InteractorTest {
         manager.setFactory(controllerFactory);
         request.string = "";
         Context.currentPlayer = currentPlayer;
+        Context.dice = new Dice();
     }
 
     public class VersionOptionsTest {
@@ -164,7 +166,7 @@ public class InteractorTest {
         }
     }
 
-    public class MoveTokenTest {
+    public class RollDiceTest {
 
         private final Interactor interactor = new RollDice(presenter, manager);
 
