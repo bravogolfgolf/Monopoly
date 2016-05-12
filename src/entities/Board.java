@@ -22,18 +22,21 @@ public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, Move
     }
 
     @Override
-    public void move(Token token, int forward) {
-        Space space = token.getSpace().nextSpace;
-        for (int i = 1; i < forward; i++) {
-            space.passedGO(token);
+    public boolean move(Token token) {
+        boolean passedGo = false;
+        Space space = token.space.nextSpace;
+        for (int i = 1; i < token.move; i++) {
+            if (!passedGo)
+                passedGo = space.passedGO();
             space = space.nextSpace;
         }
-        token.setSpace(space);
+        token.space = space;
+        return passedGo;
     }
 
     @Override
     public void setInitialSpace(Token token) {
-        token.setSpace(board.get(0));
+        token.space = board.get(0);
     }
 
     @Override
@@ -64,7 +67,8 @@ public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, Move
             this.nextSpace = nextSpace;
         }
 
-        protected void passedGO(Token token) {
+        protected boolean passedGO() {
+            return false;
         }
 
         public static class Go extends Space {
@@ -74,8 +78,8 @@ public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, Move
             }
 
             @Override
-            public void passedGO(Token token) {
-                token.turnState.passedGO = true;
+            public boolean passedGO() {
+                return true;
             }
         }
 

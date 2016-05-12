@@ -1,7 +1,7 @@
 package game.fitnesse;
 
 import game.Context;
-import game.doubles.DicePassGo;
+import game.doubles.DiceRollThree;
 import game.entities.Token;
 import game.factories.VersionFactory;
 import game.manager.StateImpl;
@@ -34,7 +34,22 @@ public class MonopolyLibrary {
         players.randomizePlayers();
     }
 
-    public void rollPlayerPassedGo() {
-        Context.dice = new DicePassGo();
+    public void setCurrentPlayerSpaceToShortLine(){
+        currentPlayer.move = 35;
+        board.move(currentPlayer);
+    }
+
+    public void setCurrentPlayerSpaceToParkPlace(){
+        currentPlayer.move = 37;
+        board.move(currentPlayer);
+    }
+
+    public void setCurrentPlayerSpaceToBoardwalk(){
+        currentPlayer.move = 39;
+        board.move(currentPlayer);
+    }
+
+    public void currentPlayerRollsThree() {
+        Context.dice = new DiceRollThree();
     }
 }

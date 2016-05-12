@@ -3,6 +3,7 @@ package game.interactors.rolldice;
 import game.interactors.Interactor;
 import game.presenters.Presenter;
 
+import static game.Context.currentPlayer;
 import static game.Context.dice;
 import static game.manager.StateImpl.NOT_ROLL_DOUBLE;
 import static game.manager.StateImpl.ROLL_DOUBLE_1;
@@ -26,6 +27,7 @@ public class RollDice extends Interactor {
             manager.setState(ROLL_DOUBLE_1);
         } else
             manager.setState(NOT_ROLL_DOUBLE);
+        currentPlayer.move = dice.rolled();
         response.rolled = dice.rolled();
         presenter.rollMessage(response);
     }

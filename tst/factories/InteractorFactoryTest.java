@@ -30,6 +30,7 @@ public class InteractorFactoryTest {
         interactorFactory.make("Message");
         interactorFactory.make("RollDice");
         interactorFactory.make("PassGo");
+        interactorFactory.make("MoveToken");
         interactorFactory.make("PropertyOptions");
         interactorFactory.make("PartnerOptions");
     }

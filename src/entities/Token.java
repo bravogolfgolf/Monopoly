@@ -4,12 +4,11 @@ import game.entities.Board.Space;
 
 public class Token implements Comparable {
 
-    public final TurnState turnState = new TurnState();
-
+    Space space;
+    public int move;
     public enum TransactionType {PAY_CASH, RECIEVE_CASH, BUY_PROPERTY, MORTGAGE_PROPERTY, UN_MORTGAGE_PROPERTY}
 
     private final String description;
-    private Space space;
     private int cashBalance = 1500;
     private int netWorth = 1500;
 
@@ -24,14 +23,6 @@ public class Token implements Comparable {
     @Override
     public int compareTo(Object o) {
         return this.description.compareTo(((Token) o).description);
-    }
-
-    public Space getSpace() {
-        return space;
-    }
-
-    public void setSpace(Space space) {
-        this.space = space;
     }
 
     public int cashBalance() {
@@ -63,9 +54,5 @@ public class Token implements Comparable {
                 cashBalance -= (amount / 2) * 1.1;
                 break;
         }
-    }
-
-    public class TurnState {
-        public boolean passedGO = false;
     }
 }

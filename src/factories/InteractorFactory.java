@@ -2,6 +2,7 @@ package game.factories;
 
 import game.entities.Banker;
 import game.interactors.Interactor;
+import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.passgo.PassGo;
 import game.interactors.propertyoptions.PropertyOptions;
@@ -44,6 +45,9 @@ public class InteractorFactory implements ControllerFactoryInteractorFactory {
 
         if (type.equals("RollDice"))
             return new RollDice(presenter, manager);
+
+        if (type.equals("MoveToken"))
+            return new MoveToken(board, manager);
 
         if (type.equals("PassGo"))
             return new PassGo(presenter, banker, board);

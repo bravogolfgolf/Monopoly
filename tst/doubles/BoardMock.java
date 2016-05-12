@@ -23,8 +23,9 @@ public class BoardMock extends Board {
     }
 
     @Override
-    public void move(Token token, int forward) {
+    public boolean move(Token token) {
         verifyMoveCalled = true;
+        return false;
     }
 
     @Override

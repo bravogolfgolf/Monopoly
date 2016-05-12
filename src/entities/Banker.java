@@ -8,7 +8,6 @@ import static game.entities.Token.TransactionType.RECIEVE_CASH;
 public class Banker implements PassGoBankerGateway {
 
     public void paySalary() {
-        currentPlayer.turnState.passedGO = false;
         currentPlayer.transaction(200, RECIEVE_CASH);
     }
 }

@@ -4,9 +4,17 @@
 |scenario|Given version of game|
 |createVersionOfGame|
 
-|scenario|Given Two Player Game|
+|scenario|Given two player game|
 |addTwoPlayersToGame|
 
-|scenario|Given Player Passes GO|
-|rollPlayerPassedGo|
+|scenario|Given current player is on Short Line|
+|setCurrentPlayerSpaceToShortLine|
 
+|scenario|Given current player is on Park Place|
+|setCurrentPlayerSpaceToParkPlace|
+
+|scenario|Given current player is on Boardwalk|
+|setCurrentPlayerSpaceToBoardwalk|
+
+|scenario|Given current player rolls 3|
+|currentPlayerRollsThree|
