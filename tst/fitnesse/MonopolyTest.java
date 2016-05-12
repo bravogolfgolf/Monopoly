@@ -21,13 +21,13 @@ public final class MonopolyTest {
     public final ConsoleTest console = new ConsoleTest(parser);
     private final VersionFactory versionFactory = new VersionFactory();
     private final Banker banker = new Banker();
-    StateManager manager;
+    final StateManager manager = new StateManager();
 
     public void setup(StateImpl state) throws IOException {
         final Presenter presenter = new PresenterEn(console, parser);
-        final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory, banker);
+        final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory, banker, manager);
         final ControllerFactory controllerFactory = new ControllerFactory(presenter, interactorFactory, console);
-        manager = new StateManager(controllerFactory);
+        manager.setFactory(controllerFactory);
         parser.setManager(manager);
         manager.setState(state);
     }

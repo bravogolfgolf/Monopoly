@@ -1,7 +1,14 @@
 package game.parser;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
-import game.doubles.*;
+import game.display.Console;
+import game.doubles.StateManagerMock;
+import game.entities.Banker;
+import game.factories.ControllerFactory;
+import game.factories.InteractorFactory;
+import game.factories.VersionFactory;
+import game.presenters.Presenter;
+import game.presenters.PresenterEn;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,15 +23,19 @@ import static org.junit.Assert.assertTrue;
 public class ParserTest {
 
     private final Parser parser = new Parser();
-    private final ConsoleMock console = new ConsoleMock(parser);
-    private final PresenterMock presenter = new PresenterMock(console, parser);
-    private final VersionFactoryMock versionFactory = new VersionFactoryMock();
-    private final PlayersMock players = new PlayersMock();
-    private final BankerMock banker = new BankerMock();
-    private final InteractorFactoryMock interactorFactory = new InteractorFactoryMock(presenter, versionFactory, banker);
-    private final ControllerFactoryDummy factory = new ControllerFactoryDummy(presenter, interactorFactory, players, console);
-    private final StateManagerMock manager = new StateManagerMock(factory);
+    private final Console console = new Console(parser);
+    private final Presenter presenter = new PresenterEn(console, parser);
+    private final VersionFactory versionFactory = new VersionFactory();
+    private final Banker banker = new Banker();
+    private final StateManagerMock manager = new StateManagerMock();
+    private final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory, banker, manager);
+    private final ControllerFactory factory = new ControllerFactory(presenter, interactorFactory, console);
     private Map<Integer, String> menuMap;
+
+    @Before
+    public void setUp() {
+        manager.setFactory(factory);
+    }
 
     public class MapWithValesExpectedTest {
 

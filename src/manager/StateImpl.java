@@ -1,7 +1,5 @@
 package game.manager;
 
-import game.Context;
-
 import java.io.IOException;
 
 public enum StateImpl implements State {
@@ -313,7 +311,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(StateImpl.ROLL);
+            manager.setState(INITIAL_ROLL);
             manager.initialize();
         }
 
@@ -330,16 +328,89 @@ public enum StateImpl implements State {
         }
     },
 
-    ROLL {
+    INITIAL_ROLL {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createAndExecuteController("MoveToken");
-            if (Context.currentPlayer.turnState.passedGO) {
-                manager.setState(PASS_GO);
-                manager.initialize();
-            }
-            manager.setState(LAND_ON);
+            manager.createAndExecuteController("RollDice");
             manager.initialize();
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
+        }
+    },
+
+    NOT_ROLL_DOUBLE {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
+        }
+    },
+
+    ROLL_DOUBLE_1 {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
+        }
+    },
+
+    ROLL_DOUBLE_2 {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
         }
 
         @Override

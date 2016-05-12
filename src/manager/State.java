@@ -2,7 +2,7 @@ package game.manager;
 
 import java.io.IOException;
 
-interface State {
+public interface State {
 
     void initialize(StateManager manager) throws IOException;
 

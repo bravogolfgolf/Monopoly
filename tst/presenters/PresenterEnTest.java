@@ -3,7 +3,7 @@ package game.presenters;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.doubles.ConsoleMock;
 import game.doubles.ParserMock;
-import game.interactors.movetoken.MoveTokenResponse;
+import game.interactors.movetoken.RollDiceResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -188,7 +188,7 @@ public class PresenterEnTest {
 
     public class MoveTokenTest {
 
-        private final MoveTokenResponse response = new MoveTokenResponse();
+        private final RollDiceResponse response = new RollDiceResponse();
 
         @Test
         public void testRollMessageWithoutDoubles() throws IOException {

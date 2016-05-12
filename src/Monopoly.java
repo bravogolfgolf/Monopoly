@@ -19,7 +19,7 @@ final class Monopoly {
     private final Console console = new Console(parser);
     private final VersionFactory versionFactory = new VersionFactory();
     private final Banker banker = new Banker();
-    private StateManager manager;
+    private final StateManager manager = new StateManager();
 
     public static void main(String[] args) throws IOException {
         Monopoly monopoly = new Monopoly();
@@ -29,9 +29,9 @@ final class Monopoly {
 
     private void setup(StateImpl state) throws IOException {
         final Presenter presenter = new PresenterEn(console, parser);
-        final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory, banker);
+        final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory, banker, manager);
         final ControllerFactory controllerFactory = new ControllerFactory(presenter, interactorFactory, console);
-        manager = new StateManager(controllerFactory);
+        manager.setFactory(controllerFactory);
         parser.setManager(manager);
         manager.setState(state);
     }

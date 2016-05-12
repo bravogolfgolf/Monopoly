@@ -1,7 +1,7 @@
 package game.doubles;
 
 import game.display.Console;
-import game.interactors.movetoken.MoveTokenResponse;
+import game.interactors.movetoken.RollDiceResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -81,7 +81,7 @@ public class PresenterMock extends Presenter {
     }
 
     @Override
-    public void rollMessage(MoveTokenResponse dice) {
+    public void rollMessage(RollDiceResponse dice) {
         verifyRollMessageCalled = true;
     }
 
