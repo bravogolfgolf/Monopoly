@@ -2,19 +2,27 @@ package game.manager;
 
 import game.controllers.Controller;
 import game.controllers.Options;
+import game.factories.InteractorFactory;
+import game.interactors.Interactor;
+import game.interactors.movetoken.MoveTokenStateManager;
 import game.interactors.rolldice.RollDiceManagerGateway;
 import game.parser.ParserManager;
 
 import java.io.IOException;
 
-public class StateManager implements ParserManager, RollDiceManagerGateway {
+public class StateManager implements ParserManager, RollDiceManagerGateway, MoveTokenStateManager {
 
     private State state;
-    private ManagerControllerFactory factory;
+    private ManagerControllerFactory controllerFactory;
+    private InteractorFactory interactorFactory;
     private Controller controller;
 
-    public void setFactory(ManagerControllerFactory factory) {
-        this.factory = factory;
+    public void setControllerFactory(ManagerControllerFactory controllerFactory) {
+        this.controllerFactory = controllerFactory;
+    }
+
+    public void setInteractorFactory(InteractorFactory interactorFactory) {
+        this.interactorFactory = interactorFactory;
     }
 
     @Override
@@ -54,7 +62,12 @@ public class StateManager implements ParserManager, RollDiceManagerGateway {
     }
 
     public void createAndExecuteController(String contollerString) throws IOException {
-        controller = factory.make(contollerString);
+        controller = controllerFactory.make(contollerString);
         controller.execute();
+    }
+
+    public void createAndExecuteInteractor(String interactorString){
+        Interactor interactor = interactorFactory.make(interactorString);
+        interactor.handle();
     }
 }

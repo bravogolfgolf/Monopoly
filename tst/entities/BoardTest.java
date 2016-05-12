@@ -16,36 +16,37 @@ public class BoardTest {
     private final Board board = Board.create(SpacesUSA.create());
 
     @Before
-    public void setup(){
+    public void setup() {
         board.setInitialSpace(token);
     }
 
     @Test
-    public void getInitialDescription(){
-        assertEquals("GO",board.getInitialSpaceDescription());
+    public void getInitialDescription() {
+        assertEquals("GO", board.getInitialSpaceDescription());
     }
 
     @Test
     public void landOnSpaceWithoutPassingGo() {
         Space expected = new Space.RealEstate(3, "RealEstate");
-        board.move(token, NOT_PASS_GO);
-        assertEquals(expected.getSpaceID(), token.getSpace().getSpaceID());
-        assertEquals(false, token.turnState.passedGO);
+        token.move = NOT_PASS_GO;
+
+        assertEquals(false, board.move(token));
+        assertEquals(expected.getSpaceID(), token.space.getSpaceID());
     }
 
     @Test
     public void landOnSpaceWithPassingGo() {
         Space expected = new Space.RealEstate(1, "RealEstate");
-        board.move(token, PASS_GO);
-        assertEquals(expected.getSpaceID(), token.getSpace().getSpaceID());
-        assertEquals(true, token.turnState.passedGO);
+        token.move = PASS_GO;
+        assertEquals(true, board.move(token));
+        assertEquals(expected.getSpaceID(), token.space.getSpaceID());
     }
 
     @Test
     public void landOnGo() {
         Space expected = new Space.Go(0, "Go");
-        board.move(token, LAND_ON_GO);
-        assertEquals(expected.getSpaceID(), token.getSpace().getSpaceID());
-        assertEquals(false, token.turnState.passedGO);
+        token.move = LAND_ON_GO;
+        assertEquals(false, board.move(token));
+        assertEquals(expected.getSpaceID(), token.space.getSpaceID());
     }
 }

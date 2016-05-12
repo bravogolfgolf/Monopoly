@@ -34,7 +34,7 @@ public class ParserTest {
 
     @Before
     public void setUp() {
-        manager.setFactory(factory);
+        manager.setControllerFactory(factory);
     }
 
     public class MapWithValesExpectedTest {

@@ -2,11 +2,11 @@ package game.doubles;
 
 import game.entities.Dice;
 
-public class DicePassGo extends Dice {
+public class DiceRollThree extends Dice {
 
     @Override
     public int rolled() {
-        return 41;
+        return 3;
     }
 
     @Override

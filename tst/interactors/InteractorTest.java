@@ -44,7 +44,7 @@ public class InteractorTest {
 
     @Before
     public void setup() {
-        manager.setFactory(controllerFactory);
+        manager.setControllerFactory(controllerFactory);
         request.string = "";
         Context.currentPlayer = currentPlayer;
         Context.dice = new Dice();
@@ -182,13 +182,14 @@ public class InteractorTest {
 
     public class MoveTokenTest {
 
-        private final Interactor interactor = new MoveToken(board);
+        private final Interactor interactor = new MoveToken(board, manager);
 
         @Test
         public void testHandle() {
             interactor.handle();
 
             assertTrue(board.verifyMoveCalled);
+            assertTrue(manager.verifySetStateCalled);
         }
     }
 

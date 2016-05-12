@@ -16,7 +16,6 @@ public class TokenTest {
         assertTrue("Cat".equals(token.getDescription()));
         assertEquals(1500, token.cashBalance());
         assertEquals(1500, token.netWorth());
-        assertEquals(false, token.turnState.passedGO);
     }
 
     @Test
