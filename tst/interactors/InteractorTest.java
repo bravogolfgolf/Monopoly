@@ -9,10 +9,11 @@ import game.factories.ControllerFactory;
 import game.factories.InteractorFactory;
 import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
-import game.interactors.movetoken.RollDice;
+import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.passgo.PassGo;
 import game.interactors.propertyoptions.PropertyOptions;
+import game.interactors.rolldice.RollDice;
 import game.interactors.selectfirst.SelectFirst;
 import game.interactors.tokenoptions.TokenOptions;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
@@ -176,6 +177,18 @@ public class InteractorTest {
 
             assertTrue(manager.verifySetStateCalled);
             assertTrue(presenter.verifyRollMessageCalled);
+        }
+    }
+
+    public class MoveTokenTest {
+
+        private final Interactor interactor = new MoveToken(board);
+
+        @Test
+        public void testHandle() {
+            interactor.handle();
+
+            assertTrue(board.verifyMoveCalled);
         }
     }
 

@@ -1,10 +1,10 @@
 package game.presenters;
 
 import game.display.Console;
-import game.interactors.movetoken.RollDiceResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
+import game.interactors.rolldice.RollDiceResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.tokenoptions.TokenOptionsResponse;
 import game.interactors.versionoptions.VersionOptionsResponse;
