@@ -2,10 +2,11 @@ package game.interactors.movetoken;
 
 import game.entities.Board;
 import game.interactors.Interactor;
-import game.manager.StateImpl;
 import game.manager.StateManager;
 
 import static game.Context.currentPlayer;
+import static game.manager.StateImpl.LAND_ON;
+import static game.manager.StateImpl.PASS_GO;
 
 public class MoveToken extends Interactor {
 
@@ -20,7 +21,7 @@ public class MoveToken extends Interactor {
     @Override
     public void handle() {
         if (board.move(currentPlayer))
-            manager.setState(StateImpl.PASS_GO);
-        else manager.setState(StateImpl.LAND_ON);
+            manager.setState(PASS_GO);
+        else manager.setState(LAND_ON);
     }
 }
