@@ -183,7 +183,7 @@ public class InteractorTest {
 
             assertTrue(banker.verifyPaySalaryCalled);
             assertTrue(board.verifyGetInitialSpaceDescriptionCalled);
-            assertTrue(presenter.verifypassGOMessage);
+            assertTrue(presenter.verifyPassGOMessage);
         }
     }
 }

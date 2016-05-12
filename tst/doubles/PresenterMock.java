@@ -28,7 +28,7 @@ public class PresenterMock extends Presenter {
     public boolean verifyRollMessageCalled = false;
     public boolean verifyStartTurnMessageCalled = false;
     public boolean verifyWriteMessageCalled = false;
-    public boolean verifypassGOMessage = false;
+    public boolean verifyPassGOMessage = false;
 
     public PresenterMock(Console console, Parser parser) {
         super(console, parser);
@@ -112,6 +112,6 @@ public class PresenterMock extends Presenter {
 
     @Override
     public void passGoMessage(PassGoResponse response) {
-        verifypassGOMessage = true;
+        verifyPassGOMessage = true;
     }
 }
