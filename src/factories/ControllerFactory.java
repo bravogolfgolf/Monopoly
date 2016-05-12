@@ -49,7 +49,7 @@ public class ControllerFactory implements ManagerControllerFactory {
             return new StartTurn(presenter, console);
         }
 
-        if (type.equals("MoveToken")) {
+        if (type.equals("RollDice")) {
             interactor = factory.make(type);
             return new Message(interactor, presenter);
         }

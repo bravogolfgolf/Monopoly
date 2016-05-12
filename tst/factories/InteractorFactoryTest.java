@@ -2,6 +2,7 @@ package game.factories;
 
 import game.display.Console;
 import game.entities.Banker;
+import game.manager.StateManager;
 import game.parser.Parser;
 import game.presenters.PresenterEn;
 import org.junit.Test;
@@ -13,22 +14,23 @@ public class InteractorFactoryTest {
     private final PresenterEn presenter = new PresenterEn(console, parser);
     private final VersionFactory versionFactory = new VersionFactory();
     private final Banker banker = new Banker();
+    private final StateManager   manager = new StateManager();
+    private final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory, banker, manager);
 
-    private final ControllerFactoryInteractorFactory factory = new InteractorFactory(presenter, versionFactory, banker);
-
-    @Test(expected = IllegalArgumentException.class)
+      @Test(expected = IllegalArgumentException.class)
     public void testInteractorFactoryException() {
-        factory.make("");
+        interactorFactory.make("");
     }
 
     @Test
     public void testMakeInteractorOfType() {
-        factory.make("VersionOptions");
-        factory.make("TokenOptionsFewerThanMinimum");
-        factory.make("TokenOptionsMinimumToMaximum");
-        factory.make("Message");
-        factory.make("MoveToken");
-        factory.make("PassGo");
-        factory.make("PropertyOptions");
-        factory.make("PartnerOptions");    }
+        interactorFactory.make("VersionOptions");
+        interactorFactory.make("TokenOptionsFewerThanMinimum");
+        interactorFactory.make("TokenOptionsMinimumToMaximum");
+        interactorFactory.make("Message");
+        interactorFactory.make("RollDice");
+        interactorFactory.make("PassGo");
+        interactorFactory.make("PropertyOptions");
+        interactorFactory.make("PartnerOptions");
+    }
 }

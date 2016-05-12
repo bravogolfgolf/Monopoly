@@ -7,3 +7,6 @@
 |scenario|Given Two Player Game|
 |addTwoPlayersToGame|
 
+|scenario|Given Player Passes GO|
+|rollPlayerPassedGo|
+

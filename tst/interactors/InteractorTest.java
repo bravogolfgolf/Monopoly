@@ -4,9 +4,12 @@ import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.Context;
 import game.controllers.ControllerRequest;
 import game.doubles.*;
+import game.entities.Dice;
+import game.factories.ControllerFactory;
+import game.factories.InteractorFactory;
 import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
-import game.interactors.movetoken.MoveToken;
+import game.interactors.movetoken.RollDice;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.passgo.PassGo;
 import game.interactors.propertyoptions.PropertyOptions;
@@ -34,11 +37,16 @@ public class InteractorTest {
     private final ControllerRequest request = new ControllerRequest();
     private final TokenMock currentPlayer = new TokenMock("Mock");
     private final BankerMock banker = new BankerMock();
+    private final StateManagerMock manager = new StateManagerMock();
+    private final InteractorFactory interactorFactory = new InteractorFactory(presenter, factory, banker, manager);
+    private final ControllerFactory controllerFactory = new ControllerFactory(presenter, interactorFactory, console);
 
     @Before
     public void setup() {
+        manager.setFactory(controllerFactory);
         request.string = "";
         Context.currentPlayer = currentPlayer;
+        Context.dice = new Dice();
     }
 
     public class VersionOptionsTest {
@@ -92,7 +100,6 @@ public class InteractorTest {
             }
         }
 
-
         public class TokenOptionsMinimumToMaximumTest {
 
             private final TokenOptions interactor = new TokenOptionsMinimumToMaximum(presenter, tokens, players, board);
@@ -105,7 +112,6 @@ public class InteractorTest {
                 assertTrue(presenter.verifyCreatePlayerPromptMessageMinimumToMaximumMessage);
                 assertTrue(presenter.verifyAvailableTokensMessage);
             }
-
 
             @Test
             public void testHandleWithRequest() {
@@ -160,15 +166,15 @@ public class InteractorTest {
         }
     }
 
-    public class MoveTokenTest {
+    public class RollDiceTest {
 
-        private final Interactor interactor = new MoveToken(presenter, board);
+        private final Interactor interactor = new RollDice(presenter, manager);
 
         @Test
         public void testHandle() {
             interactor.handle();
 
-            assertTrue(board.verifyMoveCalled);
+            assertTrue(manager.verifySetStateCalled);
             assertTrue(presenter.verifyRollMessageCalled);
         }
     }
@@ -183,7 +189,7 @@ public class InteractorTest {
 
             assertTrue(banker.verifyPaySalaryCalled);
             assertTrue(board.verifyGetInitialSpaceDescriptionCalled);
-            assertTrue(presenter.verifypassGOMessage);
+            assertTrue(presenter.verifyPassGOMessage);
         }
     }
 }

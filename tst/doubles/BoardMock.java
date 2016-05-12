@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BoardMock extends Board {
 
-    public boolean verifyMoveCalled = false;
+    private boolean verifyMoveCalled = false;
     public boolean verifySetInitialSpaceCalled = false;
     public boolean verifyGetInitialSpaceDescriptionCalled = false;
 

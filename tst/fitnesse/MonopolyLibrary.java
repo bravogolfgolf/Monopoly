@@ -1,5 +1,7 @@
 package game.fitnesse;
 
+import game.Context;
+import game.doubles.DicePassGo;
 import game.entities.Token;
 import game.factories.VersionFactory;
 import game.manager.StateImpl;
@@ -13,18 +15,16 @@ public class MonopolyLibrary {
     public MonopolyLibrary() {
     }
 
-    public boolean startNewGame() throws IOException {
+    public void startNewGame() throws IOException {
         Setup.monopoly.setup(StateImpl.VERSION);
-        return true;
     }
 
-    public boolean createVersionOfGame() throws IOException {
+    public void createVersionOfGame() throws IOException {
         VersionFactory factory = new VersionFactory();
         factory.make("USA");
-        return true;
     }
 
-    public boolean addTwoPlayersToGame() throws IOException {
+    public void addTwoPlayersToGame() throws IOException {
         Token token = tokens.createToken("Cat");
         board.setInitialSpace(token);
         players.add(token);
@@ -32,6 +32,9 @@ public class MonopolyLibrary {
         board.setInitialSpace(token);
         players.add(token);
         players.randomizePlayers();
-        return true;
+    }
+
+    public void rollPlayerPassedGo() {
+        Context.dice = new DicePassGo();
     }
 }

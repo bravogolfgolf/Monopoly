@@ -2,7 +2,7 @@ package game.factories;
 
 import game.entities.Banker;
 import game.interactors.Interactor;
-import game.interactors.movetoken.MoveToken;
+import game.interactors.movetoken.RollDice;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.passgo.PassGo;
 import game.interactors.propertyoptions.PropertyOptions;
@@ -10,6 +10,7 @@ import game.interactors.selectfirst.SelectFirst;
 import game.interactors.tokenoptions.TokenOptionsFewerThanMinimum;
 import game.interactors.tokenoptions.TokenOptionsMinimumToMaximum;
 import game.interactors.versionoptions.VersionOptions;
+import game.manager.StateManager;
 import game.presenters.Presenter;
 
 import static game.Context.*;
@@ -19,11 +20,13 @@ public class InteractorFactory implements ControllerFactoryInteractorFactory {
     private final Presenter presenter;
     private final VersionFactory factory;
     private final Banker banker;
+    private final StateManager manager;
 
-    public InteractorFactory(Presenter presenter, VersionFactory factory, Banker banker) {
+    public InteractorFactory(Presenter presenter, VersionFactory factory, Banker banker, StateManager manager) {
         this.presenter = presenter;
         this.factory = factory;
         this.banker = banker;
+        this.manager = manager;
     }
 
     public Interactor make(String type) {
@@ -39,8 +42,8 @@ public class InteractorFactory implements ControllerFactoryInteractorFactory {
         if (type.equals("Message"))
             return new SelectFirst(presenter, players);
 
-        if (type.equals("MoveToken"))
-            return new MoveToken(presenter, board);
+        if (type.equals("RollDice"))
+            return new RollDice(presenter, manager);
 
         if (type.equals("PassGo"))
             return new PassGo(presenter, banker, board);

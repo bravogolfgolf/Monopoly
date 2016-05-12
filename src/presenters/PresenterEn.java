@@ -1,7 +1,7 @@
 package game.presenters;
 
 import game.display.Console;
-import game.interactors.movetoken.MoveTokenResponse;
+import game.interactors.movetoken.RollDiceResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -77,7 +77,7 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
-    public void rollMessage(MoveTokenResponse response) {
+    public void rollMessage(RollDiceResponse response) {
         if (response.isDoubles) template = String.format("Doubles! You rolled %d.", response.rolled);
         else template = String.format("You rolled %d.", response.rolled);
         addMessageToBuffer(template);

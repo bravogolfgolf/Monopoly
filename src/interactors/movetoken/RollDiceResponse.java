@@ -1,6 +1,6 @@
 package game.interactors.movetoken;
 
-public class MoveTokenResponse {
+public class RollDiceResponse {
 
     public int rolled;
 

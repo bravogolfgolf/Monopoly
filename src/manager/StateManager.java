@@ -2,20 +2,22 @@ package game.manager;
 
 import game.controllers.Controller;
 import game.controllers.Options;
+import game.interactors.movetoken.RollDiceManagerGateway;
 import game.parser.ParserManager;
 
 import java.io.IOException;
 
-public abstract class StateManager implements ParserManager {
+public class StateManager implements ParserManager, RollDiceManagerGateway {
 
     private State state;
-    final ManagerControllerFactory factory;
-    Controller controller;
+    private ManagerControllerFactory factory;
+    private Controller controller;
 
-    StateManager(ManagerControllerFactory factory) {
+    public void setFactory(ManagerControllerFactory factory) {
         this.factory = factory;
     }
 
+    @Override
     public void setState(State state) {
         this.state = state;
     }
@@ -51,5 +53,8 @@ public abstract class StateManager implements ParserManager {
 
     }
 
-    public abstract void createAndExecuteController(String contollerString) throws IOException;
+    public void createAndExecuteController(String contollerString) throws IOException {
+        controller = factory.make(contollerString);
+        controller.execute();
+    }
 }
