@@ -2,7 +2,7 @@ package game.manager;
 
 import game.controllers.Controller;
 import game.controllers.Options;
-import game.interactors.movetoken.RollDiceManagerGateway;
+import game.interactors.rolldice.RollDiceManagerGateway;
 import game.parser.ParserManager;
 
 import java.io.IOException;

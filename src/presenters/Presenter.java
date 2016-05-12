@@ -2,12 +2,12 @@ package game.presenters;
 
 import game.controllers.ControllerPresenter;
 import game.display.Console;
-import game.interactors.movetoken.RollDicePresenter;
-import game.interactors.movetoken.RollDiceResponse;
 import game.interactors.partneroptions.PartnerOptionsPresenter;
 import game.interactors.passgo.PassGoPresenter;
 import game.interactors.propertyoptions.PropertyOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
+import game.interactors.rolldice.RollDicePresenter;
+import game.interactors.rolldice.RollDiceResponse;
 import game.interactors.selectfirst.SelectFirstPresenter;
 import game.interactors.selectfirst.SelectFirstResponse;
 import game.interactors.tokenoptions.TokenOptionsPresenter;

@@ -1,4 +1,4 @@
-package game.interactors.movetoken;
+package game.interactors.rolldice;
 
 import game.interactors.Interactor;
 import game.presenters.Presenter;
