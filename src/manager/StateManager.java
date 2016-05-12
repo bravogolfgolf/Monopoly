@@ -6,13 +6,13 @@ import game.parser.ParserManager;
 
 import java.io.IOException;
 
-public abstract class StateManager implements ParserManager {
+public class StateManager implements ParserManager {
 
     private State state;
-    final ManagerControllerFactory factory;
-    Controller controller;
+    private final ManagerControllerFactory factory;
+    private Controller controller;
 
-    StateManager(ManagerControllerFactory factory) {
+    public StateManager(ManagerControllerFactory factory) {
         this.factory = factory;
     }
 
@@ -51,5 +51,8 @@ public abstract class StateManager implements ParserManager {
 
     }
 
-    public abstract void createAndExecuteController(String contollerString) throws IOException;
+    public void createAndExecuteController(String contollerString) throws IOException {
+        controller = factory.make(contollerString);
+        controller.execute();
+    }
 }

@@ -1,9 +1,9 @@
 package game.doubles;
 
 import game.factories.ControllerFactory;
-import game.manager.StateManagerImpl;
+import game.manager.StateManager;
 
-public class StateManagerMock extends StateManagerImpl {
+public class StateManagerMock extends StateManager {
 
     public boolean validUseCaseEntryCalled = false;
     public boolean verifyInvalidEntryCalled = false;
