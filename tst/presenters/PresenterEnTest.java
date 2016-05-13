@@ -3,6 +3,7 @@ package game.presenters;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.doubles.ConsoleMock;
 import game.doubles.ParserMock;
+import game.interactors.landon.LandOnResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -218,6 +219,19 @@ public class PresenterEnTest {
             response.GO = "GO";
             presenter.passGoMessage(response);
             expected = "\nPassed GO! Collect 200.\n";
+            verifyMessage();
+        }
+    }
+
+    public class landOnTest {
+
+        private final LandOnResponse response = new LandOnResponse();
+
+        @Test
+        public void testLandOnMessage() throws IOException {
+            response.space = "GO";
+            presenter.landOnMessage(response);
+            expected = "\nLanded on GO.\n";
             verifyMessage();
         }
     }

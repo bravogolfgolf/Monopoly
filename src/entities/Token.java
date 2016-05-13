@@ -4,7 +4,7 @@ import game.entities.Board.Space;
 
 public class Token implements Comparable {
 
-    Space space;
+    public Space space;
     public int move;
     public enum TransactionType {PAY_CASH, RECIEVE_CASH, BUY_PROPERTY, MORTGAGE_PROPERTY, UN_MORTGAGE_PROPERTY}
 

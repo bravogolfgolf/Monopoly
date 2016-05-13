@@ -2,6 +2,8 @@ package game.presenters;
 
 import game.controllers.ControllerPresenter;
 import game.display.Console;
+import game.interactors.landon.LandOnPresenter;
+import game.interactors.landon.LandOnResponse;
 import game.interactors.partneroptions.PartnerOptionsPresenter;
 import game.interactors.passgo.PassGoPresenter;
 import game.interactors.propertyoptions.PropertyOptionsPresenter;
@@ -23,7 +25,7 @@ import java.util.Map;
 public abstract class Presenter implements ControllerPresenter,
         VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter,
         PropertyOptionsPresenter, PartnerOptionsPresenter, RollDicePresenter,
-        PassGoPresenter {
+        PassGoPresenter, LandOnPresenter {
 
     private final PresenterConsole console;
     private final PresenterParser parser;
@@ -130,4 +132,6 @@ public abstract class Presenter implements ControllerPresenter,
     @Override
     public abstract void propertyOptionsMessage(PropertyOptionsResponse response);
 
+    @Override
+    public abstract void landOnMessage(LandOnResponse response);
 }

@@ -4,10 +4,12 @@ import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.Context;
 import game.controllers.ControllerRequest;
 import game.doubles.*;
+import game.entities.Board;
 import game.factories.ControllerFactory;
 import game.factories.InteractorFactory;
 import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
+import game.interactors.landon.LandOn;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.passgo.PassGo;
@@ -222,6 +224,20 @@ public class InteractorTest {
             assertTrue(banker.verifyPaySalaryCalled);
             assertTrue(board.verifyGetInitialSpaceDescriptionCalled);
             assertTrue(presenter.verifyPassGOMessage);
+        }
+    }
+
+    public class LandOnTest {
+
+        private final Interactor interactor = new LandOn(manager, presenter);
+
+        @Test
+        public void testlandOn_Go() {
+            currentPlayer.space = new Board.Space.Go(0, "GO");
+            interactor.handle();
+
+            assertTrue(manager.verifySetStateCalled);
+            assertTrue(presenter.verifyLandOnMessageCalled);
         }
     }
 }

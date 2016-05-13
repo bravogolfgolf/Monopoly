@@ -1,6 +1,7 @@
 package game.presenters;
 
 import game.display.Console;
+import game.interactors.landon.LandOnResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -93,6 +94,12 @@ public class PresenterEn extends Presenter {
     public void propertyOptionsMessage(PropertyOptionsResponse response) {
         if (response.properties.isEmpty())
             template = "No properties to manage.";
+        addMessageToBuffer(template);
+    }
+
+    @Override
+    public void landOnMessage(LandOnResponse response) {
+        template = String.format("Landed on %s.", response.space);
         addMessageToBuffer(template);
     }
 

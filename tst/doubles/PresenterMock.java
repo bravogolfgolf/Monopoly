@@ -1,6 +1,7 @@
 package game.doubles;
 
 import game.display.Console;
+import game.interactors.landon.LandOnResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -29,6 +30,7 @@ public class PresenterMock extends Presenter {
     public boolean verifyStartTurnMessageCalled = false;
     public boolean verifyWriteMessageCalled = false;
     public boolean verifyPassGOMessage = false;
+    public boolean verifyLandOnMessageCalled = false;
 
     public PresenterMock(Console console, Parser parser) {
         super(console, parser);
@@ -98,6 +100,11 @@ public class PresenterMock extends Presenter {
     @Override
     public void propertyOptionsMessage(PropertyOptionsResponse response) {
         verifyPropertyOptionsMessageCalled = true;
+    }
+
+    @Override
+    public void landOnMessage(LandOnResponse response) {
+        verifyLandOnMessageCalled = true;
     }
 
     @Override
