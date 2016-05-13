@@ -436,10 +436,12 @@ public enum StateImpl implements State {
         }
     },
 
-    PAY_SALARY {
+    PASS_GO {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("PaySalary");
+            manager.setState(LAND_ON);
+            manager.initialize();
         }
 
         @Override
@@ -466,6 +468,7 @@ public enum StateImpl implements State {
     LAND_ON {
         @Override
         public void initialize(StateManager manager) throws IOException {
+            manager.createAndExecuteController("LandOn");
         }
 
         @Override

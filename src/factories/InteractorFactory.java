@@ -2,6 +2,7 @@ package game.factories;
 
 import game.entities.Banker;
 import game.interactors.Interactor;
+import game.interactors.landon.LandOn;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.paysalary.PaySalary;
@@ -51,6 +52,9 @@ public class InteractorFactory implements ControllerFactoryInteractorFactory {
 
         if (type.equals("PaySalary"))
             return new PaySalary(presenter, banker);
+
+        if (type.equals("LandOn"))
+            return new LandOn(manager, presenter);
 
         if (type.equals("PropertyOptions"))
             return new PropertyOptions(presenter);

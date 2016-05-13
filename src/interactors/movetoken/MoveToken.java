@@ -7,7 +7,7 @@ import game.presenters.Presenter;
 
 import static game.Context.currentPlayer;
 import static game.manager.StateImpl.LAND_ON;
-import static game.manager.StateImpl.PAY_SALARY;
+import static game.manager.StateImpl.PASS_GO;
 
 public class MoveToken extends Interactor {
 
@@ -25,7 +25,7 @@ public class MoveToken extends Interactor {
     @Override
     public void handle() {
         if (board.move(currentPlayer)) {
-            manager.setState(PAY_SALARY);
+            manager.setState(PASS_GO);
             response.GO = board.getInitialSpaceDescription();
             presenter.passGoMessage(response);
         } else manager.setState(LAND_ON);

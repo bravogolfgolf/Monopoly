@@ -87,7 +87,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return StateImpl.PAY_SALARY;
+                return StateImpl.PASS_GO;
             }
         }
 
