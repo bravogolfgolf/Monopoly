@@ -2,8 +2,8 @@ package game.doubles;
 
 import game.display.Console;
 import game.interactors.landon.LandOnResponse;
+import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
-import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.rolldice.RollDiceResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
@@ -29,7 +29,8 @@ public class PresenterMock extends Presenter {
     public boolean verifyRollMessageCalled = false;
     public boolean verifyStartTurnMessageCalled = false;
     public boolean verifyWriteMessageCalled = false;
-    public boolean verifyPassGOMessage = false;
+    public boolean verifyPassGoMessageCalled = false;
+    public boolean verifyPaySalaryMessageCalled = false;
     public boolean verifyLandOnMessageCalled = false;
 
     public PresenterMock(Console console, Parser parser) {
@@ -118,7 +119,12 @@ public class PresenterMock extends Presenter {
     }
 
     @Override
-    public void passGoMessage(PassGoResponse response) {
-        verifyPassGOMessage = true;
+    public void paySalaryMessage() {
+        verifyPaySalaryMessageCalled = true;
+    }
+
+    @Override
+    public void passGoMessage(MoveTokenResponse response) {
+        verifyPassGoMessageCalled = true;
     }
 }

@@ -2,8 +2,8 @@ package game.presenters;
 
 import game.display.Console;
 import game.interactors.landon.LandOnResponse;
+import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
-import game.interactors.passgo.PassGoResponse;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
 import game.interactors.rolldice.RollDiceResponse;
 import game.interactors.selectfirst.SelectFirstResponse;
@@ -117,8 +117,14 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
-    public void passGoMessage(PassGoResponse response) {
-        template =  String.format("Passed %s! Collect 200.", response.GO);
+    public void paySalaryMessage() {
+        template = "Collect 200.";
+        addMessageToBuffer(template);
+    }
+
+    @Override
+    public void passGoMessage(MoveTokenResponse response) {
+        template =  String.format("Passed %s!", response.GO);
         addMessageToBuffer(template);
     }
 }

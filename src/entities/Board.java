@@ -1,14 +1,13 @@
 package game.entities;
 
 import game.interactors.movetoken.MoveTokenBoardGateway;
-import game.interactors.passgo.PassGoBoardGateway;
 import game.interactors.tokenoptions.TokenOptionsBoardGateway;
 import game.manager.State;
 import game.manager.StateImpl;
 
 import java.util.List;
 
-public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, MoveTokenBoardGateway {
+public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
     private final List<Space> board;
 
@@ -88,7 +87,7 @@ public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, Move
 
             @Override
             public State determineState() {
-                return StateImpl.PASS_GO;
+                return StateImpl.PAY_SALARY;
             }
         }
 

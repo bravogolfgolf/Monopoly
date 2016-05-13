@@ -32,7 +32,7 @@ public class ControllerFactoryTest {
         controllerFactory.make("Message");
         controllerFactory.make("StartTurn");
         controllerFactory.make("RollDice");
-        controllerFactory.make("PassGo");
+        controllerFactory.make("PaySalary");
         controllerFactory.make("PropertyOptions");
         controllerFactory.make("PartnerOptions");
     }

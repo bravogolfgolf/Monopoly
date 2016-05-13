@@ -12,7 +12,7 @@ import game.factories.TokensUSA;
 import game.interactors.landon.LandOn;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
-import game.interactors.passgo.PassGo;
+import game.interactors.paysalary.PaySalary;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.rolldice.RollDice;
 import game.interactors.selectfirst.SelectFirst;
@@ -192,7 +192,7 @@ public class InteractorTest {
 
     public class MoveTokenTest {
 
-        private final Interactor interactor = new MoveToken(board, manager);
+        private final Interactor interactor = new MoveToken(board, manager, presenter);
 
         @Test
         public void testHandle_PassGo() {
@@ -202,6 +202,8 @@ public class InteractorTest {
 
             assertTrue(board.verifyMoveCalled);
             assertTrue(manager.verifySetStateCalled);
+            assertTrue(board.verifyGetInitialSpaceDescriptionCalled);
+            assertTrue(presenter.verifyPassGoMessageCalled);
         }
 
         @Test
@@ -213,17 +215,16 @@ public class InteractorTest {
         }
     }
 
-    public class PassGOTest {
+    public class PaySalaryTest {
 
-        private final Interactor interactor = new PassGo(presenter, banker, board);
+        private final Interactor interactor = new PaySalary(presenter, banker);
 
         @Test
         public void testHandle() {
             interactor.handle();
 
             assertTrue(banker.verifyPaySalaryCalled);
-            assertTrue(board.verifyGetInitialSpaceDescriptionCalled);
-            assertTrue(presenter.verifyPassGOMessage);
+            assertTrue(presenter.verifyPaySalaryMessageCalled);
         }
     }
 
