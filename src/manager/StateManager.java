@@ -4,13 +4,14 @@ import game.controllers.Controller;
 import game.controllers.Options;
 import game.factories.InteractorFactory;
 import game.interactors.Interactor;
+import game.interactors.landon.LandOnStateManager;
 import game.interactors.movetoken.MoveTokenStateManager;
 import game.interactors.rolldice.RollDiceManagerGateway;
 import game.parser.ParserManager;
 
 import java.io.IOException;
 
-public class StateManager implements ParserManager, RollDiceManagerGateway, MoveTokenStateManager {
+public class StateManager implements ParserManager, RollDiceManagerGateway, MoveTokenStateManager, LandOnStateManager {
 
     private State state;
     private ManagerControllerFactory controllerFactory;

@@ -1,12 +1,13 @@
 package game.entities;
 
 import game.interactors.movetoken.MoveTokenBoardGateway;
-import game.interactors.passgo.PassGoBoardGateway;
 import game.interactors.tokenoptions.TokenOptionsBoardGateway;
+import game.manager.State;
+import game.manager.StateImpl;
 
 import java.util.List;
 
-public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, MoveTokenBoardGateway {
+public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
     private final List<Space> board;
 
@@ -71,6 +72,8 @@ public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, Move
             return false;
         }
 
+        public abstract State determineState();
+
         public static class Go extends Space {
 
             public Go(int ID, String description) {
@@ -81,11 +84,21 @@ public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, Move
             public boolean passedGO() {
                 return true;
             }
+
+            @Override
+            public State determineState() {
+                return StateImpl.PAY_SALARY;
+            }
         }
 
         public static class JustVisiting extends Space {
             public JustVisiting(int ID, String description) {
                 super(ID, description);
+            }
+
+            @Override
+            public State determineState() {
+                return null;
             }
         }
 
@@ -93,11 +106,21 @@ public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, Move
             public FreeParking(int ID, String description) {
                 super(ID, description);
             }
+
+            @Override
+            public State determineState() {
+                return null;
+            }
         }
 
         public static class GoToJail extends Space {
             public GoToJail(int ID, String description) {
                 super(ID, description);
+            }
+
+            @Override
+            public State determineState() {
+                return null;
             }
         }
 
@@ -105,11 +128,21 @@ public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, Move
             public RealEstate(int ID, String description) {
                 super(ID, description);
             }
+
+            @Override
+            public State determineState() {
+                return null;
+            }
         }
 
         public static class Railroad extends Space {
             public Railroad(int ID, String description) {
                 super(ID, description);
+            }
+
+            @Override
+            public State determineState() {
+                return null;
             }
         }
 
@@ -117,11 +150,21 @@ public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, Move
             public Utility(int ID, String description) {
                 super(ID, description);
             }
+
+            @Override
+            public State determineState() {
+                return null;
+            }
         }
 
         public static class CommunityChest extends Space {
             public CommunityChest(int ID, String description) {
                 super(ID, description);
+            }
+
+            @Override
+            public State determineState() {
+                return null;
             }
         }
 
@@ -129,17 +172,32 @@ public class Board implements TokenOptionsBoardGateway, PassGoBoardGateway, Move
             public Chance(int ID, String description) {
                 super(ID, description);
             }
+
+            @Override
+            public State determineState() {
+                return null;
+            }
         }
 
         public static class IncomeTax extends Space {
             public IncomeTax(int ID, String description) {
                 super(ID, description);
             }
+
+            @Override
+            public State determineState() {
+                return null;
+            }
         }
 
         public static class LuxuryTax extends Space {
             public LuxuryTax(int ID, String description) {
                 super(ID, description);
+            }
+
+            @Override
+            public State determineState() {
+                return null;
             }
         }
     }

@@ -4,14 +4,15 @@ import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.Context;
 import game.controllers.ControllerRequest;
 import game.doubles.*;
-import game.entities.Dice;
+import game.entities.Board;
 import game.factories.ControllerFactory;
 import game.factories.InteractorFactory;
 import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
+import game.interactors.landon.LandOn;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
-import game.interactors.passgo.PassGo;
+import game.interactors.paysalary.PaySalary;
 import game.interactors.propertyoptions.PropertyOptions;
 import game.interactors.rolldice.RollDice;
 import game.interactors.selectfirst.SelectFirst;
@@ -34,7 +35,7 @@ public class InteractorTest {
     private final VersionFactoryMock factory = new VersionFactoryMock();
     private final TokensMock tokens = new TokensMock(TokensUSA.create());
     private final PlayersMock players = new PlayersMock();
-    private final BoardMock board = new BoardMock(SpacesUSA.create());
+    private final BoardFake board = new BoardFake(SpacesUSA.create());
     private final ControllerRequest request = new ControllerRequest();
     private final TokenMock currentPlayer = new TokenMock("Mock");
     private final BankerMock banker = new BankerMock();
@@ -47,7 +48,6 @@ public class InteractorTest {
         manager.setControllerFactory(controllerFactory);
         request.string = "";
         Context.currentPlayer = currentPlayer;
-        Context.dice = new Dice();
     }
 
     public class VersionOptionsTest {
@@ -172,7 +172,17 @@ public class InteractorTest {
         private final Interactor interactor = new RollDice(presenter, manager);
 
         @Test
-        public void testHandle() {
+        public void testHandle_NotDoubles() {
+            Context.dice = new DiceRollThree();
+            interactor.handle();
+
+            assertTrue(manager.verifySetStateCalled);
+            assertTrue(presenter.verifyRollMessageCalled);
+        }
+
+        @Test
+        public void testHandle_Doubles() {
+            Context.dice = new DiceDoubleOnes();
             interactor.handle();
 
             assertTrue(manager.verifySetStateCalled);
@@ -182,10 +192,22 @@ public class InteractorTest {
 
     public class MoveTokenTest {
 
-        private final Interactor interactor = new MoveToken(board, manager);
+        private final Interactor interactor = new MoveToken(board, manager, presenter);
 
         @Test
-        public void testHandle() {
+        public void testHandle_PassGo() {
+            int MAKE_BOARD_FAKE_MOVE_METHOD_RETURN_TRUE = 41;
+            currentPlayer.move = MAKE_BOARD_FAKE_MOVE_METHOD_RETURN_TRUE;
+            interactor.handle();
+
+            assertTrue(board.verifyMoveCalled);
+            assertTrue(manager.verifySetStateCalled);
+            assertTrue(board.verifyGetInitialSpaceDescriptionCalled);
+            assertTrue(presenter.verifyPassGoMessageCalled);
+        }
+
+        @Test
+        public void testHandle_NotPassGo() {
             interactor.handle();
 
             assertTrue(board.verifyMoveCalled);
@@ -193,17 +215,30 @@ public class InteractorTest {
         }
     }
 
-    public class PassGOTest {
+    public class PaySalaryTest {
 
-        private final Interactor interactor = new PassGo(presenter, banker, board);
+        private final Interactor interactor = new PaySalary(presenter, banker);
 
         @Test
         public void testHandle() {
             interactor.handle();
 
             assertTrue(banker.verifyPaySalaryCalled);
-            assertTrue(board.verifyGetInitialSpaceDescriptionCalled);
-            assertTrue(presenter.verifyPassGOMessage);
+            assertTrue(presenter.verifyPaySalaryMessageCalled);
+        }
+    }
+
+    public class LandOnTest {
+
+        private final Interactor interactor = new LandOn(manager, presenter);
+
+        @Test
+        public void testlandOn_Go() {
+            currentPlayer.space = new Board.Space.Go(0, "GO");
+            interactor.handle();
+
+            assertTrue(manager.verifySetStateCalled);
+            assertTrue(presenter.verifyLandOnMessageCalled);
         }
     }
 }

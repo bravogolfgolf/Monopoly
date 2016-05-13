@@ -29,7 +29,7 @@ public class InteractorFactoryTest {
         interactorFactory.make("TokenOptionsMinimumToMaximum");
         interactorFactory.make("Message");
         interactorFactory.make("RollDice");
-        interactorFactory.make("PassGo");
+        interactorFactory.make("PaySalary");
         interactorFactory.make("MoveToken");
         interactorFactory.make("PropertyOptions");
         interactorFactory.make("PartnerOptions");
