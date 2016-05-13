@@ -1,0 +1,54 @@
+-!|script|
+|Given no game                        |
+|Given version of game                |
+|Given two player game                |
+|Given current player is on Short Line|
+|Given current player rolls 3         |
+
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 3.
+
+Landed on Luxury Tax.
+-!|
+
+-!|script|
+|Given no game                        |
+|Given version of game                |
+|Given two player game                |
+|Given current player is on Park Place|
+|Given current player rolls 3         |
+
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 3.
+
+Landed on GO.
+
+Collect 200.
+-!|
+
+-!|script|
+|Given no game                       |
+|Given version of game               |
+|Given two player game               |
+|Given current player is on Boardwalk|
+|Given current player rolls 3        |
+
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 3.
+
+Passed GO!
+
+Collect 200.
+
+Landed on Community Chest.
+-!|
+
+
+
+
