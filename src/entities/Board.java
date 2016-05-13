@@ -3,9 +3,10 @@ package game.entities;
 import game.interactors.movetoken.MoveTokenBoardGateway;
 import game.interactors.tokenoptions.TokenOptionsBoardGateway;
 import game.manager.State;
-import game.manager.StateImpl;
 
 import java.util.List;
+
+import static game.manager.StateImpl.*;
 
 public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
@@ -87,7 +88,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return StateImpl.PASS_GO;
+                return LAND_ON_GO;
             }
         }
 
@@ -98,7 +99,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return null;
+                return END_TURN;
             }
         }
 
@@ -109,7 +110,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return null;
+                return END_TURN;
             }
         }
 
@@ -120,7 +121,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return null;
+                return JAIL;
             }
         }
 
@@ -131,7 +132,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return null;
+                return END_TURN;
             }
         }
 
@@ -142,7 +143,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return null;
+                return END_TURN;
             }
         }
 
@@ -153,7 +154,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return null;
+                return END_TURN;
             }
         }
 
@@ -164,7 +165,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return null;
+                return DRAW;
             }
         }
 
@@ -175,7 +176,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return null;
+                return DRAW;
             }
         }
 
@@ -186,7 +187,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return null;
+                return PAY;
             }
         }
 
@@ -197,7 +198,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
 
             @Override
             public State determineState() {
-                return null;
+                return PAY;
             }
         }
     }

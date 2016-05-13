@@ -387,6 +387,8 @@ public enum StateImpl implements State {
     ROLL_DOUBLE_1 {
         @Override
         public void initialize(StateManager manager) throws IOException {
+            manager.createAndExecuteInteractor("MoveToken");
+            manager.initialize();
         }
 
         @Override
@@ -413,6 +415,8 @@ public enum StateImpl implements State {
     ROLL_DOUBLE_2 {
         @Override
         public void initialize(StateManager manager) throws IOException {
+            manager.createAndExecuteInteractor("MoveToken");
+            manager.initialize();
         }
 
         @Override
@@ -469,6 +473,7 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("LandOn");
+            manager.initialize();
         }
 
         @Override
@@ -488,6 +493,143 @@ public enum StateImpl implements State {
 
         @Override
         public void twoEntered(StateManager manager) {
+
+        }
+    },
+
+    LAND_ON_GO {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+            manager.createAndExecuteController("PaySalary");
+            manager.setState(END_TURN);
+            manager.initialize();
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) throws IOException {
+
+        }
+    },
+
+    DRAW {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) throws IOException {
+
+        }
+    },
+
+    PAY {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) throws IOException {
+
+        }
+    },
+
+    JAIL {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) throws IOException {
+
+        }
+    },
+
+    END_TURN {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) throws IOException {
 
         }
     },
