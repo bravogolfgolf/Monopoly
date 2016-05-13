@@ -31,6 +31,7 @@ public class InteractorFactoryTest {
         interactorFactory.make("RollDice");
         interactorFactory.make("PaySalary");
         interactorFactory.make("MoveToken");
+        interactorFactory.make("LandOn");
         interactorFactory.make("PropertyOptions");
         interactorFactory.make("PartnerOptions");
     }
