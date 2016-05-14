@@ -2,8 +2,6 @@ package game.manager;
 
 import game.controllers.Controller;
 import game.controllers.Options;
-import game.factories.InteractorFactory;
-import game.interactors.Interactor;
 import game.interactors.landon.LandOnStateManager;
 import game.interactors.movetoken.MoveTokenStateManager;
 import game.interactors.rolldice.RollDiceManagerGateway;
@@ -15,15 +13,10 @@ public class StateManager implements ParserManager, RollDiceManagerGateway, Move
 
     private State state;
     private ManagerControllerFactory controllerFactory;
-    private InteractorFactory interactorFactory;
     private Controller controller;
 
     public void setControllerFactory(ManagerControllerFactory controllerFactory) {
         this.controllerFactory = controllerFactory;
-    }
-
-    public void setInteractorFactory(InteractorFactory interactorFactory) {
-        this.interactorFactory = interactorFactory;
     }
 
     @Override
@@ -65,10 +58,5 @@ public class StateManager implements ParserManager, RollDiceManagerGateway, Move
     public void createAndExecuteController(String contollerString) throws IOException {
         controller = controllerFactory.make(contollerString);
         controller.execute();
-    }
-
-    public void createAndExecuteInteractor(String interactorString){
-        Interactor interactor = interactorFactory.make(interactorString);
-        interactor.handle();
     }
 }

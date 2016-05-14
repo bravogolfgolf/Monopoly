@@ -359,7 +359,7 @@ public enum StateImpl implements State {
     NOT_ROLL_DOUBLE {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createAndExecuteInteractor("MoveToken");
+            manager.createAndExecuteController("MoveToken");
             manager.initialize();
         }
 
@@ -387,7 +387,7 @@ public enum StateImpl implements State {
     ROLL_DOUBLE_1 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createAndExecuteInteractor("MoveToken");
+            manager.createAndExecuteController("MoveToken");
             manager.initialize();
         }
 
@@ -415,7 +415,7 @@ public enum StateImpl implements State {
     ROLL_DOUBLE_2 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createAndExecuteInteractor("MoveToken");
+            manager.createAndExecuteController("MoveToken");
             manager.initialize();
         }
 

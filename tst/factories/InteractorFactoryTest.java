@@ -14,10 +14,11 @@ public class InteractorFactoryTest {
     private final PresenterEn presenter = new PresenterEn(console, parser);
     private final VersionFactory versionFactory = new VersionFactory();
     private final Banker banker = new Banker();
-    private final StateManager   manager = new StateManager();
+    private final StateManager manager = new StateManager();
     private final InteractorFactory interactorFactory = new InteractorFactory(presenter, versionFactory, banker, manager);
 
-      @Test(expected = IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
     public void testInteractorFactoryException() {
         interactorFactory.make("");
     }
@@ -28,6 +29,7 @@ public class InteractorFactoryTest {
         interactorFactory.make("TokenOptionsFewerThanMinimum");
         interactorFactory.make("TokenOptionsMinimumToMaximum");
         interactorFactory.make("Message");
+
         interactorFactory.make("RollDice");
         interactorFactory.make("PaySalary");
         interactorFactory.make("MoveToken");
