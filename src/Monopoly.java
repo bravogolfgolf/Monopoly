@@ -36,7 +36,6 @@ final class Monopoly {
         final ControllerFactory controllerFactory = new ControllerFactory(presenter, interactorFactory, console);
         dice = new Dice();
         manager.setControllerFactory(controllerFactory);
-        manager.setInteractorFactory(interactorFactory);
         parser.setManager(manager);
         manager.setState(state);
     }
