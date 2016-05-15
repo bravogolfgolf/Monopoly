@@ -3,6 +3,7 @@ package game.presenters;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.doubles.ConsoleMock;
 import game.doubles.ParserMock;
+import game.interactors.gotojail.GoToJailResponse;
 import game.interactors.landon.LandOnResponse;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
@@ -242,6 +243,19 @@ public class PresenterEnTest {
             response.space = "GO";
             presenter.landOnMessage(response);
             expected = "\nLanded on GO.\n";
+            verifyMessage();
+        }
+    }
+
+    public class goToJailTest {
+
+        private final GoToJailResponse response = new GoToJailResponse();
+
+        @Test
+        public void testGotToJailMessage() throws IOException {
+            response.GO = "GO";
+            presenter.goToJailMessage(response);
+            expected = "\nDo not pass GO. Do not collect 200.\n";
             verifyMessage();
         }
     }

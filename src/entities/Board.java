@@ -1,5 +1,6 @@
 package game.entities;
 
+import game.interactors.gotojail.GoToJailBoardGateway;
 import game.interactors.movetoken.MoveTokenBoardGateway;
 import game.interactors.tokenoptions.TokenOptionsBoardGateway;
 import game.manager.State;
@@ -8,7 +9,7 @@ import java.util.List;
 
 import static game.manager.StateImpl.*;
 
-public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway {
+public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway, GoToJailBoardGateway {
 
     private final List<Space> board;
 

@@ -35,6 +35,7 @@ public class ControllerFactoryTest {
         controllerFactory.make("PaySalary");
         controllerFactory.make("MoveToken");
         controllerFactory.make("LandOn");
+        controllerFactory.make("GoToJail");
         controllerFactory.make("PropertyOptions");
         controllerFactory.make("PartnerOptions");
     }

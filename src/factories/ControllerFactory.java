@@ -59,12 +59,17 @@ public class ControllerFactory implements ManagerControllerFactory {
             return new Message(interactor, presenter);
         }
 
-        if(type.equals("MoveToken")){
-            interactor=factory.make(type);
-            return new Message(interactor,presenter);
+        if (type.equals("MoveToken")) {
+            interactor = factory.make(type);
+            return new Message(interactor, presenter);
         }
 
         if (type.equals("LandOn")) {
+            interactor = factory.make(type);
+            return new Message(interactor, presenter);
+        }
+
+        if (type.equals("GoToJail")) {
             interactor = factory.make(type);
             return new Message(interactor, presenter);
         }
