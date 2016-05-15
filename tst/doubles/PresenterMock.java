@@ -1,6 +1,7 @@
 package game.doubles;
 
 import game.display.Console;
+import game.interactors.gotojail.GoToJailResponse;
 import game.interactors.landon.LandOnResponse;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
@@ -32,6 +33,7 @@ public class PresenterMock extends Presenter {
     public boolean verifyPassGoMessageCalled = false;
     public boolean verifyPaySalaryMessageCalled = false;
     public boolean verifyLandOnMessageCalled = false;
+    public boolean verifyGoToJailMessageCalled = false;
 
     public PresenterMock(Console console, Parser parser) {
         super(console, parser);
@@ -106,6 +108,11 @@ public class PresenterMock extends Presenter {
     @Override
     public void landOnMessage(LandOnResponse response) {
         verifyLandOnMessageCalled = true;
+    }
+
+    @Override
+    public void goToJailMessage(GoToJailResponse response) {
+        verifyGoToJailMessageCalled = true;
     }
 
     @Override

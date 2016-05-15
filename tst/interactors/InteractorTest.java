@@ -9,6 +9,7 @@ import game.factories.ControllerFactory;
 import game.factories.InteractorFactory;
 import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
+import game.interactors.gotojail.GoToJail;
 import game.interactors.landon.LandOn;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
@@ -239,6 +240,20 @@ public class InteractorTest {
 
             assertTrue(manager.verifySetStateCalled);
             assertTrue(presenter.verifyLandOnMessageCalled);
+        }
+    }
+
+    public class JailTest {
+
+        private final Interactor interactor = new GoToJail(board, presenter);
+
+        @Test
+        public void testJail() {
+            interactor.handle();
+
+            assertTrue(currentPlayer.isInJail());
+            assertTrue(board.verifyGetInitialSpaceDescriptionCalled);
+            assertTrue(presenter.verifyGoToJailMessageCalled);
         }
     }
 }

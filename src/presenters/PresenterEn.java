@@ -1,6 +1,7 @@
 package game.presenters;
 
 import game.display.Console;
+import game.interactors.gotojail.GoToJailResponse;
 import game.interactors.landon.LandOnResponse;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
@@ -100,6 +101,12 @@ public class PresenterEn extends Presenter {
     @Override
     public void landOnMessage(LandOnResponse response) {
         template = String.format("Landed on %s.", response.space);
+        addMessageToBuffer(template);
+    }
+
+    @Override
+    public void goToJailMessage(GoToJailResponse response) {
+       template =  String.format("Do not pass %s. Do not collect 200.", response.GO);
         addMessageToBuffer(template);
     }
 

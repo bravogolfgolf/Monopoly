@@ -7,6 +7,9 @@
 |scenario|Given two player game|
 |addTwoPlayersToGame|
 
+|scenario|Given current player is on B & O Railroad|
+|setCurrentPlayerSpaceToBORailroad|
+
 |scenario|Given current player is on Short Line|
 |setCurrentPlayerSpaceToShortLine|
 
@@ -16,5 +19,20 @@
 |scenario|Given current player is on Boardwalk|
 |setCurrentPlayerSpaceToBoardwalk|
 
+|scenario|Given current player rolls 2|
+|currentPlayerRollsTwo|
+
 |scenario|Given current player rolls 3|
 |currentPlayerRollsThree|
+
+|scenario|Given current player rolls 4|
+|currentPlayerRollsFour|
+
+|scenario|Given current player rolls 5|
+|currentPlayerRollsFive|
+
+|scenario|Given current player rolls 7|
+|currentPlayerRollsSeven|
+
+|scenario|Given current player rolls 10|
+|currentPlayerRollsTen|

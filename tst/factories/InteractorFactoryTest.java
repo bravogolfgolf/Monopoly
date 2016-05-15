@@ -34,6 +34,7 @@ public class InteractorFactoryTest {
         interactorFactory.make("PaySalary");
         interactorFactory.make("MoveToken");
         interactorFactory.make("LandOn");
+        interactorFactory.make("GoToJail");
         interactorFactory.make("PropertyOptions");
         interactorFactory.make("PartnerOptions");
     }

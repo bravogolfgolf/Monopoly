@@ -6,12 +6,15 @@ public class Token implements Comparable {
 
     public Space space;
     public int move;
+    private boolean inJail;
+
     public enum TransactionType {PAY_CASH, RECIEVE_CASH, BUY_PROPERTY, MORTGAGE_PROPERTY, UN_MORTGAGE_PROPERTY}
 
     private final String description;
-    private int cashBalance = 1500;
-    private int netWorth = 1500;
 
+    private int cashBalance = 1500;
+
+    private int netWorth = 1500;
     public Token(String description) {
         this.description = description;
     }
@@ -20,9 +23,12 @@ public class Token implements Comparable {
         return description;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return this.description.compareTo(((Token) o).description);
+    public void goToJail() {
+        inJail = true;
+    }
+
+    public boolean isInJail() {
+        return inJail;
     }
 
     public int cashBalance() {
@@ -54,5 +60,10 @@ public class Token implements Comparable {
                 cashBalance -= (amount / 2) * 1.1;
                 break;
         }
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.description.compareTo(((Token) o).description);
     }
 }

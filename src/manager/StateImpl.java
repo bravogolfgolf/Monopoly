@@ -583,7 +583,7 @@ public enum StateImpl implements State {
     JAIL {
         @Override
         public void initialize(StateManager manager) throws IOException {
-
+            manager.createAndExecuteController("GoToJail");
         }
 
         @Override

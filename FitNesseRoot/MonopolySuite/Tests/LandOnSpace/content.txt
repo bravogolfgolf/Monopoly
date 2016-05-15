@@ -1,0 +1,124 @@
+-!|script|
+|Given no game               |
+|Given version of game       |
+|Given two player game       |
+|Given current player rolls 2|
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 2.
+
+Landed on Community Chest.
+-!|
+
+-!|script|
+|Given no game               |
+|Given version of game       |
+|Given two player game       |
+|Given current player rolls 3|
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 3.
+
+Landed on Baltic Avenue.
+-!|
+
+-!|script|
+|Given no game               |
+|Given version of game       |
+|Given two player game       |
+|Given current player rolls 4|
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 4.
+
+Landed on Income Tax.
+-!|
+
+-!|script|
+|Given no game               |
+|Given version of game       |
+|Given two player game       |
+|Given current player rolls 5|
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 5.
+
+Landed on Reading Railroad.
+-!|
+
+-!|script|
+|Given no game               |
+|Given version of game       |
+|Given two player game       |
+|Given current player rolls 7|
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 7.
+
+Landed on Chance.
+-!|
+
+-!|script|
+|Given no game                |
+|Given version of game        |
+|Given two player game        |
+|Given current player rolls 10|
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 10.
+
+Landed on Just Visiting/Jail.
+-!|
+
+-!|script|
+|Given no game                            |
+|Given version of game                    |
+|Given two player game                    |
+|Given current player is on B & O Railroad|
+|Given current player rolls 3             |
+
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 3.
+
+Landed on Water Works.
+-!|
+
+-!|script|
+|Given no game                            |
+|Given version of game                    |
+|Given two player game                    |
+|Given current player is on B & O Railroad|
+|Given current player rolls 5             |
+
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 5.
+
+Landed on Go to Jail.
+
+Do not pass GO. Do not collect 200.
+-!|
+
+-!|script|
+|Given no game                        |
+|Given version of game                |
+|Given two player game                |
+|Given current player is on Short Line|
+|Given current player rolls 3         |
+
+
+|script|Fixture|INITIAL_ROLL|
+|check |expected response is|!-
+You rolled 3.
+
+Landed on Luxury Tax.
+-!|
