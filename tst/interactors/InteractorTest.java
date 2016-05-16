@@ -5,6 +5,7 @@ import game.Context;
 import game.controllers.ControllerRequest;
 import game.doubles.*;
 import game.entities.Board;
+import game.entities.Dice;
 import game.factories.ControllerFactory;
 import game.factories.InteractorFactory;
 import game.factories.SpacesUSA;
@@ -49,6 +50,7 @@ public class InteractorTest {
         manager.setControllerFactory(controllerFactory);
         request.string = "";
         Context.currentPlayer = currentPlayer;
+        Context.dice = new Dice();
     }
 
     public class VersionOptionsTest {
@@ -173,20 +175,9 @@ public class InteractorTest {
         private final Interactor interactor = new RollDice(presenter, manager);
 
         @Test
-        public void testHandle_NotDoubles() {
-            Context.dice = new DiceRollThree();
+        public void testHandle() {
             interactor.handle();
 
-            assertTrue(manager.verifySetStateCalled);
-            assertTrue(presenter.verifyRollMessageCalled);
-        }
-
-        @Test
-        public void testHandle_Doubles() {
-            Context.dice = new DiceDoubleOnes();
-            interactor.handle();
-
-            assertTrue(manager.verifySetStateCalled);
             assertTrue(presenter.verifyRollMessageCalled);
         }
     }

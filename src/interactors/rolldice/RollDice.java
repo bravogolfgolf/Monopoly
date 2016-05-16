@@ -5,8 +5,6 @@ import game.presenters.Presenter;
 
 import static game.Context.currentPlayer;
 import static game.Context.dice;
-import static game.manager.StateImpl.NOT_ROLL_DOUBLE;
-import static game.manager.StateImpl.ROLL_DOUBLE_1;
 
 public class RollDice extends Interactor {
 
@@ -22,11 +20,8 @@ public class RollDice extends Interactor {
     @Override
     public void handle() {
         dice.roll();
-        if (dice.isDoubles()) {
+        if (dice.isDoubles())
             response.isDoubles = dice.isDoubles();
-            manager.setState(ROLL_DOUBLE_1);
-        } else
-            manager.setState(NOT_ROLL_DOUBLE);
         currentPlayer.setMove(dice.rolled());
         response.rolled = dice.rolled();
         presenter.rollMessage(response);

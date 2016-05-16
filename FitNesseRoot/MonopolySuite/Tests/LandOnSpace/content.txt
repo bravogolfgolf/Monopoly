@@ -4,7 +4,7 @@
 |Given two player game       |
 |Given current player rolls 2|
 
-|script|Fixture|INITIAL_ROLL|
+|script|Fixture|DOUBLE_0|
 |check |expected response is|!-
 You rolled 2.
 
@@ -17,7 +17,7 @@ Landed on Community Chest.
 |Given two player game       |
 |Given current player rolls 3|
 
-|script|Fixture|INITIAL_ROLL|
+|script|Fixture|DOUBLE_0|
 |check |expected response is|!-
 You rolled 3.
 
@@ -30,7 +30,7 @@ Landed on Baltic Avenue.
 |Given two player game       |
 |Given current player rolls 4|
 
-|script|Fixture|INITIAL_ROLL|
+|script|Fixture|DOUBLE_0|
 |check |expected response is|!-
 You rolled 4.
 
@@ -43,7 +43,7 @@ Landed on Income Tax.
 |Given two player game       |
 |Given current player rolls 5|
 
-|script|Fixture|INITIAL_ROLL|
+|script|Fixture|DOUBLE_0|
 |check |expected response is|!-
 You rolled 5.
 
@@ -56,7 +56,7 @@ Landed on Reading Railroad.
 |Given two player game       |
 |Given current player rolls 7|
 
-|script|Fixture|INITIAL_ROLL|
+|script|Fixture|DOUBLE_0|
 |check |expected response is|!-
 You rolled 7.
 
@@ -69,7 +69,7 @@ Landed on Chance.
 |Given two player game        |
 |Given current player rolls 10|
 
-|script|Fixture|INITIAL_ROLL|
+|script|Fixture|DOUBLE_0|
 |check |expected response is|!-
 You rolled 10.
 
@@ -84,7 +84,7 @@ Landed on Just Visiting/Jail.
 |Given current player rolls 3             |
 
 
-|script|Fixture|INITIAL_ROLL|
+|script|Fixture|DOUBLE_0|
 |check |expected response is|!-
 You rolled 3.
 
@@ -99,7 +99,7 @@ Landed on Water Works.
 |Given current player rolls 5             |
 
 
-|script|Fixture|INITIAL_ROLL|
+|script|Fixture|DOUBLE_0|
 |check |expected response is|!-
 You rolled 5.
 
@@ -116,7 +116,7 @@ Do not pass GO. Do not collect 200.
 |Given current player rolls 3         |
 
 
-|script|Fixture|INITIAL_ROLL|
+|script|Fixture|DOUBLE_0|
 |check |expected response is|!-
 You rolled 3.
 
