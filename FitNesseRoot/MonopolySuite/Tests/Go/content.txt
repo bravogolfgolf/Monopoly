@@ -6,7 +6,7 @@
 |Given current player rolls 3         |
 
 
-|script|Fixture|INITIAL_ROLL|
+|script|Fixture|DOUBLE_0|
 |check |expected response is|!-
 You rolled 3.
 
@@ -23,7 +23,7 @@ Collect 200.
 |Given current player rolls 3        |
 
 
-|script|Fixture|INITIAL_ROLL|
+|script|Fixture  |DOUBLE_0  |
 |check |expected response is|!-
 You rolled 3.
 

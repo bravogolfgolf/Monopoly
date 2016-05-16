@@ -311,7 +311,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(INITIAL_ROLL);
+            manager.setState(DOUBLE_0);
             manager.initialize();
         }
 
@@ -328,38 +328,11 @@ public enum StateImpl implements State {
         }
     },
 
-    INITIAL_ROLL {
+    DOUBLE_0 {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("RollDice");
-            manager.initialize();
-        }
-
-        @Override
-        public void validTextEntry(StateManager manager) throws IOException {
-
-        }
-
-        @Override
-        public void zeroEntered(StateManager manager) throws IOException {
-
-        }
-
-        @Override
-        public void oneEntered(StateManager manager) {
-
-        }
-
-        @Override
-        public void twoEntered(StateManager manager) {
-
-        }
-    },
-
-    NOT_ROLL_DOUBLE {
-        @Override
-        public void initialize(StateManager manager) throws IOException {
-            manager.createAndExecuteController("MoveToken");
+            manager.setState(MOVE);
             manager.initialize();
         }
 
@@ -387,7 +360,8 @@ public enum StateImpl implements State {
     ROLL_DOUBLE_1 {
         @Override
         public void initialize(StateManager manager) throws IOException {
-            manager.createAndExecuteController("MoveToken");
+            manager.createAndExecuteController("RollDice");
+            manager.setState(MOVE);
             manager.initialize();
         }
 
@@ -413,6 +387,64 @@ public enum StateImpl implements State {
     },
 
     ROLL_DOUBLE_2 {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+            manager.createAndExecuteController("RollDice");
+            manager.setState(MOVE);
+            manager.initialize();
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
+        }
+    },
+
+    ROLL_DOUBLE_3 {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+            manager.createAndExecuteController("RollDice");
+            manager.setState(MOVE);
+            manager.initialize();
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) {
+
+        }
+    },
+
+    MOVE {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("MoveToken");

@@ -27,19 +27,19 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway, G
     @Override
     public boolean move(Token token) {
         boolean passedGo = false;
-        Space space = token.space.nextSpace;
-        for (int i = 1; i < token.move; i++) {
+        Space space = token.getSpace().nextSpace;
+        for (int i = 1; i < token.getMove(); i++) {
             if (!passedGo)
                 passedGo = space.passedGO();
             space = space.nextSpace;
         }
-        token.space = space;
+        token.setSpace(space);
         return passedGo;
     }
 
     @Override
     public void setInitialSpace(Token token) {
-        token.space = board.get(0);
+        token.setSpace(board.get(0));
     }
 
     @Override

@@ -19,8 +19,8 @@ public class LandOn extends Interactor {
 
     @Override
     public void handle() {
-        manager.setState(currentPlayer.space.determineState());
-        response.space = currentPlayer.space.getDescription();
+        manager.setState(currentPlayer.getSpace().determineState());
+        response.space = currentPlayer.getSpace().getDescription();
         presenter.landOnMessage(response);
     }
 }

@@ -4,5 +4,5 @@ public class RollDiceResponse {
 
     public int rolled;
 
-    public boolean isDoubles;
+    public boolean isDoubles = false;
 }

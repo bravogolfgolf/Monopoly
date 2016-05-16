@@ -34,22 +34,22 @@ public class MonopolyLibrary {
     }
 
     public void setCurrentPlayerSpaceToBORailroad(){
-        currentPlayer.move = 25;
+        currentPlayer.setMove(25);
         board.move(currentPlayer);
     }
 
     public void setCurrentPlayerSpaceToShortLine(){
-        currentPlayer.move = 35;
+        currentPlayer.setMove(35);
         board.move(currentPlayer);
     }
 
     public void setCurrentPlayerSpaceToParkPlace(){
-        currentPlayer.move = 37;
+        currentPlayer.setMove(37);
         board.move(currentPlayer);
     }
 
     public void setCurrentPlayerSpaceToBoardwalk(){
-        currentPlayer.move = 39;
+        currentPlayer.setMove(39);
         board.move(currentPlayer);
     }
 
