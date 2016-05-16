@@ -24,7 +24,7 @@ public class BoardFake extends Board {
     @Override
     public boolean move(Token token) {
         verifyMoveCalled = true;
-        return token.move == 41;
+        return token.getMove() == 41;
     }
 
     @Override

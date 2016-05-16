@@ -27,7 +27,7 @@ public class RollDice extends Interactor {
             manager.setState(ROLL_DOUBLE_1);
         } else
             manager.setState(NOT_ROLL_DOUBLE);
-        currentPlayer.move = dice.rolled();
+        currentPlayer.setMove(dice.rolled());
         response.rolled = dice.rolled();
         presenter.rollMessage(response);
     }

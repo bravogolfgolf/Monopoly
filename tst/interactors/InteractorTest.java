@@ -198,7 +198,7 @@ public class InteractorTest {
         @Test
         public void testHandle_PassGo() {
             int MAKE_BOARD_FAKE_MOVE_METHOD_RETURN_TRUE = 41;
-            currentPlayer.move = MAKE_BOARD_FAKE_MOVE_METHOD_RETURN_TRUE;
+            currentPlayer.setMove(MAKE_BOARD_FAKE_MOVE_METHOD_RETURN_TRUE);
             interactor.handle();
 
             assertTrue(board.verifyMoveCalled);
@@ -235,7 +235,7 @@ public class InteractorTest {
 
         @Test
         public void testlandOn_Go() {
-            currentPlayer.space = new Board.Space.Go(0, "GO");
+            currentPlayer.setSpace(new Board.Space.Go(0, "GO"));
             interactor.handle();
 
             assertTrue(manager.verifySetStateCalled);

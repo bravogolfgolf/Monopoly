@@ -28,25 +28,25 @@ public class BoardTest {
     @Test
     public void landOnSpaceWithoutPassingGo() {
         Space expected = new Space.RealEstate(3, "RealEstate");
-        token.move = NOT_PASS_GO;
+        token.setMove(NOT_PASS_GO);
 
         assertEquals(false, board.move(token));
-        assertEquals(expected.getSpaceID(), token.space.getSpaceID());
+        assertEquals(expected.getSpaceID(), token.getSpace().getSpaceID());
     }
 
     @Test
     public void landOnSpaceWithPassingGo() {
         Space expected = new Space.RealEstate(1, "RealEstate");
-        token.move = PASS_GO;
+        token.setMove(PASS_GO);
         assertEquals(true, board.move(token));
-        assertEquals(expected.getSpaceID(), token.space.getSpaceID());
+        assertEquals(expected.getSpaceID(), token.getSpace().getSpaceID());
     }
 
     @Test
     public void landOnGo() {
         Space expected = new Space.Go(0, "Go");
-        token.move = LAND_ON_GO;
+        token.setMove(LAND_ON_GO);
         assertEquals(false, board.move(token));
-        assertEquals(expected.getSpaceID(), token.space.getSpaceID());
+        assertEquals(expected.getSpaceID(), token.getSpace().getSpaceID());
     }
 }
