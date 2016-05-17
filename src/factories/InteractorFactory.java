@@ -3,6 +3,7 @@ package game.factories;
 import game.entities.Banker;
 import game.interactors.Interactor;
 import game.interactors.gotojail.GoToJail;
+import game.interactors.incometax.CollectIncomeTax;
 import game.interactors.landon.LandOn;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
@@ -56,6 +57,9 @@ public class InteractorFactory implements ControllerFactoryInteractorFactory {
 
         if (type.equals("LandOn"))
             return new LandOn(manager, presenter);
+
+        if (type.equals("CollectIncomeTax"))
+            return new CollectIncomeTax(banker, presenter);
 
         if (type.equals("GoToJail"))
             return new GoToJail(board, presenter);

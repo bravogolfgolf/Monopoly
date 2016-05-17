@@ -4,6 +4,7 @@ import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.doubles.ConsoleMock;
 import game.doubles.ParserMock;
 import game.interactors.gotojail.GoToJailResponse;
+import game.interactors.incometax.CollectIncomeTaxResponse;
 import game.interactors.landon.LandOnResponse;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
@@ -230,6 +231,19 @@ public class PresenterEnTest {
         public void testPaySalaryMessage() throws IOException {
             presenter.paySalaryMessage();
             expected = "\nCollect 200.\n";
+            verifyMessage();
+        }
+    }
+
+    public class collectIncomeTaxTest {
+
+        private final CollectIncomeTaxResponse response = new CollectIncomeTaxResponse();
+
+        @Test
+        public void testCollectIncomeTaxMessage() throws IOException {
+            response.amount = 150;
+            presenter.collectIncomeTaxMessage(response);
+            expected = "\nIncome Tax Due. Pay 150.\n";
             verifyMessage();
         }
     }
