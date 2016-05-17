@@ -188,7 +188,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway, G
 
             @Override
             public State determineState() {
-                return PAY;
+                return COLLECT_INCOME_TAX;
             }
         }
 
@@ -199,7 +199,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway, G
 
             @Override
             public State determineState() {
-                return PAY;
+                return COLLECT_LUXURY_TAX;
             }
         }
     }

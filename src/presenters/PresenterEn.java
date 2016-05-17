@@ -2,6 +2,7 @@ package game.presenters;
 
 import game.display.Console;
 import game.interactors.gotojail.GoToJailResponse;
+import game.interactors.incometax.CollectIncomeTaxResponse;
 import game.interactors.landon.LandOnResponse;
 import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsResponse;
@@ -106,7 +107,13 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void goToJailMessage(GoToJailResponse response) {
-       template =  String.format("Do not pass %s. Do not collect 200.", response.GO);
+        template = String.format("Do not pass %s. Do not collect 200.", response.GO);
+        addMessageToBuffer(template);
+    }
+
+    @Override
+    public void collectIncomeTaxMessage(CollectIncomeTaxResponse response) {
+        template = String.format("Income Tax Due. Pay %d.", response.amount);
         addMessageToBuffer(template);
     }
 
@@ -131,7 +138,7 @@ public class PresenterEn extends Presenter {
 
     @Override
     public void passGoMessage(MoveTokenResponse response) {
-        template =  String.format("Passed %s!", response.GO);
+        template = String.format("Passed %s!", response.GO);
         addMessageToBuffer(template);
     }
 }

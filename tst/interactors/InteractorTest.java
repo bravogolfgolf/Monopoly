@@ -11,6 +11,7 @@ import game.factories.InteractorFactory;
 import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
 import game.interactors.gotojail.GoToJail;
+import game.interactors.incometax.CollectIncomeTax;
 import game.interactors.landon.LandOn;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
@@ -225,12 +226,25 @@ public class InteractorTest {
         private final Interactor interactor = new LandOn(manager, presenter);
 
         @Test
-        public void testlandOn_Go() {
+        public void testlandOn() {
             currentPlayer.setSpace(new Board.Space.Go(0, "GO"));
             interactor.handle();
 
             assertTrue(manager.verifySetStateCalled);
             assertTrue(presenter.verifyLandOnMessageCalled);
+        }
+    }
+
+    public class PayIncomeTaxTest {
+
+        private final Interactor interactor = new CollectIncomeTax(banker, presenter);
+
+        @Test
+        public void testPayIncomeTax() {
+            interactor.handle();
+
+            assertTrue(banker.collectIncomeTaxCalled);
+            assertTrue(presenter.verifyCollectIncomeTaxMessageCalled);
         }
     }
 

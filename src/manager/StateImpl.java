@@ -585,7 +585,36 @@ public enum StateImpl implements State {
         }
     },
 
-    PAY {
+    COLLECT_INCOME_TAX {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+            manager.createAndExecuteController("CollectIncomeTax");
+            manager.setState(END_TURN);
+            manager.initialize();
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) throws IOException {
+
+        }
+    },
+
+    COLLECT_LUXURY_TAX {
         @Override
         public void initialize(StateManager manager) throws IOException {
 
@@ -616,6 +645,8 @@ public enum StateImpl implements State {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("GoToJail");
+            manager.setState(END_TURN);
+            manager.initialize();
         }
 
         @Override

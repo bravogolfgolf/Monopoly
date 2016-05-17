@@ -4,6 +4,8 @@ import game.controllers.ControllerPresenter;
 import game.display.Console;
 import game.interactors.gotojail.GoToJailPresenter;
 import game.interactors.gotojail.GoToJailResponse;
+import game.interactors.incometax.CollectIncomeTaxPresenter;
+import game.interactors.incometax.CollectIncomeTaxResponse;
 import game.interactors.landon.LandOnPresenter;
 import game.interactors.landon.LandOnResponse;
 import game.interactors.movetoken.MoveTokenPresenter;
@@ -28,7 +30,8 @@ import java.util.Map;
 public abstract class Presenter implements ControllerPresenter,
         VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter,
         PropertyOptionsPresenter, PartnerOptionsPresenter, RollDicePresenter,
-        MoveTokenPresenter, PaySalaryPresenter, LandOnPresenter, GoToJailPresenter {
+        MoveTokenPresenter, PaySalaryPresenter, LandOnPresenter, CollectIncomeTaxPresenter,
+        GoToJailPresenter {
 
     private final PresenterConsole console;
     private final PresenterParser parser;
@@ -138,5 +141,9 @@ public abstract class Presenter implements ControllerPresenter,
     @Override
     public abstract void landOnMessage(LandOnResponse response);
 
+    @Override
     public abstract void goToJailMessage(GoToJailResponse response);
+
+    @Override
+    public abstract void collectIncomeTaxMessage(CollectIncomeTaxResponse response);
 }

@@ -35,6 +35,8 @@ Landed on Baltic Avenue.
 You rolled 4.
 
 Landed on Income Tax.
+
+Income Tax Due. Pay 150.
 -!|
 
 -!|script|
