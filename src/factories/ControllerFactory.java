@@ -73,7 +73,12 @@ public class ControllerFactory implements ManagerControllerFactory {
             interactor = factory.make(type);
             return new Message(interactor, presenter);
         }
-        
+
+        if (type.equals("CollectLuxuryTax")) {
+            interactor = factory.make(type);
+            return new Message(interactor, presenter);
+        }
+
         if (type.equals("GoToJail")) {
             interactor = factory.make(type);
             return new Message(interactor, presenter);

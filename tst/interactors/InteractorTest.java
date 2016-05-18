@@ -13,6 +13,7 @@ import game.factories.TokensUSA;
 import game.interactors.gotojail.GoToJail;
 import game.interactors.incometax.CollectIncomeTax;
 import game.interactors.landon.LandOn;
+import game.interactors.luxurytax.CollectLuxuryTax;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.paysalary.PaySalary;
@@ -235,7 +236,7 @@ public class InteractorTest {
         }
     }
 
-    public class PayIncomeTaxTest {
+    public class CollectIncomeTaxTest {
 
         private final Interactor interactor = new CollectIncomeTax(banker, presenter);
 
@@ -245,6 +246,19 @@ public class InteractorTest {
 
             assertTrue(banker.collectIncomeTaxCalled);
             assertTrue(presenter.verifyCollectIncomeTaxMessageCalled);
+        }
+    }
+
+    public class CollectLuxuryTaxTest {
+
+        private final Interactor interactor = new CollectLuxuryTax(banker, presenter);
+
+        @Test
+        public void testPayIncomeTax() {
+            interactor.handle();
+
+            assertTrue(banker.collectLuxuryTaxCalled);
+            assertTrue(presenter.verifyCollectLuxuryTaxMessageCalled);
         }
     }
 

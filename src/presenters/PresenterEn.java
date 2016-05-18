@@ -118,6 +118,12 @@ public class PresenterEn extends Presenter {
     }
 
     @Override
+    public void collectLuxuryTaxMessage() {
+        template = "Luxury Tax Due. Pay 75.";
+        addMessageToBuffer(template);
+    }
+
+    @Override
     public void selectTradingPartnerPromptMessage() {
         template = "Select player to trade with or (0)Done to return to previous menu.";
         addMessageToBuffer(template);

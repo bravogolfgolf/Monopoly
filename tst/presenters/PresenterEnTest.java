@@ -248,6 +248,16 @@ public class PresenterEnTest {
         }
     }
 
+    public class collectLuxuryTaxTest {
+
+        @Test
+        public void testCollectLuxuryeTaxMessage() throws IOException {
+            presenter.collectLuxuryTaxMessage();
+            expected = "\nLuxury Tax Due. Pay 75.\n";
+            verifyMessage();
+        }
+    }
+
     public class landOnTest {
 
         private final LandOnResponse response = new LandOnResponse();
