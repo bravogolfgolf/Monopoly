@@ -311,7 +311,7 @@ public enum StateImpl implements State {
 
         @Override
         public void zeroEntered(StateManager manager) throws IOException {
-            manager.setState(DOUBLE_0);
+            manager.setState(ROLL_DOUBLE_0);
             manager.initialize();
         }
 
@@ -328,7 +328,7 @@ public enum StateImpl implements State {
         }
     },
 
-    DOUBLE_0 {
+    ROLL_DOUBLE_0 {
         @Override
         public void initialize(StateManager manager) throws IOException {
             manager.createAndExecuteController("RollDice");
@@ -617,7 +617,9 @@ public enum StateImpl implements State {
     COLLECT_LUXURY_TAX {
         @Override
         public void initialize(StateManager manager) throws IOException {
-
+            manager.createAndExecuteController("CollectLuxuryTax");
+            manager.setState(END_TURN);
+            manager.initialize();
         }
 
         @Override

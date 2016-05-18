@@ -6,8 +6,8 @@
 |Given current player rolls 3         |
 
 
-|script|Fixture|DOUBLE_0|
-|check |expected response is|!-
+|script|Fixture|ROLL_DOUBLE_0|
+|check |expected response is |!-
 You rolled 3.
 
 Landed on GO.
@@ -23,8 +23,8 @@ Collect 200.
 |Given current player rolls 3        |
 
 
-|script|Fixture  |DOUBLE_0  |
-|check |expected response is|!-
+|script|Fixture|ROLL_DOUBLE_0|
+|check |expected response is |!-
 You rolled 3.
 
 Passed GO!

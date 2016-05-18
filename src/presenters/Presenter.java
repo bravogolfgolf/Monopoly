@@ -8,8 +8,11 @@ import game.interactors.incometax.CollectIncomeTaxPresenter;
 import game.interactors.incometax.CollectIncomeTaxResponse;
 import game.interactors.landon.LandOnPresenter;
 import game.interactors.landon.LandOnResponse;
+import game.interactors.luxurytax.CollectLuxuryTaxPresenter;
 import game.interactors.movetoken.MoveTokenPresenter;
+import game.interactors.movetoken.MoveTokenResponse;
 import game.interactors.partneroptions.PartnerOptionsPresenter;
+import game.interactors.partneroptions.PartnerOptionsResponse;
 import game.interactors.paysalary.PaySalaryPresenter;
 import game.interactors.propertyoptions.PropertyOptionsPresenter;
 import game.interactors.propertyoptions.PropertyOptionsResponse;
@@ -31,7 +34,7 @@ public abstract class Presenter implements ControllerPresenter,
         VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter,
         PropertyOptionsPresenter, PartnerOptionsPresenter, RollDicePresenter,
         MoveTokenPresenter, PaySalaryPresenter, LandOnPresenter, CollectIncomeTaxPresenter,
-        GoToJailPresenter {
+        CollectLuxuryTaxPresenter, GoToJailPresenter {
 
     private final PresenterConsole console;
     private final PresenterParser parser;
@@ -146,4 +149,25 @@ public abstract class Presenter implements ControllerPresenter,
 
     @Override
     public abstract void collectIncomeTaxMessage(CollectIncomeTaxResponse response);
+
+    @Override
+    public abstract void passGoMessage(MoveTokenResponse response);
+
+    @Override
+    public abstract void selectTradingPartnerPromptMessage();
+
+    @Override
+    public abstract void partnerOptionsMessage(PartnerOptionsResponse response);
+
+    @Override
+    public abstract void paySalaryMessage();
+
+    @Override
+    public abstract void playerCreatedMessage(TokenOptionsResponse response);
+
+    @Override
+    public abstract void versionCreatedMessage(VersionOptionsResponse response);
+
+    @Override
+    public abstract void collectLuxuryTaxMessage();
 }

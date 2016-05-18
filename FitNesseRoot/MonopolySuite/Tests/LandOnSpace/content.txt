@@ -4,8 +4,8 @@
 |Given two player game       |
 |Given current player rolls 2|
 
-|script|Fixture|DOUBLE_0|
-|check |expected response is|!-
+|script|Fixture|ROLL_DOUBLE_0|
+|check |expected response is |!-
 You rolled 2.
 
 Landed on Community Chest.
@@ -17,8 +17,8 @@ Landed on Community Chest.
 |Given two player game       |
 |Given current player rolls 3|
 
-|script|Fixture|DOUBLE_0|
-|check |expected response is|!-
+|script|Fixture|ROLL_DOUBLE_0|
+|check |expected response is |!-
 You rolled 3.
 
 Landed on Baltic Avenue.
@@ -30,8 +30,8 @@ Landed on Baltic Avenue.
 |Given two player game       |
 |Given current player rolls 4|
 
-|script|Fixture|DOUBLE_0|
-|check |expected response is|!-
+|script|Fixture|ROLL_DOUBLE_0|
+|check |expected response is |!-
 You rolled 4.
 
 Landed on Income Tax.
@@ -45,8 +45,8 @@ Income Tax Due. Pay 150.
 |Given two player game       |
 |Given current player rolls 5|
 
-|script|Fixture|DOUBLE_0|
-|check |expected response is|!-
+|script|Fixture|ROLL_DOUBLE_0|
+|check |expected response is |!-
 You rolled 5.
 
 Landed on Reading Railroad.
@@ -58,8 +58,8 @@ Landed on Reading Railroad.
 |Given two player game       |
 |Given current player rolls 7|
 
-|script|Fixture|DOUBLE_0|
-|check |expected response is|!-
+|script|Fixture|ROLL_DOUBLE_0|
+|check |expected response is |!-
 You rolled 7.
 
 Landed on Chance.
@@ -71,8 +71,8 @@ Landed on Chance.
 |Given two player game        |
 |Given current player rolls 10|
 
-|script|Fixture|DOUBLE_0|
-|check |expected response is|!-
+|script|Fixture|ROLL_DOUBLE_0|
+|check |expected response is |!-
 You rolled 10.
 
 Landed on Just Visiting/Jail.
@@ -86,8 +86,8 @@ Landed on Just Visiting/Jail.
 |Given current player rolls 3             |
 
 
-|script|Fixture|DOUBLE_0|
-|check |expected response is|!-
+|script|Fixture|ROLL_DOUBLE_0|
+|check |expected response is |!-
 You rolled 3.
 
 Landed on Water Works.
@@ -101,8 +101,8 @@ Landed on Water Works.
 |Given current player rolls 5             |
 
 
-|script|Fixture|DOUBLE_0|
-|check |expected response is|!-
+|script|Fixture|ROLL_DOUBLE_0|
+|check |expected response is |!-
 You rolled 5.
 
 Landed on Go to Jail.
@@ -118,9 +118,11 @@ Do not pass GO. Do not collect 200.
 |Given current player rolls 3         |
 
 
-|script|Fixture|DOUBLE_0|
-|check |expected response is|!-
+|script|Fixture|ROLL_DOUBLE_0|
+|check |expected response is |!-
 You rolled 3.
 
 Landed on Luxury Tax.
+
+Luxury Tax Due. Pay 75.
 -!|

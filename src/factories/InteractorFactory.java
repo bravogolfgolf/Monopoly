@@ -5,6 +5,7 @@ import game.interactors.Interactor;
 import game.interactors.gotojail.GoToJail;
 import game.interactors.incometax.CollectIncomeTax;
 import game.interactors.landon.LandOn;
+import game.interactors.luxurytax.CollectLuxuryTax;
 import game.interactors.movetoken.MoveToken;
 import game.interactors.partneroptions.PartnerOptions;
 import game.interactors.paysalary.PaySalary;
@@ -60,6 +61,9 @@ public class InteractorFactory implements ControllerFactoryInteractorFactory {
 
         if (type.equals("CollectIncomeTax"))
             return new CollectIncomeTax(banker, presenter);
+
+        if (type.equals("CollectLuxuryTax"))
+            return new CollectLuxuryTax(banker, presenter);
 
         if (type.equals("GoToJail"))
             return new GoToJail(board, presenter);
