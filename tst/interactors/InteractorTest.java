@@ -174,7 +174,7 @@ public class InteractorTest {
 
     public class RollDiceTest {
 
-        private final Interactor interactor = new RollDice(presenter, manager);
+        private final Interactor interactor = new RollDice(presenter);
 
         @Test
         public void testHandle() {
