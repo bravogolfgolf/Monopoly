@@ -48,7 +48,7 @@ public class InteractorFactory implements ControllerFactoryInteractorFactory {
             return new SelectFirst(presenter, players);
 
         if (type.equals("RollDice"))
-            return new RollDice(presenter, manager);
+            return new RollDice(presenter);
 
         if (type.equals("MoveToken"))
             return new MoveToken(board, manager, presenter);

@@ -9,12 +9,10 @@ import static game.Context.dice;
 public class RollDice extends Interactor {
 
     private final RollDicePresenter presenter;
-    private final RollDiceManagerGateway manager;
     private final RollDiceResponse response = new RollDiceResponse();
 
-    public RollDice(Presenter presenter, RollDiceManagerGateway manager) {
+    public RollDice(Presenter presenter) {
         this.presenter = presenter;
-        this.manager = manager;
     }
 
     @Override
