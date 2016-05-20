@@ -1,6 +1,7 @@
 package game.doubles;
 
 import game.display.Console;
+import game.interactors.communitychest.DrawCommunityChestCardResponse;
 import game.interactors.gotojail.GoToJailResponse;
 import game.interactors.incometax.CollectIncomeTaxResponse;
 import game.interactors.landon.LandOnResponse;
@@ -37,6 +38,7 @@ public class PresenterMock extends Presenter {
     public boolean verifyGoToJailMessageCalled = false;
     public boolean verifyCollectIncomeTaxMessageCalled = false;
     public boolean verifyCollectLuxuryTaxMessageCalled = false;
+    public boolean verifyCardMessageCalled = false;
 
     public PresenterMock(Console console, Parser parser) {
         super(console, parser);
@@ -126,6 +128,11 @@ public class PresenterMock extends Presenter {
     @Override
     public void collectLuxuryTaxMessage() {
         verifyCollectLuxuryTaxMessageCalled = true;
+    }
+
+    @Override
+    public void cardMessage(DrawCommunityChestCardResponse response) {
+        verifyCardMessageCalled = true;
     }
 
     @Override

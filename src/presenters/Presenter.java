@@ -2,6 +2,8 @@ package game.presenters;
 
 import game.controllers.ControllerPresenter;
 import game.display.Console;
+import game.interactors.communitychest.DrawCommunityChestCardPresenter;
+import game.interactors.communitychest.DrawCommunityChestCardResponse;
 import game.interactors.gotojail.GoToJailPresenter;
 import game.interactors.gotojail.GoToJailResponse;
 import game.interactors.incometax.CollectIncomeTaxPresenter;
@@ -34,7 +36,7 @@ public abstract class Presenter implements ControllerPresenter,
         VersionOptionsPresenter, TokenOptionsPresenter, SelectFirstPresenter,
         PropertyOptionsPresenter, PartnerOptionsPresenter, RollDicePresenter,
         MoveTokenPresenter, PaySalaryPresenter, LandOnPresenter, CollectIncomeTaxPresenter,
-        CollectLuxuryTaxPresenter, GoToJailPresenter {
+        CollectLuxuryTaxPresenter, DrawCommunityChestCardPresenter, GoToJailPresenter {
 
     private final PresenterConsole console;
     private final PresenterParser parser;
@@ -170,4 +172,7 @@ public abstract class Presenter implements ControllerPresenter,
 
     @Override
     public abstract void collectLuxuryTaxMessage();
+
+    @Override
+    public abstract void cardMessage(DrawCommunityChestCardResponse response);
 }

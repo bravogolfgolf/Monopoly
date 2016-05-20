@@ -558,7 +558,34 @@ public enum StateImpl implements State {
         }
     },
 
-    DRAW {
+    DRAW_COMMUNITY_CHEST_CARD {
+        @Override
+        public void initialize(StateManager manager) throws IOException {
+            manager.createAndExecuteController("DrawCommunityChestCard");
+        }
+
+        @Override
+        public void validTextEntry(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void zeroEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void oneEntered(StateManager manager) throws IOException {
+
+        }
+
+        @Override
+        public void twoEntered(StateManager manager) throws IOException {
+
+        }
+    },
+
+    DRAW_CHANCE_CARD {
         @Override
         public void initialize(StateManager manager) throws IOException {
 

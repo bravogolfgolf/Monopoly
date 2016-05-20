@@ -36,6 +36,7 @@ public class InteractorFactoryTest {
         interactorFactory.make("LandOn");
         interactorFactory.make("CollectIncomeTax");
         interactorFactory.make("CollectLuxuryTax");
+        interactorFactory.make("DrawCommunityChestCard");
         interactorFactory.make("GoToJail");
         interactorFactory.make("PropertyOptions");
         interactorFactory.make("PartnerOptions");

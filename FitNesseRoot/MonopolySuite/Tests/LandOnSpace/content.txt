@@ -9,6 +9,8 @@
 You rolled 2.
 
 Landed on Community Chest.
+
+Bank error in your favor – Collect 200.
 -!|
 
 -!|script|

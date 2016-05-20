@@ -10,6 +10,7 @@ import game.factories.ControllerFactory;
 import game.factories.InteractorFactory;
 import game.factories.SpacesUSA;
 import game.factories.TokensUSA;
+import game.interactors.communitychest.DrawCommunityChestCard;
 import game.interactors.gotojail.GoToJail;
 import game.interactors.incometax.CollectIncomeTax;
 import game.interactors.landon.LandOn;
@@ -233,6 +234,20 @@ public class InteractorTest {
 
             assertTrue(manager.verifySetStateCalled);
             assertTrue(presenter.verifyLandOnMessageCalled);
+        }
+    }
+
+    public class DrawCardTest {
+
+        private final CommunityChestDeckMock deck = new CommunityChestDeckMock();
+        private final Interactor interactor = new DrawCommunityChestCard(deck, presenter);
+
+        @Test
+        public void testDrawCard() {
+            interactor.handle();
+
+            assertTrue(deck.verifyDrawCardCalled);
+            assertTrue(presenter.verifyCardMessageCalled);
         }
     }
 
