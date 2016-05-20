@@ -4,7 +4,7 @@ import game.interactors.communitychest.DrawCommunityChestCardCommunityChestDeckG
 
 public class CommunityChestDeck implements DrawCommunityChestCardCommunityChestDeckGateway {
 
-    public String drawCard() {
-        return "Bank error in your favor – Collect 200.";
+    public Card drawCard() {
+        return new Card("Bank error in your favor – Collect 200.");
     }
 }
