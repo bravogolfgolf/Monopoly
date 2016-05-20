@@ -37,6 +37,7 @@ public class ControllerFactoryTest {
         controllerFactory.make("LandOn");
         controllerFactory.make("CollectIncomeTax");
         controllerFactory.make("CollectLuxuryTax");
+        controllerFactory.make("DrawCommunityChestCard");
         controllerFactory.make("GoToJail");
         controllerFactory.make("PropertyOptions");
         controllerFactory.make("PartnerOptions");

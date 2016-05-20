@@ -1,6 +1,7 @@
 package game.factories;
 
 import game.entities.Board;
+import game.entities.CommunityChestDeck;
 import game.interactors.versionoptions.VersionOptionsVersionFactory;
 import game.repositories.Players;
 import game.repositories.Tokens;
@@ -25,6 +26,7 @@ public class VersionFactory implements VersionOptionsVersionFactory {
                 board = Board.create(SpacesUSA.create());
                 tokens = new Tokens(TokensUSA.create());
                 players = new Players();
+                communityChestDeck = new CommunityChestDeck();
                 break;
             default:
                 throw new IllegalArgumentException();

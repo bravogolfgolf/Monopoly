@@ -1,6 +1,7 @@
 package game.presenters;
 
 import game.display.Console;
+import game.interactors.communitychest.DrawCommunityChestCardResponse;
 import game.interactors.gotojail.GoToJailResponse;
 import game.interactors.incometax.CollectIncomeTaxResponse;
 import game.interactors.landon.LandOnResponse;
@@ -121,6 +122,11 @@ public class PresenterEn extends Presenter {
     public void collectLuxuryTaxMessage() {
         template = "Luxury Tax Due. Pay 75.";
         addMessageToBuffer(template);
+    }
+
+    @Override
+    public void cardMessage(DrawCommunityChestCardResponse response) {
+        addMessageToBuffer(response.cardText);
     }
 
     @Override

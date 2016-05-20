@@ -3,6 +3,7 @@ package game.presenters;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import game.doubles.ConsoleMock;
 import game.doubles.ParserMock;
+import game.interactors.communitychest.DrawCommunityChestCardResponse;
 import game.interactors.gotojail.GoToJailResponse;
 import game.interactors.incometax.CollectIncomeTaxResponse;
 import game.interactors.landon.LandOnResponse;
@@ -231,6 +232,19 @@ public class PresenterEnTest {
         public void testPaySalaryMessage() throws IOException {
             presenter.paySalaryMessage();
             expected = "\nCollect 200.\n";
+            verifyMessage();
+        }
+    }
+
+    public class testDrawCommunityChestCard {
+
+        private final DrawCommunityChestCardResponse response = new DrawCommunityChestCardResponse();
+
+        @Test
+        public void testCardMessage() throws IOException {
+            response.cardText = "Bank error in your favor – Collect 200.";
+            presenter.cardMessage(response);
+            expected = "\nBank error in your favor – Collect 200.\n";
             verifyMessage();
         }
     }

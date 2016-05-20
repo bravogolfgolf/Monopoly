@@ -166,7 +166,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway, G
 
             @Override
             public State determineState() {
-                return DRAW;
+                return DRAW_COMMUNITY_CHEST_CARD;
             }
         }
 
@@ -177,7 +177,7 @@ public class Board implements TokenOptionsBoardGateway, MoveTokenBoardGateway, G
 
             @Override
             public State determineState() {
-                return DRAW;
+                return DRAW_CHANCE_CARD;
             }
         }
 
